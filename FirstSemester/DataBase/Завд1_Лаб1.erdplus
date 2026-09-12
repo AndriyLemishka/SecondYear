@@ -1,0 +1,1153 @@
+{
+  "diagramType": 1,
+  "data": {
+    "nodes": [
+      {
+        "id": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "type": "Entity",
+        "position": {
+          "x": 286.04960099654204,
+          "y": -65.20100302089743
+        },
+        "data": {
+          "label": "Викладач",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+        "type": "Entity",
+        "position": {
+          "x": 275.9471692027348,
+          "y": 337.7987643494775
+        },
+        "data": {
+          "label": "Група",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "type": "Entity",
+        "position": {
+          "x": 920.3292535339328,
+          "y": 204.61657886239445
+        },
+        "data": {
+          "label": "Студент",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "type": "Entity",
+        "position": {
+          "x": 914.3743419105708,
+          "y": -70.54462617789054
+        },
+        "data": {
+          "label": "Кафедра",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "type": "Entity",
+        "position": {
+          "x": 1513.203120412647,
+          "y": 335.79876434947755
+        },
+        "data": {
+          "label": "Дисципліна",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Entity",
+        "position": {
+          "x": 1536.6401243898138,
+          "y": -62.2707355519334
+        },
+        "data": {
+          "label": "Сесія",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "bbca929b-4ec5-4286-869f-2f3562950f8b",
+        "parentId": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "type": "Attribute",
+        "position": {
+          "x": -6.429395695523604e-15,
+          "y": -105
+        },
+        "data": {
+          "label": "ПІБ",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "46b89cd5-31e2-46e8-96f1-a4785155a9f5",
+        "parentId": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "type": "Attribute",
+        "position": {
+          "x": 124.06237729935731,
+          "y": -97.23828830525045
+        },
+        "data": {
+          "label": "№групи",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "83587715-bae1-4232-847f-64355f533707",
+        "parentId": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "type": "Attribute",
+        "position": {
+          "x": -117.81985407024786,
+          "y": -110.85566035962704
+        },
+        "data": {
+          "label": "№залікової книжки",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "c6734cd4-0c39-4ee4-8c64-e1aa5b46faf9",
+        "parentId": "4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+        "type": "Attribute",
+        "position": {
+          "x": -57.94175157559641,
+          "y": -77.87832904972083
+        },
+        "data": {
+          "label": "№групи",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "bedec418-ccc4-4c87-9c8a-c1e16f647581",
+        "parentId": "4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+        "type": "Attribute",
+        "position": {
+          "x": 66.84939267451136,
+          "y": -76.71181847461287
+        },
+        "data": {
+          "label": "Назва",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "901b238e-41dd-4681-b62e-81eb14c4de73",
+        "parentId": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "type": "Attribute",
+        "position": {
+          "x": -149.1691902265353,
+          "y": -2.677332323946871
+        },
+        "data": {
+          "label": "№викладача",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "aba8e618-6054-47cf-aabf-5f3c89f62151",
+        "parentId": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "type": "Attribute",
+        "position": {
+          "x": -72.45737175192232,
+          "y": -86.57424427471437
+        },
+        "data": {
+          "label": "ПІБ",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "4c01ca3c-e843-42cf-b463-c099b146e820",
+        "parentId": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "type": "Attribute",
+        "position": {
+          "x": 36.03753186821223,
+          "y": -105.94213733635412
+        },
+        "data": {
+          "label": "Посада",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "599e500e-bc36-44e4-80f2-029281e6ed2d",
+        "parentId": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "type": "Attribute",
+        "position": {
+          "x": 171.97113704279525,
+          "y": -91.54184814260056
+        },
+        "data": {
+          "label": "№кафедри",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "334eee45-ba23-4da1-b685-9e760e177adc",
+        "parentId": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "type": "Attribute",
+        "position": {
+          "x": -131.41859480467838,
+          "y": -75.18033010129864
+        },
+        "data": {
+          "label": "№кафедри",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "862f3942-b221-4cd2-9bec-c525db883df9",
+        "parentId": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "type": "Attribute",
+        "position": {
+          "x": -10.654902925999636,
+          "y": -95.04155927451484
+        },
+        "data": {
+          "label": "Назва",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "7a280b2e-1196-418f-90b7-df18a46102af",
+        "parentId": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "type": "Attribute",
+        "position": {
+          "x": 109.51880264310807,
+          "y": -96.83444712702882
+        },
+        "data": {
+          "label": "Телефон",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "7282835b-5437-47e7-a36e-05c63ed6a3c2",
+        "parentId": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "type": "Attribute",
+        "position": {
+          "x": -104.45480388387318,
+          "y": -82.98955970831707
+        },
+        "data": {
+          "label": "№дисципліни",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "e46efad1-272b-4d89-a832-bc7ce5580d61",
+        "parentId": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "type": "Attribute",
+        "position": {
+          "x": 124.32193170749974,
+          "y": -79.17742492463822
+        },
+        "data": {
+          "label": "Семестр",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "91906d73-e44c-4d98-ac37-23dda687d2d2",
+        "parentId": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "type": "Attribute",
+        "position": {
+          "x": 125.95765482521574,
+          "y": 1.2328032250127308
+        },
+        "data": {
+          "label": "Назва",
+          "types": {
+            "Composite": false
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "151ac964-b449-447b-88ef-f0a89ba39201",
+        "parentId": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Attribute",
+        "position": {
+          "x": -6.429395695523604e-15,
+          "y": -105
+        },
+        "data": {
+          "label": "№сесії,",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "a974f46d-2cb9-4f3d-a966-e8e986797132",
+        "parentId": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Attribute",
+        "position": {
+          "x": 74.24621202458748,
+          "y": -74.24621202458749
+        },
+        "data": {
+          "label": "№залікової книжки",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "4134c70f-f8eb-4feb-aad1-1a693fea85e6",
+        "parentId": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Attribute",
+        "position": {
+          "x": 170.5975286989551,
+          "y": -21.865842899651682
+        },
+        "data": {
+          "label": "№дисципліни",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "d62aaae6-cda7-4415-92a2-c94ee54fb7dc",
+        "parentId": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Attribute",
+        "position": {
+          "x": 175.7041148750368,
+          "y": 58.627752810550575
+        },
+        "data": {
+          "label": "Бал",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "5d7069e6-dc50-44da-bdf6-b7069d97564d",
+        "parentId": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Attribute",
+        "position": {
+          "x": 114.0147522624693,
+          "y": 111.24738368561476
+        },
+        "data": {
+          "label": "Оцінка",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "2f54abba-f18e-43a4-8853-cc4959c0d081",
+        "parentId": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Attribute",
+        "position": {
+          "x": 13.217159574018979,
+          "y": 114.85420598108345
+        },
+        "data": {
+          "label": "Дата здачі",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1a10ba67-981d-4307-9640-0ea0bd34909f",
+        "parentId": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Attribute",
+        "position": {
+          "x": -126.86584289965162,
+          "y": -89.02521752001033
+        },
+        "data": {
+          "label": "№викладача",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "55142b35-b35d-4da7-aa42-16490da87c7b",
+        "type": "Relationship",
+        "position": {
+          "x": 600.2119714535564,
+          "y": -67.87281459939399
+        },
+        "data": {
+          "label": "Працює",
+          "sourceEntityDetails": {
+            "id": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "targetEntityDetails": {
+            "id": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+            "maxCardinality": "One",
+            "minCardinality": "Mandatory"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "0eb27197-d3d6-455a-88ea-985aa31ec46e",
+        "type": "Relationship",
+        "position": {
+          "x": 592.2565058154116,
+          "y": 88.4499389775928
+        },
+        "data": {
+          "label": "Навчає",
+          "sourceEntityDetails": {
+            "id": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "targetEntityDetails": {
+            "id": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "14147ceb-8256-49c9-a214-8bc3038052f7",
+        "type": "Relationship",
+        "position": {
+          "x": 884.0079014905576,
+          "y": 314.91116162571444
+        },
+        "data": {
+          "label": "Викладає",
+          "sourceEntityDetails": {
+            "id": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "targetEntityDetails": {
+            "id": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1e979db1-3d35-4ee6-92b4-083fb26ff1ca",
+        "type": "Relationship",
+        "position": {
+          "x": 598.1382113683338,
+          "y": 271.20767160593596
+        },
+        "data": {
+          "label": "Навчається в",
+          "sourceEntityDetails": {
+            "id": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "targetEntityDetails": {
+            "id": "4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "bbc552d9-0855-49d9-bc64-ff6e170ac98a",
+        "type": "Relationship",
+        "position": {
+          "x": 1224.5754165803085,
+          "y": 273.3313634487434
+        },
+        "data": {
+          "label": "Вивчає",
+          "sourceEntityDetails": {
+            "id": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "targetEntityDetails": {
+            "id": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "abad1ee7-324d-4f1b-9de7-3b07e7bd8ead",
+        "type": "Relationship",
+        "position": {
+          "x": 920.7159382216,
+          "y": 11.232734940961727
+        },
+        "data": {
+          "label": "Приймає",
+          "sourceEntityDetails": {
+            "id": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "targetEntityDetails": {
+            "id": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "27356ace-05a2-4091-993d-5147795d0666",
+        "type": "Relationship",
+        "position": {
+          "x": 1228.4846889618734,
+          "y": 71.17292165523052
+        },
+        "data": {
+          "label": "Здає",
+          "sourceEntityDetails": {
+            "id": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "9edf37b7-d0e4-47f3-a64b-6d490b8c085b",
+        "type": "Relationship",
+        "position": {
+          "x": 1435.89640488122,
+          "y": 124.26924702754255
+        },
+        "data": {
+          "label": "Оцінюється",
+          "sourceEntityDetails": {
+            "id": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": true,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": true,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "6967282f-7c1e-480f-84b0-56dda2ec50a4",
+        "type": "Attribute",
+        "source": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "target": "bbca929b-4ec5-4286-869f-2f3562950f8b"
+      },
+      {
+        "id": "c9b3630a-b912-4443-980e-7166e780389f",
+        "type": "Attribute",
+        "source": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "target": "46b89cd5-31e2-46e8-96f1-a4785155a9f5"
+      },
+      {
+        "id": "18a2214c-373b-44b2-96c6-74f889854e2b",
+        "type": "Attribute",
+        "source": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "target": "83587715-bae1-4232-847f-64355f533707"
+      },
+      {
+        "id": "4394f930-4fa6-433f-a9fa-8335386d13fc",
+        "type": "Attribute",
+        "source": "4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+        "target": "c6734cd4-0c39-4ee4-8c64-e1aa5b46faf9"
+      },
+      {
+        "id": "ce44bfae-daf9-4bdc-ba1b-9e3e30c0cb53",
+        "type": "Attribute",
+        "source": "4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+        "target": "bedec418-ccc4-4c87-9c8a-c1e16f647581"
+      },
+      {
+        "id": "a00ca2b3-fa7d-4d30-b1d3-2c123fe7876e",
+        "type": "Attribute",
+        "source": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "target": "901b238e-41dd-4681-b62e-81eb14c4de73"
+      },
+      {
+        "id": "2441050e-6690-48c4-b08c-86ffc01b4e96",
+        "type": "Attribute",
+        "source": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "target": "aba8e618-6054-47cf-aabf-5f3c89f62151"
+      },
+      {
+        "id": "1418001a-46d8-4c9e-8c80-5829ea4d03d3",
+        "type": "Attribute",
+        "source": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "target": "4c01ca3c-e843-42cf-b463-c099b146e820"
+      },
+      {
+        "id": "1db9b709-0994-4d78-818a-027afd8e65d2",
+        "type": "Attribute",
+        "source": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "target": "599e500e-bc36-44e4-80f2-029281e6ed2d"
+      },
+      {
+        "id": "ab5d2b5d-8a4e-4682-917b-45cf6c76c4b3",
+        "type": "Attribute",
+        "source": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "target": "334eee45-ba23-4da1-b685-9e760e177adc"
+      },
+      {
+        "id": "15c79890-c2f5-4986-9753-53232ed745ae",
+        "type": "Attribute",
+        "source": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "target": "862f3942-b221-4cd2-9bec-c525db883df9"
+      },
+      {
+        "id": "ca4c5c2f-2730-4ef4-8c47-32a41e3d3108",
+        "type": "Attribute",
+        "source": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "target": "7a280b2e-1196-418f-90b7-df18a46102af"
+      },
+      {
+        "id": "a04d4086-032f-46ef-8d07-29a44d8fb62b",
+        "type": "Attribute",
+        "source": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "target": "7282835b-5437-47e7-a36e-05c63ed6a3c2"
+      },
+      {
+        "id": "bf662233-725e-4699-928d-6a1874f9814d",
+        "type": "Attribute",
+        "source": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "target": "e46efad1-272b-4d89-a832-bc7ce5580d61"
+      },
+      {
+        "id": "913a3516-a714-4a74-8a04-ab373233cd7e",
+        "type": "Attribute",
+        "source": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "target": "91906d73-e44c-4d98-ac37-23dda687d2d2"
+      },
+      {
+        "id": "320d521c-bc19-408d-acb2-0f806e4f1f74",
+        "type": "Attribute",
+        "source": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "target": "151ac964-b449-447b-88ef-f0a89ba39201"
+      },
+      {
+        "id": "1afad88d-5d87-460a-b739-ace84990f161",
+        "type": "Attribute",
+        "source": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "target": "a974f46d-2cb9-4f3d-a966-e8e986797132"
+      },
+      {
+        "id": "35deedc7-d38f-4b6f-a9e7-e4bc6c22f93e",
+        "type": "Attribute",
+        "source": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "target": "4134c70f-f8eb-4feb-aad1-1a693fea85e6"
+      },
+      {
+        "id": "e720d78c-b703-47a5-b664-11481f84c265",
+        "type": "Attribute",
+        "source": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "target": "d62aaae6-cda7-4415-92a2-c94ee54fb7dc"
+      },
+      {
+        "id": "f3e85426-68d0-4b79-8e37-466b27ee763a",
+        "type": "Attribute",
+        "source": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "target": "5d7069e6-dc50-44da-bdf6-b7069d97564d"
+      },
+      {
+        "id": "05958211-cff8-4608-af38-e43830daac38",
+        "type": "Attribute",
+        "source": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "target": "2f54abba-f18e-43a4-8853-cc4959c0d081"
+      },
+      {
+        "id": "0c63befc-08e0-450b-ad07-8086490703c0",
+        "type": "Attribute",
+        "source": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "target": "1a10ba67-981d-4307-9640-0ea0bd34909f"
+      },
+      {
+        "id": "55142b35-b35d-4da7-aa42-16490da87c7b->f33d77d5-119a-4bf4-9a90-a349c5819b99;f33d77d5-119a-4bf4-9a90-a349c5819b99->9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "type": "Relationship",
+        "source": "55142b35-b35d-4da7-aa42-16490da87c7b",
+        "target": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "data": {
+          "id": "55142b35-b35d-4da7-aa42-16490da87c7b->f33d77d5-119a-4bf4-9a90-a349c5819b99",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "55142b35-b35d-4da7-aa42-16490da87c7b->9d58ac8d-0289-459b-87d8-cc2dc95f15a2;f33d77d5-119a-4bf4-9a90-a349c5819b99->9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "type": "Relationship",
+        "source": "55142b35-b35d-4da7-aa42-16490da87c7b",
+        "target": "9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+        "data": {
+          "id": "55142b35-b35d-4da7-aa42-16490da87c7b->9d58ac8d-0289-459b-87d8-cc2dc95f15a2",
+          "maxCardinality": "One",
+          "minCardinality": "Mandatory"
+        }
+      },
+      {
+        "id": "0eb27197-d3d6-455a-88ea-985aa31ec46e->f33d77d5-119a-4bf4-9a90-a349c5819b99;f33d77d5-119a-4bf4-9a90-a349c5819b99->0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "type": "Relationship",
+        "source": "0eb27197-d3d6-455a-88ea-985aa31ec46e",
+        "target": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "data": {
+          "id": "0eb27197-d3d6-455a-88ea-985aa31ec46e->f33d77d5-119a-4bf4-9a90-a349c5819b99",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "0eb27197-d3d6-455a-88ea-985aa31ec46e->0312d09d-5899-42f4-a3ac-1c701bbc1c86;f33d77d5-119a-4bf4-9a90-a349c5819b99->0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "type": "Relationship",
+        "source": "0eb27197-d3d6-455a-88ea-985aa31ec46e",
+        "target": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "data": {
+          "id": "0eb27197-d3d6-455a-88ea-985aa31ec46e->0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "14147ceb-8256-49c9-a214-8bc3038052f7->f33d77d5-119a-4bf4-9a90-a349c5819b99;f33d77d5-119a-4bf4-9a90-a349c5819b99->064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "type": "Relationship",
+        "source": "14147ceb-8256-49c9-a214-8bc3038052f7",
+        "target": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "data": {
+          "id": "14147ceb-8256-49c9-a214-8bc3038052f7->f33d77d5-119a-4bf4-9a90-a349c5819b99",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "14147ceb-8256-49c9-a214-8bc3038052f7->064a84fa-b73b-46ee-ae9e-69ad31d050ea;f33d77d5-119a-4bf4-9a90-a349c5819b99->064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "type": "Relationship",
+        "source": "14147ceb-8256-49c9-a214-8bc3038052f7",
+        "target": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "data": {
+          "id": "14147ceb-8256-49c9-a214-8bc3038052f7->064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "1e979db1-3d35-4ee6-92b4-083fb26ff1ca->0312d09d-5899-42f4-a3ac-1c701bbc1c86;0312d09d-5899-42f4-a3ac-1c701bbc1c86->4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+        "type": "Relationship",
+        "source": "1e979db1-3d35-4ee6-92b4-083fb26ff1ca",
+        "target": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "data": {
+          "id": "1e979db1-3d35-4ee6-92b4-083fb26ff1ca->0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "1e979db1-3d35-4ee6-92b4-083fb26ff1ca->4bef0e7a-516a-4e97-8710-8cea9c30a1a9;0312d09d-5899-42f4-a3ac-1c701bbc1c86->4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+        "type": "Relationship",
+        "source": "1e979db1-3d35-4ee6-92b4-083fb26ff1ca",
+        "target": "4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+        "data": {
+          "id": "1e979db1-3d35-4ee6-92b4-083fb26ff1ca->4bef0e7a-516a-4e97-8710-8cea9c30a1a9",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "bbc552d9-0855-49d9-bc64-ff6e170ac98a->0312d09d-5899-42f4-a3ac-1c701bbc1c86;0312d09d-5899-42f4-a3ac-1c701bbc1c86->064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "type": "Relationship",
+        "source": "bbc552d9-0855-49d9-bc64-ff6e170ac98a",
+        "target": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "data": {
+          "id": "bbc552d9-0855-49d9-bc64-ff6e170ac98a->0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "bbc552d9-0855-49d9-bc64-ff6e170ac98a->064a84fa-b73b-46ee-ae9e-69ad31d050ea;0312d09d-5899-42f4-a3ac-1c701bbc1c86->064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "type": "Relationship",
+        "source": "bbc552d9-0855-49d9-bc64-ff6e170ac98a",
+        "target": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "data": {
+          "id": "bbc552d9-0855-49d9-bc64-ff6e170ac98a->064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "abad1ee7-324d-4f1b-9de7-3b07e7bd8ead->f33d77d5-119a-4bf4-9a90-a349c5819b99;f33d77d5-119a-4bf4-9a90-a349c5819b99->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Relationship",
+        "source": "abad1ee7-324d-4f1b-9de7-3b07e7bd8ead",
+        "target": "f33d77d5-119a-4bf4-9a90-a349c5819b99",
+        "data": {
+          "id": "abad1ee7-324d-4f1b-9de7-3b07e7bd8ead->f33d77d5-119a-4bf4-9a90-a349c5819b99",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "abad1ee7-324d-4f1b-9de7-3b07e7bd8ead->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3;f33d77d5-119a-4bf4-9a90-a349c5819b99->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Relationship",
+        "source": "abad1ee7-324d-4f1b-9de7-3b07e7bd8ead",
+        "target": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "data": {
+          "id": "abad1ee7-324d-4f1b-9de7-3b07e7bd8ead->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "27356ace-05a2-4091-993d-5147795d0666->0312d09d-5899-42f4-a3ac-1c701bbc1c86;0312d09d-5899-42f4-a3ac-1c701bbc1c86->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Relationship",
+        "source": "27356ace-05a2-4091-993d-5147795d0666",
+        "target": "0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+        "data": {
+          "id": "27356ace-05a2-4091-993d-5147795d0666->0312d09d-5899-42f4-a3ac-1c701bbc1c86",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "27356ace-05a2-4091-993d-5147795d0666->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3;0312d09d-5899-42f4-a3ac-1c701bbc1c86->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Relationship",
+        "source": "27356ace-05a2-4091-993d-5147795d0666",
+        "target": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "data": {
+          "id": "27356ace-05a2-4091-993d-5147795d0666->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "9edf37b7-d0e4-47f3-a64b-6d490b8c085b->064a84fa-b73b-46ee-ae9e-69ad31d050ea;064a84fa-b73b-46ee-ae9e-69ad31d050ea->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Relationship",
+        "source": "9edf37b7-d0e4-47f3-a64b-6d490b8c085b",
+        "target": "064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+        "data": {
+          "id": "9edf37b7-d0e4-47f3-a64b-6d490b8c085b->064a84fa-b73b-46ee-ae9e-69ad31d050ea",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "9edf37b7-d0e4-47f3-a64b-6d490b8c085b->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3;064a84fa-b73b-46ee-ae9e-69ad31d050ea->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "type": "Relationship",
+        "source": "9edf37b7-d0e4-47f3-a64b-6d490b8c085b",
+        "target": "7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+        "data": {
+          "id": "9edf37b7-d0e4-47f3-a64b-6d490b8c085b->7873d32a-59ae-4f4a-b0db-7d938bf1e7d3",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      }
+    ],
+    "viewport": {
+      "x": 62.52349223400131,
+      "y": 305.81542625208397,
+      "zoom": 0.5463469875126775
+    }
+  },
+  "name": "Завд1_Лаб1",
+  "folder": {
+    "name": "Diagrams",
+    "folderType": 1,
+    "depth": 0,
+    "id": 413914
+  },
+  "id": 576498,
+  "updatedAtTimestamp": 1788977085
+}
