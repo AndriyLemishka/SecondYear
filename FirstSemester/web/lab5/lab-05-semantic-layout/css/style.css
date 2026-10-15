@@ -119,6 +119,19 @@ h1, h2, h3 {
   outline-color: var(--color-accent);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+section[id],
+main[id],
+article[id],
+header[id],
+footer[id] {
+  scroll-margin-top: 75px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -470,7 +483,7 @@ h1, h2, h3 {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding-block: var(--space-3);
 }
 
@@ -1673,8 +1686,8 @@ h1, h2, h3 {
   }
 }
 
-/* Планшети та смартфони (<= 768px) */
-@media (max-width: 768px) {
+/* Планшети та смартфони (<= 1080px) */
+@media (max-width: 1080px) {
   /* Приховуємо верхню плашку для економії робочого простору на мобільному */
   .top-bar {
     display: none;
