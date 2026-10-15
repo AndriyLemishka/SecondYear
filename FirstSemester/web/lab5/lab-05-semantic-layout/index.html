@@ -49,23 +49,64 @@
     <!-- HERO СЕКЦІЯ -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero__inner">
-        <h1 class="hero__title" id="hero-title">Заряджай електромобіль <em>без черг</em> по всій Україні</h1>
-
-        <form class="search-form" role="search" action="/search" method="get" aria-label="Пошук зарядних станцій">
-          <div class="search-form__field">
-            <label class="visually-hidden" for="station-search">Місто, адреса або назва станції</label>
-            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-            <input class="search-form__input" id="station-search" type="search" name="q" placeholder="Місто, адреса або назва станції" autocomplete="off">
+        <div class="hero__content">
+          <div class="hero__badge">
+            <i class="fa-solid fa-bolt" aria-hidden="true"></i> НАЦІОНАЛЬНИЙ АГРЕГАТОР ЗАРЯДНИХ СТАНЦІЙ
           </div>
-          <button class="btn btn--accent" type="submit">Знайти станцію</button>
-        </form>
 
-        <dl class="stats" aria-label="Швидка статистика мережі">
-          <div class="stats__item"><dt class="stats__label">станцій</dt><dd class="stats__value">1 200+</dd></div>
-          <div class="stats__item"><dt class="stats__label">областей</dt><dd class="stats__value">24</dd></div>
-          <div class="stats__item"><dt class="stats__label">аптайм мережі</dt><dd class="stats__value">99,2%</dd></div>
-          <div class="stats__item"><dt class="stats__label">водіїв</dt><dd class="stats__value">50 000+</dd></div>
-        </dl>
+          <h1 class="hero__title" id="hero-title">
+            Швидка та надійна зарядка електромобілів <em>без черг</em> по всій Україні
+          </h1>
+
+          <p class="hero__subtitle">
+            Усі мережі зарядок України на одній платформі: актуальні ціни, вільні конектори та фільтр станцій із промисловими генераторами в реальному часі.
+          </p>
+
+          <!-- ДВІ КНОПКИ CTA -->
+          <div class="hero__cta-group">
+            <a class="btn btn--primary btn--lg" href="#stations">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Розрахувати зарядку &rarr;
+            </a>
+            <a class="btn btn--outline-light btn--lg" href="#map">
+              <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Знайти на карті
+            </a>
+          </div>
+
+          <!-- ШВИДКІ ТЕГИ КОНЕКТОРІВ -->
+          <div class="hero__tags" aria-label="Популярні типи конекторів">
+            <span class="hero__tag"><i class="fa-solid fa-plug" aria-hidden="true"></i> Type 2 (22 кВт)</span>
+            <span class="hero__tag"><i class="fa-solid fa-charging-station" aria-hidden="true"></i> CCS 2 (160 кВт)</span>
+            <span class="hero__tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i> CHAdeMO</span>
+            <span class="hero__tag hero__tag--generator"><i class="fa-solid fa-battery-full" aria-hidden="true"></i> 🔋 З генератором (Блекаут SOS)</span>
+          </div>
+
+          <!-- СТАТИСТИКА МЕРЕЖІ -->
+          <dl class="stats" aria-label="Швидка статистика мережі">
+            <div class="stats__item"><dt class="stats__label">станцій</dt><dd class="stats__value">1 200+</dd></div>
+            <div class="stats__item"><dt class="stats__label">областей</dt><dd class="stats__value">24</dd></div>
+            <div class="stats__item"><dt class="stats__label">аптайм мережі</dt><dd class="stats__value">99,2%</dd></div>
+            <div class="stats__item"><dt class="stats__label">водіїв</dt><dd class="stats__value">50 000+</dd></div>
+          </dl>
+        </div>
+
+        <!-- ПРАВА КОЛОНКА (MEDIA SHOWCASE) -->
+        <div class="hero__media">
+          <div class="hero__card">
+            <div class="hero__card-badge">
+              <span class="pulse-dot"></span> 100% автономність мережі (буферне живлення)
+            </div>
+            <img class="hero__image" src="assets/images/hero_loop_opt.gif" alt="Процес швидкої зарядки електромобіля на станції ChargeUA" width="600" height="380" loading="eager">
+            <div class="hero__card-footer">
+              <div class="hero__card-info">
+                <strong>Хаб «Львів-Стрийська»</strong>
+                <span>DC 150 кВт · 4/4 порти вільні</span>
+              </div>
+              <a class="btn btn--sm btn--primary" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('lviv-stryiska');">
+                На карті
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
