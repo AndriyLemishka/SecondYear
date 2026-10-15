@@ -1,0 +1,102 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  body { background: #E2E8F0; padding: 25px; width: 800px; display: flex; justify-content: center; gap: 20px; }
+  .plugin-win { background: #FFFFFF; border-radius: 12px; width: 370px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden; border: 1px solid #CBD5E1; }
+  .win-title { background: #1E293B; color: #FFF; padding: 10px 14px; font-size: 13px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+  .win-tabs { display: flex; border-bottom: 1px solid #E2E8F0; background: #F8FAFC; }
+  .win-tab { padding: 8px 16px; font-size: 12px; font-weight: 600; color: #64748B; }
+  .win-tab.active { color: #005EC9; border-bottom: 2px solid #005EC9; background: #FFF; }
+  .win-body { padding: 14px; }
+  .action-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .scan-btn { background: #FFF; border: 1.5px solid #0F172A; border-radius: 6px; padding: 6px 14px; font-size: 11.5px; font-weight: 700; color: #0F172A; }
+  .issue-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #F1F5F9; font-size: 12px; }
+  .badge-fail { background: #EF4444; color: #FFF; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 999px; }
+  .badge-pass { background: #10B981; color: #FFF; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 999px; }
+  .badge-warn { background: #F1F5F9; color: #64748B; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+</style></head><body>
+  <!-- Ліве вікно: ДО ВИПРАВЛЕННЯ -->
+  <div class="plugin-win">
+    <div class="win-title">
+      <div style="display:flex; align-items:center; gap:6px;"><span>✅</span> Contrast</div>
+      <div>✕</div>
+    </div>
+    <div class="win-tabs">
+      <div class="win-tab">Select</div>
+      <div class="win-tab active">Scan</div>
+    </div>
+    <div class="win-body">
+      <div class="action-row">
+        <div style="font-size:12px; font-weight:700;">Found 4 issues</div>
+        <button class="scan-btn">Scan selection</button>
+      </div>
+      <div class="issue-item">
+        <span>Т  Текст «З генератором»</span>
+        <span class="badge-fail">FAIL 2.54:1</span>
+      </div>
+      <div class="issue-item">
+        <span>Т  Підпис порту CCS2</span>
+        <span class="badge-fail">FAIL 2.85:1</span>
+      </div>
+      <div class="issue-item">
+        <span>Т  Другорядний підпис</span>
+        <span class="badge-warn">Requires Sample</span>
+      </div>
+      <div class="issue-item">
+        <span>Т  Рамка поля пошуку</span>
+        <span class="badge-warn">UI 2.9:1</span>
+      </div>
+      <div style="margin-top:14px; font-size:11px; color:#64748B;">
+        <input type="checkbox" checked> AA &nbsp;&nbsp; <input type="checkbox"> AAA
+      </div>
+    </div>
+  </div>
+
+  <!-- Праве вікно: ПІСЛЯ ВИПРАВЛЕННЯ ТОКЕНАМИ -->
+  <div class="plugin-win">
+    <div class="win-title">
+      <div style="display:flex; align-items:center; gap:6px;"><span>✅</span> Contrast</div>
+      <div>✕</div>
+    </div>
+    <div class="win-tabs">
+      <div class="win-tab">Select</div>
+      <div class="win-tab active">Scan</div>
+    </div>
+    <div class="win-body">
+      <div class="action-row">
+        <div style="font-size:12px; font-weight:700; color:#047857;">Found 0 issues 🎉</div>
+        <button class="scan-btn" style="background:#0F172A; color:#FFF;">Scan page 👆</button>
+      </div>
+      <div class="issue-item">
+        <span>Т  Текст «З генератором» (#047857)</span>
+        <span class="badge-pass">PASS 5.48:1</span>
+      </div>
+      <div class="issue-item">
+        <span>Т  Підпис порту CCS2 (#0F172A)</span>
+        <span class="badge-pass">PASS 17.8:1</span>
+      </div>
+      <div class="issue-item">
+        <span>Т  Кнопка Primary (#FFFFFF/#005EC9)</span>
+        <span class="badge-pass">PASS 6.10:1</span>
+      </div>
+      <div class="issue-item">
+        <span>Т  CTA (#0F172A / #00E5FF)</span>
+        <span class="badge-pass">PASS 9.12:1</span>
+      </div>
+      <div style="margin-top:14px; font-size:11px; color:#64748B;">
+        <input type="checkbox" checked> AA &nbsp;&nbsp; <input type="checkbox" checked> AAA
+      </div>
+    </div>
+  </div>
+</body></html>

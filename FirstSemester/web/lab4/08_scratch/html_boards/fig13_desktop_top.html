@@ -1,0 +1,285 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { background: #FFFFFF; color: #0F172A; -webkit-font-smoothing: antialiased; }
+</style>
+
+<style>
+  body { width: 1440px; background: #FFFFFF; }
+  
+  .top-bar { background: #0B132B; color: #FFF; padding: 10px 60px; font-size: 12px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
+  .pulse-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10B981; margin-right: 6px; }
+
+  .header { height: 76px; padding: 0 60px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E2E8F0; background: #FFF; }
+  .logo-box { display: flex; align-items: center; gap: 10px; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 600; color: #334155; }
+  .nav-links a { text-decoration: none; color: inherit; }
+  .btn-header { background: #0077E6; color: #FFF; border: none; padding: 10px 22px; font-size: 13px; font-weight: 700; border-radius: 8px; cursor: pointer; }
+
+  /* HERO - FULLY CENTERED WITH VIDEO PLAYER */
+  .hero-sec { padding: 48px 60px 40px; text-align: center; background: radial-gradient(circle at 50% 20%, #F0F7FF 0%, #FFFFFF 70%); }
+  .hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: #0077E6; letter-spacing: 0.5px; margin-bottom: 14px; }
+  .hero-h1 { font-size: 44px; font-weight: 800; line-height: 1.18; color: #0F172A; letter-spacing: -0.8px; margin-bottom: 16px; max-width: 980px; margin-left: auto; margin-right: auto; }
+  .hero-sub { font-size: 16.5px; color: #64748B; line-height: 1.55; max-width: 760px; margin: 0 auto 26px; }
+  
+  .hero-actions { display: flex; justify-content: center; gap: 16px; margin-bottom: 24px; }
+  .btn-primary { background: #0077E6; color: #FFF; border: none; padding: 14px 30px; font-size: 15px; font-weight: 700; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 14px rgba(0,119,230,0.3); }
+  .btn-secondary { background: #FFFFFF; color: #0F172A; border: 1.5px solid #CBD5E1; padding: 14px 26px; font-size: 15px; font-weight: 700; border-radius: 8px; cursor: pointer; }
+
+  .hero-chips { display: flex; justify-content: center; gap: 12px; margin-bottom: 34px; }
+  .chip { background: #F8FAFC; border: 1px solid #E2E8F0; padding: 7px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; color: #334155; }
+  .chip-green { background: #ECFDF5; border-color: #A7F3D0; color: #059669; font-weight: 700; }
+
+  /* CENTERED VIDEO SHOWCASE */
+  .hero-video-box { max-width: 1100px; margin: 0 auto; position: relative; border-radius: 20px; overflow: hidden; border: 1.5px solid #CBD5E1; box-shadow: 0 16px 40px rgba(0,119,230,0.12); background: #0B132B; }
+  .hero-video-img { width: 100%; height: 460px; object-fit: cover; display: block; }
+  .video-center-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; border-radius: 50%; background: rgba(0, 119, 230, 0.92); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(0,119,230,0.5); border: 2px solid #FFF; cursor: pointer; }
+  .video-center-play svg { fill: #FFF; width: 28px; height: 28px; margin-left: 4px; }
+  .video-top-tag { position: absolute; top: 18px; left: 22px; background: rgba(11,19,43,0.85); backdrop-filter: blur(6px); color: #FFF; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+  .video-bar { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(11,19,43,0.9), transparent); padding: 18px 24px 14px; display: flex; justify-content: space-between; align-items: center; color: #FFF; font-size: 12px; font-weight: 600; }
+
+  /* BENEFITS STRIP */
+  .strip-sec { padding: 30px 60px; }
+  .strip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .strip-card { background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 22px 24px; display: flex; align-items: center; gap: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+  .strip-icon { width: 48px; height: 48px; flex-shrink: 0; }
+
+  /* CALCULATOR SECTION */
+  .calc-sec { padding: 20px 60px 30px; }
+  .calc-wrap { background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 20px; padding: 36px 44px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+  .calc-top-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; }
+  .car-pills { display: flex; gap: 12px; margin: 18px 0 24px; }
+  .car-pill { background: #F8FAFC; border: 1.5px solid #E2E8F0; padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; color: #334155; cursor: pointer; }
+  .car-pill.active { background: #0077E6; border-color: #0077E6; color: #FFF; }
+
+  /* SLIDER CONTROL */
+  .slider-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 18px 22px; margin-bottom: 8px; }
+  .slider-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; color: #0F172A; margin-bottom: 12px; }
+  .slider-rail { position: relative; height: 10px; background: #E2E8F0; border-radius: 5px; margin: 20px 0 10px; }
+  .slider-fill { position: absolute; left: 20%; width: 60%; height: 100%; background: #0077E6; border-radius: 5px; }
+  .slider-knob { position: absolute; left: 80%; top: 50%; transform: translate(-50%, -50%); width: 26px; height: 26px; border-radius: 50%; background: #FFF; border: 3.5px solid #0077E6; box-shadow: 0 3px 10px rgba(0,119,230,0.4); cursor: pointer; }
+  .slider-badge { position: absolute; top: -28px; left: 80%; transform: translateX(-50%); background: #0077E6; color: #FFF; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
+  .slider-ticks { display: flex; justify-content: space-between; font-size: 11px; color: #64748B; font-weight: 600; }
+
+  .calc-res-card { background: #F0F7FF; border: 1.5px solid #BFDBFE; border-radius: 16px; padding: 26px 30px; }
+  .res-price { font-size: 34px; font-weight: 800; color: #0077E6; margin-bottom: 4px; }
+  .res-meta { font-size: 13px; color: #475569; margin-bottom: 16px; }
+
+  /* LIVE MAP SECTION */
+  .map-sec { padding: 20px 60px 40px; }
+  .map-card { border: 1.5px solid #CBD5E1; border-radius: 20px; overflow: hidden; background: #FFFFFF; box-shadow: 0 6px 20px rgba(0,0,0,0.04); }
+  .map-top { padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #E2E8F0; background: #FAFAFA; }
+  .map-canvas-desktop { height: 380px; position: relative; background: url('d:/Studing/SecondYear/FirstSemester/web/lab4/materials/map_lviv.jpg') center/cover no-repeat; }
+  .map-artery { display: none; }
+  .map-artery-h1 { top: 90px; left: 0; right: 0; height: 4px; }
+  .map-artery-h2 { top: 250px; left: 0; right: 0; height: 4px; }
+  .map-artery-v1 { top: 0; bottom: 0; left: 340px; width: 4px; }
+  .map-artery-v2 { top: 0; bottom: 0; left: 680px; width: 4px; }
+  .map-artery-v3 { top: 0; bottom: 0; left: 1020px; width: 4px; }
+
+  .d-pin { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+  .d-dot { width: 16px; height: 16px; border-radius: 50%; background: #10B981; border: 3px solid #FFF; box-shadow: 0 0 0 3px #10B981, 0 4px 8px rgba(0,0,0,0.2); }
+  .d-dot.blue { background: #0077E6; box-shadow: 0 0 0 3px #0077E6, 0 4px 8px rgba(0,0,0,0.2); }
+  .d-dot.warn { background: #F59E0B; box-shadow: 0 0 0 3px #F59E0B, 0 4px 8px rgba(0,0,0,0.2); }
+  .d-tag { background: #0B132B; color: #FFF; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 5px; margin-top: 6px; box-shadow: 0 3px 8px rgba(0,0,0,0.25); white-space: nowrap; }
+</style></head><body>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div><span class="pulse-dot"></span>Мережа ChargeUA: 480+ станцій онлайн по Україні | 100% телеметрія в реальному часі</div>
+    <div>Гаряча лінія 24/7: 0 800 300 400 | UA</div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-box">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:34px; height:34px;">
+      <span style="font-size:22px; font-weight:800; color:#0077E6;">ChargeUA</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">Головна</a>
+      <a href="#">Калькулятор</a>
+      <a href="#">Карта станцій</a>
+      <a href="#">Популярні хаби</a>
+      <a href="#">Інструкція</a>
+      <a href="#">Відгуки</a>
+    </div>
+    <div>
+      <button class="btn-header">Знайти станцію</button>
+    </div>
+  </header>
+
+  <!-- CENTERED VIDEO HERO -->
+  <section class="hero-sec">
+    <div class="hero-tag">⚡ НАЦІОНАЛЬНИЙ АГРЕГАТОР ЗАРЯДНИХ СТАНЦІЙ</div>
+    <h1 class="hero-h1">Швидка та надійна зарядка електромобілів по всій Україні</h1>
+    <p class="hero-sub">Знаходьте найближчі станції, розраховуйте вартість за лічені секунди та подорожуйте без хвилювань навіть під час блекаутів.</p>
+    
+    <div class="hero-actions">
+      <button class="btn-primary">Розрахувати зарядку →</button>
+      <button class="btn-secondary">Знайти на карті</button>
+    </div>
+
+    <div class="hero-chips">
+      <div class="chip">Type 2 (22 кВт)</div>
+      <div class="chip">CCS 2 (160 кВт)</div>
+      <div class="chip">CHAdeMO</div>
+      <div class="chip chip-green">🔋 З генератором</div>
+    </div>
+
+    <!-- Centered Video Showcase from Lab 3 -->
+    <div class="hero-video-box">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/video_frame_30.jpg" class="hero-video-img" alt="ChargeUA Video Presentation">
+      <div class="video-center-play">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="video-top-tag">
+        <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#00E5FF;"></span>
+        Відеопрезентація ChargeUA 4K · 100% автономність мережі (video_content.mp4)
+      </div>
+      <div class="video-bar">
+        <div>▶ 0:45 / 1:30 · Презентація швидкої зарядної станції 160 кВт з буферним живленням</div>
+        <div>1080p 60fps · 480+ станцій онлайн</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS STRIP -->
+  <section class="strip-sec">
+    <div class="strip-grid">
+      <div class="strip-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Calculator.svg" class="strip-icon">
+        <div>
+          <div style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:3px;">Точний калькулятор витрат</div>
+          <div style="font-size:13px; color:#64748B;">Автоматичний підбір моделі авто та тарифу</div>
+        </div>
+      </div>
+      <div class="strip-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Location.svg" class="strip-icon">
+        <div>
+          <div style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:3px;">Live-карта 480+ станцій</div>
+          <div style="font-size:13px; color:#64748B;">Актуальний статус зайнятості та світла онлайн</div>
+        </div>
+      </div>
+      <div class="strip-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Information.svg" class="strip-icon">
+        <div>
+          <div style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:3px;">100% Енергонезалежність</div>
+          <div style="font-size:13px; color:#64748B;">Робота від потужних генераторів у блекаути</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR SECTION WITH SLIDER -->
+  <section class="calc-sec">
+    <div class="calc-wrap">
+      <h2 style="font-size:26px; font-weight:800; color:#0F172A; margin-bottom:6px;">Інтерактивний калькулятор зарядки ChargeUA</h2>
+      <p style="font-size:14px; color:#64748B; margin-bottom:20px;">Оберіть модель електрокара та регулюйте рівень заряду за допомогою повзунка:</p>
+      
+      <div class="calc-top-row">
+        <div>
+          <div style="font-size:13px; font-weight:700; color:#0F172A; margin-bottom:8px;">Модель автомобіля:</div>
+          <div class="car-pills">
+            <div class="car-pill active">Volkswagen ID.4 (77 кВт·год)</div>
+            <div class="car-pill">Tesla Model 3</div>
+            <div class="car-pill">Nissan Leaf</div>
+            <div class="car-pill">Hyundai Ioniq 5</div>
+          </div>
+
+          <!-- SLIDER CONTROL (ПОВЗУНОК) -->
+          <div class="slider-box">
+            <div class="slider-header">
+              <span>Регулювання рівня батареї (Повзунок %):</span>
+              <span style="color:#0077E6;">20% → 80% (Додано +46.2 кВт·год)</span>
+            </div>
+            <div class="slider-rail">
+              <div class="slider-fill"></div>
+              <div class="slider-knob"></div>
+              <div class="slider-badge">80% (Цільовий)</div>
+            </div>
+            <div class="slider-ticks">
+              <span>0% (Розряджена)</span>
+              <span>20% (Старт)</span>
+              <span>50%</span>
+              <span style="color:#0077E6; font-weight:700;">80% (Рекомендовано DC)</span>
+              <span>100% (Повна)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-res-card">
+          <div style="font-size:13px; font-weight:700; color:#475569; text-transform:uppercase; margin-bottom:8px;">Орієнтовна вартість сесії:</div>
+          <div class="res-price">652.50 ₴</div>
+          <div class="res-meta">Тариф: 14.12 ₴/кВт·год · 46.2 кВт·год енергії</div>
+          <div style="font-size:13px; color:#0F172A; font-weight:600; margin-bottom:18px;">
+            ● Час на DC 120 кВт: <b>~28 хвилин</b> | Економія vs бензин: <b>~1 420 ₴</b>
+          </div>
+          <button class="btn-primary" style="width:100%;">Знайти найближчу вільну станцію</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE MAP SECTION WITH FULL SETTINGS & FILTER CONTROLS -->
+  <section class="map-sec">
+    <div class="map-card" style="padding: 24px 28px;">
+      <div class="map-top" style="padding:0; background:transparent; border-bottom:none;">
+        <div>
+          <h3 style="font-size:22px; font-weight:800; color:#0F172A;">Live-карта зарядної мережі України</h3>
+          <p style="font-size:13.5px; color:#64748B; margin-top:3px;">Фільтруйте за типами конекторів, статусом вільних портів та наявністю автономного генератора</p>
+        </div>
+      </div>
+
+      <!-- MAP CONTROLS & FILTER SETTINGS BAR (Налаштування карти) -->
+      <div style="display:flex; align-items:center; gap:12px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:10px 16px; margin:16px 0;">
+        <div style="display:flex; align-items:center; gap:8px; background:#FFFFFF; border:1.5px solid #005EC9; border-radius:8px; padding:8px 14px; width:340px;">
+          <span style="color:#005EC9; font-size:14px;">🔍</span>
+          <span style="font-size:12.5px; font-weight:500; color:#0F172A;">м. Львів, вул. Стрийська, 199</span>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="chip active" style="background:#005EC9; color:#FFF; border:none; padding:8px 14px; border-radius:8px; font-weight:700; font-size:12px; cursor:pointer;">⚡ Всі (480+)</button>
+          <button class="chip" style="background:#FFFFFF; border:1px solid #CBD5E1; padding:8px 14px; border-radius:8px; font-weight:600; font-size:12px; color:#0F172A; cursor:pointer;">CCS 2 (160 кВт)</button>
+          <button class="chip" style="background:#FFFFFF; border:1px solid #CBD5E1; padding:8px 14px; border-radius:8px; font-weight:600; font-size:12px; color:#0F172A; cursor:pointer;">Type 2 (22 кВт)</button>
+          <button class="chip chip-green" style="background:#ECFDF5; border:1.5px solid #047857; color:#047857; padding:8px 14px; border-radius:8px; font-weight:700; font-size:12px; cursor:pointer;">🔋 З генератором [ON]</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; margin-left:auto; background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px; padding:8px 14px;">
+          <span style="width:18px; height:18px; background:#005EC9; color:#FFF; border-radius:4px; display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:bold;">✓</span>
+          <span style="font-size:12px; font-weight:600; color:#0F172A;">Тільки вільні (48px)</span>
+        </div>
+      </div>
+
+      <div class="map-canvas-desktop">
+        <div class="map-artery map-artery-h1"></div>
+        <div class="map-artery map-artery-h2"></div>
+        <div class="map-artery map-artery-v1"></div>
+        <div class="map-artery map-artery-v2"></div>
+        <div class="map-artery map-artery-v3"></div>
+
+        <!-- Pins on Lviv Map -->
+        <div class="d-pin" style="top: 120px; left: 480px;">
+          <div class="d-dot"></div>
+          <div class="d-tag">Хаб «Львів-Центр» · 120 кВт (3/4 вільно) 🔋</div>
+        </div>
+
+        <div class="d-pin" style="top: 250px; left: 320px;">
+          <div class="d-dot"></div>
+          <div class="d-tag">Хаб «Львів-Арена» · 160 кВт (5/6 вільно) 🔋</div>
+        </div>
+
+        <div class="d-pin" style="top: 140px; left: 880px;">
+          <div class="d-dot blue"></div>
+          <div class="d-tag">Хаб «Львів-Стрийська» · 120 кВт (2/2 вільно) 🔋</div>
+        </div>
+
+        <div class="d-pin" style="top: 260px; left: 820px;">
+          <div class="d-dot warn"></div>
+          <div class="d-tag">Хаб «Львів-Південний» · 100 кВт (1/2 вільно) 🔋</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body></html>

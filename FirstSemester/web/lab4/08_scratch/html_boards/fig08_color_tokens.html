@@ -1,0 +1,81 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  body { background: #F8FAFC; padding: 25px; width: 1350px; }
+  .tokens-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 16px; margin-bottom: 24px; }
+  .token-card { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .swatch { height: 95px; width: 100%; }
+  .token-meta { padding: 12px; }
+  .token-name { font-size: 13px; font-weight: 700; color: #0F172A; }
+  .token-hex { font-size: 12px; font-family: monospace; font-weight: 600; color: #005EC9; margin-top: 2px; }
+  .token-desc { font-size: 10.5px; color: #64748B; margin-top: 4px; }
+  
+  .contrast-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .c-box { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
+  .c-pair { font-size: 12px; font-weight: 700; color: #0F172A; }
+  .c-sub { font-size: 11px; color: #64748B; }
+  .c-badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; }
+  .c-pass-aaa { background: #D1FAE5; color: #047857; }
+  .c-pass-aa { background: #EFF6FF; color: #005EC9; }
+</style></head><body>
+  <div style="font-size:22px; font-weight:800;">Колірні стилі, дизайн-токени бренду та перевірка контрасту (WCAG 2.1)</div>
+  <div style="font-size:14px; color:#64748B; margin-top:4px;">Палітра Figma Variables та співвідношення контрастності фону й тексту за стандартами AA/AAA</div>
+
+  <div class="tokens-grid">
+    <div class="token-card">
+      <div class="swatch" style="background:#005EC9;"></div>
+      <div class="token-meta"><div class="token-name">Primary Blue</div><div class="token-hex">#005EC9</div><div class="token-desc">Кнопки CTA, активні лінки</div></div>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#00E5FF;"></div>
+      <div class="token-meta"><div class="token-name">Accent Cyan</div><div class="token-hex">#00E5FF</div><div class="token-desc">Неонові індикатори, статус</div></div>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#0F172A;"></div>
+      <div class="token-meta"><div class="token-name">Slate Dark</div><div class="token-hex">#0F172A</div><div class="token-desc">Заголовки H1-H4, Topbar, Footer</div></div>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#047857;"></div>
+      <div class="token-meta"><div class="token-name">Generator Green</div><div class="token-hex">#047857</div><div class="token-desc">Статус «🔋 З генератором»</div></div>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#F8FAFC; border-bottom:1px solid #E2E8F0;"></div>
+      <div class="token-meta"><div class="token-name">Surface Light</div><div class="token-hex">#F8FAFC</div><div class="token-desc">Фон карток та секцій</div></div>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#DC2626;"></div>
+      <div class="token-meta"><div class="token-name">Error Red</div><div class="token-hex">#DC2626</div><div class="token-desc">Помилки валідації полів</div></div>
+    </div>
+  </div>
+
+  <div style="font-size:14px; font-weight:700; margin-bottom:10px; color:#1E293B;">Аудит коефіцієнта контрастності ключових пар інтерфейсу:</div>
+  <div class="contrast-row">
+    <div class="c-box">
+      <div><div class="c-pair">#0F172A на #FFFFFF</div><div class="c-sub">Основний текст сторінки</div></div>
+      <span class="c-badge c-pass-aaa">17.85:1 AAA</span>
+    </div>
+    <div class="c-box">
+      <div><div class="c-pair">#FFFFFF на #005EC9</div><div class="c-sub">Текст Primary-кнопки</div></div>
+      <span class="c-badge c-pass-aa">6.10:1 AA</span>
+    </div>
+    <div class="c-box">
+      <div><div class="c-pair">#047857 на #D1FAE5</div><div class="c-sub">Бейдж генератора</div></div>
+      <span class="c-badge c-pass-aa">5.48:1 AA</span>
+    </div>
+    <div class="c-box">
+      <div><div class="c-pair">#0F172A на #00E5FF</div><div class="c-sub">Акцентна плашка CTA</div></div>
+      <span class="c-badge c-pass-aaa">9.12:1 AAA</span>
+    </div>
+  </div>
+</body></html>

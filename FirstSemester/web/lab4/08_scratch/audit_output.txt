@@ -1,0 +1,78 @@
+Total figures added in report: 22
+Fig 01: File='fig01_user_flows.png' | Caption='Рисунок 1 – User Flow — три сценарії користувача'
+Fig 02: File='fig02_sitemap.png' | Caption='Рисунок 2 – Карта сайту ChargeUA'
+Fig 03: File='fig03_relume_sitemap.png' | Caption='Рисунок 3 – Карта сайту, згенерована в Relume AI'
+Fig 04: File='fig04_relume_wireframes.png' | Caption='Рисунок 4 – Каркаси всіх сторінок, згенеровані в Relume AI'
+Fig 05: File='fig05_wireframe_desktop.png' | Caption='Рисунок 5 – Wireframe Головної сторінки, Desktop'
+Fig 06: File='fig06_wireframe_mobile.png' | Caption='Рисунок 6 – Wireframe Головної сторінки, Mobile'
+Fig 07: File='fig07_brand_assets_lr3.png' | Caption='Рисунок 7 – Брендові активи та макети з ЛР3 у Figma'
+Fig 08: File='fig08_color_tokens.png' | Caption='Рисунок 8 – Колірні токени та перевірка контрасту'
+Fig 09: File='fig09_contrast_plugin.png' | Caption='Рисунок 9 – Плагін Contrast: до виправлення (зліва) і після (справа)'
+Fig 10: File='fig10_typography.png' | Caption='Рисунок 10 – Типографіка: текстові стилі'
+Fig 11: File='fig11_spacing_grid.png' | Caption='Рисунок 11 – Відступи, радіуси, тіні та сітка'
+Fig 12: File='fig12_figma_ai_illustrations.png' | Caption='Рисунок 12 – Ілюстрації та аватари, згенеровані в Figma AI / Imagen'
+Fig 13: File='fig13_desktop_top.png' | Caption='Рисунок 13 – Головна сторінка, Desktop 1440 (верхня частина)'
+Fig 14: File='fig14_desktop_bottom.png' | Caption='Рисунок 14 – Головна сторінка, Desktop 1440 (нижня частина)'
+Fig 15: File='fig15_tablet.png' | Caption='Рисунок 15 – Головна сторінка, Tablet 768'
+Fig 16: File='fig16_mobile.png' | Caption='Рисунок 16 – Головна сторінка, Mobile 390'
+Fig 17: File='fig17_catalog_details_desktop.png' | Caption='Рисунок 17 – Каталог і Сторінка станції, Desktop 1440'
+Fig 18: File='fig18_catalog_details_mobile.png' | Caption='Рисунок 18 – Каталог і Сторінка станції, Mobile 390'
+Fig 19: File='fig19_overlays.png' | Caption='Рисунок 19 – Оверлеї прототипу: мобільне меню та повідомлення після відправки форми'
+Fig 20: File='fig20_buttons_matrix.png' | Caption='Рисунок 20 – Компонент Button: 3 типи × 6 станів × 2 розміри'
+Fig 21: File='fig21_inputs_controls.png' | Caption='Рисунок 21 – Поля вводу та елементи керування'
+Fig 22: File='fig22_cards_nav.png' | Caption='Рисунок 22 – Картки, навігація, шапка та підвал'
+
+Figure numbers in captions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+Missing figure numbers: None! All 1-22 present.
+
+Textual references to figures:
+  Рисунок 1
+  Рисунок 10
+  Рисунок 11
+  Рисунок 12
+  Рисунок 13
+  Рисунок 14
+  Рисунок 15
+  Рисунок 16
+  Рисунок 17
+  Рисунок 18
+  Рисунок 19
+  Рисунок 2
+  Рисунок 20
+  Рисунок 21
+  Рисунок 22
+  Рисунок 3
+  Рисунок 4
+  Рисунок 5
+  Рисунок 6
+  Рисунок 7
+  Рисунок 8
+  Рисунок 9
+  рисунках 13 і 14
+  рисунках 15 і 16
+  рисунки 17 і 18
+  рисунки 3 і 4
+  рисунки 5 і 6
+  рисунок 1
+  рисунок 10
+  рисунок 11
+  рисунок 12
+  рисунок 19
+  рисунок 2
+  рисунок 20
+  рисунок 21
+  рисунок 22
+  рисунок 7
+  рисунок 8
+  рисунок 9
+
+Tables found: 5
+  Таблиця 1
+    p_t1 = add_p(space_before=6, space_after=3)
+    r_t1 = p_t1.add_run(
+  Таблиця 1 – Перевірка контрасту основних пар кольорів
+  Таблиця 2
+    p_t2 = add_p(space_before=6, space_after=3)
+    r_t2 = p_t2.add_run(
+  Таблиця 2 – Main Components і кількість їхніх екземплярів
+  Таблиця 3 – Журнал запитів до ШІ

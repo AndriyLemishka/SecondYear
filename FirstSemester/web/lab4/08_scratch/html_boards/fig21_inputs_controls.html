@@ -1,0 +1,111 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #F8FAFC;
+    color: #0F172A;
+    padding: 24px;
+    width: 1250px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .title { font-size: 20px; font-weight: 800; color: #0F172A; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #64748B; margin-bottom: 16px; }
+  .grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; }
+  .card { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+  .card-title { font-size: 14px; font-weight: 800; color: #005EC9; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; border-bottom: 1px solid #F1F5F9; padding-bottom: 6px; }
+  .field-group { margin-bottom: 14px; }
+  .field-header { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+  .field-label { font-weight: 700; color: #1E293B; }
+  .field-state-badge { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; }
+  .badge-focus { background: #EFF6FF; color: #005EC9; }
+  .badge-error { background: #FEF2F2; color: #DC2626; }
+  .badge-default { background: #F1F5F9; color: #64748B; }
+  .badge-disabled { background: #F8FAFC; color: #94A3B8; border: 1px solid #E2E8F0; }
+  .inp { width: 100%; height: 40px; border-radius: 8px; border: 1.5px solid #CBD5E1; padding: 0 14px; font-size: 13px; display: flex; align-items: center; }
+  .inp-focus { border-color: #005EC9; box-shadow: 0 0 0 3px rgba(0,94,201,0.18); color: #0F172A; font-weight: 600; background: #FFF; }
+  .inp-error { border-color: #EF4444; background: #FEF2F2; color: #DC2626; font-weight: 600; }
+  .inp-default { color: #94A3B8; background: #FFF; }
+  .inp-disabled { background: #F8FAFC; color: #94A3B8; border-color: #E2E8F0; cursor: not-allowed; }
+  .field-hint { font-size: 11px; margin-top: 4px; color: #64748B; }
+  .field-hint-error { color: #DC2626; font-weight: 600; }
+  .cursor { display: inline-block; width: 1.5px; height: 16px; background: #005EC9; margin-left: 1px; vertical-align: middle; animation: blink 1s infinite; }
+</style></head><body>
+  <div class="title">Поля вводу та елементи керування (Inputs, Chips, Checkboxes, Switches)</div>
+  <div class="subtitle">Анатомія станів елементів інтерфейсу: Default, Focus (активний курсор), Error (валідація) та Disabled згідно з WCAG 2.1 AA</div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-title">Стани полів пошуку та фільтрації (Search &amp; Filter Inputs)</div>
+      
+      <!-- Field 1: Search in Focus -->
+      <div class="field-group">
+        <div class="field-header">
+          <span class="field-label">Пошук станції за адресою / містом</span>
+          <span class="field-state-badge badge-focus">Focus (Введення)</span>
+        </div>
+        <div class="inp inp-focus">м. Львів, вул. Стрийська, 199<span class="cursor"></span></div>
+        <div class="field-hint">Активне поле пошуку: синя акцентна рамка (#005EC9) та фокусне кільце 3px</div>
+      </div>
+
+      <!-- Field 2: Capacity with Error -->
+      <div class="field-group">
+        <div class="field-header">
+          <span class="field-label">Мінімальна потужність хабу (кВт)</span>
+          <span class="field-state-badge badge-error">Error (Помилка)</span>
+        </div>
+        <div class="inp inp-error">0 кВт</div>
+        <div class="field-hint field-hint-error">⚠ Помилка! Вкажіть потужність від 22 до 160 кВт для фільтрації на карті</div>
+      </div>
+
+      <!-- Field 3: Car Model Default -->
+      <div class="field-group">
+        <div class="field-header">
+          <span class="field-label">Модель авто для розрахунку сумісності</span>
+          <span class="field-state-badge badge-default">Default (Плейсхолдер)</span>
+        </div>
+        <div class="inp inp-default">Наприклад: Tesla Model 3, VW ID.4, Nissan Leaf...</div>
+        <div class="field-hint">Стан за замовчуванням: нейтральна рамка #CBD5E1, автоматичний підбір роз'єму</div>
+      </div>
+
+      <!-- Field 4: Region Disabled -->
+      <div class="field-group" style="margin-bottom:0;">
+        <div class="field-header">
+          <span class="field-label">Фільтр станцій за межами України</span>
+          <span class="field-state-badge badge-disabled">Disabled (Заблоковано)</span>
+        </div>
+        <div class="inp inp-disabled">Доступно лише в межах України</div>
+        <div class="field-hint">Поле заблоковане для редагування, сервіс діє виключно на території України</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Фільтри телеметрії та перемикачі (Controls &amp; Filters)</div>
+      
+      <div style="font-size:12px; font-weight:700; color:#475569; margin-bottom:8px;">Швидкі чіпи вибору конекторів (Chips):</div>
+      <div style="display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;">
+        <span style="background:#005EC9; color:#FFF; padding:6px 14px; border-radius:999px; font-size:12px; font-weight:700; display:flex; align-items:center; gap:5px;">⚡ CCS 2 (160 кВт) [Активний]</span>
+        <span style="background:#F1F5F9; border:1.5px solid #CBD5E1; color:#1E293B; padding:6px 14px; border-radius:999px; font-size:12px; font-weight:600;">Type 2 (22 кВт)</span>
+        <span style="background:#D1FAE5; border:1px solid #10B981; color:#047857; padding:6px 14px; border-radius:999px; font-size:12px; font-weight:700;">🔋 З генератором</span>
+      </div>
+
+      <div style="font-size:12px; font-weight:700; color:#475569; margin-bottom:12px;">Чекбокси та радіокнопки (WCAG зона дотику 48×48 px):</div>
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:13px; color:#1E293B;">
+        <div style="display:flex; align-items:center; gap:10px; background:#F8FAFC; padding:8px 12px; border-radius:8px; border:1px solid #E2E8F0;">
+          <input type="checkbox" checked style="width:18px; height:18px; accent-color:#005EC9;">
+          <span>Тільки вільні конектори прямо зараз (Touch target 48 px)</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; background:#F8FAFC; padding:8px 12px; border-radius:8px; border:1px solid #E2E8F0;">
+          <input type="radio" checked style="width:18px; height:18px; accent-color:#005EC9;">
+          <span>Швидка трасова зарядка DC Ultra (120–160 кВт)</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; background:#F8FAFC; padding:8px 12px; border-radius:8px; border:1px solid #E2E8F0;">
+          <input type="checkbox" checked style="width:18px; height:18px; accent-color:#16A34A;">
+          <span>Працює під час блекаутів (резервний генератор 160 кВт)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body></html>

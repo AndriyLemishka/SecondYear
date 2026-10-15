@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChargeUA — Low-Fidelity Wireframe (Каркас Головної Сторінки)</title>
+  <style>
+    /* CSS RESET & WIREFRAME GRAYSCALE PALETTE */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #F1F5F9;
+      color: #334155;
+      line-height: 1.5;
+      padding: 0;
+    }
+    .wireframe-banner {
+      background: #334155;
+      color: #F8FAFC;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* WIREFRAME COMPONENT STYLES (GRAYSCALE ONLY) */
+    .wire-box {
+      background: #FFFFFF;
+      border: 1.5px dashed #94A3B8;
+      border-radius: 8px;
+    }
+    .wire-solid {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+    }
+    .wire-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .wire-btn-primary {
+      background: #1E293B;
+      color: #FFFFFF;
+      border: 1.5px solid #0F172A;
+    }
+    .wire-btn-secondary {
+      background: #F8FAFC;
+      color: #334155;
+      border: 1.5px solid #94A3B8;
+    }
+    .wire-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #E2E8F0;
+      color: #475569;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .wire-ph-img {
+      background: #E2E8F0;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* 1. HEADER */
+    header {
+      background: #FFFFFF;
+      border-bottom: 2px solid #CBD5E1;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo-ph {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 20px;
+      color: #0F172A;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: #334155;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-size: 18px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+    }
+    nav a {
+      color: #475569;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .status-pill {
+      font-size: 12px;
+      color: #475569;
+      background: #E2E8F0;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    /* 2. HERO SECTION */
+    .hero {
+      padding: 60px 0;
+      background: #FFFFFF;
+      border-bottom: 1.5px solid #E2E8F0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: 38px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero-content p {
+      font-size: 16px;
+      color: #64748B;
+      margin-bottom: 24px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .quick-filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .filter-chip {
+      padding: 6px 14px;
+      border: 1px solid #CBD5E1;
+      border-radius: 20px;
+      font-size: 13px;
+      background: #F8FAFC;
+      color: #475569;
+      cursor: pointer;
+    }
+    .filter-chip.active {
+      background: #1E293B;
+      color: #FFF;
+      border-color: #1E293B;
+    }
+
+    /* 3. FEATURES */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+    .section-title p {
+      font-size: 15px;
+      color: #64748B;
+    }
+    .features {
+      padding: 60px 0;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .feature-card {
+      padding: 24px;
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      background: #E2E8F0;
+      border-radius: 8px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* 4. CALCULATOR & MAP SPLIT */
+    .calc-map-section {
+      padding: 60px 0;
+      background: #F8FAFC;
+      border-top: 1.5px solid #E2E8F0;
+      border-bottom: 1.5px solid #E2E8F0;
+    }
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .calc-card {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+    .wire-select {
+      width: 100%;
+      padding: 12px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 6px;
+      background: #F8FAFC;
+      font-size: 14px;
+    }
+    .slider-container {
+      background: #F1F5F9;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+    }
+    .slider-track {
+      height: 8px;
+      background: #CBD5E1;
+      border-radius: 4px;
+      position: relative;
+      margin: 20px 0;
+    }
+    .slider-thumb {
+      width: 24px;
+      height: 24px;
+      background: #1E293B;
+      border: 2px solid #FFF;
+      border-radius: 50%;
+      position: absolute;
+      top: -8px;
+    }
+    .calc-results {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .calc-price {
+      font-size: 26px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    /* MAP CONTAINER */
+    .map-container {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #E2E8F0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .map-preview {
+      flex: 1;
+      min-height: 380px;
+      background: #E2E8F0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #CBD5E1;
+    }
+    .station-popup {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: #FFFFFF;
+      border: 1.5px solid #1E293B;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* 5. TARIFF MATRIX */
+    .tariffs {
+      padding: 60px 0;
+    }
+    .tariff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .tariff-card {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+    .tariff-price {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 12px 0;
+      color: #0F172A;
+    }
+
+    /* 6. HOW IT WORKS (3 STEPS) */
+    .steps {
+      padding: 60px 0;
+      background: #F8FAFC;
+      border-top: 1.5px solid #E2E8F0;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step-card {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 28px;
+      position: relative;
+    }
+    .step-num {
+      width: 32px;
+      height: 32px;
+      background: #1E293B;
+      color: #FFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    /* 7. REVIEWS & FAQ */
+    .faq {
+      padding: 60px 0;
+      background: #FFFFFF;
+      border-top: 1.5px solid #E2E8F0;
+    }
+    .faq-item {
+      border: 1.5px solid #E2E8F0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 16px 20px;
+    }
+
+    /* 8. FOOTER */
+    footer {
+      background: #0F172A;
+      color: #94A3B8;
+      padding: 48px 0 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-bottom {
+      border-top: 1px solid #334155;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Wireframe Banner -->
+  <div class="wireframe-banner">
+    [ФРЕЙМ 03 — LOW-FIDELITY WIREFRAME] • Низькодеталізований структурний каркас головної сторінки ChargeUA
+  </div>
+
+  <!-- 1. HEADER -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo-ph">
+        <div class="logo-icon">⚡</div>
+        <span>ChargeUA</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#map">Карта станцій</a></li>
+          <li><a href="#calculator">Калькулятор</a></li>
+          <li><a href="#tariffs">Тарифи мереж</a></li>
+          <li><a href="#steps">Як це працює</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <span class="status-pill">● Енергосистема: Online</span>
+        <a href="#map" class="wire-btn wire-btn-primary">Знайти зарядку</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="wire-badge" style="margin-bottom: 12px;">АГРЕГАТОР ЗАРЯДНИХ СТАНЦІЙ УКРАЇНИ</span>
+        <h1>Заряджайте електромобіль без стресу та зайвих додатків</h1>
+        <p>Усі мережі зарядок України на одній мапі: актуальні ціни, вільні конектори та фільтр станцій із генераторами в реальному часі.</p>
+        <div class="hero-actions">
+          <a href="#map" class="wire-btn wire-btn-primary">Знайти вільну зарядку</a>
+          <a href="#calculator" class="wire-btn wire-btn-secondary">Розрахувати вартість</a>
+        </div>
+        <div class="quick-filters">
+          <span style="font-size: 13px; font-weight: 700; align-self: center;">Фільтри:</span>
+          <div class="filter-chip active">Всі станції</div>
+          <div class="filter-chip">🔋 З генератором (Блекаут SOS)</div>
+          <div class="filter-chip">⚡ Швидкісні DC 50+ кВт</div>
+          <div class="filter-chip">🟢 Тільки вільні зараз</div>
+        </div>
+      </div>
+      <div class="wire-ph-img" style="height: 340px;">
+        <div>
+          <div style="font-size: 32px; margin-bottom: 8px;">📍 [HERO MOCKUP]</div>
+          <div>Графічний блок зарядної станції та смартфона з картою</div>
+          <div style="font-size: 11px; margin-top: 8px;">(Розмір контейнера: 540 × 340 px)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FEATURES & BENEFITS -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Чому водії обирають ChargeUA</h2>
+        <p>Повний контроль над процесом підзарядки в умовах реальних українських доріг</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">10+</div>
+          <h3 style="font-size: 16px; margin-bottom: 8px;">Єдина база операторів</h3>
+          <p style="font-size: 13px; color: #64748B;">Більше не потрібно перемикатися між 10 додатками. Всі мережі зібрані в одному місці.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-box">🔋</div>
+          <h3 style="font-size: 16px; margin-bottom: 8px;">Робота в блекаути</h3>
+          <p style="font-size: 13px; color: #64748B;">Чітка позначка станцій з промисловими генераторами, що працюють під час відключень.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-box">₴</div>
+          <h3 style="font-size: 16px; margin-bottom: 8px;">Прозорі тарифи</h3>
+          <p style="font-size: 13px; color: #64748B;">Порівнюйте актуальну вартість за кВт·год і заощаджуйте на кожній зарядній сесії.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-box">⚡</div>
+          <h3 style="font-size: 16px; margin-bottom: 8px;">Точний калькулятор</h3>
+          <p style="font-size: 13px; color: #64748B;">Дізнавайтеся точний час та ціну зарядки для вашої моделі електромобіля за 5 секунд.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CALCULATOR & MAP SPLIT SECTION -->
+  <section class="calc-map-section" id="calculator">
+    <div class="container">
+      <div class="section-title">
+        <h2>Калькулятор підзарядки та Жива карта станцій</h2>
+        <p>Розрахуйте необхідний обсяг кіловат-годин та миттєво знайдіть відповідну станцію поруч</p>
+      </div>
+      <div class="split-grid">
+        
+        <!-- Calculator Card -->
+        <div class="calc-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="font-size: 18px; font-weight: 700;">Калькулятор вартості та часу</h3>
+            <span class="wire-badge">Специфікація ЛР №1</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Модель електромобіля:</label>
+            <select class="wire-select">
+              <option>Volkswagen ID.4 (Батарея 77 кВт·год, CCS2)</option>
+              <option>Tesla Model 3 Long Range (Батарея 75 кВт·год)</option>
+              <option>Nissan Leaf 40 kWh (CHAdeMO / Type 2)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Рівень заряду батареї (Подвійний повзунок 20% → 80%):</label>
+            <div class="slider-container">
+              <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 8px;">
+                <span>Поточний: 20%</span>
+                <span>Цільовий: 80% (+46.2 кВт·год)</span>
+              </div>
+              <div class="slider-track">
+                <div class="slider-thumb" style="left: 20%;"></div>
+                <div class="slider-thumb" style="left: 80%;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 11px; color: #64748B;">
+                <span>0%</span><span>50%</span><span>100%</span>
+              </div>
+            </div>
+          </div>
+          <div class="calc-results">
+            <div>
+              <div style="font-size: 12px; color: #64748B;">Орієнтовна вартість:</div>
+              <div class="calc-price">~670 ₴</div>
+              <div style="font-size: 11px; color: #475569;">Час на DC 120 кВт: ~28 хв</div>
+            </div>
+            <button class="wire-btn wire-btn-primary">Показати станції на карті</button>
+          </div>
+        </div>
+
+        <!-- Interactive Map Preview -->
+        <div class="map-container" id="map">
+          <div class="map-header">
+            <div>
+              <strong style="font-size: 14px;">Жива карта: Київ та область</strong>
+              <div style="font-size: 11px; color: #64748B;">● Оновлено 1 хв тому • 142 станції online</div>
+            </div>
+            <a href="#" class="wire-badge" style="text-decoration: none;">На весь екран ↗</a>
+          </div>
+          <div class="map-preview">
+            <div>
+              <div style="font-size: 28px; margin-bottom: 8px;">🗺️ [INTERACTIVE MAP CANVAS]</div>
+              <div>Кластеризація маркерів: Зелені (вільні) / Жовті (зайняті)</div>
+            </div>
+            <!-- Quick Station Popup -->
+            <div class="station-popup">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                <div>
+                  <div style="font-size: 14px; font-weight: 700;">EcoFactor Fast Hub #14</div>
+                  <div style="font-size: 12px; color: #64748B;">вул. Кільцева, 4Б (ТРЦ Республіка)</div>
+                </div>
+                <span class="wire-badge" style="background: #D1FAE5; color: #065F46;">🔋 Генератор ON</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                <span>Порти: <strong>2x CCS2 (120 кВт) — Вільні</strong></span>
+                <span style="font-weight: 700;">14.50 ₴/кВт·год</span>
+              </div>
+              <button class="wire-btn wire-btn-primary" style="width: 100%; margin-top: 10px; padding: 8px;">Прокласти маршрут</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TARIFF MATRIX -->
+  <section class="tariffs" id="tariffs">
+    <div class="container">
+      <div class="section-title">
+        <h2>Порівняння тарифів операторів</h2>
+        <p>Актуальні ціни провідних мереж зарядних станцій України без прихованих платежів</p>
+      </div>
+      <div class="tariff-grid">
+        <div class="tariff-card">
+          <div class="wire-badge">МЕРЕЖА 1</div>
+          <h3 style="margin-top: 10px;">EcoFactor</h3>
+          <div class="tariff-price">14.50 ₴</div>
+          <p style="font-size: 12px; color: #64748B; margin-bottom: 16px;">за 1 кВт·год (DC швидкісна)</p>
+          <div style="font-size: 12px; border-top: 1px solid #E2E8F0; padding-top: 10px;">AC (до 22 кВт): 10.99 ₴</div>
+        </div>
+        <div class="tariff-card" style="border: 2px solid #0F172A;">
+          <div class="wire-badge" style="background: #1E293B; color: #FFF;">НАЙКРАЩА ЦІНА</div>
+          <h3 style="margin-top: 10px;">Yasno E-mobility</h3>
+          <div class="tariff-price">15.00 ₴</div>
+          <p style="font-size: 12px; color: #64748B; margin-bottom: 16px;">за 1 кВт·год (DC швидкісна)</p>
+          <div style="font-size: 12px; border-top: 1px solid #E2E8F0; padding-top: 10px;">AC (до 22 кВт): 11.50 ₴</div>
+        </div>
+        <div class="tariff-card">
+          <div class="wire-badge">МЕРЕЖА 3</div>
+          <h3 style="margin-top: 10px;">TOKA Network</h3>
+          <div class="tariff-price">15.20 ₴</div>
+          <p style="font-size: 12px; color: #64748B; margin-bottom: 16px;">за 1 кВт·год (DC швидкісна)</p>
+          <div style="font-size: 12px; border-top: 1px solid #E2E8F0; padding-top: 10px;">AC (до 22 кВт): 11.20 ₴</div>
+        </div>
+        <div class="tariff-card">
+          <div class="wire-badge">МЕРЕЖА 4</div>
+          <h3 style="margin-top: 10px;">GO TO-U</h3>
+          <div class="tariff-price">15.80 ₴</div>
+          <p style="font-size: 12px; color: #64748B; margin-bottom: 16px;">за 1 кВт·год (DC швидкісна)</p>
+          <div style="font-size: 12px; border-top: 1px solid #E2E8F0; padding-top: 10px;">AC (до 22 кВт): 12.00 ₴</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. HOW IT WORKS -->
+  <section class="steps" id="steps">
+    <div class="container">
+      <div class="section-title">
+        <h2>Як зарядитися за 3 прості кроки</h2>
+        <p>Інструкція для водіїв, які заряджаються на публічній станції вперше</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3 style="font-size: 18px; margin-bottom: 8px;">Знайдіть станцію</h3>
+          <p style="font-size: 14px; color: #64748B;">Оберіть станцію на карті ChargeUA за типом порту та перевірте наявність живлення від генератора.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3 style="font-size: 18px; margin-bottom: 8px;">Підключіть конектор</h3>
+          <p style="font-size: 14px; color: #64748B;">Вставте роз'єм у порт електромобіля до характерного клацання замка блокування.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3 style="font-size: 18px; margin-bottom: 8px;">Слідкуйте за зарядом</h3>
+          <p style="font-size: 14px; color: #64748B;">Контролюйте прогрес зарядки в режимі реального часу та вирушайте в дорогу без зайвих турбот.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <section class="faq" id="faq">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-title">
+        <h2>Часті запитання (FAQ)</h2>
+      </div>
+      <div class="faq-item">
+        <strong>Чи гарантовано працює станція, якщо в місті відключення світла?</strong>
+        <p style="font-size: 13px; color: #64748B; margin-top: 6px;">Станції з бейджем «🔋 З генератором» мають автономне резервне джерело живлення, що активується автоматично під час аварійних відключень мережі.</p>
+      </div>
+      <div class="faq-item">
+        <strong>Чи потрібно платити комісію сервісу ChargeUA?</strong>
+        <p style="font-size: 13px; color: #64748B; margin-top: 6px;">Ні, ChargeUA — це безкоштовний інформаційний агрегатор та помічник. Ви сплачуєте виключно прямий тариф оператора зарядної станції.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-ph" style="color: #FFF; margin-bottom: 12px;">
+            <div class="logo-icon">⚡</div>
+            <span>ChargeUA</span>
+          </div>
+          <p style="font-size: 13px;">Незалежний український агрегатор зарядних станцій та цифровий помічник водія електромобіля.</p>
+        </div>
+        <div>
+          <strong style="color: #FFF; font-size: 14px; display: block; margin-bottom: 12px;">Навігація</strong>
+          <div style="font-size: 13px; line-height: 2;">
+            <div><a href="#map" style="color: #94A3B8; text-decoration: none;">Карта станцій</a></div>
+            <div><a href="#calculator" style="color: #94A3B8; text-decoration: none;">Калькулятор</a></div>
+            <div><a href="#tariffs" style="color: #94A3B8; text-decoration: none;">Тарифи операторів</a></div>
+          </div>
+        </div>
+        <div>
+          <strong style="color: #FFF; font-size: 14px; display: block; margin-bottom: 12px;">Оператори</strong>
+          <div style="font-size: 13px; line-height: 2;">
+            <div>EcoFactor</div>
+            <div>Yasno E-mobility</div>
+            <div>TOKA Network</div>
+          </div>
+        </div>
+        <div>
+          <strong style="color: #FFF; font-size: 14px; display: block; margin-bottom: 12px;">Підтримка</strong>
+          <div style="font-size: 13px; line-height: 2;">
+            <div>support@chargeua.com</div>
+            <div>Telegram-бот підтримки</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 ChargeUA. Лабораторна робота №4 з дисципліни «Технології веб-розробки та дизайну». Виконав: Лемішка А. А. (ПП-24).
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

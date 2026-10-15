@@ -24,21 +24,34 @@ CREATE TABLE Category (
     Name VARCHAR(50) NOT NULL
 );
 
--- 4. Table "Model_3D" (3D_Модель)
+-- 4. Table "License" (Ліцензія)
+CREATE TABLE License (
+    License_ID INT PRIMARY KEY,
+    Change_ID INT NOT NULL,
+    License_Name VARCHAR(50) NOT NULL,
+    Usage_Type VARCHAR(50) NOT NULL,
+    Allow_Modification VARCHAR(10) NOT NULL,
+    Creation_Date DATE NOT NULL,
+    Creation_Time TIME NOT NULL
+);
+
+-- 5. Table "Model_3D" (3D_Модель)
 CREATE TABLE Model_3D (
     Model_ID INT PRIMARY KEY,
     Seller_ID INT NOT NULL,
     Category_ID INT NOT NULL,
+    License_ID INT NOT NULL,
     Name VARCHAR(100) NOT NULL,
     Description VARCHAR(1000),
     Price DECIMAL(10, 2) NOT NULL,
     Polygon_Count INT NOT NULL,
     Has_Texture VARCHAR(10) NOT NULL,
     FOREIGN KEY (Seller_ID) REFERENCES Seller(Seller_ID),
-    FOREIGN KEY (Category_ID) REFERENCES Category(Category_ID)
+    FOREIGN KEY (Category_ID) REFERENCES Category(Category_ID),
+    FOREIGN KEY (License_ID) REFERENCES License(License_ID)
 );
 
--- 5. Table "Model_File" (Файл_Моделі)
+-- 6. Table "Model_File" (Файл_Моделі)
 CREATE TABLE Model_File (
     File_ID INT PRIMARY KEY,
     Model_ID INT NOT NULL,
@@ -47,16 +60,17 @@ CREATE TABLE Model_File (
     FOREIGN KEY (Model_ID) REFERENCES Model_3D(Model_ID)
 );
 
--- 6. Table "Cart" (Кошик)
+-- 7. Table "Cart" (Кошик)
 CREATE TABLE Cart (
     Cart_ID INT PRIMARY KEY,
     Buyer_ID INT NOT NULL,
     Status VARCHAR(50) NOT NULL,
+    Total_Amount DECIMAL(10, 2) NOT NULL,
     Created_Date DATE NOT NULL,
     FOREIGN KEY (Buyer_ID) REFERENCES Buyer(Buyer_ID)
 );
 
--- 7. Table "Cart_Item" (Елемент_Кошика)
+-- 8. Table "Cart_Item" (Елемент_Кошика)
 CREATE TABLE Cart_Item (
     Item_ID INT PRIMARY KEY,
     Cart_ID INT NOT NULL,
@@ -64,17 +78,6 @@ CREATE TABLE Cart_Item (
     Fixed_Price DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (Cart_ID) REFERENCES Cart(Cart_ID),
     FOREIGN KEY (Model_ID) REFERENCES Model_3D(Model_ID)
-);
-
--- 8. Table "Transaction" (Транзакція)
-CREATE TABLE Transaction (
-    Transaction_ID INT PRIMARY KEY,
-    Cart_ID INT NOT NULL,
-    Buyer_ID INT NOT NULL,
-    Amount DECIMAL(10, 2) NOT NULL,
-    Transaction_Date DATE NOT NULL,
-    FOREIGN KEY (Cart_ID) REFERENCES Cart(Cart_ID),
-    FOREIGN KEY (Buyer_ID) REFERENCES Buyer(Buyer_ID)
 );
 
 -- 9. Table "Review" (Відгук)

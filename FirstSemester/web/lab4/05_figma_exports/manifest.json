@@ -1,0 +1,9 @@
+{
+  "name": "ChargeUA Figma Project Builder",
+  "id": "chargeua-figma-builder-pp24",
+  "api": "1.0.0",
+  "main": "figma_builder_plugin.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"]
+}

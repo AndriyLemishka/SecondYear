@@ -1,0 +1,213 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { background: #FFFFFF; color: #0F172A; -webkit-font-smoothing: antialiased; }
+</style>
+
+<style>
+  body { width: 768px; background: #FFFFFF; color: #0F172A; }
+  
+  .t-top { background: #0B132B; color: #FFF; padding: 8px 24px; font-size: 11px; display: flex; justify-content: space-between; }
+  .t-head { height: 64px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E2E8F0; background: #FFF; }
+  
+  .t-hero { position: relative; overflow: hidden; min-height: 440px; padding: 36px 28px; background: #FFFFFF; display: flex; align-items: center; }
+  .t-hero-bg { position: absolute; right: 0; top: 0; width: 530px; height: 100%; object-fit: cover; z-index: 1; }
+  .t-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, #FFFFFF 0%, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0.25) 82%, rgba(255,255,255,0) 100%); z-index: 2; }
+  .t-hero-content { position: relative; z-index: 3; max-width: 440px; text-align: left; }
+  .t-hero-tag { font-size: 11px; font-weight: 800; color: #0077E6; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .t-hero-h1 { font-size: 28px; font-weight: 800; line-height: 1.2; color: #0F172A; margin-bottom: 12px; }
+  .t-hero-p { font-size: 13.5px; color: #64748B; margin-bottom: 20px; line-height: 1.5; }
+  .t-hero-btns { display: flex; gap: 10px; margin-bottom: 18px; }
+  .t-hero-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .t-chip { font-size: 10.5px; font-weight: 700; padding: 4px 10px; border-radius: 14px; background: #FFF; border: 1px solid #CBD5E1; color: #0F172A; }
+  .t-chip.gen { background: #DCFCE7; border-color: #16A34A; color: #15803D; }
+  .t-live-badge { position: absolute; bottom: 16px; right: 20px; z-index: 3; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(4px); color: #FFF; font-size: 10px; font-weight: 700; padding: 5px 10px; border-radius: 6px; display: flex; align-items: center; gap: 6px; }
+  .t-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #00E5FF; }
+
+  .t-strip { padding: 20px 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; }
+  .t-strip-card { background: #FFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px; display: flex; align-items: center; gap: 10px; }
+  
+  .t-calc { padding: 32px 24px; }
+  .t-calc-box { border: 1.5px solid #CBD5E1; border-radius: 16px; padding: 24px; background: #FFF; }
+  
+  .t-map { padding: 32px 24px; background: #F8FAFC; border-top: 1px solid #E2E8F0; }
+  .t-map-box { height: 260px; border-radius: 14px; border: 1px solid #CBD5E1; background: radial-gradient(#CBD5E1 1.5px, #F1F5F9 1.5px); background-size: 14px 14px; position: relative; }
+
+  .t-gen { padding: 36px 24px; background: #0B132B; color: #FFF; }
+  
+  .t-hubs { padding: 36px 24px; }
+  .t-hubs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 16px; }
+  .t-hub-card { border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; }
+  .t-hub-img { width: 100%; height: 160px; object-fit: cover; }
+
+  .t-steps { padding: 36px 24px; background: #F8FAFC; border-top: 1px solid #E2E8F0; }
+  .t-step-item { background: #FFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+
+  .t-revs { padding: 36px 24px; }
+  .t-rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; }
+  .t-rev-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; }
+  
+  .t-foot { background: #0B132B; color: #94A3B8; padding: 32px 24px; border-top: 1px solid #1E293B; font-size: 12px; }
+</style></head><body>
+  <div class="t-top">
+    <div>● 480+ станцій онлайн | Генератори ON</div>
+    <div>0 800 300 400</div>
+  </div>
+
+  <header class="t-head">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:28px; height:28px;">
+      <span style="font-size:20px; font-weight:800; color:#0077E6;">ChargeUA</span>
+    </div>
+    <div style="font-size:13px; font-weight:600; color:#334155;">Головна · Калькулятор · Карта · Хаби · Відгуки</div>
+    <button style="background:#0077E6; color:#FFF; border:none; padding:8px 18px; border-radius:6px; font-size:12px; font-weight:700;">Знайти</button>
+  </header>
+
+  <section class="t-hero">
+    <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/hero_loop_opt.gif" class="t-hero-bg">
+    <div class="t-hero-overlay"></div>
+    <div class="t-hero-content">
+      <div class="t-hero-tag">⚡ НАЦІОНАЛЬНИЙ АГРЕГАТОР ЗАРЯДНИХ СТАНЦІЙ</div>
+      <h1 class="t-hero-h1">Швидка та надійна зарядка електромобілів по всій Україні</h1>
+      <p class="t-hero-p">Знаходьте найближчі станції, розраховуйте вартість за секунди та подорожуйте без хвилювань навіть під час блекаутів.</p>
+      <div class="t-hero-btns">
+        <button style="background:#0077E6; color:#FFF; border:none; padding:12px 22px; border-radius:8px; font-size:13px; font-weight:700; cursor:pointer;">Розрахувати зарядку →</button>
+        <button style="background:#FFF; color:#0F172A; border:1px solid #CBD5E1; padding:12px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">Знайти на карті</button>
+      </div>
+      <div class="t-hero-chips">
+        <span class="t-chip">Type 2 (22 кВт)</span>
+        <span class="t-chip">CCS 2 (160 кВт)</span>
+        <span class="t-chip gen">🔋 З генератором</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="t-strip">
+    <div class="t-strip-card"><img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Calculator.svg" style="width:32px; height:32px;"><div><div style="font-weight:700; font-size:12px;">Калькулятор</div><div style="font-size:10px; color:#64748B;">Розрахунок за 3 сек</div></div></div>
+    <div class="t-strip-card"><img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Location.svg" style="width:32px; height:32px;"><div><div style="font-weight:700; font-size:12px;">Live-карта</div><div style="font-size:10px; color:#64748B;">480+ станцій онлайн</div></div></div>
+    <div class="t-strip-card"><img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Information.svg" style="width:32px; height:32px;"><div><div style="font-weight:700; font-size:12px;">Блекаут-захист</div><div style="font-size:10px; color:#64748B;">100% автономність</div></div></div>
+  </div>
+
+  <section class="t-calc">
+    <div class="t-calc-box">
+      <div style="font-size:18px; font-weight:800; margin-bottom:4px;">Калькулятор вартості зарядки</div>
+      <div style="font-size:13px; color:#0077E6; font-weight:600; margin-bottom:14px;">Volkswagen ID.4 · 20% → 80%</div>
+      
+      <!-- SLIDER -->
+      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:14px 18px; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:700;"><span>Повзунок рівня заряду:</span><span style="color:#0077E6;">+46.2 кВт·год</span></div>
+        <div style="position:relative; height:8px; background:#E2E8F0; border-radius:4px; margin:16px 0 8px;">
+          <div style="position:absolute; left:20%; width:60%; height:100%; background:#0077E6; border-radius:4px;"></div>
+          <div style="position:absolute; left:80%; top:50%; transform:translate(-50%, -50%); width:22px; height:22px; border-radius:50%; background:#FFF; border:3px solid #0077E6;"></div>
+          <div style="position:absolute; top:-24px; left:80%; transform:translateX(-50%); background:#0077E6; color:#FFF; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px;">80%</div>
+        </div>
+      </div>
+
+      <div style="background:#F0F7FF; border:1px solid #BFDBFE; border-radius:12px; padding:18px;">
+        <div style="font-size:26px; font-weight:800; color:#0077E6;">652.50 ₴ (~28 хв)</div>
+        <div style="font-size:12px; color:#475569; margin:4px 0 12px;">Тариф: 14.12 ₴/кВт·год · Економія: ~1 420 ₴ vs бензин</div>
+        <button style="width:100%; background:#0077E6; color:#FFF; border:none; padding:11px 0; border-radius:6px; font-weight:700; font-size:13px;">Знайти вільну станцію</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE MAP WITH CONTROLS -->
+  <section class="t-map">
+    <div style="font-size:18px; font-weight:800; color:#0F172A; margin-bottom:2px;">Live-карта зарядної мережі</div>
+    <div style="font-size:12px; color:#64748B; margin-bottom:10px;">Налаштування фільтрів: конектори та генератори онлайн</div>
+
+    <div style="display:flex; gap:8px; align-items:center; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:8px 12px; margin-bottom:12px;">
+      <div style="display:flex; align-items:center; gap:6px; background:#FFF; border:1px solid #005EC9; border-radius:6px; padding:5px 9px; font-size:11px; font-weight:600; width:180px;">
+        <span>🔍</span> <span>вул. Стрийська, 199</span>
+      </div>
+      <button style="background:#005EC9; color:#FFF; border:none; padding:5px 9px; border-radius:6px; font-size:10.5px; font-weight:700;">⚡ Всі</button>
+      <button style="background:#FFF; border:1px solid #CBD5E1; color:#0F172A; padding:5px 9px; border-radius:6px; font-size:10.5px; font-weight:600;">CCS 2</button>
+      <button style="background:#ECFDF5; border:1px solid #047857; color:#047857; padding:5px 9px; border-radius:6px; font-size:10.5px; font-weight:700;">🔋 Генератор</button>
+      <div style="display:flex; align-items:center; gap:5px; margin-left:auto; font-size:10.5px; font-weight:600; color:#0F172A;">
+        <span style="color:#005EC9; font-weight:bold;">✓</span> Вільні
+      </div>
+    </div>
+    <div class="t-map-box">
+      <div style="position:absolute; top:40px; left:240px; transform:translate(-50%,-50%); text-align:center;">
+        <div style="width:14px; height:14px; border-radius:50%; background:#0077E6; border:2px solid #FFF; margin:0 auto;"></div>
+        <div style="background:#0B132B; color:#FFF; font-size:9px; font-weight:700; padding:3px 7px; border-radius:4px; margin-top:3px;">Київ · 120 кВт (3/4) 🔋</div>
+      </div>
+      <div style="position:absolute; top:70px; left:80px; transform:translate(-50%,-50%); text-align:center;">
+        <div style="width:14px; height:14px; border-radius:50%; background:#10B981; border:2px solid #FFF; margin:0 auto;"></div>
+        <div style="background:#0B132B; color:#FFF; font-size:9px; font-weight:700; padding:3px 7px; border-radius:4px; margin-top:3px;">Львів · 160 кВт (5/6) 🔋</div>
+      </div>
+      <div style="position:absolute; top:180px; left:300px; transform:translate(-50%,-50%); text-align:center;">
+        <div style="width:14px; height:14px; border-radius:50%; background:#F59E0B; border:2px solid #FFF; margin:0 auto;"></div>
+        <div style="background:#0B132B; color:#FFF; font-size:9px; font-weight:700; padding:3px 7px; border-radius:4px; margin-top:3px;">Одеса · 100 кВт (1/2) 🔋</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GENERATOR -->
+  <section class="t-gen">
+    <div style="font-size:11px; font-weight:800; color:#10B981; margin-bottom:4px;">⚡ ЕНЕРГОНЕЗАЛЕЖНІСТЬ 100%</div>
+    <div style="font-size:22px; font-weight:800; margin-bottom:8px;">Заряджайте авто під час блекаутів</div>
+    <div style="font-size:13px; color:#CBD5E1; margin-bottom:14px;">180+ станцій мережі обладнані промисловими дизель-генераторами 160 кВт.</div>
+    <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_generator_blackout.jpg" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+  </section>
+
+  <!-- HUBS -->
+  <section class="t-hubs">
+    <div style="font-size:18px; font-weight:800; margin-bottom:4px;">Популярні зарядні хаби</div>
+    <div class="t-hubs-grid">
+      <div class="t-hub-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="t-hub-img">
+        <div style="padding:12px;">
+          <div style="font-weight:700; font-size:13px;">Хаб «Київ-Поділ» · 120 кВт</div>
+          <div style="font-size:11px; color:#64748B; margin:3px 0 6px;">вул. Сагайдачного, 12</div>
+          <div style="font-size:10px; font-weight:700; color:#15803D; background:#DCFCE7; display:inline-block; padding:2px 6px; border-radius:4px; margin-bottom:8px;">🔋 Генератор ON</div>
+          <button style="width:100%; background:#0077E6; color:#FFF; border:none; padding:8px 0; border-radius:6px; font-size:11px; font-weight:700;">Маршрут</button>
+        </div>
+      </div>
+      <div class="t-hub-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="t-hub-img">
+        <div style="padding:12px;">
+          <div style="font-weight:700; font-size:13px;">Хаб «Арена Львів» · 160 кВт</div>
+          <div style="font-size:11px; color:#64748B; margin:3px 0 6px;">вул. Стрийська, 199</div>
+          <div style="font-size:10px; font-weight:700; color:#15803D; background:#DCFCE7; display:inline-block; padding:2px 6px; border-radius:4px; margin-bottom:8px;">🔋 Сонячний навіс</div>
+          <button style="width:100%; background:#0077E6; color:#FFF; border:none; padding:8px 0; border-radius:6px; font-size:11px; font-weight:700;">Маршрут</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="t-steps">
+    <div style="font-size:18px; font-weight:800; margin-bottom:12px;">Як зарядитися за 3 кроки</div>
+    <div class="t-step-item"><b>1. Знайдіть станцію на карті</b> — Фільтруйте за потужністю, конектором та світлом.</div>
+    <div class="t-step-item"><b>2. Підключіть конектор CCS2</b> — Світловий смарт-індикатор спалахне зеленим.</div>
+    <div class="t-step-item"><b>3. Оплатіть у 1 клік</b> — Apple Pay, Google Pay або банківська картка.</div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="t-revs">
+    <div style="font-size:18px; font-weight:800; margin-bottom:12px;">Відгуки водіїв</div>
+    <div class="t-rev-grid">
+      <div class="t-rev-card">
+        <div style="color:#F59E0B; font-size:12px;">★★★★★</div>
+        <div style="font-size:12px; margin:6px 0;">«Зарядився на Подолі під час блекауту за 25 хвилин. Все супер!»</div>
+        <div style="font-weight:700; font-size:11px;">Олексій К. (Tesla Model Y)</div>
+      </div>
+      <div class="t-rev-card">
+        <div style="color:#F59E0B; font-size:12px;">★★★★★</div>
+        <div style="font-size:12px; margin:6px 0;">«Зручний калькулятор витрат і точний кілометраж.»</div>
+        <div style="font-weight:700; font-size:11px;">Олена М. (Nissan Leaf)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="t-foot">
+    <div style="font-size:16px; font-weight:800; color:#FFF; margin-bottom:6px;">ChargeUA</div>
+    <div>© 2026 ChargeUA · Лемішка Андрій, ПП-24 · Кафедра САПР, НУ «Львівська політехніка»</div>
+  </footer>
+</body></html>

@@ -1,0 +1,60 @@
+# Large disk images and virtual machines
+*.iso
+*.vdi
+*.vmdk
+*.vhd
+*.vhdx
+*.ova
+*.ovf
+*.crdownload
+
+# VirtualBox machine folders & snapshots
+*.vbox
+*.vbox-prev
+*.sav
+*.nvram
+
+# Logs
+*.log
+VBox.log*
+VBoxHardening.log*
+
+# Large archives exceeding GitHub limits
+web.rar
+*.7z
+
+# Visual Studio & C++ build outputs / caches
+.vs/
+x64/
+x86/
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.obj
+*.pdb
+*.ilk
+*.idb
+*.ipch
+*.tlog
+*.exe
+*.aps
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary office and system lock files
+~$*.docx
+~$*.doc
+~$*.xlsx
+~$*.xls
+~$*.pptx
+~$*.ppt
+~$*.pdf
+Thumbs.db
+Desktop.ini
+
+# Agent cache & internal directories
+.agents/

@@ -1,0 +1,146 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { background: #FFFFFF; color: #0F172A; -webkit-font-smoothing: antialiased; }
+</style>
+
+<style>
+  body { width: 1250px; background: #F1F5F9; padding: 20px; }
+  .board-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: start; }
+  .col-frame { background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+  
+  .t-head { padding: 14px 18px; border-bottom: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between; }
+  .t-hero { padding: 20px 18px; }
+  .t-h1 { font-size: 22px; font-weight: 800; line-height: 1.25; margin: 10px 0 8px; color: #0F172A; }
+  .t-p { font-size: 13px; color: #64748B; line-height: 1.45; margin-bottom: 14px; }
+  .t-btn-blue { background: #005EC9; color: #FFF; border: none; padding: 10px 18px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; }
+  
+  .t-strip { padding: 12px 18px; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; font-size: 12px; font-weight: 600; display: flex; justify-content: space-between; }
+  .t-calc { padding: 18px; }
+  .t-calc-res { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px; margin-top: 12px; }
+
+  .hub-item { padding: 16px 18px; border-bottom: 1px solid #E2E8F0; }
+  .hub-item:last-child { border-bottom: none; }
+  .hub-img-t { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
+  
+  .gen-box-t { padding: 20px 18px; background: #0F172A; color: #FFF; }
+  .step-box-t { padding: 12px 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; }
+  .rev-box-t { padding: 14px 16px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 12px; }
+  
+  .footer-t { background: #0F172A; color: #FFF; padding: 24px 18px; font-size: 11px; }
+</style></head><body>
+<div class="board-cols">
+  <!-- COL 1: HEADER + HERO + STRIP + CALCULATOR -->
+  <div class="col-frame">
+    <div class="t-head">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:24px; height:24px;">
+        <span style="font-weight:800; font-size:16px; color:#005EC9;">ChargeUA</span>
+      </div>
+      <div style="font-size:12px; color:#64748B;">Головна · Калькулятор · Карта</div>
+      <button class="t-btn-blue">Знайти</button>
+    </div>
+    
+    <div class="t-hero">
+      <div style="font-size:10px; font-weight:800; color:#005EC9;">⚡ НАЦІОНАЛЬНИЙ АГРЕГАТОР</div>
+      <div class="t-h1">Швидка зарядка по всій Україні</div>
+      <div class="t-p">Знаходьте станції, розраховуйте вартість за секунди та подорожуйте без хвилювань у блекаути.</div>
+      <button class="t-btn-blue" style="margin-bottom:14px;">Розрахувати зарядку →</button>
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/hero_bg.jpg" style="width:100%; height:180px; object-fit:cover; border-radius:10px;">
+    </div>
+
+    <div class="t-strip">
+      <span>⚡ 480+ станцій</span>
+      <span style="color:#16A34A;">🔋 100% у блекаути</span>
+      <span style="color:#005EC9;">⏱ 3 сек розрахунок</span>
+    </div>
+
+    <div class="t-calc">
+      <div style="font-size:15px; font-weight:800; color:#0F172A;">Калькулятор зарядки</div>
+      <div style="font-size:12px; color:#005EC9; font-weight:600; margin:4px 0 10px;">Volkswagen ID.4 · 20% → 80%</div>
+      <div class="t-calc-res">
+        <div style="font-size:20px; font-weight:800; color:#005EC9;">652.50 ₴</div>
+        <div style="font-size:11px; color:#64748B; margin-top:2px;">~28 хв на DC 120 кВт · 46.2 кВт·год</div>
+      </div>
+      <button class="t-btn-blue" style="width:100%; margin-top:12px;">Знайти вільну станцію</button>
+    </div>
+  </div>
+
+  <!-- COL 2: POPULAR HUBS + GENERATOR BLACKOUT -->
+  <div class="col-frame">
+    <div style="padding:14px 18px; border-bottom:1px solid #E2E8F0; font-weight:800; font-size:15px;">
+      Популярні зарядні хаби
+    </div>
+
+    <div class="hub-item">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="hub-img-t">
+      <div style="font-weight:800; font-size:15px;">Хаб «Київ-Поділ» · 120 кВт CCS2</div>
+      <div style="font-size:12px; color:#64748B; margin:3px 0 8px;">вул. Сагайдачного, 12 · 4 порти</div>
+      <div style="display:inline-block; padding:3px 8px; border-radius:5px; font-size:10px; font-weight:700; background:#D1FAE5; color:#065F46; margin-bottom:10px;">🔋 Працює від генератора</div>
+      <button class="t-btn-blue" style="width:100%;">Прокласти маршрут</button>
+    </div>
+
+    <div class="hub-item">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="hub-img-t">
+      <div style="font-weight:800; font-size:15px;">Хаб «Арена Львів» · 160 кВт CCS2</div>
+      <div style="font-size:12px; color:#64748B; margin:3px 0 8px;">вул. Стрийська, 199 · 6 портів</div>
+      <div style="display:inline-block; padding:3px 8px; border-radius:5px; font-size:10px; font-weight:700; background:#D1FAE5; color:#065F46; margin-bottom:10px;">🔋 Працює від генератора</div>
+      <button class="t-btn-blue" style="width:100%;">Прокласти маршрут</button>
+    </div>
+
+    <div class="gen-box-t">
+      <div style="font-size:10px; font-weight:800; color:#00E5FF; margin-bottom:4px;">ЕНЕРГОНЕЗАЛЕЖНІСТЬ 100%</div>
+      <div style="font-size:16px; font-weight:800; margin-bottom:8px;">Зарядка у повні блекаути</div>
+      <div style="font-size:12px; color:#CBD5E1; line-height:1.45; margin-bottom:12px;">180+ хабів мережі обладнані потужними генераторами 160 кВт для безперебійного живлення.</div>
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_generator_blackout.jpg" style="width:100%; height:130px; object-fit:cover; border-radius:8px;">
+    </div>
+  </div>
+
+  <!-- COL 3: STEPS + REVIEWS + FORM + FOOTER -->
+  <div class="col-frame">
+    <div style="padding:16px 18px;">
+      <div style="font-weight:800; font-size:15px; margin-bottom:12px;">Як зарядитися за 3 кроки</div>
+      
+      <div class="step-box-t">
+        <div style="font-weight:800; font-size:13px; color:#005EC9;">1. Знайдіть вільну станцію</div>
+        <div style="font-size:11px; color:#64748B; margin-top:2px;">Фільтруйте за потужністю або наявністю генератора на карті.</div>
+      </div>
+      <div class="step-box-t">
+        <div style="font-weight:800; font-size:13px; color:#005EC9;">2. Підключіть конектор CCS2</div>
+        <div style="font-size:11px; color:#64748B; margin-top:2px;">Вставте кабель — індикатор спалахне зеленим кольором.</div>
+      </div>
+      <div class="step-box-t">
+        <div style="font-weight:800; font-size:13px; color:#005EC9;">3. Оплатіть у 1 клік</div>
+        <div style="font-size:11px; color:#64748B; margin-top:2px;">Apple Pay або картка без жодних передплат та комісій.</div>
+      </div>
+
+      <div style="font-weight:800; font-size:15px; margin:16px 0 10px;">Відгуки водіїв</div>
+      <div class="rev-box-t">
+        <div style="color:#F59E0B; font-size:12px; margin-bottom:4px;">★★★★★</div>
+        <div style="font-size:11px; color:#334155; line-height:1.4;">«Під час блекауту зарядився за 25 хв на Подолі. Генератор гуде, все супер!»</div>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_avatar_oleksiy.jpg" style="width:26px; height:26px; border-radius:13px; object-fit:cover;">
+          <div style="font-size:11px; font-weight:700;">Олексій К. (Tesla Y)</div>
+        </div>
+      </div>
+
+      <div style="font-weight:800; font-size:14px; margin:14px 0 8px;">Встановіть станцію ChargeUA</div>
+      <input type="text" placeholder="Ваш телефон (+380...)" style="width:100%; height:34px; border:1px solid #CBD5E1; border-radius:6px; padding:0 10px; font-size:12px; margin-bottom:8px;">
+      <button class="t-btn-blue" style="width:100%; margin-bottom:16px;">Подати заявку на монтаж</button>
+    </div>
+
+    <div class="footer-t">
+      <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:20px; height:20px; filter:brightness(0) invert(1);">
+        <span style="font-weight:800; font-size:14px;">ChargeUA</span>
+      </div>
+      <div style="color:#94A3B8; line-height:1.4; margin-bottom:10px;">Національний агрегатор зарядної інфраструктури України.</div>
+      <div style="color:#64748B; border-top:1px solid #1E293B; padding-top:8px;">© 2026 ChargeUA · Лемішка Андрій, ПП-24</div>
+    </div>
+  </div>
+</div>
+</body></html>

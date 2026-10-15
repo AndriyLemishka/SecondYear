@@ -1,0 +1,150 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #F1F5F9;
+    color: #0F172A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .board {
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    border: 1.5px solid #E2E8F0;
+    padding: 36px 40px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  .board-header {
+    margin-bottom: 24px;
+    border-bottom: 1.5px solid #E2E8F0;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .board-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0F172A;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .board-title span.badge {
+    background: #EFF6FF;
+    color: #005EC9;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 1px solid #BFDBFE;
+  }
+  .board-desc {
+    font-size: 13px;
+    color: #64748B;
+    margin-top: 4px;
+  }
+</style>
+
+<style>
+  .wireframes-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    background: #F1F5F9;
+    padding: 20px;
+    border-radius: 14px;
+  }
+  .wf-screen {
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  }
+  .wf-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #475569;
+    text-align: center;
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 4px;
+  }
+  .wf-block {
+    background: #E2E8F0;
+    border-radius: 4px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #64748B;
+    font-weight: 600;
+  }
+  .wf-block.hero { height: 55px; background: #CBD5E1; }
+  .wf-block.tall { height: 45px; }
+</style></head><body>
+<div class="board">
+  <div class="board-header">
+    <div>
+      <div class="board-title">Relume AI · каркаси всіх 5 сторінок <span class="badge">Low-Fi Wireframes</span></div>
+      <div class="board-desc">Каркаси всіх екранів вебпроєкту, згенеровані ШІ-інструментом Relume AI</div>
+    </div>
+  </div>
+  <div class="wireframes-row">
+    <div class="wf-screen">
+      <div class="wf-title">01 · Головна</div>
+      <div class="wf-block">Header</div>
+      <div class="wf-block hero">Hero + CTA</div>
+      <div class="wf-block tall">Калькулятор</div>
+      <div class="wf-block tall">Карта</div>
+      <div class="wf-block">Генератор</div>
+      <div class="wf-block">Відгуки</div>
+      <div class="wf-block">Footer</div>
+    </div>
+    <div class="wf-screen">
+      <div class="wf-title">02 · Карта</div>
+      <div class="wf-block">Header</div>
+      <div class="wf-block">Пошук & Фільтр</div>
+      <div class="wf-block hero" style="height:120px;">Інтерактивна карта станцій</div>
+      <div class="wf-block">Картки поруч</div>
+      <div class="wf-block">Footer</div>
+    </div>
+    <div class="wf-screen">
+      <div class="wf-title">03 · Станція</div>
+      <div class="wf-block">Header</div>
+      <div class="wf-block hero">Фото хабу</div>
+      <div class="wf-block">Конектори CCS2</div>
+      <div class="wf-block tall">Тарифи & Статус</div>
+      <div class="wf-block">Маршрут CTA</div>
+      <div class="wf-block">Footer</div>
+    </div>
+    <div class="wf-screen">
+      <div class="wf-title">04 · Тарифи</div>
+      <div class="wf-block">Header</div>
+      <div class="wf-block hero">Тарифні сітки</div>
+      <div class="wf-block tall">Калькулятор авто</div>
+      <div class="wf-block">Нічний тариф</div>
+      <div class="wf-block">Footer</div>
+    </div>
+    <div class="wf-screen">
+      <div class="wf-title">05 · Бізнес</div>
+      <div class="wf-block">Header</div>
+      <div class="wf-block hero">Партнерство Hero</div>
+      <div class="wf-block tall">Калькулятор ROI</div>
+      <div class="wf-block tall">Форма заявки</div>
+      <div class="wf-block">FAQ & Footer</div>
+    </div>
+  </div>
+</div></body></html>

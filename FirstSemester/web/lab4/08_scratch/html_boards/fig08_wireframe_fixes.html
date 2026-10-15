@@ -1,0 +1,66 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  body { background: #F8FAFC; padding: 30px; width: 1382px; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+  .col-box { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 24px; }
+  .head-tag { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; margin-bottom: 14px; }
+  .head-tag.bad { background: #FEE2E2; color: #DC2626; }
+  .head-tag.good { background: #D1FAE5; color: #047857; }
+  .item-row { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px; margin-bottom: 12px; font-size: 12.5px; }
+  .item-row strong { display: block; margin-bottom: 4px; }
+</style></head><body>
+  <div style="font-size:22px; font-weight:800;">Аудит низькодеталізованого каркаса та впроваджені UX-виправлення</div>
+  <div style="font-size:14px; color:#64748B; margin-top:4px;">Порівняння початкової ШІ-генерації каркасу та оптимізованого фінального макета</div>
+  <div class="compare">
+    <div class="col-box">
+      <div class="head-tag bad">ПОЧАТКОВИЙ ВАРІАНТ (ШІ-КАРКАС)</div>
+      <div class="item-row">
+        <strong style="color:#DC2626;">❌ Розмитий фокус у Hero:</strong>
+        Три однакові кнопки дії без візуального пріоритету розсіювали увагу водія.
+      </div>
+      <div class="item-row">
+        <strong style="color:#DC2626;">❌ Відсутність швидких пресетів у калькуляторі:</strong>
+        Користувач мав вручну вводити ємність батареї без підказки моделі.
+      </div>
+      <div class="item-row">
+        <strong style="color:#DC2626;">❌ Відсутність фільтра генераторів:</strong>
+        Станції показувалися загальним списком без статусу живлення під час аварійних відключень.
+      </div>
+      <div class="item-row">
+        <strong style="color:#DC2626;">❌ Занижені розміри тач-зон (24 px):</strong>
+        Чекбокси та перемикачі на мобільних пристроях не відповідали стандарту WCAG 2.1 (≥ 44 px).
+      </div>
+    </div>
+    <div class="col-box">
+      <div class="head-tag good">ОПТИМІЗОВАНИЙ ВАРІАНТ (ПІСЛЯ UX-АУДИТУ)</div>
+      <div class="item-row">
+        <strong style="color:#047857;">✓ Чітка візуальна ієрархія Hero:</strong>
+        1 Primary кнопка («Розрахувати зарядку») + 1 контурна Secondary («Знайти на карті»).
+      </div>
+      <div class="item-row">
+        <strong style="color:#047857;">✓ Пресети авто в 1 клік:</strong>
+        Швидкі чипи Tesla Model Y, VW ID.4, Nissan Leaf миттєво підставляють ємність батареї.
+      </div>
+      <div class="item-row">
+        <strong style="color:#047857;">✓ Виділений фільтр «🔋 З генератором»:</strong>
+        Зелений статусний бейдж із гарантією 100% Uptime під час блекаутів.
+      </div>
+      <div class="item-row">
+        <strong style="color:#047857;">✓ Оптимізовані інтерактивні зони (48 px):</strong>
+        Усі інтерактивні елементи збільшено до 48 px для зручного керування однією рукою за кермом.
+      </div>
+    </div>
+  </div>
+</body></html>

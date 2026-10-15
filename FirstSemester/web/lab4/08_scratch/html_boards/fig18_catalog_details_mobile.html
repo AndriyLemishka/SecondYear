@@ -1,0 +1,132 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { background: #FFFFFF; color: #0F172A; -webkit-font-smoothing: antialiased; }
+</style>
+
+<style>
+  body { width: 800px; background: #FFFFFF; padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .m-phone { background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .m-top { background: #0F172A; color: #FFF; padding: 6px 12px; font-size: 9px; display: flex; justify-content: space-between; }
+  .m-head { height: 48px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E2E8F0; background: #FFF; }
+  .m-body { padding: 14px; }
+  .bread { font-size: 10px; color: #94A3B8; margin-bottom: 8px; }
+  .m-h1 { font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 4px; }
+  .m-in { width: 100%; height: 34px; border: 1.5px solid #CBD5E1; border-radius: 6px; padding: 0 10px; font-size: 11px; margin: 10px 0; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .chip { padding: 3px 8px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 9px; font-weight: 600; background: #FFF; }
+  .chip.act { background: #005EC9; color: #FFF; border-color: #005EC9; }
+  .st-card { background: #FFF; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
+  .st-img { width: 100%; height: 110px; object-fit: cover; }
+  .st-pad { padding: 10px; }
+  .btn-m { width: 100%; padding: 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; text-align: center; border: none; }
+  .btn-pri { background: #005EC9; color: #FFF; }
+  .btn-sec { background: #F1F5F9; color: #0F172A; border: 1px solid #CBD5E1; }
+  .m-foot { background: #0F172A; color: #FFF; padding: 14px; font-size: 9px; }
+  .b-nav { height: 42px; background: #FFF; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-around; align-items: center; font-size: 9px; font-weight: 700; color: #64748B; }
+</style></head><body>
+
+  <!-- LEFT: MOBILE CATALOG -->
+  <div class="m-phone">
+    <div class="m-top"><span>● 480+ станцій</span><span>UA</span></div>
+    <div class="m-head">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:20px; height:20px;">
+        <span style="font-size:15px; font-weight:800; color:#005EC9;">ChargeUA</span>
+      </div>
+      <div style="font-size:18px;">☰</div>
+    </div>
+    <div class="m-body">
+      <div class="bread">Головна / Каталог</div>
+      <h1 class="m-h1">Каталог станцій</h1>
+      <input type="text" placeholder="Пошук (Київ, Поділ...)" class="m-in" value="Київ, Поділ">
+      <div class="chips">
+        <span class="chip act">Всі</span>
+        <span class="chip">Швидкісні CCS2</span>
+        <span class="chip" style="background:#D1FAE5; color:#065F46;">🔋 Генератор ON</span>
+      </div>
+
+      <div class="st-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="st-img">
+        <div class="st-pad">
+          <div style="font-weight:800; font-size:13px;">Хаб «Київ-Поділ» · 120 кВт</div>
+          <div style="font-size:10px; color:#64748B; margin:2px 0 6px;">вул. Сагайдачного, 12 · 14.50 ₴</div>
+          <div style="font-size:9px; font-weight:700; color:#065F46; background:#D1FAE5; display:inline-block; padding:3px 6px; border-radius:4px; margin-bottom:8px;">🔋 Генератор ON · Вільний (3/4)</div>
+          <button class="btn-m btn-pri">Прокласти маршрут</button>
+        </div>
+      </div>
+
+      <div class="st-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="st-img">
+        <div class="st-pad">
+          <div style="font-weight:800; font-size:13px;">Хаб «Арена Львів» · 160 кВт</div>
+          <div style="font-size:10px; color:#64748B; margin:2px 0 6px;">вул. Стрийська, 199 · 15.00 ₴</div>
+          <div style="font-size:9px; font-weight:700; color:#065F46; background:#D1FAE5; display:inline-block; padding:3px 6px; border-radius:4px; margin-bottom:8px;">🔋 Сонячний навіс + Дизель</div>
+          <button class="btn-m btn-pri">Прокласти маршрут</button>
+        </div>
+      </div>
+    </div>
+    <div class="m-foot">
+      <div>ChargeUA · Мережа електрозарядок</div>
+      <div style="color:#64748B; margin-top:4px;">© 2026 ChargeUA · ПП-24</div>
+    </div>
+    <div class="b-nav">
+      <span>🏠 Головна</span>
+      <span style="color:#005EC9;">🗺️ Картка</span>
+      <span>⚡ Кальк</span>
+      <span>👤 Профіль</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: MOBILE DETAILS -->
+  <div class="m-phone">
+    <div class="m-top"><span>● 480+ станцій</span><span>UA</span></div>
+    <div class="m-head">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:20px; height:20px;">
+        <span style="font-size:15px; font-weight:800; color:#005EC9;">ChargeUA</span>
+      </div>
+      <div style="font-size:18px;">☰</div>
+    </div>
+    <div class="m-body">
+      <div class="bread">Головна / Каталог / Деталі</div>
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" style="width:100%; height:130px; border-radius:8px; object-fit:cover; margin-bottom:10px;">
+      <h1 class="m-h1">Хаб «Київ-Поділ»</h1>
+      <div style="font-size:10px; color:#64748B; margin-bottom:6px;">вул. Сагайдачного, 12 · EcoFactor</div>
+      <div style="font-size:9px; font-weight:700; color:#065F46; background:#D1FAE5; display:inline-block; padding:3px 6px; border-radius:4px; margin-bottom:10px;">🔋 Генератор 160 кВА активний</div>
+
+      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:10px; margin-bottom:10px; font-size:10px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>Вільні роз'єми:</span><strong style="color:#005EC9;">3 з 4 (2x CCS2)</strong></div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span>Тариф:</span><strong>14.50 ₴/кВт·год</strong></div>
+        <div style="display:flex; justify-content:space-between;"><span>Потужність DC:</span><strong>120 кВт</strong></div>
+      </div>
+
+      <button class="btn-m btn-pri" style="margin-bottom:6px;">Прокласти маршрут (Waze / Maps)</button>
+      <button class="btn-m btn-sec" style="margin-bottom:12px;">Помічник ChargeUA</button>
+
+      <div style="font-weight:700; font-size:11px; margin-bottom:6px;">Альтернативні хаби поруч:</div>
+      <div style="border:1px solid #E2E8F0; border-radius:6px; padding:6px; display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" style="width:40px; height:40px; border-radius:4px; object-fit:cover;">
+        <div>
+          <div style="font-weight:700; font-size:10px;">Хаб «Арена» · 160 кВт</div>
+          <div style="font-size:9px; color:#64748B;">15.00 ₴ · 2x CCS2 вільні</div>
+        </div>
+      </div>
+    </div>
+    <div class="m-foot">
+      <div>ChargeUA · Мережа електрозарядок</div>
+      <div style="color:#64748B; margin-top:4px;">© 2026 ChargeUA · ПП-24</div>
+    </div>
+    <div class="b-nav">
+      <span>🏠 Головна</span>
+      <span style="color:#005EC9;">🗺️ Картка</span>
+      <span>⚡ Кальк</span>
+      <span>👤 Профіль</span>
+    </div>
+  </div>
+
+</body></html>

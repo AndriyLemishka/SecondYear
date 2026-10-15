@@ -1,0 +1,4 @@
+netsh interface ip set address "Local Area Connection" static 192.168.1.5 255.255.255.0 192.168.1.4
+netsh interface ip set dns "Local Area Connection" static 192.168.1.5
+(Get-WmiObject Win32_ComputerSystem).Rename("Server")
+shutdown /r /t 2

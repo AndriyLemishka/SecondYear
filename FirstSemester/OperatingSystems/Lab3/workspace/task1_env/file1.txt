@@ -1,0 +1,6 @@
+Plaintext
+Turn on the machine.
+Start the program.
+Request the option.
+End the program.
+Turn off the machine.

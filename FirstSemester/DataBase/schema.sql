@@ -24,21 +24,34 @@ CREATE TABLE Категорія (
     Назва VARCHAR(50) NOT NULL
 );
 
--- 4. Таблиця "3D_Модель"
+-- 4. Таблиця "Ліцензія"
+CREATE TABLE Ліцензія (
+    ID_Ліцензії INT PRIMARY KEY,
+    ID_Зміни INT NOT NULL,
+    Назва_ліцензії VARCHAR(50) NOT NULL,
+    Тип_використання VARCHAR(50) NOT NULL,
+    Дозвіл_на_модифікацію VARCHAR(10) NOT NULL,
+    Дата_створення DATE NOT NULL,
+    Час_створення TIME NOT NULL
+);
+
+-- 5. Таблиця "3D_Модель"
 CREATE TABLE 3D_Модель (
     ID_Моделі INT PRIMARY KEY,
     ID_Продавця INT NOT NULL,
     ID_Категорії INT NOT NULL,
+    ID_Ліцензії INT NOT NULL,
     Назва VARCHAR(100) NOT NULL,
     Опис VARCHAR(1000),
     Ціна DECIMAL(10, 2) NOT NULL,
     Кількість_полігонів INT NOT NULL,
     Наявність_текстури VARCHAR(10) NOT NULL,
     FOREIGN KEY (ID_Продавця) REFERENCES Продавець(ID_Продавця),
-    FOREIGN KEY (ID_Категорії) REFERENCES Категорія(ID_Категорії)
+    FOREIGN KEY (ID_Категорії) REFERENCES Категорія(ID_Категорії),
+    FOREIGN KEY (ID_Ліцензії) REFERENCES Ліцензія(ID_Ліцензії)
 );
 
--- 5. Таблиця "Файл_Моделі"
+-- 6. Таблиця "Файл_Моделі"
 CREATE TABLE Файл_Моделі (
     ID_Файлу INT PRIMARY KEY,
     ID_Моделі INT NOT NULL,
@@ -47,16 +60,17 @@ CREATE TABLE Файл_Моделі (
     FOREIGN KEY (ID_Моделі) REFERENCES 3D_Модель(ID_Моделі)
 );
 
--- 6. Таблиця "Кошик"
+-- 7. Таблиця "Кошик"
 CREATE TABLE Кошик (
     ID_Кошика INT PRIMARY KEY,
     ID_Покупця INT NOT NULL,
     Статус VARCHAR(50) NOT NULL,
+    Сума_до_оплати DECIMAL(10, 2) NOT NULL,
     Дата_створення DATE NOT NULL,
     FOREIGN KEY (ID_Покупця) REFERENCES Покупець(ID_Покупця)
 );
 
--- 7. Таблиця "Елемент_Кошика"
+-- 8. Таблиця "Елемент_Кошика"
 CREATE TABLE Елемент_Кошика (
     ID_Елемента INT PRIMARY KEY,
     ID_Кошика INT NOT NULL,
@@ -64,17 +78,6 @@ CREATE TABLE Елемент_Кошика (
     Фіксована_ціна DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (ID_Кошика) REFERENCES Кошик(ID_Кошика),
     FOREIGN KEY (ID_Моделі) REFERENCES 3D_Модель(ID_Моделі)
-);
-
--- 8. Таблиця "Транзакція"
-CREATE TABLE Транзакція (
-    ID_Транзакції INT PRIMARY KEY,
-    ID_Кошика INT NOT NULL,
-    ID_Покупця INT NOT NULL,
-    Сума DECIMAL(10, 2) NOT NULL,
-    Дата DATE NOT NULL,
-    FOREIGN KEY (ID_Кошика) REFERENCES Кошик(ID_Кошика),
-    FOREIGN KEY (ID_Покупця) REFERENCES Покупець(ID_Покупця)
 );
 
 -- 9. Таблиця "Відгук"

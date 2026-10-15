@@ -1,0 +1,5 @@
+23:user:x:1000:1000:Default User,,,:/home/user:/bin/bash
+24:andriy:x:1001:1001:Andriy Lemishka,,,:/home/andriy:/bin/bash
+25:student:x:1002:1002:Student PP-14,,,:/home/student:/bin/bash
+26:guest:x:1003:1003:Guest Account,,,:/home/guest:/bin/bash
+27:developer:x:1004:1004:Dev User,,,:/home/developer:/bin/bash

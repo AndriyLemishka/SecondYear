@@ -1,0 +1,3 @@
+./filelist1.txt
+./large_data.log
+./passwd_example

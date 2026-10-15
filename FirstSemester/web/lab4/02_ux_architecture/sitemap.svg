@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960" width="1440" height="960">
+  <defs>
+    <style>
+      .bg { fill: #F8FAFC; }
+      .header-title { font-family: 'Inter', sans-serif; font-size: 26px; font-weight: 700; fill: #0F172A; }
+      .header-sub { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; fill: #64748B; }
+      
+      .root-node { fill: #005EC9; stroke: #004BB5; stroke-width: 2; rx: 12px; }
+      .root-text { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700; fill: #FFFFFF; text-anchor: middle; }
+      
+      .level1-node { fill: #FFFFFF; stroke: #005EC9; stroke-width: 2; rx: 10px; }
+      .level1-text { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; fill: #0F172A; text-anchor: middle; }
+      .level1-sub { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; fill: #005EC9; text-anchor: middle; }
+      
+      .sec-box { fill: #FFFFFF; stroke: #E2E8F0; stroke-width: 1.5; rx: 8px; }
+      .sec-title { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; fill: #0F172A; }
+      .sec-desc { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 400; fill: #64748B; }
+      .sec-badge { fill: #EFF6FF; rx: 4px; }
+      .sec-badge-text { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; fill: #005EC9; }
+
+      .wire-line { stroke: #94A3B8; stroke-width: 2; fill: none; }
+      .wire-sub { stroke: #CBD5E1; stroke-width: 1.5; fill: none; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1440" height="960" class="bg" />
+
+  <!-- Title Card -->
+  <rect x="40" y="25" width="1360" height="75" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+  <circle cx="75" cy="62" r="20" fill="#005EC9" />
+  <path d="M73 53 L81 61 L76 61 L78 71 L70 63 L75 63 Z" fill="#FFFFFF" />
+  <text x="110" y="56" class="header-title">02 — Карта сайту (Sitemap) • ChargeUA</text>
+  <text x="110" y="77" class="header-sub">Оптимізована двоступенева інформаційна архітектура без зайвих бар'єрів та обов'язкової реєстрації</text>
+
+  <!-- ==================== ROOT LEVEL ==================== -->
+  <!-- Level 0: App Root -->
+  <rect x="580" y="125" width="280" height="55" class="root-node" />
+  <text x="720" y="158" class="root-text">⚡ Вебплатформа «ChargeUA»</text>
+
+  <!-- Trunk Line Down from Root -->
+  <path d="M720 180 L720 230" class="wire-line" />
+  <path d="M220 230 L1220 230" class="wire-line" />
+
+  <!-- Lines to Level 1 Branches -->
+  <path d="M220 230 L220 260" class="wire-line" />
+  <path d="M720 230 L720 260" class="wire-line" />
+  <path d="M1220 230 L1220 260" class="wire-line" />
+
+  <!-- ==================== LEVEL 1 NODES ==================== -->
+  <!-- Node 1.0: Full Map Screen -->
+  <rect x="90" y="260" width="260" height="60" class="level1-node" />
+  <text x="220" y="286" class="level1-text">Повноекранна Карта</text>
+  <text x="220" y="306" class="level1-sub">Сторінка /map</text>
+
+  <!-- Node 2.0: Landing Page (Central Hub) -->
+  <rect x="570" y="260" width="300" height="65" rx="12" fill="#005EC9" stroke="#004BB5" stroke-width="2" />
+  <text x="720" y="290" font-family="Inter" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Головний Лендинг (Hub)</text>
+  <text x="720" y="312" font-family="Inter" font-size="12" font-weight="500" fill="#E0E7FF" text-anchor="middle">Сторінка / (Всі ключові модулі)</text>
+
+  <!-- Node 3.0: Guide Screen -->
+  <rect x="1090" y="260" width="260" height="60" class="level1-node" />
+  <text x="1220" y="286" class="level1-text">Довідник роз'ємів</text>
+  <text x="1220" y="306" class="level1-sub">Сторінка /guide</text>
+
+  <!-- Sub-details for Map (/map) -->
+  <rect x="90" y="340" width="260" height="150" class="sec-box" />
+  <text x="105" y="365" class="sec-title">• Радіальний пошук (1-20 км)</text>
+  <text x="105" y="383" class="sec-desc">Фільтри: потужність, генератор</text>
+  <text x="105" y="408" class="sec-title">• Онлайн-статуси портів</text>
+  <text x="105" y="426" class="sec-desc">CCS2, Type 2, GB/T, CHAdeMO</text>
+  <text x="105" y="451" class="sec-title">• Маршрут в Google Maps / Waze</text>
+  <text x="105" y="469" class="sec-desc">Прямий запуск навігації</text>
+
+  <!-- Sub-details for Guide (/guide) -->
+  <rect x="1090" y="340" width="260" height="150" class="sec-box" />
+  <text x="1105" y="365" class="sec-title">• Стандарти портів EV</text>
+  <text x="1105" y="383" class="sec-desc">Європа (Type 2/CCS2), Китай (GB/T)</text>
+  <text x="1105" y="408" class="sec-title">• Інструкція з безпеки</text>
+  <text x="1105" y="426" class="sec-desc">Фіксація конектора, правила підключення</text>
+  <text x="1105" y="451" class="sec-title">• Таблиця перехідників</text>
+  <text x="1105" y="469" class="sec-desc">Адаптери для американських авто</text>
+
+  <!-- ==================== CENTRAL HUB SECTIONS ==================== -->
+  <!-- Wire down from Landing Hub -->
+  <path d="M720 325 L720 375" class="wire-line" />
+  <path d="M410 375 L1030 375" class="wire-line" />
+
+  <!-- Vertical drops for 3 columns of Landing sections -->
+  <path d="M410 375 L410 405" class="wire-line" />
+  <path d="M720 375 L720 405" class="wire-line" />
+  <path d="M1030 375 L1030 405" class="wire-line" />
+
+  <!-- Column 1: Sections 1-3 -->
+  <g transform="translate(280, 410)">
+    <!-- Sec 1 -->
+    <rect width="260" height="75" class="sec-box" />
+    <rect x="12" y="10" width="30" height="20" class="sec-badge" />
+    <text x="21" y="24" class="sec-badge-text">1.1</text>
+    <text x="50" y="25" class="sec-title">Шапка та навігація (Header)</text>
+    <text x="15" y="45" class="sec-desc">Векторний логотип, швидкі лінки,</text>
+    <text x="15" y="60" class="sec-desc">Live-статус енергосистеми, Quick CTA</text>
+
+    <!-- Sec 2 -->
+    <rect y="90" width="260" height="75" class="sec-box" />
+    <rect x="12" y="100" width="30" height="20" class="sec-badge" />
+    <text x="21" y="114" class="sec-badge-text">1.2</text>
+    <text x="50" y="115" class="sec-title">Головний екран (Hero Section)</text>
+    <text x="15" y="135" class="sec-desc">H1/H2 оффер, Primary/Secondary CTA,</text>
+    <text x="15" y="150" class="sec-desc">4 експрес-фільтри (генератор, DC, вільні)</text>
+
+    <!-- Sec 3 -->
+    <rect y="180" width="260" height="75" class="sec-box" />
+    <rect x="12" y="190" width="30" height="20" class="sec-badge" />
+    <text x="21" y="204" class="sec-badge-text">1.3</text>
+    <text x="50" y="205" class="sec-title">Чому ChargeUA (Features)</text>
+    <text x="15" y="225" class="sec-desc">4 картки переваг: 10+ мереж, чесні ціни,</text>
+    <text x="15" y="240" class="sec-desc">генератори під час блекаутів, аналітика</text>
+  </g>
+
+  <!-- Column 2: Sections 4-6 -->
+  <g transform="translate(590, 410)">
+    <!-- Sec 4 -->
+    <rect width="260" height="75" class="sec-box" fill="#EFF6FF" stroke="#005EC9" stroke-width="1.5" />
+    <rect x="12" y="10" width="30" height="20" fill="#005EC9" rx="4" />
+    <text x="21" y="24" font-family="Inter" font-size="10" font-weight="700" fill="#FFFFFF">1.4</text>
+    <text x="50" y="25" class="sec-title">Інтерактивний Калькулятор</text>
+    <text x="15" y="45" class="sec-desc">Вибір авто (ID.4, Leaf, Model 3),</text>
+    <text x="15" y="60" class="sec-desc">подвійний повзунок (20%→80%), розрахунок грн</text>
+
+    <!-- Sec 5 -->
+    <rect y="90" width="260" height="75" class="sec-box" fill="#EFF6FF" stroke="#005EC9" stroke-width="1.5" />
+    <rect x="12" y="100" width="30" height="20" fill="#005EC9" rx="4" />
+    <text x="21" y="114" font-family="Inter" font-size="10" font-weight="700" fill="#FFFFFF">1.5</text>
+    <text x="50" y="115" class="sec-title">Інтерактивна Карта станцій</text>
+    <text x="15" y="135" class="sec-desc">Маркери з бейджами генераторів,</text>
+    <text x="15" y="150" class="sec-desc">картка станції, кнопка переходу на /map</text>
+
+    <!-- Sec 6 -->
+    <rect y="180" width="260" height="75" class="sec-box" />
+    <rect x="12" y="190" width="30" height="20" class="sec-badge" />
+    <text x="21" y="204" class="sec-badge-text">1.6</text>
+    <text x="50" y="205" class="sec-title">Порівняння тарифів мереж</text>
+    <text x="15" y="225" class="sec-desc">Картки Yasno, EcoFactor, TOKA, GO TO-U</text>
+    <text x="15" y="240" class="sec-desc">з тарифами AC/DC та лінком на мапу</text>
+  </g>
+
+  <!-- Column 3: Sections 7-9 -->
+  <g transform="translate(900, 410)">
+    <!-- Sec 7 -->
+    <rect width="260" height="75" class="sec-box" />
+    <rect x="12" y="10" width="30" height="20" class="sec-badge" />
+    <text x="21" y="24" class="sec-badge-text">1.7</text>
+    <text x="50" y="25" class="sec-title">Покроковий Гайд (3 кроки)</text>
+    <text x="15" y="45" class="sec-desc">1. Знайдіть → 2. Підключіть → 3. Слідкуйте</text>
+    <text x="15" y="60" class="sec-desc">+ Швидкий селектор роз'ємів</text>
+
+    <!-- Sec 8 -->
+    <rect y="90" width="260" height="75" class="sec-box" />
+    <rect x="12" y="100" width="30" height="20" class="sec-badge" />
+    <text x="21" y="114" class="sec-badge-text">1.8</text>
+    <text x="50" y="115" class="sec-title">Відгуки водіїв (Reviews)</text>
+    <text x="15" y="135" class="sec-desc">Соціальний доказ, перевірені коментарі</text>
+    <text x="15" y="150" class="sec-desc">щодо роботи генераторів у блекаути</text>
+
+    <!-- Sec 9 -->
+    <rect y="180" width="260" height="75" class="sec-box" />
+    <rect x="12" y="190" width="30" height="20" class="sec-badge" />
+    <text x="21" y="204" class="sec-badge-text">1.9</text>
+    <text x="50" y="205" class="sec-title">Часті питання (FAQ) + Футер</text>
+    <text x="15" y="225" class="sec-desc">Відповіді на болі водіїв (графіки, роз'єми),</text>
+    <text x="15" y="240" class="sec-desc">підвал: контакти, юридичні дані, соцмережі</text>
+  </g>
+
+  <!-- Cross-link line between Calculator (1.4) and Map (1.5) -->
+  <path d="M720 485 L720 500" stroke="#005EC9" stroke-width="2.5" stroke-dasharray="3" />
+  <rect x="630" y="488" width="180" height="20" rx="4" fill="#005EC9" />
+  <text x="720" y="502" font-family="Inter" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">Безшовний двосторонній зв'язок</text>
+
+  <!-- Bottom UX Audit Summary Banner -->
+  <rect x="40" y="700" width="1360" height="220" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+  <text x="70" y="735" font-family="Inter" font-size="16" font-weight="700" fill="#0F172A">Критичний UX-висновок оптимізації структури:</text>
+
+  <rect x="70" y="755" width="390" height="140" rx="10" fill="#F8FAFC" stroke="#E2E8F0" />
+  <text x="85" y="780" font-family="Inter" font-size="13" font-weight="700" fill="#DC2626">❌ Відкинуто (ШІ-надмірність):</text>
+  <text x="85" y="805" font-family="Inter" font-size="11" fill="#475569">• Обов'язкова реєстрація та особистий кабінет</text>
+  <text x="85" y="825" font-family="Inter" font-size="11" fill="#475569">• Багаторівневі каталоги міст (глибина 4 кліки)</text>
+  <text x="85" y="845" font-family="Inter" font-size="11" fill="#475569">• Розірвані сторінки калькулятора та мапи</text>
+  <text x="85" y="865" font-family="Inter" font-size="11" fill="#475569">• Корпоративна історія компанії</text>
+
+  <rect x="490" y="755" width="410" height="140" rx="10" fill="#ECFDF5" stroke="#10B981" />
+  <text x="505" y="780" font-family="Inter" font-size="13" font-weight="700" fill="#059669">✅ Затверджено (Lean UX підхід):</text>
+  <text x="505" y="805" font-family="Inter" font-size="11" fill="#065F46">• Миттєвий доступ до результатів з 1-ї секунди</text>
+  <text x="505" y="825" font-family="Inter" font-size="11" fill="#065F46">• Карта та калькулятор пов'язані єдиним станом</text>
+  <text x="505" y="845" font-family="Inter" font-size="11" fill="#065F46">• Глибина до цільової дії скорочена до 1 кліка</text>
+  <text x="505" y="865" font-family="Inter" font-size="11" fill="#065F46">• Фокус на блекаутах: бейдж 'З генератором'</text>
+
+  <rect x="930" y="755" width="440" height="140" rx="10" fill="#EFF6FF" stroke="#005EC9" />
+  <text x="945" y="780" font-family="Inter" font-size="13" font-weight="700" fill="#005EC9">🎯 Відповідність User Flows:</text>
+  <text x="945" y="805" font-family="Inter" font-size="11" fill="#1E40AF">• Сценарій 1 (Екстрений пошук): Секції 1.2 → 1.5 (1 клік)</text>
+  <text x="945" y="825" font-family="Inter" font-size="11" fill="#1E40AF">• Сценарій 2 (Калькулятор і тарифи): Секції 1.4 → 1.6 (1 клік)</text>
+  <text x="945" y="845" font-family="Inter" font-size="11" fill="#1E40AF">• Сценарій 3 (Онбординг новачка): Секція 1.7 (3 кроки)</text>
+  <text x="945" y="865" font-family="Inter" font-size="11" fill="#1E40AF">• Повна карта (/map) завжди під рукою у шапці</text>
+</svg>

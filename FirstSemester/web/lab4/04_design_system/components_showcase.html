@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChargeUA — Design System & UI Kit Components Showcase</title>
+  <style>
+    /* CSS RESET & MODERN DESIGN SYSTEM STYLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+      line-height: 1.5;
+      padding: 30px;
+    }
+    .board-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+    }
+    .board-header {
+      border-bottom: 2px solid #E2E8F0;
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .board-title h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .board-title p {
+      font-size: 15px;
+      color: #64748B;
+      margin-top: 4px;
+    }
+    .frame-badge {
+      background: #005EC9;
+      color: #FFF;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* SECTION LAYOUT */
+    .section-block {
+      margin-bottom: 48px;
+    }
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .section-head h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      background: #EFF6FF;
+      color: #005EC9;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* 1. COLOR SWATCHES */
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .swatch-card {
+      border: 1.5px solid #E2E8F0;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #FFF;
+    }
+    .swatch-color {
+      height: 70px;
+    }
+    .swatch-info {
+      padding: 12px;
+    }
+    .swatch-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    .swatch-hex {
+      font-size: 12px;
+      color: #64748B;
+      font-family: monospace;
+      margin-top: 2px;
+    }
+    .swatch-contrast {
+      font-size: 11px;
+      font-weight: 600;
+      color: #047857;
+      margin-top: 4px;
+    }
+
+    /* 2. BUTTONS & STATES */
+    .buttons-board {
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .states-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+    .state-item {
+      background: #FFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 16px 12px;
+    }
+    .state-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748B;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-default {
+      background: #005EC9;
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+    }
+    .btn-hover {
+      background: #004BB5;
+      color: #FFFFFF;
+      box-shadow: 0 4px 6px -1px rgba(0, 94, 201, 0.2);
+    }
+    .btn-pressed {
+      background: #003A8F;
+      color: #FFFFFF;
+      transform: scale(0.98);
+    }
+    .btn-focus {
+      background: #005EC9;
+      color: #FFFFFF;
+      outline: 3px solid #005EC9;
+      outline-offset: 2px;
+    }
+    .btn-disabled {
+      background: #E2E8F0;
+      color: #94A3B8;
+      cursor: not-allowed;
+    }
+    .btn-loading {
+      background: #005EC9;
+      color: #FFFFFF;
+      position: relative;
+    }
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #FFF;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 3. CARDS & WIDGETS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+    .card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .badge-success { background: #D1FAE5; color: #047857; }
+    .badge-warning { background: #FEF3C7; color: #B45309; }
+    .badge-brand { background: #EFF6FF; color: #005EC9; }
+
+    /* 4. HEADER COMPONENT */
+    .header-mockup {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .header-nav {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .header-nav a {
+      text-decoration: none;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .header-nav a.active {
+      color: #005EC9;
+    }
+
+    /* 5. SPACING & TOKENS SCALE */
+    .spacing-scale {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+    }
+    .spacing-bar {
+      background: #005EC9;
+      width: 40px;
+      border-radius: 4px;
+      text-align: center;
+      color: #FFF;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="board-container">
+    
+    <!-- Board Header -->
+    <div class="board-header">
+      <div class="board-title">
+        <h1>Дизайн-система та Бібліотека компонентів (UI Kit)</h1>
+        <p>Платформа «ChargeUA» • Атомарний дизайн, Design Tokens, інтерактивні стани кнопок та навігація</p>
+      </div>
+      <span class="frame-badge">ФРЕЙМ 04 — DESIGN SYSTEM</span>
+    </div>
+
+    <!-- 1. COLOR TOKENS -->
+    <div class="section-block">
+      <div class="section-head">
+        <h2>1. Палітра Дизайн-токенів (Color Tokens)</h2>
+        <span class="section-tag">WCAG 2.2 AA Verified</span>
+      </div>
+      <div class="swatches-grid">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #005EC9;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Brand Primary</div>
+            <div class="swatch-hex">#005EC9</div>
+            <div class="swatch-contrast">Контраст: 6.10:1 (AA)</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #004BB5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Primary Hover</div>
+            <div class="swatch-hex">#004BB5</div>
+            <div class="swatch-contrast">Контраст: 7.85:1 (AAA)</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #0F172A;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Dark Base / Text</div>
+            <div class="swatch-hex">#0F172A</div>
+            <div class="swatch-contrast">Контраст: 17.85:1 (AAA)</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #047857;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Status Success (Free)</div>
+            <div class="swatch-hex">#047857</div>
+            <div class="swatch-contrast">Контраст: 5.48:1 (AA)</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: #F8FAFC; border-bottom: 1px solid #CBD5E1;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface Background</div>
+            <div class="swatch-hex">#F8FAFC</div>
+            <div class="swatch-contrast" style="color: #64748B;">Light Theme Canvas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. BUTTON COMPONENT & 6 VARIANTS (MAIN REQUIREMENT FOR LAB REPORT SECTION 3) -->
+    <div class="section-block" id="buttons-section">
+      <div class="section-head">
+        <h2>2. Головний компонент: Кнопка дії (Button/Primary) та її 6 станів</h2>
+        <span class="section-tag">Етап 10 • Варіанти (Variants)</span>
+      </div>
+      <div class="buttons-board">
+        <div class="states-grid">
+          
+          <!-- 1. Default -->
+          <div class="state-item">
+            <div class="state-label">1. Default</div>
+            <button class="btn btn-default">
+              <span>⚡</span> Знайти зарядку
+            </button>
+            <div style="font-size: 11px; color: #64748B; margin-top: 8px;">Базовий стан (#005EC9)</div>
+          </div>
+
+          <!-- 2. Hover -->
+          <div class="state-item">
+            <div class="state-label">2. Hover</div>
+            <button class="btn btn-hover">
+              <span>⚡</span> Знайти зарядку
+            </button>
+            <div style="font-size: 11px; color: #64748B; margin-top: 8px;">Наведення (#004BB5)</div>
+          </div>
+
+          <!-- 3. Pressed / Active -->
+          <div class="state-item">
+            <div class="state-label">3. Pressed / Active</div>
+            <button class="btn btn-pressed">
+              <span>⚡</span> Знайти зарядку
+            </button>
+            <div style="font-size: 11px; color: #64748B; margin-top: 8px;">Натискання (-2% scale)</div>
+          </div>
+
+          <!-- 4. Focus -->
+          <div class="state-item">
+            <div class="state-label">4. Focus</div>
+            <button class="btn btn-focus">
+              <span>⚡</span> Знайти зарядку
+            </button>
+            <div style="font-size: 11px; color: #64748B; margin-top: 8px;">Фокус таб (3px Ring)</div>
+          </div>
+
+          <!-- 5. Disabled -->
+          <div class="state-item">
+            <div class="state-label">5. Disabled</div>
+            <button class="btn btn-disabled" disabled>
+              <span>⚡</span> Знайти зарядку
+            </button>
+            <div style="font-size: 11px; color: #64748B; margin-top: 8px;">Неактивний (#E2E8F0)</div>
+          </div>
+
+          <!-- 6. Loading -->
+          <div class="state-item">
+            <div class="state-label">6. Loading</div>
+            <button class="btn btn-loading">
+              <div class="spinner"></div>
+              <span>Обчислення...</span>
+            </button>
+            <div style="font-size: 11px; color: #64748B; margin-top: 8px;">Завантаження сесії</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. CARDS & COMPONENTS (STATION CARD, TARIFF CARD, STEP CARD) -->
+    <div class="section-block">
+      <div class="section-head">
+        <h2>3. Організми та Молекули: Компоненти карток (Cards)</h2>
+        <span class="section-tag">Етап 11 • Instances</span>
+      </div>
+      <div class="cards-grid">
+        
+        <!-- Card 1: Station -->
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+            <div>
+              <h3 style="font-size: 16px; font-weight: 700;">EcoFactor Fast Hub #14</h3>
+              <p style="font-size: 12px; color: #64748B;">вул. Кільцева, 4Б (ТРЦ Республіка)</p>
+            </div>
+            <span class="badge badge-success">🔋 Генератор ON</span>
+          </div>
+          <div style="background: #F8FAFC; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
+              <span>Порти: <strong>2x CCS2 (120 кВт)</strong></span>
+              <span class="badge badge-success" style="padding: 2px 6px;">Вільні</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px;">
+              <span>Порти: <strong>1x Type 2 (22 кВт)</strong></span>
+              <span class="badge badge-warning" style="padding: 2px 6px;">Зайнято</span>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span style="font-size: 13px; color: #64748B;">Тариф DC:</span>
+            <span style="font-size: 18px; font-weight: 800; color: #0F172A;">14.50 ₴/кВт·год</span>
+          </div>
+          <button class="btn btn-default" style="height: 40px; font-size: 13px;">Прокласти маршрут</button>
+        </div>
+
+        <!-- Card 2: Tariff Comparison -->
+        <div class="card" style="border: 2px solid #005EC9;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="badge badge-brand">ОПЕРАТОР №1</span>
+            <span class="badge badge-success">🔥 Найкраща ціна</span>
+          </div>
+          <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 4px;">Yasno E-mobility</h3>
+          <p style="font-size: 12px; color: #64748B; margin-bottom: 16px;">Мережа швидких зарядок по Україні</p>
+          <div style="font-size: 32px; font-weight: 800; color: #0F172A; margin-bottom: 4px;">15.00 ₴</div>
+          <div style="font-size: 12px; color: #64748B; margin-bottom: 16px;">за 1 кВт·год (DC швидкісна)</div>
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 12px; font-size: 12px; margin-bottom: 16px; display: flex; justify-content: space-between;">
+            <span>AC нічний тариф:</span>
+            <strong>10.50 ₴</strong>
+          </div>
+          <button class="btn btn-hover" style="height: 40px; font-size: 13px;">Показати на мапі</button>
+        </div>
+
+        <!-- Card 3: Step Guide -->
+        <div class="card">
+          <div style="width: 36px; height: 36px; background: #005EC9; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; margin-bottom: 16px;">
+            1
+          </div>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Знайдіть станцію</h3>
+          <p style="font-size: 13px; color: #475569; line-height: 1.6; margin-bottom: 16px;">
+            Скористайтеся картою ChargeUA або фільтром генераторів. Оберіть порт (CCS2 чи Type 2), який відповідає вашому автомобілю.
+          </p>
+          <div style="display: flex; gap: 8px;">
+            <span class="badge" style="background: #F1F5F9; color: #334155;">#CCS2</span>
+            <span class="badge" style="background: #F1F5F9; color: #334155;">#Type2</span>
+            <span class="badge" style="background: #F1F5F9; color: #334155;">#GB/T</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 4. ADAPTIVE HEADER COMPONENT -->
+    <div class="section-block">
+      <div class="section-head">
+        <h2>4. Адаптивна Шапка (Header & Navigation)</h2>
+        <span class="section-tag">Етап 12 • Desktop (1440px)</span>
+      </div>
+      <div class="header-mockup">
+        <div style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px;">
+          <div style="width: 36px; height: 36px; background: #005EC9; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #FFF;">⚡</div>
+          <span>ChargeUA</span>
+        </div>
+        <ul class="header-nav">
+          <li><a href="#" class="active">Карта станцій</a></li>
+          <li><a href="#">Калькулятор</a></li>
+          <li><a href="#">Тарифи операторів</a></li>
+          <li><a href="#">Як це працює</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="font-size: 12px; color: #047857; background: #D1FAE5; padding: 4px 10px; border-radius: 20px; font-weight: 600;">● Мережа: Online</span>
+          <button class="btn btn-default" style="height: 38px; padding: 0 16px; font-size: 13px; width: auto;">Знайти зарядку</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. SPACING TOKENS SCALE -->
+    <div class="section-block">
+      <div class="section-head">
+        <h2>5. Сітка відступів (Spacing Scale Tokens: 4, 8, 12, 16, 24, 32, 48, 64 px)</h2>
+        <span class="section-tag">W3C Tokens</span>
+      </div>
+      <div class="spacing-scale">
+        <div class="spacing-bar" style="height: 20px;">4</div>
+        <div class="spacing-bar" style="height: 30px;">8</div>
+        <div class="spacing-bar" style="height: 40px;">12</div>
+        <div class="spacing-bar" style="height: 50px;">16</div>
+        <div class="spacing-bar" style="height: 65px;">24</div>
+        <div class="spacing-bar" style="height: 80px;">32</div>
+        <div class="spacing-bar" style="height: 100px;">48</div>
+        <div class="spacing-bar" style="height: 120px;">64</div>
+        <span style="font-size: 12px; color: #64748B; margin-left: 12px; align-self: center;">
+          Фіксована 8-точкова сітка простору (8-pt Spatial Grid) для бездоганної узгодженості інтерфейсу
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+'[DCInstall]' | Out-File C:\unattend.txt -Encoding ASCII
+'ReplicaOrNewDomain=Domain' | Out-File C:\unattend.txt -Append -Encoding ASCII
+'NewDomain=Forest' | Out-File C:\unattend.txt -Append -Encoding ASCII
+'NewDomainDNSName=office.com' | Out-File C:\unattend.txt -Append -Encoding ASCII
+'DomainNetbiosName=OFFICE' | Out-File C:\unattend.txt -Append -Encoding ASCII
+'AutoConfigDNS=Yes' | Out-File C:\unattend.txt -Append -Encoding ASCII
+'RebootOnCompletion=Yes' | Out-File C:\unattend.txt -Append -Encoding ASCII
+'SafeModeAdminPassword=Pa$$word' | Out-File C:\unattend.txt -Append -Encoding ASCII
+Get-Content C:\unattend.txt
+dcpromo.exe /unattend:C:\unattend.txt

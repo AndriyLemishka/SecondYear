@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  body { background: #F8FAFC; padding: 30px; width: 1291px; }
+  .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 20px; }
+  .box { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
+  .swatch { height: 110px; }
+  .info { padding: 12px; }
+  .name { font-size: 13px; font-weight: 700; color: #0F172A; margin-bottom: 2px; }
+  .hex { font-size: 12px; font-weight: 600; color: #64748B; font-family: monospace; }
+  .role { font-size: 10.5px; color: #94A3B8; margin-top: 4px; }
+</style></head><body>
+  <div style="font-size:22px; font-weight:800;">Колірні стилі та дизайн-токени ChargeUA (Figma Color Variables)</div>
+  <div style="font-size:14px; color:#64748B; margin-top:4px;">Семантична палітра бренду, узгоджена з результатами Лабораторної роботи №3</div>
+  <div class="grid">
+    <div class="box">
+      <div class="swatch" style="background:#005EC9;"></div>
+      <div class="info"><div class="name">Primary</div><div class="hex">#005EC9</div><div class="role">Основні CTA, активні стани</div></div>
+    </div>
+    <div class="box">
+      <div class="swatch" style="background:#004BB5;"></div>
+      <div class="info"><div class="name">Primary Hover</div><div class="hex">#004BB5</div><div class="role">Стан наведення кнопок</div></div>
+    </div>
+    <div class="box">
+      <div class="swatch" style="background:#00E5FF;"></div>
+      <div class="info"><div class="name">Accent Cyan</div><div class="hex">#00E5FF</div><div class="role">Неонові індикатори, акценти</div></div>
+    </div>
+    <div class="box">
+      <div class="swatch" style="background:#0F172A;"></div>
+      <div class="info"><div class="name">Dark Navy</div><div class="hex">#0F172A</div><div class="role">Основні тексти, Topbar, Footer</div></div>
+    </div>
+    <div class="box">
+      <div class="swatch" style="background:#047857;"></div>
+      <div class="info"><div class="name">Success Green</div><div class="hex">#047857</div><div class="role">Статус «🔋 Генератор ON»</div></div>
+    </div>
+    <div class="box">
+      <div class="swatch" style="background:#F8FAFC; border-bottom:1px solid #E2E8F0;"></div>
+      <div class="info"><div class="name">Surface Bg</div><div class="hex">#F8FAFC</div><div class="role">Фон карток та секцій</div></div>
+    </div>
+  </div>
+</body></html>

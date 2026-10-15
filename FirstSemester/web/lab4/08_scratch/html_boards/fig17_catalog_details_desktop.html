@@ -1,0 +1,283 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { background: #FFFFFF; color: #0F172A; -webkit-font-smoothing: antialiased; }
+</style>
+
+<style>
+  body { width: 1440px; background: #FFFFFF; padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .page-box { background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+  .navbar { height: 50px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E2E8F0; background: #FFF; }
+  .nav-links { display: flex; gap: 18px; font-size: 11px; font-weight: 600; color: #475569; }
+  .btn-sm { padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; }
+  .btn-pri { background: #005EC9; color: #FFF; border: none; }
+  .btn-out { border: 1px solid #CBD5E1; background: #FFF; }
+
+  .bread { font-size: 11px; color: #94A3B8; margin-bottom: 12px; }
+  .title-h1 { font-size: 22px; font-weight: 800; color: #0F172A; margin-bottom: 4px; }
+  .sub-p { font-size: 12px; color: #64748B; margin-bottom: 16px; }
+
+  .search-row { display: flex; gap: 10px; margin-bottom: 14px; }
+  .search-in { flex: 1; height: 36px; border: 1.5px solid #CBD5E1; border-radius: 6px; padding: 0 12px; font-size: 12px; }
+  .chips-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .chip { padding: 4px 10px; border-radius: 12px; border: 1px solid #CBD5E1; font-size: 10px; font-weight: 600; background: #FFF; }
+  .chip.active { background: #005EC9; color: #FFF; border-color: #005EC9; }
+  .chip-grn { background: #D1FAE5; color: #065F46; font-weight: 700; border-color: #34D399; }
+
+  .grid-8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+  .card-st { background: #FFF; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; font-size: 10px; }
+  .st-img { width: 100%; height: 75px; object-fit: cover; }
+  .st-body { padding: 8px; }
+  .st-title { font-weight: 800; color: #0F172A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .st-addr { color: #64748B; font-size: 9px; margin: 2px 0 6px; }
+  .st-badge { display: inline-block; padding: 2px 5px; border-radius: 4px; font-weight: 700; font-size: 9px; }
+  .badge-g { background: #D1FAE5; color: #065F46; }
+
+  .pag-bar { display: flex; justify-content: center; gap: 6px; margin: 14px 0 20px; font-size: 11px; font-weight: 600; align-items: center; }
+  .pag-btn { width: 24px; height: 24px; border: 1px solid #CBD5E1; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+
+  .footer-mini { background: #0F172A; color: #FFF; padding: 20px 24px 14px; font-size: 10px; }
+  .f-row { display: flex; justify-content: space-between; margin-bottom: 14px; }
+  .f-cols { display: flex; gap: 30px; }
+  .f-col div:first-child { font-weight: 700; color: #FFF; margin-bottom: 6px; }
+  .f-col div { color: #94A3B8; margin-bottom: 3px; font-size: 9px; }
+  .f-bot { border-top: 1px solid #1E293B; padding-top: 8px; font-size: 9px; color: #64748B; }
+
+  /* DETAILS SPECIFIC */
+  .det-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; margin-bottom: 22px; }
+  .det-img { width: 100%; height: 210px; border-radius: 10px; object-fit: cover; }
+  .spec-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; margin: 10px 0; font-size: 11px; }
+  .spec-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+  .btn-full { width: 100%; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 12px; cursor: pointer; text-align: center; }
+</style></head><body>
+
+  <!-- LEFT: CATALOG DESKTOP 1440 -->
+  <div class="page-box">
+    <div class="navbar">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:24px; height:24px;">
+        <span style="font-size:16px; font-weight:800; color:#005EC9;">ChargeUA</span>
+      </div>
+      <div class="nav-links">
+        <span style="color:#005EC9;">Каталог</span>
+        <span>Калькулятор</span>
+        <span>Карта станцій</span>
+        <span>Тарифи</span>
+        <span>Для бізнесу</span>
+      </div>
+      <button class="btn-sm btn-pri">Увійти</button>
+    </div>
+
+    <div style="padding:20px 24px;">
+      <div class="bread">Головна / Каталог станцій</div>
+      <h1 class="title-h1">Каталог зарядних станцій ChargeUA</h1>
+      <p class="sub-p">480+ станцій онлайн по Україні з живою телеметрією та захистом від блекаутів</p>
+
+      <div class="search-row">
+        <input type="text" placeholder="Пошук станції за містом, адресою чи трасою (напр. Київ, Поділ)..." class="search-in" value="Київ, Поділ">
+        <button class="btn-sm btn-pri" style="padding:0 16px;">Знайти</button>
+      </div>
+
+      <div class="chips-row">
+        <span class="chip active">Всі типи</span>
+        <span class="chip">Швидкісні CCS2 (>100 кВт)</span>
+        <span class="chip">Type 2 (22 кВт)</span>
+        <span class="chip chip-grn">🔋 З генератором</span>
+        <span class="chip">Вільні зараз</span>
+      </div>
+
+      <div class="grid-8">
+        <div class="card-st">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="st-img">
+          <div class="st-body">
+            <div class="st-title">Хаб «Київ-Поділ»</div>
+            <div class="st-addr">120 кВт CCS2 · 14.50 ₴</div>
+            <div class="st-badge badge-g">● Вільний (3/4)</div>
+          </div>
+        </div>
+        <div class="card-st">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="st-img">
+          <div class="st-body">
+            <div class="st-title">Хаб «Арена Львів»</div>
+            <div class="st-addr">160 кВт CCS2 · 15.00 ₴</div>
+            <div class="st-badge badge-g">🔋 Генератор ON</div>
+          </div>
+        </div>
+        <div class="card-st">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_generator_blackout.jpg" class="st-img">
+          <div class="st-body">
+            <div class="st-title">ЕкоХаб «Тернопіль»</div>
+            <div class="st-addr">75 кВт CCS2 · 13.80 ₴</div>
+            <div class="st-badge badge-g">● Вільний (2/2)</div>
+          </div>
+        </div>
+        <div class="card-st">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="st-img">
+          <div class="st-body">
+            <div class="st-title">Хаб «Одеса-Аркадія»</div>
+            <div class="st-addr">120 кВт CCS2 · 14.80 ₴</div>
+            <div class="st-badge badge-g">● Вільний (4/4)</div>
+          </div>
+        </div>
+        <div class="card-st">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="st-img">
+          <div class="st-body">
+            <div class="st-title">Хаб «Дніпро-Центр»</div>
+            <div class="st-addr">160 кВт CCS2 · 15.20 ₴</div>
+            <div class="st-badge badge-g">🔋 Генератор ON</div>
+          </div>
+        </div>
+        <div class="card-st">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="st-img">
+          <div class="st-body">
+            <div class="st-title">Хаб «Вінниця»</div>
+            <div class="st-addr">80 кВт CCS2 · 14.00 ₴</div>
+            <div class="st-badge badge-g">● Вільний (2/3)</div>
+          </div>
+        </div>
+        <div class="card-st">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="st-img">
+          <div class="st-body">
+            <div class="st-title">Хаб «Івано-Франківськ»</div>
+            <div class="st-addr">120 кВт CCS2 · 14.50 ₴</div>
+            <div class="st-badge badge-g">● Вільний (3/4)</div>
+          </div>
+        </div>
+        <div class="card-st">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_generator_blackout.jpg" class="st-img">
+          <div class="st-body">
+            <div class="st-title">Хаб «Житомир-Траса»</div>
+            <div class="st-addr">160 кВт CCS2 · 14.90 ₴</div>
+            <div class="st-badge badge-g">🔋 Генератор ON</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pag-bar">
+        <div class="pag-btn">&lt;</div>
+        <div class="pag-btn" style="background:#005EC9; color:#FFF;">1</div>
+        <div class="pag-btn">2</div>
+        <div class="pag-btn">3</div>
+        <div class="pag-btn">&gt;</div>
+        <span style="color:#64748B; margin-left:10px;">Сторінка 1 з 12</span>
+      </div>
+    </div>
+
+    <div class="footer-mini">
+      <div class="f-row">
+        <div>
+          <div style="font-weight:800; font-size:13px; color:#FFF; margin-bottom:4px;">ChargeUA</div>
+          <div style="color:#94A3B8;">Національний агрегатор зарядних станцій</div>
+        </div>
+        <div class="f-cols">
+          <div class="f-col"><div>Платформа</div><div>Про нас</div><div>Тарифи</div></div>
+          <div class="f-col"><div>Підтримка</div><div>Відгуки</div><div>Контакти</div></div>
+        </div>
+      </div>
+      <div class="f-bot">© 2026 ChargeUA · Лемішка Андрій, ПП-24</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: STATION DETAILS DESKTOP 1440 -->
+  <div class="page-box">
+    <div class="navbar">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:24px; height:24px;">
+        <span style="font-size:16px; font-weight:800; color:#005EC9;">ChargeUA</span>
+      </div>
+      <div class="nav-links">
+        <span>Каталог</span>
+        <span>Калькулятор</span>
+        <span>Карта станцій</span>
+        <span>Тарифи</span>
+        <span>Для бізнесу</span>
+      </div>
+      <button class="btn-sm btn-pri">Увійти</button>
+    </div>
+
+    <div style="padding:20px 24px;">
+      <div class="bread">Головна / Каталог станцій / Хаб «Київ-Поділ»</div>
+
+      <div class="det-hero">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="det-img">
+        <div>
+          <h1 style="font-size:20px; font-weight:800; color:#0F172A; margin-bottom:4px;">Хаб «Київ-Поділ» · 120 кВт CCS2</h1>
+          <div style="font-size:11px; color:#64748B; margin-bottom:8px;">м. Київ, вул. Петра Сагайдачного, 12 · EcoFactor Network</div>
+          <div style="display:flex; gap:6px; margin-bottom:10px;">
+            <span class="st-badge badge-g">● В мережі (Онлайн)</span>
+            <span class="st-badge badge-g">🔋 Дизель-генератор 160 кВА активний</span>
+          </div>
+          <div class="spec-box">
+            <div class="spec-row"><span>Вільні роз'єми:</span><strong style="color:#005EC9;">3 з 4 (2x CCS2, 1x Type 2)</strong></div>
+            <div class="spec-row"><span>Тариф:</span><strong>14.50 ₴/кВт·год</strong></div>
+            <div class="spec-row"><span>Потужність DC:</span><strong>120 кВт (до 300А)</strong></div>
+          </div>
+          <button class="btn-full btn-pri" style="margin-bottom:8px;">Прокласти маршрут (Waze / Google Maps)</button>
+          <button class="btn-full btn-out" style="color:#0F172A;">Помічник ChargeUA: розрахувати час</button>
+        </div>
+      </div>
+
+      <div style="margin-bottom:18px;">
+        <div style="font-weight:800; font-size:14px; color:#0F172A; margin-bottom:10px;">Схожі швидкісні станції поруч</div>
+        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:8px;">
+          <div class="card-st">
+            <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="st-img" style="height:60px;">
+            <div class="st-body">
+              <div class="st-title">Хаб «Арена»</div>
+              <div class="st-addr">160 кВт · 15.00 ₴</div>
+            </div>
+          </div>
+          <div class="card-st">
+            <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_generator_blackout.jpg" class="st-img" style="height:60px;">
+            <div class="st-body">
+              <div class="st-title">ЕкоХаб «Тернопіль»</div>
+              <div class="st-addr">75 кВт · 13.80 ₴</div>
+            </div>
+          </div>
+          <div class="card-st">
+            <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="st-img" style="height:60px;">
+            <div class="st-body">
+              <div class="st-title">Хаб «Одеса»</div>
+              <div class="st-addr">120 кВт · 14.80 ₴</div>
+            </div>
+          </div>
+          <div class="card-st">
+            <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="st-img" style="height:60px;">
+            <div class="st-body">
+              <div class="st-title">Хаб «Дніпро»</div>
+              <div class="st-addr">160 кВт · 15.20 ₴</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:12px; margin-bottom:18px;">
+        <div style="font-weight:700; font-size:12px; color:#0F172A; margin-bottom:4px;">Питання щодо станції?</div>
+        <div style="font-size:10px; color:#64748B; margin-bottom:8px;">Диспетчер підтримки відповість протягом 2 хвилин</div>
+        <div style="display:flex; gap:8px;">
+          <input type="text" placeholder="Ваш номер телефону або запитання..." style="flex:1; height:32px; border:1px solid #CBD5E1; border-radius:6px; padding:0 10px; font-size:11px;">
+          <button class="btn-sm btn-pri">Надіслати</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-mini">
+      <div class="f-row">
+        <div>
+          <div style="font-weight:800; font-size:13px; color:#FFF; margin-bottom:4px;">ChargeUA</div>
+          <div style="color:#94A3B8;">Національний агрегатор зарядних станцій</div>
+        </div>
+        <div class="f-cols">
+          <div class="f-col"><div>Платформа</div><div>Про нас</div><div>Тарифи</div></div>
+          <div class="f-col"><div>Підтримка</div><div>Відгуки</div><div>Контакти</div></div>
+        </div>
+      </div>
+      <div class="f-bot">© 2026 ChargeUA · Лемішка Андрій, ПП-24</div>
+    </div>
+  </div>
+
+</body></html>

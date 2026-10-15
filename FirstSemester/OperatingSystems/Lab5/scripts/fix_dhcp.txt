@@ -1,0 +1,12 @@
+Set-Service DhcpServer -StartupType Automatic
+Start-Service DhcpServer
+Get-Service DhcpServer
+netsh dhcp server add scope 192.168.1.0 255.255.255.0 "Office" "Office Scope"
+netsh dhcp server scope 192.168.1.0 add iprange 192.168.1.1 192.168.1.200
+netsh dhcp server scope 192.168.1.0 add excluderange 192.168.1.150 192.168.1.170
+netsh dhcp server scope 192.168.1.0 add excluderange 192.168.1.2 192.168.1.3
+netsh dhcp server scope 192.168.1.0 set optionvalue 003 IPADDRESS 192.168.1.4
+netsh dhcp server scope 192.168.1.0 set optionvalue 006 IPADDRESS 192.168.1.5
+netsh dhcp server scope 192.168.1.0 add reservedip 192.168.1.4 1a2b3c4d5e6f "Gateway" "Gateway" "BOTH"
+netsh dhcp server scope 192.168.1.0 set state 1
+netsh dhcp server 192.168.1.5 show scope

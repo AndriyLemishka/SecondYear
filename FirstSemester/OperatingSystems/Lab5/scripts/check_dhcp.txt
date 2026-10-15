@@ -1,0 +1,2 @@
+sc query DhcpServer
+netsh dhcp show server

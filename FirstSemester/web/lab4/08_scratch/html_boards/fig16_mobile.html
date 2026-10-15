@@ -1,0 +1,165 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { background: #FFFFFF; color: #0F172A; -webkit-font-smoothing: antialiased; }
+</style>
+
+<style>
+  body { width: 1600px; background: #F1F5F9; padding: 20px; }
+  .board-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: start; }
+  .col-frame { background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+  
+  .m-topbar { background: #0F172A; color: #FFF; padding: 6px 14px; font-size: 10px; font-weight: 500; display: flex; justify-content: space-between; }
+  .m-head { padding: 12px 14px; border-bottom: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between; }
+  .m-hero { padding: 16px 14px; }
+  .m-h1 { font-size: 20px; font-weight: 800; line-height: 1.25; margin: 8px 0 6px; color: #0F172A; }
+  .m-p { font-size: 12px; color: #64748B; line-height: 1.45; margin-bottom: 12px; }
+  .m-btn-blue { background: #005EC9; color: #FFF; border: none; padding: 9px 14px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; }
+  
+  .m-calc-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px; margin: 12px 14px; }
+  .m-step { padding: 10px 12px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; margin-bottom: 8px; }
+  .m-hub { padding: 12px 14px; border-bottom: 1px solid #E2E8F0; }
+  .m-hub-img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
+  .m-gen { background: #0F172A; color: #FFF; padding: 14px; }
+  .m-rev { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+  .m-footer { background: #0F172A; color: #FFF; padding: 18px 14px; font-size: 10px; }
+  
+  .m-botnav { background: #FFFFFF; border-top: 1px solid #E2E8F0; padding: 10px 14px; display: flex; justify-content: space-around; font-size: 11px; font-weight: 700; }
+</style></head><body>
+<div class="board-cols">
+  <!-- COL 1: TOPBAR + HEADER + HERO + BENEFITS -->
+  <div class="col-frame">
+    <div class="m-topbar">
+      <span>● 480+ станцій онлайн</span>
+      <span>0 800 300 400</span>
+    </div>
+    <div class="m-head">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:20px; height:20px;">
+        <span style="font-weight:800; font-size:15px; color:#005EC9;">ChargeUA</span>
+      </div>
+      <div style="font-size:18px; font-weight:700;">☰</div>
+    </div>
+    <div class="m-hero">
+      <div style="font-size:9px; font-weight:800; color:#005EC9;">⚡ НАЦІОНАЛЬНИЙ АГРЕГАТОР</div>
+      <div class="m-h1">Заряджайте авто без стресу</div>
+      <div class="m-p">Усі мережі України на одній карті з фільтром генераторів у блекаути.</div>
+      <button class="m-btn-blue" style="margin-bottom:12px;">Розрахувати зарядку →</button>
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/hero_bg.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:8px;">
+    </div>
+    <div style="padding:12px 14px; border-top:1px solid #E2E8F0; font-size:11px; line-height:1.6; color:#334155;">
+      <div>✓ Точний калькулятор витрат</div>
+      <div>✓ Live-карта 480+ станцій зі статусом</div>
+      <div>✓ 100% захист генераторами у блекаути</div>
+    </div>
+  </div>
+
+  <!-- COL 2: CALCULATOR + STEPS -->
+  <div class="col-frame">
+    <div style="padding:12px 14px; border-bottom:1px solid #E2E8F0; font-weight:800; font-size:14px;">
+      Калькулятор вартості
+    </div>
+    <div class="m-calc-box">
+      <div style="font-size:12px; font-weight:700; color:#005EC9;">VW ID.4 (77 кВт·год) · 20% → 80%</div>
+      <div style="font-size:20px; font-weight:800; color:#0F172A; margin:6px 0;">652.50 ₴</div>
+      <div style="font-size:11px; color:#64748B; margin-bottom:10px;">~28 хв на DC 120 кВт · 46.2 кВт·год</div>
+      <button class="m-btn-blue">Знайти найближчий хаб</button>
+    </div>
+
+    <div style="padding:0 14px 14px;">
+      <div style="font-weight:800; font-size:14px; margin-bottom:10px;">Як зарядитися за 3 кроки:</div>
+      <div class="m-step">
+        <div style="font-weight:800; font-size:12px; color:#005EC9;">1. Знайдіть станцію на карті</div>
+        <div style="font-size:10px; color:#64748B;">Фільтр за потужністю та світлом.</div>
+      </div>
+      <div class="m-step">
+        <div style="font-weight:800; font-size:12px; color:#005EC9;">2. Підключіть конектор CCS2</div>
+        <div style="font-size:10px; color:#64748B;">Вставте кабель у порт електромобіля.</div>
+      </div>
+      <div class="m-step">
+        <div style="font-weight:800; font-size:12px; color:#005EC9;">3. Оплатіть у 1 клік</div>
+        <div style="font-size:10px; color:#64748B;">Apple Pay або банківська картка.</div>
+      </div>
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_step_cable.jpg" style="width:100%; height:120px; object-fit:cover; border-radius:8px; margin-top:4px;">
+    </div>
+  </div>
+
+  <!-- COL 3: POPULAR HUBS + GENERATOR -->
+  <div class="col-frame">
+    <div style="padding:12px 14px; border-bottom:1px solid #E2E8F0; font-weight:800; font-size:14px;">
+      Популярні хаби мережі:
+    </div>
+
+    <div class="m-hub">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="m-hub-img">
+      <div style="font-weight:800; font-size:13px;">Хаб «Київ-Поділ» · 120 кВт</div>
+      <div style="font-size:11px; color:#64748B; margin:2px 0 6px;">вул. Сагайдачного, 12 · 14.50 ₴</div>
+      <div style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:9px; font-weight:700; background:#D1FAE5; color:#065F46; margin-bottom:8px;">🔋 Генератор ON · Вільний (3/4)</div>
+      <button class="m-btn-blue">Прокласти маршрут</button>
+    </div>
+
+    <div class="m-hub">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="m-hub-img">
+      <div style="font-weight:800; font-size:13px;">Хаб «Арена Львів» · 160 кВт</div>
+      <div style="font-size:11px; color:#64748B; margin:2px 0 6px;">вул. Стрийська, 199 · 15.00 ₴</div>
+      <div style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:9px; font-weight:700; background:#D1FAE5; color:#065F46; margin-bottom:8px;">🔋 Сонячний навіс + Дизель</div>
+      <button class="m-btn-blue">Прокласти маршрут</button>
+    </div>
+
+    <div class="m-gen">
+      <div style="font-size:9px; font-weight:800; color:#00E5FF; margin-bottom:2px;">ЕНЕРГОНЕЗАЛЕЖНІСТЬ 100%</div>
+      <div style="font-size:14px; font-weight:800; margin-bottom:6px;">Зарядка у повні блекаути</div>
+      <div style="font-size:11px; color:#CBD5E1; line-height:1.4; margin-bottom:8px;">Промислові дизель-генератори 160 кВт гарантують живлення.</div>
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_generator_blackout.jpg" style="width:100%; height:110px; object-fit:cover; border-radius:6px;">
+    </div>
+  </div>
+
+  <!-- COL 4: REVIEWS + FORM + FOOTER + BOTTOM NAV -->
+  <div class="col-frame">
+    <div style="padding:12px 14px;">
+      <div style="font-weight:800; font-size:14px; margin-bottom:8px;">Відгуки водіїв:</div>
+      <div class="m-rev">
+        <div style="color:#F59E0B; font-size:11px; margin-bottom:2px;">★★★★★</div>
+        <div style="font-size:10px; color:#334155;">«Під час блекауту зарядився за 25 хв на Подолі! Все супер!»</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-top:6px;">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_avatar_oleksiy.jpg" style="width:22px; height:22px; border-radius:11px; object-fit:cover;">
+          <span style="font-size:10px; font-weight:700;">Олексій (Tesla Y)</span>
+        </div>
+      </div>
+      <div class="m-rev">
+        <div style="color:#F59E0B; font-size:11px; margin-bottom:2px;">★★★★★</div>
+        <div style="font-size:10px; color:#334155;">«Зручний калькулятор витрат і точний кілометраж.»</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-top:6px;">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_avatar_olena.jpg" style="width:22px; height:22px; border-radius:11px; object-fit:cover;">
+          <span style="font-size:10px; font-weight:700;">Олена (Nissan Leaf)</span>
+        </div>
+      </div>
+
+      <div style="font-weight:800; font-size:13px; margin:12px 0 6px;">Встановіть станцію:</div>
+      <input type="text" placeholder="Ім'я та номер телефону" style="width:100%; height:32px; border:1px solid #CBD5E1; border-radius:6px; padding:0 8px; font-size:11px; margin-bottom:6px;">
+      <button class="m-btn-blue" style="margin-bottom:12px;">Подати заявку</button>
+    </div>
+
+    <div class="m-footer">
+      <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px;">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:16px; height:16px; filter:brightness(0) invert(1);">
+        <span style="font-weight:800; font-size:13px;">ChargeUA</span>
+      </div>
+      <div style="color:#94A3B8; margin-bottom:6px;">Національний веб-помічник зарядної інфраструктури.</div>
+      <div style="color:#64748B;">© 2026 ChargeUA · ПП-24</div>
+    </div>
+
+    <!-- STICKY BOTTOM NAV BAR -->
+    <div class="m-botnav">
+      <span style="color:#005EC9;">⌂ Головна</span>
+      <span style="color:#64748B;">⚲ Карта</span>
+      <span style="color:#64748B;">🖩 Калькулятор</span>
+      <span style="color:#64748B;">👤 Профіль</span>
+    </div>
+  </div>
+</div>
+</body></html>

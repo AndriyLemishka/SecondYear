@@ -1,0 +1,373 @@
+Sec 0: top=42.5pt, bot=42.5pt, left=70.85pt, right=42.5pt
+
+--- ALL PARAGRAPHS ---
+P000 [Default] align=CENTER (1) sb=None sa=None: МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ(fn=None, sz=None, b=True)
+P001 [Default] align=CENTER (1) sb=None sa=None: НАЦІОНАЛЬНИЙ УНІВЕРСИТЕТ "ЛЬВІВСЬКА ПОЛІТЕХНІКА"(fn=None, sz=None, b=True)
+P002 [Default] align=CENTER (1) sb=None sa=None: Кафедра «Систем автоматизованого проектування»(fn=None, sz=None, b=None)
+P003 [Default] align=None sb=None sa=None: 
+P004 [Default] align=CENTER (1) sb=None sa=None [IMAGES: 1]: (fn=None, sz=None, b=None)
+P005 [Default] align=None sb=None sa=None: 
+P006 [Default] align=CENTER (1) sb=None sa=None: Звіт(fn=None, sz=None, b=True)
+P007 [Default] align=CENTER (1) sb=None sa=None: до лабораторної роботи №1(fn=None, sz=None, b=None)
+P008 [Default] align=CENTER (1) sb=None sa=None: з дисципліни “(fn=None, sz=None, b=None) |  (fn=None, sz=None, b=None) | Технології(fn=None, sz=None, b=None) |  веб-(fn
+P009 [Default] align=CENTER (1) sb=None sa=None: на тему:(fn=None, sz=None, b=None)
+P010 [Default] align=CENTER (1) sb=None sa=None: ШІ-(fn=None, sz=None, b=True) | асистенти(fn=None, sz=None, b=True) |  та (fn=None, sz=None, b=True) | основи(fn=None, s
+P011 [Default] align=CENTER (1) sb=None sa=None: Тема (fn=None, sz=None, b=True) | проєкту(fn=None, sz=None, b=True) | : «(fn=None, sz=None, b=True) | вебсайт (fn=None, 
+P012 [Default] align=None sb=None sa=None: 
+P013 [Default] align=None sb=None sa=None: 
+P014 [Default] align=None sb=None sa=None: 
+P015 [Default] align=None sb=None sa=None: 
+P016 [Default] align=None sb=None sa=None: 
+P017 [Default] align=None sb=None sa=None: 
+P018 [Default] align=None sb=None sa=None: 
+P019 [Default] align=None sb=None sa=None: 
+P020 [Default] align=RIGHT (2) sb=None sa=None: Виконала:(fn=None, sz=None, b=True)
+P021 [Default] align=RIGHT (2) sb=None sa=None:  ст. гр. ПП-24(fn=None, sz=None, b=None)
+P022 [Default] align=RIGHT (2) sb=None sa=None: Іванко Юліана(fn=None, sz=None, b=None)
+P023 [Default] align=RIGHT (2) sb=None sa=None: Перевірила:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None)
+P024 [Default] align=RIGHT (2) sb=None sa=None: Стефанович(fn=None, sz=None, b=None) |  Т.О.(fn=None, sz=None, b=None)
+P025 [Default] align=RIGHT (2) sb=None sa=None: 
+P026 [Default] align=RIGHT (2) sb=None sa=None: 
+P027 [Default] align=RIGHT (2) sb=None sa=None: 
+P028 [Default] align=RIGHT (2) sb=None sa=None: 
+P029 [Default] align=RIGHT (2) sb=None sa=None: 
+P030 [Default] align=RIGHT (2) sb=None sa=None: 
+P031 [Default] align=RIGHT (2) sb=None sa=None: 
+P032 [Default] align=RIGHT (2) sb=None sa=None: 
+P033 [Default] align=RIGHT (2) sb=None sa=None: 
+P034 [Default] align=RIGHT (2) sb=None sa=None: 
+P035 [Default] align=None sb=None sa=None: 
+P036 [Normal] align=CENTER (1) sb=None sa=0: Львів – 2026(fn=None, sz=12.0, b=None)
+P037 [Normal] align=None sb=None sa=0: 
+P038 [Normal] align=None sb=None sa=0: Мета роботи:(fn=None, sz=12.0, b=True) |  Навчитися формулювати ефективні запити (системні, (fn=None, sz=12.0, b=None) |
+P039 [Normal] align=None sb=None sa=0: 
+P040 [Heading 1] align=None sb=0 sa=0: Розділ 1. Аналітичний (fn=None, sz=16.0, b=None) | бриф(fn=None, sz=16.0, b=None) |  (Тренди)(fn=None, sz=16.0, b=None)
+P041 [Heading 3] align=None sb=0 sa=0: Промт-логи(fn=None, sz=12.0, b=None)
+P042 [Normal (Web)] align=None sb=0 sa=0: Крок 1. Початковий системний запит (Моделі: GPT, (fn=None, sz=None, b=True) | Claude(fn=None, sz=None, b=True) | , (fn=N
+P043 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | Ті — (fn=None, sz=None, b=None) | Senior(fn=None, sz=No
+P044 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Кожна модель підтвердила, що готова до роботи.(fn=None, sz=None, b=None)
+P045 [Heading 4] align=None sb=0 sa=None: Запит до (fn=None, sz=12.0, b=None) | Grok(fn=None, sz=12.0, b=None) |  (Аналіз ринку)(fn=None, sz=12.0, b=None)
+P046 [Normal (Web)] align=None sb=0 sa=0: Крок 1. Початковий запит (Модель: (fn=None, sz=None, b=True) | Grok(fn=None, sz=None, b=True) | )(fn=None, sz=None, b=Tr
+P047 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | Проаналізуй ринок сайтів салонів краси за останні 6–12 
+P048 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Отримано розгорнутий аналіз із повною технічною лексикою та англомовними терміна
+P049 [Normal (Web)] align=None sb=0 sa=0: Аналіз недоліків:(fn=None, sz=None, b=True) |  Забагато складних англомовних термінів, які важко пояснити на захисті.(fn
+P050 [Normal (Web)] align=None sb=0 sa=0: Крок 2. Коригувальний запит (Модель: (fn=None, sz=None, b=True) | Grok(fn=None, sz=None, b=True) | )(fn=None, sz=None, b
+P051 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | Іноземні та складні терміни повністю заміни звичайними 
+P052 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Сформовано остаточний варіант аналітичного (fn=None, sz=None, b=None) | брифу(fn
+P053 [Heading 3] align=None sb=0 sa=0: 
+P054 [Heading 3] align=None sb=0 sa=0: Результат аналізу ринку (Розділ 1)(fn=None, sz=12.0, b=None)
+P055 [Heading 3] align=None sb=0 sa=0: 
+P056 [Heading 3] align=None sb=0 sa=0: Що зараз добре працює у світі та в Україні(fn=None, sz=12.0, b=None)
+P057 [Normal (Web)] align=None sb=0 sa=0: Як виглядають сучасні сайти(fn=None, sz=None, b=None)
+P058 [Normal] align=None sb=None sa=0: Чистий і спокійний дизайн. Багато повітря, без зайвих прикрас.(fn=None, sz=12.0, b=None)
+P059 [Normal] align=None sb=None sa=0: Справжні фото: інтер’єр студії, реальні роботи майстрів, клієнти «до» і «після». (fn=None, sz=12.0, b=None) | Сток(fn=No
+P060 [Normal] align=None sb=None sa=0: Теплі, спокійні кольори (коричневі, бежеві, глибокий зелений, темно-синій) або світлі нейтральні з одним яскравим акцент
+P061 [Normal] align=None sb=None sa=0: Велика галерея робіт одразу на видному місці. Люди спершу дивляться на результат, а вже потім читають текст.(fn=None, sz
+P062 [Normal] align=None sb=None sa=0: Сайт зручний саме з телефону. Більшість людей заходять саме з нього.(fn=None, sz=12.0, b=None)
+P063 [Normal (Web)] align=None sb=0 sa=0: Що люди хочуть робити на сайті(fn=None, sz=None, b=None)
+P064 [Normal] align=None sb=None sa=0: Одразу побачити кнопку «Записатися», яка завжди залишається на екрані, навіть коли гортаєш сторінку.(fn=None, sz=12.0, b
+P065 [Normal] align=None sb=None sa=0: Самостійно вибрати послуги, майстра і вільний час — без дзвінків і очікування відповіді.(fn=None, sz=12.0, b=None)
+P066 [Normal] align=None sb=None sa=0: Побачити точну або орієнтовну ціну ще до запису.(fn=None, sz=12.0, b=None)
+P067 [Normal] align=None sb=None sa=0: Переглянути роботи майстрів з фільтрами (стрижка, фарбування, догляд).(fn=None, sz=12.0, b=None)
+P068 [Normal] align=None sb=None sa=0: Прочитати справжні відгуки (бажано з (fn=None, sz=12.0, b=None) | Google(fn=None, sz=12.0, b=None) | ).(fn=None, sz=12.0
+P069 [Heading 3] align=None sb=0 sa=0: 
+P070 [Heading 3] align=None sb=0 sa=0: П’ять головних висновків(fn=None, sz=12.0, b=None)
+P071 [Heading 3] align=None sb=0 sa=0: 
+P072 [Normal] align=None sb=None sa=0: Кнопка запису має бути завжди під рукою(fn=None, sz=12.0, b=None) | 
+Люди часто хочуть записатися ввечері або у вихідні,
+P073 [Normal] align=None sb=None sa=0: Фото робіт — найсильніший аргумент(fn=None, sz=12.0, b=None) | 
+Текст і красиві слова майже нікого не переконують. А ось
+P074 [Normal] align=None sb=None sa=0: Сайт має бути зручним саме з телефону(fn=None, sz=12.0, b=None) | 
+Більшість відвідувачів заходять з мобільного. Якщо фо
+P075 [Normal] align=None sb=None sa=0: Люди люблять збирати комплекс послуг самостійно(fn=None, sz=12.0, b=None) | 
+Можливість вибрати стрижку + фарбування + д
+P076 [Normal] align=None sb=None sa=0: Довіра будується через прозорість і зручність(fn=None, sz=12.0, b=None) | 
+Відкриті ціни, справжні відгуки, нагадування 
+P077 [Normal] align=None sb=None sa=0: 
+P078 [Heading 1] align=None sb=0 sa=0: Розділ 2. Аналіз цільової аудиторії (ЦА)(fn=None, sz=16.0, b=None)
+P079 [Heading 4] align=None sb=0 sa=None: Системний запит до моделі ШІ ((fn=None, sz=12.0, b=None) | Claude(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None
+P080 [Normal (Web)] align=None sb=0 sa=0: Крок 1. Початковий системний запит (Модель: (fn=None, sz=None, b=True) | Claude(fn=None, sz=None, b=True) | )(fn=None, s
+P081 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | На основі раніше визначених трендів проаналізуй цільову
+P082 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Створено структуру аналізу.(fn=None, sz=None, b=None)
+P083 [Normal (Web)] align=None sb=0 sa=0: Аналіз недоліків:(fn=None, sz=None, b=True) |  Потрібно було збити всю інформацію в одну компактну та зручну таблицю, як
+P084 [Normal (Web)] align=None sb=0 sa=0: Крок 2. Коригувальний запит (Модель: (fn=None, sz=None, b=True) | Claude(fn=None, sz=None, b=True) | )(fn=None, sz=None,
+P085 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | Оформи результат чітко за кроками (Крок 1 — сегменти, К
+P086 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Зведено все у фінальну таблицю.(fn=None, sz=None, b=None)
+P087 [Normal (Web)] align=None sb=0 sa=0: 
+P088 [Heading 3] align=None sb=0 sa=0: Результат (fn=None, sz=12.0, b=None) | аналізу цільової аудиторії (fn=None, sz=12.0, b=None) | (Розділ (fn=None, sz=12.0
+P089 [Heading 3] align=None sb=0 sa=0: 
+P090 [Normal] align=None sb=None sa=0: Сегмент A — "Нова клієнтка" ((fn=None, sz=12.0, b=None) | Acquisition(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=
+P091 [Normal] align=None sb=None sa=0: Сегмент B — "Постійна клієнтка" ((fn=None, sz=12.0, b=None) | Retention(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, 
+P092 [Normal] align=None sb=None sa=0: (fn=None, sz=12.0, b=None)
+P093 [Normal (Web)] align=None sb=0 sa=0: Обидва сегменти сходяться в (fn=None, sz=None, b=None) | одній точці входу(fn=None, sz=None, b=False) |  але вимагають р
+P094 [Normal] align=None sb=None sa=0: Для (fn=None, sz=12.0, b=None) | Сегмента A(fn=None, sz=12.0, b=None) |  критична (fn=None, sz=12.0, b=None) | довіра й 
+P095 [Normal] align=None sb=None sa=0: Для (fn=None, sz=12.0, b=None) | Сегмента B(fn=None, sz=12.0, b=None) |  критична (fn=None, sz=12.0, b=None) | швидкість
+P096 [Heading 1] align=None sb=0 sa=0: 
+P097 [Heading 1] align=None sb=0 sa=0: Розділ 3. Специфікація функціоналу ((fn=None, sz=16.0, b=None) | User(fn=None, sz=16.0, b=None) |  (fn=None, sz=16.0, b=
+P098 [Heading 3] align=None sb=0 sa=0: Промт-логи(fn=None, sz=12.0, b=None)
+P099 [Normal (Web)] align=None sb=0 sa=0: Крок 1. Початковий системний запит (Моделі: (fn=None, sz=None, b=True) | ChatGPT(fn=None, sz=None, b=True) | , (fn=None,
+P100 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | Грунтуючись(fn=None, sz=None, b=None) |  на потребах ці
+P101 [Normal] align=None sb=None sa=0: Як новий відвідувач, я хочу бачити чіткий калькулятор вартості на головній сторінці, щоб миттєво дізнатися ціну без дзві
+P102 [Normal] align=None sb=None sa=0: Як постійна клієнтка, я хочу вибрати свого улюбленого майстра в інтерактивній формі, щоб побачити його вільні (fn=None, 
+P103 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Моделі надали стандартний перелік історій користувачів.(fn=None, sz=None, b=None
+P104 [Normal (Web)] align=None sb=0 sa=0: Аналіз недоліків:(fn=None, sz=None, b=True) |  Термінологія була перевантажена (fn=None, sz=None, b=None) | англізматичн
+P105 [Normal (Web)] align=None sb=0 sa=0: Крок 2. Коригувальний системний запит (Моделі: (fn=None, sz=None, b=True) | ChatGPT(fn=None, sz=None, b=True) | , (fn=No
+P106 [Normal (Web)] align=None sb=0 sa=0: Запит(fn=None, sz=None, b=True) | :(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | коли ти розробляв (fn=None
+P107 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Модел(fn=None, sz=None, b=None) | і (fn=None, sz=None, b=None) | переписали (fn=
+P108 [Normal (Web)] align=None sb=0 sa=0: Крок 1. Початковий запит (Моделі: (fn=None, sz=None, b=True) | Claude(fn=None, sz=None, b=True) | , (fn=None, sz=None, b
+P109 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | Сформуй список із 8 детальних (fn=None, sz=None, b=None
+P110 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Отримано набір історій, які повністю закривають потреби обох сегментів (нових і 
+P111 [Normal (Web)] align=None sb=0 sa=0: Аналіз недоліків:(fn=None, sz=None, b=True) |  Потребувалося остаточно вичитати текст, перевірити відповідність кількост
+P112 [Normal (Web)] align=None sb=0 sa=0: Крок 2. Коригувальний запит (Моделі: (fn=None, sz=None, b=True) | Claude(fn=None, sz=None, b=True) | , (fn=None, sz=None
+P113 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | Оформи список (fn=None, sz=None, b=None) | User(fn=None
+P114 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  Сформовано остаточний варіант розділу, наведений нижче.(fn=None, sz=None, b=None
+P115 [Heading 3] align=None sb=0 sa=0: 
+P116 [Heading 3] align=None sb=0 sa=0: Результат специфікації функціоналу (Розділ 3)(fn=None, sz=12.0, b=None)
+P117 [Heading 3] align=None sb=0 sa=0: 
+P118 [Normal (Web)] align=None sb=0 sa=0: Для опису функціональних вимог сайту салону краси використано стандарт бізнес-аналізу — (fn=None, sz=None, b=None) | Use
+P119 [Normal (Web)] align=None sb=0 sa=0: US-01. Як новий відвідувач(fn=None, sz=None, b=True) | , я хочу бачити на головному екрані коротку інформацію про студію
+P120 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Кнопка закріплена на екрані ((fn=None, sz=None, b=None) | sticky(fn=Non
+P121 [Normal (Web)] align=None sb=0 sa=0: US-02. Як потенційний клієнт(fn=None, sz=None, b=True) | , я хочу перейти з навігаційного меню до окремих розділів «Посл
+P122 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Реалізовано швидкий перехід по якорях сторінки або через маршрутизацію 
+P123 [Normal (Web)] align=None sb=0 sa=0: US-03. Як відвідувач із мобільного телефону(fn=None, sz=None, b=True) | , я хочу переглядати галерею робіт майстрів з мо
+P124 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Галерея адаптована під сенсорні екрани, фільтрація працює (fn=None, sz=
+P125 [Normal (Web)] align=None sb=0 sa=0: US-04. Як клієнтка(fn=None, sz=None, b=True) | , я хочу вибрати одну або кілька послуг, (fn=None, sz=None, b=None) | щоб
+P126 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Форма розбита на послідовні кроки з індикатором прогресу (крок 1 з 4 то
+P127 [Normal (Web)] align=None sb=0 sa=0: US-05. Як клієнтка(fn=None, sz=None, b=True) | , я хочу бачити актуальну орієнтовну вартість і загальну тривалість компл
+P128 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Ціна та сумарний час перераховуються автоматично у стані компонент(fn=N
+P129 [Normal (Web)] align=None sb=0 sa=0: US-06. Як нова клієнтка(fn=None, sz=None, b=True) | , я хочу переглянути профіль майстра з його спеціалізацією, портфолі
+P130 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Профіль майстра відкривається у вигляді (fn=None, sz=None, b=None) | сп
+P131 [Normal (Web)] align=None sb=0 sa=0: US-07. Як постійна клієнтка(fn=None, sz=None, b=True) | , я хочу вибрати свого улюбленого майстра та переглянути доступн
+P132 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Розклад фільтрується за ID обраного майстра, виключаючи вже зайняті год
+P133 [Normal (Web)] align=None sb=0 sa=0: US-08. Як клієнтка(fn=None, sz=None, b=True) | , я хочу бачити в календарі тільки актуальні вільні дати й години після в
+P134 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Система автоматично перевіряє вільні проміжки часу в базі даних на осно
+P135 [Normal (Web)] align=None sb=0 sa=0: US-09. Як клієнтка(fn=None, sz=None, b=True) | , я хочу перед фінальним відправленням бачити підсумок запису (обрані пос
+P136 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Підсумковий екран виводить зведені дані перед відкриттям короткої форми
+P137 [Normal (Web)] align=None sb=0 sa=0: US-10. Як новий клієнт(fn=None, sz=None, b=True) | , я хочу заповнити коротку форму зворотного зв'язку (ім'я та телефон)
+P138 [Normal (Web)] align=None sb=0 sa=0: Технічний коментар:(fn=None, sz=None, b=None) |  Запис отримує (fn=None, sz=None, b=None) | статус «Очікує підтвердження
+P139 [Heading 3] align=None sb=0 sa=0: Таблиця покриття вимог ((fn=None, sz=12.0, b=None) | Requirements(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None
+P140 [Normal (Web)] align=None sb=0 sa=0: Щоб переконатися, що жоден етап взаємодії з користувачем не (fn=None, sz=None, b=None) | пропущено(fn=None, sz=None, b=N
+P141 [Heading 1] align=None sb=0 sa=0: 
+P142 [Heading 1] align=None sb=0 sa=0: Розділ 4. Архітектура та структура сайту ((fn=None, sz=16.0, b=None) | Sitemap(fn=None, sz=16.0, b=None) | )(fn=None, sz
+P143 [Heading 3] align=None sb=0 sa=0: Промт-логи(fn=None, sz=12.0, b=None)
+P144 [Normal (Web)] align=None sb=0 sa=0: Запит до моделі ШІ ((fn=None, sz=None, b=True) | ChatGPT(fn=None, sz=None, b=True) |  / (fn=None, sz=None, b=True) | Cla
+P145 [Normal (Web)] align=None sb=0 sa=0: Запит:(fn=None, sz=None, b=True) |  (fn=None, sz=None, b=None) | Створи детальну текстову карту сайту (структуру сторіно
+P146 [Normal (Web)] align=None sb=0 sa=0: Результат:(fn=None, sz=None, b=True) |  ШІ згенерував ієрархічну структуру, (fn=None, sz=None, b=None) | але яка була не
+P147 [Normal (Web)] align=None sb=0 sa=0: Аналіз недоліків:(fn=None, sz=None, b=True) |  Початкова генерація містила порушення логіки користувацького сценарію. Зо
+P148 [Normal] align=None sb=None sa=0: Крок 2. Коригування та (fn=None, sz=12.0, b=True) | фіналізація(fn=None, sz=12.0, b=True) |  архітектури(fn=None, sz=12.
+P149 [List Paragraph] align=None sb=None sa=0: Запит:(fn=None, sz=12.0, b=True) |  (fn=None, sz=12.0, b=None) | Створи детальну і логічну карту сайту ((fn=None, sz=12.
+P150 [Normal] align=None sb=None sa=0: Структура має включати:(fn=None, sz=12.0, b=None)
+P151 [Normal] align=None sb=None sa=0: 1. Головну сторінку з усіма блоками:(fn=None, sz=12.0, b=None)
+P152 [Normal] align=None sb=None sa=0: - Шапка сайту ((fn=None, sz=12.0, b=None) | Header(fn=None, sz=12.0, b=None) | ) з навігацією та кнопкою швидкого запису
+P153 [Normal] align=None sb=None sa=0: - Головний екран ((fn=None, sz=12.0, b=None) | Hero-section(fn=None, sz=12.0, b=None) | ) з головною пропозицією та кноп
+P154 [Normal] align=None sb=None sa=0: - Блок переваг ((fn=None, sz=12.0, b=None) | Value(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) | Proposition
+P155 [Normal] align=None sb=None sa=0: - Головний інтерактивний калькулятор та онлайн-запис ((fn=None, sz=12.0, b=None) | Core(fn=None, sz=12.0, b=None) |  (fn
+P156 [Normal] align=None sb=None sa=0: * Крок 1: Вибір послуг та параметрів (стрижка, фарбування, догляд) з динамічним підсумком ціни і часу ((fn=None, sz=12.0
+P157 [Normal] align=None sb=None sa=0: * Крок 2: Вибір майстра (портфоліо, рейтинг, спец. опція "будь-який майстер").(fn=None, sz=12.0, b=None)
+P158 [Normal] align=None sb=None sa=0: * Крок 3: Вибір дати та часу (інтерактивний календар вільних (fn=None, sz=12.0, b=None) | слотів(fn=None, sz=12.0, b=Non
+P159 [Normal] align=None sb=None sa=0: * Крок 4: Введення контактних даних (ім'я, телефон, коментар).(fn=None, sz=12.0, b=None)
+P160 [Normal] align=None sb=None sa=0: * Крок 5: Перевірка запису перед відправкою ((fn=None, sz=12.0, b=None) | Review(fn=None, sz=12.0, b=None) | ).(fn=None,
+P161 [Normal] align=None sb=None sa=0: * Крок 6: Підтвердження та статус ((fn=None, sz=12.0, b=None) | Confirmation(fn=None, sz=12.0, b=None) |  / (fn=None, sz
+P162 [Normal] align=None sb=None sa=0: - Блок портфоліо "До / Після" з фільтрами.(fn=None, sz=12.0, b=None)
+P163 [Normal] align=None sb=None sa=0: - Блок відгуків клієнтів.(fn=None, sz=12.0, b=None)
+P164 [Normal] align=None sb=None sa=0: - Підвал сайту ((fn=None, sz=12.0, b=None) | Footer(fn=None, sz=12.0, b=None) | ).(fn=None, sz=12.0, b=None)
+P165 [Normal] align=None sb=None sa=0: 
+P166 [Normal] align=None sb=None sa=0: 2. Додаткові сторінки:(fn=None, sz=12.0, b=None)
+P167 [Normal] align=None sb=None sa=0: - Сторінка "Послуги та (fn=None, sz=12.0, b=None) | прайс(fn=None, sz=12.0, b=None) | " (з описом категорій і переходом 
+P168 [Normal] align=None sb=None sa=0: - Сторінка "Команда / Майстри" (з картками спеціалістів та їхніми особистими профілями).(fn=None, sz=12.0, b=None)
+P169 [Normal] align=None sb=None sa=0: - Сторінка "Контакти" (адреса, карта, форма зворотного зв'язку, соцмережі).(fn=None, sz=12.0, b=None)
+P170 [Normal] align=None sb=None sa=0: Результат:(fn=None, sz=12.0, b=True) |  Отримано чітку, (fn=None, sz=12.0, b=None) | логічно(fn=None, sz=12.0, b=None) |
+P171 [Normal] align=None sb=None sa=0: 
+P172 [Normal] align=None sb=None sa=0: Результат архітектурного (fn=None, sz=12.0, b=True) | проєктування(fn=None, sz=12.0, b=True) |  (Розділ 4)(fn=None, sz=1
+P173 [Normal] align=None sb=None sa=0: 
+P174 [Normal] align=None sb=None sa=0: Архітектура сайту (fn=None, sz=12.0, b=None) | JuliaGrain(fn=None, sz=12.0, b=True) |  побудована за концепцією (fn=None
+P175 [Normal] align=None sb=None sa=0: Нижче наведено детальну карту сайту ((fn=None, sz=12.0, b=None) | Sitemap(fn=None, sz=12.0, b=None) | ) у вигляді дворів
+P176 [Normal] align=None sb=None sa=0: Markdown(fn=None, sz=12.0, b=None)
+P177 [Normal] align=None sb=None sa=0: - Головна сторінка ((fn=None, sz=12.0, b=None) | Home(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P178 [Normal] align=None sb=None sa=0:   - Шапка сайту ((fn=None, sz=12.0, b=None) | Header(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P179 [Normal] align=None sb=None sa=0:     - Логотип студії(fn=None, sz=12.0, b=None)
+P180 [Normal] align=None sb=None sa=0:     - Навігаційне меню (Головна / Послуги / Команда / Контакти)(fn=None, sz=12.0, b=None)
+P181 [Normal] align=None sb=None sa=0:     - Закріплена кнопка швидкого запису ((fn=None, sz=12.0, b=None) | Sticky(fn=None, sz=12.0, b=None) |  CTA)(fn=None, 
+P182 [Normal] align=None sb=None sa=0:     - Іконка дзвінка для мобільних ((fn=None, sz=12.0, b=None) | Click-to-call(fn=None, sz=12.0, b=None) | )(fn=None, sz
+P183 [Normal] align=None sb=None sa=0: 
+P184 [Normal] align=None sb=None sa=0:   - Головний екран ((fn=None, sz=12.0, b=None) | Hero-section(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P185 [Normal] align=None sb=None sa=0:     - Головний заголовок з пропозицією студії ((fn=None, sz=12.0, b=None) | Value(fn=None, sz=12.0, b=None) |  (fn=None,
+P186 [Normal] align=None sb=None sa=0:     - Короткий підпис-пояснення(fn=None, sz=12.0, b=None)
+P187 [Normal] align=None sb=None sa=0:     - Реальне фото інтер'єру або роботи майстра(fn=None, sz=12.0, b=None)
+P188 [Normal] align=None sb=None sa=0:     - Кнопка дії "Розрахувати вартість" ((fn=None, sz=12.0, b=None) | Primary(fn=None, sz=12.0, b=None) |  CTA)(fn=None,
+P189 [Normal] align=None sb=None sa=0:     - Позначки довіри (рейтинг (fn=None, sz=12.0, b=None) | Google(fn=None, sz=12.0, b=None) | , кількість клієнток)(fn=
+P190 [Normal] align=None sb=None sa=0: 
+P191 [Normal] align=None sb=None sa=0:   - Блок переваг ((fn=None, sz=12.0, b=None) | Value(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) | Propositi
+P192 [Normal] align=None sb=None sa=0:     - Перевага 1: Прозора ціна без прихованих платежів(fn=None, sz=12.0, b=None)
+P193 [Normal] align=None sb=None sa=0:     - Перевага 2: Досвідчені майстри з портфоліо(fn=None, sz=12.0, b=None)
+P194 [Normal] align=None sb=None sa=0:     - Перевага 3: Онлайн-запис у будь-який час (24/7)(fn=None, sz=12.0, b=None)
+P195 [Normal] align=None sb=None sa=0:     - Перевага 4: Гарантія якості та повторний запис(fn=None, sz=12.0, b=None)
+P196 [Normal] align=None sb=None sa=0: 
+P197 [Normal] align=None sb=None sa=0:   - Головний калькулятор та онлайн-запис ((fn=None, sz=12.0, b=None) | Core(fn=None, sz=12.0, b=None) |  (fn=None, sz=12
+P198 [Normal] align=None sb=None sa=0:     - Крок 1: Вибір послуг ((fn=None, sz=12.0, b=None) | Service(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None)
+P199 [Normal] align=None sb=None sa=0:       - Категорії послуг: Стрижка / Фарбування / Догляд(fn=None, sz=12.0, b=None)
+P200 [Normal] align=None sb=None sa=0:       - Позначки вибору з ціною за кожну послугу ((fn=None, sz=12.0, b=None) | Checkbox(fn=None, sz=12.0, b=None) |  (fn
+P201 [Normal] align=None sb=None sa=0:       - Підказки додаткових послуг ((fn=None, sz=12.0, b=None) | Cross-sell(fn=None, sz=12.0, b=None) |  (fn=None, sz=12
+P202 [Normal] align=None sb=None sa=0:       - Динамічний підсумок ціни та часу ((fn=None, sz=12.0, b=None) | Dynamic(fn=None, sz=12.0, b=None) |  (fn=None, sz
+P203 [Normal] align=None sb=None sa=0:     - Крок 2: Вибір майстра ((fn=None, sz=12.0, b=None) | Master(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None)
+P204 [Normal] align=None sb=None sa=0:       - Картки майстрів з фото, спеціалізацією та рейтингом(fn=None, sz=12.0, b=None)
+P205 [Normal] align=None sb=None sa=0:       - Міні-портфоліо майстра(fn=None, sz=12.0, b=None)
+P206 [Normal] align=None sb=None sa=0:       - Спеціальна опція "Будь-який вільний майстер"(fn=None, sz=12.0, b=None)
+P207 [Normal] align=None sb=None sa=0:     - Крок 3: Вибір дати та часу ((fn=None, sz=12.0, b=None) | Date(fn=None, sz=12.0, b=None) |  & (fn=None, sz=12.0, b=
+P208 [Normal] align=None sb=None sa=0:       - Інтерактивний календар вільних днів(fn=None, sz=12.0, b=None)
+P209 [Normal] align=None sb=None sa=0:       - Сітка вільних годин ((fn=None, sz=12.0, b=None) | Time(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) |
+P210 [Normal] align=None sb=None sa=0:       - Фільтр "тільки обраний майстер"(fn=None, sz=12.0, b=None)
+P211 [Normal] align=None sb=None sa=0:     - Крок 4: Перевірка запису ((fn=None, sz=12.0, b=None) | Review(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=No
+P212 [Normal] align=None sb=None sa=0:       - Підсумковий перелік: послуги, майстер, дата й час, ціна(fn=None, sz=12.0, b=None)
+P213 [Normal] align=None sb=None sa=0:       - Кнопка "Змінити" (повернення до попередніх кроків)(fn=None, sz=12.0, b=None)
+P214 [Normal] align=None sb=None sa=0:       - Кнопка "Підтвердити запис"(fn=None, sz=12.0, b=None)
+P215 [Normal] align=None sb=None sa=0:     - Крок 5: Контактні дані ((fn=None, sz=12.0, b=None) | Contact(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=Non
+P216 [Normal] align=None sb=None sa=0:       - Поле "Ім'я"(fn=None, sz=12.0, b=None)
+P217 [Normal] align=None sb=None sa=0:       - Поле "Номер телефону"(fn=None, sz=12.0, b=None)
+P218 [Normal] align=None sb=None sa=0:       - Поле "Коментар" (необов'язкове)(fn=None, sz=12.0, b=None)
+P219 [Normal] align=None sb=None sa=0:     - Крок 6: Підтвердження та статус ((fn=None, sz=12.0, b=None) | Confirmation(fn=None, sz=12.0, b=None) |  / (fn=None
+P220 [Normal] align=None sb=None sa=0:       - Екран успішного оформлення запису(fn=None, sz=12.0, b=None)
+P221 [Normal] align=None sb=None sa=0:       - Статус запису "очікує підтвердження"(fn=None, sz=12.0, b=None)
+P222 [Normal] align=None sb=None sa=0:       - Повідомлення про надсилання (fn=None, sz=12.0, b=None) | смс(fn=None, sz=12.0, b=None) | /(fn=None, sz=12.0, b=N
+P223 [Normal] align=None sb=None sa=0: 
+P224 [Normal] align=None sb=None sa=0:   - Блок портфоліо "До / Після" ((fn=None, sz=12.0, b=None) | Before(fn=None, sz=12.0, b=None) |  & (fn=None, sz=12.0, b
+P225 [Normal] align=None sb=None sa=0:     - Заголовок блоку(fn=None, sz=12.0, b=None)
+P226 [Normal] align=None sb=None sa=0:     - Фільтр за типом послуги (Стрижка / Фарбування / Догляд)(fn=None, sz=12.0, b=None)
+P227 [Normal] align=None sb=None sa=0:     - Галерея карток "До / Після" ((fn=None, sz=12.0, b=None) | слайдер(fn=None, sz=12.0, b=None) |  або сітка)(fn=None,
+P228 [Normal] align=None sb=None sa=0:     - Підпис до кожної картки: майстер + послуга(fn=None, sz=12.0, b=None)
+P229 [Normal] align=None sb=None sa=0:     - Кнопка "Переглянути все портфоліо"(fn=None, sz=12.0, b=None)
+P230 [Normal] align=None sb=None sa=0: 
+P231 [Normal] align=None sb=None sa=0:   - Блок відгуків клієнтів ((fn=None, sz=12.0, b=None) | Reviews(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P232 [Normal] align=None sb=None sa=0:     - Заголовок блоку(fn=None, sz=12.0, b=None)
+P233 [Normal] align=None sb=None sa=0:     - Вбудований (fn=None, sz=12.0, b=None) | віджет(fn=None, sz=12.0, b=None) |  відгуків (fn=None, sz=12.0, b=None) | 
+P234 [Normal] align=None sb=None sa=0:     - Карусель відгуків (ім'я, текст, оцінка)(fn=None, sz=12.0, b=None)
+P235 [Normal] align=None sb=None sa=0:     - Посилання "Залишити відгук"(fn=None, sz=12.0, b=None)
+P236 [Normal] align=None sb=None sa=0: 
+P237 [Normal] align=None sb=None sa=0:   - Підвал сайту ((fn=None, sz=12.0, b=None) | Footer(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P238 [Normal] align=None sb=None sa=0:     - Логотип і короткий опис студії(fn=None, sz=12.0, b=None)
+P239 [Normal] align=None sb=None sa=0:     - Контактні дані (адреса, телефон, (fn=None, sz=12.0, b=None) | email(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0
+P240 [Normal] align=None sb=None sa=0:     - Вбудована карта ((fn=None, sz=12.0, b=None) | Google(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) | Map
+P241 [Normal] align=None sb=None sa=0:     - Графік роботи(fn=None, sz=12.0, b=None)
+P242 [Normal] align=None sb=None sa=0:     - Іконки соцмереж ((fn=None, sz=12.0, b=None) | Instagram(fn=None, sz=12.0, b=None) | , (fn=None, sz=12.0, b=None) |
+P243 [Normal] align=None sb=None sa=0:     - Дублікат навігаційного меню(fn=None, sz=12.0, b=None)
+P244 [Normal] align=None sb=None sa=0:     - Копірайт і посилання на політику конфіденційності(fn=None, sz=12.0, b=None)
+P245 [Normal] align=None sb=None sa=0: 
+P246 [Normal] align=None sb=None sa=0: - Сторінка "Послуги та (fn=None, sz=12.0, b=None) | прайс(fn=None, sz=12.0, b=None) | " ((fn=None, sz=12.0, b=None) | Se
+P247 [Normal] align=None sb=None sa=0:   - Головний екран сторінки ((fn=None, sz=12.0, b=None) | Page(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) |
+P248 [Normal] align=None sb=None sa=0:     - Заголовок "Наші послуги"(fn=None, sz=12.0, b=None)
+P249 [Normal] align=None sb=None sa=0:     - Короткий вступний текст(fn=None, sz=12.0, b=None)
+P250 [Normal] align=None sb=None sa=0:   - Каталог послуг за категоріями ((fn=None, sz=12.0, b=None) | Service(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, 
+P251 [Normal] align=None sb=None sa=0:     - Категорія "Стрижка" (перелік (fn=None, sz=12.0, b=None) | підпослуг(fn=None, sz=12.0, b=None) |  з ціною і тривалі
+P252 [Normal] align=None sb=None sa=0:     - Категорія "Фарбування" (перелік (fn=None, sz=12.0, b=None) | підпослуг(fn=None, sz=12.0, b=None) |  з ціною "від" 
+P253 [Normal] align=None sb=None sa=0:     - Категорія "Догляд" (перелік (fn=None, sz=12.0, b=None) | підпослуг(fn=None, sz=12.0, b=None) |  з ціною і триваліс
+P254 [Normal] align=None sb=None sa=0:   - Заклик до дії (CTA (fn=None, sz=12.0, b=None) | Block(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P255 [Normal] align=None sb=None sa=0:     - Текст-заклик "(fn=None, sz=12.0, b=None) | Зберіть(fn=None, sz=12.0, b=None) |  свій комплекс послуг"(fn=None, sz=
+P256 [Normal] align=None sb=None sa=0:     - Кнопка переходу до калькулятора на Головній(fn=None, sz=12.0, b=None)
+P257 [Normal] align=None sb=None sa=0: 
+P258 [Normal] align=None sb=None sa=0: - Сторінка "Команда / Майстри" ((fn=None, sz=12.0, b=None) | Team(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None
+P259 [Normal] align=None sb=None sa=0:   - Головний екран сторінки ((fn=None, sz=12.0, b=None) | Page(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) |
+P260 [Normal] align=None sb=None sa=0:     - Заголовок "Наші майстри"(fn=None, sz=12.0, b=None)
+P261 [Normal] align=None sb=None sa=0:     - Короткий вступний текст про підхід студії до підбору команди(fn=None, sz=12.0, b=None)
+P262 [Normal] align=None sb=None sa=0:   - Сітка карток майстрів ((fn=None, sz=12.0, b=None) | Master(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) |
+P263 [Normal] align=None sb=None sa=0:     - Фото майстра(fn=None, sz=12.0, b=None)
+P264 [Normal] align=None sb=None sa=0:     - Ім'я та спеціалізація(fn=None, sz=12.0, b=None)
+P265 [Normal] align=None sb=None sa=0:     - Короткі позначки навичок (наприклад: "Колористика", "Стрижки")(fn=None, sz=12.0, b=None)
+P266 [Normal] align=None sb=None sa=0:     - Рейтинг (зірки та кількість відгуків)(fn=None, sz=12.0, b=None)
+P267 [Normal] align=None sb=None sa=0:     - Міні-портфоліо (кілька фото робіт)(fn=None, sz=12.0, b=None)
+P268 [Normal] align=None sb=None sa=0:     - Кнопка "Записатися до цього майстра" (перехід у калькулятор із заповненим Кроком 2)(fn=None, sz=12.0, b=None)
+P269 [Normal] align=None sb=None sa=0:   - Розширений блок портфоліо ((fn=None, sz=12.0, b=None) | опційно(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=No
+P270 [Normal] align=None sb=None sa=0:     - Фільтр за майстром і типом послуги(fn=None, sz=12.0, b=None)
+P271 [Normal] align=None sb=None sa=0:     - Галерея "До / Після"(fn=None, sz=12.0, b=None)
+P272 [Normal] align=None sb=None sa=0: 
+P273 [Normal] align=None sb=None sa=0: - Сторінка "Контакти" ((fn=None, sz=12.0, b=None) | Contacts(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P274 [Normal] align=None sb=None sa=0:   - Головний екран сторінки ((fn=None, sz=12.0, b=None) | Page(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) |
+P275 [Normal] align=None sb=None sa=0:     - Заголовок "Контакти"(fn=None, sz=12.0, b=None)
+P276 [Normal] align=None sb=None sa=0:   - Блок контактної інформації ((fn=None, sz=12.0, b=None) | Contact(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=N
+P277 [Normal] align=None sb=None sa=0:     - Адреса студії(fn=None, sz=12.0, b=None)
+P278 [Normal] align=None sb=None sa=0:     - Номер телефону ((fn=None, sz=12.0, b=None) | клікабельний(fn=None, sz=12.0, b=None) | , (fn=None, sz=12.0, b=None)
+P279 [Normal] align=None sb=None sa=0:     - Електронна пошта ((fn=None, sz=12.0, b=None) | клікабельна(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P280 [Normal] align=None sb=None sa=0:     - Графік роботи по днях тижня(fn=None, sz=12.0, b=None)
+P281 [Normal] align=None sb=None sa=0:     - Іконки соцмереж(fn=None, sz=12.0, b=None)
+P282 [Normal] align=None sb=None sa=0:   - Інтерактивна карта ((fn=None, sz=12.0, b=None) | Interactive(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None)
+P283 [Normal] align=None sb=None sa=0:     - Вбудована карта (fn=None, sz=12.0, b=None) | Google(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None) | Maps
+P284 [Normal] align=None sb=None sa=0:   - Форма зворотного зв'язку ((fn=None, sz=12.0, b=None) | Contact(fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=Non
+P285 [Normal] align=None sb=None sa=0:     - Поле "Ім'я"(fn=None, sz=12.0, b=None)
+P286 [Normal] align=None sb=None sa=0:     - Поле "Телефон або (fn=None, sz=12.0, b=None) | email(fn=None, sz=12.0, b=None) | "(fn=None, sz=12.0, b=None)
+P287 [Normal] align=None sb=None sa=0:     - Поле "Повідомлення"(fn=None, sz=12.0, b=None)
+P288 [Normal] align=None sb=None sa=0:     - Кнопка "Надіслати"(fn=None, sz=12.0, b=None)
+P289 [Normal] align=None sb=None sa=0:     - Примітка: ця форма для загальних питань, не замінює калькулятор запису(fn=None, sz=12.0, b=None)
+P290 [Normal] align=None sb=None sa=0:   - Заклик до дії (CTA (fn=None, sz=12.0, b=None) | Block(fn=None, sz=12.0, b=None) | )(fn=None, sz=12.0, b=None)
+P291 [Normal] align=None sb=None sa=0:     - Текст "Готові розрахувати вартість візиту?"(fn=None, sz=12.0, b=None)
+P292 [Normal] align=None sb=None sa=0:     - Кнопка переходу до калькулятора на Головній(fn=None, sz=12.0, b=None)
+P293 [Normal] align=None sb=None sa=0: 
+P294 [Normal] align=None sb=None sa=0: Архітектурний висновок(fn=None, sz=12.0, b=True)
+P295 [Normal] align=None sb=None sa=0: 
+P296 [Normal] align=None sb=None sa=0: Завдяки такій структурі сайт витримує баланс між повноцінним інформаційним ресурсом та конверсійним сервісом. Користувач
+P297 [Normal] align=None sb=None sa=0: 
+P298 [Normal] align=None sb=None sa=0: Розділ 5. (fn=None, sz=16.0, b=True) | Промпт(fn=None, sz=16.0, b=True) | -паспорт ((fn=None, sz=16.0, b=True) | Prompt(
+P299 [Normal] align=None sb=None sa=0: 
+P300 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P301 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.1 – Ініціалізація та закріплення ролі (fn=None, sz=12.0, b=None) | Senior(fn=None, sz=12.0, b=None) |  (fn=None, 
+P302 [Normal] align=CENTER (1) sb=None sa=0: 
+P303 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P304 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P305 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.2 – Підтвердження рол(fn=None, sz=12.0, b=None) | і(fn=None, sz=12.0, b=None) |  в (fn=None, sz=12.0, b=None) | н
+P306 [Normal] align=CENTER (1) sb=None sa=0: 
+P307 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P308 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.3 – (fn=None, sz=12.0, b=None) | закріплення ролі (fn=None, sz=12.0, b=None) | Senior(fn=None, sz=12.0, b=None) |
+P309 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P310 [Normal] align=JUSTIFY (3) sb=None sa=0:  Ітерація 1: Дослідження ринку та передача контексту між моделями ((fn=None, sz=12.0, b=None) | Context(fn=None, sz=12.0
+P311 [Normal] align=None sb=None sa=0: За допомогою (fn=None, sz=12.0, b=None) | Grok(fn=None, sz=12.0, b=None) |  було проведено глибинний аналіз свіжих ринко
+P312 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P313 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.4 – Аналітичний (fn=None, sz=12.0, b=None) | бриф(fn=None, sz=12.0, b=None) |  ринку салонів краси, сформований у
+P314 [Normal] align=CENTER (1) sb=None sa=0: 
+P315 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P316 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.5 (fn=None, sz=12.0, b=None) | – Інтеграція ринкового аналізу в (fn=None, sz=12.0, b=None) | архітектур(fn=None, 
+P317 [Normal] align=CENTER (1) sb=None sa=0: 
+P318 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P319 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.6 – Інтеграція ринкового аналізу в (fn=None, sz=12.0, b=None) | архітектур(fn=None, sz=12.0, b=None) |  моделі (f
+P320 [Normal] align=CENTER (1) sb=None sa=0: 
+P321 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P322 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.7 – А(fn=None, sz=12.0, b=None) | наліз аудиторії(fn=None, sz=12.0, b=None) |  в(fn=None, sz=12.0, b=None) |  С(f
+P323 [Normal] align=CENTER (1) sb=None sa=0: 
+P324 [Normal] align=None sb=None sa=0: Структурований (fn=None, sz=12.0, b=True) | Few-Shot(fn=None, sz=12.0, b=True) |  запит на формування (fn=None, sz=12.0,
+P325 [Normal] align=None sb=None sa=0: 
+P326 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P327 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P328 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.8 – Формування користувацьких історій (fn=None, sz=12.0, b=None) | User(fn=None, sz=12.0, b=None) |  (fn=None, sz
+P329 [Normal] align=CENTER (1) sb=None sa=0: 
+P330 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None)
+P331 [Normal] align=CENTER (1) sb=None sa=0: Р(fn=None, sz=12.0, b=None) | ис. 5.9 – (fn=None, sz=12.0, b=None) | Формування користувацьких історій (fn=None, sz=12.0
+P332 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P333 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P334 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P335 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P336 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P337 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P338 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P339 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P340 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P341 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P342 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P343 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P344 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P345 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P346 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P347 [Normal] align=JUSTIFY (3) sb=None sa=0: Фінальний синтез карти інформаційної архітектури ((fn=None, sz=12.0, b=True) | Sitemap(fn=None, sz=12.0, b=True) | ), ро
+P348 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P349 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None)
+P350 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.10 – Текстова карта інформаційної архітектури сайту (fn=None, sz=12.0, b=None) | JuliaGrain(fn=None, sz=12.0, b=N
+P351 [Normal] align=JUSTIFY (3) sb=None sa=0: 
+P352 [Normal] align=CENTER (1) sb=None sa=0: 
+P353 [Normal] align=CENTER (1) sb=None sa=0 [IMAGES: 1]: (fn=None, sz=12.0, b=None) |  (fn=None, sz=12.0, b=None)
+P354 [Normal] align=CENTER (1) sb=None sa=0: Рис. 5.11 – Деталізація структури блоків та покрокового калькулятора в (fn=None, sz=12.0, b=None) | Claude(fn=None, sz=1
+P355 [Normal] align=CENTER (1) sb=None sa=0: 
+P356 [Normal] align=None sb=None sa=0: У ході виконання лабораторної роботи №1 було детально опановано практичні методи (fn=None, sz=12.0, b=True) | промпт(fn=
+P357 [Normal] align=JUSTIFY (3) sb=None sa=0: Головні практичні результати та висновки роботи:(fn=None, sz=12.0, b=None)
+P358 [Normal] align=JUSTIFY (3) sb=None sa=0: 1. Ефективність сучасних технік (fn=None, sz=12.0, b=None) | промптингу(fn=None, sz=12.0, b=None) | : Встановлення рольо
+P359 [Normal] align=JUSTIFY (3) sb=None sa=0: 2. Синергетичний розподіл завдань між моделями:(fn=None, sz=12.0, b=None)
+P360 [Normal] align=JUSTIFY (3) sb=None sa=0: • (fn=None, sz=12.0, b=None) | Grok(fn=None, sz=12.0, b=None) |  проявив себе як найефективніший інструмент для актуальн
+P361 [Normal] align=JUSTIFY (3) sb=None sa=0: • (fn=None, sz=12.0, b=None) | Claude(fn=None, sz=12.0, b=None) |  продемонстрував найглибший системно-інженерний підхід
+P362 [Normal] align=JUSTIFY (3) sb=None sa=0: • (fn=None, sz=12.0, b=None) | ChatGPT(fn=None, sz=12.0, b=None) |  показав високе продуктове мислення, своєчасно виявив
+P363 [Normal] align=JUSTIFY (3) sb=None sa=0: 3. Практична цінність артефактів для студії «(fn=None, sz=12.0, b=None) | JuliaGrain(fn=None, sz=12.0, b=None) | »: Сфор
+P364 [Normal] align=JUSTIFY (3) sb=None sa=0: 

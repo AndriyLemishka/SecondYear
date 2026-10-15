@@ -1,0 +1,171 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #F1F5F9;
+    color: #0F172A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .board {
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    border: 1.5px solid #E2E8F0;
+    padding: 36px 40px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  .board-header {
+    margin-bottom: 24px;
+    border-bottom: 1.5px solid #E2E8F0;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .board-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0F172A;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .board-title span.badge {
+    background: #EFF6FF;
+    color: #005EC9;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 1px solid #BFDBFE;
+  }
+  .board-desc {
+    font-size: 13px;
+    color: #64748B;
+    margin-top: 4px;
+  }
+</style>
+
+<style>
+  .relume-canvas {
+    background: #0F172A;
+    border-radius: 14px;
+    padding: 30px;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .relume-badge {
+    background: #1E293B;
+    border: 1px solid #334155;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 11px;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .relume-tree {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
+  }
+  .relume-card {
+    background: #1E293B;
+    border: 1.5px solid #334155;
+    border-radius: 10px;
+    padding: 16px;
+    width: 210px;
+  }
+  .relume-card h4 {
+    font-size: 13px;
+    color: #38BDF8;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 6px;
+  }
+  .relume-card ul {
+    list-style: none;
+    font-size: 11px;
+    color: #94A3B8;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+</style></head><body>
+<div class="board">
+  <div class="board-header">
+    <div>
+      <div class="board-title">Relume AI · згенерована карта сайту <span class="badge">Relume Prompt</span></div>
+      <div class="board-desc">Первинна структура та зв'язки сторінок, експортовані з Relume AI у Figma</div>
+    </div>
+  </div>
+  <div class="relume-canvas">
+    <div class="relume-badge">AI Architecture Diagram · Relume AI Generator</div>
+    <div class="relume-tree">
+      <div class="relume-card">
+        <h4>Home Page (9 sections)</h4>
+        <ul>
+          <li>• Header & Logo</li>
+          <li>• Hero section</li>
+          <li>• Quick car picker</li>
+          <li>• Interactive calc</li>
+          <li>• Map overview</li>
+          <li>• Generator status</li>
+          <li>• Business block</li>
+          <li>• Testimonials</li>
+          <li>• Footer</li>
+        </ul>
+      </div>
+      <div class="relume-card">
+        <h4>Stations Map</h4>
+        <ul>
+          <li>• Search & filters</li>
+          <li>• Connector badges</li>
+          <li>• Generator toggle</li>
+          <li>• Cluster map</li>
+          <li>• Station card preview</li>
+        </ul>
+      </div>
+      <div class="relume-card">
+        <h4>Station Details</h4>
+        <ul>
+          <li>• Station photo</li>
+          <li>• Connectors telemetry</li>
+          <li>• Price per kWh</li>
+          <li>• Reservation modal</li>
+          <li>• Navigation link</li>
+        </ul>
+      </div>
+      <div class="relume-card">
+        <h4>Tariffs & Pricing</h4>
+        <ul>
+          <li>• EV model presets</li>
+          <li>• Battery slider</li>
+          <li>• AC/DC comparison</li>
+          <li>• Operator rates</li>
+        </ul>
+      </div>
+      <div class="relume-card">
+        <h4>B2B Partner Page</h4>
+        <ul>
+          <li>• Location partner perks</li>
+          <li>• ROI calculator</li>
+          <li>• Partner contact form</li>
+          <li>• FAQ accordion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div></body></html>

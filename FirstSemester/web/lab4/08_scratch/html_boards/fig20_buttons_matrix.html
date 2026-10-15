@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  body { background: #F8FAFC; padding: 25px; width: 1600px; }
+  .b-table { width: 100%; border-collapse: collapse; background: #FFF; border-radius: 12px; overflow: hidden; border: 1.5px solid #E2E8F0; }
+  .b-table th, .b-table td { padding: 10px 14px; text-align: center; border: 1px solid #E2E8F0; font-size: 11.5px; }
+  .b-table th { background: #F1F5F9; font-weight: 700; color: #475569; }
+  .btn { border-radius: 6px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  .btn-lg { height: 44px; padding: 0 18px; font-size: 13px; }
+  .btn-sm { height: 34px; padding: 0 14px; font-size: 11px; }
+  .p-def { background: #005EC9; color: #FFF; border: none; }
+  .p-hov { background: #004BB5; color: #FFF; border: none; }
+  .p-act { background: #003A8F; color: #FFF; border: none; }
+  .p-foc { background: #005EC9; color: #FFF; border: 2px solid #00E5FF; }
+  .p-dis { background: #CBD5E1; color: #64748B; border: none; }
+  .c-def { background: #00E5FF; color: #0F172A; border: none; }
+  .c-hov { background: #00B8D4; color: #0F172A; border: none; }
+  .c-act { background: #0097A7; color: #FFF; border: none; }
+  .c-foc { background: #00E5FF; color: #0F172A; border: 2px solid #005EC9; }
+  .c-dis { background: #CBD5E1; color: #64748B; border: none; }
+  .s-def { background: #FFF; color: #0F172A; border: 1.5px solid #CBD5E1; }
+  .s-hov { background: #F1F5F9; color: #0F172A; border: 1.5px solid #94A3B8; }
+  .s-act { background: #E2E8F0; color: #0F172A; border: 1.5px solid #64748B; }
+  .s-foc { background: #FFF; color: #0F172A; border: 2px solid #005EC9; }
+  .s-dis { background: #F8FAFC; color: #94A3B8; border: 1.5px solid #E2E8F0; }
+</style></head><body>
+  <div style="font-size:22px; font-weight:800; margin-bottom:14px;">Компонент Button: 3 типи × 6 станів × 2 розміри (36 варіантів у системі)</div>
+  <table class="b-table">
+    <tr><th>Тип / Розмір</th><th>Default</th><th>Hover</th><th>Active</th><th>Focus</th><th>Disabled</th><th>Loading</th></tr>
+    <tr><td><strong>Primary Large (44px)</strong></td><td><div class="btn btn-lg p-def">Кнопка</div></td><td><div class="btn btn-lg p-hov">Кнопка</div></td><td><div class="btn btn-lg p-act">Кнопка</div></td><td><div class="btn btn-lg p-foc">Кнопка</div></td><td><div class="btn btn-lg p-dis">Кнопка</div></td><td><div class="btn btn-lg p-def">⌛ Завантаження</div></td></tr>
+    <tr><td><strong>Primary Small (34px)</strong></td><td><div class="btn btn-sm p-def">Кнопка</div></td><td><div class="btn btn-sm p-hov">Кнопка</div></td><td><div class="btn btn-sm p-act">Кнопка</div></td><td><div class="btn btn-sm p-foc">Кнопка</div></td><td><div class="btn btn-sm p-dis">Кнопка</div></td><td><div class="btn btn-sm p-def">⌛ ...</div></td></tr>
+    <tr><td><strong>Accent CTA Large (44px)</strong></td><td><div class="btn btn-lg c-def">Кнопка</div></td><td><div class="btn btn-lg c-hov">Кнопка</div></td><td><div class="btn btn-lg c-act">Кнопка</div></td><td><div class="btn btn-lg c-foc">Кнопка</div></td><td><div class="btn btn-lg c-dis">Кнопка</div></td><td><div class="btn btn-lg c-def">⌛ Завантаження</div></td></tr>
+    <tr><td><strong>Accent CTA Small (34px)</strong></td><td><div class="btn btn-sm c-def">Кнопка</div></td><td><div class="btn btn-sm c-hov">Кнопка</div></td><td><div class="btn btn-sm c-act">Кнопка</div></td><td><div class="btn btn-sm c-foc">Кнопка</div></td><td><div class="btn btn-sm c-dis">Кнопка</div></td><td><div class="btn btn-sm c-def">⌛ ...</div></td></tr>
+    <tr><td><strong>Secondary Large (44px)</strong></td><td><div class="btn btn-lg s-def">Кнопка</div></td><td><div class="btn btn-lg s-hov">Кнопка</div></td><td><div class="btn btn-lg s-act">Кнопка</div></td><td><div class="btn btn-lg s-foc">Кнопка</div></td><td><div class="btn btn-lg s-dis">Кнопка</div></td><td><div class="btn btn-lg s-def">⌛ Завантаження</div></td></tr>
+    <tr><td><strong>Secondary Small (34px)</strong></td><td><div class="btn btn-sm s-def">Кнопка</div></td><td><div class="btn btn-sm s-hov">Кнопка</div></td><td><div class="btn btn-sm s-act">Кнопка</div></td><td><div class="btn btn-sm s-foc">Кнопка</div></td><td><div class="btn btn-sm s-dis">Кнопка</div></td><td><div class="btn btn-sm s-def">⌛ ...</div></td></tr>
+  </table>
+</body></html>

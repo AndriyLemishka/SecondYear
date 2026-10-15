@@ -1,0 +1,1763 @@
+{
+  "diagramType": 1,
+  "data": {
+    "nodes": [
+      {
+        "id": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "type": "Entity",
+        "position": {
+          "x": 265.4,
+          "y": 184.2
+        },
+        "data": {
+          "label": "Покупець",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "a00d1564-f677-4bbe-83d4-7e41301fa358",
+        "parentId": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "type": "Attribute",
+        "position": {
+          "x": -118.4,
+          "y": -96.2
+        },
+        "data": {
+          "label": "ID_Покупця",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "43bcde79-5e0b-4c41-80bb-b826ccc1bfaa",
+        "parentId": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "type": "Attribute",
+        "position": {
+          "x": 12.3,
+          "y": -112.5
+        },
+        "data": {
+          "label": "Email",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "38c6f770-4c83-4d22-9e71-8b1ef9d37bc3",
+        "parentId": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "type": "Attribute",
+        "position": {
+          "x": -142.1,
+          "y": 18.6
+        },
+        "data": {
+          "label": "Дата_реєстрації",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "type": "Entity",
+        "position": {
+          "x": 294.8,
+          "y": 692.6
+        },
+        "data": {
+          "label": "Кошик",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "a3e582cd-ee28-4fa7-8394-b04e4559b693",
+        "parentId": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "type": "Attribute",
+        "position": {
+          "x": -128.5,
+          "y": -74.3
+        },
+        "data": {
+          "label": "ID_Кошика",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "27ef604a-7408-4217-b706-7001470acc2f",
+        "parentId": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "type": "Attribute",
+        "position": {
+          "x": -145.2,
+          "y": 5.8
+        },
+        "data": {
+          "label": "ID_Покупця",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "5af03197-fd41-4d26-8255-b94f7767e45f",
+        "parentId": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "type": "Attribute",
+        "position": {
+          "x": -132.7,
+          "y": 86.4
+        },
+        "data": {
+          "label": "Статус",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "39aa57d5-d6f6-43fd-bb68-77fb0601a66e",
+        "parentId": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "type": "Attribute",
+        "position": {
+          "x": -54.1,
+          "y": 124.9
+        },
+        "data": {
+          "label": "Сума_до_оплати",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "d28ea5f9-7c37-4ff4-8095-225d2c2ad7a2",
+        "parentId": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "type": "Attribute",
+        "position": {
+          "x": 58.6,
+          "y": 118.2
+        },
+        "data": {
+          "label": "Дата_створення",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Entity",
+        "position": {
+          "x": 884.2,
+          "y": 741.5
+        },
+        "data": {
+          "label": "Елемент_Кошика",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "0151ce4c-7550-47b5-8224-a5dd3b8b587d",
+        "parentId": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Attribute",
+        "position": {
+          "x": -84.3,
+          "y": -108.6
+        },
+        "data": {
+          "label": "ID_Елемента",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "9a9e7e19-eabd-4b75-8c50-47cad34b9026",
+        "parentId": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Attribute",
+        "position": {
+          "x": 76.2,
+          "y": -112.4
+        },
+        "data": {
+          "label": "ID_Кошика",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "6ab4b6a3-f27e-4173-89dc-ae83b6e93189",
+        "parentId": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Attribute",
+        "position": {
+          "x": -88.5,
+          "y": 104.7
+        },
+        "data": {
+          "label": "ID_Моделі",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "ced3e589-4ed7-48c2-bcc8-79e1b58b52b7",
+        "parentId": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Attribute",
+        "position": {
+          "x": 82.1,
+          "y": 109.3
+        },
+        "data": {
+          "label": "Фіксована_ціна",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Entity",
+        "position": {
+          "x": 896.7,
+          "y": 142.8
+        },
+        "data": {
+          "label": "Відгук",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "59cbe998-3e4a-4bab-b46e-0aef61111d98",
+        "parentId": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Attribute",
+        "position": {
+          "x": -136.2,
+          "y": -62.4
+        },
+        "data": {
+          "label": "ID_Відгуку",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "073e5c74-3e81-488d-9d91-96b1790ee147",
+        "parentId": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Attribute",
+        "position": {
+          "x": -68.4,
+          "y": -106.8
+        },
+        "data": {
+          "label": "ID_Моделі",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "920c03b4-92bd-4ff9-bef2-044802dab56c",
+        "parentId": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Attribute",
+        "position": {
+          "x": 14.2,
+          "y": -121.5
+        },
+        "data": {
+          "label": "ID_Покупця",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "a0578c26-7203-48ef-b1fb-ca22b7dd252f",
+        "parentId": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Attribute",
+        "position": {
+          "x": 98.6,
+          "y": -94.7
+        },
+        "data": {
+          "label": "Оцінка",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "41905c34-e428-497b-a83b-9eff9fb843f5",
+        "parentId": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Attribute",
+        "position": {
+          "x": 152.1,
+          "y": -32.8
+        },
+        "data": {
+          "label": "Текст",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Entity",
+        "position": {
+          "x": 1548.3,
+          "y": 654.9
+        },
+        "data": {
+          "label": "3D_Модель",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "ef328460-2e4f-4c68-bc7c-27f83bb2a8d5",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": -65.0,
+          "y": -115.0
+        },
+        "data": {
+          "label": "ID_Моделі",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "157263e7-39cd-4d98-9eeb-3d48fa17306e",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": 75.0,
+          "y": -115.0
+        },
+        "data": {
+          "label": "ID_Продавця",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "4f481e35-0408-4bf6-857f-b351000df2c0",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": 135.0,
+          "y": -25.0
+        },
+        "data": {
+          "label": "ID_Категорії",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "e7e4987a-253b-47af-8e82-8353098a6b95",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": 125.0,
+          "y": 80.0
+        },
+        "data": {
+          "label": "ID_Ліцензії",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "2923927c-8f99-4410-aadc-a8eb1c4aeb7f",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": 65.0,
+          "y": 125.0
+        },
+        "data": {
+          "label": "Назва",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "528f8a71-7e8c-48dd-a138-1f22eae2a71d",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": -65.0,
+          "y": 125.0
+        },
+        "data": {
+          "label": "Опис",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "20cbafbb-9ac0-4f25-9b45-6c8db9a57263",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": -120.0,
+          "y": 90.0
+        },
+        "data": {
+          "label": "Ціна",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "08ad462f-08b0-4108-9a28-1856cbcafdab",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": -145.0,
+          "y": 40.0
+        },
+        "data": {
+          "label": "Кількість_полігонів",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "77dbecee-b883-45f0-a785-2873e547ee05",
+        "parentId": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Attribute",
+        "position": {
+          "x": -145.0,
+          "y": -30.0
+        },
+        "data": {
+          "label": "Наявність_текстури",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "5dd07132-6af2-42cf-8f6e-e5a936939e1f",
+        "type": "Entity",
+        "position": {
+          "x": 1482.6,
+          "y": 126.3
+        },
+        "data": {
+          "label": "Категорія",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "b4a0004e-e9ad-4ba9-bd98-bd0e46f8c613",
+        "parentId": "5dd07132-6af2-42cf-8f6e-e5a936939e1f",
+        "type": "Attribute",
+        "position": {
+          "x": -94.2,
+          "y": -88.5
+        },
+        "data": {
+          "label": "ID_Категорії",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "ea18ae37-2f6a-4a76-afce-def55f97f5f2",
+        "parentId": "5dd07132-6af2-42cf-8f6e-e5a936939e1f",
+        "type": "Attribute",
+        "position": {
+          "x": 86.4,
+          "y": -92.1
+        },
+        "data": {
+          "label": "Назва",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+        "type": "Entity",
+        "position": {
+          "x": 2168.4,
+          "y": 196.7
+        },
+        "data": {
+          "label": "Продавець",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "9b61fa7a-c3c6-4810-b3d0-8e11432ca548",
+        "parentId": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+        "type": "Attribute",
+        "position": {
+          "x": -76.8,
+          "y": -96.4
+        },
+        "data": {
+          "label": "ID_Продавця",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "59093880-4543-49a7-94a8-1966a847bfe8",
+        "parentId": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+        "type": "Attribute",
+        "position": {
+          "x": 38.2,
+          "y": -112.6
+        },
+        "data": {
+          "label": "Нікнейм",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "8fe20e90-3fec-46b3-aad1-bbb09a76900d",
+        "parentId": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+        "type": "Attribute",
+        "position": {
+          "x": 132.5,
+          "y": -64.8
+        },
+        "data": {
+          "label": "Рейтинг",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "type": "Entity",
+        "position": {
+          "x": 2124.8,
+          "y": 782.3
+        },
+        "data": {
+          "label": "Ліцензія",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "53c3bfa0-b1f9-41e5-9fd8-319a60dc4712",
+        "parentId": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "type": "Attribute",
+        "position": {
+          "x": -50.0,
+          "y": -135.0
+        },
+        "data": {
+          "label": "ID_Ліцензії",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "79524bab-3131-4ec5-8ec0-4173d669f253",
+        "parentId": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "type": "Attribute",
+        "position": {
+          "x": 95.0,
+          "y": -140.0
+        },
+        "data": {
+          "label": "ID_Зміни",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "a92e7b1b-4001-41c0-a1aa-322491ad0f4d",
+        "parentId": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "type": "Attribute",
+        "position": {
+          "x": 185.0,
+          "y": -80.0
+        },
+        "data": {
+          "label": "Назва_ліцензії",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "d5a91aa2-e788-44d0-b7bd-b5d7f0cd2722",
+        "parentId": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "type": "Attribute",
+        "position": {
+          "x": 200.0,
+          "y": 0.0
+        },
+        "data": {
+          "label": "Тип_використання",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "277f8049-c883-4d9d-b930-cdc840bf1345",
+        "parentId": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "type": "Attribute",
+        "position": {
+          "x": 185.0,
+          "y": 85.0
+        },
+        "data": {
+          "label": "Дозвіл_на_модифікацію",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "15edd9e9-0d2f-4620-a5e0-d02a28cd214d",
+        "parentId": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "type": "Attribute",
+        "position": {
+          "x": 95.0,
+          "y": 145.0
+        },
+        "data": {
+          "label": "Дата_створення",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "a88f39ab-e64e-4668-b38a-c1f10e67213d",
+        "parentId": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "type": "Attribute",
+        "position": {
+          "x": -50.0,
+          "y": 135.0
+        },
+        "data": {
+          "label": "Час_створення",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "type": "Entity",
+        "position": {
+          "x": 1592.5,
+          "y": 1234.8
+        },
+        "data": {
+          "label": "Файл_Моделі",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "d70dba39-03b1-486b-8e75-28f3dd226d71",
+        "parentId": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "type": "Attribute",
+        "position": {
+          "x": -128.4,
+          "y": 76.2
+        },
+        "data": {
+          "label": "ID_Файлу",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "a1ed7e05-f1f0-41db-abbc-3d101fc1edac",
+        "parentId": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "type": "Attribute",
+        "position": {
+          "x": -46.2,
+          "y": 118.5
+        },
+        "data": {
+          "label": "ID_Моделі",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "8f54f0b4-e125-417f-b2f6-fe4d9022849a",
+        "parentId": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "type": "Attribute",
+        "position": {
+          "x": 52.8,
+          "y": 116.4
+        },
+        "data": {
+          "label": "Формат",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "8e2faa47-40e3-480a-bb1b-041f793c891d",
+        "parentId": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "type": "Attribute",
+        "position": {
+          "x": 134.2,
+          "y": 74.8
+        },
+        "data": {
+          "label": "Розмір_МБ",
+          "types": [],
+          "isSelected": false,
+          "isConnectable": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "58c78cb1-a2a3-4037-9b7d-787a4cde3995",
+        "type": "Relationship",
+        "position": {
+          "x": 274.6,
+          "y": 436.8
+        },
+        "data": {
+          "label": "Формує кошик",
+          "sourceEntityDetails": {
+            "id": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "94232ed9-8f2a-42e1-8edf-0d02ee5efc4c",
+        "type": "Relationship",
+        "position": {
+          "x": 586.3,
+          "y": 712.4
+        },
+        "data": {
+          "label": "Включає в кошик",
+          "sourceEntityDetails": {
+            "id": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "08f0ad50-ca27-47c8-98fc-5fbc05964e9b",
+        "type": "Relationship",
+        "position": {
+          "x": 1212.8,
+          "y": 694.2
+        },
+        "data": {
+          "label": "Додається як елемент",
+          "sourceEntityDetails": {
+            "id": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "6717584e-c527-479c-9176-9d8961fadc95",
+        "type": "Relationship",
+        "position": {
+          "x": 578.4,
+          "y": 158.6
+        },
+        "data": {
+          "label": "Залишає відгук",
+          "sourceEntityDetails": {
+            "id": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "8b687ff8-80a2-47e4-9090-b2ca6b41fafe",
+        "type": "Relationship",
+        "position": {
+          "x": 1218.6,
+          "y": 396.4
+        },
+        "data": {
+          "label": "Отримує відгук",
+          "sourceEntityDetails": {
+            "id": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "33dd6bcb-2257-402b-94c9-fd19f9841959",
+        "type": "Relationship",
+        "position": {
+          "x": 1512.4,
+          "y": 388.2
+        },
+        "data": {
+          "label": "Класифікує",
+          "sourceEntityDetails": {
+            "id": "5dd07132-6af2-42cf-8f6e-e5a936939e1f",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "c2fb2c31-37e8-46f3-aa8d-954002ca7f9f",
+        "type": "Relationship",
+        "position": {
+          "x": 1854.2,
+          "y": 422.8
+        },
+        "data": {
+          "label": "Створює",
+          "sourceEntityDetails": {
+            "id": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "44336cf8-6120-4ea1-879c-17de81577bc0",
+        "type": "Relationship",
+        "position": {
+          "x": 1832.6,
+          "y": 716.5
+        },
+        "data": {
+          "label": "Регулює",
+          "sourceEntityDetails": {
+            "id": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      },
+      {
+        "id": "1445c4cf-db56-4981-b1e1-819597e21944",
+        "type": "Relationship",
+        "position": {
+          "x": 1568.4,
+          "y": 942.1
+        },
+        "data": {
+          "label": "Містить файл",
+          "sourceEntityDetails": {
+            "id": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "One"
+          },
+          "targetEntityDetails": {
+            "id": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+            "minCardinality": "Mandatory",
+            "maxCardinality": "Many"
+          },
+          "isSelected": false,
+          "isConnectable": true
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "03bf531b-7bd9-4e19-b4ef-c1f757cad279",
+        "type": "Attribute",
+        "source": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "target": "a00d1564-f677-4bbe-83d4-7e41301fa358"
+      },
+      {
+        "id": "4f2dc8fa-a4dd-404b-aec9-9903c980bf37",
+        "type": "Attribute",
+        "source": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "target": "43bcde79-5e0b-4c41-80bb-b826ccc1bfaa"
+      },
+      {
+        "id": "a2510f38-4c6d-4a07-bec7-38adb3d4b185",
+        "type": "Attribute",
+        "source": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "target": "38c6f770-4c83-4d22-9e71-8b1ef9d37bc3"
+      },
+      {
+        "id": "94634775-a00f-4b99-92c5-0bc9b3cc7acb",
+        "type": "Attribute",
+        "source": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "target": "a3e582cd-ee28-4fa7-8394-b04e4559b693"
+      },
+      {
+        "id": "92326eed-9db3-4ff9-898c-354b70a6cb48",
+        "type": "Attribute",
+        "source": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "target": "27ef604a-7408-4217-b706-7001470acc2f"
+      },
+      {
+        "id": "71e6efd1-6e94-4eab-8877-2a6f34025ea1",
+        "type": "Attribute",
+        "source": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "target": "5af03197-fd41-4d26-8255-b94f7767e45f"
+      },
+      {
+        "id": "f9e8bb05-5936-4ce9-b334-90261dc66366",
+        "type": "Attribute",
+        "source": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "target": "39aa57d5-d6f6-43fd-bb68-77fb0601a66e"
+      },
+      {
+        "id": "1e188dca-c1d3-468d-bd25-4a8b4f647b2c",
+        "type": "Attribute",
+        "source": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "target": "d28ea5f9-7c37-4ff4-8095-225d2c2ad7a2"
+      },
+      {
+        "id": "b4d0caee-8488-4efd-9e61-83b7437c05d5",
+        "type": "Attribute",
+        "source": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "target": "0151ce4c-7550-47b5-8224-a5dd3b8b587d"
+      },
+      {
+        "id": "1c8497e3-4f42-4168-8e49-ec11377b2bbe",
+        "type": "Attribute",
+        "source": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "target": "9a9e7e19-eabd-4b75-8c50-47cad34b9026"
+      },
+      {
+        "id": "91fd92f0-a1ab-4104-81d4-f351e6eb0f03",
+        "type": "Attribute",
+        "source": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "target": "6ab4b6a3-f27e-4173-89dc-ae83b6e93189"
+      },
+      {
+        "id": "2f4e9825-df73-497a-af26-534c3702e076",
+        "type": "Attribute",
+        "source": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "target": "ced3e589-4ed7-48c2-bcc8-79e1b58b52b7"
+      },
+      {
+        "id": "282bedcc-5c3a-4faf-86dd-bc51632631df",
+        "type": "Attribute",
+        "source": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "target": "59cbe998-3e4a-4bab-b46e-0aef61111d98"
+      },
+      {
+        "id": "5c7a45d6-3c0b-401d-8744-d3dd820129d2",
+        "type": "Attribute",
+        "source": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "target": "073e5c74-3e81-488d-9d91-96b1790ee147"
+      },
+      {
+        "id": "ab34e450-d344-44df-857d-07d8b43773de",
+        "type": "Attribute",
+        "source": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "target": "920c03b4-92bd-4ff9-bef2-044802dab56c"
+      },
+      {
+        "id": "a2ab863c-ee24-4400-911a-96b18ba1b21a",
+        "type": "Attribute",
+        "source": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "target": "a0578c26-7203-48ef-b1fb-ca22b7dd252f"
+      },
+      {
+        "id": "70174c37-448c-4996-b08a-24b5fb9f83ae",
+        "type": "Attribute",
+        "source": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "target": "41905c34-e428-497b-a83b-9eff9fb843f5"
+      },
+      {
+        "id": "0315c400-797e-4927-8b98-78013b0e9d48",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "ef328460-2e4f-4c68-bc7c-27f83bb2a8d5"
+      },
+      {
+        "id": "5d10f93d-bb9c-49f8-a9bb-9092ad075414",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "157263e7-39cd-4d98-9eeb-3d48fa17306e"
+      },
+      {
+        "id": "e422f069-e455-4a59-bbac-21d2acc619a7",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "4f481e35-0408-4bf6-857f-b351000df2c0"
+      },
+      {
+        "id": "776b60a2-64e0-46b8-8c28-11c169a316b4",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "e7e4987a-253b-47af-8e82-8353098a6b95"
+      },
+      {
+        "id": "56505fc5-ce54-46ab-bd31-4541cad1fae0",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "2923927c-8f99-4410-aadc-a8eb1c4aeb7f"
+      },
+      {
+        "id": "6f5a95c9-5f12-4d73-b0f9-935d026abea9",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "528f8a71-7e8c-48dd-a138-1f22eae2a71d"
+      },
+      {
+        "id": "7936e6be-5a7b-4da3-aac2-d397d4846207",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "20cbafbb-9ac0-4f25-9b45-6c8db9a57263"
+      },
+      {
+        "id": "e48078ac-9122-491e-a082-c2a1ddb20337",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "08ad462f-08b0-4108-9a28-1856cbcafdab"
+      },
+      {
+        "id": "6df0a346-d00d-41d4-a2f2-62e02a90ddb2",
+        "type": "Attribute",
+        "source": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "target": "77dbecee-b883-45f0-a785-2873e547ee05"
+      },
+      {
+        "id": "82ca13b1-d6a4-4ae1-bae6-1b38b5953853",
+        "type": "Attribute",
+        "source": "5dd07132-6af2-42cf-8f6e-e5a936939e1f",
+        "target": "b4a0004e-e9ad-4ba9-bd98-bd0e46f8c613"
+      },
+      {
+        "id": "3dbd8f0d-cecc-4218-bbe4-7ac8ff80c9aa",
+        "type": "Attribute",
+        "source": "5dd07132-6af2-42cf-8f6e-e5a936939e1f",
+        "target": "ea18ae37-2f6a-4a76-afce-def55f97f5f2"
+      },
+      {
+        "id": "7183e086-d9f1-440b-9c18-71a9bbf0642e",
+        "type": "Attribute",
+        "source": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+        "target": "9b61fa7a-c3c6-4810-b3d0-8e11432ca548"
+      },
+      {
+        "id": "b93173e6-59bf-4e6d-8653-b2922f213827",
+        "type": "Attribute",
+        "source": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+        "target": "59093880-4543-49a7-94a8-1966a847bfe8"
+      },
+      {
+        "id": "c6fe1bbd-39fe-4c75-a694-f7fb34e0fd32",
+        "type": "Attribute",
+        "source": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+        "target": "8fe20e90-3fec-46b3-aad1-bbb09a76900d"
+      },
+      {
+        "id": "033bc50b-7914-403c-8343-1ae31becd2a9",
+        "type": "Attribute",
+        "source": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "target": "53c3bfa0-b1f9-41e5-9fd8-319a60dc4712"
+      },
+      {
+        "id": "0aed05d9-35fd-4359-8ff9-6facc24a20fe",
+        "type": "Attribute",
+        "source": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "target": "79524bab-3131-4ec5-8ec0-4173d669f253"
+      },
+      {
+        "id": "60ff6c6c-8f5a-4f5e-abe5-6f03bf4e1aeb",
+        "type": "Attribute",
+        "source": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "target": "a92e7b1b-4001-41c0-a1aa-322491ad0f4d"
+      },
+      {
+        "id": "ffb50b9d-6d47-4bbf-aafd-1eabb7e63e34",
+        "type": "Attribute",
+        "source": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "target": "d5a91aa2-e788-44d0-b7bd-b5d7f0cd2722"
+      },
+      {
+        "id": "b2f88567-7553-453f-99d5-2bb959299ff7",
+        "type": "Attribute",
+        "source": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "target": "277f8049-c883-4d9d-b930-cdc840bf1345"
+      },
+      {
+        "id": "b40a62e2-363b-46e5-a0a5-93caf8a06f2c",
+        "type": "Attribute",
+        "source": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "target": "15edd9e9-0d2f-4620-a5e0-d02a28cd214d"
+      },
+      {
+        "id": "d5238ae1-497b-4a56-8bea-c9f457b114d2",
+        "type": "Attribute",
+        "source": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "target": "a88f39ab-e64e-4668-b38a-c1f10e67213d"
+      },
+      {
+        "id": "9febb8b1-cc2e-43b1-90de-63cf2d60c988",
+        "type": "Attribute",
+        "source": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "target": "d70dba39-03b1-486b-8e75-28f3dd226d71"
+      },
+      {
+        "id": "df2e56da-4654-404a-962b-7cf7af40f800",
+        "type": "Attribute",
+        "source": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "target": "a1ed7e05-f1f0-41db-abbc-3d101fc1edac"
+      },
+      {
+        "id": "9a654d95-3db4-4c3d-84fe-420a2e394e9d",
+        "type": "Attribute",
+        "source": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "target": "8f54f0b4-e125-417f-b2f6-fe4d9022849a"
+      },
+      {
+        "id": "e601489a-f0ee-4fcd-8d62-bf1df8436b43",
+        "type": "Attribute",
+        "source": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "target": "8e2faa47-40e3-480a-bb1b-041f793c891d"
+      },
+      {
+        "id": "58c78cb1-a2a3-4037-9b7d-787a4cde3995->2d086ecd-56e9-4c16-bf17-53c93f254cef;2d086ecd-56e9-4c16-bf17-53c93f254cef->34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "type": "Relationship",
+        "source": "58c78cb1-a2a3-4037-9b7d-787a4cde3995",
+        "target": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "data": {
+          "id": "58c78cb1-a2a3-4037-9b7d-787a4cde3995->2d086ecd-56e9-4c16-bf17-53c93f254cef",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "58c78cb1-a2a3-4037-9b7d-787a4cde3995->34c41a26-bf48-4d9e-ae56-eaacdec59c98;2d086ecd-56e9-4c16-bf17-53c93f254cef->34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "type": "Relationship",
+        "source": "58c78cb1-a2a3-4037-9b7d-787a4cde3995",
+        "target": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "data": {
+          "id": "58c78cb1-a2a3-4037-9b7d-787a4cde3995->34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "94232ed9-8f2a-42e1-8edf-0d02ee5efc4c->34c41a26-bf48-4d9e-ae56-eaacdec59c98;34c41a26-bf48-4d9e-ae56-eaacdec59c98->753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Relationship",
+        "source": "94232ed9-8f2a-42e1-8edf-0d02ee5efc4c",
+        "target": "34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+        "data": {
+          "id": "94232ed9-8f2a-42e1-8edf-0d02ee5efc4c->34c41a26-bf48-4d9e-ae56-eaacdec59c98",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "94232ed9-8f2a-42e1-8edf-0d02ee5efc4c->753d2baf-1766-40ee-8d5d-ec85554fa357;34c41a26-bf48-4d9e-ae56-eaacdec59c98->753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Relationship",
+        "source": "94232ed9-8f2a-42e1-8edf-0d02ee5efc4c",
+        "target": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "data": {
+          "id": "94232ed9-8f2a-42e1-8edf-0d02ee5efc4c->753d2baf-1766-40ee-8d5d-ec85554fa357",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "08f0ad50-ca27-47c8-98fc-5fbc05964e9b->762dd8c7-8838-4cb9-aaac-229e4a8dac44;762dd8c7-8838-4cb9-aaac-229e4a8dac44->753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Relationship",
+        "source": "08f0ad50-ca27-47c8-98fc-5fbc05964e9b",
+        "target": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "data": {
+          "id": "08f0ad50-ca27-47c8-98fc-5fbc05964e9b->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "08f0ad50-ca27-47c8-98fc-5fbc05964e9b->753d2baf-1766-40ee-8d5d-ec85554fa357;762dd8c7-8838-4cb9-aaac-229e4a8dac44->753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "type": "Relationship",
+        "source": "08f0ad50-ca27-47c8-98fc-5fbc05964e9b",
+        "target": "753d2baf-1766-40ee-8d5d-ec85554fa357",
+        "data": {
+          "id": "08f0ad50-ca27-47c8-98fc-5fbc05964e9b->753d2baf-1766-40ee-8d5d-ec85554fa357",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "6717584e-c527-479c-9176-9d8961fadc95->2d086ecd-56e9-4c16-bf17-53c93f254cef;2d086ecd-56e9-4c16-bf17-53c93f254cef->a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Relationship",
+        "source": "6717584e-c527-479c-9176-9d8961fadc95",
+        "target": "2d086ecd-56e9-4c16-bf17-53c93f254cef",
+        "data": {
+          "id": "6717584e-c527-479c-9176-9d8961fadc95->2d086ecd-56e9-4c16-bf17-53c93f254cef",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "6717584e-c527-479c-9176-9d8961fadc95->a6aba7ee-dcd1-4380-a264-202536c2e573;2d086ecd-56e9-4c16-bf17-53c93f254cef->a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Relationship",
+        "source": "6717584e-c527-479c-9176-9d8961fadc95",
+        "target": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "data": {
+          "id": "6717584e-c527-479c-9176-9d8961fadc95->a6aba7ee-dcd1-4380-a264-202536c2e573",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "8b687ff8-80a2-47e4-9090-b2ca6b41fafe->762dd8c7-8838-4cb9-aaac-229e4a8dac44;762dd8c7-8838-4cb9-aaac-229e4a8dac44->a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Relationship",
+        "source": "8b687ff8-80a2-47e4-9090-b2ca6b41fafe",
+        "target": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "data": {
+          "id": "8b687ff8-80a2-47e4-9090-b2ca6b41fafe->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "8b687ff8-80a2-47e4-9090-b2ca6b41fafe->a6aba7ee-dcd1-4380-a264-202536c2e573;762dd8c7-8838-4cb9-aaac-229e4a8dac44->a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "type": "Relationship",
+        "source": "8b687ff8-80a2-47e4-9090-b2ca6b41fafe",
+        "target": "a6aba7ee-dcd1-4380-a264-202536c2e573",
+        "data": {
+          "id": "8b687ff8-80a2-47e4-9090-b2ca6b41fafe->a6aba7ee-dcd1-4380-a264-202536c2e573",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "33dd6bcb-2257-402b-94c9-fd19f9841959->5dd07132-6af2-42cf-8f6e-e5a936939e1f;5dd07132-6af2-42cf-8f6e-e5a936939e1f->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Relationship",
+        "source": "33dd6bcb-2257-402b-94c9-fd19f9841959",
+        "target": "5dd07132-6af2-42cf-8f6e-e5a936939e1f",
+        "data": {
+          "id": "33dd6bcb-2257-402b-94c9-fd19f9841959->5dd07132-6af2-42cf-8f6e-e5a936939e1f",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "33dd6bcb-2257-402b-94c9-fd19f9841959->762dd8c7-8838-4cb9-aaac-229e4a8dac44;5dd07132-6af2-42cf-8f6e-e5a936939e1f->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Relationship",
+        "source": "33dd6bcb-2257-402b-94c9-fd19f9841959",
+        "target": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "data": {
+          "id": "33dd6bcb-2257-402b-94c9-fd19f9841959->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "c2fb2c31-37e8-46f3-aa8d-954002ca7f9f->76e6e177-ce3a-4896-84ab-db0e2eb281a3;76e6e177-ce3a-4896-84ab-db0e2eb281a3->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Relationship",
+        "source": "c2fb2c31-37e8-46f3-aa8d-954002ca7f9f",
+        "target": "76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+        "data": {
+          "id": "c2fb2c31-37e8-46f3-aa8d-954002ca7f9f->76e6e177-ce3a-4896-84ab-db0e2eb281a3",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "c2fb2c31-37e8-46f3-aa8d-954002ca7f9f->762dd8c7-8838-4cb9-aaac-229e4a8dac44;76e6e177-ce3a-4896-84ab-db0e2eb281a3->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Relationship",
+        "source": "c2fb2c31-37e8-46f3-aa8d-954002ca7f9f",
+        "target": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "data": {
+          "id": "c2fb2c31-37e8-46f3-aa8d-954002ca7f9f->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "44336cf8-6120-4ea1-879c-17de81577bc0->bbe8d886-9fb3-4832-86db-bd5db765ac76;bbe8d886-9fb3-4832-86db-bd5db765ac76->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Relationship",
+        "source": "44336cf8-6120-4ea1-879c-17de81577bc0",
+        "target": "bbe8d886-9fb3-4832-86db-bd5db765ac76",
+        "data": {
+          "id": "44336cf8-6120-4ea1-879c-17de81577bc0->bbe8d886-9fb3-4832-86db-bd5db765ac76",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "44336cf8-6120-4ea1-879c-17de81577bc0->762dd8c7-8838-4cb9-aaac-229e4a8dac44;bbe8d886-9fb3-4832-86db-bd5db765ac76->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "type": "Relationship",
+        "source": "44336cf8-6120-4ea1-879c-17de81577bc0",
+        "target": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "data": {
+          "id": "44336cf8-6120-4ea1-879c-17de81577bc0->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      },
+      {
+        "id": "1445c4cf-db56-4981-b1e1-819597e21944->762dd8c7-8838-4cb9-aaac-229e4a8dac44;762dd8c7-8838-4cb9-aaac-229e4a8dac44->7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "type": "Relationship",
+        "source": "1445c4cf-db56-4981-b1e1-819597e21944",
+        "target": "762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+        "data": {
+          "id": "1445c4cf-db56-4981-b1e1-819597e21944->762dd8c7-8838-4cb9-aaac-229e4a8dac44",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "One"
+        }
+      },
+      {
+        "id": "1445c4cf-db56-4981-b1e1-819597e21944->7c0ab0dc-ec23-4f2f-9f78-cd52a4322476;762dd8c7-8838-4cb9-aaac-229e4a8dac44->7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "type": "Relationship",
+        "source": "1445c4cf-db56-4981-b1e1-819597e21944",
+        "target": "7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+        "data": {
+          "id": "1445c4cf-db56-4981-b1e1-819597e21944->7c0ab0dc-ec23-4f2f-9f78-cd52a4322476",
+          "minCardinality": "Mandatory",
+          "maxCardinality": "Many"
+        }
+      }
+    ],
+    "viewport": {
+      "x": 60.0,
+      "y": 60.0,
+      "zoom": 0.52
+    }
+  },
+  "name": "Завд2_Лаб1",
+  "folder": {
+    "name": "Diagrams",
+    "folderType": 1,
+    "depth": 0,
+    "id": 413914
+  },
+  "id": "44ef41d8-5e6b-47e2-8bb8-7ebdb45c0f2f",
+  "updatedAtTimestamp": 1790316741403
+}

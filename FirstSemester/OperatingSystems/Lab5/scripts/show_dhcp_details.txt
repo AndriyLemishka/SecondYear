@@ -1,0 +1,3 @@
+netsh dhcp server 192.168.1.5 scope 192.168.1.0 show iprange
+netsh dhcp server 192.168.1.5 scope 192.168.1.0 show excluderange
+netsh dhcp server 192.168.1.5 scope 192.168.1.0 show reservedip

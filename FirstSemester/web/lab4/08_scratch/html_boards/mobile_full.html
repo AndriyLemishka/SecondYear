@@ -1,0 +1,290 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { background: #FFFFFF; color: #0F172A; -webkit-font-smoothing: antialiased; }
+</style>
+
+<style>
+  body { width: 390px; background: #FFFFFF; color: #0F172A; }
+
+  .top-bar { background: #0B132B; color: #FFFFFF; padding: 7px 16px; font-size: 10px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
+  .pulse-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10B981; margin-right: 4px; }
+
+  .header { height: 56px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E2E8F0; background: #FFFFFF; }
+  .logo-wrap { display: flex; align-items: center; gap: 8px; }
+  .logo-text { font-size: 19px; font-weight: 800; color: #0077E6; letter-spacing: -0.3px; }
+  .burger-btn { width: 28px; height: 28px; display: flex; flex-direction: column; justify-content: center; gap: 4px; cursor: pointer; }
+  .burger-line { width: 20px; height: 2px; background: #0F172A; border-radius: 2px; }
+
+  .hero-sec { position: relative; overflow: hidden; min-height: 410px; padding: 22px 16px 20px; background: #FFFFFF; }
+  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.88) 48%, rgba(255,255,255,0.35) 100%); z-index: 2; }
+  .hero-content { position: relative; z-index: 3; }
+  .hero-badge { font-size: 10.5px; font-weight: 700; color: #0077E6; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .hero-title { font-size: 27px; font-weight: 800; line-height: 1.16; color: #0F172A; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .hero-sub { font-size: 13px; line-height: 1.45; color: #334155; margin-bottom: 14px; }
+  .hero-chips { display: flex; gap: 8px; margin-bottom: 14px; }
+  .m-chip { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 12px; background: #FFF; border: 1px solid #CBD5E1; color: #0F172A; }
+  .m-chip.gen { background: #DCFCE7; border-color: #16A34A; color: #15803D; }
+  .btn-primary { display: block; width: 100%; background: #0077E6; color: #FFFFFF; border: none; padding: 13px 0; font-size: 13.5px; font-weight: 700; border-radius: 8px; cursor: pointer; text-align: center; text-decoration: none; box-shadow: 0 3px 8px rgba(0,119,230,0.25); margin-bottom: 8px; }
+  .btn-secondary { display: block; width: 100%; background: #FFFFFF; color: #0F172A; border: 1px solid #CBD5E1; padding: 10px 0; font-size: 12.5px; font-weight: 600; border-radius: 8px; cursor: pointer; text-align: center; margin-bottom: 12px; }
+  .m-live-badge { background: rgba(15, 23, 42, 0.90); backdrop-filter: blur(4px); color: #FFF; font-size: 10px; font-weight: 700; padding: 6px 10px; border-radius: 6px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .m-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #00E5FF; }
+
+  .calc-sec { padding: 36px 16px; background: #F8FAFC; border-top: 1px solid #EDF2F7; }
+  .calc-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 22px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+  .calc-h3 { font-size: 17px; font-weight: 800; color: #0F172A; margin-bottom: 4px; }
+  .calc-model { font-size: 13px; font-weight: 600; color: #0077E6; margin-bottom: 14px; }
+
+  .slider-wrap { margin: 12px 0 16px; }
+  .slider-labels { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; color: #64748B; margin-bottom: 6px; }
+  .slider-track { position: relative; height: 8px; background: #E2E8F0; border-radius: 4px; }
+  .slider-fill { position: absolute; left: 20%; width: 60%; height: 100%; background: #0077E6; border-radius: 4px; }
+  .slider-thumb { position: absolute; left: 80%; top: 50%; transform: translate(-50%, -50%); width: 22px; height: 22px; border-radius: 50%; background: #FFFFFF; border: 3px solid #0077E6; box-shadow: 0 2px 6px rgba(0,119,230,0.4); cursor: pointer; }
+  .slider-tooltip { position: absolute; top: -24px; left: 80%; transform: translateX(-50%); background: #0077E6; color: #FFF; font-size: 9px; font-weight: 800; padding: 2px 5px; border-radius: 4px; }
+  .slider-scale { display: flex; justify-content: space-between; font-size: 10px; color: #94A3B8; margin-top: 6px; }
+
+  .calc-price { font-size: 21px; font-weight: 800; color: #0F172A; margin-bottom: 4px; }
+  .calc-details { font-size: 11.5px; color: #64748B; margin-bottom: 16px; }
+
+  .map-sec { padding: 36px 16px; background: #F8FAFC; border-top: 1px solid #E2E8F0; }
+  .map-box { position: relative; height: 190px; border-radius: 12px; overflow: hidden; border: 1px solid #CBD5E1; background: #E2E8F0; }
+  .map-canvas { width: 100%; height: 100%; background: url('d:/Studing/SecondYear/FirstSemester/web/lab4/materials/map_lviv.jpg') center/cover no-repeat; position: relative; }
+  .map-pin { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; }
+  .pin-dot { width: 12px; height: 12px; border-radius: 50%; background: #10B981; border: 2px solid #FFFFFF; box-shadow: 0 0 0 2px #10B981; }
+  .pin-dot.fast { background: #0077E6; box-shadow: 0 0 0 2px #0077E6; }
+  .pin-dot.busy { background: #F59E0B; box-shadow: 0 0 0 2px #F59E0B; }
+  .pin-label { background: #0B132B; color: #FFF; font-size: 8px; font-weight: 700; padding: 2px 5px; border-radius: 3px; margin-top: 2px; white-space: nowrap; }
+
+  .hubs-sec { padding: 36px 16px; background: #FFFFFF; }
+  .sec-heading { font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 16px; }
+  .hub-card { border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; margin-bottom: 22px; background: #FFFFFF; }
+  .hub-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+  .hub-body { padding: 14px 16px; }
+  .hub-title { font-size: 14px; font-weight: 700; color: #0F172A; margin-bottom: 3px; }
+  .hub-addr { font-size: 11px; color: #64748B; margin-bottom: 8px; }
+  .hub-badge { display: inline-flex; align-items: center; gap: 4px; background: #DCFCE7; color: #15803D; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px; }
+  .btn-outline { display: block; width: 100%; background: #F8FAFC; border: 1px solid #0077E6; color: #0077E6; padding: 9px 0; font-size: 12px; font-weight: 700; border-radius: 6px; text-align: center; cursor: pointer; }
+
+  .gen-sec { padding: 38px 16px; background: #0B132B; color: #FFFFFF; }
+  .gen-badge { font-size: 10px; font-weight: 800; color: #10B981; margin-bottom: 6px; }
+  .gen-title { font-size: 17px; font-weight: 800; line-height: 1.25; margin-bottom: 8px; }
+  .gen-sub { font-size: 12px; line-height: 1.45; color: #94A3B8; margin-bottom: 14px; }
+  .gen-img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); }
+
+  .steps-sec { padding: 36px 16px; background: #FFFFFF; }
+  .step-card { display: flex; gap: 12px; padding: 12px 14px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: #0077E6; color: #FFFFFF; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-info { flex: 1; }
+  .step-title { font-size: 12.5px; font-weight: 700; color: #0F172A; margin-bottom: 2px; }
+  .step-desc { font-size: 11px; color: #64748B; line-height: 1.35; }
+
+  .rev-sec { padding: 36px 16px; background: #F8FAFC; border-top: 1px solid #E2E8F0; }
+  .rev-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  .rev-stars { color: #F59E0B; font-size: 11px; margin-bottom: 4px; }
+  .rev-text { font-size: 11.5px; color: #334155; line-height: 1.4; margin-bottom: 8px; }
+  .rev-author { display: flex; align-items: center; gap: 8px; }
+  .rev-av { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+  .rev-name { font-size: 11px; font-weight: 700; color: #0F172A; }
+  .rev-car { font-size: 10px; color: #64748B; }
+
+  .footer { background: #0B132B; color: #FFFFFF; padding: 32px 16px 85px; border-top: 1px solid #1E293B; }
+  .f-logo { font-size: 17px; font-weight: 800; color: #0077E6; margin-bottom: 6px; }
+  .f-desc { font-size: 11px; color: #94A3B8; line-height: 1.4; margin-bottom: 16px; }
+  .f-copy { font-size: 10px; color: #64748B; }
+
+  .bottom-nav { position: fixed; bottom: 0; left: 0; width: 390px; height: 54px; background: #FFFFFF; border-top: 1px solid #E2E8F0; display: flex; justify-content: space-around; align-items: center; z-index: 100; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
+  .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 9px; font-weight: 600; color: #64748B; cursor: pointer; }
+  .nav-item.active { color: #0077E6; }
+  .nav-icon { font-size: 16px; margin-bottom: 2px; }
+</style></head><body>
+  <div class="top-bar">
+    <div><span class="pulse-dot"></span>480+ станцій онлайн</div>
+    <div>0 800 300 400</div>
+  </div>
+
+  <header class="header">
+    <div class="logo-wrap">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:24px; height:24px;">
+      <span class="logo-text">ChargeUA</span>
+    </div>
+    <div class="burger-btn">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+  </header>
+
+  <section class="hero-sec">
+    <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/hero_loop_opt.gif" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⚡ НАЦІОНАЛЬНИЙ АГРЕГАТОР</div>
+      <h1 class="hero-title">Заряджайте авто<br>без стресу</h1>
+      <p class="hero-sub">Усі мережі на одній карті з фільтром генераторів у блекаути.</p>
+      
+      <div class="hero-chips">
+        <span class="m-chip">⚡ CCS 2 (160 кВт)</span>
+        <span class="m-chip gen">🔋 Тільки генератор</span>
+      </div>
+
+      <button class="btn-primary">Розрахувати зарядку →</button>
+      <button class="btn-secondary">Знайти найближчий хаб</button>
+    </div>
+  </section>
+
+  <section class="calc-sec">
+    <div class="calc-card">
+      <div class="calc-h3">Калькулятор витрат</div>
+      <div class="calc-model">VW ID.4 · 20% → 80%</div>
+
+      <div class="slider-wrap">
+        <div class="slider-labels">
+          <span>Рівень заряду батареї (Повзунок)</span>
+          <span style="color:#0077E6;">+46.2 кВт·год</span>
+        </div>
+        <div class="slider-track">
+          <div class="slider-fill"></div>
+          <div class="slider-thumb"></div>
+          <div class="slider-tooltip">80%</div>
+        </div>
+        <div class="slider-scale">
+          <span>0%</span>
+          <span>20% (Старт)</span>
+          <span>50%</span>
+          <span style="color:#0077E6; font-weight:700;">80% (Ціль)</span>
+          <span>100%</span>
+        </div>
+      </div>
+
+      <div class="calc-price">652.50 ₴ (~28 хв)</div>
+      <div class="calc-details">Тариф: 14.12 ₴/кВт·год · 46.2 кВт</div>
+      <button class="btn-primary">Знайти вільну станцію</button>
+    </div>
+  </section>
+
+  <section class="map-sec">
+    <h2 class="sec-heading">Live-карта зарядної мережі</h2>
+    <div style="font-size:11px; color:#64748B; margin-top:-6px; margin-bottom:10px;">Фільтрація та статус конекторів онлайн:</div>
+
+    <!-- Mobile Map Filter Controls -->
+    <div style="display:flex; align-items:center; gap:6px; background:#FFF; border:1.5px solid #005EC9; border-radius:7px; padding:6px 10px; margin-bottom:8px;">
+      <span style="font-size:12px;">🔍</span>
+      <span style="font-size:11px; font-weight:500; color:#0F172A;">м. Львів, вул. Стрийська, 199</span>
+    </div>
+
+    <div style="display:flex; gap:6px; margin-bottom:8px; overflow-x:auto;">
+      <span style="background:#005EC9; color:#FFF; font-size:10px; font-weight:700; padding:5px 9px; border-radius:6px; white-space:nowrap;">⚡ Всі</span>
+      <span style="background:#FFF; border:1px solid #CBD5E1; color:#0F172A; font-size:10px; font-weight:600; padding:5px 9px; border-radius:6px; white-space:nowrap;">CCS 2 (160 кВт)</span>
+      <span style="background:#ECFDF5; border:1px solid #047857; color:#047857; font-size:10px; font-weight:700; padding:5px 9px; border-radius:6px; white-space:nowrap;">🔋 Генератор ON</span>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:6px; font-size:10.5px; font-weight:600; color:#0F172A; margin-bottom:10px;">
+      <span style="width:14px; height:14px; background:#005EC9; color:#FFF; border-radius:3px; display:inline-flex; align-items:center; justify-content:center; font-size:9px;">✓</span>
+      <span>Тільки вільні конектори прямо зараз</span>
+    </div>
+
+    <div class="map-box">
+      <div class="map-canvas">
+        <div class="map-pin" style="top: 40px; left: 140px;">
+          <div class="pin-dot fast"></div>
+          <div class="pin-label">Київ · 120 кВт (3/4)</div>
+        </div>
+        <div class="map-pin" style="top: 50px; left: 45px;">
+          <div class="pin-dot fast"></div>
+          <div class="pin-label">Львів · 160 кВт (4/4)</div>
+        </div>
+        <div class="map-pin" style="top: 130px; left: 170px;">
+          <div class="pin-dot busy"></div>
+          <div class="pin-label">Одеса · 100 кВт (1/2)</div>
+        </div>
+        <div class="map-pin" style="top: 85px; left: 260px;">
+          <div class="pin-dot fast"></div>
+          <div class="pin-label">Дніпро · 120 кВт (2/2)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hubs-sec">
+    <h2 class="sec-heading">Популярні зарядні хаби</h2>
+    <div class="hub-card">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="hub-img">
+      <div class="hub-body">
+        <div class="hub-title">Хаб «Київ-Поділ» · 120 кВт CCS2</div>
+        <div class="hub-addr">вул. Сагайдачного, 12 · 4 порти (3 вільно)</div>
+        <div class="hub-badge">🔋 Працює від генератора</div>
+        <button class="btn-outline">Прокласти маршрут</button>
+      </div>
+    </div>
+    <div class="hub-card">
+      <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="hub-img">
+      <div class="hub-body">
+        <div class="hub-title">Хаб «Арена Львів» · 160 кВт CCS2</div>
+        <div class="hub-addr">вул. Стрийська, 199 · 6 портів (5 вільно)</div>
+        <div class="hub-badge">🔋 Сонячний навіс + Дизель</div>
+        <button class="btn-outline">Прокласти маршрут</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="gen-sec">
+    <div class="gen-badge">⚡ ЕНЕРГОНЕЗАЛЕЖНІСТЬ 100%</div>
+    <h2 class="gen-title">Заряджайте авто навіть під час повних блекаутів</h2>
+    <p class="gen-sub">180+ станцій обладнані дизель-генераторами 160 кВт.</p>
+    <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_generator_blackout.jpg" class="gen-img">
+  </section>
+
+  <section class="steps-sec">
+    <h2 class="sec-heading">Як зарядитися за 3 кроки</h2>
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-info"><div class="step-title">Знайдіть станцію на карті</div><div class="step-desc">Фільтруйте за потужністю, конектором та світлом.</div></div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-info"><div class="step-title">Підключіть конектор CCS2</div><div class="step-desc">Вставте кабель у роз'єм електромобіля.</div></div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-info"><div class="step-title">Оплатіть у 1 клік</div><div class="step-desc">Apple Pay, Google Pay або картка без переплат.</div></div>
+    </div>
+  </section>
+
+  <section class="rev-sec">
+    <h2 class="sec-heading">Відгуки водіїв</h2>
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">«Під час блекауту зарядився за 25 хв на Подолі! Все стабільно.»</p>
+      <div class="rev-author">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_avatar_oleksiy.jpg" class="rev-av">
+        <div><div class="rev-name">Олексій К.</div><div class="rev-car">Tesla Model Y</div></div>
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">«Калькулятор дуже точний, розрахував витрати до копійки.»</p>
+      <div class="rev-author">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_avatar_olena.jpg" class="rev-av">
+        <div><div class="rev-name">Олена М.</div><div class="rev-car">Nissan Leaf</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="f-logo">ChargeUA</div>
+    <p class="f-desc">Національний агрегатор та веб-помічник зарядної інфраструктури України.</p>
+    <div class="f-copy">© 2026 ChargeUA · Лемішка Андрій, ПП-24</div>
+  </footer>
+
+  <nav class="bottom-nav">
+    <div class="nav-item active"><span class="nav-icon">⚡</span>Головна</div>
+    <div class="nav-item"><span class="nav-icon">🗺</span>Карта</div>
+    <div class="nav-item"><span class="nav-icon">🧮</span>Калькулятор</div>
+  </nav>
+</body></html>

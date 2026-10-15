@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  body { background: #F8FAFC; padding: 30px; width: 1188px; }
+  .flow-box { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 20px 24px; margin-bottom: 18px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .title { font-size: 15px; font-weight: 700; color: #005EC9; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .steps { display: flex; align-items: center; gap: 10px; }
+  .step { background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 8px; padding: 10px 14px; font-size: 12px; font-weight: 600; text-align: center; min-width: 130px; }
+  .step.start { background: #005EC9; color: #FFF; border-color: #005EC9; }
+  .step.success { background: #D1FAE5; color: #047857; border-color: #A7F3D0; font-weight: 700; }
+  .arrow { color: #94A3B8; font-weight: 800; font-size: 18px; }
+</style></head><body>
+  <div style="font-size:20px; font-weight:800; margin-bottom:20px;">User Flow · Сценарії взаємодії водіїв з платформою ChargeUA</div>
+  
+  <div class="flow-box">
+    <div class="title">Сценарій 1 · Підбір електромобіля та точний розрахунок вартості (US-01)</div>
+    <div class="steps">
+      <div class="step start">Головна сторінка</div><div class="arrow">→</div>
+      <div class="step">CTA «Розрахувати»</div><div class="arrow">→</div>
+      <div class="step">Модель (Tesla / ID.4)</div><div class="arrow">→</div>
+      <div class="step">Слайдер 20% → 80%</div><div class="arrow">→</div>
+      <div class="step">Порівняння тарифів</div><div class="arrow">→</div>
+      <div class="step success">Рекомендована станція</div>
+    </div>
+  </div>
+
+  <div class="flow-box">
+    <div class="title">Сценарій 2 · Екстрений пошук працюючої станції під час блекауту (US-02)</div>
+    <div class="steps">
+      <div class="step start">Головна сторінка</div><div class="arrow">→</div>
+      <div class="step">Карта станцій</div><div class="arrow">→</div>
+      <div class="step">Фільтр «🔋 З генератором»</div><div class="arrow">→</div>
+      <div class="step">Слот CCS2 (120 кВт)</div><div class="arrow">→</div>
+      <div class="step">Бронювання на 20 хв</div><div class="arrow">→</div>
+      <div class="step success">Маршрут у Waze / Maps</div>
+    </div>
+  </div>
+
+  <div class="flow-box">
+    <div class="title">Сценарій 3 · Подання B2B-заявки на встановлення зарядної станції (US-03)</div>
+    <div class="steps">
+      <div class="step start">Головна сторінка</div><div class="arrow">→</div>
+      <div class="step">Розділ «Для бізнесу»</div><div class="arrow">→</div>
+      <div class="step">Форма партнера</div><div class="arrow">→</div>
+      <div class="step">Валідація контактів</div><div class="arrow">→</div>
+      <div class="step">Клік «Подати заявку»</div><div class="arrow">→</div>
+      <div class="step success">Оверлей «Заявку прийнято»</div>
+    </div>
+  </div>
+</body></html>

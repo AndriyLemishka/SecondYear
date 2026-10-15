@@ -1,0 +1,97 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  body { background: #F8FAFC; padding: 30px; width: 1350px; }
+  .flow-canvas { display: flex; flex-direction: column; gap: 20px; }
+  .phase-row { display: grid; grid-template-columns: 220px 1fr; gap: 20px; background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .phase-label { border-right: 1.5px solid #EDF2F7; padding-right: 16px; display: flex; flex-direction: column; justify-content: center; }
+  .phase-title { font-size: 15px; font-weight: 800; color: #005EC9; margin-bottom: 4px; }
+  .phase-desc { font-size: 12px; color: #64748B; line-height: 1.4; }
+  .steps-chain { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .node { background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 10px; padding: 12px 16px; min-width: 170px; }
+  .node.user { border-color: #005EC9; background: #EFF6FF; }
+  .node.sys { border-color: #10B981; background: #ECFDF5; }
+  .node.decision { border-color: #F59E0B; background: #FFFBEB; }
+  .node.error { border-color: #EF4444; background: #FEF2F2; }
+  .node.success { border-color: #047857; background: #D1FAE5; }
+  .tag { font-size: 10px; font-weight: 800; text-transform: uppercase; margin-bottom: 4px; }
+  .tag.u { color: #005EC9; }
+  .tag.s { color: #047857; }
+  .tag.d { color: #D97706; }
+  .tag.e { color: #DC2626; }
+  .node-title { font-size: 13px; font-weight: 700; color: #0F172A; }
+  .node-desc { font-size: 11px; color: #64748B; margin-top: 2px; }
+  .arrow { color: #94A3B8; font-weight: 800; font-size: 18px; }
+</style></head><body>
+  <div style="font-size:22px; font-weight:800; margin-bottom:6px;">Деталізований User Flow (US-02): Пошук зарядної станції під час блекауту</div>
+  <div style="font-size:14px; color:#64748B; margin-bottom:24px;">Повна схема взаємодії водія, системних реакцій, перевірки умов та обробки альтернативного маршруту</div>
+  
+  <div class="flow-canvas">
+    <div class="phase-row">
+      <div class="phase-label">
+        <div class="phase-title">1. Вхід та локація</div>
+        <div class="phase-desc">Екстрений запуск зі смартфона під час аварійного відключення</div>
+      </div>
+      <div class="steps-chain">
+        <div class="node user"><div class="tag u">Дія водія</div><div class="node-title">Відкриття ChargeUA</div><div class="node-desc">Тап на іконку в браузері</div></div>
+        <div class="arrow">→</div>
+        <div class="node sys"><div class="tag s">Реакція системи</div><div class="node-title">Геолокація GPS</div><div class="node-desc">Визначення району користувача</div></div>
+        <div class="arrow">→</div>
+        <div class="node sys"><div class="tag s">Реакція системи</div><div class="node-title">Завантаження карти</div><div class="node-desc">Синхронізація статусів ДТЕК</div></div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-label">
+        <div class="phase-title">2. Фільтрація</div>
+        <div class="phase-desc">Виділення автономних хабів із резервним живленням</div>
+      </div>
+      <div class="steps-chain">
+        <div class="node user"><div class="tag u">Дія водія</div><div class="node-title">Фільтр «🔋 З генератором»</div><div class="node-desc">Один клік на швидкий чіп</div></div>
+        <div class="arrow">→</div>
+        <div class="node user"><div class="tag u">Дія водія</div><div class="node-title">Вибір порту CCS2</div><div class="node-desc">Потужність DC від 120 кВт</div></div>
+        <div class="arrow">→</div>
+        <div class="node sys"><div class="tag s">Реакція системи</div><div class="node-title">Фільтрація пінів</div><div class="node-desc">Показ виключно активних хабів</div></div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-label">
+        <div class="phase-title">3. Рішення та Edge Case</div>
+        <div class="phase-desc">Аналіз доступності портів у реальному часі</div>
+      </div>
+      <div class="steps-chain">
+        <div class="node decision"><div class="tag d">Умова / Рішення</div><div class="node-title">Чи є вільний порт?</div><div class="node-desc">Перевірка телеметрії хабу</div></div>
+        <div class="arrow">→ [ТАК]</div>
+        <div class="node success"><div class="tag s">Успішний результат</div><div class="node-title">Хаб «Київ-Поділ»</div><div class="node-desc">2 порти вільні · Генератор ON</div></div>
+        <div class="arrow">→ [НІ]</div>
+        <div class="node error"><div class="tag e">Edge Case (Черга)</div><div class="node-title">Альтернативний хаб</div><div class="node-desc">Хаб «Лук'янівка» (1.8 км, вільний)</div></div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-label">
+        <div class="phase-title">4. Завершення дії</div>
+        <div class="phase-desc">Передача маршруту водієві без зайвих кроків бронювання</div>
+      </div>
+      <div class="steps-chain">
+        <div class="node user"><div class="tag u">Дія водія</div><div class="node-title">Клік «Прокласти маршрут»</div><div class="node-desc">Передача координат станції</div></div>
+        <div class="arrow">→</div>
+        <div class="node sys"><div class="tag s">Реакція системи</div><div class="node-title">Помічник ChargeUA</div><div class="node-desc">Запуск Waze або Google Maps</div></div>
+        <div class="arrow">→</div>
+        <div class="node success"><div class="tag s">Фінальний стан</div><div class="node-title">Навігація активована</div><div class="node-desc">Моніторинг порту під час руху</div></div>
+      </div>
+    </div>
+  </div>
+</body></html>

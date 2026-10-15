@@ -1,0 +1,660 @@
+[
+  {
+    "task_num": 1,
+    "title": "Завдання 1. Написання запитів простої вибірки (SELECT, FROM, LIMIT, DISTINCT, IS NULL)",
+    "items": [
+      {
+        "num": "1.1",
+        "desc": "Вибірка всіх полів та записів з таблиці каталогу 3D-моделей (базовий SELECT *).",
+        "sql": "SELECT id_model, name, price, polygon_count, has_texture FROM model_3d LIMIT 6;",
+        "rows": [
+          {
+            "id_model": 1,
+            "name": "Cyberpunk Character",
+            "price": 25.0,
+            "polygon_count": 150000,
+            "has_texture": "Yes"
+          },
+          {
+            "id_model": 2,
+            "name": "Sports Car",
+            "price": 15.0,
+            "polygon_count": 25000,
+            "has_texture": "Yes"
+          },
+          {
+            "id_model": 3,
+            "name": "Assault Rifle",
+            "price": 10.0,
+            "polygon_count": 8000,
+            "has_texture": "Yes"
+          },
+          {
+            "id_model": 4,
+            "name": "Forest Terrain",
+            "price": 0.01,
+            "polygon_count": 500000,
+            "has_texture": "No"
+          },
+          {
+            "id_model": 5,
+            "name": "Wooden Barrel",
+            "price": 5.0,
+            "polygon_count": 1200,
+            "has_texture": "Yes"
+          },
+          {
+            "id_model": 6,
+            "name": "Wolf Animation",
+            "price": 30.0,
+            "polygon_count": 45000,
+            "has_texture": "Yes"
+          }
+        ]
+      },
+      {
+        "num": "1.2",
+        "desc": "Вибірка унікальних форматів файлів моделей у маркетплейсі з використанням DISTINCT.",
+        "sql": "SELECT DISTINCT format FROM model_file;",
+        "rows": [
+          {
+            "format": "FBX"
+          },
+          {
+            "format": "BLEND"
+          },
+          {
+            "format": "OBJ"
+          }
+        ]
+      },
+      {
+        "num": "1.3",
+        "desc": "Отримання списку перших трьох зареєстрованих покупців з обмеженням кількості через LIMIT.",
+        "sql": "SELECT id_buyer, email, registration_date FROM buyer LIMIT 3;",
+        "rows": [
+          {
+            "id_buyer": 1,
+            "email": "user1@mail.com",
+            "registration_date": "2025-01-10"
+          },
+          {
+            "id_buyer": 2,
+            "email": "john_d@mail.com",
+            "registration_date": "2025-01-15"
+          },
+          {
+            "id_buyer": 3,
+            "email": "sarah_art@mail.com",
+            "registration_date": "2025-02-01"
+          }
+        ]
+      },
+      {
+        "num": "1.4",
+        "desc": "Пошук 3D-моделей, у яких відсутній детальний опис (перевірка на IS NULL).",
+        "sql": "SELECT id_model, name, description, price FROM model_3d WHERE description IS NULL;",
+        "rows": [
+          {
+            "id_model": 13,
+            "name": "Draft Prototype Box",
+            "description": null,
+            "price": 3.5
+          }
+        ]
+      },
+      {
+        "num": "1.5",
+        "desc": "Вибірка унікальних пар 'статус кошика — сума' з пропуском перших двох рядків (LIMIT 2, 4).",
+        "sql": "SELECT DISTINCT status, total_amount FROM cart LIMIT 2, 4;",
+        "rows": [
+          {
+            "status": "Pending",
+            "total_amount": 10.0
+          },
+          {
+            "status": "Completed",
+            "total_amount": 40.0
+          },
+          {
+            "status": "Completed",
+            "total_amount": 18.0
+          },
+          {
+            "status": "Pending",
+            "total_amount": 55.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "task_num": 2,
+    "title": "Завдання 2. Сортування даних у запитах (ORDER BY, DESC, сортування за декількома стовпцями)",
+    "items": [
+      {
+        "num": "2.1",
+        "desc": "Сортування списку авторів (продавців) за рейтингом від найвищого до найнижчого (ORDER BY DESC).",
+        "sql": "SELECT id_seller, nickname, rating FROM seller ORDER BY rating DESC LIMIT 5;",
+        "rows": [
+          {
+            "id_seller": 5,
+            "nickname": "MeshCreator",
+            "rating": 5.0
+          },
+          {
+            "id_seller": 3,
+            "nickname": "PolyGenius",
+            "rating": 4.9
+          },
+          {
+            "id_seller": 1,
+            "nickname": "3D_Master",
+            "rating": 4.8
+          },
+          {
+            "id_seller": 7,
+            "nickname": "TextureGod",
+            "rating": 4.7
+          },
+          {
+            "id_seller": 8,
+            "nickname": "VertexHero",
+            "rating": 4.6
+          }
+        ]
+      },
+      {
+        "num": "2.2",
+        "desc": "Сортування моделей за ціною у зростаючому порядку з обчисленням ціни з ПДВ 20% через псевдонім (AS).",
+        "sql": "SELECT id_model, name, price, ROUND(price * 1.20, 2) AS price_with_vat FROM model_3d ORDER BY price ASC LIMIT 5;",
+        "rows": [
+          {
+            "id_model": 4,
+            "name": "Forest Terrain",
+            "price": 0.01,
+            "price_with_vat": 0.01
+          },
+          {
+            "id_model": 13,
+            "name": "Draft Prototype Box",
+            "price": 3.5,
+            "price_with_vat": 4.2
+          },
+          {
+            "id_model": 5,
+            "name": "Wooden Barrel",
+            "price": 5.0,
+            "price_with_vat": 6.0
+          },
+          {
+            "id_model": 12,
+            "name": "Sci-Fi Pistol",
+            "price": 8.0,
+            "price_with_vat": 9.6
+          },
+          {
+            "id_model": 3,
+            "name": "Assault Rifle",
+            "price": 10.0,
+            "price_with_vat": 12.0
+          }
+        ]
+      },
+      {
+        "num": "2.3",
+        "desc": "Сортування за двома стовпцями: за наявністю текстури (за спаданням) та кількістю полігонів (за зростанням).",
+        "sql": "SELECT id_model, name, has_texture, polygon_count, price FROM model_3d ORDER BY has_texture DESC, polygon_count ASC LIMIT 6;",
+        "rows": [
+          {
+            "id_model": 5,
+            "name": "Wooden Barrel",
+            "has_texture": "Yes",
+            "polygon_count": 1200,
+            "price": 5.0
+          },
+          {
+            "id_model": 12,
+            "name": "Sci-Fi Pistol",
+            "has_texture": "Yes",
+            "polygon_count": 4000,
+            "price": 8.0
+          },
+          {
+            "id_model": 3,
+            "name": "Assault Rifle",
+            "has_texture": "Yes",
+            "polygon_count": 8000,
+            "price": 10.0
+          },
+          {
+            "id_model": 9,
+            "name": "Leather Sofa",
+            "has_texture": "Yes",
+            "polygon_count": 8500,
+            "price": 18.0
+          },
+          {
+            "id_model": 7,
+            "name": "Oak Tree",
+            "has_texture": "Yes",
+            "polygon_count": 15000,
+            "price": 12.0
+          },
+          {
+            "id_model": 2,
+            "name": "Sports Car",
+            "has_texture": "Yes",
+            "polygon_count": 25000,
+            "price": 15.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "task_num": 3,
+    "title": "Завдання 3. Фільтрація даних за умовами (IN, BETWEEN, LIKE, REGEXP)",
+    "items": [
+      {
+        "num": "3.1",
+        "desc": "Фільтрація моделей за списком ідентифікаторів категорій за допомогою оператора IN.",
+        "sql": "SELECT id_model, name, id_category, price FROM model_3d WHERE id_category IN (1, 2, 8);",
+        "rows": [
+          {
+            "id_model": 1,
+            "name": "Cyberpunk Character",
+            "id_category": 1,
+            "price": 25.0
+          },
+          {
+            "id_model": 2,
+            "name": "Sports Car",
+            "id_category": 2,
+            "price": 15.0
+          },
+          {
+            "id_model": 8,
+            "name": "Modern House",
+            "id_category": 8,
+            "price": 40.0
+          },
+          {
+            "id_model": 11,
+            "name": "Hoverbike",
+            "id_category": 2,
+            "price": 22.0
+          }
+        ]
+      },
+      {
+        "num": "3.2",
+        "desc": "Фільтрація файлів 3D-моделей за розміром у діапазоні від 10 до 50 МБ за допомогою BETWEEN.",
+        "sql": "SELECT id_file, id_model, format, size_mb FROM model_file WHERE size_mb BETWEEN 10.0 AND 50.0;",
+        "rows": [
+          {
+            "id_file": 1,
+            "id_model": 1,
+            "format": "FBX",
+            "size_mb": 45.5
+          },
+          {
+            "id_file": 3,
+            "id_model": 2,
+            "format": "OBJ",
+            "size_mb": 12.0
+          },
+          {
+            "id_file": 7,
+            "id_model": 6,
+            "format": "FBX",
+            "size_mb": 35.0
+          },
+          {
+            "id_file": 8,
+            "id_model": 7,
+            "format": "FBX",
+            "size_mb": 18.4
+          },
+          {
+            "id_file": 10,
+            "id_model": 9,
+            "format": "OBJ",
+            "size_mb": 15.6
+          },
+          {
+            "id_file": 12,
+            "id_model": 11,
+            "format": "BLEND",
+            "size_mb": 42.0
+          }
+        ]
+      },
+      {
+        "num": "3.3",
+        "desc": "Пошук моделей за шаблоном назви з входженням підрядка 'Sci-Fi' оператором LIKE.",
+        "sql": "SELECT id_model, name, price, polygon_count FROM model_3d WHERE name LIKE '%Sci-Fi%';",
+        "rows": [
+          {
+            "id_model": 12,
+            "name": "Sci-Fi Pistol",
+            "price": 8.0,
+            "polygon_count": 4000
+          }
+        ]
+      },
+      {
+        "num": "3.4",
+        "desc": "Фільтрація користувачів за маскою електронної пошти за допомогою оператора LIKE (підрядки '_art@' або 'user_%').",
+        "sql": "SELECT id_buyer, email, registration_date FROM buyer WHERE email LIKE '%_art@%' OR email LIKE 'user_%';",
+        "rows": [
+          {
+            "id_buyer": 1,
+            "email": "user1@mail.com",
+            "registration_date": "2025-01-10"
+          },
+          {
+            "id_buyer": 3,
+            "email": "sarah_art@mail.com",
+            "registration_date": "2025-02-01"
+          }
+        ]
+      },
+      {
+        "num": "3.5",
+        "desc": "Складна фільтрація назв моделей за регулярним виразом REGEXP (початок з Cyberpunk, Sports або Space).",
+        "sql": "SELECT id_model, name, price, polygon_count FROM model_3d WHERE name REGEXP '^(Cyberpunk|Sports|Space).*';",
+        "rows": [
+          {
+            "id_model": 1,
+            "name": "Cyberpunk Character",
+            "price": 25.0,
+            "polygon_count": 150000
+          },
+          {
+            "id_model": 2,
+            "name": "Sports Car",
+            "price": 15.0,
+            "polygon_count": 25000
+          },
+          {
+            "id_model": 10,
+            "name": "Space Station",
+            "price": 55.0,
+            "polygon_count": 320000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "task_num": 4,
+    "title": "Завдання 4. Використання агрегатних функцій (COUNT, AVG, MIN, MAX, SUM)",
+    "items": [
+      {
+        "num": "4.1",
+        "desc": "Підрахунок загальної кількості моделей та кількості унікальних категорій у каталозі.",
+        "sql": "SELECT COUNT(*) AS total_models, COUNT(DISTINCT id_category) AS unique_categories_count FROM model_3d;",
+        "rows": [
+          {
+            "total_models": 13,
+            "unique_categories_count": 10
+          }
+        ]
+      },
+      {
+        "num": "4.2",
+        "desc": "Обчислення середньої вартості 3D-моделі та середньої кількості полігонів (функція AVG).",
+        "sql": "SELECT ROUND(AVG(price), 2) AS avg_model_price, ROUND(AVG(polygon_count), 0) AS avg_polygon_count FROM model_3d;",
+        "rows": [
+          {
+            "avg_model_price": 18.73,
+            "avg_polygon_count": 94785.0
+          }
+        ]
+      },
+      {
+        "num": "4.3",
+        "desc": "Визначення мінімальної та максимальної вартості 3D-моделей у маркетплейсі (функції MIN, MAX).",
+        "sql": "SELECT MIN(price) AS min_model_price, MAX(price) AS max_model_price FROM model_3d;",
+        "rows": [
+          {
+            "min_model_price": 0.01,
+            "max_model_price": 55.0
+          }
+        ]
+      },
+      {
+        "num": "4.4",
+        "desc": "Обчислення загальної суми виручки за всіма успішно оплаченими замовленнями (функція SUM).",
+        "sql": "SELECT SUM(total_amount) AS total_revenue FROM cart WHERE status = 'Completed';",
+        "rows": [
+          {
+            "total_revenue": 133.0
+          }
+        ]
+      },
+      {
+        "num": "4.5",
+        "desc": "Зведена статистика щодо розмірів файлів моделей у системі (COUNT, MIN, MAX, AVG, SUM).",
+        "sql": "SELECT COUNT(id_file) AS total_files, MIN(size_mb) AS min_file_size, MAX(size_mb) AS max_file_size, ROUND(AVG(size_mb), 2) AS avg_file_size, ROUND(SUM(size_mb), 2) AS total_storage_mb FROM model_file;",
+        "rows": [
+          {
+            "total_files": 13,
+            "min_file_size": 2.1,
+            "max_file_size": 210.0,
+            "avg_file_size": 49.98,
+            "total_storage_mb": 649.8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "task_num": 5,
+    "title": "Завдання 5. Групування даних та фільтрація груп (GROUP BY, HAVING)",
+    "items": [
+      {
+        "num": "5.1",
+        "desc": "Аналіз кількості 3D-моделей та їх середньої вартості у розрізі кожної категорії товару.",
+        "sql": "SELECT id_category, COUNT(*) AS models_count, ROUND(AVG(price), 2) AS avg_price FROM model_3d GROUP BY id_category ORDER BY models_count DESC;",
+        "rows": [
+          {
+            "id_category": 5,
+            "models_count": 2,
+            "avg_price": 4.25
+          },
+          {
+            "id_category": 3,
+            "models_count": 2,
+            "avg_price": 9.0
+          },
+          {
+            "id_category": 2,
+            "models_count": 2,
+            "avg_price": 18.5
+          },
+          {
+            "id_category": 10,
+            "models_count": 1,
+            "avg_price": 55.0
+          },
+          {
+            "id_category": 9,
+            "models_count": 1,
+            "avg_price": 18.0
+          },
+          {
+            "id_category": 8,
+            "models_count": 1,
+            "avg_price": 40.0
+          },
+          {
+            "id_category": 7,
+            "models_count": 1,
+            "avg_price": 12.0
+          },
+          {
+            "id_category": 6,
+            "models_count": 1,
+            "avg_price": 30.0
+          },
+          {
+            "id_category": 4,
+            "models_count": 1,
+            "avg_price": 0.01
+          },
+          {
+            "id_category": 1,
+            "models_count": 1,
+            "avg_price": 25.0
+          }
+        ]
+      },
+      {
+        "num": "5.2",
+        "desc": "Групування замовлень за статусами з фільтрацією груп за сумарним грошовим оборотом понад 50 (HAVING).",
+        "sql": "SELECT status, COUNT(*) AS orders_count, ROUND(SUM(total_amount), 2) AS total_volume FROM cart GROUP BY status HAVING total_volume > 50.00;",
+        "rows": [
+          {
+            "status": "Completed",
+            "orders_count": 6,
+            "total_volume": 133.0
+          },
+          {
+            "status": "Pending",
+            "orders_count": 4,
+            "total_volume": 77.01
+          }
+        ]
+      },
+      {
+        "num": "5.3",
+        "desc": "Визначення авторів (продавців), які мають 2 і більше робіт, з підрахунком сумарної вартості їхніх моделей.",
+        "sql": "SELECT id_seller, COUNT(*) AS models_created, ROUND(SUM(price), 2) AS total_catalog_value FROM model_3d GROUP BY id_seller HAVING COUNT(*) >= 2;",
+        "rows": [
+          {
+            "id_seller": 1,
+            "models_created": 2,
+            "total_catalog_value": 47.0
+          },
+          {
+            "id_seller": 2,
+            "models_created": 2,
+            "total_catalog_value": 23.0
+          },
+          {
+            "id_seller": 3,
+            "models_created": 2,
+            "total_catalog_value": 13.5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "task_num": 6,
+    "title": "Завдання 6. Створення та використання представлень (CREATE VIEW, SELECT FROM VIEW)",
+    "items": [
+      {
+        "num": "6.1",
+        "view_name": "view_popular_models",
+        "desc": "Представлення 'view_popular_models': вітрина 3D-моделей із назвою категорії та нікнеймом автора.",
+        "create_sql": "CREATE VIEW IF NOT EXISTS view_popular_models AS\nSELECT \n    m.id_model,\n    m.name AS model_name,\n    c.name AS category_name,\n    s.nickname AS author_nickname,\n    m.price,\n    m.polygon_count,\n    m.has_texture\nFROM model_3d m\nJOIN category c ON m.id_category = c.id_category\nJOIN seller s ON m.id_seller = s.id_seller;",
+        "select_sql": "SELECT * FROM view_popular_models WHERE price >= 20.00 ORDER BY price DESC;",
+        "rows": [
+          {
+            "id_model": 10,
+            "model_name": "Space Station",
+            "category_name": "Sci-Fi",
+            "author_nickname": "ModelGuru",
+            "price": 55.0,
+            "polygon_count": 320000,
+            "has_texture": "Yes"
+          },
+          {
+            "id_model": 8,
+            "model_name": "Modern House",
+            "category_name": "Architecture",
+            "author_nickname": "VertexHero",
+            "price": 40.0,
+            "polygon_count": 120000,
+            "has_texture": "Yes"
+          },
+          {
+            "id_model": 6,
+            "model_name": "Wolf Animation",
+            "category_name": "Animals",
+            "author_nickname": "VoxelKing",
+            "price": 30.0,
+            "polygon_count": 45000,
+            "has_texture": "Yes"
+          },
+          {
+            "id_model": 1,
+            "model_name": "Cyberpunk Character",
+            "category_name": "Characters",
+            "author_nickname": "3D_Master",
+            "price": 25.0,
+            "polygon_count": 150000,
+            "has_texture": "Yes"
+          },
+          {
+            "id_model": 11,
+            "model_name": "Hoverbike",
+            "category_name": "Vehicles",
+            "author_nickname": "3D_Master",
+            "price": 22.0,
+            "polygon_count": 35000,
+            "has_texture": "Yes"
+          }
+        ]
+      },
+      {
+        "num": "6.2",
+        "view_name": "view_buyer_order_summary",
+        "desc": "Представлення 'view_buyer_order_summary': зведена аналітика покупок клієнтів із витраченою сумою.",
+        "create_sql": "CREATE VIEW IF NOT EXISTS view_buyer_order_summary AS\nSELECT \n    b.id_buyer,\n    b.email,\n    COUNT(c.id_cart) AS total_orders,\n    COALESCE(SUM(c.total_amount), 0) AS total_spent\nFROM buyer b\nLEFT JOIN cart c ON b.id_buyer = c.id_buyer AND c.status = 'Completed'\nGROUP BY b.id_buyer, b.email;",
+        "select_sql": "SELECT * FROM view_buyer_order_summary WHERE total_orders > 0 ORDER BY total_spent DESC;",
+        "rows": [
+          {
+            "id_buyer": 4,
+            "email": "mike99@mail.com",
+            "total_orders": 1,
+            "total_spent": 40.0
+          },
+          {
+            "id_buyer": 7,
+            "email": "studio_x@mail.com",
+            "total_orders": 1,
+            "total_spent": 30.0
+          },
+          {
+            "id_buyer": 1,
+            "email": "user1@mail.com",
+            "total_orders": 1,
+            "total_spent": 25.0
+          },
+          {
+            "id_buyer": 5,
+            "email": "gamer_dude@mail.com",
+            "total_orders": 1,
+            "total_spent": 18.0
+          },
+          {
+            "id_buyer": 2,
+            "email": "john_d@mail.com",
+            "total_orders": 1,
+            "total_spent": 15.0
+          },
+          {
+            "id_buyer": 9,
+            "email": "vfx_pro@mail.com",
+            "total_orders": 1,
+            "total_spent": 5.0
+          }
+        ]
+      }
+    ]
+  }
+]

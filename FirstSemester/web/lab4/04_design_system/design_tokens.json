@@ -1,0 +1,116 @@
+{
+  "name": "ChargeUA Design Tokens",
+  "version": "1.0.0",
+  "description": "Офіційна система дизайн-токенів платформи ChargeUA для Figma Variables та веб-компонентів",
+  "color": {
+    "brand": {
+      "primary": { "value": "#005EC9", "type": "color", "description": "Королівський електричний синій — основний колір бренду" },
+      "primaryHover": { "value": "#004BB5", "type": "color", "description": "Стан наведення головної кнопки" },
+      "primaryActive": { "value": "#003A8F", "type": "color", "description": "Стан натискання кнопки" },
+      "secondary": { "value": "#0F172A", "type": "color", "description": "Темний сланцево-синій — контрастний базовий колір" },
+      "accent": { "value": "#00B4D8", "type": "color", "description": "Електричний бірюзовий для підсвічування DC" }
+    },
+    "background": {
+      "base": { "value": "#FFFFFF", "type": "color", "description": "Базовий фон світлої теми" },
+      "surface": { "value": "#F8FAFC", "type": "color", "description": "Поверхня блоків та карток другого рівня" },
+      "elevated": { "value": "#F1F5F9", "type": "color", "description": "Поверхня полів введення та повзунків" },
+      "dark": { "value": "#0F172A", "type": "color", "description": "Контрастний фон підвалу" }
+    },
+    "text": {
+      "primary": { "value": "#0F172A", "type": "color", "description": "Основний колір тексту (контраст 15.6:1)" },
+      "secondary": { "value": "#475569", "type": "color", "description": "Вторинний текст підзаголовків (контраст 7.0:1)" },
+      "muted": { "value": "#64748B", "type": "color", "description": "Приглушений текст та плейсхолдери (контраст 4.6:1)" },
+      "inverse": { "value": "#FFFFFF", "type": "color", "description": "Інверсний текст на синіх кнопках" }
+    },
+    "border": {
+      "default": { "value": "#E2E8F0", "type": "color", "description": "Звичайна межа карток" },
+      "focus": { "value": "#005EC9", "type": "color", "description": "Колір фокусу форми" },
+      "strong": { "value": "#CBD5E1", "type": "color", "description": "Контрастна межа для елементів керування" }
+    },
+    "status": {
+      "success": { "value": "#10B981", "type": "color", "description": "Вільний порт / Генератор ON" },
+      "successBg": { "value": "#ECFDF5", "type": "color", "description": "Світлий фон успіху" },
+      "warning": { "value": "#F59E0B", "type": "color", "description": "Порт зайнятий / Повільна AC" },
+      "warningBg": { "value": "#FFFBEB", "type": "color", "description": "Світлий фон попередження" },
+      "error": { "value": "#EF4444", "type": "color", "description": "Офлайн / Знеструмлено" },
+      "errorBg": { "value": "#FEF2F2", "type": "color", "description": "Світлий фон помилки" },
+      "info": { "value": "#3B82F6", "type": "color", "description": "Телеметрія оновлена" },
+      "infoBg": { "value": "#EFF6FF", "type": "color", "description": "Світлий фон інформації" }
+    }
+  },
+  "spacing": {
+    "4": { "value": "4px", "type": "spacing" },
+    "8": { "value": "8px", "type": "spacing" },
+    "12": { "value": "12px", "type": "spacing" },
+    "16": { "value": "16px", "type": "spacing" },
+    "24": { "value": "24px", "type": "spacing" },
+    "32": { "value": "32px", "type": "spacing" },
+    "48": { "value": "48px", "type": "spacing" },
+    "64": { "value": "64px", "type": "spacing" }
+  },
+  "borderRadius": {
+    "sm": { "value": "4px", "type": "borderRadius" },
+    "md": { "value": "8px", "type": "borderRadius" },
+    "lg": { "value": "12px", "type": "borderRadius" },
+    "xl": { "value": "16px", "type": "borderRadius" },
+    "full": { "value": "9999px", "type": "borderRadius" }
+  },
+  "typography": {
+    "fontFamily": { "value": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", "type": "fontFamily" },
+    "display": {
+      "fontSize": { "value": "48px" },
+      "fontWeight": { "value": "700" },
+      "lineHeight": { "value": "56px" },
+      "letterSpacing": { "value": "-0.02em" }
+    },
+    "h1": {
+      "fontSize": { "value": "36px" },
+      "fontWeight": { "value": "800" },
+      "lineHeight": { "value": "44px" },
+      "letterSpacing": { "value": "-0.02em" }
+    },
+    "h2": {
+      "fontSize": { "value": "28px" },
+      "fontWeight": { "value": "700" },
+      "lineHeight": { "value": "36px" },
+      "letterSpacing": { "value": "-0.01em" }
+    },
+    "h3": {
+      "fontSize": { "value": "20px" },
+      "fontWeight": { "value": "600" },
+      "lineHeight": { "value": "26px" },
+      "letterSpacing": { "value": "0" }
+    },
+    "bodyLarge": {
+      "fontSize": { "value": "16px" },
+      "fontWeight": { "value": "400" },
+      "lineHeight": { "value": "24px" }
+    },
+    "body": {
+      "fontSize": { "value": "14px" },
+      "fontWeight": { "value": "400" },
+      "lineHeight": { "value": "21px" }
+    },
+    "small": {
+      "fontSize": { "value": "12px" },
+      "fontWeight": { "value": "500" },
+      "lineHeight": { "value": "16px" }
+    },
+    "caption": {
+      "fontSize": { "value": "10px" },
+      "fontWeight": { "value": "600" },
+      "lineHeight": { "value": "14px" }
+    }
+  },
+  "shadow": {
+    "sm": { "value": "0 1px 2px rgba(15, 23, 42, 0.05)", "type": "boxShadow" },
+    "md": { "value": "0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05)", "type": "boxShadow" },
+    "lg": { "value": "0 10px 15px -3px rgba(15, 23, 42, 0.10), 0 4px 6px -4px rgba(15, 23, 42, 0.05)", "type": "boxShadow" }
+  },
+  "layout": {
+    "containerDesktop": { "value": "1200px" },
+    "containerWide": { "value": "1440px" },
+    "viewportMobile": { "value": "390px" },
+    "viewportTablet": { "value": "768px" }
+  }
+}

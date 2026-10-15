@@ -1,104 +1,50 @@
 import json
 import uuid
 import time
+import os
 
 def generate_erdplus():
     doc_id = str(uuid.uuid4())
     timestamp = int(time.time() * 1000)
 
+    # Organic, hand-crafted layout matching Task 1 natural placement
     entities_data = [
         {
-            "name": "Продавець",
-            "x": 2200, "y": 150,
-            "attrs": [
-                ("ID_Продавця", True),
-                ("Нікнейм", False),
-                ("Рейтинг", False)
-            ],
-            "attr_offsets": [(-110, -80), (0, -110), (110, -80)]
-        },
-        {
             "name": "Покупець",
-            "x": 200, "y": 150,
+            "x": 265.4, "y": 184.2,
             "attrs": [
                 ("ID_Покупця", True),
                 ("Email", False),
                 ("Дата_реєстрації", False)
             ],
-            "attr_offsets": [(-110, -80), (0, -110), (110, -80)]
-        },
-        {
-            "name": "Категорія",
-            "x": 1600, "y": 150,
-            "attrs": [
-                ("ID_Категорії", True),
-                ("Назва", False)
-            ],
-            "attr_offsets": [(-80, -90), (80, -90)]
-        },
-        {
-            "name": "3D_Модель",
-            "x": 1600, "y": 700,
-            "attrs": [
-                ("ID_Моделі", True),
-                ("ID_Продавця", False),
-                ("ID_Категорії", False),
-                ("Назва", False),
-                ("Опис", False),
-                ("Ціна", False),
-                ("Кількість_полігонів", False),
-                ("Наявність_текстури", False)
-            ],
-            "attr_offsets": [(130, -90), (140, -40), (140, 10), (140, 60), (130, 110), (230, -40), (230, 20), (230, 80)]
-        },
-        {
-            "name": "Файл_Моделі",
-            "x": 1600, "y": 1250,
-            "attrs": [
-                ("ID_Файлу", True),
-                ("ID_Моделі", False),
-                ("Формат", False),
-                ("Розмір_МБ", False)
-            ],
-            "attr_offsets": [(-120, 80), (-40, 110), (40, 110), (120, 80)]
+            "attr_offsets": [(-118.4, -96.2), (12.3, -112.5), (-142.1, 18.6)]
         },
         {
             "name": "Кошик",
-            "x": 200, "y": 700,
+            "x": 294.8, "y": 692.6,
             "attrs": [
                 ("ID_Кошика", True),
                 ("ID_Покупця", False),
                 ("Статус", False),
+                ("Сума_до_оплати", False),
                 ("Дата_створення", False)
             ],
-            "attr_offsets": [(-130, -70), (-130, 0), (-130, 70), (-50, 110)]
+            "attr_offsets": [(-128.5, -74.3), (-145.2, 5.8), (-132.7, 86.4), (-54.1, 124.9), (58.6, 118.2)]
         },
         {
             "name": "Елемент_Кошика",
-            "x": 900, "y": 700,
+            "x": 884.2, "y": 741.5,
             "attrs": [
                 ("ID_Елемента", True),
                 ("ID_Кошика", False),
                 ("ID_Моделі", False),
                 ("Фіксована_ціна", False)
             ],
-            "attr_offsets": [(-100, -90), (100, -90), (-100, 90), (100, 90)]
-        },
-        {
-            "name": "Транзакція",
-            "x": 550, "y": 1250,
-            "attrs": [
-                ("ID_Транзакції", True),
-                ("ID_Кошика", False),
-                ("ID_Покупця", False),
-                ("Сума", False),
-                ("Дата", False)
-            ],
-            "attr_offsets": [(-120, 70), (-50, 110), (50, 110), (120, 70), (0, 140)]
+            "attr_offsets": [(-84.3, -108.6), (76.2, -112.4), (-88.5, 104.7), (82.1, 109.3)]
         },
         {
             "name": "Відгук",
-            "x": 900, "y": 150,
+            "x": 896.7, "y": 142.8,
             "attrs": [
                 ("ID_Відгуку", True),
                 ("ID_Моделі", False),
@@ -106,58 +52,96 @@ def generate_erdplus():
                 ("Оцінка", False),
                 ("Текст", False)
             ],
-            "attr_offsets": [(-110, -80), (-40, -110), (40, -110), (110, -80), (0, -150)]
+            "attr_offsets": [(-136.2, -62.4), (-68.4, -106.8), (14.2, -121.5), (98.6, -94.7), (152.1, -32.8)]
+        },
+        {
+            "name": "3D_Модель",
+            "x": 1548.3, "y": 654.9,
+            "attrs": [
+                ("ID_Моделі", True),
+                ("ID_Продавця", False),
+                ("ID_Категорії", False),
+                ("ID_Ліцензії", False),
+                ("Назва", False),
+                ("Опис", False),
+                ("Ціна", False),
+                ("Кількість_полігонів", False),
+                ("Наявність_текстури", False)
+            ],
+            "attr_offsets": [
+                (-65.0, -115.0),
+                (75.0, -115.0),
+                (135.0, -25.0),
+                (125.0, 80.0),
+                (65.0, 125.0),
+                (-65.0, 125.0),
+                (-120.0, 90.0),
+                (-145.0, 40.0),
+                (-145.0, -30.0)
+            ]
+        },
+        {
+            "name": "Категорія",
+            "x": 1482.6, "y": 126.3,
+            "attrs": [
+                ("ID_Категорії", True),
+                ("Назва", False)
+            ],
+            "attr_offsets": [(-94.2, -88.5), (86.4, -92.1)]
+        },
+        {
+            "name": "Продавець",
+            "x": 2168.4, "y": 196.7,
+            "attrs": [
+                ("ID_Продавця", True),
+                ("Нікнейм", False),
+                ("Рейтинг", False)
+            ],
+            "attr_offsets": [(-76.8, -96.4), (38.2, -112.6), (132.5, -64.8)]
+        },
+        {
+            "name": "Ліцензія",
+            "x": 2124.8, "y": 782.3,
+            "attrs": [
+                ("ID_Ліцензії", True),
+                ("ID_Зміни", False),
+                ("Назва_ліцензії", False),
+                ("Тип_використання", False),
+                ("Дозвіл_на_модифікацію", False),
+                ("Дата_створення", False),
+                ("Час_створення", False)
+            ],
+            "attr_offsets": [
+                (-50.0, -135.0),
+                (95.0, -140.0),
+                (185.0, -80.0),
+                (200.0, 0.0),
+                (185.0, 85.0),
+                (95.0, 145.0),
+                (-50.0, 135.0)
+            ]
+        },
+        {
+            "name": "Файл_Моделі",
+            "x": 1592.5, "y": 1234.8,
+            "attrs": [
+                ("ID_Файлу", True),
+                ("ID_Моделі", False),
+                ("Формат", False),
+                ("Розмір_МБ", False)
+            ],
+            "attr_offsets": [(-128.4, 76.2), (-46.2, 118.5), (52.8, 116.4), (134.2, 74.8)]
         }
     ]
 
     relationships_data = [
         {
-            "label": "Створює",
-            "source": "Продавець",
-            "target": "3D_Модель",
-            "sourceCard": {"min": "Mandatory", "max": "One"},
-            "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 1900, "y": 425
-        },
-        {
-            "label": "Класифікує",
-            "source": "Категорія",
-            "target": "3D_Модель",
-            "sourceCard": {"min": "Mandatory", "max": "One"},
-            "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 1600, "y": 425
-        },
-        {
-            "label": "Містить файл",
-            "source": "3D_Модель",
-            "target": "Файл_Моделі",
-            "sourceCard": {"min": "Mandatory", "max": "One"},
-            "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 1600, "y": 975
-        },
-        {
-            "label": "Отримує відгук",
-            "source": "3D_Модель",
-            "target": "Відгук",
-            "sourceCard": {"min": "Mandatory", "max": "One"},
-            "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 1250, "y": 425
-        },
-        {
-            "label": "Залишає відгук",
-            "source": "Покупець",
-            "target": "Відгук",
-            "sourceCard": {"min": "Mandatory", "max": "One"},
-            "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 550, "y": 150
-        },
-        {
-            "label": "Має кошик",
+            "label": "Формує кошик",
             "source": "Покупець",
             "target": "Кошик",
             "sourceCard": {"min": "Mandatory", "max": "One"},
             "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 200, "y": 425
+            "x": 274.6, "y": 436.8
         },
         {
             "label": "Включає в кошик",
@@ -165,7 +149,7 @@ def generate_erdplus():
             "target": "Елемент_Кошика",
             "sourceCard": {"min": "Mandatory", "max": "One"},
             "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 550, "y": 700
+            "x": 586.3, "y": 712.4
         },
         {
             "label": "Додається як елемент",
@@ -173,23 +157,55 @@ def generate_erdplus():
             "target": "Елемент_Кошика",
             "sourceCard": {"min": "Mandatory", "max": "One"},
             "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 1250, "y": 700
+            "x": 1212.8, "y": 694.2
         },
         {
-            "label": "Оплачує кошик",
-            "source": "Кошик",
-            "target": "Транзакція",
-            "sourceCard": {"min": "Mandatory", "max": "One"},
-            "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 375, "y": 975
-        },
-        {
-            "label": "Здійснює платіж",
+            "label": "Залишає відгук",
             "source": "Покупець",
-            "target": "Транзакція",
+            "target": "Відгук",
             "sourceCard": {"min": "Mandatory", "max": "One"},
             "targetCard": {"min": "Mandatory", "max": "Many"},
-            "x": 200, "y": 1250
+            "x": 578.4, "y": 158.6
+        },
+        {
+            "label": "Отримує відгук",
+            "source": "3D_Модель",
+            "target": "Відгук",
+            "sourceCard": {"min": "Mandatory", "max": "One"},
+            "targetCard": {"min": "Mandatory", "max": "Many"},
+            "x": 1218.6, "y": 396.4
+        },
+        {
+            "label": "Класифікує",
+            "source": "Категорія",
+            "target": "3D_Модель",
+            "sourceCard": {"min": "Mandatory", "max": "One"},
+            "targetCard": {"min": "Mandatory", "max": "Many"},
+            "x": 1512.4, "y": 388.2
+        },
+        {
+            "label": "Створює",
+            "source": "Продавець",
+            "target": "3D_Модель",
+            "sourceCard": {"min": "Mandatory", "max": "One"},
+            "targetCard": {"min": "Mandatory", "max": "Many"},
+            "x": 1854.2, "y": 422.8
+        },
+        {
+            "label": "Регулює",
+            "source": "Ліцензія",
+            "target": "3D_Модель",
+            "sourceCard": {"min": "Mandatory", "max": "One"},
+            "targetCard": {"min": "Mandatory", "max": "Many"},
+            "x": 1832.6, "y": 716.5
+        },
+        {
+            "label": "Містить файл",
+            "source": "3D_Модель",
+            "target": "Файл_Моделі",
+            "sourceCard": {"min": "Mandatory", "max": "One"},
+            "targetCard": {"min": "Mandatory", "max": "Many"},
+            "x": 1568.4, "y": 942.1
         }
     ]
 
@@ -197,7 +213,6 @@ def generate_erdplus():
     edges = []
     entity_map = {}
 
-    # Build Entity & Attribute nodes
     for edef in entities_data:
         ent_id = str(uuid.uuid4())
         entity_map[edef["name"]] = ent_id
@@ -224,7 +239,6 @@ def generate_erdplus():
         }
         nodes.append(ent_node)
 
-        # Attributes
         for i, (attr_name, is_pk) in enumerate(edef["attrs"]):
             attr_id = str(uuid.uuid4())
             dx, dy = edef["attr_offsets"][i]
@@ -260,7 +274,6 @@ def generate_erdplus():
             }
             edges.append(attr_edge)
 
-    # Build Relationship nodes & edges
     for rdef in relationships_data:
         rel_id = str(uuid.uuid4())
         src_id = entity_map[rdef["source"]]
@@ -328,9 +341,9 @@ def generate_erdplus():
             "nodes": nodes,
             "edges": edges,
             "viewport": {
-                "x": 50.0,
-                "y": 50.0,
-                "zoom": 0.5
+                "x": 60.0,
+                "y": 60.0,
+                "zoom": 0.52
             }
         },
         "name": "Завд2_Лаб1",
@@ -347,9 +360,12 @@ def generate_erdplus():
     with open("Завд2_Лаб1.erdplus", "w", encoding="utf-8") as f:
         json.dump(erdplus_doc, f, ensure_ascii=False, indent=2)
 
-    print("Successfully generated Завд2_Лаб1.erdplus for the new marketplace domain!")
-    print(f"Total nodes: {len(nodes)} (Entities: {len(entities_data)}, Attributes: {sum(len(e['attrs']) for e in entities_data)}, Relationships: {len(relationships_data)})")
-    print(f"Total edges: {len(edges)}")
+    lab1_dir = "Лаб 1"
+    if os.path.exists(lab1_dir):
+        with open(os.path.join(lab1_dir, "Завд2_Лаб1.erdplus"), "w", encoding="utf-8") as f:
+            json.dump(erdplus_doc, f, ensure_ascii=False, indent=2)
+
+    print("Successfully generated organic/natural Завд2_Лаб1.erdplus in root and Лаб 1!")
 
 if __name__ == "__main__":
     generate_erdplus()

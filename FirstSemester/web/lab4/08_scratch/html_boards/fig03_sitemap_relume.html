@@ -1,0 +1,90 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<style>
+  body { background: #F3F4F6; padding: 40px; width: 900px; display: flex; flex-direction: column; align-items: center; }
+  .tree-node { background: #FFF; border: 1.5px solid #E5E7EB; border-radius: 14px; padding: 16px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .node-title { font-size: 14px; font-weight: 700; color: #111827; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F3F4F6; padding-bottom: 8px; margin-bottom: 8px; }
+  .node-items { display: flex; flex-direction: column; gap: 4px; font-size: 11.5px; color: #4B5563; }
+  .connector-v { width: 2px; height: 35px; background: #D1D5DB; }
+  .connector-h { width: 680px; height: 2px; background: #D1D5DB; position: relative; }
+  .connector-h::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 20px; background: #D1D5DB; }
+  .connector-h::after { content: ""; position: absolute; right: 0; top: 0; width: 2px; height: 20px; background: #D1D5DB; }
+  .mid-drop-1 { position: absolute; left: 226px; top: 0; width: 2px; height: 20px; background: #D1D5DB; }
+  .mid-drop-2 { position: absolute; left: 454px; top: 0; width: 2px; height: 20px; background: #D1D5DB; }
+  .child-grid { display: grid; grid-template-columns: repeat(4, 190px); gap: 24px; margin-top: 18px; }
+</style></head><body>
+  <div style="font-size:12px; font-weight:800; color:#6B7280; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px;">Relume AI · Sitemap Generator</div>
+  <div class="tree-node" style="width: 280px;">
+    <div class="node-title"><span>📄 Home Page</span><span style="font-size:10px; color:#9CA3AF;">9 sections</span></div>
+    <div class="node-items">
+      <div>Navbar & Brand Logo</div>
+      <div>Hero (Car + Charging Station)</div>
+      <div>Why ChargeUA (3 Benefits)</div>
+      <div>EV Calculator & Matcher</div>
+      <div>Stations Live Map Overview</div>
+      <div>Blackout Generator Station</div>
+      <div>Video Demonstration</div>
+      <div>Testimonials (Driver Reviews)</div>
+      <div>Footer & Support</div>
+    </div>
+  </div>
+  <div class="connector-v"></div>
+  <div class="connector-h"><div class="mid-drop-1"></div><div class="mid-drop-2"></div></div>
+  <div class="child-grid">
+    <div class="tree-node">
+      <div class="node-title"><span>📍 Stations Map</span></div>
+      <div class="node-items">
+        <div>Search & Location Filter</div>
+        <div>Connector Type Chips</div>
+        <div>Generator ON Filter</div>
+        <div>Station Cards Grid</div>
+        <div>Cluster Map Pins</div>
+        <div>Footer</div>
+      </div>
+    </div>
+    <div class="tree-node">
+      <div class="node-title"><span>⚡ Station Details</span></div>
+      <div class="node-items">
+        <div>Hub Photo Gallery</div>
+        <div>Connectors Live Status</div>
+        <div>Tariff & Billing Specs</div>
+        <div>Booking Slot Modal</div>
+        <div>Waze / Maps Navigation</div>
+        <div>Footer</div>
+      </div>
+    </div>
+    <div class="tree-node">
+      <div class="node-title"><span>🔋 Tariffs & Calc</span></div>
+      <div class="node-items">
+        <div>EV Model Presets</div>
+        <div>Battery Slider 0-100%</div>
+        <div>AC / DC Comparison</div>
+        <div>Network Rates Comparison</div>
+        <div>Savings vs Petrol</div>
+        <div>Footer</div>
+      </div>
+    </div>
+    <div class="tree-node">
+      <div class="node-title"><span>💼 For Business</span></div>
+      <div class="node-items">
+        <div>Host Partner Benefits</div>
+        <div>Commercial ROI Model</div>
+        <div>Backup Generator Kit</div>
+        <div>Station Installation Form</div>
+        <div>FAQ Accordion</div>
+        <div>Footer</div>
+      </div>
+    </div>
+  </div>
+</body></html>

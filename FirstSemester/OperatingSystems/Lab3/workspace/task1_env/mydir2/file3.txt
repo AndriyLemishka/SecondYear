@@ -1,0 +1,7 @@
+Plaintext
+Turn on the machine.
+Start the program.
+Request the option.
+End the program.
+Turn off the machine.
+It is new string 2. It is new string 3.

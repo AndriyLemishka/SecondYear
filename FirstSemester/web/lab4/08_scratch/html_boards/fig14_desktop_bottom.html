@@ -1,0 +1,202 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  body { background: #FFFFFF; color: #0F172A; -webkit-font-smoothing: antialiased; }
+</style>
+
+<style>
+  body { width: 1440px; background: #FFFFFF; }
+  
+  .sec-gen { padding: 30px 60px; }
+  .banner-box { background: #0B132B; border-radius: 20px; padding: 40px 50px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; color: #FFF; }
+  .gen-h2 { font-size: 32px; font-weight: 800; line-height: 1.25; margin-bottom: 14px; }
+  .gen-p { font-size: 15px; line-height: 1.6; color: #CBD5E1; margin-bottom: 24px; }
+  .btn-gen { background: #00E5FF; color: #0F172A; border: none; padding: 13px 26px; border-radius: 8px; font-size: 14px; font-weight: 800; cursor: pointer; }
+
+  .hubs-sec { padding: 20px 60px 30px; }
+  .hubs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 20px; }
+  .hub-card { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 16px; overflow: hidden; }
+  .hub-img { width: 100%; height: 180px; object-fit: cover; }
+  .hub-content { padding: 18px 20px; }
+  .hub-tag { display: inline-flex; align-items: center; gap: 4px; padding: 4px 9px; border-radius: 6px; font-size: 11px; font-weight: 700; background: #DCFCE7; color: #15803D; margin-bottom: 14px; }
+  .btn-route { display: block; width: 100%; background: #0077E6; color: #FFF; border: none; padding: 12px 0; font-size: 13px; font-weight: 700; border-radius: 8px; text-align: center; cursor: pointer; }
+
+  .steps-sec { padding: 20px 60px 30px; }
+  .steps-box { background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 20px; padding: 36px 44px; }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px; }
+  .step-card { background: #FFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 24px; }
+  .step-num { width: 36px; height: 36px; border-radius: 50%; background: #0077E6; color: #FFF; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+
+  .rev-sec { padding: 20px 60px 30px; }
+  .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 20px; }
+  .rev-card { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 24px; }
+  .rev-author { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+  .rev-av { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
+
+  .form-sec { padding: 20px 60px 40px; }
+  .form-box { background: #FFF; border: 1.5px solid #E2E8F0; border-radius: 20px; padding: 36px 44px; text-align: center; max-width: 1000px; margin: 0 auto; }
+  .form-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0 20px; }
+  .form-input { height: 46px; border: 1.5px solid #CBD5E1; border-radius: 8px; padding: 0 16px; font-size: 13px; outline: none; }
+
+  .footer { background: #0B132B; color: #FFF; padding: 50px 60px 30px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
+  .f-col-title { font-size: 14px; font-weight: 700; color: #FFF; margin-bottom: 14px; }
+  .f-col-links { display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #94A3B8; }
+  .f-bottom { border-top: 1px solid #1E293B; padding-top: 24px; display: flex; justify-content: space-between; font-size: 12px; color: #64748B; }
+</style></head><body>
+  <!-- GENERATOR BLACKOUT -->
+  <div class="sec-gen">
+    <div class="banner-box">
+      <div>
+        <div style="font-size:12px; font-weight:800; color:#10B981; letter-spacing:0.5px; margin-bottom:8px;">⚡ ЕНЕРГОНЕЗАЛЕЖНІСТЬ 24/7</div>
+        <div class="gen-h2">Заряджайте авто навіть під час повних блекаутів</div>
+        <div class="gen-p">Ключові хаби ChargeUA обладнано промисловими дизель-генераторами 160–250 кВт. Автоматичний перехід на резервне живлення за 8 секунд гарантує 100% Uptime зарядної мережі.</div>
+        <button class="btn-gen">Показати станції зі світлом</button>
+      </div>
+      <div>
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_generator_blackout.jpg" style="width:100%; height:260px; object-fit:cover; border-radius:14px; border:1px solid rgba(255,255,255,0.2);">
+      </div>
+    </div>
+  </div>
+
+  <!-- POPULAR HUBS -->
+  <div class="hubs-sec">
+    <div style="font-size:26px; font-weight:800; color:#0F172A;">Популярні зарядні хаби мережі</div>
+    <div style="font-size:14px; color:#64748B; margin-top:4px;">Швидкісні станції з гарантованим живленням та живою телеметрією</div>
+    <div class="hubs-grid">
+      <div class="hub-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="hub-img">
+        <div class="hub-content">
+          <div style="font-size:16px; font-weight:800; color:#0F172A;">Хаб «Київ-Поділ» · 120 кВт CCS2</div>
+          <div style="font-size:13px; color:#64748B; margin:4px 0 10px;">м. Київ, вул. Сагайдачного, 12</div>
+          <div class="hub-tag">🔋 Генератор ON · Вільний (3/4)</div>
+          <button class="btn-route">Прокласти маршрут (Waze / Maps)</button>
+        </div>
+      </div>
+      <div class="hub-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_lviv.jpg" class="hub-img">
+        <div class="hub-content">
+          <div style="font-size:16px; font-weight:800; color:#0F172A;">Хаб «Арена Львів» · 160 кВт CCS2</div>
+          <div style="font-size:13px; color:#64748B; margin:4px 0 10px;">м. Львів, вул. Стрийська, 199</div>
+          <div class="hub-tag">🔋 Сонячний навіс + Дизель</div>
+          <button class="btn-route">Прокласти маршрут (Waze / Maps)</button>
+        </div>
+      </div>
+      <div class="hub-card">
+        <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_hub_kyiv.jpg" class="hub-img">
+        <div class="hub-content">
+          <div style="font-size:16px; font-weight:800; color:#0F172A;">Хаб «Київ-Оболонь» · 120 кВт CCS2</div>
+          <div style="font-size:13px; color:#64748B; margin:4px 0 10px;">просп. Оболонський, 1-Б · 4 порти</div>
+          <div class="hub-tag">⚡ Мережа онлайн · Вільний (2/4)</div>
+          <button class="btn-route">Прокласти маршрут (Waze / Maps)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS (3 STEPS - CLEAN, NO VIDEO) -->
+  <div class="steps-sec">
+    <div class="steps-box">
+      <div style="font-size:12px; font-weight:800; color:#0077E6; margin-bottom:6px;">ПРОСТИЙ АЛГОРИТМ</div>
+      <div style="font-size:24px; font-weight:800; color:#0F172A;">Як зарядитися за 3 кроки: від пошуку до повної батареї</div>
+      <div style="font-size:14px; color:#64748B; margin-top:4px;">Зручний покроковий процес без складної реєстрації, передплат чи очікування в чергах.</div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div style="font-size:15px; font-weight:800; color:#0F172A; margin-bottom:8px;">Знайдіть вільну станцію</div>
+          <div style="font-size:13px; color:#64748B; line-height:1.5;">Фільтруйте за потужністю, роз'ємом або наявністю генератора на живій карті ChargeUA.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div style="font-size:15px; font-weight:800; color:#0F172A; margin-bottom:8px;">Підключіть конектор CCS2</div>
+          <div style="font-size:13px; color:#64748B; line-height:1.5;">Вставте кабель у роз'єм електрокара — світловий смарт-індикатор спалахне зеленим.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div style="font-size:15px; font-weight:800; color:#0F172A; margin-bottom:8px;">Оплатіть у 1 клік</div>
+          <div style="font-size:13px; color:#64748B; line-height:1.5;">Apple Pay, Google Pay або банківська картка. Жодних обов'язкових депозитів.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRIVER REVIEWS -->
+  <div class="rev-sec">
+    <div style="font-size:24px; font-weight:800; color:#0F172A;">Відгуки реальних водіїв</div>
+    <div style="font-size:14px; color:#64748B; margin-top:4px;">Що кажуть власники електрокарів про сервіс ChargeUA</div>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div style="color:#F59E0B; font-size:14px; margin-bottom:10px;">★★★★★</div>
+        <div style="font-size:13px; line-height:1.55; color:#334155;">«Під час блекауту на Подолі зарядився за 25 хвилин. Генератор гуде, станція стабільна, кава поруч. Найкращий сервіс!»</div>
+        <div class="rev-author">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_avatar_oleksiy.jpg" class="rev-av">
+          <div><div style="font-size:13px; font-weight:700;">Олексій К.</div><div style="font-size:11px; color:#64748B;">Водій Tesla Model Y · Київ</div></div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div style="color:#F59E0B; font-size:14px; margin-bottom:10px;">★★★★★</div>
+        <div style="font-size:13px; line-height:1.55; color:#334155;">«Дуже зручний калькулятор. Одразу видно скільки кіловат потрібно і яка буде фінальна вартість без прихованих платежів.»</div>
+        <div class="rev-author">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_avatar_olena.jpg" class="rev-av">
+          <div><div style="font-size:13px; font-weight:700;">Олена М.</div><div style="font-size:11px; color:#64748B;">Водійка Nissan Leaf · Львів</div></div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div style="color:#F59E0B; font-size:14px; margin-bottom:10px;">★★★★★</div>
+        <div style="font-size:13px; line-height:1.55; color:#334155;">«Для комерційного автопарку зручний моніторинг вільних станцій — це знахідка. Жодних простоїв та черг на трасі Київ-Львів.»</div>
+        <div class="rev-author">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/ai_avatar_sergiy.jpg" class="rev-av">
+          <div><div style="font-size:13px; font-weight:700;">Сергій В.</div><div style="font-size:11px; color:#64748B;">Керівник автопарку електробусів</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+          <img src="d:/Studing/SecondYear/FirstSemester/web/lab4/materials/Logo.svg" style="width:32px; height:32px; filter:brightness(0) invert(1);">
+          <span style="font-size:22px; font-weight:800; color:#FFF;">ChargeUA</span>
+        </div>
+        <p style="font-size:13px; line-height:1.6; color:#94A3B8;">Національний агрегатор та веб-помічник зарядної інфраструктури України.</p>
+      </div>
+      <div>
+        <div class="f-col-title">Навігація</div>
+        <div class="f-col-links">
+          <span>Головна</span>
+          <span>Калькулятор</span>
+          <span>Карта станцій</span>
+          <span>Як зарядитись</span>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-title">Розділи сайту</div>
+        <div class="f-col-links">
+          <span>Популярні хаби</span>
+          <span>Як зарядитися (3 кроки)</span>
+          <span>Відгуки водіїв</span>
+          <span>Гарантія Uptime 100%</span>
+        </div>
+      </div>
+      <div>
+        <div class="f-col-title">Контакти</div>
+        <div class="f-col-links">
+          <span>0 800 300 400</span>
+          <span>support@charge.ua</span>
+          <span>м. Київ, вул. Подолу, 12</span>
+          <span>Telegram Бот</span>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div>© 2026 ChargeUA · Лемішка Андрій, ПП-24 · Кафедра САПР, НУ «Львівська політехніка»</div>
+      <div>Політика приватності · Умови використання</div>
+    </div>
+  </div>
+</body></html>

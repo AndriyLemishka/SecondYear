@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChargeUA — Національний агрегатор зарядних станцій та інтерактивний помічник</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* CSS VARIABLES / DESIGN TOKENS (CHARGEUA DS) */
+    :root {
+      --color-primary: #005EC9;
+      --color-primary-hover: #004BB5;
+      --color-primary-active: #003A8F;
+      --color-dark: #0F172A;
+      --color-text-secondary: #475569;
+      --color-text-muted: #64748B;
+      --color-bg-base: #FFFFFF;
+      --color-bg-surface: #F8FAFC;
+      --color-bg-elevated: #F1F5F9;
+      --color-border: #E2E8F0;
+      --color-border-strong: #CBD5E1;
+      --color-success: #047857;
+      --color-success-bg: #D1FAE5;
+      --color-warning: #B45309;
+      --color-warning-bg: #FEF3C7;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.10);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--color-bg-base);
+      color: var(--color-dark);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* TOP LIVE TELEMETRY BAR */
+    .top-telemetry {
+      background: #0F172A;
+      color: #94A3B8;
+      font-size: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #1E293B;
+    }
+    .telemetry-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .live-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #10B981;
+      border-radius: 50%;
+      margin-right: 6px;
+      box-shadow: 0 0 8px #10B981;
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1.5px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 76px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .logo-badge {
+      width: 40px;
+      height: 40px;
+      background: var(--color-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(0, 94, 201, 0.25);
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active {
+      color: var(--color-primary);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 24px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-primary {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      box-shadow: 0 4px 12px rgba(0, 94, 201, 0.25);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active {
+      background: var(--color-primary-active);
+      transform: scale(0.98);
+    }
+    .btn-secondary {
+      background: var(--color-bg-base);
+      color: var(--color-dark);
+      border: 1.5px solid var(--color-border-strong);
+    }
+    .btn-secondary:hover {
+      background: var(--color-bg-surface);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .btn-sm {
+      height: 40px;
+      padding: 0 16px;
+      font-size: 13px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 70px 0 50px;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--color-bg-surface) 100%);
+      border-bottom: 1.5px solid var(--color-border);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: #EFF6FF;
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+      border: 1px solid #DBEAFE;
+    }
+    .hero-title {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: var(--color-dark);
+      margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .quick-chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .chip {
+      padding: 8px 16px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .chip:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .chip.active {
+      background: var(--color-dark);
+      color: #FFF;
+      border-color: var(--color-dark);
+    }
+    .hero-visual {
+      background: #FFFFFF;
+      border: 2px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .widget-map-preview {
+      height: 280px;
+      background: #E2E8F0;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: radial-gradient(#CBD5E1 1.5px, transparent 1.5px);
+      background-size: 18px 18px;
+    }
+
+    /* BADGES */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .badge-success { background: var(--color-success-bg); color: var(--color-success); }
+    .badge-warning { background: var(--color-warning-bg); color: var(--color-warning); }
+    .badge-brand { background: #EFF6FF; color: var(--color-primary); }
+
+    /* SECTION TITLES */
+    .section-head {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+    .section-head h2 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--color-dark);
+      margin-bottom: 12px;
+    }
+    .section-head p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+    }
+
+    /* FEATURES GRID */
+    .features-section {
+      padding: 80px 0;
+      background: #FFFFFF;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--color-bg-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      transition: all 0.2s;
+    }
+    .feature-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .feature-icon-box {
+      width: 52px;
+      height: 52px;
+      background: #EFF6FF;
+      color: var(--color-primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* SPLIT CALCULATOR & MAP */
+    .calc-map-section {
+      padding: 80px 0;
+      background: var(--color-bg-surface);
+      border-top: 1.5px solid var(--color-border);
+      border-bottom: 1.5px solid var(--color-border);
+    }
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .calc-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+    }
+    .custom-select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--color-dark);
+      outline: none;
+    }
+    .custom-select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(0, 94, 201, 0.15);
+    }
+
+    /* RANGE SLIDER */
+    .slider-box {
+      background: var(--color-bg-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .slider-header span.val {
+      color: var(--color-primary);
+      font-size: 16px;
+    }
+    .range-input {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #CBD5E1;
+      outline: none;
+      -webkit-appearance: none;
+      margin: 12px 0;
+    }
+    .range-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 26px;
+      height: 26px;
+      background: var(--color-primary);
+      border: 3px solid #FFF;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* CALC RESULT BLOCK */
+    .calc-results-bar {
+      background: #EFF6FF;
+      border: 1.5px solid #BFDBFE;
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 28px;
+    }
+    .price-large {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-primary);
+      letter-spacing: -0.5px;
+    }
+
+    /* MAP CONTAINER */
+    .map-box {
+      background: #FFFFFF;
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+    }
+    .map-header {
+      padding: 20px 24px;
+      background: #FFFFFF;
+      border-bottom: 1.5px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .map-canvas-interactive {
+      flex: 1;
+      min-height: 440px;
+      background: #E2E8F0;
+      position: relative;
+      background-image: radial-gradient(#CBD5E1 2px, transparent 2px);
+      background-size: 24px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .station-pin {
+      position: absolute;
+      background: #FFFFFF;
+      border: 2px solid var(--color-primary);
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.2s;
+    }
+    .station-pin:hover {
+      transform: scale(1.05);
+      z-index: 10;
+    }
+    .pin-active {
+      top: 40px;
+      left: 60px;
+    }
+    .station-card-overlay {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      background: #FFFFFF;
+      border: 2px solid var(--color-dark);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+    }
+
+    /* TARIFF COMPARISON */
+    .tariffs-section {
+      padding: 80px 0;
+      background: #FFFFFF;
+    }
+    .tariff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .tariff-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .tariff-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .tariff-card.featured {
+      border: 2.5px solid var(--color-primary);
+      box-shadow: 0 8px 24px rgba(0, 94, 201, 0.12);
+    }
+    .tariff-price-val {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin: 16px 0 6px;
+      letter-spacing: -1px;
+    }
+
+    /* 3 STEPS */
+    .steps-section {
+      padding: 80px 0;
+      background: var(--color-bg-surface);
+      border-top: 1.5px solid var(--color-border);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .step-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      position: relative;
+    }
+    .step-circle {
+      width: 44px;
+      height: 44px;
+      background: var(--color-primary);
+      color: #FFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding: 80px 0;
+      background: #FFFFFF;
+      border-top: 1.5px solid var(--color-border);
+    }
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      padding: 24px;
+      background: #FFFFFF;
+    }
+    .faq-q {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-dark);
+    }
+    .faq-a {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0F172A;
+      color: #94A3B8;
+      padding: 60px 0 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-bottom {
+      border-top: 1px solid #1E293B;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE DESIGN (BREAKPOINTS) */
+    @media (max-width: 992px) {
+      .hero-grid, .split-grid {
+        grid-template-columns: 1fr;
+      }
+      .features-grid, .tariff-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 32px;
+      }
+      .features-grid, .tariff-grid, .steps-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        display: none;
+      }
+      .hero-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Live Telemetry Banner -->
+  <div class="top-telemetry">
+    <div class="container telemetry-inner">
+      <div>
+        <span class="live-dot"></span>
+        <span>Телеметрія енергосистеми: <strong>142 станції в мережі</strong> • Оновлено 1 хв тому</span>
+      </div>
+      <div>
+        <span>🔋 Автономних хабів із генераторами: <strong>38 локацій</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="brand-logo">
+        <img src="../materials/Logo.svg" alt="Logo" style="height: 38px;">
+        <span>ChargeUA</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#map" class="active">Карта станцій</a></li>
+          <li><a href="#calculator">Калькулятор</a></li>
+          <li><a href="#tariffs">Тарифи операторів</a></li>
+          <li><a href="#steps">Як це працює</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="#map" class="btn btn-primary btn-sm">Знайти вільну зарядку</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>⚡</span>
+          <span>НАЦІОНАЛЬНИЙ АГРЕГАТОР ЕЛЕКТРОЗАРЯДОК</span>
+        </div>
+        <h1 class="hero-title">Заряджайте електромобіль без стресу та зайвих додатків</h1>
+        <p class="hero-subtitle">
+          Усі мережі зарядок України на одній мапі: актуальні ціни, вільні конектори та фільтр станцій із промисловими генераторами в реальному часі.
+        </p>
+        <div class="hero-actions">
+          <a href="#map" class="btn btn-primary">Знайти вільну зарядку</a>
+          <a href="#calculator" class="btn btn-secondary">Розрахувати вартість</a>
+        </div>
+        <div class="quick-chips">
+          <span style="font-size: 13px; font-weight: 700;">Швидкий фільтр:</span>
+          <div class="chip active">Всі станції</div>
+          <div class="chip">🔋 З генератором (Блекаут SOS)</div>
+          <div class="chip">⚡ Швидкісні DC 50+ кВт</div>
+          <div class="chip">🟢 Тільки вільні зараз</div>
+        </div>
+      </div>
+      <div class="hero-visual" style="padding: 12px; overflow: hidden;">
+        <img src="../materials/hero_bg.jpg" alt="ChargeUA 3D Station" style="width: 100%; height: 320px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features & Benefits -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Чому водії обирають ChargeUA</h2>
+        <p>Повний контроль та енергонезалежність у кожній подорожі електромобілем</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box">10+</div>
+          <h3>Єдина база мереж</h3>
+          <p>Більше не потрібно встановлювати 10 додатків. Усі оператори України доступні в єдиному зручному інтерфейсі.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-box">🔋</div>
+          <h3>Робота в блекаути</h3>
+          <p>Миттєвий фільтр локацій із промисловими генераторами, що гарантують безперебійну підзарядку під час відключень.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-box">₴</div>
+          <h3>Чесні тарифи</h3>
+          <p>Порівнюйте вартість за кВт·год у реальному часі без прихованих платежів і обирайте найвигіднішу ціну.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-box">⚡</div>
+          <h3>Точний розрахунок</h3>
+          <p>Інтерактивний калькулятор вираховує час та суму зарядки для вашої моделі авто з точністю до гривні.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Split Calculator & Interactive Map -->
+  <section class="calc-map-section" id="calculator">
+    <div class="container">
+      <div class="section-head">
+        <h2>Інтерактивний калькулятор та Жива карта</h2>
+        <p>Налаштуйте рівень батареї для вашого електромобіля та миттєво підберіть станцію поруч</p>
+      </div>
+      <div class="split-grid">
+        
+        <!-- Calculator Interactive Card -->
+        <div class="calc-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <h3 style="font-size: 20px; font-weight: 800;">Калькулятор підзарядки</h3>
+            <span class="badge badge-brand">Точний розрахунок</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Оберіть модель електромобіля:</label>
+            <select class="custom-select" id="carSelect" onchange="updateCalc()">
+              <option value="77">Volkswagen ID.4 Pro (77 кВт·год, CCS2)</option>
+              <option value="75">Tesla Model 3 Long Range (75 кВт·год, Type 2 / CCS2)</option>
+              <option value="40">Nissan Leaf II (40 кВт·год, CHAdeMO / Type 2)</option>
+              <option value="82">Hyundai Ioniq 5 (82.5 кВт·год, Ultra-Fast 800V)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Діапазон заряду батареї:</label>
+            <div class="slider-box">
+              <div class="slider-header">
+                <span>Рівень: 20% → <span id="targetPercentText" class="val">80%</span></span>
+                <span id="energyText" class="val">+46.2 кВт·год</span>
+              </div>
+              <input type="range" class="range-input" min="30" max="100" value="80" id="targetSlider" oninput="updateCalc()">
+              <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--color-text-muted);">
+                <span>Поточний: 20%</span>
+                <span>Рекомендовано: 80%</span>
+                <span>100%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-results-bar">
+            <div>
+              <div style="font-size: 12px; color: var(--color-text-muted); font-weight: 600;">Орієнтовна вартість (DC):</div>
+              <div class="price-large" id="priceText">~670 ₴</div>
+              <div style="font-size: 12px; color: var(--color-text-secondary); margin-top: 2px;" id="timeText">
+                Час на швидкісній DC 120 кВт: <strong>~28 хв</strong>
+              </div>
+            </div>
+            <a href="#map" class="btn btn-primary btn-sm">Показати на мапі</a>
+          </div>
+        </div>
+
+        <!-- Interactive Map Container -->
+        <div class="map-box" id="map">
+          <div class="map-header">
+            <div>
+              <strong style="font-size: 15px; color: var(--color-dark);">Жива карта: Київ та область</strong>
+              <div style="font-size: 12px; color: var(--color-text-muted);">● 142 станції online • Оновлено щойно</div>
+            </div>
+            <span class="badge badge-success">● ДТЕК / Генератор Live</span>
+          </div>
+          <div class="map-canvas-interactive">
+            
+            <!-- Pin 1 -->
+            <div class="station-pin pin-active">
+              <span style="color: #10B981;">●</span>
+              <span>EcoFactor Fast Hub #14 (2x CCS2 Вільні)</span>
+            </div>
+
+            <!-- Overlay Station Detail -->
+            <div class="station-card-overlay">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <div>
+                  <h4 style="font-size: 16px; font-weight: 800;">EcoFactor Fast Hub #14</h4>
+                  <p style="font-size: 12px; color: var(--color-text-muted);">вул. Кільцева, 4Б (ТРЦ Республіка)</p>
+                </div>
+                <span class="badge badge-success">🔋 Генератор ON</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 14px;">
+                <span>Порти: <strong>2x CCS2 (120 кВт) Вільні</strong></span>
+                <span style="font-weight: 800; color: var(--color-dark);">14.50 ₴/кВт·год</span>
+              </div>
+              <button class="btn btn-primary" style="width: 100%; height: 42px;" onclick="alert('Маршрут передано в Google Maps / Waze!')">
+                Прокласти маршрут
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Operator Tariff Comparison -->
+  <section class="tariffs-section" id="tariffs">
+    <div class="container">
+      <div class="section-head">
+        <h2>Порівняння тарифів операторів</h2>
+        <p>Актуальні ціни за кіловат-годину без прихованих платежів та переплат</p>
+      </div>
+      <div class="tariff-grid">
+        <div class="tariff-card featured">
+          <span class="badge badge-success" style="margin-bottom: 12px;">🔥 НАЙКРАЩА ЦІНА</span>
+          <h3 style="font-size: 20px; font-weight: 800;">EcoFactor Network</h3>
+          <p style="font-size: 12px; color: var(--color-text-muted);">Понад 800 станцій в Україні</p>
+          <div class="tariff-price-val">14.50 ₴</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 16px;">за 1 кВт·год (DC швидка)</div>
+          <div style="border-top: 1px solid var(--color-border); padding-top: 14px; font-size: 13px; margin-bottom: 16px;">
+            AC (до 22 кВт): <strong>10.99 ₴</strong>
+          </div>
+          <a href="#map" class="btn btn-primary btn-sm" style="width: 100%;">Показати станції</a>
+        </div>
+        <div class="tariff-card">
+          <span class="badge badge-brand" style="margin-bottom: 12px;">ОПЕРАТОР #2</span>
+          <h3 style="font-size: 20px; font-weight: 800;">Yasno E-mobility</h3>
+          <p style="font-size: 12px; color: var(--color-text-muted);">Мережа швидких зарядок</p>
+          <div class="tariff-price-val">15.00 ₴</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 16px;">за 1 кВт·год (DC швидка)</div>
+          <div style="border-top: 1px solid var(--color-border); padding-top: 14px; font-size: 13px; margin-bottom: 16px;">
+            AC (до 22 кВт): <strong>11.50 ₴</strong>
+          </div>
+          <a href="#map" class="btn btn-secondary btn-sm" style="width: 100%;">Показати станції</a>
+        </div>
+        <div class="tariff-card">
+          <span class="badge badge-brand" style="margin-bottom: 12px;">ОПЕРАТОР #3</span>
+          <h3 style="font-size: 20px; font-weight: 800;">TOKA Network</h3>
+          <p style="font-size: 12px; color: var(--color-text-muted);">Міські хаби та ТРЦ</p>
+          <div class="tariff-price-val">15.20 ₴</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 16px;">за 1 кВт·год (DC швидка)</div>
+          <div style="border-top: 1px solid var(--color-border); padding-top: 14px; font-size: 13px; margin-bottom: 16px;">
+            AC (до 22 кВт): <strong>11.20 ₴</strong>
+          </div>
+          <a href="#map" class="btn btn-secondary btn-sm" style="width: 100%;">Показати станції</a>
+        </div>
+        <div class="tariff-card">
+          <span class="badge badge-brand" style="margin-bottom: 12px;">ОПЕРАТОР #4</span>
+          <h3 style="font-size: 20px; font-weight: 800;">GO TO-U</h3>
+          <p style="font-size: 12px; color: var(--color-text-muted);">Мережа швидкісних хабів</p>
+          <div class="tariff-price-val">15.80 ₴</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 16px;">за 1 кВт·год (DC швидка)</div>
+          <div style="border-top: 1px solid var(--color-border); padding-top: 14px; font-size: 13px; margin-bottom: 16px;">
+            AC (до 22 кВт): <strong>12.00 ₴</strong>
+          </div>
+          <a href="#map" class="btn btn-secondary btn-sm" style="width: 100%;">Показати станції</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Guide (3 Steps) -->
+  <section class="steps-section" id="steps">
+    <div class="container">
+      <div class="section-head">
+        <h2>Як зарядитися за 3 прості кроки</h2>
+        <p>Зрозумілий алгоритм для тих, хто заряджається вперше</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-circle">1</div>
+          <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 12px;">Знайдіть станцію</h3>
+          <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+            Оберіть станцію на мапі ChargeUA за роз'ємом вашого авто (CCS2, Type 2 чи GB/T) та перевірте позначку генератора.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-circle">2</div>
+          <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 12px;">Підключіть порт</h3>
+          <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+            Вставте конектор у зарядний роз'єм автомобіля до клацання автоматичного замка блокування.
+          </p>
+          <img src="../materials/ai_step_cable.jpg" alt="Підключення кабелю CCS2" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-top: 16px; box-shadow: var(--shadow-sm); border: 1px solid var(--color-border);">
+        </div>
+        <div class="step-card">
+          <div class="step-circle">3</div>
+          <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 12px;">Слідкуйте за сесією</h3>
+          <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+            Контролюйте поповнення кіловат-годин у реальному часі та продовжуйте поїздку без зайвого хвилювання.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Energy Independence & Video Tutorial Section (Lab 3 Assets) -->
+  <section style="padding: 70px 0; background: #FFFFFF; border-top: 1.5px solid var(--color-border);">
+    <div class="container">
+      <div class="section-head">
+        <h2>Енергонезалежна мережа ChargeUA & Відеогід</h2>
+        <p>Матеріали та медіа-активи розроблені в Лабораторній роботі №3</p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+        <div>
+          <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 12px; color: #0F172A;">Заряджайтесь навіть під час повного блекауту</h3>
+          <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 20px;">
+            Усі ключові хаби ChargeUA на магістралях та в обласних центрах обладнано промисловими дизель-генераторами та накопичувачами Energy Storage.
+          </p>
+          <img src="../materials/fig3_banner.png" alt="ChargeUA Banner" style="width: 100%; border-radius: 12px; box-shadow: var(--shadow-md); border: 1.5px solid var(--color-border);">
+        </div>
+        <div>
+          <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 12px; color: #0F172A;">Відеоінструкція: як підключити станцію за 30 секунд</h3>
+          <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 20px;">
+            Покроковий візуальний гід правильного підключення роз'ємів Type 2 та швидкісних портів CCS2 Combo.
+          </p>
+          <div style="position: relative;">
+            <img src="../materials/fig5_video.png" alt="ChargeUA Video Preview" style="width: 100%; border-radius: 12px; box-shadow: var(--shadow-md); border: 1.5px solid var(--color-border);">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Generated Flagship Hubs & Blackout Infrastructure -->
+  <section style="padding: 70px 0; background: var(--color-bg-base); border-top: 1.5px solid var(--color-border);">
+    <div class="container">
+      <div class="section-head">
+        <h2>Флагманські зарядні хаби ChargeUA (ШІ-візуалізації)</h2>
+        <p>Ключові локації мережі, оптимізовані для швидкісної зарядки та енергонезалежності</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+        <div style="background: #FFFFFF; border-radius: var(--radius-lg); overflow: hidden; border: 1.5px solid var(--color-border); box-shadow: var(--shadow-sm); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+          <img src="../materials/ai_hub_kyiv.jpg" alt="ChargeUA Podil Hub Київ" style="width: 100%; height: 200px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="badge badge-success">● 6x CCS2 160 кВт</span>
+              <span style="font-size: 12px; color: var(--color-text-muted);">Київ, Поділ</span>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">ChargeUA Podil Hub</h3>
+            <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 14px;">
+              Швидкісний хаб біля Контрактової площі. Потужні DC-порти, зона відпочинку, Wi-Fi та резервне автономне живлення.
+            </p>
+            <a href="#map" class="btn btn-secondary btn-sm" style="width: 100%;">Дивитись на мапі</a>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border-radius: var(--radius-lg); overflow: hidden; border: 1.5px solid var(--color-border); box-shadow: var(--shadow-sm); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+          <img src="../materials/ai_hub_lviv.jpg" alt="ChargeUA Arena Hub Львів" style="width: 100%; height: 200px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="badge badge-success">● 8x CCS2 200 кВт</span>
+              <span style="font-size: 12px; color: var(--color-text-muted);">Львів, Траса М06</span>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">ChargeUA Arena Hub</h3>
+            <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 14px;">
+              Флагманський хаб на в'їзді до Львова. Сонячний навіс Solar Roof, кафе, ультрашвидка підзарядка 20–80% за 22 хвилини.
+            </p>
+            <a href="#map" class="btn btn-secondary btn-sm" style="width: 100%;">Дивитись на мапі</a>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border-radius: var(--radius-lg); overflow: hidden; border: 1.5px solid var(--color-border); box-shadow: var(--shadow-sm); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+          <img src="../materials/ai_generator_blackout.jpg" alt="Резервне живлення блекаут" style="width: 100%; height: 200px; object-fit: cover;">
+          <div style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="badge badge-brand">🔋 Дизель 250 кВА</span>
+              <span style="font-size: 12px; color: var(--color-text-muted);">Київська обл.</span>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 6px;">Енергонезалежний хаб</h3>
+            <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 14px;">
+              Промисловий генератор гарантує 100% безперебійність та стабільну напругу навіть під час повного блекауту в регіоні.
+            </p>
+            <a href="#map" class="btn btn-secondary btn-sm" style="width: 100%;">Дивитись на мапі</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Driver Testimonials Section (AI Avatars) -->
+  <section style="padding: 70px 0; background: #FFFFFF; border-top: 1.5px solid var(--color-border);">
+    <div class="container">
+      <div class="section-head">
+        <h2>Відгуки українських водіїв електромобілів</h2>
+        <p>Реальний досвід користування агрегатором ChargeUA під час поїздок містом та між містами</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+        <div style="background: var(--color-bg-surface); border: 1.5px solid var(--color-border); border-radius: var(--radius-lg); padding: 28px;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+            <img src="../materials/ai_avatar_oleksiy.jpg" alt="Олексій Коваленко" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-primary);">
+            <div>
+              <strong style="font-size: 16px; color: var(--color-dark); display: block;">Олексій Коваленко</strong>
+              <span style="font-size: 12px; color: var(--color-text-muted);">Tesla Model Y • Київ</span>
+            </div>
+          </div>
+          <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; font-style: italic;">
+            «Фільтр зарядок з генератором рятує щотижня! Доїхав з Києва до Львова без жодної затримки на знеструмлених станціях. Дані про зайнятість портів абсолютно точні.»
+          </p>
+        </div>
+        <div style="background: var(--color-bg-surface); border: 1.5px solid var(--color-border); border-radius: var(--radius-lg); padding: 28px;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+            <img src="../materials/ai_avatar_olena.jpg" alt="Олена Мельник" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-primary);">
+            <div>
+              <strong style="font-size: 16px; color: var(--color-dark); display: block;">Олена Мельник</strong>
+              <span style="font-size: 12px; color: var(--color-text-muted);">Nissan Leaf 62 kWh • Львів</span>
+            </div>
+          </div>
+          <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; font-style: italic;">
+            «Інтерактивний калькулятор дуже точний. Одразу бачу, скільки коштуватиме зарядка до 80% і скільки хвилин піде на швидкісному порту. Дуже зручно!»
+          </p>
+        </div>
+        <div style="background: var(--color-bg-surface); border: 1.5px solid var(--color-border); border-radius: var(--radius-lg); padding: 28px;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+            <img src="../materials/ai_avatar_sergiy.jpg" alt="Сергій Ткачук" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-primary);">
+            <div>
+              <strong style="font-size: 16px; color: var(--color-dark); display: block;">Сергій Ткачук</strong>
+              <span style="font-size: 12px; color: var(--color-text-muted);">Volkswagen ID.4 • Дніпро</span>
+            </div>
+          </div>
+          <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; font-style: italic;">
+            «Нарешті єдиний агрегатор тарифів EcoFactor, Yasno та TOKA в одному місці без націнок та прихованих платежів. Рекомендую всім знайомим водіям електрокарів!»
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Часті запитання (FAQ)</h2>
+        <p>Відповіді на головні запитання українських водіїв електромобілів</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Чи гарантовано працює станція під час відключень електроенергії?</div>
+          <div class="faq-a">Так, станції з позначкою «🔋 З генератором» мають автономне резервне живлення, що вмикається автоматично при знеструмленні міської електромережі.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Чи стягує ChargeUA додаткову комісію за пошук?</div>
+          <div class="faq-a">Ні, ChargeUA є 100% безкоштовним агрегатором. Ви оплачуєте вартість за кВт·год виключно за прямим тарифом обраної мережі.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Як підібрати перехідник для електромобіля з Китаю (GB/T) чи США (Type 1)?</div>
+          <div class="faq-a">У нашому довіднику доступна детальна таблиця сумісності адаптерів для європейських станцій CCS2 та Type 2.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="color: #FFF; margin-bottom: 16px;">
+            <img src="../materials/Logo.svg" alt="Logo" style="height: 34px;">
+            <span>ChargeUA</span>
+          </div>
+          <p style="font-size: 14px; line-height: 1.6;">
+            Національна вебплатформа агрегації зарядних станцій та енергонезалежний помічник водіїв електромобілів України.
+          </p>
+        </div>
+        <div>
+          <strong style="color: #FFF; font-size: 15px; display: block; margin-bottom: 16px;">Навігація</strong>
+          <div style="font-size: 14px; line-height: 2.2;">
+            <div><a href="#map" style="color: #94A3B8; text-decoration: none;">Карта станцій</a></div>
+            <div><a href="#calculator" style="color: #94A3B8; text-decoration: none;">Калькулятор</a></div>
+            <div><a href="#tariffs" style="color: #94A3B8; text-decoration: none;">Тарифи операторів</a></div>
+            <div><a href="#steps" style="color: #94A3B8; text-decoration: none;">Як це працює</a></div>
+          </div>
+        </div>
+        <div>
+          <strong style="color: #FFF; font-size: 15px; display: block; margin-bottom: 16px;">Партнери</strong>
+          <div style="font-size: 14px; line-height: 2.2;">
+            <div>EcoFactor Network</div>
+            <div>Yasno E-mobility</div>
+            <div>TOKA Network</div>
+            <div>GO TO-U</div>
+          </div>
+        </div>
+        <div>
+          <strong style="color: #FFF; font-size: 15px; display: block; margin-bottom: 16px;">Контакти</strong>
+          <div style="font-size: 14px; line-height: 2.2;">
+            <div>support@chargeua.com</div>
+            <div>+380 (44) 390-24-00</div>
+            <div>м. Львів, вул. С. Бандери, 12</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 ChargeUA. Лабораторна робота №4 з дисципліни «Технології веб-розробки та дизайну». Виконав: студент групи ПП-24 Лемішка А. А.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript logic for Calculator -->
+  <script>
+    function updateCalc() {
+      const batteryKwh = parseFloat(document.getElementById('carSelect').value);
+      const targetPercent = parseInt(document.getElementById('targetSlider').value);
+      const currentPercent = 20;
+
+      // Energy calculation
+      const neededEnergy = (batteryKwh * (targetPercent - currentPercent) / 100).toFixed(1);
+      document.getElementById('targetPercentText').innerText = targetPercent + '%';
+      document.getElementById('energyText').innerText = '+' + neededEnergy + ' кВт·год';
+
+      // Cost calculation (based on EcoFactor DC tariff 14.50 UAH)
+      const cost = Math.round(neededEnergy * 14.50);
+      document.getElementById('priceText').innerText = '~' + cost + ' ₴';
+
+      // Time calculation on DC 120 kW (~60 mins for full, taking power curve)
+      const timeMinutes = Math.round((neededEnergy / 100) * 60);
+      document.getElementById('timeText').innerHTML = 'Час на швидкісній DC 120 кВт: <strong>~' + timeMinutes + ' хв</strong>';
+    }
+  </script>
+
+</body>
+</html>

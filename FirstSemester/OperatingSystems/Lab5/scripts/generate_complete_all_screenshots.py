@@ -1,0 +1,549 @@
+import os
+import sys
+import docx
+from docx import Document
+from docx.shared import Inches, Pt, RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
+from docx.oxml import OxmlElement, parse_xml
+from docx.oxml.ns import nsdecls, qn
+
+LAB_DIR = r"d:\Studing\SecondYear\FirstSemester\OperatingSystems\Lab5"
+SCREENSHOTS_DIR = os.path.join(LAB_DIR, "screenshots")
+REPORTS_DIR = os.path.join(LAB_DIR, "reports")
+
+os.makedirs(REPORTS_DIR, exist_ok=True)
+
+def set_cell_background(cell, hex_color):
+    tcPr = cell._tc.get_or_add_tcPr()
+    shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{hex_color}"/>')
+    tcPr.append(shd)
+
+def set_cell_margins(cell, top=100, bottom=100, left=150, right=150):
+    tcPr = cell._tc.get_or_add_tcPr()
+    tcMar = parse_xml(f'<w:tcMar {nsdecls("w")}><w:top w:w="{top}" w:type="dxa"/><w:bottom w:w="{bottom}" w:type="dxa"/><w:left w:w="{left}" w:type="dxa"/><w:right w:w="{right}" w:type="dxa"/></w:tcMar>')
+    tcPr.append(tcMar)
+
+def set_table_borders(table, color="D0D7DE"):
+    tblPr = table._tbl.tblPr
+    borders = parse_xml(f'''
+        <w:tblBorders {nsdecls("w")}>
+            <w:top w:val="single" w:sz="6" w:space="0" w:color="{color}"/>
+            <w:bottom w:val="single" w:sz="6" w:space="0" w:color="{color}"/>
+            <w:left w:val="none"/>
+            <w:right w:val="none"/>
+            <w:insideH w:val="single" w:sz="4" w:space="0" w:color="{color}"/>
+            <w:insideV w:val="none"/>
+        </w:tblBorders>
+    ''')
+    tblPr.append(borders)
+
+def format_cell(cell, text, bold=False, italic=False, size=10.5, color=RGBColor(0x22, 0x22, 0x22), align=WD_ALIGN_PARAGRAPH.LEFT):
+    cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+    set_cell_margins(cell, top=100, bottom=100, left=140, right=140)
+    p = cell.paragraphs[0]
+    p.alignment = align
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
+    p.paragraph_format.line_spacing = 1.15
+    run = p.add_run(text)
+    run.font.name = "Times New Roman"
+    run.font.size = Pt(size)
+    run.bold = bold
+    run.italic = italic
+    run.font.color.rgb = color
+    return run
+
+def add_header_styled(doc, text, level):
+    p = doc.add_paragraph()
+    p.paragraph_format.keep_with_next = True
+    p.paragraph_format.space_before = Pt(14)
+    p.paragraph_format.space_after = Pt(6)
+    run = p.add_run(text)
+    run.bold = True
+    run.font.name = "Times New Roman"
+    if level == 1:
+        run.font.size = Pt(15)
+        run.font.color.rgb = RGBColor(0x1B, 0x36, 0x5D)
+    elif level == 2:
+        run.font.size = Pt(13)
+        run.font.color.rgb = RGBColor(0x00, 0x4B, 0x87)
+    else:
+        run.font.size = Pt(11.5)
+        run.font.color.rgb = RGBColor(0x22, 0x22, 0x22)
+    return p
+
+def add_body_p(doc, text, bold_prefix=None, italic_prefix=None, space_after=6):
+    p = doc.add_paragraph()
+    p.paragraph_format.line_spacing = 1.15
+    p.paragraph_format.space_after = Pt(space_after)
+    p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    
+    if bold_prefix:
+        r_pre = p.add_run(bold_prefix)
+        r_pre.bold = True
+        r_pre.font.name = "Times New Roman"
+        r_pre.font.size = Pt(11.5)
+        r_pre.font.color.rgb = RGBColor(0x11, 0x11, 0x11)
+        
+    if italic_prefix:
+        r_it = p.add_run(italic_prefix)
+        r_it.italic = True
+        r_it.font.name = "Times New Roman"
+        r_it.font.size = Pt(11.5)
+        
+    run = p.add_run(text)
+    run.font.name = "Times New Roman"
+    run.font.size = Pt(11.5)
+    run.font.color.rgb = RGBColor(0x22, 0x22, 0x22)
+    return p
+
+def add_callout(doc, text, title="ПРИМІТКА / РЕЗУЛЬТАТ ЕКСПЕРИМЕНТУ:"):
+    tbl = doc.add_table(rows=1, cols=1)
+    tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
+    cell = tbl.cell(0, 0)
+    set_cell_background(cell, "F0F4F8")
+    set_cell_margins(cell, top=140, bottom=140, left=180, right=180)
+    
+    tcPr = cell._tc.get_or_add_tcPr()
+    border = parse_xml(f'''
+        <w:tcBorders {nsdecls("w")}>
+            <w:left w:val="single" w:sz="24" w:space="0" w:color="1B365D"/>
+            <w:top w:val="none"/>
+            <w:right w:val="none"/>
+            <w:bottom w:val="none"/>
+        </w:tcBorders>
+    ''')
+    tcPr.append(border)
+    
+    p = cell.paragraphs[0]
+    p.paragraph_format.space_before = Pt(2)
+    p.paragraph_format.space_after = Pt(2)
+    p.paragraph_format.line_spacing = 1.15
+    
+    r_title = p.add_run(title + "\n")
+    r_title.bold = True
+    r_title.font.name = "Times New Roman"
+    r_title.font.size = Pt(10.5)
+    r_title.font.color.rgb = RGBColor(0x1B, 0x36, 0x5D)
+    
+    r_txt = p.add_run(text)
+    r_txt.font.name = "Times New Roman"
+    r_txt.font.size = Pt(10.5)
+    r_txt.font.color.rgb = RGBColor(0x33, 0x33, 0x33)
+    
+    p_after = doc.add_paragraph()
+    p_after.paragraph_format.space_before = Pt(0)
+    p_after.paragraph_format.space_after = Pt(4)
+
+def add_screenshot_figure(doc, img_filename, caption_text, width=Inches(5.6)):
+    img_path = os.path.join(SCREENSHOTS_DIR, img_filename)
+    if not os.path.exists(img_path):
+        img_path = os.path.join(LAB_DIR, img_filename)
+    if not os.path.exists(img_path):
+        print(f"Warning: Image {img_filename} not found!")
+        return
+    
+    p_img = doc.add_paragraph()
+    p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_img.paragraph_format.space_before = Pt(6)
+    p_img.paragraph_format.space_after = Pt(2)
+    p_img.paragraph_format.keep_with_next = True
+    
+    run_img = p_img.add_run()
+    run_img.add_picture(img_path, width=width)
+    
+    p_cap = doc.add_paragraph()
+    p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_cap.paragraph_format.space_before = Pt(2)
+    p_cap.paragraph_format.space_after = Pt(8)
+    run_cap = p_cap.add_run(caption_text)
+    run_cap.font.name = "Times New Roman"
+    run_cap.font.size = Pt(9.5)
+    run_cap.italic = True
+    run_cap.font.color.rgb = RGBColor(0x44, 0x44, 0x44)
+
+def setup_page_margins(doc):
+    for sec in doc.sections:
+        sec.top_margin = Inches(0.79) # 2.0 cm
+        sec.bottom_margin = Inches(0.79) # 2.0 cm
+        sec.left_margin = Inches(0.98) # 2.5 cm
+        sec.right_margin = Inches(0.59) # 1.5 cm
+
+def build_runbook_with_all_screenshots():
+    print("Building Runbook containing ALL 83 step screenshots...")
+    doc = Document()
+    setup_page_margins(doc)
+    
+    # Title
+    p_title = doc.add_paragraph()
+    p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_title.paragraph_format.space_before = Pt(20)
+    p_title.paragraph_format.space_after = Pt(6)
+    r = p_title.add_run("ПОКРОКОВА ІНСТРУКЦІЯ ТА КАРТА НАТИСКАНЬ")
+    r.font.name = "Times New Roman"
+    r.font.size = Pt(16)
+    r.bold = True
+    r.font.color.rgb = RGBColor(0x1B, 0x36, 0x5D)
+    
+    p_sub = doc.add_paragraph()
+    p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_sub.paragraph_format.space_before = Pt(0)
+    p_sub.paragraph_format.space_after = Pt(20)
+    r = p_sub.add_run("Повний хронологічний атлас виконання Лабораторної роботи №5 через графічний інтерфейс користувача (GUI)\nВсі 83 знімки екрана із динамічним курсором миші та детальним описом дій\nСтудент: Лемішка Андрій, Група: ПП-14, Кафедра САПР, Викладач: О. І. Белей")
+    r.font.name = "Times New Roman"
+    r.font.size = Pt(11)
+    r.italic = True
+    
+    add_body_p(doc, "Даний документ є вичерпним покроковим посібником (Runbook), що містить детальний опис кожного натискання миші, введених значень, стану діалогових вікон та системних оснасток під час розгортання доменної інфраструктури Windows Server 2008 R2 Standard (Server.office.com) та взаємодії з клієнтською станцією Windows 10 Pro. У посібнику наведено абсолютно всі 83 знімки екрана, зафіксовані в ході практичного виконання роботи.")
+
+    all_steps = [
+        ("Крок 1. Налаштування статичних параметрів TCP/IPv4",
+         "1. Відкрити «Network and Sharing Center» -> «Change adapter settings».\n"
+         "2. Клацнути правою кнопкою миші на «Local Area Connection» -> «Properties».\n"
+         "3. Виділити пункт «Internet Protocol Version 4 (TCP/IPv4)» -> натиснути кнопку «Properties».\n"
+         "4. Обрати радіокнопку «Use the following IP address» та ввести: IP: 192.168.1.5, Subnet mask: 255.255.255.0, Default gateway: 192.168.1.4.\n"
+         "5. У розділі DNS вибрати «Use the following DNS server addresses» -> Preferred DNS: 192.168.1.5 -> натиснути «OK» -> «Close».",
+         "screenshot_step1_net_connections.png", "Рис. 1. Вікно властивостей мережевого підключення Local Area Connection"),
+
+        ("Крок 2. Відкриття консолі диспетчера сервера (Server Manager)",
+         "На панелі завдань натиснути піктограму «Server Manager» біля кнопки «Start». Відкривається головна консоль керування сервером.",
+         "screenshot_step2_server_manager.png", "Рис. 2. Головне вікно диспетчера сервера Server Manager"),
+
+        ("Крок 3. Перехід до додавання ролей сервера (Add Roles)",
+         "У лівому дереві Server Manager виділити категорію «Roles». У правому робочому полі у блоці «Roles Summary» натиснути посилання «Add Roles».",
+         "screenshot_step3_roles_add.png", "Рис. 3. Вибір посилання «Add Roles» у розділі Roles Summary"),
+
+        ("Крок 4. Майстер ролей: початкова сторінка Before You Begin",
+         "У вітальному вікні «Before You Begin» ознайомитися з попередженнями щодо статичного IP та оновлень безпеки -> натиснути кнопку «Next».",
+         "screenshot_step4_wizard_before_begin.png", "Рис. 4. Початкове вікно майстра додавання ролей"),
+
+        ("Крок 5. Вибір ролі Active Directory Domain Services",
+         "У списку доступних ролей сервера встановити прапорець навпроти «Active Directory Domain Services».",
+         "screenshot_step5_roles_select_adds.png", "Рис. 5. Вибір ролі Active Directory Domain Services"),
+
+        ("Крок 6. Підтвердження залежних компонентів (.NET Framework)",
+         "У діалоговому вікні «Add features required for Active Directory Domain Services» натиснути кнопку «Add Required Features».",
+         "screenshot_step6_required_features.png", "Рис. 6. Діалог додавання обов'язкових компонентів .NET Framework"),
+
+        ("Крок 7. Фіксація вибору ролі AD DS",
+         "Переконатися, що прапорець навпроти ролі AD DS встановлено та підтверджено -> натиснути «Next».",
+         "screenshot_step7_adds_checked.png", "Рис. 7. Підтвердження вибору ролі AD DS у списку"),
+
+        ("Крок 8. Інформаційна сторінка Active Directory Domain Services",
+         "Ознайомитися з архітектурним описом та вимогами щодо наявності авторитетного DNS-сервера -> натиснути «Next».",
+         "screenshot_step8_adds_intro.png", "Рис. 8. Інформаційне вікно ролі Active Directory Domain Services"),
+
+        ("Крок 9. Підтвердження параметрів встановлення (Confirmation)",
+         "У вікні «Confirm Installation Selections» перевірити список компонентів (Active Directory Domain Services, .NET Framework 3.5.1) -> натиснути «Install».",
+         "screenshot_step9_confirm_install.png", "Рис. 9. Вікно підтвердження параметрів інсталяції"),
+
+        ("Крок 10. Прогрес встановлення компонентів ролі",
+         "Спостереження за процесом копіювання та реєстрації системних файлів служби каталогів у вікні прогресу інсталяції.",
+         "screenshot_step10_install_progress.png", "Рис. 10. Індикатор ходу інсталяції компонентів AD DS"),
+
+        ("Крок 11. Результати успішного встановлення ролі AD DS",
+         "У вікні «Installation Results» перевірити статус «Installation succeeded». Натиснути посилання «Close this wizard and launch the Active Directory Domain Services Installation Wizard (dcpromo.exe)» або кнопку «Close».",
+         "screenshot_step11_install_results.png", "Рис. 11. Успішне встановлення бінарних файлів AD DS"),
+
+        ("Крок 12. Запуск майстра підвищення до контролера домену (DCPromo)",
+         "Натиснути «Start» -> ввести dcpromo.exe -> Enter. У вітальному вікні Active Directory Domain Services Installation Wizard натиснути «Next».",
+         "screenshot_step12_dcpromo_welcome.png", "Рис. 12. Початкове вікно майстра dcpromo.exe"),
+
+        ("Крок 13. Попередження сумісності версій операційних систем",
+         "На сторінці «Operating System Compatibility» ознайомитися з вимогами щодо сумісності алгоритмів шифрування та NTLM -> натиснути «Next».",
+         "screenshot_step13_dcpromo_os_compat.png", "Рис. 13. Вікно сумісності операційних систем"),
+
+        ("Крок 14. Вибір типу розгортання контролера домену",
+         "На сторінці «Choose a Deployment Configuration» вибрати опцію «Create a new domain in a new forest» (Створити новий домен у новому лісі).",
+         "screenshot_step14_dcpromo_new_forest.png", "Рис. 14. Вибір конфігурації створення нового лісу"),
+
+        ("Крок 15. Підтвердження вибору нового лісу",
+         "Переконатися у виборі радіокнопки «Create a new domain in a new forest» -> натиснути кнопку «Next».",
+         "screenshot_step15_dcpromo_new_forest_selected.png", "Рис. 15. Підтвердження створення нового лісу Active Directory"),
+
+        ("Крок 16. Введення кореневого доменного імені лісу (office.com)",
+         "У полі «FQDN of the forest root domain» ввести повне доменне ім'я: office.com -> натиснути «Next».",
+         "screenshot_step16_dcpromo_fqdn_office.png", "Рис. 16. Введення FQDN кореневого домену office.com"),
+
+        ("Крок 17. Встановлення функціонального рівня лісу та домену",
+         "У випадаючому списку «Forest functional level» вибрати рівень «Windows Server 2008 R2» -> натиснути «Next».",
+         "screenshot_step17_dcpromo_functional_level.png", "Рис. 17. Вибір функціонального рівня лісу Windows Server 2008 R2"),
+
+        ("Крок 18. Вибір додаткових параметрів контролера (DNS Server)",
+         "На сторінці «Additional Domain Controller Options» переконатися, що встановлено прапорець «DNS server» -> натиснути «Next».",
+         "screenshot_step18_dcpromo_additional_options.png", "Рис. 18. Додаткові параметри: інтеграція DNS-сервера"),
+
+        ("Крок 19. Підтвердження попередження щодо делегування DNS",
+         "У вікні попередження про неможливість створення делегування для авторитетної зони натиснути «Yes» для автоматичної конфігурації.",
+         "screenshot_step19_dcpromo_dns_warning.png", "Рис. 19. Діалогове вікно попередження делегування DNS"),
+
+        ("Крок 20. Завдання шляхів до бази даних NTDS та журналу SYSVOL",
+         "Перевірити шляхи за замовчуванням (Database folder: C:\\Windows\\NTDS, Log files folder: C:\\Windows\\NTDS, SYSVOL folder: C:\\Windows\\SYSVOL) -> «Next».",
+         "screenshot_step20_dcpromo_paths.png", "Рис. 20. Шляхи розміщення бази даних NTDS та папки SYSVOL"),
+
+        ("Крок 21. Встановлення пароля режиму відновлення служб каталогів (DSRM)",
+         "У полях «Password» та «Confirm password» ввести надійний пароль адміністратора відновлення: Pa$$word -> натиснути «Next».",
+         "screenshot_step21_dcpromo_dsrm_password.png", "Рис. 21. Введення пароля режиму відновлення DSRM"),
+
+        ("Крок 22. Підсумкове зведення параметрів перед конфігурацією",
+         "У вікні «Summary» уважно перевірити всі налаштування домену office.com -> натиснути кнопку «Next».",
+         "screenshot_step22_dcpromo_summary.png", "Рис. 22. Підсумкова сторінка параметрів майстра dcpromo"),
+
+        ("Крок 23. Процес конфігурації служб каталогу на сервері",
+         "Спостереження за процесом створення розділів каталогу, схеми та зон DNS майстром dcpromo.",
+         "screenshot_step23_dcpromo_configuring.png", "Рис. 23. Індикатор процесу промоції контролера домену"),
+
+        ("Крок 24. Вхід до домену після автоматичного перезавантаження",
+         "Натиснути Ctrl+Alt+Del. Увійти до облікового запису адміністратора домену: користувач OFFICE\\Administrator, пароль Pa$$word.",
+         "screenshot_step24_domain_logon.png", "Рис. 24. Екран першого входу до домену office.com"),
+
+        ("Крок 25. Підсумковий стан Server Manager після підвищення ролі",
+         "Відкрити Server Manager. Переконатися у наявності ролей «Active Directory Domain Services» та «DNS Server».",
+         "screenshot_step25_dc_configured_summary.png", "Рис. 25. Server Manager із зареєстрованими ролями AD DS та DNS"),
+
+        ("Крок 26. Відкриття меню створення організаційного підрозділу (OU)",
+         "Запустити оснастку «Active Directory Users and Computers» (dsa.msc). Клацнути правою кнопкою на домені office.com -> «New» -> «Organizational Unit».",
+         "screenshot_step26_new_ou_menu.png", "Рис. 26. Контекстне меню створення нового підрозділу"),
+
+        ("Крок 27. Створення підрозділу «Керівники»",
+         "У полі «Name» ввести «Керівники». Залишити прапорець «Protect container from accidental deletion» -> натиснути «OK».",
+         "screenshot_step27_new_ou_dialog.png", "Рис. 27. Створення організаційного підрозділу «Керівники»"),
+
+        ("Крок 28. Перегляд дерева домену в оснастці dsa.msc",
+         "Огляд оновленого списку контейнерів та створеного підрозділу «Керівники».",
+         "screenshot_step28_ad_tree.png", "Рис. 28. Вузол домену office.com в оснастці dsa.msc"),
+
+        ("Крок 29. Виділення кореня домену для додавання наступного OU",
+         "Клацання правою кнопкою миші на домені office.com для виклику контекстного меню створення об'єктів.",
+         "screenshot_step29_office_root.png", "Рис. 29. Кореневий вузол office.com у дереві оснастки"),
+
+        ("Крок 30. Діалог створення підрозділу «Фінансисти»",
+         "Обрати «New» -> «Organizational Unit». У полі «Name» ввести: Фінансисти.",
+         "screenshot_step30_new_ou_finansysty.png", "Рис. 30. Діалогове вікно створення підрозділу «Фінансисти»"),
+
+        ("Крок 31. Підтвердження створення підрозділу «Фінансисти»",
+         "Натиснути кнопку «OK» для збереження нового підрозділу в базі Active Directory.",
+         "screenshot_step31_ou_finansysty_ok.png", "Рис. 31. Підтвердження збереження OU «Фінансисти»"),
+
+        ("Крок 32. Відображення підрозділів «Керівники» та «Фінансисти»",
+         "Перевірка наявності двох нових підрозділів у дереві консолі dsa.msc.",
+         "screenshot_step32_ou_created_tree.png", "Рис. 32. Дерево домену з підрозділами Керівники та Фінансисти"),
+
+        ("Крок 33. Відкриття діалогу створення підрозділу IT-спеціалістів",
+         "Клацнути правою кнопкою на office.com -> обрати «New» -> «Organizational Unit».",
+         "screenshot_step33_ou_it_dialog.png", "Рис. 33. Відкриття вікна створення OU для IT-відділу"),
+
+        ("Крок 34. Навігація меню для підрозділу IT-спеціалістів",
+         "Перевірка виділення пункту контекстного меню New -> Organizational Unit.",
+         "screenshot_step33_ou_it_specialists.png", "Рис. 34. Контекстне меню створення OU"),
+
+        ("Крок 35. Введення назви підрозділу «IT-спеціалісти»",
+         "У полі «Name» ввести текст: IT-спеціалісти -> натиснути «OK».",
+         "screenshot_step34_ou_it_typed.png", "Рис. 35. Введення імені підрозділу «IT-спеціалісти»"),
+
+        ("Крок 36. Оновлена структура підрозділів у дереві dsa.msc",
+         "Перевірка появи підрозділу «IT-спеціалісти» в ієрархічному списку.",
+         "screenshot_step35_tree_updated.png", "Рис. 36. Дерево каталогу з підрозділом IT-спеціалісти"),
+
+        ("Крок 37. Створення виділеного контейнера «Групи»",
+         "Клацнути правою кнопкою на office.com -> «New» -> «Organizational Unit».",
+         "screenshot_step36_ou_groups.png", "Рис. 37. Меню створення контейнера для груп безпеки"),
+
+        ("Крок 38. Введення назви контейнера «Групи»",
+         "У діалоговому вікні New Object ввести ім'я: Групи.",
+         "screenshot_step36_ou_groups_opened.png", "Рис. 38. Введення імені підрозділу «Групи»"),
+
+        ("Крок 39. Підтвердження створення контейнера «Групи»",
+         "Натиснути «OK» для реєстрації підрозділу збереження груп безпеки.",
+         "screenshot_step37_ou_groups_ok.png", "Рис. 39. Підтвердження збереження OU «Групи»"),
+
+        ("Крок 40. Створення підрозділу «StudentSecurity»",
+         "Створити організаційний підрозділ «StudentSecurity» для налаштування групових політик студента.",
+         "screenshot_step38_ou_studentsecurity.png", "Рис. 40. Створення підрозділу StudentSecurity"),
+
+        ("Крок 41. Огляд структури підрозділів домену",
+         "Перегляд повного списку сформованих підрозділів у лівому дереві оснастки.",
+         "screenshot_step39_tree_all_ous.png", "Рис. 41. Структура підрозділів у дереві Active Directory"),
+
+        ("Крок 42. Перевірка захисту контейнера StudentSecurity",
+         "Перевірка властивостей та дескрипторів безпеки створеного контейнера StudentSecurity.",
+         "screenshot_step40_ou_studentsecurity.png", "Рис. 42. Параметри підрозділу StudentSecurity"),
+
+        ("Крок 43. Ієрархічний список підрозділів перед створенням користувачів",
+         "Відображення кореневої структури підрозділів: Керівники, Фінансисти, IT-спеціалісти, Групи, Комп'ютери, StudentSecurity.",
+         "screenshot_step41_tree_all_ous.png", "Рис. 43. Готова ієрархія підрозділів домену office.com"),
+
+        ("Крок 44. Повне розгорнуте дерево Active Directory",
+         "Фіксація розгорнутої структури підрозділів перед створенням облікових записів працівників.",
+         "screenshot_step42_tree_all_active.png", "Рис. 44. Розгорнуте дерево підрозділів в оснастці dsa.msc"),
+
+        ("Крок 45. Наповнення підрозділу «Керівники» користувачами",
+         "У підрозділі «Керівники» через контекстне меню New -> User створено облікові записи «Директор» (director) та «Заступник» (deputy).",
+         "screenshot_step43_ou_kerivnyky_contents.png", "Рис. 45. Вміст підрозділу «Керівники» з користувачами"),
+
+        ("Крок 46. Наповнення підрозділу «Фінансисти»",
+         "У підрозділі «Фінансисти» створено облікові записи: «Бухгалтер» (accountant), «Економіст» (economist), «Менеджер» (manager).",
+         "screenshot_step44_ou_finansysty_contents.png", "Рис. 44. Вміст підрозділу «Фінансисти» з користувачами"),
+
+        ("Крок 47. Відкриття вікна властивостей користувача",
+         "Клацнути правою кнопкою миші на користувачеві «Менеджер» -> обрати пункт «Properties».",
+         "screenshot_step45_manager_props.png", "Рис. 47. Властивості облікового запису користувача"),
+
+        ("Крок 48. Налаштування переміщуваного профілю для користувача",
+         "У властивостях користувача на вкладці «Profile» у полі «Profile path» вказати: \\\\server\\Profiles\\%username% -> «OK».",
+         "screenshot_step46_manager_profile_path.png", "Рис. 48. Налаштування мережевого шляху до профілю"),
+
+        ("Крок 49. Перевірка членства користувача у групах безпеки",
+         "На вкладці «Member Of» користувача перевірити членство у групах Domain Users та Фінансисти.",
+         "screenshot_step47_manager_member_of.png", "Рис. 49. Вкладка Member Of у властивостях облікового запису"),
+
+        ("Крок 50. Наповнення підрозділу «IT-спеціалісти»",
+         "У підрозділі «IT-спеціалісти» створено користувачів: «Адміністратор» (admin_it), «Програміст» (programmer), «Сервіс-інженер» (service_eng).",
+         "screenshot_step48_ou_it_contents.png", "Рис. 50. Вміст підрозділу «IT-спеціалісти»"),
+
+        ("Крок 51. Налаштування домашнього диска P: для Програміста",
+         "У властивостях облікового запису Програміст на вкладці «Profile» у блоці «Home folder» обрати перемикач «Connect: P:» та вказати шлях: \\\\server\\Офіс.",
+         "screenshot_step49_programmer_profile.png", "Рис. 51. Підключення домашнього диска P: для користувача Програміст"),
+
+        ("Крок 52. Делегування прав адміністратора домену (Domain Admins)",
+         "У властивостях користувача «Адміністратор» (admin_it) на вкладці «Member Of» натиснути «Add...» та додати вбудовану групу «Domain Admins».",
+         "screenshot_step50_admin_memberof.png", "Рис. 52. Членство адміністратора у групі Domain Admins"),
+
+        ("Крок 53. Наповнення контейнера «Групи» глобальними групами безпеки",
+         "У контейнері «Групи» створено глобальні групи безпеки: «AllStaff», «IT-спеціалісти», «Керівники», «Фінансисти» та додано відповідних користувачів.",
+         "screenshot_step51_ou_groups_contents.png", "Рис. 53. Список глобальних груп безпеки в OU «Групи»"),
+
+        ("Крок 54. Авторизація DHCP-сервера в Active Directory",
+         "Відкрити оснастку «DHCP» (dhcpmgmt.msc). Клацнути правою кнопкою на вузлі DHCP -> «Manage authorized servers...» -> «Authorize...» -> ввести Server.office.com.",
+         "screenshot_step52_dhcp_add_server.png", "Рис. 54. Діалог авторизації сервера Server.office.com"),
+
+        ("Крок 55. Початковий стан пулу адрес DHCP-сервера",
+         "Перегляд стану вузла IPv4 перед запуском системної служби DHCP Server.",
+         "screenshot_step53_dhcp_address_pool.png", "Рис. 55. Стан вузла IPv4 в оснастці DHCP"),
+
+        ("Крок 56. Запуск системної служби DHCP Server",
+         "Клацнути правою кнопкою на вузлі сервера Server.office.com -> обрати «All Tasks» -> «Start».",
+         "screenshot_step54_start_dhcp_service.png", "Рис. 56. Меню запуску системної служби DHCP"),
+
+        ("Крок 57. Підтвердження запущеної служби DHCP",
+         "Переконатися, що піктограма сервера стала активною (зелена стрілка), служба функціонує в штатному режимі.",
+         "screenshot_step55_dhcp_service_started.png", "Рис. 57. Запущена та авторизована служба DHCP-сервера"),
+
+        ("Крок 58. Перегляд гілки IPv4 перед конфігурацією області",
+         "Виділення гілки IPv4 для переходу до майстра створення нової області адрес.",
+         "screenshot_step56_dhcp_address_pool.png", "Рис. 58. Вузол IPv4 в оснастці dhcpmgmt.msc"),
+
+        ("Крок 59. Виклик майстра створення нової області (New Scope...)",
+         "Клацнути правою кнопкою миші на «IPv4» -> обрати пункт «New Scope...».",
+         "screenshot_step57_new_scope_menu.png", "Рис. 59. Контекстне меню виклику майстра New Scope Wizard"),
+
+        ("Крок 60. Вітальний екран майстра New Scope Wizard",
+         "У вітальному вікні майстра створення області натиснути кнопку «Next».",
+         "screenshot_step58_new_scope_wizard_welcome.png", "Рис. 60. Вітальне вікно майстра New Scope Wizard"),
+
+        ("Крок 61. Введення назви області DHCP: «Офіс»",
+         "У полі «Name» ввести назву області: Офіс. У полі «Description» ввести опис: Мережа офісу підприємства -> натиснути «Next».",
+         "screenshot_step59_new_scope_name.png", "Рис. 61. Введення назви області «Офіс»"),
+
+        ("Крок 62. Завдання діапазону адрес пулу DHCP",
+         "Вказати: Start IP address: 192.168.1.1, End IP address: 192.168.1.200, Length: 24, Subnet mask: 255.255.255.0 -> натиснути «Next».",
+         "screenshot_step60_new_scope_ip_range.png", "Рис. 62. Завдання пулу IP-адрес 192.168.1.1 — 192.168.1.200"),
+
+        ("Крок 63. Додавання діапазонів виключень з видачі",
+         "Додати діапазон виключення: 192.168.1.150 — 192.168.1.170, а також початковий діапазон 192.168.1.1 — 192.168.1.10 -> натиснути «Add» -> «Next».",
+         "screenshot_step61_new_scope_exclusions.png", "Рис. 63. Додавання діапазонів виключень адрес"),
+
+        ("Крок 64. Налаштування тривалості оренди (Lease Duration)",
+         "Встановити тривалість оренди адрес: 8 Days (8 днів) -> натиснути «Next».",
+         "screenshot_step62_new_scope_lease.png", "Рис. 64. Встановлення терміну оренди на 8 днів"),
+
+        ("Крок 65. Налаштування маршрутизатора за замовчуванням (Router / Gateway)",
+         "Обрати «Yes, I want to configure these options now». У полі «IP address» ввести адресу шлюзу: 192.168.1.4 -> натиснути «Add» -> «Next».",
+         "screenshot_step63_new_scope_router.png", "Рис. 65. Додавання IP-адреси шлюзу 192.168.1.4"),
+
+        ("Крок 66. Налаштування параметрів DNS-сервера та батьківського домену",
+         "У полі «Parent domain» ввести: office.com. У полі «IP address» ввести адресу DNS сервера: 192.168.1.5 -> «Add» -> «Next».",
+         "screenshot_step64_new_scope_dns.png", "Рис. 66. Завдання параметрів домену office.com та DNS"),
+
+        ("Крок 67. Відображення пулу адрес у гілці Address Pool",
+         "Перевірка сформованого пулу роздачі адрес та переліку активних виключень в оснастці DHCP.",
+         "screenshot_step65_dhcp_address_pool.png", "Рис. 67. Адресний пул області «Офіс»"),
+
+        ("Крок 68. Меню створення резервування IP-адреси",
+         "У гілці Scope [192.168.1.0] Офіс клацнути правою кнопкою на вузлі «Reservations» -> обрати «New Reservation...».",
+         "screenshot_step66_dhcp_reservations_menu.png", "Рис. 68. Контекстне меню створення резервування"),
+
+        ("Крок 69. Діалогове вікно резервування IP для шлюзу",
+         "Ввести: Reservation name: Gateway, IP address: 192.168.1.4, MAC address: 1a2b3c4d5e6f, Supported types: Both -> «Add» -> «Close».",
+         "screenshot_step67_dhcp_reservation_dialog.png", "Рис. 69. Діалог створення резервування IP 192.168.1.4"),
+
+        ("Крок 70. Список активних резервувань DHCP",
+         "Переконатися у наявності запису резервування для шлюзу Gateway з адресою 192.168.1.4.",
+         "screenshot_step68_dhcp_reservations_list.png", "Рис. 70. Список активних резервувань DHCP-сервера"),
+
+        ("Крок 71. Навігація до параметрів області Scope Options",
+         "Виділення гілки «Scope Options» для перевірки та модифікації параметрів опцій роздачі клієнтам.",
+         "screenshot_step69_dhcp_scope_options.png", "Рис. 71. Вузол Scope Options в оснастці dhcpmgmt.msc"),
+
+        ("Крок 72. Відкриття діалогу конфігурації опцій DNS",
+         "Клацнути правою кнопкою на Scope Options -> «Configure Options...» -> вкладка «General».",
+         "screenshot_step70_dhcp_configure_dns.png", "Рис. 72. Вікно конфігурації опцій області Scope Options"),
+
+        ("Крок 73. Додавання IP-адреси DNS-сервера (Option 006)",
+         "Встановити прапорець опції «006 DNS Servers», ввести IP-адресу 192.168.1.5 -> натиснути «Add».",
+         "screenshot_step70_dhcp_dns_added.png", "Рис. 73. Додавання адреси 192.168.1.5 до опції 006"),
+
+        ("Крок 74. Налаштування імені домену (Option 015)",
+         "Встановити прапорець опції «015 DNS Domain Name», у полі String value ввести: office.com -> натиснути «OK».",
+         "screenshot_step70_dhcp_domain_name.png", "Рис. 74. Завдання опції 015 DNS Domain Name"),
+
+        ("Крок 75. Підсумковий список сконфігурованих опцій DHCP",
+         "Перевірка підсумкових опцій області: 003 Router (192.168.1.4), 006 DNS Servers (192.168.1.5), 015 DNS Domain Name (office.com).",
+         "screenshot_step70_dhcp_scope_options_final.png", "Рис. 75. Підсумковий перелік параметрів області DHCP"),
+
+        ("Крок 76. Створення та прив'язка GPO в оснастці gpmc.msc",
+         "Запустити «Group Policy Management» (gpmc.msc). Розгорнути домен office.com -> клацнути правою кнопкою на OU «Фінансисти» -> «Create a GPO in this domain, and Link it here...» -> ввести ім'я «Фінансова політика безпеки».",
+         "screenshot_step71_gpmc_tree.png", "Рис. 76. Оснастка gpmc.msc та прив'язка GPO до OU «Фінансисти»"),
+
+        ("Крок 77. Налаштування тайм-ауту заставки із коментарем",
+         "Клацнути правою кнопкою на політиці -> «Edit». Перейти: User Configuration -> Policies -> Administrative Templates -> Control Panel -> Personalization -> відкрити «Screen saver timeout» -> Enabled -> 600 секунд -> вкладка Comment: «Фінансова політика безпеки» -> «OK».",
+         "screenshot_step72_gpo_screensaver_timeout_dialog.png", "Рис. 77. Діалогове вікно налаштування тайм-ауту заставки"),
+
+        ("Крок 78. Підтвердження активованих параметрів персоналізації GPO",
+         "Перевірити стан параметрів: «Enable screen saver» — Enabled, «Password protect the screen saver» — Enabled, «Screen saver timeout» — Enabled.",
+         "screenshot_step72_gpo_screensaver.png", "Рис. 78. Редактор групових політик із налаштованими політиками персоналізації"),
+
+        ("Крок 79. Мережевий доступ до спільної папки C:\\Офіс",
+         "Створити каталог C:\\Офіс -> «Properties» -> вкладка «Sharing» -> «Advanced Sharing...» -> прапорець «Share this folder» -> «Permissions» -> надати Domain Users права Change та Read -> «OK».",
+         "screenshot_step73_ofis_sharing.png", "Рис. 79. Налаштування мережевого доступу SMB для папки C:\\Офіс"),
+
+        ("Крок 80. Налаштування списків контролю доступу NTFS для C:\\Офіс",
+         "У вікні властивостей C:\\Офіс перейти на вкладку «Security» -> налаштувати права читання та виконання для користувачів домену, та права Modify для підпапок відповідних підрозділів.",
+         "screenshot_step74_ofis_security.png", "Рис. 80. Списки контролю доступу NTFS папки C:\\Офіс"),
+
+        ("Крок 81. Мережевий доступ до папки профілів C:\\Profiles",
+         "Створити каталог C:\\Profiles -> розшарити як \\\\SERVER\\Profiles з повним доступом для автентифікованих користувачів та системи.",
+         "screenshot_step75_profiles_sharing.png", "Рис. 81. Властивості мережевого доступу сховища профілів"),
+
+        ("Крок 82. Налаштування безпеки NTFS для сховища профілів",
+         "На вкладці «Security» папки C:\\Profiles надати повний контроль системі та адміністраторам з успадкуванням для користувацьких каталогів.",
+         "screenshot_step76_profiles_security.png", "Рис. 82. Дескриптори безпеки NTFS папки C:\\Profiles"),
+
+        ("Крок 83. Клієнт Windows 10: підтвердження отримання параметрів від DHCP-сервера",
+         "На клієнтській станції Windows 10 виконати ipconfig /all. Зафіксовано: Connection-specific DNS Suffix: office.com, IPv4 Address: 192.168.1.1, Subnet Mask: 255.255.255.0, Lease Expires: через 8 днів, Default Gateway: 192.168.1.4, DHCP Server: 192.168.1.5, DNS Servers: 192.168.1.5.",
+         "screenshot_step77_win10_dhcp_ipconfig.png", "Рис. 83. Консоль клієнта Windows 10 із підтвердженням отримання параметрів від DHCP-сервера домену office.com")
+    ]
+
+    for title, text, img, cap in all_steps:
+        add_header_styled(doc, title, 2)
+        add_body_p(doc, text)
+        add_screenshot_figure(doc, img, cap, width=Inches(5.6))
+        
+    out_runbook = os.path.join(REPORTS_DIR, "Покрокова_інструкція_натискань_Лаб5.docx")
+    doc.save(out_runbook)
+    print(f"Runbook with ALL {len(all_steps)} screenshots saved to {out_runbook}")
+
+if __name__ == "__main__":
+    build_runbook_with_all_screenshots()
+    print("FINISHED RUNBOOK GENERATION")
