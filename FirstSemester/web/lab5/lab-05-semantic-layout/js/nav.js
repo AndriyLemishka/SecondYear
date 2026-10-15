@@ -53,9 +53,9 @@
       }
     });
 
-    // Автоматичне закриття при зміні розміру вікна вище 1080px
+    // Автоматичне закриття при зміні розміру вікна вище 1160px
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 1080 && nav.classList.contains('is-open')) {
+      if (window.innerWidth > 1160 && nav.classList.contains('is-open')) {
         closeNav();
       }
     });

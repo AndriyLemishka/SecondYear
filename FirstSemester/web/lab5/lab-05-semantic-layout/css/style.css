@@ -157,7 +157,7 @@ footer[id] {
   position: absolute;
   left: var(--space-2);
   top: -80px;
-  z-index: 100;
+  z-index: 10005;
   padding: var(--space-3) var(--space-4);
   background: var(--color-bg);
   color: var(--color-text);
@@ -247,6 +247,7 @@ footer[id] {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
+  white-space: nowrap;
   transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
 
@@ -437,6 +438,8 @@ footer[id] {
 
 /* Верхня плашка телеметрії мережі */
 .top-bar {
+  position: relative;
+  z-index: 9999;
   background: #0B132B;
   color: #FFFFFF;
   padding: 10px 0;
@@ -472,7 +475,7 @@ footer[id] {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 10000;
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
@@ -482,7 +485,7 @@ footer[id] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: nowrap;
   padding-block: var(--space-3);
 }
@@ -491,6 +494,8 @@ footer[id] {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .logo {
@@ -542,16 +547,19 @@ footer[id] {
 
 .nav__list {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1) var(--space-3);
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
 }
 
 .nav__link {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 6px;
   min-height: var(--target-size);
-  padding-inline: var(--space-3);
+  padding: 8px 10px;
+  font-size: 14px;
+  white-space: nowrap;
   border-radius: var(--radius-sm);
   font-weight: 500;
   text-decoration: none;
@@ -1245,10 +1253,15 @@ footer[id] {
    СЕКЦІЯ LIVE-КАРТИ
    ========================================================================== */
 .map-sec {
+  position: relative;
+  z-index: 1;
   padding: 20px 0 50px;
 }
 
 .map-card {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
   border: 1.5px solid #CBD5E1;
   border-radius: 20px;
   overflow: hidden;
@@ -1343,7 +1356,14 @@ footer[id] {
 .map-canvas-container {
   min-height: 500px;
   position: relative;
+  z-index: 1;
   background: var(--color-surface);
+}
+
+.map-canvas-container #map-leaflet-canvas,
+.map-canvas-container .leaflet-container {
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 900px) {
@@ -1686,8 +1706,8 @@ footer[id] {
   }
 }
 
-/* Планшети та смартфони (<= 1080px) */
-@media (max-width: 1080px) {
+/* Планшети та компактні десктопи (<= 1160px) */
+@media (max-width: 1160px) {
   /* Приховуємо верхню плашку для економії робочого простору на мобільному */
   .top-bar {
     display: none;
@@ -1745,7 +1765,7 @@ footer[id] {
     bottom: 0;
     background: #FFFFFF;
     padding: 16px 16px 32px;
-    z-index: 999;
+    z-index: 10002;
     overflow-y: auto;
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
     animation: mobileNavSlide 0.22s ease-out;
