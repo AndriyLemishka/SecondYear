@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChargeUA — мережа зарядних станцій електромобілів в Україні</title>
-  <meta name="description" content="ChargeUA — єдина мережа швидкісних зарядних станцій для електромобілів по всій Україні: DC 150 кВт, Ultra-fast, бронювання портів, Plug&amp;Charge та прозорі тарифи без комісій.">
+  <meta name="description" content="ChargeUA — єдина мережа швидкісних зарядних станцій для електромобілів по всій Україні: DC 150 кВт, Ultra-fast, інтерактивний калькулятор витрат, Live-карта 480+ станцій та робота від генераторів у блекаути.">
   <meta name="theme-color" content="#005EC9">
 
   <!-- Шрифт Inter (Google Fonts) -->
@@ -24,6 +24,19 @@
 <body>
   <a class="skip-link" href="#main">Перейти до основного вмісту</a>
 
+  <!-- ВЕРХНЯ СТАТУСНА ПЛАШКА (ТЕЛЕМЕТРІЯ МЕРЕЖІ) -->
+  <aside class="top-bar" aria-label="Мережева телеметрія">
+    <div class="container top-bar__inner">
+      <div class="top-bar__status">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span>Мережа ChargeUA: 480+ станцій онлайн по Україні | 100% телеметрія в реальному часі</span>
+      </div>
+      <div class="top-bar__phone">
+        <span>Гаряча лінія 24/7: <a href="tel:0800300400">0 800 300 400</a> | UA</span>
+      </div>
+    </div>
+  </aside>
+
   <!-- ШАПКА САЙТУ -->
   <header class="site-header">
     <div class="container site-header__inner">
@@ -32,79 +45,189 @@
       </a>
       <nav class="nav" aria-label="Головна навігація">
         <ul class="nav__list">
+          <li><a class="nav__link" href="#main"><i class="fa-solid fa-house" aria-hidden="true"></i>Головна</a></li>
+          <li><a class="nav__link" href="#calculator"><i class="fa-solid fa-calculator" aria-hidden="true"></i>Калькулятор</a></li>
+          <li><a class="nav__link" href="#map"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Карта станцій</a></li>
           <li><a class="nav__link" href="#stations"><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Станції</a></li>
-          <li><a class="nav__link" href="#map"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Карта</a></li>
           <li><a class="nav__link" href="#benefits"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Переваги</a></li>
           <li><a class="nav__link" href="#reviews"><i class="fa-solid fa-comments" aria-hidden="true"></i>Відгуки</a></li>
           <li><a class="nav__link" href="#contacts"><i class="fa-solid fa-headset" aria-hidden="true"></i>Контакти</a></li>
         </ul>
       </nav>
-      <a class="btn" href="/login"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Увійти</a>
+      <div class="site-header__actions">
+        <a class="btn btn--outline" href="/login"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Увійти</a>
+        <a class="btn btn--primary" href="#map"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>Знайти зарядку</a>
+      </div>
     </div>
   </header>
 
   <!-- ОСНОВНИЙ ВМІСТ СТОРІНКИ -->
   <main id="main">
 
-    <!-- HERO СЕКЦІЯ -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero__inner">
-        <div class="hero__content">
-          <div class="hero__badge">
+    <!-- HERO СЕКЦІЯ З ФОНОВИМ ВІДЕО ТА ГРАДІЄНТНИМ ПЕРЕХОДОМ (МАКЕТ ЛР4) -->
+    <section class="hero-sec" aria-labelledby="hero-title">
+      <!-- Фонове відео / GIF цикл -->
+      <div class="hero-video-bg-wrap">
+        <video class="hero-video-bg" autoplay loop muted playsinline poster="assets/images/hero_loop_opt.gif">
+          <source src="assets/video/video_content.mp4" type="video/mp4">
+          <img src="assets/images/hero_loop_opt.gif" class="hero-video-bg" alt="ChargeUA Video Loop">
+        </video>
+        <div class="hero-fade-overlay" aria-hidden="true"></div>
+      </div>
+
+      <div class="container hero-content-container">
+        <div class="hero-content">
+          <div class="hero-tag">
             <i class="fa-solid fa-bolt" aria-hidden="true"></i> НАЦІОНАЛЬНИЙ АГРЕГАТОР ЗАРЯДНИХ СТАНЦІЙ
           </div>
 
-          <h1 class="hero__title" id="hero-title">
-            Швидка та надійна зарядка електромобілів <em>без черг</em> по всій Україні
+          <h1 class="hero-h1" id="hero-title">
+            Швидка та надійна зарядка<br>електромобілів по всій Україні
           </h1>
 
-          <p class="hero__subtitle">
-            Усі мережі зарядок України на одній платформі: актуальні ціни, вільні конектори та фільтр станцій із промисловими генераторами в реальному часі.
+          <p class="hero-sub">
+            Знаходьте найближчі станції, розраховуйте вартість за лічені секунди та подорожуйте без хвилювань навіть під час блекаутів.
           </p>
 
           <!-- ДВІ КНОПКИ CTA -->
-          <div class="hero__cta-group">
-            <a class="btn btn--primary btn--lg" href="#stations">
-              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Розрахувати зарядку &rarr;
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#calculator">
+              <i class="fa-solid fa-calculator" aria-hidden="true"></i> Розрахувати зарядку &rarr;
             </a>
-            <a class="btn btn--outline-light btn--lg" href="#map">
+            <a class="btn btn-secondary" href="#map">
               <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Знайти на карті
             </a>
           </div>
 
           <!-- ШВИДКІ ТЕГИ КОНЕКТОРІВ -->
-          <div class="hero__tags" aria-label="Популярні типи конекторів">
-            <span class="hero__tag"><i class="fa-solid fa-plug" aria-hidden="true"></i> Type 2 (22 кВт)</span>
-            <span class="hero__tag"><i class="fa-solid fa-charging-station" aria-hidden="true"></i> CCS 2 (160 кВт)</span>
-            <span class="hero__tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i> CHAdeMO</span>
-            <span class="hero__tag hero__tag--generator"><i class="fa-solid fa-battery-full" aria-hidden="true"></i> 🔋 З генератором (Блекаут SOS)</span>
+          <div class="hero-chips" aria-label="Популярні конектори">
+            <span class="chip">Type 2 (22 кВт)</span>
+            <span class="chip">CCS 2 (160 кВт)</span>
+            <span class="chip">CHAdeMO</span>
+            <span class="chip chip-green"><i class="fa-solid fa-battery-full" aria-hidden="true"></i> 🔋 З генератором</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Бейдж фонового медіа -->
+      <div class="hero-video-badge" aria-label="Медіа-індикатор">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span>⚡ Live Video Loop · video_content.mp4 (ЛР №3)</span>
+      </div>
+    </section>
+
+    <!-- СМУГА ПЕРЕВАГ (BENEFITS STRIP) -->
+    <section class="strip-sec" aria-label="Швидкі переваги платформи">
+      <div class="container">
+        <div class="strip-grid">
+          <article class="strip-card">
+            <img src="assets/icons/Calculator.svg" class="strip-icon" alt="" width="44" height="44" aria-hidden="true">
+            <div>
+              <h3 class="strip-card__title">Точний калькулятор витрат</h3>
+              <p class="strip-card__desc">Автоматичний підбір моделі авто та тарифу</p>
+            </div>
+          </article>
+          <article class="strip-card">
+            <img src="assets/icons/Location.svg" class="strip-icon" alt="" width="44" height="44" aria-hidden="true">
+            <div>
+              <h3 class="strip-card__title">Live-карта 480+ станцій</h3>
+              <p class="strip-card__desc">Актуальний статус зайнятості та світла онлайн</p>
+            </div>
+          </article>
+          <article class="strip-card">
+            <img src="assets/icons/Information.svg" class="strip-icon" alt="" width="44" height="44" aria-hidden="true">
+            <div>
+              <h3 class="strip-card__title">100% Енергонезалежність</h3>
+              <p class="strip-card__desc">Робота від потужних генераторів у блекаути</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ ІНТЕРАКТИВНОГО КАЛЬКУЛЯТОРА -->
+    <section class="section section--surface calc-sec" id="calculator" aria-labelledby="calc-title">
+      <div class="container">
+        <div class="calc-wrap">
+          <div class="calc-header">
+            <h2 class="calc-title" id="calc-title"><i class="fa-solid fa-calculator" aria-hidden="true"></i> Інтерактивний калькулятор зарядки ChargeUA</h2>
+            <p class="calc-subtitle">Оберіть модель електрокара та регулюйте рівень заряду за допомогою повзунка:</p>
+          </div>
+          
+          <div class="calc-top-row">
+            <div class="calc-inputs-block">
+              <div class="calc-input-label" id="car-select-label">Модель автомобіля:</div>
+              <div class="car-pills" role="radiogroup" aria-labelledby="car-select-label">
+                <button type="button" class="car-pill active" data-car="id4" role="radio" aria-checked="true">Volkswagen ID.4 (77 кВт·год)</button>
+                <button type="button" class="car-pill" data-car="m3" role="radio" aria-checked="false">Tesla Model 3</button>
+                <button type="button" class="car-pill" data-car="leaf" role="radio" aria-checked="false">Nissan Leaf</button>
+                <button type="button" class="car-pill" data-car="ioniq5" role="radio" aria-checked="false">Hyundai Ioniq 5</button>
+              </div>
+
+              <!-- SLIDER CONTROL (ПОВЗУНОК) -->
+              <div class="slider-box">
+                <div class="slider-header">
+                  <span>Регулювання рівня батареї (Повзунок %):</span>
+                  <span class="slider-highlight" id="slider-range-val">20% &rarr; 80% (Додано +46.2 кВт·год)</span>
+                </div>
+                <div class="slider-rail" id="slider-rail">
+                  <div class="slider-fill" id="slider-fill" style="left: 20%; width: 60%;"></div>
+                  <input type="range" min="20" max="100" step="5" value="80" id="calc-range-slider" class="slider-native-input" aria-label="Бажаний рівень заряду батареї">
+                  <div class="slider-badge" id="slider-badge" style="left: 80%;">80% (Цільовий)</div>
+                </div>
+                <div class="slider-ticks">
+                  <span>0% (Розряджена)</span>
+                  <span id="slider-tick-start" style="color:var(--color-primary); font-weight:700;">20% (Старт)</span>
+                  <span>50%</span>
+                  <span style="color:var(--color-primary); font-weight:700;">80% (Рекомендовано DC)</span>
+                  <span>100% (Повна)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- КАРТКА РЕЗУЛЬТАТІВ КАЛЬКУЛЯТОРА -->
+            <div class="calc-res-card">
+              <div class="res-card-label">Орієнтовна вартість сесії:</div>
+              <div class="res-price" id="res-price">652.50 ₴</div>
+              <div class="res-meta" id="res-meta">Тариф: 14.12 ₴/кВт·год · 46.2 кВт·год енергії</div>
+              <div class="res-efficiency" id="res-efficiency">
+                ● Час на DC 120 кВт: <strong id="res-time">~28 хвилин</strong> | Економія vs бензин: <strong id="res-savings">~1 420 ₴</strong>
+              </div>
+              <button type="button" class="btn btn-primary" id="btn-calc-find" style="width:100%;">
+                <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Знайти найближчу вільну станцію
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ ІНТЕРАКТИВНОЇ КАРТИ (LEAFLET + КАНВАС) -->
+    <section class="section map-sec" id="map" aria-labelledby="map-section-title">
+      <div class="container">
+        <div class="map-card">
+          <div class="map-top">
+            <div class="map-heading">
+              <h2 class="map-title" id="map-section-title"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Live-карта зарядної мережі України</h2>
+              <p class="map-subtitle">Реальний статус підключення портів та наявність резервного електропостачання</p>
+            </div>
+            <div class="map-top-actions">
+              <div class="map-city-tabs" role="tablist" aria-label="Швидкий вибір міста">
+                <button class="city-tab city-tab--active" data-city="lviv" type="button" role="tab" aria-selected="true">Львів</button>
+                <button class="city-tab" data-city="kyiv" type="button" role="tab" aria-selected="false">Київ</button>
+                <button class="city-tab" data-city="odesa" type="button" role="tab" aria-selected="false">Одеса</button>
+                <button class="city-tab" data-city="all" type="button" role="tab" aria-selected="false">Вся Україна</button>
+              </div>
+              <div class="map-filters-row map-filters" aria-label="Фільтри конекторів">
+                <button class="chip chip--active" data-filter="all" type="button" aria-pressed="true">Всі хаби (480+)</button>
+                <button class="chip" data-filter="dc" type="button" aria-pressed="false">⚡ Ultra-Fast (&gt;100 кВт)</button>
+                <button class="chip chip-green" data-filter="generator" type="button" aria-pressed="false">🔋 Працює від генератора</button>
+              </div>
+            </div>
           </div>
 
-          <!-- СТАТИСТИКА МЕРЕЖІ -->
-          <dl class="stats" aria-label="Швидка статистика мережі">
-            <div class="stats__item"><dt class="stats__label">станцій</dt><dd class="stats__value">1 200+</dd></div>
-            <div class="stats__item"><dt class="stats__label">областей</dt><dd class="stats__value">24</dd></div>
-            <div class="stats__item"><dt class="stats__label">аптайм мережі</dt><dd class="stats__value">99,2%</dd></div>
-            <div class="stats__item"><dt class="stats__label">водіїв</dt><dd class="stats__value">50 000+</dd></div>
-          </dl>
-        </div>
-
-        <!-- ПРАВА КОЛОНКА (MEDIA SHOWCASE) -->
-        <div class="hero__media">
-          <div class="hero__card">
-            <div class="hero__card-badge">
-              <span class="pulse-dot"></span> 100% автономність мережі (буферне живлення)
-            </div>
-            <img class="hero__image" src="assets/images/hero_loop_opt.gif" alt="Процес швидкої зарядки електромобіля на станції ChargeUA" width="600" height="380" loading="eager">
-            <div class="hero__card-footer">
-              <div class="hero__card-info">
-                <strong>Хаб «Львів-Стрийська»</strong>
-                <span>DC 150 кВт · 4/4 порти вільні</span>
-              </div>
-              <a class="btn btn--sm btn--primary" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('lviv-stryiska');">
-                На карті
-              </a>
-            </div>
+          <div class="map-canvas-container" id="map-container" role="region" aria-label="Карта розташування зарядних хабів">
+            <div id="map-leaflet-canvas" style="width:100%; height:500px;"></div>
           </div>
         </div>
       </div>
@@ -146,7 +269,7 @@
           </article>
 
           <article class="card">
-            <p class="tag"><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i>AC · 22 кВт</p>
+            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>AC · повільна · 22 кВт</p>
             <h3 class="card__title">Одеса, паркінг «Приморський»</h3>
             <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>Type 2</p>
             <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>08:00–22:00</p>
@@ -178,31 +301,6 @@
             <p class="card__text">Оплата одним кліком через Apple Pay, Google Pay або паливну картку компанії за фіксованим тарифом.</p>
           </article>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- СЕКЦІЯ ІНТЕРАКТИВНОЇ КАРТИ -->
-    <section class="section section--surface" id="map" aria-labelledby="map-title">
-      <div class="container">
-        <h2 class="section__title" id="map-title"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Інтерактивна карта хабів</h2>
-        <div class="map__layout">
-          <aside class="map-filters" aria-labelledby="filters-title">
-            <h3 class="map-filters__title" id="filters-title"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Фільтри станцій</h3>
-            <fieldset class="map-filters__group">
-              <legend class="visually-hidden">Швидкі фільтри станцій на мапі</legend>
-              <button class="chip" type="button" aria-pressed="true">Усі станції</button>
-              <button class="chip" type="button" aria-pressed="false">DC швидкі</button>
-              <button class="chip" type="button" aria-pressed="false">AC повільні</button>
-              <button class="chip" type="button" aria-pressed="false">Вільні зараз</button>
-              <button class="chip" type="button" aria-pressed="false">Цілодобово 24/7</button>
-              <button class="chip" type="button" aria-pressed="false">CCS2</button>
-              <button class="chip" type="button" aria-pressed="false">CHAdeMO</button>
-            </fieldset>
-          </aside>
-          <div class="map__canvas" id="map-container" role="region" aria-label="Карта розташування зарядних хабів">
-            <p><i class="fa-solid fa-map" aria-hidden="true"></i>Інтерактивна карта ChargeUA (вузли Leaflet / Mapbox)</p>
-          </div>
         </div>
       </div>
     </section>
@@ -258,27 +356,36 @@
   </main>
 
   <!-- ПІДВАЛ САЙТУ (GRID + ADDRESS) -->
-  <footer class="site-footer" id="contacts">
+  <footer class="site-footer" id="contacts" role="contentinfo">
     <div class="container">
       <div class="site-footer__columns">
         <section aria-labelledby="footer-about">
-          <h2 class="site-footer__title" id="footer-about">ChargeUA</h2>
-          <p>Національна платформа та інтелектуальна мережа зарядних комплексів для електромобілів в Україні.</p>
+          <h2 class="site-footer__title" id="footer-about">Про ChargeUA</h2>
+          <p class="site-footer__desc">Національний агрегатор та оператор швидкісних електрозарядних станцій нового покоління в Україні.</p>
         </section>
-        <nav aria-labelledby="footer-links">
-          <h2 class="site-footer__title" id="footer-links">Навігація</h2>
+        <nav aria-label="Швидкі посилання">
+          <h2 class="site-footer__title">Навігація</h2>
           <ul class="site-footer__list">
-            <li><a href="#stations"><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Каталог станцій</a></li>
-            <li><a href="#map"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Карта хабів</a></li>
-            <li><a href="/tariffs"><i class="fa-solid fa-tags" aria-hidden="true"></i>Тарифи мережі</a></li>
-            <li><a href="/privacy"><i class="fa-solid fa-lock" aria-hidden="true"></i>Політика конфіденційності</a></li>
+            <li><a href="#calculator">Калькулятор зарядки</a></li>
+            <li><a href="#map">Карта мережі хабів</a></li>
+            <li><a href="#stations">Каталог станцій</a></li>
+            <li><a href="#benefits">Переваги мережі</a></li>
+            <li><a href="#reviews">Відгуки водіїв</a></li>
           </ul>
         </nav>
-        <section aria-labelledby="footer-support">
-          <h2 class="site-footer__title" id="footer-support">Підтримка 24/7</h2>
+        <section aria-labelledby="footer-legal">
+          <h2 class="site-footer__title" id="footer-legal">Правова інформація</h2>
+          <ul class="site-footer__list">
+            <li><a href="/terms">Умови надання послуг</a></li>
+            <li><a href="/privacy">Політика конфіденційності</a></li>
+            <li><a href="/tariffs">Публічна оферта та тарифи</a></li>
+          </ul>
+        </section>
+        <section aria-labelledby="footer-contacts">
+          <h2 class="site-footer__title" id="footer-contacts">Цілодобова підтримка</h2>
           <address>
             <ul class="site-footer__list">
-              <li><a href="tel:+380800000000"><i class="fa-solid fa-phone" aria-hidden="true"></i>0 800 00 00 00</a></li>
+              <li><a href="tel:+380800300400"><i class="fa-solid fa-phone" aria-hidden="true"></i>0 800 300 400</a></li>
               <li><a href="mailto:support@chargeua.ua"><i class="fa-solid fa-envelope" aria-hidden="true"></i>support@chargeua.ua</a></li>
               <li><span><i class="fa-brands fa-telegram" aria-hidden="true"></i>Telegram: @chargeua_support</span></li>
             </ul>
@@ -288,9 +395,12 @@
       <p class="site-footer__copy">© 2026 ChargeUA. Усі права захищено. Студентський навчальний проєкт (ЛР №5, НУ «Львівська політехніка»).</p>
     </div>
   </footer>
+
   <!-- Leaflet JS (Бібліотека інтерактивної карти) -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <!-- Модуль інтерактивної карти ChargeUA із завантаженням станцій -->
   <script src="js/map.js" defer></script>
+  <!-- Модуль інтерактивного калькулятора ChargeUA -->
+  <script src="js/calculator.js" defer></script>
 </body>
 </html>

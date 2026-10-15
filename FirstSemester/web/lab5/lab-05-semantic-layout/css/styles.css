@@ -72,6 +72,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -417,6 +418,39 @@ h1, h2, h3 {
 
 /* 6. СЕКЦІЇ ----------------------------------------------------------- */
 
+/* Верхня плашка телеметрії мережі */
+.top-bar {
+  background: #0B132B;
+  color: #FFFFFF;
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-bar__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.top-bar__status {
+  display: flex;
+  align-items: center;
+}
+
+.top-bar__phone a {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.top-bar__phone a:hover {
+  text-decoration: underline;
+}
+
 /* Header — Flexbox */
 .site-header {
   position: sticky;
@@ -434,6 +468,12 @@ h1, h2, h3 {
   gap: var(--space-4);
   flex-wrap: wrap;
   padding-block: var(--space-3);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .logo {
@@ -473,134 +513,184 @@ h1, h2, h3 {
   color: var(--color-primary);
 }
 
-/* Hero — Адаптивний макет (Flexbox / Grid) */
-.hero {
-  background: linear-gradient(135deg, var(--color-secondary) 0%,
-              color-mix(in srgb, var(--color-primary) 65%, var(--color-secondary)) 100%);
+/* ==========================================================================
+   HERO СЕКЦІЯ З ФОНОВИМ ВІДЕО ТА ГРАДІЄНТНИМ FADE (МАКЕТ ЛР4)
+   ========================================================================== */
+.hero-sec {
   position: relative;
+  min-height: 540px;
   overflow: hidden;
-}
-
-.hero__inner {
+  background: #FFFFFF;
   display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  padding-block: var(--space-8);
-}
-
-@media (min-width: 900px) {
-  .hero__inner {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: var(--space-7);
-    align-items: center;
-  }
-}
-
-.hero__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.hero__badge {
-  align-self: flex-start;
-  display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
-  color: var(--color-accent);
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.hero__title {
-  max-width: 20ch;
-  font-size: var(--fs-hero);
-  font-weight: 800;
-  line-height: 1.15;
+.hero-video-bg-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.hero__title em {
-  font-style: normal;
-  color: var(--color-accent);
+.hero-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  display: block;
 }
 
-.hero__subtitle {
-  max-width: 54ch;
-  color: var(--color-on-dark-muted);
-  font-size: var(--fs-base);
-  line-height: 1.6;
+.hero-fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 440px;
+  height: 100%;
+  background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 25%, rgba(255, 255, 255, 0.92) 60%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
 }
 
-/* ДВІ КНОПКИ CTA */
-.hero__cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-top: var(--space-2);
+.hero-content-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
 }
 
-/* Теги фільтрів під кнопками */
-.hero__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-top: var(--space-1);
+.hero-content {
+  max-width: 660px;
+  padding-block: var(--space-7);
 }
 
-.hero__tag {
+.hero-tag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-on-dark) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-on-dark) 20%, transparent);
-  color: var(--color-on-dark);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 800;
+  color: #0077E6;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
 }
 
-.hero__tag--generator {
-  background: color-mix(in srgb, var(--color-status-free) 18%, transparent);
-  border-color: var(--color-status-free);
-  color: #34d399;
-  font-weight: 600;
+.hero-h1 {
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.18;
+  color: #0F172A;
+  letter-spacing: -0.8px;
+  margin-bottom: 16px;
 }
 
-/* Права колонка — Медіа / Промо картка */
-.hero__media {
+.hero-sub {
+  font-size: 16px;
+  color: #64748B;
+  line-height: 1.6;
+  margin-bottom: 26px;
+  max-width: 54ch;
+}
+
+.hero-actions {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 26px;
 }
 
-.hero__card {
-  width: 100%;
-  max-width: 480px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
-  border: 1px solid color-mix(in srgb, var(--color-on-dark) 20%, transparent);
-  background: color-mix(in srgb, var(--color-secondary) 80%, transparent);
-  backdrop-filter: blur(10px);
+.btn-primary {
+  background: #0077E6;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(0, 119, 230, 0.3);
+  transition: var(--transition);
 }
 
-.hero__card-badge {
+.btn-primary:hover {
+  background: #005ec9;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: #0F172A;
+  border: 1.5px solid #CBD5E1;
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  background: #F8FAFC;
+  border-color: #94A3B8;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-chips .chip {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.chip-green {
+  background: #ECFDF5 !important;
+  border-color: #A7F3D0 !important;
+  color: #059669 !important;
+  font-weight: 700 !important;
+}
+
+.hero-video-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  z-index: 10;
+  background: rgba(11, 19, 43, 0.88);
+  backdrop-filter: blur(6px);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 10px 16px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-on-dark);
-  background: rgba(0, 0, 0, 0.35);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-on-dark) 12%, transparent);
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00E5FF;
+  box-shadow: 0 0 8px #00E5FF;
 }
 
 .pulse-dot {
@@ -610,6 +700,8 @@ h1, h2, h3 {
   background: var(--color-status-free);
   box-shadow: 0 0 10px var(--color-status-free);
   animation: pulse-ring 2s infinite;
+  display: inline-block;
+  margin-right: 6px;
 }
 
 @keyframes pulse-ring {
@@ -618,94 +710,353 @@ h1, h2, h3 {
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
-.hero__image {
-  width: 100%;
-  height: 240px;
-  display: block;
-  object-fit: cover;
+/* ==========================================================================
+   СМУГА ПЕРЕВАГ (BENEFITS STRIP)
+   ========================================================================== */
+.strip-sec {
+  padding: 30px 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.hero__card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  background: color-mix(in srgb, var(--color-secondary) 95%, transparent);
-}
-
-.hero__card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.hero__card-info strong {
-  font-size: 13px;
-  color: var(--color-on-dark);
-}
-
-.hero__card-info span {
-  font-size: 11px;
-  color: var(--color-on-dark-muted);
-}
-
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-5) var(--space-7);
-}
-
-.stats__item {
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.stats__value {
-  font-size: var(--fs-xl);
-  font-weight: 800;
-  color: var(--color-accent);
-}
-
-.stats__label {
-  color: var(--color-on-dark-muted);
-}
-
-/* Карта */
-.map__layout {
+.strip-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
 
-.map-filters {
-  align-self: start;
-  padding: var(--space-5);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+.strip-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
-.map-filters__title {
-  font-size: var(--fs-lg);
-  margin-bottom: var(--space-4);
+.strip-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
 }
 
-.map-filters__group {
+.strip-card__title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 3px;
+}
+
+.strip-card__desc {
+  font-size: 13px;
+  color: #64748B;
+}
+
+/* ==========================================================================
+   ІНТЕРАКТИВНИЙ КАЛЬКУЛЯТОР ЗАРЯДКИ CHARGEUA
+   ========================================================================== */
+.calc-sec {
+  padding: 40px 0;
+}
+
+.calc-wrap {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 20px;
+  padding: 34px 44px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.calc-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+
+.calc-subtitle {
+  font-size: 14px;
+  color: #64748B;
+  margin-bottom: 24px;
+}
+
+.calc-top-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .calc-top-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.calc-input-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 8px;
+}
+
+.car-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
-  border: 0;
+  gap: 12px;
+  margin: 12px 0 22px;
 }
 
-.map__canvas {
-  min-height: 500px;
-  border-radius: var(--radius-md);
+.car-pill {
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.car-pill:hover {
+  border-color: #0077E6;
+  color: #0077E6;
+}
+
+.car-pill.active {
+  background: #0077E6;
+  border-color: #0077E6;
+  color: #FFFFFF;
+}
+
+.slider-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 8px;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 12px;
+}
+
+.slider-highlight {
+  color: #0077E6;
+  font-weight: 700;
+}
+
+.slider-rail {
+  position: relative;
+  height: 10px;
+  background: #E2E8F0;
+  border-radius: 5px;
+  margin: 38px 0 14px;
+}
+
+.slider-fill {
+  position: absolute;
+  height: 100%;
+  background: #0077E6;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.slider-native-input {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 100%;
+  height: 22px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+  margin: 0;
+}
+
+.slider-badge {
+  position: absolute;
+  top: -30px;
+  transform: translateX(-50%);
+  background: #0077E6;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: left 0.05s ease;
+}
+
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.calc-res-card {
+  background: #F0F7FF;
+  border: 1.5px solid #BFDBFE;
+  border-radius: 16px;
+  padding: 26px 30px;
+}
+
+.res-card-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.res-price {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0077E6;
+  margin-bottom: 4px;
+}
+
+.res-meta {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.res-efficiency {
+  font-size: 13px;
+  color: #0F172A;
+  font-weight: 600;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   СЕКЦІЯ LIVE-КАРТИ
+   ========================================================================== */
+.map-sec {
+  padding: 20px 0 50px;
+}
+
+.map-card {
+  border: 1.5px solid #CBD5E1;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
+  background: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.map-top {
+  padding: 20px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E2E8F0;
+  background: #FAFAFA;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.map-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.map-subtitle {
+  font-size: 13px;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.map-top-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+  .map-top-actions {
+    align-items: flex-start;
+  }
+}
+
+.map-city-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.city-tab {
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  color: #334155;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.city-tab:hover {
+  background: #E2E8F0;
+}
+
+.city-tab--active {
+  background: #0077E6;
+  color: #FFFFFF;
+  border-color: #0077E6;
+}
+
+.map-filters-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.map-filters-row .chip {
+  min-height: 34px !important;
+  height: 34px !important;
+  padding: 6px 16px !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  border-radius: var(--radius-pill) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.map-canvas-container {
+  min-height: 500px;
   position: relative;
   background: var(--color-surface);
+}
+
+@media (max-width: 900px) {
+  .hero-video-bg-wrap {
+    width: 100%;
+    opacity: 0.25;
+  }
+  .hero-fade-overlay {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.85) 100%);
+  }
+  .hero-video-badge {
+    display: none;
+  }
 }
 
 /* Кастомний маркер ChargeUA для карти */

@@ -351,30 +351,15 @@
 
   // Перемикач швидкого масштабування міст
   function setupCitySwitcher() {
-    const filtersAside = document.querySelector('.map-filters');
-    if (!filtersAside) return;
-
-    const switcherContainer = document.createElement('div');
-    switcherContainer.className = 'map-city-switcher';
-    switcherContainer.innerHTML = `
-      <h4 class="map-city-switcher__title"><i class="fa-solid fa-city"></i> Швидкий перехід:</h4>
-      <div class="map-city-buttons">
-        <button type="button" class="btn-city btn-city--active" data-city="lviv">Львів</button>
-        <button type="button" class="btn-city" data-city="kyiv">Київ</button>
-        <button type="button" class="btn-city" data-city="odesa">Одеса</button>
-        <button type="button" class="btn-city" data-city="all">Вся Україна</button>
-      </div>
-      <div id="map-live-counter" class="map-live-counter">
-        <i class="fa-solid fa-arrows-rotate fa-spin"></i> Підтягування актуальних точок...
-      </div>
-    `;
-
-    filtersAside.appendChild(switcherContainer);
-
-    switcherContainer.querySelectorAll('.btn-city').forEach(btn => {
+    const cityButtons = document.querySelectorAll('.city-tab, .btn-city');
+    cityButtons.forEach(btn => {
       btn.addEventListener('click', function () {
-        switcherContainer.querySelectorAll('.btn-city').forEach(b => b.classList.remove('btn-city--active'));
-        this.classList.add('btn-city--active');
+        cityButtons.forEach(b => {
+          b.classList.remove('city-tab--active', 'btn-city--active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        this.classList.add('city-tab--active');
+        this.setAttribute('aria-selected', 'true');
 
         const cityKey = this.getAttribute('data-city');
         const cityConfig = CITY_CENTERS[cityKey];
@@ -424,6 +409,18 @@
           if (markerMap[stationId]) {
             markerMap[stationId].openPopup();
           }
+        }, 1100);
+      }
+    },
+    filterByConnector: function (connector) {
+      const connKey = connector.toLowerCase();
+      applyFilter(connKey);
+      const matching = allStations.filter(s => s.connectors.map(c => c.toLowerCase()).includes(connKey) && s.free_ports > 0);
+      if (matching.length > 0 && mapInstance) {
+        const best = matching[0];
+        mapInstance.flyTo(best.coords, 14, { duration: 1.0 });
+        setTimeout(() => {
+          if (markerMap[best.id]) markerMap[best.id].openPopup();
         }, 1100);
       }
     }
