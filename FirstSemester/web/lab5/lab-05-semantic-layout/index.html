@@ -44,7 +44,15 @@
         <img src="assets/images/Logo.svg" alt="ChargeUA Logo" class="logo__img" width="36" height="36">
         <span class="logo__text">ChargeUA</span>
       </a>
-      <nav class="nav" aria-label="Головна навігація">
+      
+      <button class="burger-btn" id="burger-btn" type="button" aria-label="Відкрити меню навігації" aria-expanded="false" aria-controls="site-nav">
+        <span class="burger-icon" aria-hidden="true">
+          <i class="fa-solid fa-bars burger-icon-bars"></i>
+          <i class="fa-solid fa-xmark burger-icon-close"></i>
+        </span>
+      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Головна навігація">
         <ul class="nav__list">
           <li><a class="nav__link" href="#main"><i class="fa-solid fa-house" aria-hidden="true"></i>Головна</a></li>
           <li><a class="nav__link" href="#calculator"><i class="fa-solid fa-calculator" aria-hidden="true"></i>Калькулятор</a></li>
@@ -54,8 +62,13 @@
           <li><a class="nav__link" href="#reviews"><i class="fa-solid fa-comments" aria-hidden="true"></i>Відгуки</a></li>
           <li><a class="nav__link" href="#contacts"><i class="fa-solid fa-headset" aria-hidden="true"></i>Контакти</a></li>
         </ul>
+        <div class="site-header__actions nav-mobile-actions">
+          <a class="btn btn--outline" href="/login"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Увійти</a>
+          <a class="btn btn--primary" href="#map"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>Знайти зарядку</a>
+        </div>
       </nav>
-      <div class="site-header__actions">
+
+      <div class="site-header__actions header-desktop-actions">
         <a class="btn btn--outline" href="/login"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Увійти</a>
         <a class="btn btn--primary" href="#map"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>Знайти зарядку</a>
       </div>
@@ -288,11 +301,11 @@
                   <div class="slider-badge" id="slider-badge" style="left: 80%;">80% (Цільовий)</div>
                 </div>
                 <div class="slider-ticks">
-                  <span>0% (Розряджена)</span>
-                  <span id="slider-tick-start" style="color:var(--color-primary); font-weight:700;">20% (Старт)</span>
+                  <span>0%<span class="tick-desc"> (Розряджена)</span></span>
+                  <span id="slider-tick-start" class="tick-active">20%<span class="tick-desc"> (Старт)</span></span>
                   <span>50%</span>
-                  <span style="color:var(--color-primary); font-weight:700;">80% (Рекомендовано DC)</span>
-                  <span>100% (Повна)</span>
+                  <span class="tick-active">80%<span class="tick-desc"> (Рекомендовано DC)</span></span>
+                  <span>100%<span class="tick-desc"> (Повна)</span></span>
                 </div>
               </div>
             </div>
@@ -520,6 +533,8 @@
     </div>
   </footer>
 
+  <!-- Модуль мобільної навігації (Hamburger Menu) -->
+  <script src="js/nav.js" defer></script>
   <!-- Leaflet JS (Бібліотека інтерактивної карти) -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <!-- Модуль інтерактивної карти ChargeUA із завантаженням станцій -->
