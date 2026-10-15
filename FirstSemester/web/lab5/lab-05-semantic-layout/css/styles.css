@@ -560,22 +560,267 @@ h1, h2, h3 {
 }
 
 .map__canvas {
-  display: grid;
-  place-items: center;
-  min-height: 380px;
-  padding: var(--space-5);
+  min-height: 500px;
   border-radius: var(--radius-md);
-  text-align: center;
-  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
-  border: 2px dashed var(--color-border);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  position: relative;
+  background: var(--color-surface);
+}
+
+/* Кастомний маркер ChargeUA для карти */
+.chargeua-pin-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-map-pin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  pointer-events: none;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.custom-map-pin:hover {
+  transform: rotate(-45deg) scale(1.15);
+  z-index: 999;
+}
+
+.custom-map-pin i {
+  transform: rotate(45deg);
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.custom-map-pin.marker--free {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.custom-map-pin.marker--busy {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.pin-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  transform: rotate(45deg);
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 10px;
+  border: 1.5px solid #ffffff;
+  line-height: 1;
+}
+
+/* Стилізація спливаючого вікна (Popup) Leaflet */
+.chargeua-leaflet-popup .leaflet-popup-content-wrapper {
+  padding: 0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.chargeua-leaflet-popup .leaflet-popup-content {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.station-popup {
+  padding: var(--space-4);
+  color: var(--color-text);
+  min-width: 260px;
+}
+
+.station-popup__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.station-popup__type {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.station-popup__price {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.station-popup__title {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  margin: 0 0 var(--space-1) 0;
+  color: var(--color-text);
+}
+
+.station-popup__address {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.popup-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: var(--space-3);
+}
+
+.popup-badge--free {
+  background: color-mix(in srgb, var(--color-status-free) 15%, transparent);
+  color: #047857;
+}
+
+.popup-badge--busy {
+  background: color-mix(in srgb, var(--color-status-busy) 15%, transparent);
+  color: #b91c1c;
+}
+
+.station-popup__connectors {
+  font-size: 12px;
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.chip-mini {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.station-popup__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-bottom: var(--space-4);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.station-popup__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.btn-popup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-popup--primary {
+  background: var(--color-primary);
+  color: #ffffff !important;
+}
+
+.btn-popup--primary:hover {
+  background: color-mix(in srgb, var(--color-primary) 85%, #000);
+}
+
+.btn-popup--secondary {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-popup--secondary:hover {
+  background: var(--color-border);
+}
+
+/* Перемикач міст та динамічний лічильник */
+.map-city-switcher {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.map-city-switcher__title {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
   color: var(--color-muted);
 }
 
-.map__canvas i {
-  display: block;
+.map-city-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   margin-bottom: var(--space-3);
-  font-size: 2.5rem;
-  color: var(--color-primary);
+}
+
+.btn-city {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-city:hover,
+.btn-city--active {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+.map-live-counter {
+  font-size: 12px;
+  color: var(--color-muted);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-primary);
+}
+
+.chip--active {
+  background: var(--color-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary) !important;
 }
 
 /* Відгуки */

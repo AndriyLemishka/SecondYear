@@ -15,6 +15,9 @@
   <!-- Іконковий шрифт Font Awesome 6 (CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
+  <!-- Leaflet CSS (Інтерактивна карта) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
   <!-- Підключення зовнішніх стилів CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -83,7 +86,7 @@
               <li class="ports__item"><span>Порт 3 · CHAdeMO</span><span class="status">Вільний</span></li>
             </ul>
             <div class="card__action">
-              <a class="btn btn--outline" href="/stations/kyiv-central/route"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Київ, ТРЦ Центральний»</span></a>
+              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('kyiv-central');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Київ, ТРЦ Центральний»</span></a>
             </div>
           </article>
 
@@ -97,7 +100,7 @@
               <li class="ports__item"><span>Порт 2 · CCS2</span><span class="status">Вільний</span></li>
             </ul>
             <div class="card__action">
-              <a class="btn btn--outline" href="/stations/lviv-stryiska/route"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Львів, АЗС на Стрийській»</span></a>
+              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('lviv-stryiska');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Львів, АЗС на Стрийській»</span></a>
             </div>
           </article>
 
@@ -112,7 +115,7 @@
               <li class="ports__item"><span>Порт 3 · Type 2</span><span class="status status--busy">Зайнятий</span></li>
             </ul>
             <div class="card__action">
-              <a class="btn btn--outline" href="/stations/odesa-prymorskyi/route"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Одеса, паркінг Приморський»</span></a>
+              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('odesa-prymorskyi');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Одеса, паркінг Приморський»</span></a>
             </div>
           </article>
 
@@ -244,5 +247,9 @@
       <p class="site-footer__copy">© 2026 ChargeUA. Усі права захищено. Студентський навчальний проєкт (ЛР №5, НУ «Львівська політехніка»).</p>
     </div>
   </footer>
+  <!-- Leaflet JS (Бібліотека інтерактивної карти) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Модуль інтерактивної карти ChargeUA із завантаженням станцій -->
+  <script src="js/map.js" defer></script>
 </body>
 </html>
