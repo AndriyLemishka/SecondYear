@@ -157,12 +157,123 @@
           
           <div class="calc-top-row">
             <div class="calc-inputs-block">
-              <div class="calc-input-label" id="car-select-label">Модель автомобіля:</div>
+              <!-- РЯДОК ВИБОРУ РЕЖИМУ ТА ШВИДКИХ ПРЕСЕТІВ -->
+              <div class="calc-controls-header">
+                <div class="calc-input-label" id="car-select-label">Оберіть модель електрокара або введіть параметри:</div>
+                <button type="button" class="btn-toggle-manual" id="btn-toggle-manual">
+                  <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Ввести ємність вручну
+                </button>
+              </div>
+
+              <!-- ШВИДКІ КНОПКИ ПОПУЛЯРНИХ АВТО (PRESETS) -->
               <div class="car-pills" role="radiogroup" aria-labelledby="car-select-label">
-                <button type="button" class="car-pill active" data-car="id4" role="radio" aria-checked="true">Volkswagen ID.4 (77 кВт·год)</button>
-                <button type="button" class="car-pill" data-car="m3" role="radio" aria-checked="false">Tesla Model 3</button>
-                <button type="button" class="car-pill" data-car="leaf" role="radio" aria-checked="false">Nissan Leaf</button>
-                <button type="button" class="car-pill" data-car="ioniq5" role="radio" aria-checked="false">Hyundai Ioniq 5</button>
+                <button type="button" class="car-pill active" data-car="vw-id4-pro" role="radio" aria-checked="true">Volkswagen ID.4 (77 кВт·год)</button>
+                <button type="button" class="car-pill" data-car="tesla-m3-std" role="radio" aria-checked="false">Tesla Model 3</button>
+                <button type="button" class="car-pill" data-car="nissan-leaf-40" role="radio" aria-checked="false">Nissan Leaf</button>
+                <button type="button" class="car-pill" data-car="hyundai-ioniq5" role="radio" aria-checked="false">Hyundai Ioniq 5</button>
+              </div>
+
+              <!-- ВИПАДАЮЧИЙ СПИСОК ЗА ГРУПАМИ (AUTO.RIA STYLE) -->
+              <div class="car-dropdown-wrap">
+                <label for="car-select-dropdown" class="car-dropdown-label">
+                  <i class="fa-solid fa-list-check" aria-hidden="true"></i> Каталог електромобілів (понад 45 моделей за марками, як на AUTO.RIA):
+                </label>
+                <select id="car-select-dropdown" class="car-select-dropdown" aria-label="Вибір марки та моделі електромобіля">
+                  <option value="" disabled>🔍 Оберіть марку та модель зі списку...</option>
+                  <optgroup label="🚗 Tesla">
+                    <option value="tesla-m3-std">Tesla Model 3 RWD (60 кВт·год) · CCS 2</option>
+                    <option value="tesla-m3-lr">Tesla Model 3 Long Range (82 кВт·год) · CCS 2</option>
+                    <option value="tesla-my-lr">Tesla Model Y Long Range (75 кВт·год) · CCS 2</option>
+                    <option value="tesla-my-p">Tesla Model Y Performance (78 кВт·год) · CCS 2</option>
+                    <option value="tesla-ms-p">Tesla Model S Plaid (100 кВт·год) · CCS 2</option>
+                    <option value="tesla-mx-lr">Tesla Model X Long Range (100 кВт·год) · CCS 2</option>
+                  </optgroup>
+                  <optgroup label="🚗 Volkswagen">
+                    <option value="vw-id4-pro" selected>Volkswagen ID.4 Pro (77 кВт·год) · CCS 2</option>
+                    <option value="vw-id4-pure">Volkswagen ID.4 Pure (52 кВт·год) · CCS 2</option>
+                    <option value="vw-id3-pro">Volkswagen ID.3 Pro (58 кВт·год) · CCS 2</option>
+                    <option value="vw-id6-crozz">Volkswagen ID.6 Crozz (Китай) (84.8 кВт·год) · GB/T DC</option>
+                    <option value="vw-id7-pro">Volkswagen ID.7 Pro (77 кВт·год) · CCS 2</option>
+                    <option value="vw-egolf">Volkswagen e-Golf (35.8 кВт·год) · CCS 2</option>
+                  </optgroup>
+                  <optgroup label="🚗 Nissan">
+                    <option value="nissan-leaf-40">Nissan Leaf 40 kWh (40 кВт·год) · CHAdeMO</option>
+                    <option value="nissan-leaf-62">Nissan Leaf e+ 62 kWh (62 кВт·год) · CHAdeMO</option>
+                    <option value="nissan-ariya-63">Nissan Ariya 63 kWh (63 кВт·год) · CCS 2</option>
+                    <option value="nissan-ariya-87">Nissan Ariya 87 kWh (87 кВт·год) · CCS 2</option>
+                  </optgroup>
+                  <optgroup label="🚗 Hyundai &amp; Kia">
+                    <option value="hyundai-ioniq5">Hyundai Ioniq 5 (72.6 кВт·год) · CCS 2</option>
+                    <option value="hyundai-ioniq6">Hyundai Ioniq 6 (77.4 кВт·год) · CCS 2</option>
+                    <option value="hyundai-kona">Hyundai Kona Electric (64 кВт·год) · CCS 2</option>
+                    <option value="kia-ev6">Kia EV6 (77.4 кВт·год) · CCS 2</option>
+                    <option value="kia-ev9">Kia EV9 (99.8 кВт·год) · CCS 2</option>
+                    <option value="kia-niro-ev">Kia Niro EV (64.8 кВт·год) · CCS 2</option>
+                  </optgroup>
+                  <optgroup label="🚗 BMW">
+                    <option value="bmw-i4">BMW i4 eDrive40 (83.9 кВт·год) · CCS 2</option>
+                    <option value="bmw-ix">BMW iX xDrive50 (111.5 кВт·год) · CCS 2</option>
+                    <option value="bmw-ix3">BMW iX3 (80 кВт·год) · CCS 2</option>
+                    <option value="bmw-i3">BMW i3 120Ah (42.2 кВт·год) · CCS 2</option>
+                  </optgroup>
+                  <optgroup label="🚗 Mercedes-Benz">
+                    <option value="mb-eqe">Mercedes-Benz EQE 350+ (90.6 кВт·год) · CCS 2</option>
+                    <option value="mb-eqs">Mercedes-Benz EQS 450+ (107.8 кВт·год) · CCS 2</option>
+                    <option value="mb-eqa">Mercedes-Benz EQA 250 (66.5 кВт·год) · CCS 2</option>
+                    <option value="mb-eqc">Mercedes-Benz EQC 400 (80 кВт·год) · CCS 2</option>
+                  </optgroup>
+                  <optgroup label="🚗 Audi &amp; Porsche">
+                    <option value="audi-etron">Audi e-tron 55 quattro (95 кВт·год) · CCS 2</option>
+                    <option value="audi-q4">Audi Q4 e-tron (82 кВт·год) · CCS 2</option>
+                    <option value="porsche-taycan">Porsche Taycan 4S (93.4 кВт·год) · CCS 2</option>
+                    <option value="porsche-macan">Porsche Macan Electric (100 кВт·год) · CCS 2</option>
+                  </optgroup>
+                  <optgroup label="🚗 BYD &amp; Zeekr (Китайські моделі, порт GB/T)">
+                    <option value="byd-song-plus">BYD Song Plus EV (71.7 кВт·год) · GB/T DC</option>
+                    <option value="byd-tang">BYD Tang EV (108.8 кВт·год) · GB/T DC</option>
+                    <option value="byd-yuan-plus">BYD Yuan Plus / Atto 3 (60.5 кВт·год) · GB/T DC</option>
+                    <option value="zeekr-001">Zeekr 001 (100 кВт·год) · GB/T DC</option>
+                    <option value="zeekr-x">Zeekr X (66 кВт·год) · GB/T DC</option>
+                    <option value="zeekr-007">Zeekr 007 (75 кВт·год) · GB/T DC</option>
+                  </optgroup>
+                  <optgroup label="🚗 Renault, Volvo, MG, Ford, Chevrolet">
+                    <option value="renault-zoe">Renault Zoe Z.E. 50 (52 кВт·год) · CCS 2 / Type 2</option>
+                    <option value="volvo-ex30">Volvo EX30 (69 кВт·год) · CCS 2</option>
+                    <option value="mg-mg4">MG 4 Electric (64 кВт·год) · CCS 2</option>
+                    <option value="ford-mach-e">Ford Mustang Mach-E ER (98.7 кВт·год) · CCS 2</option>
+                    <option value="chevy-bolt">Chevrolet Bolt EV (65 кВт·год) · CCS 2</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <!-- ПАНЕЛЬ РУЧНОГО ВВЕДЕННЯ ЄМНОСТІ ТА ПОРТУ -->
+              <div class="calc-manual-panel" id="calc-manual-panel" style="display: none;">
+                <div class="manual-input-grid">
+                  <div class="manual-field">
+                    <label for="manual-kwh-input"><i class="fa-solid fa-battery-three-quarters" aria-hidden="true"></i> Введіть ємність батареї вручну:</label>
+                    <div class="manual-num-wrap">
+                      <input type="number" id="manual-kwh-input" min="10" max="250" step="1" value="65" class="manual-input">
+                      <span class="manual-unit">кВт·год</span>
+                    </div>
+                  </div>
+                  <div class="manual-field">
+                    <label id="manual-ports-label"><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Порт швидкісної зарядки авто:</label>
+                    <div class="manual-ports-row" role="group" aria-labelledby="manual-ports-label">
+                      <button type="button" class="port-chip active" data-port="CCS2">CCS 2</button>
+                      <button type="button" class="port-chip" data-port="CHAdeMO">CHAdeMO</button>
+                      <button type="button" class="port-chip" data-port="GB/T">GB/T DC</button>
+                      <button type="button" class="port-chip" data-port="Type 2">Type 2</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ПЛАШКА ХАРАКТЕРИСТИК ОБРАНОГО АВТО -->
+              <div class="car-active-specs" id="car-active-specs" aria-live="polite">
+                <div class="spec-item"><i class="fa-solid fa-car" aria-hidden="true"></i> <span id="spec-car-name">Volkswagen ID.4 Pro</span></div>
+                <div class="spec-item"><i class="fa-solid fa-battery-full" aria-hidden="true"></i> Батарея: <strong id="spec-car-kwh">77 кВт·год</strong></div>
+                <div class="spec-item"><i class="fa-solid fa-plug" aria-hidden="true"></i> Порт: <span class="badge-port" id="spec-car-port">CCS 2</span></div>
+                <div class="spec-item"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Швидкість: <strong id="spec-car-dc">до 135 кВт</strong></div>
               </div>
 
               <!-- SLIDER CONTROL (ПОВЗУНОК) -->
@@ -210,19 +321,27 @@
           <div class="map-top">
             <div class="map-heading">
               <h2 class="map-title" id="map-section-title"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Live-карта зарядної мережі України</h2>
-              <p class="map-subtitle">Реальний статус підключення портів та наявність резервного електропостачання</p>
+              <p class="map-subtitle" id="map-live-counter">Завантаження 40 станцій онлайн по Україні...</p>
             </div>
             <div class="map-top-actions">
+              <!-- ПЕРЕМИКАЧ МІСТ -->
               <div class="map-city-tabs" role="tablist" aria-label="Швидкий вибір міста">
-                <button class="city-tab city-tab--active" data-city="lviv" type="button" role="tab" aria-selected="true">Львів</button>
-                <button class="city-tab" data-city="kyiv" type="button" role="tab" aria-selected="false">Київ</button>
-                <button class="city-tab" data-city="odesa" type="button" role="tab" aria-selected="false">Одеса</button>
-                <button class="city-tab" data-city="all" type="button" role="tab" aria-selected="false">Вся Україна</button>
+                <button class="city-tab city-tab--active" data-city="lviv" type="button" role="tab" aria-selected="true">Львів (14)</button>
+                <button class="city-tab" data-city="kyiv" type="button" role="tab" aria-selected="false">Київ (12)</button>
+                <button class="city-tab" data-city="odesa" type="button" role="tab" aria-selected="false">Одеса (5)</button>
+                <button class="city-tab" data-city="dnipro" type="button" role="tab" aria-selected="false">Дніпро (4)</button>
+                <button class="city-tab" data-city="highways" type="button" role="tab" aria-selected="false">Траси (5)</button>
+                <button class="city-tab" data-city="all" type="button" role="tab" aria-selected="false">Вся Україна (40)</button>
               </div>
+
+              <!-- ФІЛЬТРИ КОНЕКТОРІВ ТА ГЕНЕРАТОРА -->
               <div class="map-filters-row map-filters" aria-label="Фільтри конекторів">
-                <button class="chip chip--active" data-filter="all" type="button" aria-pressed="true">Всі хаби (480+)</button>
-                <button class="chip" data-filter="dc" type="button" aria-pressed="false">⚡ Ultra-Fast (&gt;100 кВт)</button>
-                <button class="chip chip-green" data-filter="generator" type="button" aria-pressed="false">🔋 Працює від генератора</button>
+                <button class="chip chip--active" data-filter="all" type="button" aria-pressed="true">Всі хаби (40)</button>
+                <button class="chip" data-filter="ccs2" type="button" aria-pressed="false">CCS 2</button>
+                <button class="chip" data-filter="chademo" type="button" aria-pressed="false">CHAdeMO</button>
+                <button class="chip" data-filter="gbt" type="button" aria-pressed="false">GB/T DC</button>
+                <button class="chip" data-filter="type2" type="button" aria-pressed="false">Type 2</button>
+                <button class="chip chip-green" data-filter="generator" type="button" aria-pressed="false">🔋 З генератором</button>
               </div>
             </div>
           </div>

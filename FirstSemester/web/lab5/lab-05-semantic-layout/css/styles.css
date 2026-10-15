@@ -72,8 +72,12 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 90px;
   -webkit-text-size-adjust: 100%;
+}
+
+section[id] {
+  scroll-margin-top: 90px;
 }
 
 body {
@@ -829,18 +833,220 @@ h1, h2, h3 {
   }
 }
 
+.calc-controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
 .calc-input-label {
   font-size: 13px;
   font-weight: 700;
   color: #0F172A;
-  margin-bottom: 8px;
+}
+
+.btn-toggle-manual {
+  background: #EFF6FF;
+  border: 1.5px solid #0077E6;
+  color: #0077E6;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition);
+}
+
+.btn-toggle-manual:hover,
+.btn-toggle-manual.active {
+  background: #0077E6;
+  color: #FFFFFF;
 }
 
 .car-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin: 12px 0 22px;
+  gap: 10px;
+  margin: 10px 0 16px;
+}
+
+.car-dropdown-wrap {
+  margin-bottom: 14px;
+}
+
+.car-dropdown-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.car-select-dropdown {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0F172A;
+  background: #FFFFFF;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.car-select-dropdown:focus {
+  border-color: #0077E6;
+  box-shadow: 0 0 0 3px rgba(0, 119, 230, 0.15);
+}
+
+.car-select-dropdown optgroup {
+  font-weight: 800;
+  color: #0077E6;
+  background: #F8FAFC;
+}
+
+.car-select-dropdown option {
+  font-weight: 500;
+  color: #0F172A;
+  background: #FFFFFF;
+  padding: 4px;
+}
+
+.calc-manual-panel {
+  background: #F0F7FF;
+  border: 1.5px dashed #93C5FD;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+
+.manual-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .manual-input-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.manual-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1E3A8A;
+  margin-bottom: 6px;
+}
+
+.manual-num-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.manual-input {
+  width: 100px;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #0077E6;
+  border: 1.5px solid #93C5FD;
+  border-radius: 8px;
+  background: #FFFFFF;
+  outline: none;
+}
+
+.manual-input:focus {
+  border-color: #0077E6;
+}
+
+.manual-unit {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.manual-ports-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.port-chip {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.port-chip:hover,
+.port-chip.active {
+  background: #0077E6;
+  border-color: #0077E6;
+  color: #FFFFFF;
+}
+
+.car-active-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.car-active-specs .spec-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.car-active-specs strong {
+  color: #0F172A;
+}
+
+.badge-port {
+  display: inline-block;
+  background: #0077E6;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.badge-port--chademo { background: #059669; }
+.badge-port--gbt { background: #D97706; }
+.badge-port--type2 { background: #7C3AED; }
+
+.pin-gen {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 13px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
 .car-pill {
@@ -1028,7 +1234,9 @@ h1, h2, h3 {
 
 .map-city-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
+  justify-content: flex-end;
 }
 
 .city-tab {
