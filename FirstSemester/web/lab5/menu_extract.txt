@@ -1,0 +1,27 @@
+="work4.html">№4. UX/UI прототипування та створення дизайн-системи</a></li>
+                                                    </ul>
+                                                </div>
+
+												
+
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">Фронтенд-верстка, компонентна архітектура та збірка інтерфейсу</h3>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a href="work5.html">№5. Семантична верстка та рефакторинг базового каркасу</a></li>
+														<li><a href="work6.html">№6. Компонентна верстка, стилізація та адаптивність</a></li>	
+														<li><a href="work7.html">№7. Проєктування та реалізація повноцінного лендингу</a></li>
+                                                    </ul>
+                                                </div>
+
+
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">JavaScript-програмування, валідація та обробка Edge Cases</h3>
+                                                    <ul class="mega-menu-item">
+														<li><a href="work9.html">№9. Адаптивні форми зворотного зв'язку та клієнтська валідація</a></li>
+                                                        <li><a href="work10.html">№10. Інтеграція динамічних медіакомпонентів та JS-бібліотек</a></li>
+														<li><a href="work11.html">№11. Розробка інтерактивних віджетів та обробка Edge Cases</a></li>
+                                                    </ul>
+                                                </div>
+												
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="
