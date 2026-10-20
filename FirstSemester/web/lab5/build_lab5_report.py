@@ -410,7 +410,7 @@ def create_lab5_report():
         "• lab-05-semantic-layout/ — коренева папка проєкту;\n"
         "• index.html — основний семантичний документ сайту;\n"
         "• index_div_soup.html — початковий несемантичний каркас для навчального порівняння;\n"
-        "• css/style.css (та styles.css) — таблиця стилів із токенами, Flexbox та Grid;\n"
+        "• css/style.css — таблиця стилів із токенами, Flexbox та Grid;\n"
         "• assets/ — графічні активи (Logo.svg, іконки, промо-банер ai_promo_banner.jpg, карта map_lviv.jpg);\n"
         "• screenshots/ — зафіксовані скріншоти тестування та промптів."
     )
