@@ -35,20 +35,13 @@
     </div>
   </aside>
 
-  <!-- ШАПКА САЙТУ -->
+    <!-- ШАПКА САЙТУ (FLEXBOX СТРУКТУРА ЛР5) -->
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="logo" href="/" aria-label="ChargeUA — на головну">
         <img src="assets/images/Logo.svg" alt="ChargeUA Logo" class="logo__img" width="36" height="36">
         <span class="logo__text">ChargeUA</span>
       </a>
-      
-      <button class="burger-btn" id="burger-btn" type="button" aria-label="Відкрити меню навігації" aria-expanded="false" aria-controls="site-nav">
-        <span class="burger-icon" aria-hidden="true">
-          <i class="fa-solid fa-bars burger-icon-bars"></i>
-          <i class="fa-solid fa-xmark burger-icon-close"></i>
-        </span>
-      </button>
 
       <nav class="nav" id="site-nav" aria-label="Головна навігація">
         <ul class="nav__list">
@@ -60,15 +53,11 @@
           <li><a class="nav__link" href="#reviews"><i class="fa-solid fa-comments" aria-hidden="true"></i>Відгуки</a></li>
           <li><a class="nav__link" href="#contacts"><i class="fa-solid fa-headset" aria-hidden="true"></i>Контакти</a></li>
         </ul>
-        <div class="site-header__actions nav-mobile-actions">
-          <a class="btn btn--outline" href="/login"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Увійти</a>
-          <a class="btn btn--primary" href="#map"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>Знайти зарядку</a>
-        </div>
       </nav>
 
-      <div class="site-header__actions header-desktop-actions">
+      <div class="site-header__actions">
         <a class="btn btn--outline" href="/login"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Увійти</a>
-        <a class="btn btn--primary" href="#map"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>Знайти зарядку</a>
+        <a class="btn btn--primary" href="#stations"><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Знайти зарядку</a>
       </div>
     </div>
   </header>
@@ -525,8 +514,5 @@
       <p class="site-footer__copy">© 2026 ChargeUA. Усі права захищено. Студентський навчальний проєкт (ЛР №5, НУ «Львівська політехніка»).</p>
     </div>
   </footer>
-
-  <!-- Модуль мобільної навігації (Hamburger Menu) -->
-  <script src="js/nav.js" defer></script>
 </body>
 </html>

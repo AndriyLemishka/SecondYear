@@ -571,46 +571,13 @@ footer[id] {
   color: var(--color-primary);
 }
 
-/* Кнопка бургер-меню (мобільні екрани) */
-.burger-btn {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: transparent;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 8px;
-  color: #0F172A;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.burger-btn:hover {
-  background: #F1F5F9;
-  border-color: #CBD5E1;
-}
-
-.burger-btn .burger-icon-close {
-  display: none;
-}
-
-.site-header.nav-open .burger-btn .burger-icon-bars {
-  display: none;
-}
-
-.site-header.nav-open .burger-btn .burger-icon-close {
-  display: inline-block;
-  color: var(--color-primary);
-}
-
-.nav-mobile-actions {
-  display: none;
-}
-
-.header-desktop-actions {
+/* Кнопки дій шапки (Flexbox) */
+.site-header__actions {
   display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .tick-active {
@@ -1716,133 +1683,22 @@ footer[id] {
     display: none;
   }
 
-  /* Компактний фіксований хедер (58px) без вертикального накопичення */
-  .site-header {
-    height: 58px;
-    padding-block: 0;
-  }
-
+  /* Компактний гнучкий хедер на базі Flexbox */
   .site-header__inner {
-    height: 100%;
-    padding-block: 0;
-    padding-inline: 14px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    gap: var(--space-2);
     justify-content: space-between;
-  }
-
-  .logo__img {
-    width: 28px;
-    height: 28px;
-  }
-
-  .logo__text {
-    font-size: 18px;
-  }
-
-  /* Приховуємо десктопні кнопки дій у шапці */
-  .header-desktop-actions {
-    display: none !important;
-  }
-
-  /* Відображаємо кнопку бургер-меню */
-  .burger-btn {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
-
-  /* Мобільне висувне меню навігації (WCAG & Touch-friendly) */
-  .nav {
-    display: none;
-  }
-
-  .site-header.nav-open .nav,
-  .nav.is-open {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 58px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #FFFFFF;
-    padding: 16px 16px 32px;
-    z-index: 10002;
-    overflow-y: auto;
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
-    animation: mobileNavSlide 0.22s ease-out;
-  }
-
-  @keyframes mobileNavSlide {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    padding-block: var(--space-2);
   }
 
   .nav__list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    flex-wrap: wrap;
+    gap: 4px 8px;
   }
 
   .nav__link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #1E293B;
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.15s ease;
-  }
-
-  .nav__link i {
-    width: 20px;
-    text-align: center;
-    color: #0077E6;
-    font-size: 16px;
-  }
-
-  .nav__link:hover,
-  .nav__link:active {
-    background: #EFF6FF;
-    border-color: #BFDBFE;
-    color: #0077E6;
-  }
-
-  .nav-mobile-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid #E2E8F0;
-    width: 100%;
-  }
-
-  .nav-mobile-actions .btn {
-    width: 100%;
-    justify-content: center;
-    min-height: 44px;
-    font-size: 14px;
-  }
-
-  body.nav-locked {
-    overflow: hidden;
+    padding: 6px 8px;
+    font-size: 13px;
   }
 
   /* HERO секція на мобільних пристроях */
