@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChargeUA | Інтерактивний посібник до захисту Лабораторної роботи №5</title>
+  <meta name="description" content="Повний навчальний посібник до захисту Лабораторної роботи №5: семантика HTML5, блочна модель Flexbox та CSS Grid, дизайн-токени в :root, анатомія коду ChargeUA та 20 контрольних запитань з відповідями.">
+  <link rel="icon" type="image/svg+xml" href="assets/Logo.svg">
+  
+  <!-- Шрифт Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Індикатор прогресу читання -->
+  <div id="reading-progress"></div>
+
+  <!-- Шапка порталу -->
+  <header class="portal-header">
+    <div class="container portal-header__inner">
+      <a href="#hero" class="portal-brand">
+        <div class="portal-brand__logo">⚡</div>
+        <div>
+          <div class="portal-brand__title">ChargeUA <span style="font-weight:400; color:var(--color-primary)">Prep</span></div>
+          <div class="portal-brand__subtitle">Підготовка до захисту ЛР №5</div>
+        </div>
+      </a>
+
+      <nav class="portal-nav" aria-label="Розділи підручника">
+        <a href="#concepts" class="nav-link">💡 Фундамент</a>
+        <a href="#css-architecture" class="nav-link">⚙️ Flexbox & Grid</a>
+        <a href="#code-anatomy" class="nav-link">🔍 Анатомія коду</a>
+        <a href="#questions" class="nav-link">❓ 20 Запитань</a>
+        <a href="#quiz" class="nav-link">🎯 Тест-тренажер</a>
+        <a href="#cheatsheet" class="nav-link">⚡ Шпаргалка</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Перемкнути тему">
+          🌙 <span class="hide-sm">Темна</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero секція -->
+  <section class="hero-banner" id="hero">
+    <div class="container">
+      <div class="hero-tag">🎓 Навчально-методичний портал | САПР ЛПНУ</div>
+      <h1 class="hero-title">Все, що потрібно знати для захисту<br><span>Лабораторної роботи №5</span></h1>
+      <p class="hero-desc">
+        Повний розбір семантичної верстки, блочної моделі CSS Flexbox та Grid, дизайн-токенів у :root, 
+        доступності WCAG 2.2 AA та 20 контрольних запитань викладача з еталонними відповідями.
+      </p>
+
+      <!-- Пошуковий рядок -->
+      <div class="search-bar-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="global-search" class="search-input" placeholder="Швидкий пошук: 'grid-template', 'h1', 'skip-link', 'auto-fit'..." aria-label="Пошук по матеріалах">
+      </div>
+
+      <div class="hero-badges">
+        <div class="hero-badge">🏷️ Семантика: <strong>HTML5 Landmarks</strong></div>
+        <div class="hero-badge">📐 Блочна модель: <strong>Flexbox + Grid</strong></div>
+        <div class="hero-badge">🎨 Стилізація: <strong>:root CSS Tokens</strong></div>
+        <div class="hero-badge">♿ Доступність: <strong>100/100 Lighthouse</strong></div>
+        <div class="hero-badge">⚡ Обмеження: <strong>0% JS (чистий CSS)</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 1: ФУНДАМЕНТ -->
+  <section class="content-section" id="concepts">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__badge">Розділ 1</span>
+        <h2 class="section-head__title">Фундамент: Як, Що, Чому і Навіщо</h2>
+        <p class="section-head__desc">Розуміння філософії сучасної верстки: чим відрізняється справжній семантичний код від застарілої div-мішанини.</p>
+      </div>
+
+      <div class="cards-grid-3">
+        <!-- Картка 1 -->
+        <article class="card concept-card">
+          <div class="card__icon">🍜</div>
+          <h3 class="card__title">Проблема «Div Soup»</h3>
+          <p class="card__text">
+            Коли сайт побудований виключно на <code>&lt;div&gt;</code>, браузер та пошуковий робот бачать суцільне беззмістовне полотно. 
+            <code>div</code> не має власного значення — це просто невидима коробочка. Екранні диктори не можуть пояснити незрячому користувачу, де шапка, де навігація, а де головний текст.
+          </p>
+          <div class="badge-fast answer-section__badge">Чому заборонено: руйнує SEO та доступність</div>
+        </article>
+
+        <!-- Картка 2 -->
+        <article class="card concept-card">
+          <div class="card__icon">🌳</div>
+          <h3 class="card__title">Accessibility Tree</h3>
+          <p class="card__text">
+            Поруч із DOM-деревом браузер формує <strong>Accessibility Tree</strong> (Дерево доступності). 
+            Семантичні теги автоматично надають елементам стандартні ролі: <code>&lt;header&gt;</code> отримує роль <code>banner</code>, 
+            <code>&lt;nav&gt;</code> — <code>navigation</code>, <code>&lt;main&gt;</code> — <code>main</code>, а <code>&lt;footer&gt;</code> — <code>contentinfo</code>.
+          </p>
+          <div class="badge-deep answer-section__badge">WCAG 2.2: швидкий перехід по орієнтирах (Landmarks)</div>
+        </article>
+
+        <!-- Картка 3 -->
+        <article class="card concept-card">
+          <div class="card__icon">👑</div>
+          <h3 class="card__title">Золоте правило &lt;h1&gt;</h3>
+          <p class="card__text">
+            На всій сторінці повинен бути <strong>рівно один тег &lt;h1&gt;</strong>! Він позначає глобальну тему документа (для нас: <em>«Швидка та надійна зарядка електромобілів по всій Україні»</em>). 
+            Усі секції позначаються <code>&lt;h2&gt;</code>, а картки станцій чи послуг всередині них — <code>&lt;h3&gt;</code>. Не можна пропускати рівні!
+          </p>
+          <div class="badge-code answer-section__badge">Ієрархія: h1 → h2 → h3</div>
+        </article>
+      </div>
+
+      <!-- Порівняльна таблиця: Section vs Article vs Aside vs Div -->
+      <div class="table-responsive" style="margin-top: var(--space-6);">
+        <table class="prep-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Семантична роль</th>
+              <th>Чи обов'язковий заголовок?</th>
+              <th>Коли обирати (Приклад у ChargeUA)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;article&gt;</code></td>
+              <td>Самодостатній незалежний блок, що має сенс окремо від сторінки</td>
+              <td><strong>Так</strong> (h3 або h4)</td>
+              <td>Картка зарядної станції (DC 150 кВт), пост блогу, відгук користувача</td>
+            </tr>
+            <tr>
+              <td><code>&lt;section&gt;</code></td>
+              <td>Тематичний розділ сторінки, що групує пов'язаний контент</td>
+              <td><strong>Обов'язково</strong> (h2)</td>
+              <td>Секція каталогу станцій, секція інтерактивної карти, секція переваг</td>
+            </tr>
+            <tr>
+              <td><code>&lt;aside&gt;</code></td>
+              <td>Дотичний / другорядний контент (сайдбар, примітки, фільтри)</td>
+              <td>Рекомендовано</td>
+              <td>Панель фільтрів пошуку біля карти станцій</td>
+            </tr>
+            <tr>
+              <td><code>&lt;div&gt;</code></td>
+              <td><strong>Ніякої</strong> (чисто технічна обгортка для CSS/стилізації)</td>
+              <td>Ні</td>
+              <td>Контейнер <code>.container</code> для обмеження 1200px, <code>.grid</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Button vs A -->
+      <div class="card" style="margin-top: var(--space-5);">
+        <h3 class="card__title">⚖️ Залізне правило вибору: &lt;button&gt; чи &lt;a&gt;?</h3>
+        <p class="card__text">
+          Це улюблене підступне питання викладачів на захисті! Запам'ятайте раз і назавжди:
+        </p>
+        <ul style="padding-left: 20px; color: var(--color-text-muted); line-height: 1.8;">
+          <li><strong>Тег <code>&lt;a href="..."&gt;</code> (Посилання):</strong> використовується виключно тоді, коли користувач <em>кудись переходить</em> (зміна URL, відкриття іншої сторінки, перехід до якірного блоку <code>#stations</code> або дзвінок <code>tel:</code>).</li>
+          <li><strong>Тег <code>&lt;button type="button"&gt;</code> (Кнопка):</strong> використовується, коли користувач <em>виконує дію на поточній сторінці без зміни URL</em> (відкрити модальне вікно, змінити фільтр, розрахувати вартість заряду в калькуляторі, відправити форму <code>type="submit"</code>).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 2: CSS АРХІТЕКТУРА -->
+  <section class="content-section" id="css-architecture">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__badge">Розділ 2</span>
+        <h2 class="section-head__title">CSS Архітектура: Як це працює під капотом</h2>
+        <p class="section-head__desc">Дворівнева блочна модель: чому макет побудовано на симбіозі CSS Grid та Flexbox, і як влаштовані токени в :root.</p>
+      </div>
+
+      <div class="cards-grid-2">
+        <!-- Flexbox блок -->
+        <div class="card">
+          <div class="card__icon">➡️</div>
+          <h3 class="card__title">CSS Flexbox (Одновимірний 1D макет)</h3>
+          <p class="card__text">
+            Flexbox призначений для розміщення елементів <strong>в одному напрямку</strong> (або в рядок, або в колонку).
+          </p>
+          <ul style="padding-left: 18px; color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 12px; line-height: 1.6;">
+            <li><strong>Головна вісь (Main Axis):</strong> керується <code>justify-content</code> (flex-start, space-between, center).</li>
+            <li><strong>Поперечна вісь (Cross Axis):</strong> керується <code>align-items</code> (center, stretch).</li>
+            <li><strong>Де використано у нас:</strong>
+              <br>• Шапка <code>.header-inner</code>: логотип зліва, меню в центрі, CTA справа (<code>justify-content: space-between</code>).
+              <br>• Навігація <code>.nav-list</code>: горизонтальний ланцюжок посилань з <code>gap: var(--space-5)</code>.
+              <br>• Картка <code>.card</code>: вертикальний Flexbox з притисканням кнопки дії донизу (<code>flex-direction: column</code>).
+            </li>
+          </ul>
+        </div>
+
+        <!-- CSS Grid блок -->
+        <div class="card">
+          <div class="card__icon">▦</div>
+          <h3 class="card__title">CSS Grid (Двовимірний 2D макет)</h3>
+          <p class="card__text">
+            CSS Grid керує <strong>і рядками, і стовпчиками одночасно</strong>, створюючи каркасну матрицю сторінки.
+          </p>
+          <div class="code-box">
+            <div class="code-box__header">
+              <span>css/style.css — Сітка каталогу</span>
+              <button class="code-box__copy-btn" type="button">Копіювати</button>
+            </div>
+            <pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}</code></pre>
+          </div>
+          <p class="card__text" style="font-size: 0.9rem;">
+            <strong>Розбір магічної формули:</strong><br>
+            • <code>repeat()</code> — генерує колони без ручного повторення.<br>
+            • <code>auto-fit</code> — створює стільки колонок, скільки влізе, і розтягує наявні на всю ширину (collapse empty tracks).<br>
+            • <code>minmax(280px, 1fr)</code> — кожна картка не менше 280px, а вільне місце ділиться порівну.<br>
+            • <code>gap</code> — ідеальні відступи між картками без жодних <code>margin-left/right</code>.
+          </p>
+        </div>
+      </div>
+
+      <!-- :root токени -->
+      <div class="card" style="margin-top: var(--space-6);">
+        <h3 class="card__title">🎨 Токени дизайн-системи у псевдокласі :root</h3>
+        <p class="card__text">
+          Чому ми використовуємо <code>:root</code>? Це псевдоклас, що вказує на кореневий елемент <code>&lt;html&gt;</code>, але має вищу специфічність. 
+          Оголошені там змінні стають глобальними та каскадуються по всьому дереву документа.
+        </p>
+
+        <div class="code-box">
+          <div class="code-box__header">
+            <span>css/style.css — Токени бренду ChargeUA</span>
+            <button class="code-box__copy-btn" type="button">Копіювати</button>
+          </div>
+          <pre><code>:root {
+  /* 1. Кольори за призначенням (role-based) */
+  --color-primary: #005EC9;       /* Основний акцент бренду ChargeUA */
+  --color-secondary: #0F172A;     /* Глибокий контрастний темний фон */
+  --color-accent: #00B4D8;        /* Бірюзовий статус швидкої DC зарядки */
+  --color-bg: #FFFFFF;            /* Світлий базовий фон сторінки */
+  --color-surface: #F8FAFC;       /* Фоновий колір карточок */
+  --color-text: #1E293B;          /* Текст із контрастом > 7:1 */
+
+  /* 2. Статуси станцій (WCAG 1.4.1 колір + текст) */
+  --color-status-free: #10B981;   /* Зелений: порт вільний */
+  --color-status-busy: #EF4444;   /* Червоний: зайнятий */
+  --color-status-reserved: #F59E0B; /* Бурштиновий: заброньовано */
+
+  /* 3. Адаптивна типографіка без медіа-запитів */
+  --fs-hero: clamp(2rem, 5vw, 3.25rem); /* Масштабується плавно від 32px до 52px */
+  --target-size: 44px;            /* WCAG 2.5.5 тач-таргет для пальця */
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Секція hero бекграунду -->
+      <div class="card" style="margin-top: var(--space-6);">
+        <h3 class="card__title">🚗 Статичний фон Hero: як поєднати графіку та читабельність</h3>
+        <p class="card__text">
+          У нашій роботі автентичне зображення <code>hero_bg.jpg</code> (електромобіль біля ультрашвидкісної станції) 
+          задано як чистий бекграунд без створення додаткових тегів <code>&lt;img&gt;</code>. 
+          Для того, щоб текст зліва не зливався з авто, використано складений фон:
+        </p>
+        <div class="code-box">
+          <div class="code-box__header">
+            <span>css/style.css — Hero background overlay</span>
+            <button class="code-box__copy-btn" type="button">Копіювати</button>
+          </div>
+          <pre><code>.hero {
+  background-color: var(--color-secondary);
+  background-image: 
+    linear-gradient(90deg, 
+      rgba(15, 23, 42, 0.94) 0%,   /* Найтемніша зона зліва для контрасту тексту */
+      rgba(15, 23, 42, 0.80) 45%,  /* М'який півтінь */
+      rgba(15, 23, 42, 0.25) 100%  /* Прозорість справа: авто видно ідеально! */
+    ),
+    url('../assets/images/hero_bg.jpg');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 3: АНАТОМІЯ КОДУ -->
+  <section class="content-section" id="code-anatomy">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__badge">Розділ 3</span>
+        <h2 class="section-head__title">Анатомія коду ChargeUA: Що за що відповідає</h2>
+        <p class="section-head__desc">Детальний розбір структури index.html та допоміжних утиліт доступності.</p>
+      </div>
+
+      <div class="cards-grid-3">
+        <!-- skip-link -->
+        <article class="card">
+          <h3 class="card__title">🔗 .skip-link</h3>
+          <p class="card__text">
+            <strong>Код:</strong> <code>&lt;a class="skip-link" href="#main"&gt;Перейти до основного вмісту&lt;/a&gt;</code><br><br>
+            <strong>Навіщо:</strong> Приховане посилання вгорі сторінки. Коли користувач натискає <code>Tab</code> на клавіатурі, 
+            воно спливає і дозволяє пропустити всі 15 посилань шапки і одразу перейти до <code>&lt;main id="main"&gt;</code>.
+          </p>
+          <div class="badge-fast answer-section__badge">WCAG 2.4.1 Bypass Blocks</div>
+        </article>
+
+        <!-- visually-hidden -->
+        <article class="card">
+          <h3 class="card__title">👁️ .visually-hidden</h3>
+          <p class="card__text">
+            <strong>Код:</strong> <code>clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; width: 1px; overflow: hidden;</code><br><br>
+            <strong>Навіщо:</strong> Приховує текст візуально з екрану, але зберігає його в Accessibility Tree для скрінрідера. 
+            Використано для уточнення контексту кнопок: <em>«Прокласти маршрут <span class="visually-hidden">до станції Київ ТРЦ</span>»</em>.
+          </p>
+          <div class="badge-deep answer-section__badge">WCAG 2.4.4 Link Purpose</div>
+        </article>
+
+        <!-- focus-visible -->
+        <article class="card">
+          <h3 class="card__title">🎯 :focus-visible</h3>
+          <p class="card__text">
+            <strong>Код:</strong> <code>:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }</code><br><br>
+            <strong>Навіщо:</strong> Показує контрастну рамку фокусу ТІЛЬКИ при переміщенні клавіатурою (Tab). 
+            Користувачі з мишкою не бачать синіх рамок при кліку, що зберігає естетику інтерфейсу.
+          </p>
+          <div class="badge-code answer-section__badge">WCAG 2.4.7 Focus Visible</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 4: 20 КОНТРОЛЬНИХ ЗАПИТАНЬ ВИКЛАДАЧА -->
+  <section class="content-section" id="questions">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__badge">Розділ 4</span>
+        <h2 class="section-head__title">20 Контрольних запитань викладача з еталонними відповідями</h2>
+        <p class="section-head__desc">Найпопулярніші запитання доц. Юрчак І. Ю. та викладачів САПР під час захисту Лабораторної роботи №5.</p>
+        <div style="margin-top: 15px;">
+          <button id="toggle-all-questions" class="btn-outline" type="button">Розкрити всі відповіді</button>
+        </div>
+      </div>
+
+      <div class="accordion" id="accordion-questions">
+
+        <!-- Питання 1 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>1. Чим семантична розмітка HTML5 відрізняється від традиційної на div-контейнерах?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Семантичні теги несуть смислове навантаження про тип контенту для пошукових роботів та скрінрідерів, тоді як <code>&lt;div&gt;</code> є беззмістовним візуальним блоком.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Кожен семантичний тег HTML5 автоматично транслюється браузером у відповідний вузол Accessibility Tree з ролями WAI-ARIA Landmark (наприклад: <code>&lt;header&gt;</code> → <code>banner</code>, <code>&lt;nav&gt;</code> → <code>navigation</code>, <code>&lt;main&gt;</code> → <code>main</code>, <code>&lt;footer&gt;</code> → <code>contentinfo</code>). Це дозволяє пошуковим системам краще індексувати важливий вміст, а людям з обмеженими можливостями — швидко переміщатися між розділами сайту за допомогою гарячих клавіш скрінрідера.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 2 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>2. Чому на всій сторінці має бути лише один тег &lt;h1&gt;?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Тег <code>&lt;h1&gt;</code> позначає єдину глобальну тему всього документа. Наявність кількох h1 розмиває фокус SEO-індексації та дезорієнтує незрячих користувачів.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Згідно зі стандартами консорціуму W3C та алгоритмами ранжування Google, сторінка має деревоподібну ієрархію: h1 — заголовок першого рівня (книга / стаття), h2 — розділи (секції сайту), h3 — підрозділи або окремі картки послуг. У нашому проєкті ChargeUA єдиний <code>&lt;h1&gt;</code> розташовано в Hero-секції: <em>«Швидка та надійна зарядка електромобілів по всій Україні»</em>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 3 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>3. У чому полягає різниця між тегами &lt;section&gt; та &lt;article&gt;?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p><code>&lt;article&gt;</code> — це повністю самостійний блок контенту, який не втрачає сенсу при вилученні зі сторінки. <code>&lt;section&gt;</code> — це тематичний розділ, тісно пов'язаний із контекстом усього документа.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-code">Приклад у ChargeUA</span>
+              <p>Розділ каталогу станцій — це <code>&lt;section id="stations"&gt;</code> з власним заголовком h2. А кожна окрема картка зарядної станції (з адресою, потужністю DC 150 кВт та кнопкою бронювання) — це <code>&lt;article class="card"&gt;</code>, бо її можна синдикувати у мобільний додаток чи RSS окремо від сайту.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 4 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>4. Коли слід використовувати &lt;button&gt;, а коли посилання &lt;a&gt;?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Посилання <code>&lt;a&gt;</code> (з обов'язковим атрибутом <code>href</code>) служить виключно для навігації (переходу між сторінками або до якоря). Кнопка <code>&lt;button&gt;</code> служить для виконання дії без зміни URL.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Скрінрідери озвучують ці елементи по-різному: посилання як «link», а кнопку як «button». Клавіша <code>Enter</code> активує посилання, тоді як кнопку можна натиснути і <code>Enter</code>, і <code>Space</code> (пробілом). Якщо зробити перехід через <code>&lt;button onclick="location.href"&gt;</code> або дію через <code>&lt;a href="#"&gt;</code> — це грубе порушення доступності WCAG 4.1.2.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 5 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>5. Що таке «Accessibility Tree» (Дерево доступності) і як воно працює?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Під час парсингу HTML-коду браузерний рушій паралельно створює дві структури: графічний DOM (Document Object Model) та Accessibility Tree. Дерево доступності транслює візуальні елементи в набір доступних об'єктів для операційної системи (UI Automation у Windows, NSAccessibility в macOS). Кожен об'єкт отримує 4 характеристики: <strong>Role</strong> (кнопка, орієнтир, список), <strong>Name</strong> (підпис з тексту або aria-label), <strong>State</strong> (фокус, checked, expanded) та <strong>Value</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 6 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>6. Для чого потрібен тег &lt;aside&gt; і де він використаний у нашому проєкті?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p><code>&lt;aside&gt;</code> позначає другорядний (дотичний) контент, який доповнює основний, але може бути вилучений без втрати головного сенсу сторінки.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-code">Приклад у ChargeUA</span>
+              <p>У блоці інтерактивної карти станцій тег <code>&lt;aside class="map-filters" aria-label="Фільтри пошуку станцій"&gt;</code> містить панель швидких перемикачів (потужність, конектор Type 2 / CCS 2, статус зайнятості). Він не є самою картою, а доповнює її інтерфейс.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 7 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>7. Як працює псевдоклас :root та механізм каскадування змінних у CSS?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Псевдоклас <code>:root</code> відповідає кореню документа (елементу <code>&lt;html&gt;</code>), але має специфічність псевдокласу (0-1-0 проти 0-0-1 у звичайного тегу html). Усі змінні, оголошені з префіксом <code>--ім'я: значення</code>, автоматично наслідуються (каскадуються) всіма дочірніми вузлами. Змінні можна перевизначати локально всередині окремих класів (наприклад, <code>.hero { --color-text: #FFFFFF; }</code>), що робить архітектуру надзвичайно гнучкою.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 8 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>8. Чому змінні CSS слід називати за призначенням, а не за конкретним кольором?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Щоб код залишався масштабованим, підтримував редизайн та зміну кольорових тем (Light / Dark) без абсурдних перейменувань.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Якщо назвати змінну <code>--blue: #005EC9</code>, а через півроку бренд оновить колір на смарагдовий, вам доведеться або писати безглуздий код <code>--blue: #10B981</code>, або змінювати селектори по всьому CSS. Якщо ж назвати <code>--color-primary</code> — ви змінюєте лише одне значення в <code>:root</code>, і весь сайт миттєво підхоплює оновлення.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 9 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>9. У чому полягає принципова різниця між макетами CSS Flexbox та CSS Grid?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Flexbox є одновимірним (1D — або рядок, або стовпчик), а CSS Grid є повноцінним двовимірним (2D — керує рядками і стовпчиками одночасно).</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Flexbox ідеальний для вирівнювання контенту відносно одного вектора: центрування іконки в кнопці, розстановка елементів шапки по краях (<code>space-between</code>), вирівнювання пунктів меню. CSS Grid призначений для каркасного проєктування площини: сітка каталогу товарів/станцій, дашборди, де елементи повинні суворо вирівнюватися по обох осях.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 10 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>10. Як працює правило repeat(auto-fit, minmax(280px, 1fr))?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Це найвідоміша формула сучасної адаптивної верстки:
+                <br>1. <code>minmax(280px, 1fr)</code> задає діапазон розміру комірки: мінімум 280 пікселів (щоб картка не стискалася в тонку смужку), максимум 1fr (одна частка вільного простору).
+                <br>2. <code>auto-fit</code> автоматично вираховує, скільки таких 280-піксельних колонок вміщується в поточну ширину екрана. Якщо місця вистачає на 3 колонки — створюється 3, якщо на 1 — створюється одна.
+                <br>3. Усі створені колонки пропорційно розтягуються (1fr), повністю заповнюючи ширину батьківського контейнера без потреби писати 10 медіа-запитів.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 11 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>11. Чим відрізняється auto-fit від auto-fill у CSS Grid?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Поведінкою при нестачі елементів: <code>auto-fit</code> згортає порожні треки та розтягує наявні картки на весь простір, а <code>auto-fill</code> залишає порожні «фантомні» колонки праворуч.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 12 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>12. Як працює функція clamp(MIN, PREFERRED, MAX) у типографіці?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Функція <code>clamp()</code> реалізує математичне обмеження величини в діапазоні між нижньою та верхньою межею:
+                <br><code>--fs-hero: clamp(2rem, 5vw, 3.25rem);</code>
+                <br>• На маленьких смартфонах розмір ніколи не впаде нижче 2rem (32px).
+                <br>• На планшетах розмір розраховується динамічно як 5% від ширини екрана (5vw).
+                <br>• На широкоформатних 4K моніторах розмір не роздується вище 3.25rem (52px). Це забезпечує ідеальну чуйність тексту без жодного <code>@media</code>!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 13 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>13. Що таке .skip-link і якому критерію WCAG 2.2 він відповідає?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Це якірне посилання на початку документа, що веде на <code>#main</code>. Воно відповідає обов'язковому критерію <strong>WCAG 2.4.1 (Bypass Blocks)</strong>.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Користувачі, які рухаються сайтом за допомогою клавіатури або скрінрідера, без skip-link змушені щоразу на кожній сторінці натискати клавішу <code>Tab</code> 15–20 разів, щоб просто пройти крізь логотип, телефон та пункти меню. Skip-link дає можливість першим натисканням Tab перейти одразу до суті сторінки.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 14 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>14. Як правильно приховати елемент для очей, але залишити для скрінрідера (.visually-hidden)?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-code">Стандартний CSS-патерн</span>
+              <pre style="background:#161B22; color:#E6EDF3; padding:12px; border-radius:6px; font-family:var(--font-code); font-size:0.85rem;"><code>.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}</code></pre>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Чому не display: none?</span>
+              <p>Властивість <code>display: none</code> повністю вилучає елемент із рендер-дерева та Accessibility Tree. Екранний диктор його проігнорує. А патерн <code>.visually-hidden</code> стискає розмір до 1 пікселя за межами екрану, тому диктор його прочитає, а звичайний користувач не побачить.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 15 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>15. Як перевірити кольоровий контраст тексту згідно з WCAG 2.2 AA?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Критерій <strong>WCAG 1.4.3 Contrast (Minimum)</strong> вимагає:
+                <br>• Для звичайного тексту (до 18pt / 24px) мінімальний коефіцієнт контрасту між кольором тексту та фону має бути не менше <strong>4.5 : 1</strong>.
+                <br>• Для великого тексту (від 18pt або жирного 14pt) — не менше <strong>3.0 : 1</strong>.
+                <br>Перевірка здійснюється за допомогою інструменту Chrome DevTools (піпетка у вкладці Styles показує Contrast Ratio) або автоматичного аудиту Lighthouse.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 16 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>16. Як працює псевдоклас :focus-visible і чим він кращий за :focus?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p><code>:focus-visible</code> активує обведення ТІЛЬКИ тоді, коли користувач взаємодіє з клавіатури (Tab/стрілки), і НЕ показує обведення при кліку мишкою.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Раніше розробники часто писали <code>outline: none</code> на <code>:focus</code>, бо їм не подобалась синя рамка при кліку мишкою. Але це повністю ламало доступність для людей з вадами зору. Псевдоклас <code>:focus-visible</code> є ідеальним компромісом: він зберігає красивий вигляд при роботі мишкою і гарантує чітку контрастну рамку для клавіатурного фокусу.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 17 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>17. Навіщо використовувати &lt;link rel="preconnect"&gt; для Google Fonts?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Для оптимізації швидкості завантаження шрифтів (Core Web Vitals / LCP).</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Атрибут <code>rel="preconnect"</code> дає вказівку браузеру заздалегідь встановити TCP-з'єднання та виконати TLS-рукостискання з доменами <code>fonts.googleapis.com</code> та <code>fonts.gstatic.com</code> ще до того, як парсер дійде до самого CSS-файлу. Це економить 100–300 мс часу рендерингу тексту.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 18 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>18. Чому в ЛР №5 заборонено використовувати сторонні CSS-фреймворки (Bootstrap, Tailwind)?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Метою роботи є опанування фундаментальних механізмів специфікації CSS3 (Flexbox, CSS Grid, каскадність :root), а не використання готових чужих абстракцій.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Фреймворки генерують сотні кілобайт надлишкових класів, які студент не контролює. Чистий CSS демонструє глибоке розуміння блочної моделі, відсутність конфліктів специфічності та 100% відповідність власноруч розробленій у ЛР №4 дизайн-системі ChargeUA.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 19 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>19. Що означає перехід стану кнопки у VS Code з «((•)) Go Live» на «⊘ Port : 5500»?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-fast">Коротка відповідь</span>
+              <p>Це індикація того, що локальний сервер Live Server успішно піднято і він транслює сайт за адресою <code>http://127.0.0.1:5500</code>.</p>
+            </div>
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>У розширенні <code>ritwickdey.liveserver</code> кнопка у правому нижньому кутку має два стани:
+                <br>1. <code>((•)) Go Live</code> — сервер зупинений. Клік по ній запускає трансляцію.
+                <br>2. <code>⊘ Port : 5500</code> — сервер активний. Клік по ній зупиняє (dispose) сервер.
+                <br>Альтернативний запуск: правою кнопкою на <code>index.html</code> → <strong>«Open with Live Server»</strong> або комбінація <code>Alt + L, Alt + O</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Питання 20 -->
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span>20. Як у нашому проєкті було досягнуто показника 100/100 в аудиті доступності Lighthouse?</span>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-body">
+            <div class="answer-section">
+              <span class="answer-section__badge badge-deep">Поглиблене пояснення</span>
+              <p>Ідеальний результат 100 / 100 було забезпечено комплексом заходів:
+                <br>• Повна семантична розмітка HTML5 (наявність усіх орієнтирів Landmark: banner, navigation, main, contentinfo).
+                <br>• Додавання <code>&lt;a class="skip-link" href="#main"&gt;</code> для обходу блоків навігації.
+                <br>• Кольоровий контраст тексту значно вищий за поріг 4.5:1 (для білого тексту на фоні #0F172A контраст складає понад 14:1).
+                <br>• Усі зображення мають змістовні атрибути <code>alt</code>.
+                <br>• Доступний стан фокусу з клавіатури <code>:focus-visible</code> на всіх посиланнях та кнопках.
+                <br>• Дублювання колірних статусів текстовими бейджами та піктограмами.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 5: ТЕСТ-ТРЕНАЖЕР -->
+  <section class="content-section" id="quiz">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__badge">Розділ 5</span>
+        <h2 class="section-head__title">Інтерактивний Тест-тренажер перед здачею</h2>
+        <p class="section-head__desc">Перевірте свою готовність до захисту: дайте відповіді на 10 випадкових запитань із миттєвим розбором!</p>
+      </div>
+
+      <div class="quiz-container" id="quiz-box">
+        <!-- Прогрес тесту -->
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+        </div>
+
+        <div id="quiz-question-view">
+          <div class="quiz-header">
+            <span id="quiz-counter">Питання 1 з 10</span>
+            <span>⚡ Тест самоперевірки</span>
+          </div>
+
+          <h3 class="quiz-question-title" id="quiz-question-text">Завантаження запитання...</h3>
+
+          <div class="quiz-options" id="quiz-options">
+            <!-- Варіанти генеруються динамічно через app.js -->
+          </div>
+
+          <div class="quiz-explanation" id="quiz-explanation"></div>
+
+          <div class="quiz-actions">
+            <button class="btn-primary" id="quiz-next-btn" type="button" disabled>Наступне питання →</button>
+          </div>
+        </div>
+
+        <!-- Підсумки тесту -->
+        <div class="quiz-result-box" id="quiz-result-view">
+          <div class="quiz-score-circle" id="quiz-final-score">10/10</div>
+          <h3 style="font-size: 1.6rem; font-weight:800; margin-bottom: 12px; color:var(--color-text)">Результат тестування</h3>
+          <p id="quiz-final-msg" style="font-size: 1.1rem; color: var(--color-text-muted); max-width: 600px; margin: 0 auto 24px; line-height: 1.6;"></p>
+          <button class="btn-primary" id="quiz-restart-btn" type="button">Пройти тест ще раз 🔄</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 6: ШПАРГАЛКА ТЕРМІНІВ -->
+  <section class="content-section" id="cheatsheet">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-head__badge">Розділ 6</span>
+        <h2 class="section-head__title">Шпаргалка термінів та гарячих клавіш</h2>
+        <p class="section-head__desc">Швидкий довідник ключових понять та абревіатур вебтехнологій.</p>
+      </div>
+
+      <div class="cards-grid-3">
+        <div class="card">
+          <h3 class="card__title">W3C</h3>
+          <p class="card__text"><strong>World Wide Web Consortium</strong> — головна міжнародна організація, що розробляє та затверджує стандарти для Інтернету (HTML, CSS, SVG, WCAG).</p>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">WCAG 2.2</h3>
+          <p class="card__text"><strong>Web Content Accessibility Guidelines</strong> — офіційне керівництво з доступності вебконтенту. Рівень AA є міжнародним стандартом якості для державних та комерційних сервісів.</p>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">a11y</h3>
+          <p class="card__text">Числовий акронім від слова <strong>Accessibility</strong> (перша літера A, 11 проміжних літер, остання y). Означає проєктування вебсайтів, зручних для всіх людей, включно з особами з інвалідністю.</p>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">Landmark Roles</h3>
+          <p class="card__text">Семантичні орієнтири вебсторінки (<code>banner</code>, <code>main</code>, <code>navigation</code>, <code>contentinfo</code>, <code>search</code>), які дозволяють скрінрідерам миттєво стрибати між глобальними секціями.</p>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">Live Server Hotkeys</h3>
+          <p class="card__text">У VS Code:<br>• Запуск: <code>Alt + L, Alt + O</code><br>• Зупинка: клік по <code>Port : 5500</code> у статус-барі<br>• Відкрити Command Palette: <code>Ctrl + Shift + P</code></p>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">Box-Sizing: border-box</h3>
+          <p class="card__text">Режим блочної моделі, при якому <code>padding</code> та <code>border</code> включаються у загальну ширину (width) елемента, запобігаючи непередбачуваному розпиранню блоків.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Підвал порталу -->
+  <footer class="portal-footer">
+    <div class="container portal-footer__inner">
+      <div>
+        <strong>Вебплатформа ChargeUA</strong> — Інтерактивний посібник до Лабораторної роботи №5<br>
+        <span style="font-size:0.8rem; color:#64748B;">Кафедра САПР, Національний університет «Львівська політехніка» | 2026</span>
+      </div>
+      <div>
+        Студент: <strong>Лемішка Андрій Анатолійович</strong> (група ПП-24)<br>
+        <a href="https://github.com/AndriyLemishka/SecondYear/tree/main/FirstSemester/web/lab5" target="_blank" rel="noopener">Репозиторій на GitHub ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
