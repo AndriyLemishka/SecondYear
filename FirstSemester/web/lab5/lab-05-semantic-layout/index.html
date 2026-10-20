@@ -6,6 +6,7 @@
   <title>ChargeUA — мережа зарядних станцій електромобілів в Україні</title>
   <meta name="description" content="ChargeUA — єдина мережа швидкісних зарядних станцій для електромобілів по всій Україні: DC 150 кВт, Ultra-fast, інтерактивний калькулятор витрат, Live-карта 480+ станцій та робота від генераторів у блекаути.">
   <meta name="theme-color" content="#005EC9">
+  <link rel="icon" type="image/svg+xml" href="assets/images/Logo.svg">
 
   <!-- Шрифт Inter (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +15,6 @@
 
   <!-- Іконковий шрифт Font Awesome 6 (CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-  <!-- Leaflet CSS (Інтерактивна карта) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
   <!-- Підключення зовнішніх стилів CSS -->
   <link rel="stylesheet" href="css/style.css">
@@ -78,14 +76,11 @@
   <!-- ОСНОВНИЙ ВМІСТ СТОРІНКИ -->
   <main id="main">
 
-    <!-- HERO СЕКЦІЯ З ФОНОВИМ ВІДЕО ТА ГРАДІЄНТНИМ ПЕРЕХОДОМ (МАКЕТ ЛР4) -->
+    <!-- HERO СЕКЦІЯ (СЕМАНТИЧНИЙ МАКЕТ ЛР4) -->
     <section class="hero-sec" aria-labelledby="hero-title">
-      <!-- Фонове відео / GIF цикл -->
-      <div class="hero-video-bg-wrap">
-        <video class="hero-video-bg" autoplay loop muted playsinline poster="assets/images/hero_loop_opt.gif">
-          <source src="assets/video/video_content.mp4" type="video/mp4">
-          <img src="assets/images/hero_loop_opt.gif" class="hero-video-bg" alt="ChargeUA Video Loop">
-        </video>
+      <!-- Статичний фон банера з Figma-макета -->
+      <div class="hero-bg-wrap">
+        <img src="assets/images/ai_promo_banner.jpg" class="hero-bg-img" alt="ChargeUA Hero Banner" aria-hidden="true">
         <div class="hero-fade-overlay" aria-hidden="true"></div>
       </div>
 
@@ -121,12 +116,6 @@
             <span class="chip chip-green"><i class="fa-solid fa-battery-full" aria-hidden="true"></i> 🔋 З генератором</span>
           </div>
         </div>
-      </div>
-
-      <!-- Бейдж фонового медіа -->
-      <div class="hero-video-badge" aria-label="Медіа-індикатор">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span>⚡ Live Video Loop · video_content.mp4 (ЛР №3)</span>
       </div>
     </section>
 
@@ -297,6 +286,7 @@
                 </div>
                 <div class="slider-rail" id="slider-rail">
                   <div class="slider-fill" id="slider-fill" style="left: 20%; width: 60%;"></div>
+                  <label for="calc-range-slider" class="visually-hidden">Бажаний рівень заряду батареї у відсотках</label>
                   <input type="range" min="20" max="100" step="5" value="80" id="calc-range-slider" class="slider-native-input" aria-label="Бажаний рівень заряду батареї">
                   <div class="slider-badge" id="slider-badge" style="left: 80%;">80% (Цільовий)</div>
                 </div>
@@ -327,40 +317,43 @@
       </div>
     </section>
 
-    <!-- СЕКЦІЯ ІНТЕРАКТИВНОЇ КАРТИ (LEAFLET + КАНВАС) -->
+    <!-- СЕКЦІЯ КАРТИ (СЕМАНТИЧНИЙ МАКЕТ ЛР4) -->
     <section class="section map-sec" id="map" aria-labelledby="map-section-title">
       <div class="container">
         <div class="map-card">
           <div class="map-top">
             <div class="map-heading">
-              <h2 class="map-title" id="map-section-title"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Live-карта зарядної мережі України</h2>
-              <p class="map-subtitle" id="map-live-counter">Завантаження 40 станцій онлайн по Україні...</p>
+              <h2 class="map-title" id="map-section-title"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Розташування зарядної мережі по Україні</h2>
+              <p class="map-subtitle" id="map-live-counter">Швидкісні хаби ChargeUA: Львів, Київ, Одеса, Дніпро та траси</p>
             </div>
             <div class="map-top-actions">
               <!-- ПЕРЕМИКАЧ МІСТ -->
               <div class="map-city-tabs" role="tablist" aria-label="Швидкий вибір міста">
-                <button class="city-tab city-tab--active" data-city="lviv" type="button" role="tab" aria-selected="true">Львів (14)</button>
-                <button class="city-tab" data-city="kyiv" type="button" role="tab" aria-selected="false">Київ (12)</button>
-                <button class="city-tab" data-city="odesa" type="button" role="tab" aria-selected="false">Одеса (5)</button>
-                <button class="city-tab" data-city="dnipro" type="button" role="tab" aria-selected="false">Дніпро (4)</button>
-                <button class="city-tab" data-city="highways" type="button" role="tab" aria-selected="false">Траси (5)</button>
-                <button class="city-tab" data-city="all" type="button" role="tab" aria-selected="false">Вся Україна (40)</button>
+                <button class="city-tab city-tab--active" type="button" role="tab" aria-selected="true">Львів</button>
+                <button class="city-tab" type="button" role="tab" aria-selected="false">Київ</button>
+                <button class="city-tab" type="button" role="tab" aria-selected="false">Одеса</button>
+                <button class="city-tab" type="button" role="tab" aria-selected="false">Дніпро</button>
+                <button class="city-tab" type="button" role="tab" aria-selected="false">Траси</button>
+                <button class="city-tab" type="button" role="tab" aria-selected="false">Вся Україна</button>
               </div>
 
               <!-- ФІЛЬТРИ КОНЕКТОРІВ ТА ГЕНЕРАТОРА -->
               <div class="map-filters-row map-filters" aria-label="Фільтри конекторів">
-                <button class="chip chip--active" data-filter="all" type="button" aria-pressed="true">Всі хаби (40)</button>
-                <button class="chip" data-filter="ccs2" type="button" aria-pressed="false">CCS 2</button>
-                <button class="chip" data-filter="chademo" type="button" aria-pressed="false">CHAdeMO</button>
-                <button class="chip" data-filter="gbt" type="button" aria-pressed="false">GB/T DC</button>
-                <button class="chip" data-filter="type2" type="button" aria-pressed="false">Type 2</button>
-                <button class="chip chip-green" data-filter="generator" type="button" aria-pressed="false">🔋 З генератором</button>
+                <span class="chip chip--active">Всі хаби</span>
+                <span class="chip">CCS 2</span>
+                <span class="chip">CHAdeMO</span>
+                <span class="chip">GB/T DC</span>
+                <span class="chip">Type 2</span>
+                <span class="chip chip-green">🔋 З генератором</span>
               </div>
             </div>
           </div>
 
           <div class="map-canvas-container" id="map-container" role="region" aria-label="Карта розташування зарядних хабів">
-            <div id="map-leaflet-canvas" style="width:100%; height:500px;"></div>
+            <img src="assets/images/map_lviv.jpg" alt="Карта розташування зарядних станцій ChargeUA" class="map-static-img" width="1200" height="500">
+            <div class="map-static-caption">
+              <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Статичний макет розташування хабів (ЛР №5 — блочна розмітка Flexbox/Grid за макетом Figma). Інтерактивна картографія Leaflet інтегрується у ЛР №7 та ЛР №10.
+            </div>
           </div>
         </div>
       </div>
@@ -535,11 +528,5 @@
 
   <!-- Модуль мобільної навігації (Hamburger Menu) -->
   <script src="js/nav.js" defer></script>
-  <!-- Leaflet JS (Бібліотека інтерактивної карти) -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <!-- Модуль інтерактивної карти ChargeUA із завантаженням станцій -->
-  <script src="js/map.js" defer></script>
-  <!-- Модуль інтерактивного калькулятора ChargeUA -->
-  <script src="js/calculator.js" defer></script>
 </body>
 </html>

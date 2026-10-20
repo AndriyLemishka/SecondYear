@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Технології веброзробки та дизайну</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.svg">
+
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/plugins/sal.css">
+    <link rel="stylesheet" href="assets/css/plugins/feather.css">
+    <link rel="stylesheet" href="assets/css/plugins/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/euclid-circulara.css">
+    <link rel="stylesheet" href="assets/css/plugins/swiper.css">
+    <link rel="stylesheet" href="assets/css/plugins/odometer.css">
+    <link rel="stylesheet" href="assets/css/plugins/animation.css">
+    <link rel="stylesheet" href="assets/css/plugins/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/plugins/magnigy-popup.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/plyr.css">
+    <link rel="stylesheet" href="assets/css/plugins/jodit.min.css">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/mystyle.css">
+</head>
+
+<body class="rbt-header-sticky">
+
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="assets/images/sun.svg" alt="Світла тема"><span title="Світла тема"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="assets/images/moon.svg" alt="Темна тема"><span title="Темна тема"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--HEADER-->
+    <header class="rbt-header rbt-header-4 rbt-header-4-container-var">
+        <div class="rbt-sticky-placeholder"></div>
+        <!--HEADER TOP-->
+        <div class="rbt-header-top rbt-header-top-1 header-space-betwween bg-not-transparent bg-color-darker top-expended-activation">
+            <div class="container-fluid">
+                <div class="top-expended-wrapper">
+                    <div class="top-expended-inner rbt-header-sec align-items-center ">
+						
+                        <div class="rbt-header-sec-col rbt-header-center">
+                            <div class="rbt-header-content justify-content-start justify-content-xl-center">
+                                <div class="header-info">
+                                    <div class="rbt-header-top-news">
+                                        <div class="inner">
+                                            <div class="content">
+                                                <a href="https://cad.lpnu.ua/" target="_blank"><span class="rbt-badge variation-02 bg-color-primary color-white radius-round">Кафедра САП</span></a>
+                                                <span class="news-text"> (032) 258-26-74</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>						
+						
+                        <div class="rbt-header-sec-col rbt-header-left d-none d-xl-block">
+                            <div class="rbt-header-content">
+								
+                                <!--Information List-->
+                                <div class="header-info">
+                                    <ul class="rbt-information-list text-center">
+										<li>
+											<a href="mailto:Iryna.Y.Yurchak@lpnu.ua" title="Iryna.Y.Yurchak@lpnu.ua" target="_blank">
+												<i class="fas fa-envelope"></i><span>Iryna.Y.Yurchak@lpnu.ua</span>
+											</a>
+										</li>
+										<li>
+											<a href="https://t.me/+380730189648" target="_blank" title="+380730189648">
+												<i class="fab fa-telegram-plane"></i><span>(073)018-96-48</span>
+											</a>
+										</li>
+                                    </ul>
+                                </div>
+                                <!--./Information List-->
+                            </div>
+                        </div>
+			
+						
+
+                        <div class="rbt-header-sec-col rbt-header-right mt_md--10 mt_sm--10">
+                            <div class="rbt-header-content justify-content-start justify-content-lg-end">
+                                <div class="header-info">
+                                    <ul class="rbt-dropdown-menu switcher-language">
+                                        <li class="has-child-menu">
+                                            <a href="#">
+                                                <img class="left-image" src="assets/images/logo-cad.png" alt="Українська">
+                                                <span class="menu-item">Викладачі</span>
+                                                <i class="right-icon feather-chevron-down"></i>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li>
+                                                    <a href="https://cad.lpnu.ua/staffone/details/yurchak" target="_blank">
+                                                        <img class="left-image" src="assets/images/yurchak.jpg" alt="Ірина ЮРЧАК">
+                                                        <span class="menu-item">Юрчак І.Ю.</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://cad.lpnu.ua/staffone/details/oksentyuk" target="_blank">
+                                                        <img class="left-image" src="assets/images/oksentyuk.jpg" alt="Віра ОКСЕНТЮК">
+                                                        <span class="menu-item">Оксентюк В.М</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://cad.lpnu.ua/staffone/details/parashchyn" target="_blank">
+                                                        <img class="left-image" src="assets/images/parashchyn.jpg" alt="Жанна ПАРАЩИН">
+                                                        <span class="menu-item">Паращин Ж.Д</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://cad.lpnu.ua/staffone/details/stefanovych" target="_blank">
+                                                        <img class="left-image" src="assets/images/stefanovych.jpg" alt="Тетяна СТЕФАНОВИЧ">
+                                                        <span class="menu-item">Стефанович Т.О.</span>
+                                                    </a>
+                                                </li>												
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="rbt-separator d-none d-xl-block"></div>
+                                <div class="header-info d-none d-xl-block">
+                                    <ul class="social-share-transparent">
+										<li><a href="https://www.facebook.com/departmentCDS" target="_blank"><i class="feather-facebook"></i></a></li>
+										<li><a href="https://www.youtube.com/channel/UC5k442CPOLDKtxbqZWJrY1g" target="_blank"><i class="feather-youtube"></i></a></li>
+										<li><a href="https://www.instagram.com/cad_nulp/" target="_blank"><i class="feather-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-info">
+                        <div class="top-bar-expended d-block d-lg-none">
+                            <button class="topbar-expend-button rbt-round-btn"><i class="feather-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--./HEADER TOP-->
+		
+		<!--NAVIGATION-->
+        <div class="rbt-header-wrapper header-space-betwween header-sticky">
+            <div class="container-fluid">
+                <div class="mainbar-row rbt-navigation-center align-items-center">
+                    <div class="header-left rbt-header-content">
+                        <div class="header-info">
+                            <div class="logo logo-dark logo-ncngu">
+                                <a href="index.html">
+									<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+									<strong>Веб-розробка<span class="hidden-logo"> та дизайн</span></strong>
+                                </a>								
+                            </div>
+
+                            <div class="logo d-none logo-light logo-ncngu">
+                                <a href="index.html">
+									<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+									<strong>Веб-розробка<span class="hidden-logo"> та дизайн</span></strong>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-info ml--10">
+                            <div class="rbt-category-menu-wrapper rbt-category-update">
+
+                                <div class="rbt-category-btn">
+                                    <div class="rbt-offcanvas-trigger md-size icon">
+                                        <span class="d-none d-xl-block">
+											<img src="assets/images/browser.svg">
+										</span>
+                                    </div>
+                                    <span class="category-text d-none d-xl-block">Сервіси</span>
+                                </div>
+
+                                <!-- Start category Area  -->
+                                <div class="category-dropdown-menu d-none d-xl-block">
+                                    <div class="category-menu-item">
+                                        <div class="rbt-vertical-nav">
+                                            <ul class="rbt-vertical-nav-list-wrapper vertical-nav-menu">
+                                                <li class="vertical-nav-item active">
+                                                    <a href="#tab1">Асистенти</a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a href="#tab2">Розробка</a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a href="#tab3">Деплой</a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a href="#tab4">Документація</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rbt-vertical-nav-content">
+                                            <!-- Start One Item  -->
+                                            <div class="rbt-vertical-inner tab-content" id="tab1" style="display: block">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="rbt-short-title">ШІ-сервіси</h3>
+                                                                <ul class="rbt-vertical-nav-list-wrapper">
+																	<li><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></li>
+																	<li><a href="https://claude.ai/" target="_blank">Claude</a></li>
+																	<li><a href="https://grok.com/" target="_blank">Grok</a></li>
+																	<li><a href="https://gemini.google.com" target="_blank">Gemini</a></li>
+																	<li><a href="https://notebooklm.google.com/" target="_blank">NotebookLM</a></li>
+																</ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                            <!-- Start One Item  -->
+                                            <div class="rbt-vertical-inner tab-content" id="tab2">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="rbt-short-title">IDE, редактори</h3>
+                                                                <ul class="rbt-vertical-nav-list-wrapper">
+                                                                    <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a></li>
+																	<li><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a></li>
+																	<li><a href="https://aistudio.google.com" target="_blank">Google AI Studio</a></li>
+                                                                    <li><a href="https://www.figma.com/" target="_blank">Figma</a></li>
+																	<li><a href="https://idx.google.com/" target="_blank">Project IDX</a></li>
+																	<li><a href="https://stackblitz.com/" target="_blank">StackBlitz</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                            <!-- Start One Item  -->
+                                            <div class="rbt-vertical-inner tab-content" id="tab3">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="rbt-short-title">Контроль версій, хостинг</h3>
+                                                                <ul class="rbt-vertical-nav-list-wrapper">
+																	<li><a href="https://git-scm.com" target="_blank">Git</a></li>
+																	<li><a href="https://github.com/" target="_blank">GitHub</a></li>
+																	<li><a href="https://www.netlify.com/" target="_blank">Netlify</a></li>
+																	<li><a href="https://vercel.com/" target="_blank">Versel</a></li>
+																	<li><a href="https://developer.chrome.com/docs/devtools" target="_blank">Chrome DevTools</a></li>
+																</ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                            <!-- Start One Item  -->
+                                            <div class="rbt-vertical-inner tab-content" id="tab4">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="rbt-short-title">Керівництва, підручники</h3>
+                                                                <ul class="rbt-vertical-nav-list-wrapper">
+																	<li><a href="https://css.in.ua/html/tags" target="_blank">HTML-довідник</a></li>
+																	<li><a href="https://css.in.ua/css/properties" target="_blank">CSS-довідник</a></li>
+																	<li><a href="https://uk.javascript.info/" target="_blank">Підручник з JavaScript</a></li>
+																	<li><a href="https://git-scm.com/book/uk/v2" target="_blank">Git Docs (укр.)</a></li>
+																	<li><a href="https://docs.github.com/" target="_blank">GitHub Docs (англ.)</a></li>
+																	<li><a href="https://docs.github.com/en/pages" target="_blank">GitHub Pages Docs</a></li>
+																	<li><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank">Git в VS Code</a></li>
+																	<li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank">Git Cheat Sheet (PDF)</a></li>
+																</ul>													
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End category Area  -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rbt-main-navigation d-none d-xl-block">
+                        <nav class="mainmenu-nav">
+                            <ul class="mainmenu">
+                                <li>
+                                    <a href="lecture.html">Лекції</a>
+                                </li>
+								
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="#">Лабораторні <i class="feather-chevron-down"></i></a>
+                                    <!--Mega Menu-->
+                                    <div class="rbt-megamenu grid-item-4">
+                                        <div class="wrapper">
+                                            <div class="row row--15">
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">ШІ-аналітика, копірайтинг та UX/UI дизайн (Етап проєктування)</h3>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a href="work1.html">№1. ШІ-асистенти та основи промпт-інжинірингу</a></li>
+                                                        <li><a href="work2.html">№2. Комплексний робочий процес в екосистемі Google</a></li>
+														<li><a href="work3.html">№3. Генерація графічних UI-активів та мультимедіа</a></li>
+														<li><a href="work4.html">№4. UX/UI прототипування та створення дизайн-системи</a></li>
+                                                    </ul>
+                                                </div>
+
+												
+
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">Фронтенд-верстка, компонентна архітектура та збірка інтерфейсу</h3>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a href="work5.html">№5. Семантична верстка та рефакторинг базового каркасу</a></li>
+														<li><a href="work6.html">№6. Компонентна верстка, стилізація та адаптивність</a></li>	
+														<li><a href="work7.html">№7. Проєктування та реалізація повноцінного лендингу</a></li>
+                                                    </ul>
+                                                </div>
+
+
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">JavaScript-програмування, валідація та обробка Edge Cases</h3>
+                                                    <ul class="mega-menu-item">
+														<li><a href="work9.html">№9. Адаптивні форми зворотного зв'язку та клієнтська валідація</a></li>
+                                                        <li><a href="work10.html">№10. Інтеграція динамічних медіакомпонентів та JS-бібліотек</a></li>
+														<li><a href="work11.html">№11. Розробка інтерактивних віджетів та обробка Edge Cases</a></li>
+                                                    </ul>
+                                                </div>
+												
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">Інженерія середовища, контроль версій, QA та автоматизація (DevOps)</h3>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a href="work8.html">№8. Деплой проєкту. Контроль версій Git та GitHub</a></li>
+														<li><a href="work12.html">№12. Аудит, оптимізація продуктивності та автоматизація релізу (CI/CD).</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Mega Menu  -->
+                                </li>	
+								
+                                <li>
+                                    <a href="selfwork.html">Самостійна</a>
+                                </li>								
+
+                                <li class="has-dropdown has-menu-child-item">
+                                    <a href="#">Галерея
+                                        <i class="feather-chevron-down"></i>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="video.html">Відео, демонстрації</a></li>
+										<li><a href="infographics.html">Інфографіка</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="journal.html">Журнали</a>
+                                </li>								
+	
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="header-right">
+
+                        <!-- Navbar Icons -->
+                        <ul class="quick-access">
+
+                            <li class="access-icon rbt-mini-cart">
+                                <a class="rbt-cart-sidenav-activation rbt-round-btn" href="#">
+                                    <i class="feather-grid"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+						<div class="rbt-btn-wrapper d-none d-xl-block">
+                            <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" href="https://lpnu.ua/rozklad-zaniat-ta-ekzameniv" target="_blank">
+                                <span data-text="Розклад занять">Розклад занять</span>
+                            </a>
+                        </div>
+
+                        <!-- Start Mobile-Menu-Bar -->
+                        <div class="mobile-menu-bar d-block d-xl-none">
+                            <div class="hamberger">
+                                <button class="hamberger-button rbt-round-btn">
+                                    <i class="feather-menu"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Start Mobile-Menu-Bar -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!--NAVIGATION-->
+		
+        <a class="rbt-close_side_menu" href="javascript:void(0);"></a>		
+
+	</header>
+	<!--./HEADER-->
+	
+    <!--MOBILE MENU-->
+    <div class="popup-mobile-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="logo">
+						<div class="logo logo-dark logo-ncngu">
+							<a href="index.html">
+								<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+								<strong>Технології веб-розробки та дизайну</strong>
+							</a>								
+						</div>
+
+						<div class="logo d-none logo-light logo-ncngu">
+							<a href="index.html">
+								<span><img src="assets/images/ncngu/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+								<strong>Технології веб-розробки та дизайну</strong>
+							</a>
+						</div>
+                    </div>
+                    <div class="rbt-btn-close">
+                        <button class="close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <nav class="mainmenu-nav">
+                <ul class="mainmenu">
+                    <li>
+                        <a href="index.html">Головна</a>
+                    </li>
+                    <li>
+                        <a href="lecture.html">Лекції</a>
+                    </li>
+					
+                    <li class="has-dropdown has-menu-child-item">
+                        <a href="#">Лабораторні
+                            <i class="feather-chevron-down"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="work1.html">Лабораторна робота №1.</a></li>
+							<li><a href="work2.html">Лабораторна робота №2.</a></li>
+                            <li><a href="work3.html">Лабораторна робота №3.</a></li>
+							<li><a href="work4.html">Лабораторна робота №4.</a></li>
+                            <li><a href="work5.html">Лабораторна робота №5.</a></li>
+							<li><a href="work6.html">Лабораторна робота №6.</a></li>
+							<li><a href="work7.html">Лабораторна робота №7.</a></li>
+							<li><a href="work8.html">Лабораторна робота №7.</a></li>
+							<li><a href="work9.html">Лабораторна робота №9.</a></li>
+							<li><a href="work10.html">Лабораторна робота №10.</a></li>
+							<li><a href="work11.html">Лабораторна робота №11.</a></li>
+							<li><a href="work12.html">Лабораторна робота №12.</a></li>							
+                        </ul>
+                    </li>					
+
+					<li>
+                        <a href="selfwork.html">Самостійна</a>
+                    </li>					
+                    <li class="has-dropdown has-menu-child-item">
+                        <a href="#">Галерея
+                            <i class="feather-chevron-down"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="video.html">Відео, демонстрації</a></li>
+							<li><a href="infographics.html">Інфографіка</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="journal.html">Журнали</a>
+                    </li>	
+					
+                </ul>
+            </nav>
+
+            <div class="mobile-menu-bottom">
+                <div class="rbt-btn-wrapper mb--20">
+					<a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" href="https://lpnu.ua/rozklad-zaniat-ta-ekzameniv" target="_blank">
+						<span data-text="Розклад занять">Розклад занять</span>
+					</a>
+                </div>
+
+                <div class="social-share-wrapper">
+                    <span class="rbt-short-title d-block">Соціальні мережі</span>
+                    <ul class="social-icon social-default transparent-with-border justify-content-start mt--20">
+                        <li><a href="https://www.facebook.com/departmentCDS" target="_blank"><i class="feather-facebook"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC5k442CPOLDKtxbqZWJrY1g" target="_blank"><i class="feather-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/cad_nulp/" target="_blank"><i class="feather-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+			
+        </div>
+    </div>
+	<!--./MOBILE MENU-->
+	
+    <!--SIDEBAR-->
+    <div class="rbt-cart-side-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="title">
+						<div class="logo logo-dark">
+							<a href="index.html">
+								<span><img src="assets/images/logo.svg" alt="Корисна інформація"></span>
+								<strong>Корисна інформація</strong>
+							</a>								
+						</div>
+
+						<div class="logo d-none logo-light">
+							<a href="index.html">
+								<span><img src="assets/images/logo.svg" alt="Корисна інформація"></span>
+								<strong>Корисна інформація</strong>
+							</a>
+						</div>
+                    </div>
+                    <div class="rbt-btn-close" id="btn_sideNavClose">
+                        <button class="minicart-close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+            </div>
+		
+			
+			<nav class="side-nav w-100">
+				<h5>Дедлайни</h5>
+				<ul>
+					<li>I половина семестру 07.09-24.10.2026</li>
+					<li>II половина семестру 26.10-19.12.2026</li>
+				</ul>
+	
+				<h5>Диски та журнали</h5>
+                <ul class="sidebar-list">
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-21</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1lXCcBfTucbdUVyj8BHSO331x3D7nRa8A" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1tqKXXKlt_sVRtxWffcNgt9Y938gPSk1_JkuLF9VrH9E/edit?gid=0#gid=0" target="_blank">Журнал</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-22</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1Ev60040pgT9_HQyLFK0wvovMwGGqu8IK" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1NXo5kRJmKjE_e8HL3lMKSlktGzFl1iV9nspYO8RXDhw/edit?gid=0#gid=0" target="_blank">1 підгр.</a>
+						<a href="https://docs.google.com/spreadsheets/d/1USK4QpwfhYISxhIVs6PviwU90cVvNl7y5NffUh6ZK4g/edit?gid=0#gid=0" target="_blank">2 підгр.</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-23</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1WjBOr46u_OVTfeSyXbjkPUaJZSP4Jmvo" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1Wux5eWBsDMhY-hW6MdqVYkthsD-eZf1rkmjyoIvW0Qk/edit?gid=0#gid=0" target="_blank">Журнал</a>
+					</li>
+					<li><i class="fab fa-google-drive"></i><strong>ПП-24</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1lSg-GmIsprhW5Swa3aMhgvUxQBbFBgi0" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1FsUAFRlaxtEI-m0jhHziL6gpHNMqGDyRD99BiOfC7m8/edit?gid=0#gid=0" target="_blank">1 підгр.</a>
+						<a href="https://docs.google.com/spreadsheets/d/1qXWH5eotFUfThv2eQSibX6_SV0QV1rJ85k1tctWXkmc/edit?gid=0#gid=0" target="_blank">2 підгр.</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-25</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1Qs2awZjS7OZ6tcr_1kWoQSdvs-fBhm4o" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1Rmmb6SulRmcnYOtvnC3QzLTa54OwBoyjcoTEvysgWNs/edit?gid=0#gid=0" target="_blank">1 підгр.</a>
+						<a href="https://docs.google.com/spreadsheets/d/1_rr9PK0Gcsp5VwBLg8khXByyFRm8jZ2ElxrW8St6zpg/edit?gid=0#gid=0" target="_blank">2 підгр.</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-26</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1E1-w4aBKB-4A8Qen7CTni2TfyBUg4i2a" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1msOp-J4VmPTm0nWMzH74Gji-bHZtck2ea1L0Y2GpWl4/edit?gid=0#gid=0" target="_blank">1 підгр.</a>
+						<a href="https://docs.google.com/spreadsheets/d/11xQazX9DgIEXPH6VtYiWtMXJF7DC3gfijwwsPRrl8OU/edit?gid=0#gid=0" target="_blank">2 підгр.</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-21з</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1_UcWk-JlJCi4a3gjYUFLlaFjhAukkWBg" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1iiQKUGL1ke5mgdaRuZVNX0y0lnEVTO4958b_h_oMDEw/edit?gid=0#gid=0" target="_blank">Журнал</a>
+					</li>
+				</ul>					
+			</nav>	
+
+            <div class="rbt-minicart-footer">
+				<div class="social-share-wrapper">
+                    <span class="rbt-short-title d-block">Соціальні мережі</span>
+                    <ul class="social-icon social-default transparent-with-border justify-content-start mt--20">
+                        <li><a href="https://www.facebook.com/departmentCDS" target="_blank"><i class="feather-facebook"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC5k442CPOLDKtxbqZWJrY1g" target="_blank"><i class="feather-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/cad_nulp/" target="_blank"><i class="feather-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--./SIDEBAR-->
+	
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+	
+	<!--INSIDE TEMPLATE-->
+
+    <!--BREADCRUMB-->
+    <div class="rbt-breadcrumb-default ptb--45 ptb_md--30 ptb_sm--30 bg-gradient-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <h2 class="title"><span class="theme-gradient">11. Розробка інтерактивних віджетів та обробка Edge Cases</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--./BREADCRUMB-->
+	
+	<!--PAGE AND SIDEBAR-->
+    <div class="rbt-page-area rbt-section-gap2Bottom page-work">
+        <div class="container">
+			<div class="row g-5">
+
+				<div class="col-xl-9">
+					<!--PAGE CONTENT-->
+					<article class="rbt-page-content">
+						<div class="narrow-block-goal">
+							<div class="rbt-feature feature-style-2 rbt-radius">
+								<div class="icon bg-pink-opacity">
+									<i class="feather-target"></i>
+								</div>
+								<div class="feature-content">
+									<h6 class="feature-title">Мета роботи</h6>
+									<p class="feature-description">Навчитися формулювати точні технічні промпти для ШІ-асистентів на розробку складної обчислювальної бізнес-логіки на чистому JavaScript (Vanilla JS). Опанувати фундаментальні навички інженера з тестування (Quality Assurance, QA). Навчитися працювати з вкладкою Console у Chrome Developer Tools, проводити стрес-тестування інтерфейсів, виявляти логічні помилки, копіювати логи багів та змушувати ШІ реалізовувати захисний код для обробки виняткових ситуацій (Edge-cases). Закріпити навички автоматичного деплою проєкту.</p>
+								</div>
+							</div>						
+						</div>
+						
+						<p>Раніше, якщо користувач вводив в калькулятор вартості послуг замість цифри літеру або ставив знак мінус, сайт або видавав легендарну помилку NaN (Not a Number), або зависав, змушуючи перезавантажувати браузер. Сьогодні розробник не просто пише код за допомогою ШІ-асистентів, він виступає в ролі QA Engineer (інженера з тестування). ШІ-асистент (ChatGPT/Claude) миттєво напише логіку, але саме розробник повинен провести її стрес-тестування через DevTools, виявити приховані баги, «крайні випадки» (Edge Cases) та змусити ШІ написати захисний, стійкий до критичних помилок код.</p>
+	
+						<h4>Стек інструментів для роботи</h4>
+
+						<ul>
+							<li>Середовище кодингу: VS Code.</li>
+							<li>ШІ-асистенти. ChatGPT (OpenAI), Claude (Anthropic) або Gemini.</li>
+							<li>Інструменти тестування. Chrome Developer Tools (вкладка Console/Інспектор).</li>
+							<li>Система контролю версій та автоматичний деплой: Git, GitHub, Vercel/GitHub Pages.</li>
+						</ul>
+						
+						
+					  	<h5>Інтерактивні віджети</h5>
+						
+						<p>Інтерактивний віджет (Widget) — це самостійний динамічний елемент вебсторінки (калькулятор, трекер, інтерактивна карта), який реагує на дії користувача в реальному часі без перезавантаження сторінки. На сучасних лендингах та корпоративних сайтах віджети є головним інструментом утримання уваги та збору лідів (потенційних клієнтів).</p>
+						
+				  	  	<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+							<div class="accordion" id="accordionExampleb3">
+
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo31">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo31" aria-expanded="false" aria-controls="collapseTwo31">
+											Інтерактивний віджет з інженерної точки зору 
+									  </button>
+									</h2>
+									<div id="collapseTwo31" class="accordion-collapse collapse" aria-labelledby="headingTwo31" data-bs-parent="#accordionExampleb3">
+										<div class="accordion-body card-body">
+											<p>Інтерактивний віджет — це автономний, ізольований або напівізольований програмний модуль, інтегрований у вебсторінку, який забезпечує специфічний функціонал та взаємодіє з користувачем без необхідності перезавантаження всієї сторінки.</p>
+											<p>З технічної сторони сучасний кастомний віджет базується на тріаді:</p>
+											<ul>
+												<li>HTML (Структура). Окремий контейнер (найчастіше &lt;div class=&quot;widget-container&quot;&gt;), який містить елементи введення даних (&lt;input&gt;, &lt;select&gt;, &lt;input type=&quot;range&quot;&gt;) та зони для виведення результату.</li>
+												<li>CSS (Інтерфейс). Ізольовані стилі (часто з використанням унікальних префіксів), які гарантують, що дизайн віджета не буде порушено під дією глобальних стилів сайту.</li>
+												<li>JavaScript (Бізнес-логіка). Він перехоплює дії користувача (події/events), миттєво обробляє дані в оперативній пам'яті браузера і за допомогою DOM-маніпуляцій оновлює інтерфейс.</li>
+											</ul>
+											
+											<h5>Анатомія роботи кастомного віджета (на прикладі калькулятора)</h5>
+											<p>Більшість віджетів, які буде створено за допомогою ШІ (ChatGPT, Claude, Gemini), працюють за єдиним подієво-орієнтованим архітектурним патерном:</p>
+											<ol>
+												<li>Ініціалізація (Data Binding). Скрипт знаходить елементи інтерфейсу в дереві документа за допомогою класичних методів або сучасних аналогів: document.getElementById() чи document.querySelector().</li>
+												<li>Слухачі подій (Event Listeners). На елементи введення вішаються «прослуховувачі». Для текстових полів це подія input (спрацьовує при кожному натисканні клавіші), для випадних списків чи повзунків — change.</li>
+												<li>Збір та нормалізація. Щойно користувач змінив значення, JS зчитує властивість .value. Все, що приходить з полів HTML — це завжди є рядком (string). Програма має явно перетворити його на число за допомогою parseInt() або parseFloat().</li>
+												<li>Калькуляція (Pure Functions). Обчислення результату за заданою бізнес-формулою.</li>
+												<li>Рендеринг (UI Update). Запис готового результату в елемент виведення за допомогою властивості .textContent або .innerHTML.</li>
+											</ol>
+											
+									  	</div>
+									</div>
+								</div>
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo32">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo32" aria-expanded="false" aria-controls="collapseTwo32">
+											Класифікація віджетів в сучасній веб-розробці
+									  </button>
+									</h2>
+									<div id="collapseTwo32" class="accordion-collapse collapse" aria-labelledby="headingTwo32" data-bs-parent="#accordionExampleb3">
+										<div class="accordion-body card-body">
+											<p>На веб-сторінках зустрічаються два принципово різних типів віджетів:</p>
+											
+											<h5>Зовнішні інтегровані віджети</h5>
+											<p>Це готові рішення, які надають великі платформи (Google Maps, YouTube, LiqPay, Facebook, Weather Informers). Такі віджети розглянуто в лабораторній роботі №7.</p>
+											<ul>
+												<li>Платформа надає фрагмент коду, зазвичай це тег &lt;iframe&gt;.</li>
+												<li>Розробник не витрачає час на розробку логіки. Платформа гарантує безпеку (наприклад, обробка платежів відбувається на стороні банку) та стабільність.</li>
+												<li>Водночас, зовнішні віджети можуть бути важкими для завантаження сторінки (істотно зменшують показники Google PageSpeed Insights). Часто обмежено можливості кастомізації дизайну, користувач не може стилізувати вміст &lt;iframe&gt; власним CSS через політику безпеки браузерів.</li>
+											</ul>
+											
+											<h5>Кастомні віджети</h5>
+											<p>Це віджети, які розробник створює з нуля під конкретний бізнес (наприклад, конструктор кухонних меблів, калькулятор вартості клінінгу, трекер накопичень).</p>
+											<ul>
+												<li>Пишеться унікальна логіка під технічне завдання та вимоги клієнта.</li>
+												<li>Забезпечується ідеальна інтеграція в дизайн-систему сайту, досягається максимальна швидкість роботи. Розробник має повний контроль над кодом.</li>
+												<li>Водночас, програмний код потребує ретельного тестування, оскільки будь-яка помилка в коді може зупинити роботу інших скриптів на сторінці.</li>
+											</ul>
+											<p>Якщо звернутися до ШІ, наприклад ChatGPT: "<em>Напиши калькулятор кредиту</em>", він надасть красивий та робочий код. Але цей код буде розрахований на ідеальний сценарій (Happy Path).</p>
+											<p>ШІ часто забуває про специфіку веб-середовища:</p>
+											<ul>
+												<li>Асинхронність та стани. Якщо віджет повинен підтягувати, наприклад, курс валют з зовнішнього API, ШІ може написати запит без обробки помилки мережі (try...catch). Якщо сервер банку з якихось причин не доступний — віджет зависне в стані "Loading...".</li>
+												<li>Конфлікти ділянок видимості. Якщо ШІ напише змінні через старий var або оголосить функції в глобальній ділянці видимості (window), а розробник захоче поставити два таких калькулятори на одну сторінку — вони почнуть перезаписувати дані один одного. Сучасний стандарт вимагає ізоляції коду (через ES-модулі або замикання).</li>
+											</ul>											
+									  	</div>
+									</div>
+								</div>								
+							</div>
+						</div>
+						
+						
+						<h5>Чек-ліст для проєктування ідеального віджета</h5>
+						<p>Перед тим, як змусити ШІ кодити, архітектор проекту повинен продумати три рівні взаємодії:</p>		
+						<ol>
+							<li>UX (Зручність). Динамічний відгук на кожну дію. Користувач не повинен тиснути на кнопку «Розрахувати» після кожної цифри.	Використання події input замість click на кнопці.</li>
+							<li>UI (Візуалізація). Стан доступності (Accessibility/aria-* атрибути) та стани елементів. Акцентування кольором фокусу на полях, блокування кнопки надсилання, якщо форма порожня.</li>
+							<li>Fail-Safe (Стійкість). Обмеження діапазонів введення безпосередньо в HTML та дублювання цього в JS. Атрибути min="1" max="100" для input типу number.</li>
+						</ol>
+						
+						<h4>Захисне програмування, Edge Cases та Критичні помилки</h4>
+						<p>Штучний інтелект за замовченням генерує код для ідеального сценарію «Happy Path», коли користувач вводить саме те, що від нього очікують. Проте, в реальному світі користувачі:</p>
+						<ol>
+							<li>Вводять текст або спецсимволи туди, де мають бути лише цифри.</li>
+							<li>Залишають поля порожніми.</li>
+							<li>Вставляють від’ємні значення, нулі або астрономічні числа.</li>
+							<li>Швидко і хаотично клікають на кнопки, викликаючи умови перегонів.</li>
+						</ol>
+						<p>Захисне програмування (Defensive Programming) — це філософія та методологія проєктування програмного забезпечення, за якої код пишеться з усвідомленням того, що будь-які зовнішні чинники (користувачі, сторонні API, мережа чи навіть інші розробники) можуть поводитися некоректно, непередбачувано або вороже. Головна мета захисного програмування — мінімізувати наслідки помилок. Програма не повинна «падати» (завершувати роботу аварійно), видавати користувачеві технічні помилки («червоний екран смерть») чи пошкоджувати дані. Замість цього вона має ефективно обробляти аномалії, продовжувати роботу в безпечному режимі або виводити зрозумілі людські попередження.</p>
+					  	<h5>Три золоті правила захисного коду</h5>
+						<ol>
+							<li><strong>Правило №1.</strong> Ніколи не довіряти вхідним даним. Будь-які дані, що надходять ззовні конкретного методу чи функції, вважаються «брудними» за замовченням. Це стосується:
+								<ul>
+									<li>Значень з текстових полів форм (&lt;input&gt;).</li>
+									<li>Даних, що приходять з бази даних або стороннього API (fetch).</li>
+									<li>Параметрів, які передаються у функції іншими розробниками.</li>
+								</ul>
+							</li>
+							<li><strong>Правило №2.</strong> Передбачати граничні випадки (Edge Cases). Програма має бути протестована не лише на ідеальному сценарії, коли користувач вводить все правильно. Потрібно заздалегідь відповісти на запитання:
+								<ul>
+									<li>Що буде, якщо передати від'ємне число? null? undefined?</li>
+									<li>Що буде, якщо користувач надішле порожній рядок або натисне кнопку надсилання форми 50 разів поспіль?</li>
+									<li>Що станеться, якщо сервер повернув помилку 500 замість даних?</li>
+								</ul>
+							</li>
+							<li><strong>Правило №3.</strong> Fail-Fast або Fail-Safe. Залежно від критичності системи, застосовують одну з двох стратегій:
+								<ul>
+									<li>Fail-Fast (Швидка відмова). Програма миттєво зупиняє виконання та повідомляє про помилку на етапі розробки, щоб розробник міг її виправити.</li>
+									<li>Fail-Safe (Безпечна відмова). У фінальному продукті програма загладжує помилку, використовує резервні значення за замовченням і продовжує працювати, не заважаючи користувачеві.</li>
+								</ul>
+							</li>
+						</ol>
+						
+						<p>Захисне програмування — це не просто написання додаткових умов if. Це професійне ставлення до коду. Якщо написати код захищеним способом один раз, розробник позбавляється необхідності виправляти неочікувані «баги» в майбутньому, коли сайтом користуватимуться реальні люди на різноманітних пристроях.</p>
+
+			  	  	  	<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+							<div class="accordion" id="accordionExampleb4">
+
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo41">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo41" aria-expanded="false" aria-controls="collapseTwo41">
+											Edge Cases
+									  </button>
+									</h2>
+									<div id="collapseTwo41" class="accordion-collapse collapse" aria-labelledby="headingTwo41" data-bs-parent="#accordionExampleb4">
+										<div class="accordion-body card-body">
+											<p>Edge Case (граничний випадок, виняток) — це ситуація, яка виникає за межами звичайних операційних параметрів системи, але є теоретично і практично можливою. Це не баг в синтаксисі коду, це логічна прогалина в архітектурі додатка.</p>
+											<p>В контексті веб-віджетів та калькуляторів, які розробляються в лабораторній роботі №11, граничні випадки поділяються на кілька категорій:</p>
+											<h5>А. Граничні значення чисел</h5>
+											<p>Наприклад, в калькуляторі вартості розробки сайту користувач має ввести кількість сторінок.</p>
+											<ul>
+												<li>Happy Path. Користувач вводить 5 або 12.</li>
+												<li>Edge Case 0. Користувач вводить 0. Чи може бути сайт з 0 сторінок? Якщо код просто помножить 0 на ціну сторінки, підсумкова вартість буде 0. Але робота менеджера, хостинг і дизайн-система все одно коштують грошей.</li>
+												<li>Edge Case - "Мінус". Користувач вводить -5 сторінок. Якщо JavaScript не заблокує це, сайт покаже, що компанія тепер винна гроші користувачу.</li>
+												<li>Edge Case Максимум. Користувач вводить 999999999999. Відбудеться переповнення інтерфейсу, текст пошириться за межі блоку, або JS видасть Infinity (нескінченність).</li>
+											</ul>
+											<h5>Б. Некоректні типи даних</h5>
+											<ul>
+												<li>Happy Path. В полі «Вік» очікується число 20.</li>
+												<li>Edge Case. Користувач копіює та вставляє туди текст "двадцять", або спецсимволи $%^&*, або взагалі залишає поле порожнім і тисне «Розрахувати».
+													<ul>
+														<li>Базовий ШІ-код спробує виконати математичну операцію з цим рядком. В результаті користувач побачить на екрані типове NaN (Not a Number). Для клієнта сайту NaN — це ознака того, що сервіс зламався, і йому не можна довіряти.</li>
+													</ul>
+												</li>
+											</ul>
+											<h5>В. Поведінкові та інтерфейсні Edge Cases</h5>
+											<ul>
+												<li>Double-Clicking (Подвійний клік). Користувач натискає кнопку «Оформити замовлення» три рази поспіль, оскільки в нього повільний інтернет. Захищений код має заблокувати кнопку після першого кліку. Незахищений код надішле 3 однакові запити в базу даних і спише гроші з картки клієнта тричі.</li>
+											</ul>
+									  	</div>
+									</div>
+								</div>
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo42">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo42" aria-expanded="false" aria-controls="collapseTwo42">
+											Критичні помилки 
+									  </button>
+									</h2>
+									<div id="collapseTwo42" class="accordion-collapse collapse" aria-labelledby="headingTwo42" data-bs-parent="#accordionExampleb4">
+										<div class="accordion-body card-body">
+											<p>Якщо Edge Case — це неправильна логіка, то Критична помилка (Runtime Error) — це технічна катастрофа всередині браузера. Це ситуація, коли JavaScript натрапляє на команду, яку він фізично не може виконати, і повністю зупиняє роботу потоку.</p>
+											<p>Якщо в JS виникає критична помилка, всі наступні скрипти на сторінці перестають працювати. Перестає відкриватися мобільне меню, не працюють слайдери, ламаються інші форми. Сторінка стає «мертвою».</p>
+											<p>Найпопулярніші критичні помилки, які висвічуються на вкладці Console DevTools під час стрес-тестування ШІ-коду:</p>
+											<ol>
+												<li>TypeError: Cannot read properties of null (reading 'value')
+													<ul>
+														<li>ШІ спробував прочитати дані з інпуту, якого немає на сторінці (наприклад, id елемента змінено в HTML, а в JS-коді залишився старий).</li>
+													</ul>
+												</li>
+												<li>ReferenceError: X is not defined
+													<ul>
+														<li>Код намагається звернутися до змінної або функції, яку забули оголосити або оголосили не в тій ділянці видимості.</li>
+													</ul>
+												</li>
+												<li>Uncaught (in promise) Error
+													<ul>
+														<li>Віджет намагався асинхронно отримати дані (наприклад, курс валют чи погоду), але запит заблокував браузер через політику CORS або пропав інтернет. ШІ не написав обробник .catch() або блок try...catch, і додаток «впав».</li>
+													</ul>
+												</li>												
+											</ol>
+											
+									  	</div>
+									</div>									
+								</div>
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo43">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo43" aria-expanded="false" aria-controls="collapseTwo43">
+											Стратегія Валідації Edge Cases
+									  </button>
+									</h2>
+									<div id="collapseTwo43" class="accordion-collapse collapse" aria-labelledby="headingTwo43" data-bs-parent="#accordionExampleb4">
+										<div class="accordion-body card-body">
+											<p>Для того, щоб перетворити «крихкий» ШІ-код на стійкий бізнес-продукт, потрібно змусити ШІ впровадити три рівні захисту.</p>
+											<h5>Рівень 1. HTML5 Валідація (Перша лінія оборони)</h5>
+											<p>Забороняти некоректне введення ще на рівні розмітки. Замість базового &lt;input type=&quot;text&quot;&gt; змусити ШІ використовувати специфічні атрибути:</p>
+<pre>
+HTML
+&lt;input type=&quot;number&quot; id=&quot;quantity&quot; min=&quot;1&quot; max=&quot;100&quot; required&gt;
+</pre>		
+											<h5>Рівень 2. JS Валідація та Нормалізація (Головний щит)</h5>
+											<p>Перед будь-яким розрахунком JavaScript повинен «очистити» та перевірити дані. Обов'язково використовувати перевірку на isNaN та приведення типів.</p>
+											
+<pre>
+JavaScript
+// Зчитуємо значення та примусово перетворюємо на число
+let pages = parseFloat(document.getElementById('pages').value);
+
+// Перевірка на Edge Cases
+if (isNaN(pages) || pages &lt;= 0) {
+    showError("Будь ласка, введіть коректну кількість сторінок (більше 0)");
+    return; // Зупиняємо виконання функції, рятуємо додаток від NaN
+}
+</pre>
+											<h5>Рівень 3. Санкціонування</h5>
+											<p>Якщо користувач вводить текст, він може спробувати ввести туди шкідливий скрипт (XSS-атака), наприклад: &lt;script&gt;steal_cookies()&lt;/script&gt;. Якщо потім віджет виводить цей текст на екран через .innerHTML, браузер виконає цей код.</p>
+											<p>Ніколи не виводити дані користувача через .innerHTML. Використовувати лише .textContent або .innerText — вони автоматично екранують шкідливий код, перетворюючи його на звичайний безпечний текст.</p>
+									  	</div>
+									</div>									
+								</div>									
+							</div>
+						</div>
+						
+						<p>Вміння працювати з Edge Cases — це те, що відрізняє джуніора (який радіє, що код запустився з першого разу) від мідла та сініора (які знають, що код буде протестовано в екстремальних умовах). В звіті до лабораторної роботи №11 студент має показати саме цей процес: як знайдено слабке місце в згенерованому ШІ алгоритмі та як навчалася модель писати захищений код.</p>
+						
+						
+						<h5>Консоль розробника Chrome DevTools Console</h5>
+						<p>Chrome DevTools Console (Консоль розробника) — це один з найважливіших інструментів арсеналі веброзробника та інженера з тестування (QA). Вона вбудована безпосередньо в браузер Google Chrome і виконує дві основні функції:</p>
+						<ol>
+							<li>Логування та діагностика, що показує помилки в коді, попередження, системні повідомлення, а також дані, які розробник навмисно виводить для перевірки.</li>
+							<li>Інтерактивне середовище надає можливість в реальному часі писати та виконувати JavaScript-код, взаємодіючи з поточною вебсторінкою.</li>
+						</ol>
+						
+						
+			  	  	  	<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+							<div class="accordion" id="accordionExampleb5">
+
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo51">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo51" aria-expanded="false" aria-controls="collapseTwo51">
+											Робота в консолі
+									  </button>
+									</h2>
+									<div id="collapseTwo51" class="accordion-collapse collapse" aria-labelledby="headingTwo51" data-bs-parent="#accordionExampleb5">
+										<div class="accordion-body card-body">
+											<h5>Способи відкривання вкладки Console в Chrome</h5>
+											<ul>
+												<li>Гарячі клавіші F12 (або Fn+F12 на деяких ноутбуках), далі обрати вкладку Console.</li>
+												<li>Через контекстне меню. Клікнути правою кнопкою миші в будь-якому місці сторінки, вибрати Inspect (Переглянути код) та перейти на вкладку Console.</li>
+											</ul>
+											<h5>Основні типи повідомлень в консолі</h5>
+											<p>Повідомлення поділяються на чотири головні рівні.</p>
+											<ol>
+												<li>Errors (Помилки) — червоний колір. Критичні проблеми, через які JavaScript-код повністю або частково перестав працювати (наприклад, ReferenceError чи TypeError). Якщо калькулятор показує NaN або кнопка не реагує на клік, в консолі обов'язково з'явиться червоний запис.</li>
+												<li>Warnings (Попередження) — жовтий колір. Неприємні, але не критичні помилки. Зазвичай це повідомлення про те, що якась технологія є застарілою або сайт використовує неефективні ресурси.</li>
+												<li>Info/Logs (Інформація/Логи) — білий або сірий колір. Звичайні текстові повідомлення, які розробники виводять для самоперевірки.</li>
+												<li>User Input/Output. Власні команди тестувальника (позначаються символом &gt;) та відповіді системи на них (&lt;).</li>
+											</ol>
+											<h5>Головні сценарії користування консоллю</h5>
+											<p><strong>1. Стрес-тестування інтерфейсів та пошук багів (QA-фаза)</strong></p>
+											<p>Тестувальник або розробник відкриває консоль і починає вводити в форми на сайті некоректні дані (наприклад, -5 сторінок, пусті рядки, спецсимволи).</p>
+											<ul>
+												<li>Якщо додаток зламався, консоль зафіксує помилку.</li>
+												<li>Консоль можна розгорнути (стрілка ліворуч від помилки) і побачити Stack Trace (трасування стеку) — точний рядок в файлі .js, де сталася аварія. Цей текст копіюють і передають розробникам (або ШІ-асистенту) для виправлення коду.</li>
+											</ul>
+											<p><strong>2. Виведення даних за допомогою console.log()</strong></p>
+											<p>Найпростіший спосіб дізнатися, що відбувається всередині програми — прописати логування в JavaScript-файлі проєкту:</p>
+<pre>
+JavaScript
+let totalPrice = pagesCount * 1000;
+console.log("Поточна кількість сторінок:", pagesCount);
+console.log("Розрахована вартість:", totalPrice);
+</pre>		
+											<p>Кожного разу, коли спрацьовуватиме цей код, в консолі браузера з'являтимуться актуальні значення змінних.</p>
+											<p><strong>3. Виконання JavaScript-коду в реальному часі</strong></p>
+											<p>Консоль — це повноцінний REPL-інтерфейс. Можна клікнути на порожній рядок біля знаку &gt; і написати будь-який код.</p>
+											<ul>
+												<li>Наприклад, швидко порахувати: Math.round(2.6) і натиснути Enter. Консоль відразу видасть результат: 3.</li>
+												<li>Створити спливаюче вікно: alert('Привіт з консолі!');.</li>
+											</ul>
+											<p><strong>4. Робота з елементами сторінки (DOM)</strong></p>
+											<p>Керувати сайтом можна прямо з консолі.</p>
+											<ul>
+												<li>Написати document.title = "Новий заголовок сайту"; і вкладка в браузері миттєво змінить ім'я.</li>
+												<li>Знайти елемент ціни та дізнатися його вміст:</li>
+											</ul>
+<pre class="ex-font">
+JavaScript
+console.log(document.getElementById('total-price').textContent);
+</pre>	
+											<p>Якщо обрати будь-який елемент на сторінці через вкладку Elements (Інспектор), то в консолі можна звернутися до нього через швидку змінну $0. Наприклад, $0.style.backgroundColor = 'red'; пофарбує виділений елемент в червоний колір.</p>
+											<h5>Корисні поради та інструменти консолі</h5>
+											<ul>
+												<li>Очищення консолі. Якщо на екрані забагато тексту, натиснути комбінацію Ctrl+L або на іконку перекресленого кола (Clear console) в лівому верхньому кутку панелі.</li>
+												<li>Збереження логів. Якщо перейти на іншу сторінку або перезавантажити сайт, консоль за замовченням очиститься. Якщо поставити галочку біля Preserve log (в налаштуваннях консолі — шестірня праворуч), історія помилок не зникне навіть після перезавантаження сторінки.</li>
+												<li>Фільтрація. У верхній панелі консолі можна вимкнути відображення "Warnings" або "Info", щоб бачити виключно червоні "Errors". Також є рядок пошуку (Filter) для пошуку конкретного багу за ключовим словом.</li>
+											</ul>
+									  	</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<h2>Покроковий хід виконання роботи</h2>
+						
+						<p>В лабораторній роботі №11 студент створює власний інтерактивний віджет, інтегрує його в лендинг з попередніх лабораторних робіт. За допомогою ШІ реалізує JavaScript-логіку віджету.</p>
+						<p>Ланцюжок створення віджету: <strong>UX → UI → бізнес-логіка → генерація коду → Happy Path → QA → Edge Cases → Defensive Programming → повторне тестування → інтеграція → деплой</strong>.</p>
+						
+						<p>Віджет повинен бути пов'язаний з тематикою власного вебпроєкту. Приклади:</p>
+						<ul>
+							<li>Калькулятор вартості створення сайту.</li>
+							<li>Калькулятор вартості туристичної подорожі.</li>
+							<li>Калькулятор вартості ремонту.</li>
+							<li>Калькулятор вартості доставки.</li>
+							<li>Конструктор кавового напою.</li>
+							<li>Конфігуратор автомобіля.</li>
+							<li>Калькулятор тренувань.</li>
+							<li>Калькулятор вартості послуги.</li>
+							<li>Квіз з підрахунком результату.</li>
+							<li>Трекер накопичень.</li>
+							<li>Конфігуратор товару.</li>
+							<li>Планувальник або генератор рекомендацій.</li>
+						</ul>
+						<p>Віджет повинен мати не менше трьох параметрів, які впливають на результат.</p>
+						<ul>
+							<li>Приклад <a href="assets/picture/11/widget_calculator.html" target="_blank">Калькулятора вартості розробки сайту</a></li>
+							<li>Приклад <a href="assets/picture/11/coffee_mixer.html" target="_blank">Кав'ярня в стилі BrewLab</a></li>
+						</ul>
+						
+						<h5>Етап 1. Вибір ідеї та визначення функціональності віджета</h5>
+						<ol>
+							<li>Обрати тип віджета. Студент повинен визначити, який інтерактивний елемент буде реалізовано. Потрібно, щоб віджет був логічно пов'язаний з тематикою власного лендингу.
+								<ul>
+									<li>Якщо проєкт присвячений вебстудії, тоді Калькулятор орієнтовної вартості створення вебсайту.</li>
+									<li>Якщо проєкт присвячений кав'ярні, тоді Конструктор власного кавового напою.</li>
+									<li>Якщо проєкт присвячений подорожам, тоді Калькулятор розрахунку вартості подорожі.</li>
+								</ul>
+							</li>
+							<li>Описати бізнес-логіку. До початку написання коду студент повинен визначити:
+								<ul>
+									<li>Які дані вводить користувач?</li>
+									<li>Які параметри він може вибрати?</li>
+									<li>Що саме розраховує віджет?</li>
+									<li>Яка формула використовується?</li>
+									<li>Що відображається користувачу?</li>
+								</ul>
+							</li>
+<pre>
+Наприклад: Калькулятор вебсайту
+Кількість сторінок → input number
+Тип дизайну → select
+SEO → checkbox
+Адаптивність → checkbox
+Підтримка → checkbox
+Розрахунок
+Загальна вартість
+</pre>				
+							<li>Створити таблицю бізнес-правил. Перед написанням JavaScript студент формує таблицю.</li>
+							<div class="table-responsive">
+								<table class="table">
+									<tr>
+										<td><strong>Параметр</strong></td>
+										<td><strong>Тип</strong></td>
+										<td><strong>Значення</strong></td>
+										<td><strong>Вплив</strong></td>
+									</tr>
+									<tr>
+										<td>Кількість сторінок</td>
+										<td>number</td>
+										<td>1–50</td>
+										<td>+1000 грн/сторінка</td>
+									</tr>
+									<tr>
+										<td>Дизайн</td>
+										<td>select</td>
+										<td>шаблон/індивідуальний</td>
+										<td>+0/+5000</td>
+									</tr>
+									<tr>
+										<td>SEO</td>
+										<td>checkbox</td>
+										<td>true/false</td>
+										<td>+1500</td>
+									</tr>
+									<tr>
+										<td>Адаптивність</td>
+										<td>checkbox</td>
+										<td>true/false</td>
+										<td>+2000</td>
+									</tr>								
+								</table>							
+							</div>
+
+							<p>Ця таблиця стане основою для промпту до ШІ.</p>							
+						</ol>
+						
+						<h5>Етап 2. Проєктування UX віджета</h5>
+						<ol>
+							<li>Перед створенням коду необхідно продумати, як користувач взаємодіятиме з віджетом.</li>
+							<li>Визначити елементи керування. Залежно від задачі можна використовувати:
+								<ul>
+									<li>&lt;input type=&quot;number&quot;&gt;, &lt;input type=&quot;range&quot;&gt;, &lt;select&gt;, &lt;input type=&quot;checkbox&quot;&gt;, &lt;input type=&quot;radio&quot;&gt;, текстове поле, кнопки.</li>
+									<li>Бажано використовувати різні типи елементів, щоб продемонструвати роботу з різними DOM-подіями.</li>
+								</ul>
+							</li>
+							<li>Визначити події, коли повинен оновлюватися результат. Наприклад:
+								<ul>
+									<li>input при введенні;</li>
+									<li>change після зміни select, checkbox або range;</li>
+									<li>click для окремих кнопок.</li>
+								</ul>
+							</li>
+							<li>Для калькулятора бажано використовувати миттєвий перерахунок, а не змушувати користувача щоразу натискати кнопку «Розрахувати».</li>
+							<li>Приклад промпту</li>
+<pre>
+Ти — UX/UI Designer та Frontend Developer. Проаналізуй майбутній інтерактивний віджет для мого вебпроєкту.
+Віджет: калькулятор вартості створення сайту.
+Користувач повинен вибирати:
+1. кількість сторінок;
+2. тип дизайну;
+3. SEO;
+4. адаптивність;
+5. технічну підтримку.
+Запропонуй оптимальну структуру UI.
+Для кожного параметра вкажи:
+- тип HTML-елемента;
+- рекомендовану подію JavaScript;
+- спосіб відображення результату.
+Не пиши JavaScript-код. Спочатку опиши UX-логіку.
+</pre>							
+						</ol>
+						
+						<h5>Етап 3. Створення UI-каркасу віджета</h5>
+						<ol>
+							<li>Створити HTML-структуру. Віджет додається до існуючого лендингу.</li>
+							<li>Необхідно створити окрему секцію &lt;section&gt;. Всередині розміщуються заголовок, поля введення, параметри, повідомлення про помилки, блок результату.</li>
+							<li>Стилізувати віджет за допомогою Tailwind CSS. Віджет повинен відповідати дизайн системі, що створена в попередніх лабораторних роботах. Не потрібно створювати нову палітру кольорів або нову систему компонентів.</li>
+							<li>Приклад промпту</li>
+<pre>
+Створи UI-каркас інтерактивного віджета для мого лендингу.
+Використовуй:
+- HTML5;
+- Tailwind CSS;
+- існуючу Design System.
+Віджет має містити:
+1. заголовок;
+2. поле кількості сторінок;
+3. select типу дизайну;
+4. checkbox SEO;
+5. checkbox адаптивності;
+6. блок загальної вартості;
+7. область повідомлень про помилки.
+Використовуй семантичний HTML. Поки що НЕ пиши JavaScript. Всі елементи повинні мати унікальні id. Віджет повинен бути адаптивним та працювати за принципом mobile-first.
+</pre>							
+						</ol>
+						
+						<h5>Етап 4. Формування технічного завдання для JavaScript</h5>
+						
+						<p>Студент не повинен одразу писати промпт «Напиши калькулятор», спочатку необхідно сформувати технічну специфікацію.</p> 
+						<ol>
+							<li>Описати алгоритм, Наприклад:</li>
+<pre>
+basePrice = 3000
+pages = кількість сторінок
+
+design:
+template = 0
+custom = 5000
+
+SEO = 1500
+responsive = 2000
+
+total = basePrice + pages * 1000 + designPrice + SEO + responsive
+</pre>			
+							<li>Визначити очікувані результати, що згодом надасть можливість перевірити правильність алгоритму. Наприклад:
+								<ul>
+									<li>1 сторінка + шаблон = 4000 грн.</li>
+									<li>5 сторінок + індивідуальний дизайн + SEO = 13500 грн.</li>
+								</ul>
+							</li>
+						</ol>
+						
+						<h5>Етап 5. Створення системного промпту для JavaScript</h5>
+						
+						<ol>
+							<li>Приклад комплексного промпту.</li>
+<pre>
+Ти — Senior JavaScript Developer та QA Engineer. Мені потрібно реалізувати бізнес-логіку інтерактивного калькулятора вартості вебсайту.
+## HTML
+В сторінці вже існують:
+#pages-count
+#design-type
+#seo-opt
+#responsive-opt
+#total-price
+#error-pages
+Не змінюй HTML без необхідності.
+						
+## Бізнес-логіка
+Базова вартість: 3000 грн.
+Кожна сторінка: +1000 грн.
+Тип дизайну:
+шаблон = 0 грн
+індивідуальний дизайн = 5000 грн
+SEO: +1500 грн.
+Адаптивність: +2000 грн.
+
+## Поведінка
+Результат повинен оновлюватися автоматично при зміні input/select/checkbox.
+Використовуй:
+- addEventListener;
+- input;
+- change;
+- textContent.
+Не використовуй jQuery. Код повинен бути Vanilla JavaScript.
+
+## Вимоги
+- перевіряй вхідні дані;
+- не допускай NaN;
+- не допускай Infinity;
+- не допускай від'ємних значень;
+- обробляй порожні поля;
+- використовуй min/max;
+- передбач обробку Edge Cases.
+
+Спочатку поясни алгоритм, а потім надай JavaScript-код.
+</pre>			
+							<li>Отриманий код зберегти в файлі widget.js</li>
+							<li>Підключити файл JavaScript до HTML &lt;script src="js/widget.js"&gt;&lt;/script&gt;. Перевірити, що JavaScript завантажується без помилок.</li>
+							<li>Перевірити Happy Path, використовувати тільки правильні значення. Наприклад:
+								<ul>
+									<li>сторінок = 5</li>
+									<li>дизайн = індивідуальний</li>
+									<li>SEO = так</li>
+									<li>адаптивність = так</li>
+								</ul>
+							</li>
+							<li>Перевірити, чи правильно обчислюється результат.</li>
+						</ol>
+						
+						<h5>Етап 7. Перевірка JavaScript через Інструменти розробника Chrome DevTools</h5>
+						<ol>
+							<li>Відкрити Chrome → F12 → Console
+								<ul>
+									<li>Перевірити Errors, Warnings, Logs.</li>
+									<li>Увімкнути Preserve log, щоб повідомлення не втрачалися після перезавантаження сторінки.</li>
+								</ul>
+							</li>
+							<li>Перевірити DOM через Console, чи JavaScript знаходить потрібні елементи.
+								<ul>
+									<li>Наприклад document.getElementById('total-price')</li>
+									<li>або document.querySelector('#pages-count')</li>
+								</ul>
+							</li>
+						</ol>
+						
+						<h5>Етап 8. Створення план тестування якості QA Test Plan</h5>
+						<p>Тепер студент переходить від ролі розробника до ролі QA Engineer.</p>
+						<ol>
+							<li>Створити тест-кейси. Доцільно перевірити щонайменше такі ситуації:</li>
+						</ol>
+						<div class="table-responsive">
+							<table class="table">
+								<tr>
+									<td><strong>№</strong></td>
+									<td><strong>Тест</strong></td>
+									<td><strong>Очікуваний результат</strong></td>
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>правильне число</td>
+									<td>коректний розрахунок</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>порожнє поле</td>
+									<td>повідомлення про помилку</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>0</td>
+									<td>помилка</td>
+								</tr>		
+								<tr>
+									<td>4</td>
+									<td>-5</td>
+									<td>помилка</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>дуже велике число</td>
+									<td>помилка</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>дробове число</td>
+									<td>нормалізація</td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td>зміна select</td>
+									<td>перерахунок</td>
+								</tr>
+								<tr>
+									<td>8</td>
+									<td>checkbox</td>
+									<td>перерахунок</td>
+								</tr>	
+								<tr>
+									<td>9</td>
+									<td>швидка зміна значень</td>
+									<td>стабільна робота</td>
+								</tr>
+								<tr>
+									<td>10</td>
+									<td>відсутній DOM-елемент</td>
+									<td>відсутність критичного падіння</td>
+								</tr>
+							</table>							
+						</div>						
+						
+						<h5>Етап 9. Стрес-тестування Гранічних випадків Edge Cases</h5>
+						<ol>
+							<li><strong>Тест на пусте поле.</strong> Повністю витерти цифру з поля введення кількості. Що відображає калькулятор? Зазвичай ціна перетворюється на NaN або падає в нуль, а в консолі може виникнути помилка типу ReferenceError.</li>
+							<li><strong>Тест на від'ємні значення.</strong> Ввести в поле сторінок -5 або -500. Що сталося з ціною? Якщо сайт повертає від'ємну вартість і компанія тепер «винна гроші» клієнту, тоді це є критичним багом безпеки (Critical Business Logic Bug).</li>
+							<li><strong>Тест на аномальні значення.</strong> Ввести 9999999999999999. Чи поширюється текст за межі блоку дизайну?</li>
+							<li><strong>Тест на вживання дробових чисел</strong>, наприклад: 2.5. Визначити, чи допускає бізнес-логіка дробові значення. Якщо ні, тоді необхідно округлювати або повідомляти про помилку.</li>
+							<li>Скопіювати всі негативні результати UI та тексти помилок з консолі (якщо вони виникли).</li>
+						</ol>
+						
+						<h5>Етап 10. Аналіз помилок в Console</h5>
+						
+						<ol>
+							<li>Знайти Runtime Errors. Особливу увагу звернути на TypeError, ReferenceError, SyntaxError, RangeError, Uncaught, NaN, Infinity</li>
+							<li>Якщо виникла помилка, тоді розгорнути повідомлення, знайти файл, знайти номер рядка, скопіювати повідомлення, скопіювати Stack Trace.</li>
+							<li>Передати знайдені баги до ШІ в зрозумілому вигляді "контекст + відтворення помилки + очікуваний результат".</li>
+							<li>Приклад промпту</li>
+<pre>
+Ти — Senior QA Engineer та JavaScript Developer. Я протестував інтерактивний віджет і знайшов помилку.
+## Сценарій
+В поле #pages-count я ввів: -5
+## Фактичний результат
+Віджет показав: -2000 грн
+## Очікуваний результат
+Від'ємна кількість сторінок повинна бути заборонена.
+Користувач повинен побачити повідомлення: "Введіть кількість сторінок від 1 до 50".
+## Console [вставити повідомлення Console]
+## Завдання 
+Проаналізуй причину помилки. Потім запропонуй мінімальне виправлення JavaScript. 
+Не переписуй весь файл. Покажи тільки змінений фрагмент та поясни, чому виникла помилка.
+</pre>											
+						</ol>
+						<p>Це значно якісніший підхід, ніж повторна генерація всього JavaScript-файлу.</p>
+						
+						<h5>Етап 12. Реалізація Захисного програмування Defensive Programming</h5>
+						<p>Необхідно реалізувати щонайменше три рівні захисту.</p>
+						<ol>
+							<li><strong>Рівень 1. HTML5.</strong> Використати:</li>
+<pre>
+&lt;input type="number" min="1" max="50" required&gt;
+</pre>	
+							<li><strong>Рівень 2. JavaScript.</strong> Перевіряти дані перед розрахунком:</li>
+<pre>
+const pages = parseInt(value, 10);
+if (Number.isNaN(pages) || pages &lt; 1 || pages &gt; 50) {
+    // повідомлення про помилку
+}
+</pre>							
+							<li><strong>Рівень 3. Безпечне відображення.</strong>
+								<ul>
+									<li>Якщо дані походять від користувача, для виведення неперевіреного тексту не використовувати innerHTML. </li>
+									<li>Використовувати: textContent</li>
+								</ul>
+							</li>
+							
+							<li>Попросити ШІ провести аудит Defensive Programming</li>
+<pre>
+Проведи аудит JavaScript-коду мого віджета з точки зору Defensive Programming.
+Перевір:
+1. порожні значення;
+2. NaN;
+3. Infinity;
+4. від'ємні значення;
+5. нуль;
+6. надмірно великі числа;
+7. дробові значення;
+8. відсутні DOM-елементи;
+9. неправильні значення select;
+10. повторне швидке введення.
+Не змінюй код. Для кожної проблеми вкажи:
+Edge Case → Причина → Можливий наслідок → Рекомендований захист.
+</pre>			
+
+							<li>Помилка повинна бути зрозумілою для користувача.
+								<ul>
+									<li>Не показувати NaN, TypeError, undefined.</li>
+									<li>Замість цього "Введіть кількість сторінок від 1 до 50."</li>
+								</ul>
+							</li>
+							<li>Приклад промпту</li>
+<pre>
+Покращ UI повідомлень про помилки в інтерактивному віджеті.
+Вимоги:
+- повідомлення повинно знаходитися безпосередньо під відповідним полем;
+- використовуй Tailwind CSS;
+- помилкове поле повинно мати помітний focus/error стан;
+- повідомлення повинно бути зрозумілим звичайному користувачу;
+- технічні повідомлення JavaScript не повинні відображатися користувачу.
+Не змінюй бізнес-логіку.
+</pre>		
+							<li>Після виправлення коду необхідно повторити всі тест-кейси.
+								<ul>
+									<li>Не можна перевіряти тільки ту помилку, яку було виправлено. Виправлення однієї проблеми може зламати іншу частину віджета.</li>
+								</ul>
+							</li>
+
+							<li>Якщо віджет інтегрується в лендинг, необхідно переконатися, що він не ламає інші компоненти.
+								<ul>
+									<li>Перевірити шапку, мобільне меню, форми, слайдери, галереї та інші JavaScript-компоненти.</li>
+								</ul>
+							</li>
+							<li>Приклад промпту</li>
+<pre>
+Проаналізуй JavaScript віджета з точки зору ізоляції коду.
+Перевір:
+- глобальні змінні;
+- глобальні функції;
+- конфлікти id;
+- повторне оголошення змінних;
+- можливість розміщення двох екземплярів віджета на одній сторінці.
+Запропонуй спосіб ізоляції коду за допомогою сучасного Vanilla JavaScript. Не використовуй jQuery.
+</pre>							
+						</ol>
+						
+						<h5>Етап 17. Інтеграція в лендинг та фінальний аудит якості QA</h5>
+						
+						<ol>
+							<li>Перевірити дизайн. Віджет повинен:
+								<ul>
+									<li>відповідати дизайн системі;</li>
+									<li>мати узгоджену типографіку;</li>
+									<li>використовувати існуючі кольори;</li>
+									<li>мати відповідні заокруглення форм;</li>
+									<li>використовувати існуючі кнопки;</li>
+									<li>коректно працювати на вузькому екрані.</li>
+								</ul>
+							</li>
+							<li>Перевірити адаптивність, щонайменше на ширині 320 px, 375 px, 768 px, 1024 px, 1280 px, 1440 px.
+								<ul>
+									<li>Особливу увагу звернути на input, select, кнопки, блок результату, повідомлення про помилки.</li>
+								</ul>
+							</li>
+							<li>Після завершення роботи виконати комплексний аудит.</li>
+<pre>
+Ти — Senior Frontend Developer, QA Engineer та Accessibility Specialist. Проведи фінальний аудит інтерактивного віджета.
+Перевір:
+## UX
+- зрозумілість інтерфейсу;
+- логіку взаємодії;
+- зрозумілі повідомлення.
+
+## JavaScript
+- DOM;
+- events;
+- валідацію;
+- обчислення;
+- Edge Cases;
+- Runtime Errors.
+
+## Security
+- безпечне виведення даних;
+- innerHTML;
+- textContent.
+
+## Accessibility
+- labels;
+- keyboard navigation;
+- focus;
+- aria-атрибути.
+
+## Responsive
+- mobile;
+- tablet;
+- desktop.
+
+## Architecture
+- глобальні змінні;
+- ізоляцію коду;
+- можливість повторного використання.
+
+Не переписуй код.
+
+Сформуй таблицю:
+
+Проблема | Рівень критичності | Причина | Рекомендація.
+</pre>							
+						</ol>
+						
+						<h5>Етап 5. Публікація та реліз на хостингу за допомогою Git</h5>
+						<p>Після того, як проєкт повністю готовий та протестований, зафіксувати цей фінальний реліз.</p>
+						<ol>
+							<li>В терміналі VS Code перевірити стан робочої області: <span class="ex-font">git status</span></li>
+							<li>Додати всі оновлені компоненти: <span class="ex-font">git add .</span></li>
+							<li>Зробити фінальний інженерний комміт: <span class="ex-font">git commit -m "feat: додано інтерактивний віджет з повним захистом від Edge Cases (QA-перевірено)"</span></li>
+							<li>Надіслати код в репозиторій GitHub: <span class="ex-font">git push origin main</span></li>
+							<li>Завдяки налаштованому раніше CI/CD пайплайну на сервісі Vercel або Netlify, сторінка автоматично перезбереться в хмарі за лічені секунди. Перейти за живим посиланням та перевірити роботу віджета зі смартфона.</li>
+						</ol>
+						
+						<h5>Етап 20. Перевірка продакшн-версії</h5>
+						
+						<ol>
+							<li>Відкрити опублікований сайт. Перевірити:
+								<ul>
+									<li>віджет працює;</li>
+									<li>розрахунки правильні;</li>
+									<li>помилки обробляються;</li>
+									<li>Console не містить помилок;</li>
+									<li>адаптивність працює;</li>
+									<li>інші компоненти лендингу не зламані.</li>
+								</ul>
+							</li>
+							<li>Особливо важливо протестувати саме продакшн-версію, а не лише локальний сайт.</li>
+						</ol>
+						
+						<h5>Очікуваний результат</h5>
+						
+						<p>Головним результатом лабораторної роботи є віджет, який студент вміє спроєктувати, згенерувати за допомогою ШІ, протестувати, знайти в ньому слабкі місця, виправити їх та довести до стабільного продакшн-стану.</p>
+<pre>
+                    ІНТЕРАКТИВНИЙ ВІДЖЕТ
+                            │
+              ┌─────────────┼─────────────┐
+              ↓             ↓             ↓
+             UX            UI        Бізнес-логіка
+              │             │             │
+              └─────────────┼─────────────┘
+                            ↓
+                       Master Prompt
+                            ↓
+                       ШІ-генерація
+                            ↓
+                        Happy Path
+                            ↓
+                       QA Testing
+                            ↓
+                       Edge Cases
+                            ↓
+                  Defensive Programming
+                            ↓
+                       Debugging
+                            ↓
+                    Regression Testing
+                            ↓
+                    Production Release
+</pre>						
+
+						
+						<p>ШІ є ідеальним помічником, але фінальне слово за архітектором. Якщо ШІ видає гарний з виду інтерфейс, варто увімкнути свій внутрішній UX/QA-фільтр. Подивитися на код очима користувача, який випадково або навмисно захоче зламати форму. Справжній професіоналізм полягає не в написанні коду, який працює, коли все добре, а в написанні коду, який продовжує гідно працювати, коли все йде не за правилами.</p>
+						
+					  	<h2>Зміст звіту та технічні фінальні артефакти</h2>
+
+						<ol>
+							<li>Титульний лист з назвою лабораторної роботи, даними студента.</li>
+							<li>Посилання на віддалений репозиторій на GitHub та живе посилання на сайт в інтернеті (Vercel або Netlify).</li>
+							<li>Опис обраного віджета та його бізнес-логіки.</li>
+							<li>appy Path. Показати приклад правильного розрахунку.</li>
+							<li>Edge Cases. Навести щонайменше 5 тестів.</li>
+							<li>Таблицю тест-кейсів (QA Log) за формою:
+								<ul>
+									<li>Що вводили | Яка була помилка/поведінка спочатку | Як її виправили завдяки ШІ-перевірочним гвардам.</li>
+								</ul>
+							</li>
+						  	<li>Фінальний лістинг коду (чистий JavaScript-блок валідації та розрахунку).</li>
+							<li>Скріншот вкладки Console з Chrome DevTools, який підтверджує відсутність помилок під час тестування некоректних даних.</li>
+							<li>Промпт-паспорт (Prompt Log). Тексти запиту на генерацію логіки віджета.</li>
+						</ol>
+						
+					  	<h2>Критерії оцінювання лабораторної роботи</h2>
+						<ul>
+							<li><strong>Логіка та складність віджета.</strong> Віджет повинен мати щонайменше 3 параметри впливу на фінальний результат (наприклад: інпут введення, селект вибору та чекбокс додаткової опції).</li>
+							<li><strong>Обробка помилок та Edge Cases.</strong> Ідеальна стійкість програми до некоректного введення. Повна відсутність значень NaN, Infinity або від'ємних фінансових підсумків на екрані.</li>
+							<li><strong>Культура тестування та промпт-паспорт в звіті.</strong> Наявність чітко заповненого журналу тестування помилок в звіті студента.</li>
+							<li><strong>Якість UI/UX відображення помилок.</strong> Динамічне увімкнення/вимкнення класів Tailwind CSS (наприклад, червона рамка для невалідного інпуту та текстове попередження користувачу).</li>
+							<li><strong>Чистота консолі та деплой.</strong> Працююче хмарне посилання, відсутність помилок розгортання та чиста консоль розробника.</li>
+						</ul>
+						
+						
+					  	<h2>Контрольні запитання</h2>
+						<ol>
+							<li>Що таке інтерактивний віджет в контексті веброзробки? Наведіть приклади.</li>
+							<li>Поясніть різницю між Happy Path та Edge Case.</li>
+							<li>Що таке Defensive Programming (захисне програмування)?</li>
+							<li>Які основні Edge Cases ви тестували в своєму віджеті? Назвіть мінімум 4 випадки.</li>
+							<li>Що означає поява NaN в результаті розрахунку? Чому це виникає?</li>
+							<li>Як ви захищали код від порожнього поля та від’ємних значень?</li>
+							<li>Яку роль має подія input та change при створенні інтерактивного віджета?</li>
+							<li>Як ви перевіряли роботу віджета? Які інструменти використовували?</li>
+							<li>Що потрібно робити, якщо в консолі з’являється помилка TypeError: Cannot read properties of null?</li>
+							<li>Наведіть приклад хорошого промпту до ШІ для виправлення Edge Cases.</li>
+							<li>Чому важливо обмежувати максимальне значення в полях (наприклад, max="500")?</li>
+							<li>Як ви інтегрували віджет в свій основний лендинг?</li>
+							<li>Які коміт-сообщення ви використовували під час фінального релізу? Наведіть приклади.</li>
+							<li>Як відбувається автоматичний деплой після git push?</li>
+							<li>Які головні висновки ви зробили з цієї лабораторної роботи щодо якості коду?</li>
+						</ol>
+						
+						<h2>Глосарій термінів. Розробка інтерактивних віджетів та обробка Edge Cases</h2>
+						<p>Рекомендовано для вивчення перед захистом Лабораторної роботи №11</p>
+						
+						<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+							<div class="accordion" id="accordionExampleb6">
+
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo61">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo61" aria-expanded="false" aria-controls="collapseTwo61">
+											Веб-розробка та архітектура інтерфейсів
+										</button>
+									</h2>
+									<div id="collapseTwo61" class="accordion-collapse collapse" aria-labelledby="headingTwo61" data-bs-parent="#accordionExampleb6">
+										<div class="accordion-body card-body">
+											<ul>
+												<li><strong>Інтерактивний віджет</strong> — самостійний програмний модуль на вебсторінці (наприклад, калькулятор, квіз чи конструктор), який виконує обчислення та миттєво оновлює користувацький інтерфейс (UI) без повного перезавантаження сторінки.</li>
+												<li><strong>Vanilla JS (Чистий JavaScript)</strong> — мова програмування JavaScript в своєму первинному вигляді, без використання сторонніх бібліотек (наприклад, jQuery) чи фреймворків.</li>	
+												<li><strong>DOM (Document Object Model)</strong> — програмний інтерфейс, який представляє HTML-документ у вигляді дерева об'єктів, що надає JavaScript можливість динамічно змінювати вміст, структуру та стилі сторінки.</li>
+												<li><strong>Chrome Developer Tools (Інструменти розробника)</strong> — вбудований в браузер Google Chrome комплекс інструментів для веброзробників, що надає можливість інспектувати HTML/CSS, відстежувати мережеві запити та налагоджувати JavaScript.</li>
+												<li><strong>Chrome DevTools Console (Консоль розробника)</strong> — вбудований в браузер інструмент налагодження коду, куди виводяться всі системні логи, попередження та червоні треки критичних помилок JavaScript.</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo62">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo62" aria-expanded="false" aria-controls="collapseTwo62">
+											Програмування логіки (JavaScript)
+										</button>
+									</h2>
+									<div id="collapseTwo62" class="accordion-collapse collapse" aria-labelledby="headingTwo62" data-bs-parent="#accordionExampleb6">
+										<div class="accordion-body card-body">
+											<ul>
+												<li><strong>DOM-маніпуляції (Document Object Model Manipulations)</strong> — процес динамічної зміни структури, вмісту або стилів вебсторінки за допомогою JavaScript-коду (наприклад, оновлення підсумкової ціни в текстовому блоці за допомогою .textContent).</li>
+												<li><strong>Слухач подій (Event Listener)</strong> — спеціальний метод в JavaScript (addEventListener), який «стежить» за елементом інтерфейсу та очікує певної дії від користувача (клік, введення тексту, вибір інпуту) для миттєвого запуску пов'язаної з ним функції розрахунку.</li>
+												<li><strong>Приведення типів (Type Casting/Coercion)</strong> — примусове перетворення даних з одного типу в інший. В інпутах форм дані завжди зчитуються як рядок (String), тому їх обов'язково потрібно приводити до чисел (Number) за допомогою функцій parseInt() або parseFloat().</li>
+												<li><strong>Баг (Bug)</strong> — помилка в коді програми, яка призводить до її некоректної роботи, неочікуваної поведінки інтерфейсу або порушення бізнес-логіки.</li>
+												<li><strong>Critical Business Logic Bug (Критичний баг бізнес-логіки)</strong> — серйозна помилка в логіці програми, яка призводить до фінансових, репутаційних або експлуатаційних збитків (наприклад, коли калькулятор повертає від'ємну вартість послуги).</li>
+												<li><strong>NaN (Not a Number)</strong> — спеціальний стан числового типу даних в JavaScript, який свідчить про те, що результат математичної операції є невизначеним або не може бути обчислений (наприклад, при спробі помножити рядок на число).</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo63">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo63" aria-expanded="false" aria-controls="collapseTwo63">
+											Захисне програмування. Тестування та захист коду (QA & Fail-Safe)
+										</button>
+									</h2>
+									<div id="collapseTwo63" class="accordion-collapse collapse" aria-labelledby="headingTwo63" data-bs-parent="#accordionExampleb6">
+										<div class="accordion-body card-body">
+											<ul>
+												<li><strong>Захисне програмування (Defensive Programming)</strong> — підхід до проектування архітектури коду, за якого розробник за замовченням припускає, що вхідні дані будуть некоректними чи шкідливими, і заздалегідь створює «щити» (валідацію), що не дозволяють програмі вийти з ладу.</li>
+												<li><strong>Defensive Guards (Захисні перевірки/Валідатори)</strong> — спеціальні умовні конструкції та фільтри в коді, які перевіряють вхідні дані на відповідність правилам до того, як запуститься основний обчислювальний алгоритм.</li>
+												<li><strong>Стрес-тестування інтерфейсів</strong> — метод тестування програмного забезпечення, спрямований на перевірку надійності та стійкості додатка в умовах нетипових, некоректних або екстремальних вхідних даних.</li>
+												<li><strong>Happy Path («Щасливий шлях»)</strong> — ідеальний сценарій виконання програми, за якого користувач вводить виключно очікувані, коректні дані та діє чітко за передбаченим розробником алгоритмом без помилок.</li>
+												<li><strong>Edge Case (Граничний випадок, виняток)</strong> — аномальна або специфічна ситуація взаємодії з інтерфейсом, яка виникає на межах або поза межами звичайних параметрів (введення тексту в числове поле, від'ємні значення, порожні відправки).</li>
+												<li><strong>Валідація даних (Data Validation)</strong> — процес перевірки введеної користувачем інформації на відповідність встановленим правилам (наприклад, перевірка чи число є більшим за нуль) перед тим, як пустити ці дані далі в обчислювальну формулу.</li>												
+												<li><strong>Overflow (Переповнення)</strong> — ситуація, коли вхідне або розраховане значення перевищує допустимі межі інтерфейсу або типи даних, спричиняючи візуальне ламання дизайну (вихід тексту за межі блоку) або збій обчислень.</li>
+												<li><strong>Runtime Error (Помилка часу виконання/Виняток)</strong> — критична технічна помилка, яка виникає безпосередньо під час роботи скрипту в браузері (наприклад, TypeError) і повністю зупиняє потік виконання JavaScript на сторінці, якщо її не було оброблено.</li>
+												<li><strong>XSS-атака (Cross-Site Scripting/Міжсайтовий скриптинг)</strong> — тип вразливості вебдодатків, при якому в сторінку впроваджується шкідливий JavaScript-код від користувача. Виникає, якщо виводити неперевірені дані через .innerHTML замість безпечного .textContent.</li>
+												<li><strong>XSS-захист (Cross-Site Scripting Protection)</strong> — комплекс заходів для запобігання впровадженню зловмисного коду на сторінку, В контексті лабораторної роботи реалізується через безпечне виведення результатів за допомогою .textContent замість небезпечного .innerHTML.</li>												
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo64">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo64" aria-expanded="false" aria-controls="collapseTwo64">
+											Контроль версій та розгортання (Git, DevOps & CI/CD)
+										</button>
+									</h2>
+									<div id="collapseTwo64" class="accordion-collapse collapse" aria-labelledby="headingTwo64" data-bs-parent="#accordionExampleb6">
+										<div class="accordion-body card-body">
+											<ul>
+												<li><strong>Деплой (Deployment/Розгортання)</strong> — процес перенесення та публікації протестованого коду з локального комп'ютера розробника на віддалений публічний вебсервер або хмарний хостинг.</li>
+												<li><strong>Live Demo (Жива демонстрація)</strong> — публічна адреса (URL-посилання) повністю працюючої версії вебдодатка, розгорнутої на хмарному хостингу в реальному часі, яка використовується для фінального релізу або презентації клієнту/викладачу.</li>
+												<li><strong>CI/CD Пайплайн (Continuous Integration/Continuous Delivery)</strong> — процес автоматизації збирання, тестування та розгортання (деплою) проєкту в хмарі відразу після того, як розробник відправляє оновлений код в репозиторій.</li>
+												<li><strong>DevOps</strong> — набір практик, інструментів і принципів, який об'єднує процеси розробки (Development) та експлуатації (Operations) для швидкого, надійного й автоматизованого створення, тестування, розгортання та супроводу програмних продуктів.</li>
+											</ul>
+											
+										</div>
+									</div>
+								</div>								
+							</div>
+						</div>
+					
+					</article>
+
+					<!--./PAGE CONTENT-->
+				</div>
+				
+				<div class="col-xl-3">
+					<!--PAGE SIDEBAR-->
+					<div class="rbt-default-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
+						<div class="inner">
+							<div class="content-item-content">
+
+								<div class="rbt-default-sidebar-wrapper">
+									<div class="section-title mb--20">
+										<h4 class="rbt-title-style-3">Застосовані інструменти</h4>
+									</div>
+																	
+									<nav class="mainmenu-nav">
+										<ul class="dashboard-mainmenu rbt-default-sidebar-list ncngu-dashboard-mainmenu">
+											<li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a></li>
+											<li><a href="https://claude.ai/" target="_blank">Claude</a></li>
+											<li><a href="https://gemini.google.com" target="_blank">Gemini</a></li>
+											<li><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></li>
+											<li><a href="https://developer.chrome.com/docs/devtools" target="_blank">Chrome Developer Tools (Console/Інспектор)</a></li>
+											<li><a href="https://git-scm.com" target="_blank">Git</a></li>	
+											<li><a href="https://github.com/" target="_blank">GitHub</a></li>
+											<li><a href="https://www.netlify.com/" target="_blank">Netlify</a></li>
+											<li><a href="https://vercel.com/" target="_blank">Versel</a></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--./PAGE SIDEBAR-->
+				</div>				
+			</div>
+        </div>
+    </div>
+	<!--./PAGE AND SIDEBAR-->	
+	
+	<!--./INSIDE TEMPLATE-->
+	
+	<!--FOOTER-->
+	<footer class="rbt-footer rbt-footer-shadow-1 footer-style-1  bg-color-extra2">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row g-5">
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+						<div class="footer-widget">
+                            <div class="logo logo-dark">
+                                <a href="index.html">
+									<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+									<strong>Технології веб-розробки та дизайну</strong>
+                                </a>								
+                            </div>
+
+                            <div class="logo d-none logo-light">
+                                <a href="index.html">
+									<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+									<strong>Технології веб-розробки та дизайну</strong>
+                                </a>
+                            </div>							
+
+							<p class="description mt--20">Практичне ознайомлення з принципами створення веб-сайтів, можливостями сучасних веб-технологій і сервісів.</p>
+
+							<ul class="social-icon social-default justify-content-start">
+								<li><a href="https://www.facebook.com/departmentCDS" target="_blank"><i class="feather-facebook"></i></a></li>
+								<li><a href="https://www.youtube.com/channel/UC5k442CPOLDKtxbqZWJrY1g" target="_blank"><i class="feather-youtube"></i></a></li>
+								<li><a href="https://www.instagram.com/cad_nulp/" target="_blank"><i class="feather-instagram"></i></a></li>								
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+						<div class="footer-widget">
+							<h5 class="ft-title">Контакти</h5>
+						
+							<ul class="ft-link">
+								<li><a href="https://lpnu.ua/" target="_blank" title="Національний університет Львівська політехніка">НУ "Львівська політехніка"</a></li>
+								<li><a href="https://lpnu.ua/ikni" target="_blank" title="Інститут комп'ютерних наук та інформаційних технологій">Інститут комп'ютерних наук</a></li>
+								<li><a href="http://cad.lpnu.ua/" target="_blank" title="Кафедра САП">Кафедра САП</a></li>
+
+								<li><a class="popup-gmaps" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.329917567392!2d24.008481515709175!3d49.83625817939535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add79af0e4d9d%3A0xa95470e031eb25c0!2z0JrQsNGE0LXQtNGA0LAg0KHQkNCf0KA!5e0!3m2!1suk!2sua!4v1641753753230!5m2!1suk!2sua" title="Локація кафедри">Локація кафедри</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+						<div class="footer-widget">
+							<h5 class="ft-title">Навчання</h5>
+							<ul class="ft-link">
+								<li><a href="https://vns.lpnu.ua/course/view.php?id=5478" target="_blank" title="Віртуальне навчальне середовище">Віртуальне навчальне середовище</a></li>
+								<li><a href="https://lpnu.ua/rozklad-zaniat-ta-ekzameniv" target="_blank" title="Розклад занять">Розклад занять</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="rbt-separator-mid">
+			<div class="container">
+				<hr class="rbt-separator m-0">
+			</div>
+		</div>
+		<!-- Start Copyright Area  -->
+		<div class="copyright-area copyright-style-1 ptb--20">
+			<div class="container">
+				<p class="rbt-link-hover text-center">© <a href="index.html">@2026. Технології веб-розробки та дизайну</a></p>
+			</div>
+		</div>
+		<!-- End Copyright Area  -->
+	</footer>
+	<!--./FOOTER-->
+
+	<!--SCROLLUP-->
+    <div class="rbt-progress-parent">
+        <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+	<!--./SCROLLUP-->
+
+    <script src="assets/js/vendor/modernizr.min.js"></script>
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <!-- Dark Mode Switcher -->
+    <script src="assets/js/vendor/js.cookie.js"></script>
+    <script src="assets/js/vendor/jquery.style.switcher.js"></script>
+    <script src="assets/js/vendor/swiper.js"></script>
+    <script src="assets/js/vendor/jquery-appear.js"></script>
+    <script src="assets/js/vendor/odometer.js"></script>
+    <script src="assets/js/vendor/backtotop.js"></script>
+    <script src="assets/js/vendor/isotop.js"></script>
+    <script src="assets/js/vendor/imageloaded.js"></script>
+
+    <script src="assets/js/vendor/wow.js"></script>
+    <script src="assets/js/vendor/waypoint.min.js"></script>
+    <script src="assets/js/vendor/easypie.js"></script>
+    <script src="assets/js/vendor/text-type.js"></script>
+    <script src="assets/js/vendor/jquery-one-page-nav.js"></script>
+    <script src="assets/js/vendor/bootstrap-select.min.js"></script>
+    <script src="assets/js/vendor/jquery-ui.js"></script>
+    <script src="assets/js/vendor/magnify-popup.min.js"></script>
+    <script src="assets/js/vendor/paralax-scroll.js"></script>
+    <script src="assets/js/vendor/paralax.min.js"></script>
+    <script src="assets/js/vendor/countdown.js"></script>
+    <script src="assets/js/vendor/plyr.js"></script>
+    <script src="assets/js/vendor/jodit.min.js"></script>
+    <script src="assets/js/vendor/Sortable.min.js"></script>
+	
+    <script src="assets/js/main.js"></script>
+	
+	<script src="assets/js/unitegallery/js/unitegallery.min.js"></script>
+	<link  href="assets/js/unitegallery/css/unite-gallery.css" rel="stylesheet">
+	<script src="assets/js/unitegallery/themes/tiles/ug-theme-tiles.js"></script>	
+	
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery("#gallery").unitegallery({
+			gallery_theme: "tiles",
+			tiles_type: "nested",
+			gallery_width:"100%",
+			gallery_min_width: 300,
+			tiles_nested_optimal_tile_width: 400,
+			tiles_space_between_cols: 10,
+			tile_enable_textpanel: true
+		});
+	});
+	</script>	
+</body>
+	
+</html>

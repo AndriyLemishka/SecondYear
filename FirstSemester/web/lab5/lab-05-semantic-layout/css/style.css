@@ -631,6 +631,7 @@ footer[id] {
   border-bottom: 1px solid var(--color-border);
 }
 
+.hero-bg-wrap,
 .hero-video-bg-wrap {
   position: absolute;
   top: 0;
@@ -641,6 +642,7 @@ footer[id] {
   z-index: 1;
 }
 
+.hero-bg-img,
 .hero-video-bg {
   width: 100%;
   height: 100%;
@@ -1367,7 +1369,8 @@ footer[id] {
 }
 
 @media (max-width: 900px) {
-  .hero-video-bg-wrap {
+  .hero-bg-wrap,
+.hero-video-bg-wrap {
     width: 100%;
     opacity: 0.25;
   }
@@ -2231,4 +2234,24 @@ footer[id] {
     padding: 6px 8px !important;
     font-size: 11px !important;
   }
+}
+
+/* Статичний макет карти для ЛР №5 */
+.map-static-img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.map-static-caption {
+  padding: 12px 24px;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  color: #64748B;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
