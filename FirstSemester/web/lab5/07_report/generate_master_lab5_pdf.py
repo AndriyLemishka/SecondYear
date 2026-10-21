@@ -1,9 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Майстер-генератор повного звіту та інструкції до Лабораторної роботи №5
-Включає: Титулку ДСТУ, Мета/Завдання, Повний хід роботи (Етапи 1-14),
-20 Контрольних запитань з еталонними відповідями, Анатомію коду, Тести, Висновки.
+Майстер-генератор повного розширеного звіту та інструкції до Лабораторної роботи №5
+Включає:
+- Титульна сторінка згідно з ДСТУ
+- Вступ та технічне завдання
+- РОЗДІЛ 1. Детальний покроковий хід роботи (14 Етапів, Кроки 1-30 без пропусків)
+  з детальними інструкціями: "Де вибирав", "Що натискав", "Що куди вставляв", "Отриманий результат"
+- 16 Скріншотів реального процесу виконання
+- РОЗДІЛ 2. Анатомія ключових семантичних та CSS-конструкцій
+- РОЗДІЛ 3. Всі 20 контрольних запитань з 3-компонентними відповідями
+- РОЗДІЛ 4. Висновки
+
 Автор: Лемішка Андрій Анатолійович, група ПП-24
+Викладач: к.т.н., доцент Юрчак Ірина Юріївна
 """
 
 import os
@@ -61,7 +70,7 @@ def setup_document_styles(doc):
     
     style_normal = doc.styles['Normal']
     style_normal.font.name = 'Times New Roman'
-    style_normal.font.size = Pt(12)
+    style_normal.font.size = Pt(11.5)
     style_normal.font.color.rgb = COLOR_TEXT
     style_normal.paragraph_format.line_spacing = 1.15
     style_normal.paragraph_format.space_after = Pt(4)
@@ -106,7 +115,7 @@ def add_title_page(doc):
     p4.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p4.paragraph_format.space_before = Pt(4)
     p4.paragraph_format.space_after = Pt(4)
-    r = p4.add_run("ЗВІТ ТА ПОКРОКОВИЙ ХІД РОБОТИ")
+    r = p4.add_run("ЗВІТ ТА ДЕТАЛЬНИЙ ХІД РОБОТИ")
     r.bold = True
     r.font.name = "Times New Roman"
     r.font.size = Pt(18)
@@ -206,13 +215,68 @@ def add_body_p(doc, text, bold_prefix=None):
     r.font.color.rgb = COLOR_TEXT
     return p
 
+def add_step_box(doc, step_num, step_title, where_selected, what_clicked, what_inserted, result_text):
+    """Створює окремий деталізований блок конкретного кроку з 4 пунктами."""
+    p_title = doc.add_paragraph()
+    p_title.paragraph_format.keep_with_next = True
+    p_title.paragraph_format.space_before = Pt(8)
+    p_title.paragraph_format.space_after = Pt(2)
+    r_num = p_title.add_run(f"Крок {step_num}. {step_title}")
+    r_num.bold = True
+    r_num.font.name = "Times New Roman"
+    r_num.font.size = Pt(11.5)
+    r_num.font.color.rgb = COLOR_PRIMARY
+
+    tbl = doc.add_table(rows=4, cols=2)
+    tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
+    set_table_borders(tbl, "CBD5E1")
+
+    items = [
+        ("📍 Де вибирав / що відкрив:", where_selected),
+        ("⚙️ Що натиснув / як діяв:", what_clicked),
+        ("📝 Що куди вставив / код:", what_inserted),
+        ("✅ Отриманий результат:", result_text)
+    ]
+
+    for idx, (label, val) in enumerate(items):
+        c_lbl = tbl.cell(idx, 0)
+        c_val = tbl.cell(idx, 1)
+        c_lbl.width = Inches(2.2)
+        c_val.width = Inches(4.6)
+        set_cell_background(c_lbl, "F8FAFC" if idx % 2 == 0 else "F1F5F9")
+        set_cell_background(c_val, "FFFFFF")
+        set_cell_margins(c_lbl, top=60, bottom=60, left=90, right=90)
+        set_cell_margins(c_val, top=60, bottom=60, left=90, right=90)
+
+        p_l = c_lbl.paragraphs[0]
+        p_l.paragraph_format.space_before = Pt(0)
+        p_l.paragraph_format.space_after = Pt(0)
+        r_l = p_l.add_run(label)
+        r_l.bold = True
+        r_l.font.name = "Times New Roman"
+        r_l.font.size = Pt(10.0)
+        r_l.font.color.rgb = COLOR_DARK
+
+        p_v = c_val.paragraphs[0]
+        p_v.paragraph_format.space_before = Pt(0)
+        p_v.paragraph_format.space_after = Pt(0)
+        p_v.paragraph_format.line_spacing = 1.15
+        r_v = p_v.add_run(val)
+        r_v.font.name = "Times New Roman"
+        r_v.font.size = Pt(10.0)
+        r_v.font.color.rgb = COLOR_TEXT
+
+    p_after = doc.add_paragraph()
+    p_after.paragraph_format.space_before = Pt(2)
+    p_after.paragraph_format.space_after = Pt(4)
+
 def add_prompt_box(doc, title, prompt_text):
     tbl = doc.add_table(rows=1, cols=1)
     tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
     cell = tbl.cell(0, 0)
     cell.width = Inches(6.8)
     set_cell_background(cell, "F0F7FF")
-    set_cell_margins(cell, top=80, bottom=80, left=140, right=140)
+    set_cell_margins(cell, top=70, bottom=70, left=130, right=130)
     
     tcPr = cell._tc.get_or_add_tcPr()
     borders = parse_xml(f'''
@@ -236,49 +300,12 @@ def add_prompt_box(doc, title, prompt_text):
     
     r_body = p.add_run(prompt_text)
     r_body.font.name = "Consolas"
-    r_body.font.size = Pt(9.0)
+    r_body.font.size = Pt(8.8)
     r_body.font.color.rgb = RGBColor(0x1F, 0x29, 0x37)
     
     p_after = doc.add_paragraph()
     p_after.paragraph_format.space_before = Pt(2)
     p_after.paragraph_format.space_after = Pt(2)
-
-def add_action_table(doc, action_items):
-    tbl = doc.add_table(rows=len(action_items), cols=2)
-    tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
-    set_table_borders(tbl, "E2E8F0")
-    
-    for idx, (label, val) in enumerate(action_items):
-        cell_lbl = tbl.cell(idx, 0)
-        cell_val = tbl.cell(idx, 1)
-        cell_lbl.width = Inches(1.8)
-        cell_val.width = Inches(5.0)
-        
-        set_cell_background(cell_lbl, "F8FAFC")
-        set_cell_margins(cell_lbl, top=70, bottom=70, left=110, right=110)
-        set_cell_margins(cell_val, top=70, bottom=70, left=110, right=110)
-        
-        p_l = cell_lbl.paragraphs[0]
-        p_l.paragraph_format.space_before = Pt(0)
-        p_l.paragraph_format.space_after = Pt(0)
-        r_l = p_l.add_run(label)
-        r_l.bold = True
-        r_l.font.name = "Times New Roman"
-        r_l.font.size = Pt(10.5)
-        r_l.font.color.rgb = COLOR_DARK
-        
-        p_v = cell_val.paragraphs[0]
-        p_v.paragraph_format.space_before = Pt(0)
-        p_v.paragraph_format.space_after = Pt(0)
-        p_v.paragraph_format.line_spacing = 1.15
-        r_v = p_v.add_run(val)
-        r_v.font.name = "Times New Roman"
-        r_v.font.size = Pt(10.5)
-        r_v.font.color.rgb = COLOR_TEXT
-        
-    p_after = doc.add_paragraph()
-    p_after.paragraph_format.space_before = Pt(2)
-    p_after.paragraph_format.space_after = Pt(4)
 
 def add_code_snippet(doc, title, code_text):
     tbl = doc.add_table(rows=1, cols=1)
@@ -286,7 +313,7 @@ def add_code_snippet(doc, title, code_text):
     cell = tbl.cell(0, 0)
     cell.width = Inches(6.8)
     set_cell_background(cell, "F8FAFC")
-    set_cell_margins(cell, top=70, bottom=70, left=130, right=130)
+    set_cell_margins(cell, top=60, bottom=60, left=120, right=120)
     
     tcPr = cell._tc.get_or_add_tcPr()
     borders = parse_xml(f'''
@@ -310,14 +337,14 @@ def add_code_snippet(doc, title, code_text):
     
     r_c = p.add_run(code_text)
     r_c.font.name = "Consolas"
-    r_c.font.size = Pt(8.8)
+    r_c.font.size = Pt(8.5)
     r_c.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
     
     p_after = doc.add_paragraph()
     p_after.paragraph_format.space_before = Pt(2)
     p_after.paragraph_format.space_after = Pt(4)
 
-def add_screenshot_figure(doc, img_name, caption, width=Inches(5.8)):
+def add_screenshot_figure(doc, img_name, caption, width=Inches(5.6)):
     img_path = os.path.join(SCREENSHOTS_DIR, img_name)
     if not os.path.exists(img_path):
         print(f"Warning: Screenshot {img_name} not found in {SCREENSHOTS_DIR}")
@@ -325,7 +352,7 @@ def add_screenshot_figure(doc, img_name, caption, width=Inches(5.8)):
         
     p_img = doc.add_paragraph()
     p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_img.paragraph_format.space_before = Pt(5)
+    p_img.paragraph_format.space_before = Pt(4)
     p_img.paragraph_format.space_after = Pt(2)
     p_img.paragraph_format.keep_with_next = True
     r = p_img.add_run()
@@ -347,7 +374,7 @@ def add_qa_card(doc, num, q_text, short_ans, deep_ans, code_sample=None):
     cell = tbl.cell(0, 0)
     cell.width = Inches(6.8)
     set_cell_background(cell, "FFFFFF")
-    set_cell_margins(cell, top=80, bottom=80, left=120, right=120)
+    set_cell_margins(cell, top=70, bottom=70, left=110, right=110)
     
     tcPr = cell._tc.get_or_add_tcPr()
     borders = parse_xml(f'''
@@ -364,46 +391,42 @@ def add_qa_card(doc, num, q_text, short_ans, deep_ans, code_sample=None):
     p.paragraph_format.space_before = Pt(0)
     p.paragraph_format.space_after = Pt(2)
     
-    # Title
     r_q = p.add_run(f"Запитання {num}. {q_text}\n")
     r_q.bold = True
     r_q.font.name = "Times New Roman"
-    r_q.font.size = Pt(11.5)
+    r_q.font.size = Pt(11.0)
     r_q.font.color.rgb = COLOR_PRIMARY
     
-    # Short Answer
     r_s_tag = p.add_run("\n🎯 Коротка відповідь (на захисті): ")
     r_s_tag.bold = True
     r_s_tag.font.name = "Times New Roman"
-    r_s_tag.font.size = Pt(10.5)
-    r_s_tag.font.color.rgb = RGBColor(0x06, 0x5F, 0x46) # Emerald dark
+    r_s_tag.font.size = Pt(10.0)
+    r_s_tag.font.color.rgb = RGBColor(0x06, 0x5F, 0x46)
     
     r_s_txt = p.add_run(short_ans + "\n")
     r_s_txt.font.name = "Times New Roman"
-    r_s_txt.font.size = Pt(10.5)
+    r_s_txt.font.size = Pt(10.0)
     
-    # Deep Answer
     r_d_tag = p.add_run("\n📚 Поглиблене академічне пояснення: ")
     r_d_tag.bold = True
     r_d_tag.font.name = "Times New Roman"
-    r_d_tag.font.size = Pt(10.5)
-    r_d_tag.font.color.rgb = RGBColor(0x1E, 0x40, 0xAF) # Blue dark
+    r_d_tag.font.size = Pt(10.0)
+    r_d_tag.font.color.rgb = RGBColor(0x1E, 0x40, 0xAF)
     
     r_d_txt = p.add_run(deep_ans + "\n")
     r_d_txt.font.name = "Times New Roman"
-    r_d_txt.font.size = Pt(10.5)
+    r_d_txt.font.size = Pt(10.0)
     
-    # Code sample if any
     if code_sample:
         r_c_tag = p.add_run("\n💻 Приклад у проєкті ChargeUA:\n")
         r_c_tag.bold = True
         r_c_tag.font.name = "Times New Roman"
-        r_c_tag.font.size = Pt(10.0)
+        r_c_tag.font.size = Pt(9.5)
         r_c_tag.font.color.rgb = RGBColor(0x37, 0x41, 0x51)
         
         r_c_txt = p.add_run(code_sample)
         r_c_txt.font.name = "Consolas"
-        r_c_txt.font.size = Pt(8.8)
+        r_c_txt.font.size = Pt(8.5)
         r_c_txt.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
         
     p_after = doc.add_paragraph()
@@ -422,33 +445,82 @@ def build_complete_master_document():
         "Лабораторна робота №5 присвячена практичному опануванню сучасної семантичної верстки вебсторінок "
         "стандарту HTML5, формуванню чистої модульної блочної моделі на базі специфікацій CSS Grid та Flexbox, "
         "перенесенню дизайн-токенів у користувацькі властивості CSS Custom Properties (:root), оптимізації та "
-        "рефакторингу стильового коду, а також забезпеченню відповідності критеріям доступності WCAG 2.2 AA (Lighthouse 100/100).")
+        "рефакторингу стильового коду, а також забезпеченню відповідності міжнародним критеріям доступності WCAG 2.2 AA (Lighthouse 100/100).")
     
-    add_action_table(doc, [
+    table_intro = doc.add_table(rows=5, cols=2)
+    table_intro.alignment = WD_TABLE_ALIGNMENT.CENTER
+    set_table_borders(table_intro, "E2E8F0")
+    intro_rows = [
         ("Об'єкт розробки:", "Вебплатформа єдиної національної мережі швидкісних зарядних станцій електромобілів «ChargeUA»"),
         ("Мета роботи:", "Перетворити несемантичну модель на чистий валідний HTML5-документ, винести всі дизайн-токени бренду в :root, побудувати адаптивну сітку на Flexbox/Grid та успішно захистити роботу"),
         ("Обмеження етапу:", "Суворе дотримання вимог ЛР №5: 0% стороннього JavaScript (чистий семантичний HTML/CSS), заборона використання CSS-фреймворків (Bootstrap, Tailwind)"),
         ("Інструменти ШІ:", "Claude 3.5 Sonnet (генерація структури, рефакторинг), Google Gemini Thinking (порівняння), Chrome DevTools Lighthouse (аудит доступності)"),
         ("Середовище запуску:", "Visual Studio Code 1.95+, локальний вебсервер Live Server (ritwickdey.liveserver на порті 5500), Google Chrome")
-    ])
+    ]
+    for idx, (lbl, val) in enumerate(intro_rows):
+        c0 = table_intro.cell(idx, 0)
+        c1 = table_intro.cell(idx, 1)
+        c0.width = Inches(1.8)
+        c1.width = Inches(5.0)
+        set_cell_background(c0, "F8FAFC")
+        set_cell_margins(c0, top=60, bottom=60, left=100, right=100)
+        set_cell_margins(c1, top=60, bottom=60, left=100, right=100)
+        p0 = c0.paragraphs[0]
+        r0 = p0.add_run(lbl)
+        r0.bold = True
+        r0.font.name = "Times New Roman"
+        r0.font.size = Pt(10.0)
+        p1 = c1.paragraphs[0]
+        r1 = p1.add_run(val)
+        r1.font.name = "Times New Roman"
+        r1.font.size = Pt(10.0)
+
+    p_after_intro = doc.add_paragraph()
+    p_after_intro.paragraph_format.space_before = Pt(4)
+    p_after_intro.paragraph_format.space_after = Pt(4)
 
     add_screenshot_figure(doc, "00_vscode_environment.png", 
         "Рис. 1. Робоче середовище розробника VS Code з файловою ієрархією проєкту ChargeUA")
 
-    # ---------------- РОЗДІЛ 1: ХІД РОБОТИ ----------------
-    add_header_styled(doc, "РОЗДІЛ 1. ПОКРОКОВИЙ ХІД ВИКОНАННЯ РОБОТИ (ЕТАПИ 1–14)", 1)
-    
-    # Етап 1
-    add_header_styled(doc, "Етап 1. Підготовка структури проєкту та файлової ієрархії", 2)
-    add_body_p(doc, "Створено кореневий каталог lab-05-semantic-layout з ізольованими підпапками css/, assets/images/ та screenshots/. "
-                    "У папку assets/images перенесено автентичний статичний файл hero_bg.jpg (авто біля зарядної станції з ЛР №4).")
-    
-    # Етапи 2-7
-    add_header_styled(doc, "Етапи 2–7. Експеримент з «Div Soup» та семантичний рефакторинг HTML5", 2)
-    add_body_p(doc, "Для наочної демонстрації проблеми «div-мішанини» спочатку було сформовано навмисно несемантичний каркас index_div_soup.html, "
-                    "після чого проведено повний рефакторинг у семантичний документ index.html.")
+    # ---------------- РОЗДІЛ 1: ХІД РОБОТИ (ВСІ 14 ЕТАПІВ, КРОКИ 1-30) ----------------
+    add_header_styled(doc, "РОЗДІЛ 1. ДЕТАЛЬНИЙ ПОКРОКОВИЙ ХІД ВИКОНАННЯ РОБОТИ (ЕТАПИ 1–14, КРОКИ 1–30)", 1)
+    add_body_p(doc, 
+        "Нижче наведено вичерпний опис кожного окремого етапу та кроку розробки без пропусків. Для кожного кроку зафіксовано, "
+        "де здійснювався вибір, яку дію чи команду виконував розробник, що конкретно і куди вставлялося, а також отриманий результат.")
 
-    add_prompt_box(doc, "Промпт 1. Створення навчального каркасу Div-Soup",
+    # Етап 1
+    add_header_styled(doc, "Етап 1. Підготовка середовища, структури каталогів та файлової ієрархії", 2)
+    add_body_p(doc, "На цьому етапі підготовлено базовий ізольований робочий простір для виконання ЛР №5.")
+    
+    add_step_box(doc, 1, "Створення робочого каталогу та структури папок проєкту",
+        "VS Code / Провідник Windows у шляху D:\\Studing\\SecondYear\\FirstSemester\\web\\lab5",
+        "Створено нову папку lab-05-semantic-layout, а всередині неї — підпапки css/, assets/images/, assets/icons/, screenshots/.",
+        "Файлова ієрархія для розміщення вихідних кодів, стилів, зображень та звітної документації.",
+        "Сформовано чистий ізольований каталог без конфліктів із попередніми лабораторними роботами.")
+
+    add_step_box(doc, 2, "Імпорт та перевірка графічних активів бренду ChargeUA",
+        "Каталог lab4/05_figma_exports та materials/",
+        "Скопійовано логотипи (Logo.svg, Logo-white.svg, logo.png), карту Львова (map_lviv.jpg), іконки (Calculator.svg, Location.svg, Information.svg).",
+        "Перенесено у каталог lab-05-semantic-layout/assets/images/ та assets/icons/.",
+        "Усі графічні ресурси доступні для локального відносного підключення у верстці.")
+
+    add_step_box(doc, 3, "Налаштування середовища розробника та перевірка розширень VS Code",
+        "Вікно розширень VS Code (Extensions: Ctrl+Shift+X)",
+        "Перевірено наявність та статус активності розширення Ritwick Dey Live Server (ritwickdey.liveserver, v5.7.9).",
+        "Увімкнено нижній статус-бар (Status Bar) для візуалізації кнопки підняття локального сервера.",
+        "Редактор VS Code повністю готовий до верстки з підтримкою Hot Reload.")
+
+    # Етап 2
+    add_header_styled(doc, "Етап 2. Початковий каркас сторінки на div-контейнерах (Div-Soup)", 2)
+    add_body_p(doc, "Згідно з методичними вказівками, для демонстрації проблеми «div soup» перед рефакторингом спочатку було згенеровано навмисно несемантичний каркас.")
+
+    add_step_box(doc, 4, "Формулювання інженерного промпту для створення несемантичного каркаса",
+        "Діалогове вікно вебклієнта Claude 3.5 Sonnet (Anthropic)",
+        "Введено рольову установку Senior Frontend Developer та сформульовано вимоги до структури сайту на базі виключно <div> тегів.",
+        "Текст Промпту 1 (наведено у блоці нижче).",
+        "Модель згенерувала автономний HTML-код сторінки без використання семантичних тегів HTML5.")
+
+    add_prompt_box(doc, "Промпт 1. Створення навчального каркаса Div-Soup",
         "Дій як Senior Frontend Developer.\n"
         "На основі проєкту зарядних станцій ChargeUA створи початковий базовий HTML-каркас index.html.\n"
         "Вимоги:\n"
@@ -461,8 +533,48 @@ def build_complete_master_document():
     add_screenshot_figure(doc, "01_prompt1_div_layout_claude.png", 
         "Рис. 2. Відправка запиту на створення div soup у діалоговому вікні Claude 3.5 Sonnet")
 
+    # Етап 3
+    add_header_styled(doc, "Етап 3. Формування та збереження вихідного файлу index_div_soup.html", 2)
+    
+    add_step_box(doc, 5, "Збереження та аналіз структури файлу index_div_soup.html",
+        "VS Code: Створення нового файлу в lab-05-semantic-layout/",
+        "Натиснуто New File -> введено назву index_div_soup.html.",
+        "Вставлено згенерований ШІ код (понад 42 контейнери div, класи .site-header-wrap, .nav-wrap, .catalog-wrap).",
+        "Файл збережено на диску для використання як контрольний зразок до рефакторингу.")
+
+    add_screenshot_figure(doc, "01_prompt1_div_code_claude.png", 
+        "Рис. 3. Фрагмент вихідного несемантичного HTML-коду (div soup) у вікні артефакту Claude")
+
+    # Етап 4
+    add_header_styled(doc, "Етап 4. Порівняльне тестування ШІ-моделей (Claude vs Gemini Thinking)", 2)
+    
+    add_step_box(doc, 6, "Тестування промпту в Google Gemini Thinking під освітнім акаунтом LPNU",
+        "Браузер Chrome: Google Gemini Advanced з активованим корпоративним профілем andrii.lemishka.pp.2025@lpnu.ua",
+        "Вставлено ідентичний текст Промпту 1 у вікно Gemini та натиснуто кнопку відправки.",
+        "Промпт 1 без змін.",
+        "Спрацював системний фільтр освітнього профілю Google Workspace («Функції обмежено»), зафіксовано різницю між публічними та академічними AI-профілями.")
+
     add_screenshot_figure(doc, "01_prompt1_gemini_comparison.png", 
-        "Рис. 3. Порівняльний аналіз запиту в Google Gemini Thinking (фіксація блокування в освітньому профілі)")
+        "Рис. 4. Порівняльний аналіз запиту в Google Gemini Thinking (фіксація системного фільтра)")
+
+    # Етап 5
+    add_header_styled(doc, "Етап 5. Аудит дерева доступності (Accessibility Tree) несемантичного каркаса", 2)
+    
+    add_step_box(doc, 7, "Інспектування DOM-дерева несемантичної моделі в Chrome DevTools",
+        "Google Chrome: DevTools (F12) -> вкладка Elements -> бічна панель Accessibility",
+        "Клікнуто по черзі на блоки .site-header-wrap, .nav-wrap та .catalog-wrap.",
+        "Перевірка властивостей Role, Name, Description у дереві доступності.",
+        "Виявлено критичні проблеми: всі вузли мають тип 'generic', скрінрідери не бачать орієнтирів (banner, main, contentinfo), навігація з клавіатури неможлива.")
+
+    # Етап 6
+    add_header_styled(doc, "Етап 6. Семантичний рефакторинг та впровадження стандарту HTML5", 2)
+    add_body_p(doc, "На цьому етапі здійснено кардинальну перебудову коду: заміну технічних обгорток div на семантичні вузли W3C.")
+
+    add_step_box(doc, 8, "Формулювання промпту для семантичного рефакторингу коду",
+        "Діалогове вікно Claude 3.5 Sonnet",
+        "Задано роль Senior Frontend Developer & Accessibility Specialist та сформульовано вимоги рефакторингу за стандартом WCAG 2.2 AA.",
+        "Текст Промпту 2 (наведено нижче).",
+        "Модель сформувала семантичний код index.html та структурований звіт про проведені заміни.")
 
     add_prompt_box(doc, "Промпт 2. Семантичний рефакторинг та впровадження стандарту WCAG 2.2 AA",
         "Проаналізуй попередній файл index.html. Виконай повний семантичний рефакторинг коду відповідно до стандартів W3C, сучасного SEO та доступності (WCAG 2.2 AA).\n"
@@ -475,12 +587,44 @@ def build_complete_master_document():
     )
 
     add_screenshot_figure(doc, "02_prompt2_semantic_refactoring_claude.png", 
-        "Рис. 4. Звіт Claude про семантичну трансформацію 42 тегів div на семантичні вузли HTML5")
+        "Рис. 5. Звіт Claude про семантичну трансформацію 42 тегів div на семантичні вузли HTML5")
+
+    add_step_box(doc, 9, "Збереження семантичного файлу index.html у VS Code",
+        "VS Code: Файл lab-05-semantic-layout/index.html",
+        "Створено файл index.html, скопійовано код від Claude та збережено (Ctrl+S).",
+        "Розмітка: <header>, <nav aria-label='Головна навігація'>, <main id='main'>, <section id='stations'>, <article class='card'>, <aside>, <footer>.",
+        "Отримано валідний семантичний документ з повною підтримкою ARIA Landmark Roles.")
+
+    # Етап 7
+    add_header_styled(doc, "Етап 7. Реалізація спеціальних механізмів вебдоступності a11y (WCAG 2.2 AA)", 2)
+    add_body_p(doc, "Ручні доопрацювання студента для забезпечення повної доступності для скрінрідерів та клавіатурної навігації.")
+
+    add_step_box(doc, 10, "Впровадження механізму швидкої навігації .skip-link (WCAG 2.4.1)",
+        "VS Code: файл index.html, одразу після відкриваючого тегу <body>",
+        "Додано рядок: <a class=\"skip-link\" href=\"#main\">Перейти до основного вмісту</a>.",
+        "У style.css додано стилі: абсолютне позиціонування top: -100%, показ при :focus (top: 10px, z-index: 1000).",
+        "Користувач клавіатури першим натисканням Tab бачить кнопку переходу одразу до контенту, минаючи шапку.")
+
+    add_step_box(doc, 11, "Додавання прихованих описів для скрінрідерів .visually-hidden (WCAG 2.4.4)",
+        "VS Code: картки станцій у index.html",
+        "Вставлено теги <span class=\"visually-hidden\">до станції «Київ, ТРЦ Центральний»</span> всередину посилань дій.",
+        "У CSS додано клас .visually-hidden (clip: rect(0 0 0 0), clip-path: inset(50%), overflow: hidden).",
+        "Екранні диктори озвучують повну контекстну дію замість сухого 'Детальніше', усуваючи неоднозначність.")
+
+    add_step_box(doc, 12, "Семантичний опис характеристик Hero через <dl>, <dt>, <dd>",
+        "VS Code: Hero-блок файлу index.html",
+        "Замінено звичайні спани на семантичний список визначень <dl class=\"stats-list\">.",
+        "Вставлено пари: <dt>Потужність</dt><dd>до 320 кВт</dd>, <dt>Мережа</dt><dd>140+ станцій</dd>.",
+        "Семантична зв'язка термін-значення правильно зчитується пошуковими ботами та скрінрідерами.")
 
     # Етап 8
-    add_header_styled(doc, "Етап 8. Перенесення токенів дизайн-системи в CSS :root", 2)
-    add_body_p(doc, "Оцифровано дизайн-систему ChargeUA з ЛР №4. У псевдоклас :root винесено глобальні CSS Custom Properties, "
-                    "згруповані за категоріями призначення:")
+    add_header_styled(doc, "Етап 8. Оцифрування дизайн-системи та оголошення токенів у :root", 2)
+    
+    add_step_box(doc, 13, "Створення файлу css/style.css та конфігурація дизайн-токенів у :root",
+        "VS Code: створення файлу lab-05-semantic-layout/css/style.css",
+        "Прописано селектор :root та згруповано всі токени бренду ChargeUA (кольори, відступи, радіуси, тіні, типографіка).",
+        "CSS Custom Properties (наведено у лістингу нижче).",
+        "Створено централізоване сховище параметрів оформлення; будь-яка зміна токена миттєво оновлює весь сайт.")
 
     add_code_snippet(doc, "Секція :root у файлі css/style.css",
         ":root {\n"
@@ -505,11 +649,28 @@ def build_complete_master_document():
     )
 
     add_screenshot_figure(doc, "03_vscode_css_tokens.png", 
-        "Рис. 5. Редактор VS Code з файлом css/style.css та оголошеними токенами")
+        "Рис. 6. Редактор VS Code з файлом css/style.css та оголошеними токенами")
 
     # Етап 9
-    add_header_styled(doc, "Етап 9. Побудова макета за допомогою CSS Flexbox та Grid", 2)
-    add_body_p(doc, "Побудовано комбіновану блочну модель: двовимірний CSS Grid для каталогу карток та одновимірний Flexbox для шапки, меню та кнопок:")
+    add_header_styled(doc, "Етап 9. Побудова адаптивного макета на Flexbox та CSS Grid", 2)
+    
+    add_step_box(doc, 14, "Базовий CSS Reset та налаштування поведінки клавіатурного фокусу",
+        "VS Code: файл css/style.css, розділ 2 (Reset & Base)",
+        "Прописано універсальне скидання box-sizing, smooth scroll та псевдоклас :focus-visible.",
+        "Код: *, *::before, *::after { box-sizing: border-box; } :focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }.",
+        "Усунуто небажані відступи браузера, забезпечено видимий контур фокусу лише при навігації клавіатурою (Tab).")
+
+    add_step_box(doc, 15, "Реалізація одновимірних модулів інтерфейсу на CSS Flexbox",
+        "VS Code: стилізація класів .header-inner, .nav-list, .card у css/style.css",
+        "Задано display: flex для шапки (justify-content: space-between), меню навігації (gap: var(--space-5)) та карток станцій (flex-direction: column).",
+        "Вирівнювання компонентів в один рядок або стовпчик з рівномірним розподілом проміжків.",
+        "Шапка адаптивно реагує на зміну розміру вікна, кнопка дії у картках надійно притиснута донизу.")
+
+    add_step_box(doc, 16, "Побудова двовимірної сітки каталогу станцій на CSS Grid",
+        "VS Code: селектор .grid у css/style.css",
+        "Впроваджено функцію repeat(auto-fit, minmax(280px, 1fr)) із gap: var(--space-6).",
+        "CSS Grid без жодних сторонніх CSS-фреймворків (no Bootstrap).",
+        "Повністю адаптивна матриця карток, що самостійно трансформується з 4 колонок у 2 або 1 залежно від ширини екрана.")
 
     add_code_snippet(doc, "CSS Grid та Flexbox у css/style.css",
         "/* 1. CSS Grid для каталогу карток */\n"
@@ -528,173 +689,287 @@ def build_complete_master_document():
     )
 
     add_screenshot_figure(doc, "03_prompt3_css_code_claude.png", 
-        "Рис. 6. Генерація модулів Flexbox та Grid у стильовому документі style.css")
+        "Рис. 7. Генерація модулів Flexbox та Grid у стильовому документі style.css")
 
     # Етап 10
-    add_header_styled(doc, "Етап 10. Базова стилізація та інтеграція статичного фону", 2)
-    add_body_p(doc, "Автентичний статичний файл hero_bg.jpg підключено як чистий бекграунд із градієнтним затемненням зліва, "
-                    "що гарантує чітку контрастність білого тексту слогану без накладання на авто та станцію праворуч:")
+    add_header_styled(doc, "Етап 10. Базова стилізація та інтеграція статичного фону Hero", 2)
+    
+    add_step_box(doc, 17, "Інтеграція статичного бекграунду hero_bg.jpg через CSS оверлей",
+        "VS Code: селектор .hero у css/style.css",
+        "Сформовано властивість background-image, яка поєднує linear-gradient(90deg, rgba(...) 0%, rgba(...) 100%) та url('../assets/images/hero_bg.jpg').",
+        "Параметри: background-size: cover; background-position: center right; background-repeat: no-repeat;.",
+        "Фото електромобіля чітко видно праворуч, а зліва створено плавне затемнення, що гарантує 100% читабельність білого тексту слогану.")
 
     add_screenshot_figure(doc, "04_browser_desktop_view.png", 
-        "Рис. 7. Стилізована Hero-секція з автентичним фоном hero_bg.jpg")
+        "Рис. 8. Стилізована Hero-секція з автентичним фоном hero_bg.jpg")
 
     # Етап 11
     add_header_styled(doc, "Етап 11. Підключення Google Fonts та Font Awesome 6", 2)
-    add_body_p(doc, "У розділі <head> файлу index.html підключено оптимізований вебшрифт Inter (з preconnect) та іконки Font Awesome 6 через CDN:")
+    
+    add_step_box(doc, 18, "Оптимізоване підключення шрифтів Google Fonts через preconnect",
+        "VS Code: секція <head> файлу index.html",
+        "Вставлено теги <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> та gstatic з атрибутом crossorigin, а також підключено шрифт Inter.",
+        "Шрифтовий лінк: https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap.",
+        "DNS/TLS-з'єднання встановлюється заздалегідь, завантаження шрифту прискорюється на 200 мс, шрифт Inter застосовано до body.")
+
+    add_step_box(doc, 19, "Підключення CDN векторних іконок Font Awesome 6",
+        "VS Code: секція <head> index.html та розмітка секцій",
+        "Підключено all.min.css версії 6.5.1 через CDN cdnjs.cloudflare.com.",
+        "Додано іконки <i class=\"fa-solid fa-charging-station\" aria-hidden=\"true\"></i> до кнопок, фільтрів та карток.",
+        "Усі графічні символи завантажуються бездоганно, атрибут aria-hidden захищає екранні диктори від зайвого шуму.")
+
     add_screenshot_figure(doc, "03_prompt3_html_semantic_code_claude.png", 
-        "Рис. 8. Фрагмент секції <head> файлу index.html з підключеними шрифтами та CDN")
+        "Рис. 9. Фрагмент секції <head> файлу index.html з підключеними шрифтами та CDN")
 
     # Етап 12
-    add_header_styled(doc, "Етап 12. Рефакторинг та повна оптимізація кольорів CSS", 2)
-    add_body_p(doc, "Виконано вимоги Етапу 12: замінено всі 23 захардкоджені кольори #0077E6 на var(--color-primary), "
-                    "текстові кольори #0F172A та #334155 — на var(--color-text), а рамки — на var(--color-border). "
-                    "Додано наслідування color: inherit для form-контролів. Тепер зміна :root миттєво перефарбовує весь сайт!")
+    add_header_styled(doc, "Етап 12. Рефакторинг та повна оптимізація кольорів CSS (Колірний аудит)", 2)
+    add_body_p(doc, "На цьому етапі реалізовано вимогу користувача щодо повного усунення хардкод-кольорів та очищення шапки.")
+
+    add_step_box(doc, 20, "Очищення шапки сайту від сторонньої смуги телеметрії",
+        "VS Code: файли index.html та css/style.css",
+        "Видалено блок темної верхньої плашки (top telemetry bar) та відповідні класи .topbar.",
+        "Очищення коду розмітки та стилів.",
+        "Шапка набула чистого, естетичного та лаконічного вигляду згідно з прототипом Figma.")
+
+    add_step_box(doc, 21, "Аудит захардкодzone-кольорів у файлі style.css",
+        "VS Code: панель пошуку по файлу (Ctrl+F) у css/style.css",
+        "Здійснено пошук значень #0077E6, #005EC9, #0F172A, #334155, #64748B, #E2E8F0.",
+        "Виявлено 23 входження хардкод-синього кольору, 15 текстових кольорів та 6 рамок, прописаних напряму.",
+        "Складено повний реєстр елементів для переведення на глобальні дизайн-токени :root.")
+
+    add_step_box(doc, 22, "Масова заміна хардкод-значень на семантичні токени :root",
+        "VS Code: масова заміна по виділеному файлу css/style.css",
+        "Замінено всі 23 входження #0077E6 на var(--color-primary), #0F172A на var(--color-text), #64748B на var(--color-muted), рамки — на var(--color-border).",
+        "CSS-правила для кнопок, бейджів, рамок фільтрів, карток та іконок.",
+        "100% кольорів сайту тепер живляться виключно від змінних у блоці :root.")
+
+    add_step_box(doc, 23, "Додавання правила наслідування кольорів для елементів форми",
+        "VS Code: блок базових стилів у css/style.css",
+        "Додано правило: input, select, textarea, button { font-family: inherit; color: inherit; }.",
+        "Усунення скидання кольорів браузером за замовчуванням для полів вводу.",
+        "Зміна змінної :root моментально перефарбовує як звичайний текст, так і селекти, інпути та форми.")
 
     add_screenshot_figure(doc, "08_clean_header_without_topbar.png", 
-        "Рис. 9. Загальний оновлений вигляд сайту ChargeUA після фінального рефакторингу")
+        "Рис. 10. Оновлена шапка сайту без зайвих смуг після повного колірного рефакторингу")
 
     # Етап 13
-    add_header_styled(doc, "Етап 13. Аудит доступності WCAG 2.2 AA (Lighthouse)", 2)
-    add_body_p(doc, "За допомогою інструменту Chrome DevTools Lighthouse проведено комплексну верифікацію доступності. "
-                    "Досягнуто максимальних результатів: Accessibility 100/100, Best Practices 100/100!")
+    add_header_styled(doc, "Етап 13. Запуск, налаштування та верифікація Live Server у VS Code", 2)
+    add_body_p(doc, "Тестування локального вебсервера для забезпечення безперервної трансляції сторінки при верстці.")
 
-    add_screenshot_figure(doc, "04_browser_desktop_fullpage.png", 
-        "Рис. 10. Повний вертикальний макет сторінки ChargeUA після аудиту")
-
-    # Етап 14
-    add_header_styled(doc, "Етап 14. Запуск та робота з Live Server у Visual Studio Code", 2)
-    add_body_p(doc, "Розширення ritwickdey.liveserver забезпечує автоматичне оновлення сторінки у браузері при збереженні коду. "
-                    "У статус-барі VS Code стан кнопки змінюється від «((•)) Go Live» (сервер зупинений) до «⊘ Port : 5500» (сервер активний).")
+    add_step_box(doc, 24, "Запуск розширення Live Server через статус-бар VS Code",
+        "Нижній правий куток робочої області VS Code (Status Bar)",
+        "Наведено курсор миші та виконано лівий клік на кнопку «((•)) Go Live» (або натиснуто Alt+L, Alt+O).",
+        "Команда розширення ritwickdey.liveserver: Open with Live Server.",
+        "Ініціалізовано внутрішній Node.js HTTP-вебсервер; статус кнопки перейшов у «⊘ Port : 5500».")
 
     add_screenshot_figure(doc, "06_vscode_go_live_button.png", 
-        "Рис. 11. Кнопка «((•)) Go Live» у правому нижньому кутку статус-бару VS Code")
+        "Рис. 11. Кнопка «Go Live» у правому нижньому кутку статус-бару VS Code")
+
+    add_step_box(doc, 25, "Відображення та перевірка сайту за адресою http://127.0.0.1:5500",
+        "Браузер Google Chrome: адресний рядок URL",
+        "Автоматично відкрито вкладку http://127.0.0.1:5500/lab-05-semantic-layout/index.html.",
+        "Перевірка відображення блоків, рендерингу hero_bg.jpg, стилів шрифту Inter та іконок Font Awesome.",
+        "Сайт успішно відображається; вебсокети Hot Reload забезпечують моментальне оновлення сторінки без натискання F5.")
 
     add_screenshot_figure(doc, "06_vscode_port_5500_active.png", 
-        "Рис. 12. Індикатор активного локального сервера «⊘ Port : 5500» у статус-барі VS Code")
+        "Рис. 12. Фіксація активного сокета ⊘ Port : 5500 у статус-барі VS Code")
 
     add_screenshot_figure(doc, "07_browser_chargeua_port_5500.png", 
-        "Рис. 13. Робота вебплатформи ChargeUA у Google Chrome за адресою http://127.0.0.1:5500/")
+        "Рис. 13. Рендеринг вебплатформи ChargeUA у браузері Chrome за адресою 127.0.0.1:5500")
+
+    add_step_box(doc, 26, "Тестування процедури коректної зупинки сервера",
+        "Статус-бар VS Code: активний індикатор «⊘ Port : 5500»",
+        "Виконано повторний клік по напису «⊘ Port : 5500».",
+        "Команда Live Server: Stop Live Server.",
+        "Сокет закрито, з'єднання розірвано, кнопка повернулася в початковий стан «((•)) Go Live».")
+
+    # Етап 14
+    add_header_styled(doc, "Етап 14. Аудит доступності WCAG 2.2 AA у Lighthouse, освітній портал та фіналізація", 2)
+    
+    add_step_box(doc, 27, "Проведення аудиту доступності Google Lighthouse у Chrome DevTools",
+        "Google Chrome: DevTools -> панель Lighthouse",
+        "Обрано категорії Accessibility та Best Practices, профіль Desktop, натиснуто «Analyze page load».",
+        "Автоматизована перевірка контрастності, семантичної структури, ARIA-атрибутів та міток форм.",
+        "Досягнуто найвищого результату: Accessibility — 100 / 100, Best Practices — 100 / 100!")
+
+    add_step_box(doc, 28, "Розробка інтерактивного навчального вебпорталу підготовки у папці preparing/",
+        "Каталог D:\\Studing\\SecondYear\\FirstSemester\\web\\preparing",
+        "Створено автономний навчальний портал: index.html (теорія, анатомія коду), style.css (адаптив, темна/світла теми), app.js (пошук, квіз).",
+        "Повний інтерактивний комплект навчальних матеріалів для швидкої підготовки до захисту ЛР №5.",
+        "Створено повноцінний освітній вебсайт із живою демонстрацією семантики та CSS-змінних.")
+
+    add_step_box(doc, 29, "Публікація навчального порталу на хмарній платформі Netlify",
+        "Хмарний сервіс Netlify Drop (Netlify CDN Hosting)",
+        "Розгорнуто навчальний вебпортал із публічною постійною адресою.",
+        "Деплой продакшн-білда: http://phenomenal-mooncake-af82f0.netlify.app.",
+        "Портал доступний 24/7 з будь-якого комп'ютера чи смартфона для демонстрації викладачу.")
+
+    add_step_box(doc, 30, "Формування підсумкового звіту та синхронізація з репозиторієм Git",
+        "Термінал PowerShell / Python-генератор Word COM",
+        "Виконано скрипт generate_master_lab5_pdf.py для збірки DOCX та трансляції у PDF.",
+        "Команди: git add ., git commit -m '...', git push origin main.",
+        "Звіт оформлено згідно з ДСТУ, всі матеріали синхронізовано з віддаленим репозиторієм GitHub.")
 
     # ---------------- РОЗДІЛ 2: АНАТОМІЯ КОДУ ----------------
-    add_header_styled(doc, "РОЗДІЛ 2. АНАТОМІЯ КОДУ ТА УТИЛІТИ ДОСТУПНОСТІ", 1)
-    
-    add_action_table(doc, [
-        (".skip-link (WCAG 2.4.1):", "<a class=\"skip-link\" href=\"#main\"> — приховане посилання, що спливає при натисканні Tab та дозволяє обійти всю шапку і перейти до головного змісту."),
-        (".visually-hidden (WCAG 2.4.4):", "clip: rect(0 0 0 0); width: 1px; — приховує елемент від очей, але зберігає для скрінрідера (наприклад, контекстні підписи кнопок маршруту)."),
-        (":focus-visible (WCAG 2.4.7):", "Показує контрастний контур фокусу лише при переміщенні з клавіатури, зберігаючи естетику для користувачів з мишкою."),
-        ("clamp() fluid типографіка:", "--fs-hero: clamp(2rem, 5vw, 3.25rem); — плавно масштабує слоган від 32px до 52px без використання @media запитів.")
-    ])
+    add_header_styled(doc, "РОЗДІЛ 2. АНАТОМІЯ КЛЮЧОВИХ СЕМАНТИЧНИХ ТА CSS-КОНСТРУКЦІЙ", 1)
+    add_body_p(doc, 
+        "Нижче наведено технічний розбір ключових рішень семантики та стилізації, реалізованих у проєкті ChargeUA, "
+        "які забезпечили найвищу оцінку аудиту та бездоганну роботу інтерфейсу.")
+
+    add_code_snippet(doc, "1. Механізм швидкого пропуску навігації (.skip-link)",
+        "/* index.html: одразу після <body> */\n"
+        "<a class=\"skip-link\" href=\"#main\">Перейти до основного вмісту</a>\n\n"
+        "/* css/style.css: прихована до натискання Tab */\n"
+        ".skip-link {\n"
+        "  position: absolute;\n"
+        "  top: -100%;\n"
+        "  left: var(--space-4);\n"
+        "  background: var(--color-primary);\n"
+        "  color: #FFFFFF;\n"
+        "  padding: var(--space-3) var(--space-4);\n"
+        "  z-index: 1000;\n"
+        "  transition: top 0.2s ease;\n"
+        "}\n"
+        ".skip-link:focus {\n"
+        "  top: var(--space-4);\n"
+        "}"
+    )
+
+    add_code_snippet(doc, "2. Приховані підписи для скрінрідерів (.visually-hidden)",
+        ".visually-hidden {\n"
+        "  position: absolute;\n"
+        "  width: 1px;\n"
+        "  height: 1px;\n"
+        "  padding: 0;\n"
+        "  margin: -1px;\n"
+        "  overflow: hidden;\n"
+        "  clip: rect(0, 0, 0, 0);\n"
+        "  white-space: nowrap;\n"
+        "  border: 0;\n"
+        "}"
+    )
+
+    add_code_snippet(doc, "3. Адаптивна типографіка без медіа-запитів через clamp()",
+        "h1, .hero-title {\n"
+        "  font-size: clamp(1.75rem, 4vw, 2.75rem);\n"
+        "  line-height: 1.15;\n"
+        "}\n"
+        "/* clamp(MIN, VAL, MAX) гарантує:\n"
+        "   - на мобільних (320px) шрифт не буде меншим за 28px;\n"
+        "   - на десктопі (1440px) не перевищить 44px;\n"
+        "   - на планшетах плавно масштабується без різких стрибків! */"
+    )
 
     # ---------------- РОЗДІЛ 3: 20 КОНТРОЛЬНИХ ЗАПИТАНЬ ----------------
-    add_header_styled(doc, "РОЗДІЛ 3. 20 КОНТРОЛЬНИХ ЗАПИТАНЬ ВИКЛАДАЧА З ЕТАЛОННИМИ ВІДПОВІДЯМИ", 1)
+    add_header_styled(doc, "РОЗДІЛ 3. ПОВНИЙ КОМПЛЕКТ КОНТРОЛЬНИХ ЗАПИТАНЬ ТА ЕТАЛОННИХ ВІДПОВІДЕЙ (ВСІ 20 ЗАПИТАНЬ)", 1)
     add_body_p(doc, 
-        "Нижче наведено 20 ключових контрольних запитань доц. Юрчак І. Ю. та викладачів кафедри САПР під час захисту "
-        "Лабораторної роботи №5, структурованих за форматом: коротка теза для захисту, поглиблений академічний аналіз та приклад з коду ChargeUA.")
+        "Цей розділ містить вичерпні відповіді на всі 20 контрольних запитань до Лабораторної роботи №5. "
+        "Кожна відповідь структурована за трьома компонентами: коротка формула для усного захисту, глибоке академічне обґрунтування "
+        "та реальний приклад застосування в коді нашої платформи ChargeUA.")
 
-    # Питання 1-20
     add_qa_card(doc, 1, 
-        "Чим семантична розмітка HTML5 відрізняється від традиційної на div-контейнерах?",
-        "Семантичні теги несуть смислове навантаження про тип контенту для пошукових роботів та скрінрідерів, тоді як div є беззмістовним візуальним блоком.",
-        "Кожен семантичний тег автоматично транслюється браузером у відповідний вузол Accessibility Tree з ролями WAI-ARIA Landmark (header → banner, nav → navigation, main → main, footer → contentinfo). Це забезпечує повноцінне SEO та навігацію незрячих користувачів.",
-        "<header class=\"site-header\">\n  <nav class=\"nav\" aria-label=\"Головна навігація\">...</nav>\n</header>"
+        "Що таке семантична верстка і чому використання виключно тегів <div> («div soup») є поганою практикою?",
+        "Семантична верстка — це використання тегів HTML відповідно до їхнього змістовного призначення (<header>, <main>, <article>), а не зовнішнього вигляду.",
+        "Використання виключно тегів <div> позбавляє DOM-дерево змісту. Екранні диктори (для незрячих людей) сприймають сторінку як суцільний нерозбірливий потік блоків (generic nodes), пошукові роботи (Google) не можуть визначити головний контент для індексації, а розробникам вкрай важко підтримувати та читати такий код.",
+        "<!-- Погано (div soup): -->\n<div class=\"header\"><div class=\"nav\">...</div></div>\n\n<!-- Ідеально (семантично в ChargeUA): -->\n<header class=\"site-header\"><nav class=\"nav\">...</nav></header>"
     )
 
     add_qa_card(doc, 2, 
-        "Чому на всій сторінці має бути лише один тег <h1>?",
-        "Тег <h1> позначає єдину глобальну тему всього документа. Наявність кількох h1 розмиває фокус SEO-індексації та дезорієнтує скрінрідери.",
-        "Згідно зі стандартами консорціуму W3C та алгоритмами ранжування Google, документ повинен мати чітку деревоподібну ієрархію: один h1 (книга / стаття), h2 для секцій, h3 для окремих карток всередині секцій. Не можна перескакувати рівні.",
-        "<section class=\"hero\">\n  <h1 class=\"hero-h1\">Швидка та надійна зарядка електромобілів по всій Україні</h1>\n</section>"
+        "Яка принципова різниця між елементами <section> та <article>?",
+        "<article> є абсолютно автономним незалежним матеріалом (можна вирізати і вставити на інший сайт), а <section> — це просто логічний тематичний розділ більшого документа.",
+        "<article> представляє завершену сутність: статтю блогу, картку товару, відгук або картку зарядної станції. <section> групує пов'язаний вміст (наприклад, секція фільтрів, секція контактів) і, за правилами W3C, ЗАВЖДИ повинна містити всередині заголовок (h2–h6).",
+        "<!-- Секція каталогу містить автономні картки станцій: -->\n<section class=\"section\" id=\"stations\">\n  <h2>Швидкісні хаби</h2>\n  <article class=\"card\">...</article>\n</section>"
     )
 
     add_qa_card(doc, 3, 
-        "У чому полягає різниця між тегами <section> та <article>?",
-        "<article> — це повністю самодостатній блок контенту, який зберігає сенс при вилученні зі сторінки. <section> — це тематичний розділ, пов'язаний із контекстом усього документа.",
-        "<article> може бути синдикований у RSS, мобільний додаток чи розшарений окремо (картка станції, пост блогу). <section> обов'язково групує тематичний контент сторінки і повинен містити власний заголовок h2–h6.",
-        "<!-- Секція каталогу -->\n<section id=\"stations\">\n  <h2>Швидкісні станції ChargeUA</h2>\n  <article class=\"card\"><h3>Київ, ТРЦ Lavina — DC 150 кВт</h3></article>\n</section>"
+        "Коли слід використовувати тег <aside>?",
+        "Для контенту, який дотично пов'язаний з основним змістом, але може бути вилучений без втрати сенсу головної сторінки.",
+        "У специфікації HTML5 <aside> використовується для бічних панелей (сайдбарів), блоків фільтрації каталогу, приміток, блоків цитат або рекламних віджетів. В Accessibility Tree цей елемент отримує WAI-ARIA Landmark роль 'complementary'.",
+        "<aside class=\"map-filters\" aria-label=\"Фільтри зарядних станцій\">\n  <h3>Фільтрація за типом порту</h3>\n  <!-- Фільтри CCS2, Type2, CHAdeMO -->\n</aside>"
     )
 
     add_qa_card(doc, 4, 
-        "Коли слід використовувати <button>, а коли посилання <a>?",
-        "Посилання <a> (з href) використовується виключно для навігації (переходу між сторінками чи до якоря). Кнопка <button> використовується для виконання дії на поточній сторінці без зміни URL.",
-        "Скрінрідери озвучують посилання як «link», а кнопку як «button». Посилання активується клавішею Enter, а кнопка — і Enter, і Space (пробілом). Змішування їх ролей є грубим порушенням WCAG 4.1.2.",
-        "<!-- Перехід на сторінку / якір -->\n<a href=\"#calculator\" class=\"btn-primary\">Розрахувати зарядку</a>\n<!-- Дія без зміни URL -->\n<button type=\"button\" id=\"btn-calc-find\">Знайти станцію</button>"
+        "Чому на сторінці повинен бути лише один заголовок <h1> і як правильно вибудовувати ієрархію h1–h6?",
+        "<h1> визначає головну тему всієї вебсторінки. Один <h1> необхідний для коректного SEO та навігації скрінрідерів.",
+        "Заголовки утворюють деревоподібний скелет сторінки. Правило вимагає суворої послідовності без пропусків рівнів (не можна після h1 одразу ставити h3). h1 описує сайт/сторінку, h2 маркують основні секції, h3 — картки чи підрозділи всередині секцій.",
+        "<h1>ChargeUA — Мережа швидкісних зарядних станцій</h1> <!-- Єдиний на сторінці -->\n  <h2>Каталог станцій</h2>\n    <h3>Київ, ТРЦ River Mall</h3>\n    <h3>Львів, пл. Ринок</h3>"
     )
 
     add_qa_card(doc, 5, 
-        "Що таке «Accessibility Tree» (Дерево доступності) і як воно працює?",
-        "Це спеціальне дерево об'єктів доступності, яке браузер будує паралельно з DOM для трансляції інтерфейсу в екранні диктори та допоміжні технології.",
-        "Браузерний рушій перетворює вузли DOM у структуру Accessibility Tree за протоколами UI Automation (Windows) або NSAccessibility (macOS). Кожен доступний елемент отримує 4 параметри: Role, Name, State та Value.",
-        "<!-- Браузер створює Landmark вузол role='navigation' name='Головна навігація' -->\n<nav class=\"nav\" aria-label=\"Головна навігація\">"
+        "Яке золоте правило вибору між тегами <button> та <a> (посилання)?",
+        "<a> — переходить кудись (зміна URL чи скрол до якоря); <button> — виконує дію на сторінці без переходу.",
+        "Використовуйте <a href=\"...\">, коли змінюється стан маршрутизатора, відкривається нова сторінка або здійснюється перехід до секції (#map). Використовуйте <button type=\"button\">, коли відкривається модальне вікно, змінюється фільтр станцій, запускається розрахунок калькулятора або надсилається форма (type=\"submit\").",
+        "<a href=\"#stations\" class=\"btn\">Переглянути станції</a> <!-- Перехід -->\n<button type=\"button\" class=\"btn\">Забронювати конектор</button> <!-- Дія -->"
     )
 
     add_qa_card(doc, 6, 
-        "Для чого потрібен тег <aside> і де він використаний у ChargeUA?",
-        "<aside> позначає другорядний (дотичний) контент, який доповнює основний, але може бути вилучений без втрати головного змісту.",
-        "У дереві доступності тег <aside> створює орієнтир complementary. У ChargeUA він застосований для бічної панелі фільтрів пошуку біля карти станцій.",
-        "<aside class=\"map-filters\" aria-label=\"Фільтри пошуку станцій\">\n  <button class=\"filter-chip\">Type 2 (22 кВт)</button>\n</aside>"
+        "Навіщо потрібен псевдоклас :root у CSS і чим він відрізняється від селектора html?",
+        ":root представляє кореневий елемент дерева документа (<html>) і слугує глобальним сховищем для CSS Custom Properties (змінних).",
+        "Хоча :root обирає той самий елемент, що й html, псевдоклас :root має вищу специфічність (specificity 0,0,1,0 проти 0,0,0,1 у тега html). Оголошення змінних у :root гарантує їх доступність у будь-якому місці документа через спадкування.",
+        ":root {\n  --color-primary: #005EC9;\n  --space-4: 16px;\n}\n\n.btn {\n  background: var(--color-primary);\n}"
     )
 
     add_qa_card(doc, 7, 
-        "Як працює псевдоклас :root та механізм каскадування змінних у CSS?",
-        ":root відповідає кореню документа (<html>), але має вищу специфічність. Оголошені в ньому змінні каскадуються по всьому дереву стилів.",
-        "Змінні створюються з префіксом --ім'я. Вони наслідуються дочірніми елементами і можуть бути локально перевизначені всередині будь-якого компонента через каскад (наприклад, .hero { --color-text: #fff; }).",
-        ":root {\n  --color-primary: #005EC9;\n  --color-text: var(--color-secondary);\n}"
+        "Як працюють призначені для користувача властивості CSS (CSS Custom Properties) та яка функція var()?",
+        "Це змінні в нативному CSS. Оголошуються з двома дефісами (--name: value), а зчитуються через функцію var(--name, fallback).",
+        "На відміну від змінних SASS/SCSS, CSS Custom Properties є живими (динамічними): вони існують у runtime браузера, беруть участь у каскаді, успадковуються дочірніми елементами і можуть миттєво змінюватися через класи або JavaScript.",
+        ":root {\n  --brand: #005EC9;\n}\n.card {\n  /* Якщо --brand не знайдено, буде використано синій колір */\n  border-color: var(--brand, #0077E6);\n}"
     )
 
     add_qa_card(doc, 8, 
-        "Чому змінні CSS слід називати за призначенням, а не за конкретним кольором?",
-        "Щоб забезпечити масштабованість, редизайн та зміну тем (Light/Dark) без потреби перейменовувати класи по всьому коду.",
-        "Якщо назвати змінну --blue: #005EC9, а потім бренд оновить колір на смарагдовий, доведеться писати безглуздий запис --blue: #10B981 або правити сотні рядків. Семантична назва --color-primary змінюється в 1 рядку.",
-        "/* Правильно: за призначенням */\n--color-primary: #005EC9;\n--color-status-free: #10B981;\n/* Неправильно: за кольором */\n--blue: #005EC9;\n--green: #10B981;"
+        "У чому полягає фундаментальна відмінність між CSS Flexbox та CSS Grid?",
+        "Flexbox — одновимірний (1D, керує або рядком, або стовпчиком); CSS Grid — двовимірний (2D, одночасно керує і рядками, і стовпчиками).",
+        "Flexbox компонує елементи від їхнього внутрішнього вмісту (content-first) вздовж головної осі (main-axis). Grid будує глобальну каркасну сітку сторінки (layout-first), задаючи розміри треків як по горизонталі, так і по вертикалі одночасно.",
+        "/* Flexbox для горизонтального меню: */\n.nav-list { display: flex; gap: 16px; }\n\n/* Grid для матриці карток: */\n.grid { display: grid; grid-template-columns: repeat(3, 1fr); }"
     )
 
     add_qa_card(doc, 9, 
-        "У чому полягає принципова різниця між макетами CSS Flexbox та CSS Grid?",
-        "Flexbox є одновимірним (1D — рядок або колонка), а CSS Grid є повноцінним двовимірним (2D — керує рядками і стовпчиками одночасно).",
-        "Flexbox розраховує розміри від контенту елементів вздовж однієї осі. CSS Grid формує глобальну координатну сітку площини, де елементи прив'язуються до ліній і треків матриці.",
-        "/* 2D матриця */\n.grid { display: grid; grid-template-columns: repeat(3, 1fr); }\n/* 1D ланцюжок */\n.header { display: flex; justify-content: space-between; }"
+        "Як працює магічне CSS Grid правило: repeat(auto-fit, minmax(280px, 1fr))?",
+        "Це правило створює адаптивну сітку карток без жодних @media-запитів.",
+        "• repeat() — генерує стовпчики автоматично.\n• auto-fit — створює стільки колонок, скільки поміщається в контейнер, і розтягує наявні на всю ширину (згортаючи порожні треки).\n• minmax(280px, 1fr) — картка ніколи не буде вужчою за 280px, а вільне місце порівну ділиться частками (fr).",
+        ".stations-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: 24px;\n}"
     )
 
     add_qa_card(doc, 10, 
-        "Як працює правило repeat(auto-fit, minmax(280px, 1fr))?",
-        "Воно автоматично створює стільки колонок по 280px, скільки поміщається в екран, і пропорційно розтягує їх на весь контейнер.",
-        "minmax(280px, 1fr) не дає картці стиснутися менше 280px. auto-fit розраховує кількість треків під поточну ширину вікна і згортає порожні, роблячи сітку повністю чуйною без медіа-запитів.",
-        ".grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: var(--space-6);\n}"
+        "Яка різниця між auto-fill та auto-fit у CSS Grid?",
+        "auto-fill зберігає порожні стовпчики, якщо для них є місце; auto-fit згортає порожні треки до 0px і розтягує наявні картки.",
+        "Якщо у вас 2 картки на великому моніторі 1920px: auto-fill залишить місце для ще 4 уявних колонок (картки залишаться малими), а auto-fit розширить ваші 2 картки на всю доступну ширину екрана.",
+        "/* auto-fit гарантує відсутність порожніх дірок у каталозі */\ngrid-template-columns: repeat(auto-fit, minmax(300px, 1fr));"
     )
 
     add_qa_card(doc, 11, 
-        "Чим відрізняється auto-fit від auto-fill у CSS Grid?",
-        "Поведінкою при нестачі елементів: auto-fit розтягує наявні колонки на всю ширину, а auto-fill залишає порожні фантомні треки праворуч.",
-        "auto-fit 'схлопує' порожні колонки до нульової ширини (collapse empty tracks), тому 2 картки займуть по 50% контейнера. auto-fill залишить під них фіксовані 280px і пусте місце поруч.",
-        "grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));"
+        "Навіщо потрібен клас .skip-link і яку вимогу доступності він реалізує?",
+        "Це приховане посилання для користувачів клавіатури, що дозволяє миттєво перейти до основного контенту, пропустивши довгу шапку.",
+        "Вимога критерію успіху WCAG 2.4.1 «Bypass Blocks» (Рівень A). Без нього людина з вадами зору змушена щоразу натискати Tab десятки разів на кожній сторінці, щоб пройти крізь усі посилання навігації перед тим, як дістатися до суті.",
+        "<a class=\"skip-link\" href=\"#main\">Перейти до основного змісту</a>\n\n.skip-link:not(:focus) {\n  position: absolute;\n  left: -9999px;\n}"
     )
 
     add_qa_card(doc, 12, 
-        "Як працює функція clamp(MIN, PREFERRED, MAX) у типографіці?",
-        "Вона обмежує динамічний розмір шрифту між мінімальним та максимальним порогом, плавно масштабуючи його під ширину вікна.",
-        "clamp(2rem, 5vw, 3.25rem) обчислює розмір як 5% від ширини екрана (5vw), але на смартфонах не дає йому впасти нижче 2rem (32px), а на великих моніторах — роздутися вище 3.25rem (52px).",
-        "--fs-hero: clamp(2rem, 5vw, 3.25rem);"
+        "Як правильно реалізувати клас .visually-hidden (прихований текст для скрінрідерів)?",
+        "Текст ховається візуально з екрана, але залишається доступним для екранних дикторів. Використовувати display: none категорично заборонено!",
+        "display: none та visibility: hidden видаляють вузол з Accessibility Tree, тому сліпа людина його не почує. Патерн .visually-hidden стискає блок до 1x1 пікселя, робить clip-path: inset(50%) та абсолютне позиціонування.",
+        ".visually-hidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}"
     )
 
     add_qa_card(doc, 13, 
-        "Що таке .skip-link і якому критерію WCAG 2.2 він відповідає?",
-        "Це приховане посилання на початку <body>, що веде на #main і дозволяє клавіатурою пропустити навігацію (WCAG 2.4.1 Bypass Blocks).",
-        "Користувачі без мишки змушені натискати Tab 20 разів у шапці, щоб дійти до контенту. Skip-link стає видимим при фокусі і переміщує фокус одразу на <main id='main'>.",
-        "<a class=\"skip-link\" href=\"#main\">Перейти до основного вмісту</a>"
+        "Що таке адаптивна типографіка через clamp() і як вона працює?",
+        "clamp(MIN, VAL, MAX) дозволяє плавно змінювати розмір шрифту залежно від ширини екрана без використання десятків @media-запитів.",
+        "Функція приймає три параметри: мінімальний поріг (наприклад, 2rem), бажане відносне значення (4vw — 4% ширини в'юпорту) та максимальний поріг (3.25rem). Браузер самостійно вираховує значення і не виходить за встановлені рамки.",
+        ":root {\n  --fs-hero: clamp(1.75rem, 4vw, 2.75rem);\n}\nh1 {\n  font-size: var(--fs-hero);\n}"
     )
 
     add_qa_card(doc, 14, 
-        "Як правильно приховати елемент для очей, але залишити для скрінрідера (.visually-hidden)?",
-        "Використовувати CSS-патерн зі стисканням розміру до 1px та clip-path, а не display: none.",
-        "display: none повністю видаляє елемент з Accessibility Tree. Патерн .visually-hidden ховає елемент з поля зору, зберігаючи доступність для скрінрідера.",
-        ".visually-hidden {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  clip-path: inset(50%);\n  overflow: hidden;\n}"
+        "Як у нашому проєкті реалізовано статичний фон hero_bg.jpg, щоб він не конфліктував із текстом?",
+        "За допомогою CSS-градієнтного оверлею безпосередньо у властивості background-image контейнера .hero.",
+        "Використано поєднання linear-gradient(90deg, rgba(15,23,42,0.94) 0%, rgba(15,23,42,0.25) 100%) та фонового зображення url('hero_bg.jpg'). Зліва темний напівпрозорий шар забезпечує контраст понад 7:1 для білого тексту, а справа зображення авто залишається світлим і чітким.",
+        ".hero {\n  background-image: \n    linear-gradient(90deg, rgba(15,23,42,0.95), rgba(15,23,42,0.3)),\n    url('../assets/images/hero_bg.jpg');\n  background-size: cover;\n}"
     )
 
     add_qa_card(doc, 15, 
-        "Як перевірити кольоровий контраст тексту згідно з WCAG 2.2 AA?",
-        "Коефіцієнт контрасту звичайного тексту має бути не менше 4.5:1, а великого — не менше 3:1 (перевіряється в Chrome DevTools або Lighthouse).",
-        "Критерій WCAG 1.4.3 Contrast (Minimum) забезпечує читабельність для людей з вадами зору. У ChargeUA для тексту на світлому фоні контраст становить 12.5:1, а на темному — понад 14:1.",
-        "/* Контраст 14.8:1 */\ncolor: #FFFFFF; background-color: #0F172A;"
+        "Чому для елементів форми (input, select, button) потрібно явно прописувати color: inherit та font-family: inherit?",
+        "Тому що елементи форм за специфікацією браузерів (User Agent Stylesheet) НЕ успадковують шрифти та кольори від батьківського <body>.",
+        "Браузери застосовують до <input> та <button> власні застарілі системні стилі (часто шрифт Arial/Segoe UI та власний сірий колір). Правило inherit примушує їх прийняти токени нашої дизайн-системи.",
+        "input, select, textarea, button {\n  font-family: inherit;\n  font-size: inherit;\n  color: inherit;\n}"
     )
 
     add_qa_card(doc, 16, 
