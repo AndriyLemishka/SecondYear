@@ -173,7 +173,7 @@
       stationsSec.addEventListener('pointerdown', ensureFilterInit, { once: true, passive: true });
       stationsSec.addEventListener('focusin', ensureFilterInit, { once: true, passive: true });
     } else {
-      setTimeout(ensureFilterInit, 2500);
+      // lazy init on scroll/interaction only
     }
   }
 

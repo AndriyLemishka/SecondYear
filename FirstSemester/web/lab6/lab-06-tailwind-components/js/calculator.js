@@ -316,7 +316,7 @@
       calcEl.addEventListener('pointerdown', ensureCalculatorInit, { once: true, passive: true });
       calcEl.addEventListener('focusin', ensureCalculatorInit, { once: true, passive: true });
     } else {
-      setTimeout(ensureCalculatorInit, 2000);
+      // lazy init on scroll/interaction only
     }
   }
 

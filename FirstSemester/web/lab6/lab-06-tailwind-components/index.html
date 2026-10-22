@@ -14,7 +14,7 @@
   <!-- Прелоад критичного фонового зображення для максимального LCP -->
   <link rel="preload" as="image" href="assets/images/hero_bg.webp" fetchpriority="high" type="image/webp">
 
-  <!-- Конфігурація та підключення Tailwind CSS CDN (Етап 3) на idle, без блокування головного потоку -->
+  <!-- Конфігурація та підключення Tailwind CSS CDN (Етап 3) при взаємодії без блокування LCP/TBT -->
   <script>
     window.tailwind = {
       config: {
@@ -32,16 +32,16 @@
       }
     };
     function loadTailwindCDN() {
+      if (window.__tw_loaded) return;
+      window.__tw_loaded = true;
       const s = document.createElement('script');
       s.src = 'https://cdn.tailwindcss.com';
       s.async = true;
       document.head.appendChild(s);
     }
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadTailwindCDN);
-    } else {
-      setTimeout(loadTailwindCDN, 2000);
-    }
+    ['scroll', 'click', 'keydown', 'touchstart'].forEach(function(evt) {
+      window.addEventListener(evt, loadTailwindCDN, { once: true, passive: true });
+    });
   </script>
 
   <!-- Шрифт Inter (Google Fonts) з оптимізованим display=swap -->
@@ -54,6 +54,7 @@
   <style>
     @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; }
     @font-face { font-family: 'Font Awesome 6 Brands'; font-display: swap; }
+    .nl-wrap, #netlify-drawer, [data-netlify-drawer] { display: none !important; }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
