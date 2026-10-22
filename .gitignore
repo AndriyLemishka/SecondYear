@@ -55,6 +55,7 @@ __pycache__/
 ~$*.pdf
 Thumbs.db
 Desktop.ini
+*.lnk
 
 # Agent cache & internal directories
 .agents/

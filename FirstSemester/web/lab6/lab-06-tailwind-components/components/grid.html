@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Компонент: Адаптивна сітка карток (Grid) — ChargeUA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              500: '#005EC9',
+              600: '#2563EB',
+              700: '#1D4ED8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-100 py-12 px-4 sm:px-6 lg:px-8 font-sans">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Заголовок секції -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold uppercase tracking-wider">Етап 9 ЛР №6</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Каталог зарядних хабів України</h2>
+        <p class="text-slate-500 text-sm mt-1">Адаптивна сітка компонентів: 1 колонка на мобільних пристроях, 2 на планшетах та 3 на десктопах.</p>
+      </div>
+      
+      <!-- Фільтри швидкого доступу -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 text-xs font-semibold">
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-xl shadow-sm whitespace-nowrap">Усі станції (482)</button>
+        <button class="px-4 py-2 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-xl whitespace-nowrap">Ultra-Fast DC 150+ кВт</button>
+        <button class="px-4 py-2 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-xl whitespace-nowrap">Тільки вільні (318)</button>
+        <button class="px-4 py-2 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-xl whitespace-nowrap">З генератором під час блекауту</button>
+      </div>
+    </div>
+
+    <!-- АДАПТИВНА СІТКА КАРТОК (MOBILE-FIRST) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Картка 1: Львів, Victoria Gardens -->
+      <article class="group bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="relative h-48 bg-slate-900">
+            <img src="../assets/images/map_lviv.jpg" alt="Хаб Victoria Gardens" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/90 text-white backdrop-blur shadow">
+              <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> Вільна (3/4)
+            </span>
+            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-lg text-xs font-extrabold bg-blue-600 text-white shadow">DC 150 кВт</span>
+            <span class="absolute bottom-3 left-3 text-white text-xs font-medium drop-shadow">Львів, вул. Кульпарківська, 226А</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <span>Швидкісний хаб</span>
+              <span class="text-blue-600 font-bold">Ultra Hub</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Хаб «Victoria Gardens DC-150»</h3>
+            <p class="text-xs text-slate-500 mt-2">Потужна зарядка для міжміських поїздок, автономен резервний генератор, кав'ярня, WC.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">CCS2</span>
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">CHAdeMO</span>
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">Type 2</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 pt-0 border-t border-slate-100 flex items-center justify-between mt-4">
+          <div>
+            <span class="text-[11px] text-slate-400 block font-medium">Вартість:</span>
+            <span class="text-base font-black text-slate-900">13.50 ₴ <span class="text-xs font-normal text-slate-500">/ кВт·год</span></span>
+          </div>
+          <a href="#charge" class="min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl transition">
+            Зарядити
+          </a>
+        </div>
+      </article>
+
+      <!-- Картка 2: Київ, ТРЦ Ocean Plaza -->
+      <article class="group bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="relative h-48 bg-slate-900">
+            <img src="../assets/images/ai_promo_banner.jpg" alt="Хаб Ocean Plaza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/90 text-white backdrop-blur shadow">
+              <span class="w-2 h-2 rounded-full bg-white"></span> Зарезервовано (1/4)
+            </span>
+            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-lg text-xs font-extrabold bg-blue-600 text-white shadow">DC 180 кВт</span>
+            <span class="absolute bottom-3 left-3 text-white text-xs font-medium drop-shadow">Київ, вул. Антоновича, 176</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <span>Мегаполіс Hub</span>
+              <span class="text-emerald-600 font-bold">Supercharge</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Хаб «Ocean Plaza Hyper-180»</h3>
+            <p class="text-xs text-slate-500 mt-2">Центральний зарядний кластер столиці з технологією динамічного балансування потужності.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">CCS2 Ultra</span>
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">GB/T DC</span>
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">Type 2</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 pt-0 border-t border-slate-100 flex items-center justify-between mt-4">
+          <div>
+            <span class="text-[11px] text-slate-400 block font-medium">Вартість:</span>
+            <span class="text-base font-black text-slate-900">14.20 ₴ <span class="text-xs font-normal text-slate-500">/ кВт·год</span></span>
+          </div>
+          <a href="#charge" class="min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl transition">
+            Зарядити
+          </a>
+        </div>
+      </article>
+
+      <!-- Картка 3: Траса М-06, Житомир Hub -->
+      <article class="group bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="relative h-48 bg-slate-900">
+            <img src="../assets/images/hero_bg.jpg" alt="Хаб Траса Київ-Чоп" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/90 text-white backdrop-blur shadow">
+              <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> Вільна (4/4)
+            </span>
+            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-lg text-xs font-extrabold bg-blue-600 text-white shadow">DC 300 кВт</span>
+            <span class="absolute bottom-3 left-3 text-white text-xs font-medium drop-shadow">Траса М-06 Київ-Чоп, 128 км</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              <span>Магістральний хаб</span>
+              <span class="text-purple-600 font-bold">Highway Flash</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Хаб «Highway M-06 Flash-300»</h3>
+            <p class="text-xs text-slate-500 mt-2">Надшвидкісна зарядка від 10% до 80% за 14 хвилин. Сонячна електростанція + BESS акумулятори.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">CCS2 (300 kW)</span>
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">Tesla NACS</span>
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded">CHAdeMO</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 pt-0 border-t border-slate-100 flex items-center justify-between mt-4">
+          <div>
+            <span class="text-[11px] text-slate-400 block font-medium">Вартість:</span>
+            <span class="text-base font-black text-slate-900">14.90 ₴ <span class="text-xs font-normal text-slate-500">/ кВт·год</span></span>
+          </div>
+          <a href="#charge" class="min-h-[44px] inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl transition">
+            Зарядити
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</body>
+</html>

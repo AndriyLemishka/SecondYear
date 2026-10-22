@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Технології веброзробки та дизайну</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.svg">
+
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/plugins/sal.css">
+    <link rel="stylesheet" href="assets/css/plugins/feather.css">
+    <link rel="stylesheet" href="assets/css/plugins/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/euclid-circulara.css">
+    <link rel="stylesheet" href="assets/css/plugins/swiper.css">
+    <link rel="stylesheet" href="assets/css/plugins/odometer.css">
+    <link rel="stylesheet" href="assets/css/plugins/animation.css">
+    <link rel="stylesheet" href="assets/css/plugins/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/plugins/magnigy-popup.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/plyr.css">
+    <link rel="stylesheet" href="assets/css/plugins/jodit.min.css">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/mystyle.css">
+</head>
+
+<body class="rbt-header-sticky">
+
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="assets/images/sun.svg" alt="Світла тема"><span title="Світла тема"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="assets/images/moon.svg" alt="Темна тема"><span title="Темна тема"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--HEADER-->
+    <header class="rbt-header rbt-header-4 rbt-header-4-container-var">
+        <div class="rbt-sticky-placeholder"></div>
+        <!--HEADER TOP-->
+        <div class="rbt-header-top rbt-header-top-1 header-space-betwween bg-not-transparent bg-color-darker top-expended-activation">
+            <div class="container-fluid">
+                <div class="top-expended-wrapper">
+                    <div class="top-expended-inner rbt-header-sec align-items-center ">
+						
+                        <div class="rbt-header-sec-col rbt-header-center">
+                            <div class="rbt-header-content justify-content-start justify-content-xl-center">
+                                <div class="header-info">
+                                    <div class="rbt-header-top-news">
+                                        <div class="inner">
+                                            <div class="content">
+                                                <a href="https://cad.lpnu.ua/" target="_blank"><span class="rbt-badge variation-02 bg-color-primary color-white radius-round">Кафедра САП</span></a>
+                                                <span class="news-text"> (032) 258-26-74</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>						
+						
+                        <div class="rbt-header-sec-col rbt-header-left d-none d-xl-block">
+                            <div class="rbt-header-content">
+								
+                                <!--Information List-->
+                                <div class="header-info">
+                                    <ul class="rbt-information-list text-center">
+										<li>
+											<a href="mailto:Iryna.Y.Yurchak@lpnu.ua" title="Iryna.Y.Yurchak@lpnu.ua" target="_blank">
+												<i class="fas fa-envelope"></i><span>Iryna.Y.Yurchak@lpnu.ua</span>
+											</a>
+										</li>
+										<li>
+											<a href="https://t.me/+380730189648" target="_blank" title="+380730189648">
+												<i class="fab fa-telegram-plane"></i><span>(073)018-96-48</span>
+											</a>
+										</li>
+                                    </ul>
+                                </div>
+                                <!--./Information List-->
+                            </div>
+                        </div>
+			
+						
+
+                        <div class="rbt-header-sec-col rbt-header-right mt_md--10 mt_sm--10">
+                            <div class="rbt-header-content justify-content-start justify-content-lg-end">
+                                <div class="header-info">
+                                    <ul class="rbt-dropdown-menu switcher-language">
+                                        <li class="has-child-menu">
+                                            <a href="#">
+                                                <img class="left-image" src="assets/images/logo-cad.png" alt="Українська">
+                                                <span class="menu-item">Викладачі</span>
+                                                <i class="right-icon feather-chevron-down"></i>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li>
+                                                    <a href="https://cad.lpnu.ua/staffone/details/yurchak" target="_blank">
+                                                        <img class="left-image" src="assets/images/yurchak.jpg" alt="Ірина ЮРЧАК">
+                                                        <span class="menu-item">Юрчак І.Ю.</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://cad.lpnu.ua/staffone/details/oksentyuk" target="_blank">
+                                                        <img class="left-image" src="assets/images/oksentyuk.jpg" alt="Віра ОКСЕНТЮК">
+                                                        <span class="menu-item">Оксентюк В.М</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://cad.lpnu.ua/staffone/details/parashchyn" target="_blank">
+                                                        <img class="left-image" src="assets/images/parashchyn.jpg" alt="Жанна ПАРАЩИН">
+                                                        <span class="menu-item">Паращин Ж.Д</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://cad.lpnu.ua/staffone/details/stefanovych" target="_blank">
+                                                        <img class="left-image" src="assets/images/stefanovych.jpg" alt="Тетяна СТЕФАНОВИЧ">
+                                                        <span class="menu-item">Стефанович Т.О.</span>
+                                                    </a>
+                                                </li>												
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="rbt-separator d-none d-xl-block"></div>
+                                <div class="header-info d-none d-xl-block">
+                                    <ul class="social-share-transparent">
+										<li><a href="https://www.facebook.com/departmentCDS" target="_blank"><i class="feather-facebook"></i></a></li>
+										<li><a href="https://www.youtube.com/channel/UC5k442CPOLDKtxbqZWJrY1g" target="_blank"><i class="feather-youtube"></i></a></li>
+										<li><a href="https://www.instagram.com/cad_nulp/" target="_blank"><i class="feather-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-info">
+                        <div class="top-bar-expended d-block d-lg-none">
+                            <button class="topbar-expend-button rbt-round-btn"><i class="feather-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--./HEADER TOP-->
+		
+		<!--NAVIGATION-->
+        <div class="rbt-header-wrapper header-space-betwween header-sticky">
+            <div class="container-fluid">
+                <div class="mainbar-row rbt-navigation-center align-items-center">
+                    <div class="header-left rbt-header-content">
+                        <div class="header-info">
+                            <div class="logo logo-dark logo-ncngu">
+                                <a href="index.html">
+									<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+									<strong>Веб-розробка<span class="hidden-logo"> та дизайн</span></strong>
+                                </a>								
+                            </div>
+
+                            <div class="logo d-none logo-light logo-ncngu">
+                                <a href="index.html">
+									<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+									<strong>Веб-розробка<span class="hidden-logo"> та дизайн</span></strong>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-info ml--10">
+                            <div class="rbt-category-menu-wrapper rbt-category-update">
+
+                                <div class="rbt-category-btn">
+                                    <div class="rbt-offcanvas-trigger md-size icon">
+                                        <span class="d-none d-xl-block">
+											<img src="assets/images/browser.svg">
+										</span>
+                                    </div>
+                                    <span class="category-text d-none d-xl-block">Сервіси</span>
+                                </div>
+
+                                <!-- Start category Area  -->
+                                <div class="category-dropdown-menu d-none d-xl-block">
+                                    <div class="category-menu-item">
+                                        <div class="rbt-vertical-nav">
+                                            <ul class="rbt-vertical-nav-list-wrapper vertical-nav-menu">
+                                                <li class="vertical-nav-item active">
+                                                    <a href="#tab1">Асистенти</a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a href="#tab2">Розробка</a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a href="#tab3">Деплой</a>
+                                                </li>
+                                                <li class="vertical-nav-item">
+                                                    <a href="#tab4">Документація</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="rbt-vertical-nav-content">
+                                            <!-- Start One Item  -->
+                                            <div class="rbt-vertical-inner tab-content" id="tab1" style="display: block">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="rbt-short-title">ШІ-сервіси</h3>
+                                                                <ul class="rbt-vertical-nav-list-wrapper">
+																	<li><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></li>
+																	<li><a href="https://claude.ai/" target="_blank">Claude</a></li>
+																	<li><a href="https://grok.com/" target="_blank">Grok</a></li>
+																	<li><a href="https://gemini.google.com" target="_blank">Gemini</a></li>
+																	<li><a href="https://notebooklm.google.com/" target="_blank">NotebookLM</a></li>
+																</ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                            <!-- Start One Item  -->
+                                            <div class="rbt-vertical-inner tab-content" id="tab2">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="rbt-short-title">IDE, редактори</h3>
+                                                                <ul class="rbt-vertical-nav-list-wrapper">
+                                                                    <li><a href="https://code.visualstudio.com/" target="_blank">VS Code</a></li>
+																	<li><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a></li>
+																	<li><a href="https://aistudio.google.com" target="_blank">Google AI Studio</a></li>
+                                                                    <li><a href="https://www.figma.com/" target="_blank">Figma</a></li>
+																	<li><a href="https://idx.google.com/" target="_blank">Project IDX</a></li>
+																	<li><a href="https://stackblitz.com/" target="_blank">StackBlitz</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                            <!-- Start One Item  -->
+                                            <div class="rbt-vertical-inner tab-content" id="tab3">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="rbt-short-title">Контроль версій, хостинг</h3>
+                                                                <ul class="rbt-vertical-nav-list-wrapper">
+																	<li><a href="https://git-scm.com" target="_blank">Git</a></li>
+																	<li><a href="https://github.com/" target="_blank">GitHub</a></li>
+																	<li><a href="https://www.netlify.com/" target="_blank">Netlify</a></li>
+																	<li><a href="https://vercel.com/" target="_blank">Versel</a></li>
+																	<li><a href="https://developer.chrome.com/docs/devtools" target="_blank">Chrome DevTools</a></li>
+																</ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                            <!-- Start One Item  -->
+                                            <div class="rbt-vertical-inner tab-content" id="tab4">
+                                                <div class="rbt-vertical-single">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="vartical-nav-content-menu">
+                                                                <h3 class="rbt-short-title">Керівництва, підручники</h3>
+                                                                <ul class="rbt-vertical-nav-list-wrapper">
+																	<li><a href="https://css.in.ua/html/tags" target="_blank">HTML-довідник</a></li>
+																	<li><a href="https://css.in.ua/css/properties" target="_blank">CSS-довідник</a></li>
+																	<li><a href="https://uk.javascript.info/" target="_blank">Підручник з JavaScript</a></li>
+																	<li><a href="https://git-scm.com/book/uk/v2" target="_blank">Git Docs (укр.)</a></li>
+																	<li><a href="https://docs.github.com/" target="_blank">GitHub Docs (англ.)</a></li>
+																	<li><a href="https://docs.github.com/en/pages" target="_blank">GitHub Pages Docs</a></li>
+																	<li><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank">Git в VS Code</a></li>
+																	<li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank">Git Cheat Sheet (PDF)</a></li>
+																</ul>													
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End One Item  -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End category Area  -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rbt-main-navigation d-none d-xl-block">
+                        <nav class="mainmenu-nav">
+                            <ul class="mainmenu">
+                                <li>
+                                    <a href="lecture.html">Лекції</a>
+                                </li>
+								
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a href="#">Лабораторні <i class="feather-chevron-down"></i></a>
+                                    <!--Mega Menu-->
+                                    <div class="rbt-megamenu grid-item-4">
+                                        <div class="wrapper">
+                                            <div class="row row--15">
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">ШІ-аналітика, копірайтинг та UX/UI дизайн (Етап проєктування)</h3>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a href="work1.html">№1. ШІ-асистенти та основи промпт-інжинірингу</a></li>
+                                                        <li><a href="work2.html">№2. Комплексний робочий процес в екосистемі Google</a></li>
+														<li><a href="work3.html">№3. Генерація графічних UI-активів та мультимедіа</a></li>
+														<li><a href="work4.html">№4. UX/UI прототипування та створення дизайн-системи</a></li>
+                                                    </ul>
+                                                </div>
+
+												
+
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">Фронтенд-верстка, компонентна архітектура та збірка інтерфейсу</h3>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a href="work5.html">№5. Семантична верстка та рефакторинг базового каркасу</a></li>
+														<li><a href="work6.html">№6. Компонентна верстка, стилізація та адаптивність</a></li>	
+														<li><a href="work7.html">№7. Проєктування та реалізація повноцінного лендингу</a></li>
+                                                    </ul>
+                                                </div>
+
+
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">JavaScript-програмування, валідація та обробка Edge Cases</h3>
+                                                    <ul class="mega-menu-item">
+														<li><a href="work9.html">№9. Адаптивні форми зворотного зв'язку та клієнтська валідація</a></li>
+                                                        <li><a href="work10.html">№10. Інтеграція динамічних медіакомпонентів та JS-бібліотек</a></li>
+														<li><a href="work11.html">№11. Розробка інтерактивних віджетів та обробка Edge Cases</a></li>
+                                                    </ul>
+                                                </div>
+												
+                                                <div class="col-lg-12 col-xl-3 col-xxl-3 single-mega-item">
+                                                    <h3 class="rbt-short-title">Інженерія середовища, контроль версій, QA та автоматизація (DevOps)</h3>
+                                                    <ul class="mega-menu-item">
+                                                        <li><a href="work8.html">№8. Деплой проєкту. Контроль версій Git та GitHub</a></li>
+														<li><a href="work12.html">№12. Аудит, оптимізація продуктивності та автоматизація релізу (CI/CD).</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Mega Menu  -->
+                                </li>	
+								
+                                <li>
+                                    <a href="selfwork.html">Самостійна</a>
+                                </li>								
+
+                                <li class="has-dropdown has-menu-child-item">
+                                    <a href="#">Галерея
+                                        <i class="feather-chevron-down"></i>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li><a href="video.html">Відео, демонстрації</a></li>
+										<li><a href="infographics.html">Інфографіка</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="journal.html">Журнали</a>
+                                </li>								
+	
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="header-right">
+
+                        <!-- Navbar Icons -->
+                        <ul class="quick-access">
+
+                            <li class="access-icon rbt-mini-cart">
+                                <a class="rbt-cart-sidenav-activation rbt-round-btn" href="#">
+                                    <i class="feather-grid"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+						<div class="rbt-btn-wrapper d-none d-xl-block">
+                            <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" href="https://lpnu.ua/rozklad-zaniat-ta-ekzameniv" target="_blank">
+                                <span data-text="Розклад занять">Розклад занять</span>
+                            </a>
+                        </div>
+
+                        <!-- Start Mobile-Menu-Bar -->
+                        <div class="mobile-menu-bar d-block d-xl-none">
+                            <div class="hamberger">
+                                <button class="hamberger-button rbt-round-btn">
+                                    <i class="feather-menu"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Start Mobile-Menu-Bar -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!--NAVIGATION-->
+		
+        <a class="rbt-close_side_menu" href="javascript:void(0);"></a>		
+
+	</header>
+	<!--./HEADER-->
+	
+    <!--MOBILE MENU-->
+    <div class="popup-mobile-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="logo">
+						<div class="logo logo-dark logo-ncngu">
+							<a href="index.html">
+								<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+								<strong>Технології веб-розробки та дизайну</strong>
+							</a>								
+						</div>
+
+						<div class="logo d-none logo-light logo-ncngu">
+							<a href="index.html">
+								<span><img src="assets/images/ncngu/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+								<strong>Технології веб-розробки та дизайну</strong>
+							</a>
+						</div>
+                    </div>
+                    <div class="rbt-btn-close">
+                        <button class="close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <nav class="mainmenu-nav">
+                <ul class="mainmenu">
+                    <li>
+                        <a href="index.html">Головна</a>
+                    </li>
+                    <li>
+                        <a href="lecture.html">Лекції</a>
+                    </li>
+					
+                    <li class="has-dropdown has-menu-child-item">
+                        <a href="#">Лабораторні
+                            <i class="feather-chevron-down"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="work1.html">Лабораторна робота №1.</a></li>
+							<li><a href="work2.html">Лабораторна робота №2.</a></li>
+                            <li><a href="work3.html">Лабораторна робота №3.</a></li>
+							<li><a href="work4.html">Лабораторна робота №4.</a></li>
+                            <li><a href="work5.html">Лабораторна робота №5.</a></li>
+							<li><a href="work6.html">Лабораторна робота №6.</a></li>
+							<li><a href="work7.html">Лабораторна робота №7.</a></li>
+							<li><a href="work8.html">Лабораторна робота №7.</a></li>
+							<li><a href="work9.html">Лабораторна робота №9.</a></li>
+							<li><a href="work10.html">Лабораторна робота №10.</a></li>
+							<li><a href="work11.html">Лабораторна робота №11.</a></li>
+							<li><a href="work12.html">Лабораторна робота №12.</a></li>							
+                        </ul>
+                    </li>					
+
+					<li>
+                        <a href="selfwork.html">Самостійна</a>
+                    </li>					
+                    <li class="has-dropdown has-menu-child-item">
+                        <a href="#">Галерея
+                            <i class="feather-chevron-down"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="video.html">Відео, демонстрації</a></li>
+							<li><a href="infographics.html">Інфографіка</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="journal.html">Журнали</a>
+                    </li>	
+					
+                </ul>
+            </nav>
+
+            <div class="mobile-menu-bottom">
+                <div class="rbt-btn-wrapper mb--20">
+					<a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" href="https://lpnu.ua/rozklad-zaniat-ta-ekzameniv" target="_blank">
+						<span data-text="Розклад занять">Розклад занять</span>
+					</a>
+                </div>
+
+                <div class="social-share-wrapper">
+                    <span class="rbt-short-title d-block">Соціальні мережі</span>
+                    <ul class="social-icon social-default transparent-with-border justify-content-start mt--20">
+                        <li><a href="https://www.facebook.com/departmentCDS" target="_blank"><i class="feather-facebook"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC5k442CPOLDKtxbqZWJrY1g" target="_blank"><i class="feather-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/cad_nulp/" target="_blank"><i class="feather-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+			
+        </div>
+    </div>
+	<!--./MOBILE MENU-->
+	
+    <!--SIDEBAR-->
+    <div class="rbt-cart-side-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="title">
+						<div class="logo logo-dark">
+							<a href="index.html">
+								<span><img src="assets/images/logo.svg" alt="Корисна інформація"></span>
+								<strong>Корисна інформація</strong>
+							</a>								
+						</div>
+
+						<div class="logo d-none logo-light">
+							<a href="index.html">
+								<span><img src="assets/images/logo.svg" alt="Корисна інформація"></span>
+								<strong>Корисна інформація</strong>
+							</a>
+						</div>
+                    </div>
+                    <div class="rbt-btn-close" id="btn_sideNavClose">
+                        <button class="minicart-close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+            </div>
+		
+			
+			<nav class="side-nav w-100">
+				<h5>Дедлайни</h5>
+				<ul>
+					<li>I половина семестру 07.09-24.10.2026</li>
+					<li>II половина семестру 26.10-19.12.2026</li>
+				</ul>
+	
+				<h5>Диски та журнали</h5>
+                <ul class="sidebar-list">
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-21</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1lXCcBfTucbdUVyj8BHSO331x3D7nRa8A" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1tqKXXKlt_sVRtxWffcNgt9Y938gPSk1_JkuLF9VrH9E/edit?gid=0#gid=0" target="_blank">Журнал</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-22</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1Ev60040pgT9_HQyLFK0wvovMwGGqu8IK" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1NXo5kRJmKjE_e8HL3lMKSlktGzFl1iV9nspYO8RXDhw/edit?gid=0#gid=0" target="_blank">1 підгр.</a>
+						<a href="https://docs.google.com/spreadsheets/d/1USK4QpwfhYISxhIVs6PviwU90cVvNl7y5NffUh6ZK4g/edit?gid=0#gid=0" target="_blank">2 підгр.</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-23</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1WjBOr46u_OVTfeSyXbjkPUaJZSP4Jmvo" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1Wux5eWBsDMhY-hW6MdqVYkthsD-eZf1rkmjyoIvW0Qk/edit?gid=0#gid=0" target="_blank">Журнал</a>
+					</li>
+					<li><i class="fab fa-google-drive"></i><strong>ПП-24</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1lSg-GmIsprhW5Swa3aMhgvUxQBbFBgi0" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1FsUAFRlaxtEI-m0jhHziL6gpHNMqGDyRD99BiOfC7m8/edit?gid=0#gid=0" target="_blank">1 підгр.</a>
+						<a href="https://docs.google.com/spreadsheets/d/1qXWH5eotFUfThv2eQSibX6_SV0QV1rJ85k1tctWXkmc/edit?gid=0#gid=0" target="_blank">2 підгр.</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-25</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1Qs2awZjS7OZ6tcr_1kWoQSdvs-fBhm4o" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1Rmmb6SulRmcnYOtvnC3QzLTa54OwBoyjcoTEvysgWNs/edit?gid=0#gid=0" target="_blank">1 підгр.</a>
+						<a href="https://docs.google.com/spreadsheets/d/1_rr9PK0Gcsp5VwBLg8khXByyFRm8jZ2ElxrW8St6zpg/edit?gid=0#gid=0" target="_blank">2 підгр.</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-26</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1E1-w4aBKB-4A8Qen7CTni2TfyBUg4i2a" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1msOp-J4VmPTm0nWMzH74Gji-bHZtck2ea1L0Y2GpWl4/edit?gid=0#gid=0" target="_blank">1 підгр.</a>
+						<a href="https://docs.google.com/spreadsheets/d/11xQazX9DgIEXPH6VtYiWtMXJF7DC3gfijwwsPRrl8OU/edit?gid=0#gid=0" target="_blank">2 підгр.</a>
+					</li>
+					<li>
+						<i class="fab fa-google-drive"></i><strong>ПП-21з</strong>
+						<a href="https://drive.google.com/drive/u/0/folders/1_UcWk-JlJCi4a3gjYUFLlaFjhAukkWBg" target="_blank">Диск</a>&nbsp;&nbsp;
+						<a href="https://docs.google.com/spreadsheets/d/1iiQKUGL1ke5mgdaRuZVNX0y0lnEVTO4958b_h_oMDEw/edit?gid=0#gid=0" target="_blank">Журнал</a>
+					</li>
+				</ul>				
+			</nav>	
+
+            <div class="rbt-minicart-footer">
+				<div class="social-share-wrapper">
+                    <span class="rbt-short-title d-block">Соціальні мережі</span>
+                    <ul class="social-icon social-default transparent-with-border justify-content-start mt--20">
+                        <li><a href="https://www.facebook.com/departmentCDS" target="_blank"><i class="feather-facebook"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC5k442CPOLDKtxbqZWJrY1g" target="_blank"><i class="feather-youtube"></i></a></li>
+                        <li><a href="https://www.instagram.com/cad_nulp/" target="_blank"><i class="feather-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--./SIDEBAR-->
+	
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+	
+	<!--INSIDE TEMPLATE-->
+
+    <!--BREADCRUMB-->
+    <div class="rbt-breadcrumb-default ptb--45 ptb_md--30 ptb_sm--30 bg-gradient-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <h2 class="title"><span class="theme-gradient">8. Деплой проєкту. Контроль версій Git та GitHub</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--./BREADCRUMB-->
+	
+	<!--PAGE AND SIDEBAR-->
+    <div class="rbt-page-area rbt-section-gap2Bottom page-work">
+        <div class="container">
+			<div class="row g-5">
+
+				<div class="col-xl-9">
+					<!--PAGE CONTENT-->
+					<article class="rbt-page-content">
+						<div class="narrow-block-goal">
+							<div class="rbt-feature feature-style-2 rbt-radius">
+								<div class="icon bg-pink-opacity">
+									<i class="feather-target"></i>
+								</div>
+								<div class="feature-content">
+									<h6 class="feature-title">Мета роботи</h6>
+									<p class="feature-description">Опанувати фундаментальні навички роботи з розподіленою системою контролю версій Git та хмарним сервісом GitHub через інтерфейс IDE Visual Studio Code та командний рядок. Навчитися ініціалізувати локальні репозиторії, створювати індекси змін, фіксувати їх (commit), працювати з гілками (branching), вирішувати конфлікти злиття (merge conflicts), пов'язувати локальну робочу область з віддаленими сервісами, організовувати спільну роботу над кодом та здійснювати деплой (публікацію) вебпроєкту.</p>
+								</div>
+							</div>						
+						</div>
+						
+						<div class="rbt-gallery-area mb--20">
+							<div class="row parent-gallery-container">
+								<a href="assets/picture/8/git.jpg" class="child-gallery-single col-lg-4 col-sm-6">
+									<div class="rbt-gallery">
+										<img class="w-100" src="assets/picture/8/git.jpg" alt="Git">
+									</div>
+								</a>
+								<a href="assets/picture/8/github.jpg" class="child-gallery-single col-lg-4 col-sm-6">
+									<div class="rbt-gallery">
+										<img class="w-100" src="assets/picture/8/github.jpg" alt="Github">
+									</div>
+								</a>
+								<a href="assets/picture/8/netlify.jpg" class="child-gallery-single col-lg-4 col-md-4 col-sm-6 col-6">
+									<div class="rbt-gallery">
+										<img class="w-100" src="assets/picture/8/netlify.jpg" alt="Netlify">
+									</div>
+								</a>								
+							</div>
+						</div>	
+	
+						<h4>Стек інструментів для роботи</h4>
+
+						<ul>
+							<li><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>. Середовище розробки з вбудованим терміналом та панеллю Source Control.</li>					
+							<li><a href="https://git-scm.com/" target="_blank">Git</a> (локальний інструмент/Git Bash). Розподілена система керування версіями файлів та спільної роботи.</li>
+							<li><a href="https://github.com/" target="_blank">GitHub</a>. Вебсервіс для спільної розробки програмного забезпечення. Надає можливість зберігати код в репозиторіях, ділитися ним з іншими розробниками та відстежувати зміни в проектах.</li>
+							<li><a href="https://docs.github.com/en/pages" target="_blank">GitHub Pages</a>. Сервіс розміщення статичних сайтів, що приймає файли HTML, CSS, JavaScript прямо з репозиторія на GitHub та публікує на тимчасовому хостингу. Потребує реєстрації на GitHub.</li>
+							<li><a href="https://www.netlify.com/" target="_blank">Netlify</a>. Платформа для публікації статичних сайтів, JAMstack-проектів и фронтенд-додатків без складного налаштування сервера.</li>
+							<li>Генеративні ШІ-моделі. ChatGPT, Claude, Gemini.</li>		
+						</ul>					
+						
+						<p>Сучасна веброзробка неможлива без використання систем контролю версій. Вони надають можливість зберігати історію змін проєкту, повертатися до попередніх версій коду, аналізувати внесені зміни та уникати втрати результатів роботи. Найпоширенішою системою контролю версій є Git, яка стала міжнародним стандартом розробки програмного забезпечення та вебпроєктів. Після створення локального репозиторію важливо навчитися правильно керувати змінами в проєкті. Ці дії формують основу ефективної роботи з будь-яким програмним проєктом і допомагають підтримувати впорядковану історію його розвитку.</p>
+						
+						<p>Наступним етапом є організація віддаленого зберігання проєкту за допомогою сервісу GitHub. Віддалений репозиторій забезпечує резервне копіювання проєкту, синхронізацію змін між різними комп'ютерами та створює основу для командної розробки. Під час виконання лабораторної роботи студенти навчаться створювати репозиторії на GitHub, пов'язувати їх з локальними проєктами, виконувати надсилання (push) та отримання (pull) змін, а також працювати з репозиторіями безпосередньо через середовище Visual Studio Code.</p>
+						
+						<p>Завершальним етапом розробки є розгортання (деплой) вебпроєкту, тобто його публікація в мережі Інтернет. Сучасні сервіси надають можливість автоматично розгортати сайт безпосередньо з репозиторію GitHub після внесення нових змін. Це забезпечує швидке оновлення вебресурсу, спрощує процес супроводу проєкту та надає можливість користувачам відразу працювати з актуальною версією сайту. В ході лабораторної роботи студенти опублікують власний вебпроєкт і перевірять його доступність через браузер.</p>
+						
+						<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+							<div class="accordion" id="accordionExampleb7">
+
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo71">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo71" aria-expanded="false" aria-controls="collapseTwo71">
+											Git та GitHub
+									  </button>
+									</h2>
+									<div id="collapseTwo71" class="accordion-collapse collapse" aria-labelledby="headingTwo71" data-bs-parent="#accordionExampleb7">
+										<div class="accordion-body card-body">
+											<p>Git та GitHub — це абсолютний стандарт інженерної культури. Жоден серйозний ШІ-асистент чи CI/CD пайплайн деплою не працює без репозиторію. В цій лабораторній роботі показано кожен крок створення локального та віддаленого репозиторіїв, що містить проект лендингу з ЛР №7, керування історією змін прямо через VS Code та виконання фінального релізу.</p>
+											
+											<p>Розробники-початківці проблематично освоюють Git і не відразу розуміють логіку роботи сервісу. Але варто створити пару репозиторіїв або, ще краще, поринути в реальну історію встановлення стартапу на хостингу, як робота з гілками стане доброзичливою, а PR (pull request) і MR (merge request) більше не викличуть плутанини.</p>
+											<p>На сьогодні стандартом стало використання систем контролю версій, які запам'ятовують, яку зміну та в якому файлі було зроблено, а також можуть показати історію цих змін. Розробники використовують кілька систем контролю версій: Git, Subversion, Team Foundation Server, Mercurial.</p>
+											<p><strong>Git</strong> – це розподілена система керування версіями: є один сервер, через який розробники обмінюються кодом. Розробник копіює (клонує) проект на свій локальний комп’ютер, робить зміни і зберігає їх у віддалений репозиторій. В разі потреби інші розробники можуть скопіювати ці зміни до себе.</p>
+											<p>Історія та копія проекту зберігаються локально та найчастіше не потрібна додаткова інформація від інших клієнтів. З репозиторієм можна працювати і за відсутності інтернету (наприклад, в літаку), а коли він з'явиться, просто завантажити зміни у віддалений репозиторій на виділеному сервері. Якщо в розробника зламається комп'ютер, проект не загубиться, а лежатиме непорушно у віддаленому репозиторії.</p>
+											<p><strong>GitHub</strong> – найбільший веб-сервіс, який надає можливість займатися спільною розробкою з використанням Git та зберігати проекти на своїх серверах. Насправді функціональність GitHub значно більша, але в даній лабораторній роботі буде розлянуто перші кроки налаштування сервісів, створення репозиторіїв, збереження історії змін в проекті, публікації на хостингу.</p>
+
+											<h5>Вживані терміни</h5>
+											<ul>
+												<li><strong>Репозиторій (Repository).</strong> Сховище проєкту (папка), за історією змін якої стежить Git. Буває локальним (на локальному комп’ютері) та віддаленим (на серверах GitHub).</li>
+												<li><strong>Коміт (Commit)</strong>. Зліпок (фіксація) стану проекту в певний момент часу з унікальним хет-кодом та описом. Це «точка збереження» в процесі розроблення проекту. Коміт - це основний об'єкт в управлінні контролю версій. Він містить всі зміни які зроблено до створення цього коміту. Коміти пов'язані між собою. Наприклад, є перший коміт, Коли створюється другий коміт, він (другий) знає, що йде після першого. І в такий спосіб можна відстежити інформацію. Також кожний коміт має й власну інформацію, так звані метадані:
+													<ul>
+														<li>Унікальний ідентифікатор коміту, за яким його можна знайти.</li>
+														<li>Ім'я автора коміту, який його створив.</li>
+														<li>Дата створення коміту.</li>
+														<li>Коментар, який визначає, що було зроблено під час цього коміту.</li>
+													</ul>													
+												</li>
+												<li><strong>Гілка (Branch).</strong> Ізольована лінія розробки. Основна гілка називається main. Для створення фіч (наприклад, нової форми зворотного зв'язку) розробники створюють окремі гілки, щоб не зламати стабільний код на живому сайті.</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo72">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo72" aria-expanded="false" aria-controls="collapseTwo72">
+											Розгортання вебсторінки в Інтернеті
+									  </button>
+									</h2>
+									<div id="collapseTwo72" class="accordion-collapse collapse" aria-labelledby="headingTwo72" data-bs-parent="#accordionExampleb7">
+										<div class="accordion-body card-body">
+											<p>Розгортання вебпроєкту містить кілька основних етапів: підготовку проєкту, вибір платформи для розміщення, завантаження файлів на сервер, налаштування доменного імені (за потреби) та перевірку працездатності вебсайту. Для статичних сайтів, створених за допомогою HTML, CSS і JavaScript, процес публікації є досить простим і часто виконується автоматично після завантаження проєкту до репозиторію GitHub.</p>
+											<p>Сучасні сервіси розгортання підтримують безперервне розгортання, коли після внесення змін до репозиторію нова версія сайту автоматично публікується в Інтернеті. Такий підхід значно спрощує процес оновлення вебресурсу, скорочує час між розробкою та публікацією і мінімізує кількість ручних операцій.</p>
+											<p>Існує багато платформ для розміщення вебпроєктів. Для навчальних і невеликих статичних сайтів найчастіше використовують GitHub Pages, Netlify, Vercel або Cloudflare Pages. Ці сервіси надають безкоштовний хостинг, автоматичне оновлення сайту після внесення змін до репозиторію, підтримку захищеного протоколу HTTPS, власні або користувацькі доменні імена, а також інтеграцію з системами контролю версій Git.</p>
+											<p>Для складніших веб додатків, які використовують серверну частину, бази даних або серверні мови програмування, застосовують хмарні платформи та віртуальні сервери, що забезпечують необхідні обчислювальні ресурси, масштабованість та засоби адміністрування.</p>
+											<p>Після розгортання необхідно перевірити коректність роботи вебсайту: доступність всіх сторінок, правильність відображення елементів інтерфейсу, працездатність навігації, адаптивність на різних пристроях, швидкість завантаження та відсутність помилок в консолі браузера. За потреби розробник вносить зміни до проєкту, після чого нова версія сайту повторно публікується.</p>
+											<p>Таким чином, розгортання вебсторінки в Інтернеті є завершальним етапом життєвого циклу вебпроєкту, який забезпечує його доступність для користувачів. Використання сучасних платформ розгортання та інтеграція з системами контролю версій допомагають автоматизувати процес публікації, спростити супровід вебресурсів і забезпечити швидке оновлення їхнього вмісту.</p>
+										</div>
+									</div>
+								</div>							
+							</div>
+						</div>
+
+						<h2>Покроковий хід виконання роботи</h2>
+						
+						<h5>Етап 1. Встановлення та налаштування GitHub та Git</h5>
+						<p>Часто початківці плутають ці два поняття, але між ними є принципова різниця:</p>
+						<ul>
+							<li><strong>Git</strong> — це локальна програма (інструмент), яка працює на комп'ютері розробника. Вона стежить за файлами проєкту, записує історію змін і надає механізми повертатися до будь-якої попередньої версії коду.</li>
+							<li><strong>GitHub</strong> — це хмарна платформа (вебсайт), де розробники зберігають свої Git-репозиторії в інтернеті. Це своєрідна «соціальна мережа для програмістів», яка надає можливість ділитися кодом, працювати в команді та автоматизувати публікацію проєктів.</li>
+						</ul>
+												
+							<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+								<div class="accordion" id="accordionExampleb1">
+
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo11">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo11" aria-expanded="false" aria-controls="collapseTwo11">
+												1.	Створення акаунту на GitHub
+										  </button>
+										</h2>
+										<div id="collapseTwo11" class="accordion-collapse collapse" aria-labelledby="headingTwo11" data-bs-parent="#accordionExampleb1">
+											<div class="accordion-body card-body">
+												<p>1. Перейти на <a href="https://github.com/" target="_blank">github.com</a></p>
+												<p>2. Натиснути Sign up і створити безкоштовний обліковий запис (рекомендується використовувати емейл університету).</p>
+												<p><img src="assets/picture/8/1.jpg" alt=""></p>
+												<p>3. Заповнити відомості про акаунт.</p> 
+												<p><img src="assets/picture/8/2.jpg" alt=""></p>
+												<p>4. Підтвердити реєстрацію через надісланий лист на пошту. Хмарний сервіс GitHub дбає за захист та непорушність  збережених репозиторіїв.</p>
+												<p><img src="assets/picture/8/3.jpg" alt=""></p>
+											</div>
+										</div>
+									</div>
+
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo12">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo12" aria-expanded="false" aria-controls="collapseTwo12">
+												2. Встановлення програми Git
+										  </button>
+										</h2>
+										<div id="collapseTwo12" class="accordion-collapse collapse" aria-labelledby="headingTwo12" data-bs-parent="#accordionExampleb1">
+											<div class="accordion-body card-body">
+												<p>Система контролю версій Git є програмою, яку потрібно встановити на комп'ютер. Процес встановлення залежить від операційної системи. В цій лабораторній роботі розглядається Встановлення на Windows</p>
+												<p>1. Завантажити інсталятор з офіційного сайту: <a href="https://git-scm.com/install/windows" target="_blank">git-scm.com</a>.</p>
+												<p>2. Запустити інсталятор та слідувати інструкціям. Рекомендується залишити налаштування за замовченням.</p>
+												<p>3. Після завершення встановлення відкрити інструмент Git Bash</p>
+												<p><img src="assets/picture/8/4.jpg" alt=""></p>
+												
+												<h5>Git Bash</h5>
+												<p>Git Bash — це спеціальна програма з інтерфейсом командного рядка для роботи з Git. Через термінал можна керувати файлами проєкту та репозиторієм не за допомогою мишки, а за допомогою текстових команд (наприклад: git init, git status, git add тощо).</p>
+												<p>Завдяки Git Bash можна використовувати однакові команди для керування файлами як на Windows, так і на Mac чи Linux.  Розробники часто використовують саме команди в терміналі Git Bash, оскільки це швидше, гнучкіше і допомагає тонко налаштовувати процес розробки.</p>
+												<p>Під час виконання лабораторної роботи можна підключити Git Bash як основний термінал прямо всередині Visual Studio Code, щоб не перемикатися між різними вікнами.</p>											
+												<p>4. Виконати команду: git --version. Якщо Git встановлено правильно, то в терміналі виведеться номер версії.</p>
+												<p><strong>Увага! В текстовому інтерфейсі Git Bash уставляння здійснюється комбінацією клавіш Shift+Insert</strong></p>
+												<p><img src="assets/picture/8/5.jpg" alt=""></p>
+												<p>5. Налаштувати ім'я користувача та його емейл, оскільки кожен коміт буде містити інформацію про автора. Рекомендується використати емейл, що вказано в обліковому записі GitHub, де буде розміщено віддалений репозиторіями (якщо облікового запису не існує, його потрібно створити). Виконати команди:</p>
+												<p>git config --global user.name "Ваше Ім'я"</p>
+												<p>git config --global user.email "your.email@example.com"</p>
+												<p><img src="assets/picture/8/6.jpg" alt=""></p>
+												<p>Перевірити правильність налаштувань можна командою: git config --list</p>
+												<p><img src="assets/picture/8/7.jpg" alt=""></p>
+												<p>Налаштування для Git можна задавати на різних рівнях, і від цього залежить на які проєкти будуть діяти ці налаштування:</p>
+												<ul>
+													<li>Локальні (--local) налаштування діють лише в рамках поточного проєкту.</li>
+													<li>Глобальні (--global) – на рівні облікового запису користувача, тобто для всіх його проєктів.</li>
+													<li>Системні (--system) – на всіх користувачів системи.</li>
+												</ul>
+												<p>Якщо налаштувати один і той самий параметр на різних рівнях, то найпріоритетніші – це встановлені з опцією --local, далі з --global, і найменш пріоритетні з --system. Тому зручно налаштовувати Git з опцією --global, щоб не довелося встановлювати налаштування для кожного проєкту окремо.</p>
+												<p>6. Після встановлення перезавантажити комп’ютер, щоб Git прописався в операційній системі і тоді команди Git будуть присутні в контекстному меню.</p>
+											</div>
+										</div>
+									</div>							
+								</div>
+							</div>
+
+
+							<h5>Етап 2. Створення репозиторіїв</h5>
+							<p>Для роботи з репозиторіями (віддаленим та локальним) існує багато способів черговості їх створення. В даному етапі розглядається спосіб, коли спочатку створюється віддалений репозиторій на Github, і на його основі створюється робочий репозиторій на локальному комп’ютері.</p>
+							<p>Для глибшого вивчення роботи з сервісами рекомендується "<a href="https://www.youtube.com/watch?v=9CnZihyYjjA" target="_blank">Повний курс по GIT та GITHUB українською</a>"</p>
+							
+							<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+								<div class="accordion" id="accordionExampleb2">
+
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo21">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo21" aria-expanded="false" aria-controls="collapseTwo21">
+												1.	Створення віддаленого репозиторію на GitHub
+										  </button>
+										</h2>
+										<div id="collapseTwo21" class="accordion-collapse collapse" aria-labelledby="headingTwo21" data-bs-parent="#accordionExampleb2">
+											<div class="accordion-body card-body">
+												<p>Сервіс Github є англомовним, і користуватися ним без знання мови вийде лише при використанні оновлених версій браузерів типу Google Chrome, де є вбудовані функції перекладу сторінок. В будь-якому випадку робота починається зі створення власного репозиторію – в безкоштовному режимі доступні лише публічні репозиторії, створення приватних репозиторіїв можливе лише за активації платного тарифу.</p>
+												<p>1. Натиснути кнопку «Create repository» (або обрати команду з випадного списку New repository).</p>
+												<p><img src="assets/picture/8/8.jpg" alt=""></p>
+												<p>2. Надати відомості про репозиторій</p>
+												<ul>
+													<li>Назву та Короткий опис репозиторію</li>
+													<li>В секції Конфігурація в цьому проекті все залишити за замовченням, рекомендується увімкнути опцію Створення файлу README.md</li>
+												</ul>
+												<p><img src="assets/picture/8/9.jpg" alt=""></p>
+												<p>Файл README.md є візитівкою даного репозиторію на GitHub. Це головний текстовий опис проєкту, який автоматично відображається на його домашній сторінці в GitHub під списком всіх файлів.Розширення .md означає Markdown — це полегшена мова розмітки, яка допомагає легко форматувати текст за допомогою простих символів (робити заголовки, списки, виділення жирним, додавати посилання та зображення).</p>
+												<p>Залежно від складності проєкту, README.md зазвичай містить наступну структуру.</p>
+												<ul>
+													<li>Назва проєкту та короткий опис, що це за вебсайт чи програма, яку проблему вона вирішує.</li>
+													<li>Перелік технологій та мов розробки (наприклад, HTML5, CSS3, JavaScript).</li>
+													<li>Інструкція зі встановлення та запуску. Які команди треба виконати користувачу, щоб запустити цей проєкт локально на комп'ютері.</li>
+													<li>Якщо проєкт опубліковано (наприклад, через GitHub Pages), додають пряме посилання живий демо-сайт.</li>
+													<li>Демонстрація інтерфейсу або роботи проєкту через скриншоти чи GIF-анімації</li>
+													<li>Автори та розробники репозиторію.</li>
+												</ul>												
+												
+												<p>3. В разі успішного заповнення відомостей буде створено віддалений репозиторій.</p>
+												<p><img src="assets/picture/8/10.jpg" alt=""></p>
+											</div>
+										</div>
+									</div>
+
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo22">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo22" aria-expanded="false" aria-controls="collapseTwo22">
+												2. Створення локального репозиторію на комп’ютері
+										  </button>
+										</h2>
+										<div id="collapseTwo22" class="accordion-collapse collapse" aria-labelledby="headingTwo22" data-bs-parent="#accordionExampleb2">
+											<div class="accordion-body card-body">
+												<p>1. Для створення локального репозиторію потрібно скопіювати в GitHub посилання на віддалений репозиторій, щоб пов’язати їх між собою. У випадному меню &lt;&gt; Code скопіювати посилання і запам’ятати його в Блокноті</p>
+												<p><img src="assets/picture/8/11.jpg" alt=""></p>
+												<p class="ex-font">https://github.com/IrynaYurchak2026/WebDesign.git</p>
+												
+												<p>2. На локальному комп’ютері в файловому менеджері створити папку, де буде розміщено локальний репозиторій (папка з проектом).</p>
+												<p>3. Зайти в пусту папку, клікнути правою кнопкою в пустому місці і обрати команду Open Git Bash here.</p>
+												<p><img src="assets/picture/8/12.jpg" alt=""></p>
+												<p>4. Вказати ім'я та емейл користувача для цього проекту, оскільки кожен коміт буде містити інформацію про автора. Рекомендується використати емейл, що вказано в обліковому записі GitHub, де буде розміщено віддалений репозиторіями (якщо облікового запису не існує, його потрібно створити). Виконати команди:</p>
+												<p class="ex-font">git config --global user.name "Ваше Ім'я"</p>
+												<p class="ex-font">git config --global user.email "your.email@example.com"</p>
+												<p><img src="assets/picture/8/13.jpg" alt=""></p>
+												<p>Якщо авторизація пройшла успіщно і не з’явилося повідомлень про помилки, можна продовжувати роботу в Git Bash.</p>
+												<p>5. Для створення локального репозиторію, потрібно надати команду</p>
+												<p class="ex-font">git clone [вставити скопійоване посилання з Github]</p>
+												<p><img src="assets/picture/8/14.jpg" alt=""></p>
+												<p>В разі успішного клонування буде створено локальний репозиторій, що пов’язаний з віддаленим.</p>
+												<p><img src="assets/picture/8/15.jpg" alt=""></p>
+												<p>Всередині репозиторію міститься лише файл README.md, який створено у віддаленому репозиторії.</p>
+												<p><img src="assets/picture/8/16.jpg" alt=""></p>
+												<p>6. Наповнення локального репозиторію</p>
+												<p>Для того, щоб локальний репозиторій був й робочим простором проекту, потрібно перенести файли проекту (наприклад, лендинг з лр№7 або створити нові) в локальний репозиторій. Тепер це буде робоче середовище для VSCode.</p>
+												<p><img src="assets/picture/8/17.jpg" alt=""></p>
+											</div>
+										</div>
+									</div>	
+									
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo23">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo23" aria-expanded="false" aria-controls="collapseTwo23">
+												3. Робота з репозиторіями
+										  </button>
+										</h2>
+										<div id="collapseTwo23" class="accordion-collapse collapse" aria-labelledby="headingTwo23" data-bs-parent="#accordionExampleb2">
+											<div class="accordion-body card-body">
+												<h5>Перенесення файлів проекту у віддалений репозиторій</h5>
+												<p>Локальний і віддалений репозиторії не синхронізуються автоматично, всі змінені або нові файли (папки) потрібно завантажувати через Git, щоб він зберігав копію версій сайту на всіх етапах розробки.</p>
+												<p>Розглянемо перенесення файлів у віддалений репозиторій через інший інструмент Git GUI (Graphical User Interface). Як можна зрозуміти зі скорочення цей інструмент працює через графічний інтерфейс.</p>
+												<p>1. Клікнути на пустому місці і обрати команду Open Git GUI here.</p>
+												<p><img src="assets/picture/8/18.jpg" alt=""></p>
+												<p>Відкривається вікно Git GUI, де з лівого боку (Unstaged Changes) зазначено всі елементи сайту (файли з кодом, стилями, скриптами, картинки, відео), що було змінено чи додано до проекту. </p>
+												<p>2. В полі Commit Message зазначити опис внесених змін на даному етапі (<strong>обов’язковий крок</strong>). Звісно, що детальніший опис внесених змін в подальшому допоможе розробнику розібратися в версіях сайту.</p>
+												<p><img src="assets/picture/8/19.jpg" alt=""></p>
+												<p>3. Для запам’ятовування в програмі Git даних змін потрібно натиснути кнопку Stage Changed.</p>
+												<p><img src="assets/picture/8/20.jpg" alt=""></p>
+												<p>Після успішного запам’ятовування змін потрібно натиснути кнопки Commit, а потім Push. Якщо все зроблено вірно, то програма Git показує повідомлення про успішне перенесення змінених файлів на віддалений репозиторій.</p>
+												<p><img src="assets/picture/8/21.jpg" alt=""></p>
+												<p>4. Перейти на Github і переконатися, що вміст віддаленого репозиторію оновився.</p>
+												<p><img src="assets/picture/8/22.jpg" alt=""></p>
+											</div>
+										</div>
+									</div>										
+								</div>
+							</div>						
+							
+						
+						
+							<h5>Етап 3. Робота з репозиторіями через VSCode</h5>
+							<p>Visual Studio Code має вбудовану підтримку Git, що надає можливість працювати з локальними та віддаленими репозиторіями без використання сторонніх програм. Більшість операцій можна виконувати як через графічний інтерфейс, так і через вбудований термінал.</p>
+							<p><strong>Відкривання репозиторію (проекту).</strong></p>
+							<ul>
+								<li>Відкрити Visual Studio Code.</li>
+								<li>Обрати команди File → Open Folder. Вказати шлях до папки проєкту.</li>
+								<li>Якщо папка вже містить репозиторій Git (має приховану папку .git), VS Code автоматично його розпізнає.</li>
+							</ul>
+
+
+							<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+								<div class="accordion" id="accordionExampleb3">
+
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo31">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo31" aria-expanded="false" aria-controls="collapseTwo31">
+												1.	Робота через термінал VS Code
+										  </button>
+										</h2>
+										<div id="collapseTwo31" class="accordion-collapse collapse" aria-labelledby="headingTwo31" data-bs-parent="#accordionExampleb3">
+											<div class="accordion-body card-body">
+												<p>1.Відкрити термінал в VS Code в любий спосіб.</p> 
+												<ul>
+													<li>Найшвидший - натиснути комбінацію клавіш Ctrl + ~ (тильда)</li>
+													<li>Через меню - обрати команду Terminal → New Terminal</li>
+													<li>Через панель - натиснути на вкладку Terminal внизу екрану</li>
+												</ul>												
+												<p><img src="assets/picture/8/23.jpg" alt=""></p>
+												
+												<p>В нижній частині VS Code з’явиться панель терміналу. Переконатися, що в лівому кутку терміналу вказано шлях до папки проєкту.</p>
+												<p><img src="assets/picture/8/24.jpg" alt=""></p>
+												<p>3. Ініціалізація репозиторію (один раз на проєкт): git init</p>
+												<p><img src="assets/picture/8/26.jpg" alt=""></p>
+												
+												<p>4. Перевірка статусу (<strong>дуже важлива команда!</strong>): git status. Ця команда показує:</p>
+												<ul>
+													<li>Які файли змінено.</li>
+													<li>Які файли готові до коміту.</li>
+													<li>На якій гілці ви зараз знаходитесь.</li>
+												</ul>												
+												
+												<p>Також, переконатися, що в Git встановлено потрібний статус розробника.</p>
+												<p><img src="assets/picture/8/25.jpg" alt=""></p>
+												<p>Внести певні зміни в код відкритої сторінки. На прикладі відкритої сторінки index.html внесено зміни в заголовок.</p>
+												<p>5. Додавання файлів до коміту (зліпок проекту на даному етапі роботи).</p>
+												<p class="ex-font">git add . # додати всі змінені файли.</p>
+												<p class="ex-font">git add index.html # додати лише один файл.</p>
+												<p><img src="assets/picture/8/27.jpg" alt=""></p>
+												<p>6. Створення коміту.</p>
+												<p class="ex-font">git commit -m "Edit: Change heading"</p>
+												<p><img src="assets/picture/8/28.jpg" alt=""></p>
+												<p>Правила хорошого коміту:</p>
+												<ul>
+													<li>Починати з вказанням, які дії робилися feat:, style:, fix:, docs: тощо.</li>
+													<li>Писати повідомлення краще англійською, але допускається й українською.</li>
+												</ul>
+												<p>7. Підключення до GitHub</p>
+												<p class="ex-font">git remote add origin [посилання на віддалений репозиторій]</p>
+												<p>Приклад: git remote add origin https://github.com/IrynaYurchak2026/WebDesign.git</p>
+												<p>8. Надсилання коду на GitHub.</p>
+												<p class="ex-font">git push -u origin main # перший раз</p>
+												<p class="ex-font">git push # наступні рази</p>
+												<p><img src="assets/picture/8/29.jpg" alt=""></p>
+												<p>9. Перейти до Github і переглянути чи оновилися зміни.</p>
+												<p><img src="assets/picture/8/30.jpg" alt=""></p>
+												<p>10. Забрати зміну в локальному файлі.</p>
+												<p><img src="assets/picture/8/31.jpg" alt=""></p>
+												<p>11. Перевірити на Github.</p>
+												<p><img src="assets/picture/8/32.jpg" alt=""></p>
+											</div>
+										</div>
+									</div>
+									
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo32">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo32" aria-expanded="false" aria-controls="collapseTwo32">
+												2.	Корисні команди для роботи в терміналі
+										  </button>
+										</h2>
+										<div id="collapseTwo32" class="accordion-collapse collapse" aria-labelledby="headingTwo32" data-bs-parent="#accordionExampleb3">
+											<div class="accordion-body card-body">
+												<h5>Приклад повного циклу роботи</h5>
+<pre>
+# 1. Перевіряємо статус
+git status
+
+# 2. Додаємо всі зміни
+git add .
+
+# 3. Комітимо
+git commit -m "style: покращив дизайн хедера"
+
+# 4. Відправляємо на GitHub
+git push
+</pre>
+												<h5>Корисні команди</h5>
+<pre>
+git log --oneline        # коротка історія комітів
+git log                  # повна історія
+git checkout -- .        # скасувати всі незбережені зміни
+git restore index.html   # скасувати зміни в одному файлі
+git branch -d feature-menu   # видалити гілку
+</pre>
+
+												
+											</div>
+										</div>
+									</div>									
+									
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo33">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo33" aria-expanded="false" aria-controls="collapseTwo33">
+												3.	Робота через панель Source Control
+										  </button>
+										</h2>
+										<div id="collapseTwo33" class="accordion-collapse collapse" aria-labelledby="headingTwo33" data-bs-parent="#accordionExampleb3">
+											<div class="accordion-body card-body">
+												<p>1.Відстеження змін</p> 
+												<p>Після редагування файлів відкрити вкладку Source Control. Тут відображаються: нові, змінені та видалені файли. </p>
+												<p>VS Code підсвічує зміни:</p>
+												<ul>
+													<li>M (Modified) — файл змінено.</li>
+													<li>U (Untracked) — файл додано.</li>
+													<li>D (Deleted) — файл видалено.</li>
+												</ul>
+												<p><img src="assets/picture/8/33.jpg" alt=""></p>
+												<p>2. Додавання змін до коміту</p>
+												<ul>
+													<li>Написати коментар до коміту.</li>
+													<li>Зберегти стан версії Stage All Changes.</li>
+												</ul>
+												<p><img src="assets/picture/8/34.jpg" alt=""></p>
+												<p>3. Натиснути кнопку Commit</p>
+
+												<p><img src="assets/picture/8/35.jpg" alt=""></p>
+												<p>4. Надсилання змін на GitHub. Натиснути кнопку Sync Changes або Publish Branch, якщо вона відображається.</p>
+												<p><img src="assets/picture/8/36.jpg" alt=""></p>
+												<p><img src="assets/picture/8/37.jpg" alt=""></p>
+												
+												<p>5. Перевірити зміни у віддаленому репозиторії на GitHub</p>	
+												<p><img src="assets/picture/8/38.jpg" alt=""></p>
+											</div>
+										</div>
+									</div>									
+								</div>
+							</div>	
+							
+							
+							<p><strong>Поради для зручної роботи у VS Code</strong></p>
+							<ul>
+								<li>В терміналі можна натискати стрілку вгору, щоб швидко повертати попередні команди.</li>
+								<li>Якщо заплутались — просто ввести git status, вона підкаже, що робити далі.</li>
+								<li>Використовувати панель Source Control (іконка з гілками зліва) — там зручно бачити всі зміни.</li>
+								<li>Після того, як зроблено git add ., в панелі Source Control з’явиться поле для написання повідомлення коміту — можна комітити прямо звідти.</li>
+							</ul>							
+							
+							<h5>Етап 4. Розгортання сторінки в Інтернет</h5>
+							<p>Після завершення розробки вебсайту наступним етапом є його розгортання (deployment) – процес розміщення файлів проєкту на сервері, щоб сайт став доступним користувачам через мережу Інтернет. До моменту розгортання вебсторінка існує лише на локальному комп'ютері розробника, а після публікації її можна відкрити за відповідною веб адресою (URL).</p>
+							
+							
+							<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+								<div class="accordion" id="accordionExampleb4">
+
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo41">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo41" aria-expanded="false" aria-controls="collapseTwo41">
+												1.	Розгортання сторінки через GitHub Pages
+										  </button>
+										</h2>
+										<div id="collapseTwo41" class="accordion-collapse collapse" aria-labelledby="headingTwo41" data-bs-parent="#accordionExampleb4">
+											<div class="accordion-body card-body">
+												<p>Для швидкої публікації можна використати нативний для GitHub інструмент публікації — GitHub Pages, що ідеально підходить для швидких релізів статичних сайтів в форматі HTML (до 30 днів).</p>
+												<ol>
+													<li>В інтерфейсі репозиторію на GitHub перейти у вкладку Settings (Параметри) на верхній панелі.</li>
+													<li>В лівому меню знайти розділ Code and automation -&lt; Pages.</li>
+													<li>В блоці Build and deployment знайти пункт Source (за замовчуванням там встановлено Deploy from a branch).</li>
+													<li>У випадному списку Branch змінити значення з None на main (папку залишайте /root) та натиснути Save.</li>
+												</ol>
+												<p><img src="assets/picture/8/39.jpg" alt=""></p>
+												<p>5. Зачекати 1-2 хвилини. Оновити сторінку налаштувань. Вгорі з'явиться зелене повідомлення з посиланням на сторінку в інтернеті: https://вашлогін.github.io/назва-репозиторію/.</p>
+												<p>Приклад: https://irynayurchak2026.github.io/WebDesign/</p>
+												<p><img src="assets/picture/8/40.jpg" alt=""></p>
+												<p>Перейти за посиланням на опубліковану сторінку.</p>
+												<p><img src="assets/picture/8/41.jpg" alt=""></p>
+											</div>
+										</div>
+									</div>
+									
+									<div class="accordion-item card">
+										<h2 class="accordion-header card-header" id="headingTwo42">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo42" aria-expanded="false" aria-controls="collapseTwo42">
+												2.	Публікація на безкоштовному хостингу Netlify 
+										  </button>
+										</h2>
+										<div id="collapseTwo42" class="accordion-collapse collapse" aria-labelledby="headingTwo42" data-bs-parent="#accordionExampleb4">
+											<div class="accordion-body card-body">
+												<p>1. Відкрити сайт <a href="https://www.netlify.com/" target="_blank">Netlify.com</a> і увійти на нього через акаунт GitHub.</p>
+												<p><img src="assets/picture/8/42.jpg" alt=""></p>
+												<p>2. Натиснути New site from Git → обрати GitHub.</p>
+												<p><img src="assets/picture/8/43.jpg" alt=""></p>
+												<p>3. Заповнити відомості про користувача.</p>
+												<p><img src="assets/picture/8/44.jpg" alt=""></p>
+												<p>4. Дозволити доступ до репозиторіїв і обрати потрібний.</p>
+												<p><img src="assets/picture/8/45.jpg" alt=""></p>
+												<p><img src="assets/picture/8/46.jpg" alt=""></p>
+												<p><img src="assets/picture/8/47.jpg" alt=""></p>
+												<p>5. Підтвердити доступ до репозиторію через емейл.</p>
+												<p><img src="assets/picture/8/48.jpg" alt=""></p>
+												<p>6. Налаштування за замовченням (Build command: порожньо, Publish directory: /).</p>
+												<p><img src="assets/picture/8/49.jpg" alt=""></p>
+												<p>7. Натиснути кнопку Deploy. </p>
+												<p><img src="assets/picture/8/50.jpg" alt=""></p>
+												<p>Netlify автоматично розгорне сайт і надасть красиве посилання (можна змінити на власне доменне ім’я).</p>
+												<p><img src="assets/picture/8/51.jpg" alt=""></p>
+												<p>8. Перейти за посиланням і переглянути опублікований сайт.</p>
+												<p><img src="assets/picture/8/52.jpg" alt=""></p>
+											</div>
+										</div>
+									</div>									
+																
+								</div>
+							</div>	
+							
+							<h4>Завдання для самостійної роботи</h4>
+							<ol>
+								<li>Маючи навички роботи щодо наповнення репозиторіїв, самостійно опанувати навичками роботи командою git pull
+									<ul>
+										<li>git pull — це команда, яка завантажує найновіші зміни з віддаленого репозиторію (наприклад, з GitHub) і відразу вбудовує (вливає) їх у поточний локальний проєкт на комп'ютері. Це одна з найважливіших команд для спільної розробки та синхронізації коду.</li>
+									</ul>								
+								</li>
+								<li>Навчитися створювати гілки в репозиторії і у разі успішних змін, перенести код в основну гілку.</li>
+								<li>Разом з одногрупниками спробувати реалізувати спільний проект на Github, де кожний учасник робить свою частину роботу.</li>
+							</ol>
+						
+							<h2>Зміст звіту та технічні фінальні артефакти</h2>
+
+							<ol>
+								<li>Титульний лист з назвою лабораторної роботи, даними студента та обраною бізнес-тематикою.</li>
+								<li>Мета роботи, стек інструментів.</li>
+								<li>Посилання на публічний віддалений репозиторій на GitHub.</li>
+								<li>Скріншот вкладки Source Control або вікна терміналу в VS Code, що підтверджує успішне виконання команд git status, git log (мінімум 2-3 коміти в історії).</li>
+								<li>Посилання на сторінку сайту, що розгорнута через GitHub Pages.</li>
+								<li>Посилання на сторінку сайту, що опубліковано на Netlify.</li>
+								<li>Короткий опис пройдених етапів та лог команд командного рядка, які викликали труднощі (якщо такі були).</li>
+								<li>Промпт-паспорт (Prompt Log). Текст надісланих промптів та аналіз рішень, які запропонував ШІ.</li>
+							</ol>						
+						
+					  	<h2>Критерії оцінювання лабораторної роботи</h2>
+						<ul>
+							<li><strong>Первинне налаштування та ініціалізація Git.</strong> Коректне налаштування глобальних змінних імені та емейлу, ініціалізація локальної папки.</li>
+							<li><strong>Робота з віддаленим сервером GitHub.</strong> Успішний push коду, відсутність зайвих сміттєвих файлів в репозиторії.</li>
+							<li><strong>Робота з Git через VSCode.</strong> Правильне застосування команд в терміналі, знання можливостей інструменту Source Control.</li>
+							<li><strong>Культура комітів та історія версій.</strong> Наявність мінімум 3 змістовних комітів. Описи комітів мають відповідати загальноприйнятим стандартам (наприклад, за специфікацією Conventional Commits: feat:..., style:..., fix:...). Хаотичні назви типу 1111, asd, фінал зменшують бали.</li>							
+							<li><strong>Розгортання сторінки на Github Pages.</strong> Сайт відкривається без помилок, стилі та медіа-активи відображаються коректно.</li>
+							<li><strong>Публікація проєкту на Netlify.</strong> Сайт відкривається без помилок, стилі та медіа-активи відображаються коректно.</li>
+							<li><strong>Захист роботи.</strong> Усна відповідь на бліц-запитання викладача.</li>
+						</ul>
+							
+					  	<h2>Контрольні запитання</h2>
+						<ol>
+							<li>Чим відрізняється Git від GitHub?</li>
+							<li>Що таке коміт (commit) і яку інформацію він обов’язково містить?</li>
+							<li>Які основні етапи роботи з Git (робочий цикл)?</li>
+							<li>Для чого використовується команда git clone і що вона робить?</li>
+							<li>Що робить команда git pull і коли її потрібно використовувати?</li>
+							<li>Що таке гілка (branch) в Git і навіщо вона потрібна?</li>
+							<li>Як в VS Code можна працювати з Git без командного рядка?</li>
+							<li>Як опублікувати статичний сайт через GitHub Pages?</li>
+							<li>Які переваги публікації сайту через Netlify порівняно з GitHub Pages?</li>
+							<li>Що таке README.md і яку інформацію в ньому рекомендовано розміщувати?</li>
+							<li>Які правила хорошого commit message ви знаєте?</li>
+							<li>Що означає статус файлу M, U, D в VS Code Source Control?</li>
+							<li>Чому важливо правильно налаштувати user.name та user.email перед роботою з Git?</li>
+							<li>Які основні проблеми можуть виникнути при роботі з Git і як їх уникнути?</li>
+						</ol>	
+							
+						<h2>Глосарій термінів. Деплой проєкту. Контроль версій Git та GitHub</h2>
+						<p>Рекомендовано для вивчення перед захистом Лабораторної роботи №8</p>
+						
+						<div class="rbt-accordion-style rbt-accordion-04 right-no-padding accordion mb--30">
+							<div class="accordion" id="accordionExampleb6">
+
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo61">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo61" aria-expanded="false" aria-controls="collapseTwo61">
+											Архітектура та сховища (Репозиторії)
+										</button>
+									</h2>
+									<div id="collapseTwo61" class="accordion-collapse collapse" aria-labelledby="headingTwo61" data-bs-parent="#accordionExampleb6">
+										<div class="accordion-body card-body">
+											<ul>
+												<li><strong>Репозиторій (Repository)</strong> — спеціальне сховище проєкту (папка), в якому Git зберігає всі файли, а також повну історію їхніх змін та метадані.</li>
+												<li><strong>Локальний репозиторій (Local Repository)</strong> — копія репозиторію, яка розміщена безпосередньо на комп'ютері розробника. Всі операції в ньому (створення комітів, перемикання гілок) відбуваються миттєво й без доступу до інтернету.</li>
+												<li><strong>Віддалений репозиторій (Remote Repository)</strong> — версія проєкту, що зберігається на хмарному сервері (наприклад, на GitHub). Це центральний вузол, через який команда синхронізує свою роботу.</li>
+												<li><strong>GitHub</strong> — хмарна платформа та вебсервіс для хостингу Git-репозиторіїв, що надає графічний інтерфейс, інструменти для командної взаємодії, автоматизації (CI/CD) та управління проєктами.</li>
+												<li><strong>Файл .gitignore</strong> — спеціальний текстовий файл в репозиторії, де вказуються шаблони назв файлів або папок (наприклад, системні логи, папки залежностей node_modules, секретні ключі), які Git повинен ігнорувати й не додавати до відстеження.</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo62">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo62" aria-expanded="false" aria-controls="collapseTwo62">
+											Робочі зони та стани файлів у Git
+										</button>
+									</h2>
+									<div id="collapseTwo62" class="accordion-collapse collapse" aria-labelledby="headingTwo62" data-bs-parent="#accordionExampleb6">
+										<div class="accordion-body card-body">
+											<ul>
+												<li><strong>Робоча область (Working Directory/Workspace)</strong> — звичайна папка з файлами проєкту на локальному диску, в якій  створюється, редагується або видаляється код.</li>
+												<li><strong>Індекс/Зона індексації (Index/Staging Area)</strong> — проміжний віртуальний буфер в Git, куди за допомогою команди git add збираються та готуються зміни перед тим, як стати постійним зліпком історії (комітом).</li>
+												<li><strong>Невідстежувані файли (Untracked)</strong> — нові файли в робочій області, про існування яких Git вже знає, але ще ні разу не фіксував їхню історію та не додавав до індексу.</li>
+												<li><strong>Відстежувані файли (Tracked)</strong> — файли, які вже були зафіксовані в історії репозиторію. Вони можуть мати стан Unmodified (не змінені з моменту останнього коміту) або Modified (змінені в робочій області, але ще не індексовані).</li>												
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo63">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo63" aria-expanded="false" aria-controls="collapseTwo63">
+											Операції контролю версій та командна робота
+										</button>
+									</h2>
+									<div id="collapseTwo63" class="accordion-collapse collapse" aria-labelledby="headingTwo63" data-bs-parent="#accordionExampleb6">
+										<div class="accordion-body card-body">
+											<ul>
+												<li><strong>Коміт (Commit)</strong> — безповоротна фіксація (зліпок) стану індексованих файлів в певний момент часу. Кожен коміт має унікальний ідентифікатор (SHA-1 хеш), дату, автора та опис змін. Це головна "точка збереження" в історії розробки.</li>
+												<li><strong>Гілка (Branch)</strong> — ізольована та паралельна лінія розробки всередині одного репозиторію. Надає можливість створювати нові функції, не змінюючи стабільний код в основній гілці.</li>
+												<li><strong>Main/Master</strong> — стандартна назва головної (первинної) гілки репозиторію, в якій зберігається перевірений, стабільний та готовий до релізу код проєкту.</li>
+												<li><strong>Злиття (Merge)</strong> — процес об'єднання змін з однієї гілки (наприклад, допоміжної гілки фічі) в іншу (наприклад, в main).</li>
+												<li><strong>Конфлікт злиття (Merge Conflict)</strong> — ситуація, коли під час об'єднання гілок Git виявляє, що в один і той самий рядок коду в обох гілках було внесено різні зміни, і система не може самостійно вирішити, яку версію залишити. Конфлікт виправляється розробником вручну.</li>
+												<li><strong>Клонування (Clone)</strong> — процес створення повної локальної копії віддаленого репозиторію з GitHub на комп'ютер розробника разом зі всією історією комітів та гілками.</li>
+												<li><strong>Pull Request/Merge Request</strong> — запит на GitHub від розробника з пропозицією злити його код (з власної гілки) в основну гілку оригінального репозиторію. Використовується для перевірки коду іншими членами команди (Code Review).</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								
+								<div class="accordion-item card">
+									<h2 class="accordion-header card-header" id="headingTwo64">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo64" aria-expanded="false" aria-controls="collapseTwo64">
+											Командний рядок, інструменти та деплой
+										</button>
+									</h2>
+									<div id="collapseTwo64" class="accordion-collapse collapse" aria-labelledby="headingTwo64" data-bs-parent="#accordionExampleb6">
+										<div class="accordion-body card-body">
+											<ul>
+												<li><strong>Інтерфейс командного рядка (Command Line Interface)</strong> — спосіб взаємодії з комп'ютером або програмами за допомогою введення текстових команд в терміналі, замість використання графічних вікон та миші.</li>
+												<li><strong>Git Bash</strong> — утиліта для Windows, яка емулює командну оболонку Unix (Bash) та надає повноцінне середовище терміналу для виконання стандартних Linux-команд та команд Git.</li>
+												<li><strong>Деплой (Deployment/Розгортання)</strong> — процес перенесення, конфігурації та запуску коду проєкту з локального комп’ютера (або середовища розробки) на віддалений публічний вебсервер (хостинг), щоб сайт став доступним для користувачів за унікальною URL-адресою.</li>
+												<li><strong>GitHub Pages</strong> — безкоштовний хостинг-сервіс від компанії GitHub, призначений для швидкого розгортання та публікації статичних вебсайтів (що складаються з HTML, CSS та JavaScript) безпосередньо з репозиторію.</li>
+												<li><strong>Live Demo (Жива демонстрація)</strong> — публічне URL-посилання на повністю працездатну версію вебдодатка, яка вже розгорнута на хмарному хостингу й використовується для демонстрації результату.</li>
+												<li><strong>Chrome DevTools Console (Консоль розробника)</strong> — вбудований в браузер інструмент налагодження, куди виводяться системні логи, попередження, а також критичні помилки мови JavaScript, що допомагає контролювати поведінку сайту після деплою.</li>
+											</ul>											
+										</div>
+									</div>
+								</div>								
+							</div>
+						</div>
+					
+					</article>
+
+					<!--./PAGE CONTENT-->
+				</div>
+				
+				<div class="col-xl-3">
+					<!--PAGE SIDEBAR-->
+					<div class="rbt-default-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
+						<div class="inner">
+							<div class="content-item-content">
+
+								<div class="rbt-default-sidebar-wrapper">
+									<div class="section-title mb--20">
+										<h4 class="rbt-title-style-3">Застосовані інструменти</h4>
+									</div>
+																	
+									<nav class="mainmenu-nav">
+										<ul class="dashboard-mainmenu rbt-default-sidebar-list ncngu-dashboard-mainmenu">
+											<li><a href="https://git-scm.com" target="_blank">Git</a></li>										
+											<li><a href="https://git-scm.com/book/uk/v2" target="_blank">Офіційна документація Git (укр.)</a></li>
+											<li><a href="https://github.com/" target="_blank">GitHub</a></li>
+											<li><a href="https://docs.github.com/" target="_blank">GitHub Docs (англ.)</a></li>
+											<li><a href="https://docs.github.com/en/pages" target="_blank">GitHub Pages Documentation</a></li>
+											<li><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank">Git в VS Code</a></li>
+											<li><a href="https://learngitbranching.js.org/" target="_blank">Learn Git Branching (інтерактивний тренажер)</a></li>
+											<li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank">Git Cheat Sheet (PDF)</a></li>
+											<li><a href="https://docs.github.com/en/actions/quickstart" target="_blank">GitHub Actions Starter Kit</a></li>
+											<li><a href="https://www.youtube.com/watch?v=9CnZihyYjjA" target="_blank">Повний курс по GIT та GITHUB українською</a></li>
+											<li><li><a href="https://www.netlify.com/" target="_blank">Netlify</a></li></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--./PAGE SIDEBAR-->
+				</div>				
+			</div>
+        </div>
+    </div>
+	<!--./PAGE AND SIDEBAR-->	
+	
+	<!--./INSIDE TEMPLATE-->
+	
+	<!--FOOTER-->
+	<footer class="rbt-footer rbt-footer-shadow-1 footer-style-1  bg-color-extra2">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row g-5">
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+						<div class="footer-widget">
+                            <div class="logo logo-dark">
+                                <a href="index.html">
+									<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+									<strong>Технології веб-розробки та дизайну</strong>
+                                </a>								
+                            </div>
+
+                            <div class="logo d-none logo-light">
+                                <a href="index.html">
+									<span><img src="assets/images/logo.svg" alt="Технології веб-розробки та дизайну"></span>
+									<strong>Технології веб-розробки та дизайну</strong>
+                                </a>
+                            </div>							
+
+							<p class="description mt--20">Практичне ознайомлення з принципами створення веб-сайтів, можливостями сучасних веб-технологій і сервісів.</p>
+
+							<ul class="social-icon social-default justify-content-start">
+								<li><a href="https://www.facebook.com/departmentCDS" target="_blank"><i class="feather-facebook"></i></a></li>
+								<li><a href="https://www.youtube.com/channel/UC5k442CPOLDKtxbqZWJrY1g" target="_blank"><i class="feather-youtube"></i></a></li>
+								<li><a href="https://www.instagram.com/cad_nulp/" target="_blank"><i class="feather-instagram"></i></a></li>								
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+						<div class="footer-widget">
+							<h5 class="ft-title">Контакти</h5>
+						
+							<ul class="ft-link">
+								<li><a href="https://lpnu.ua/" target="_blank" title="Національний університет Львівська політехніка">НУ "Львівська політехніка"</a></li>
+								<li><a href="https://lpnu.ua/ikni" target="_blank" title="Інститут комп'ютерних наук та інформаційних технологій">Інститут комп'ютерних наук</a></li>
+								<li><a href="http://cad.lpnu.ua/" target="_blank" title="Кафедра САП">Кафедра САП</a></li>
+
+								<li><a class="popup-gmaps" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.329917567392!2d24.008481515709175!3d49.83625817939535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add79af0e4d9d%3A0xa95470e031eb25c0!2z0JrQsNGE0LXQtNGA0LAg0KHQkNCf0KA!5e0!3m2!1suk!2sua!4v1641753753230!5m2!1suk!2sua" title="Локація кафедри">Локація кафедри</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+						<div class="footer-widget">
+							<h5 class="ft-title">Навчання</h5>
+							<ul class="ft-link">
+								<li><a href="https://vns.lpnu.ua/course/view.php?id=5478" target="_blank" title="Віртуальне навчальне середовище">Віртуальне навчальне середовище</a></li>
+								<li><a href="https://lpnu.ua/rozklad-zaniat-ta-ekzameniv" target="_blank" title="Розклад занять">Розклад занять</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="rbt-separator-mid">
+			<div class="container">
+				<hr class="rbt-separator m-0">
+			</div>
+		</div>
+		<!-- Start Copyright Area  -->
+		<div class="copyright-area copyright-style-1 ptb--20">
+			<div class="container">
+				<p class="rbt-link-hover text-center">© <a href="index.html">@2026. Технології веб-розробки та дизайну</a></p>
+			</div>
+		</div>
+		<!-- End Copyright Area  -->
+	</footer>
+	<!--./FOOTER-->
+
+	<!--SCROLLUP-->
+    <div class="rbt-progress-parent">
+        <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+	<!--./SCROLLUP-->
+
+    <script src="assets/js/vendor/modernizr.min.js"></script>
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/sal.js"></script>
+    <!-- Dark Mode Switcher -->
+    <script src="assets/js/vendor/js.cookie.js"></script>
+    <script src="assets/js/vendor/jquery.style.switcher.js"></script>
+    <script src="assets/js/vendor/swiper.js"></script>
+    <script src="assets/js/vendor/jquery-appear.js"></script>
+    <script src="assets/js/vendor/odometer.js"></script>
+    <script src="assets/js/vendor/backtotop.js"></script>
+    <script src="assets/js/vendor/isotop.js"></script>
+    <script src="assets/js/vendor/imageloaded.js"></script>
+
+    <script src="assets/js/vendor/wow.js"></script>
+    <script src="assets/js/vendor/waypoint.min.js"></script>
+    <script src="assets/js/vendor/easypie.js"></script>
+    <script src="assets/js/vendor/text-type.js"></script>
+    <script src="assets/js/vendor/jquery-one-page-nav.js"></script>
+    <script src="assets/js/vendor/bootstrap-select.min.js"></script>
+    <script src="assets/js/vendor/jquery-ui.js"></script>
+    <script src="assets/js/vendor/magnify-popup.min.js"></script>
+    <script src="assets/js/vendor/paralax-scroll.js"></script>
+    <script src="assets/js/vendor/paralax.min.js"></script>
+    <script src="assets/js/vendor/countdown.js"></script>
+    <script src="assets/js/vendor/plyr.js"></script>
+    <script src="assets/js/vendor/jodit.min.js"></script>
+    <script src="assets/js/vendor/Sortable.min.js"></script>
+	
+    <script src="assets/js/main.js"></script>
+	
+	<script src="assets/js/unitegallery/js/unitegallery.min.js"></script>
+	<link  href="assets/js/unitegallery/css/unite-gallery.css" rel="stylesheet">
+	<script src="assets/js/unitegallery/themes/tiles/ug-theme-tiles.js"></script>	
+	
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery("#gallery").unitegallery({
+			gallery_theme: "tiles",
+			tiles_type: "nested",
+			gallery_width:"100%",
+			gallery_min_width: 300,
+			tiles_nested_optimal_tile_width: 400,
+			tiles_space_between_cols: 10,
+			tile_enable_textpanel: true
+		});
+	});
+	</script>	
+</body>
+	
+</html>

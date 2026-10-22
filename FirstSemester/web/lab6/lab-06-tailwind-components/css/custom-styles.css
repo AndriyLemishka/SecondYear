@@ -1,0 +1,71 @@
+/**
+ * ChargeUA Design System Tokens & Custom Utilities
+ * Лабораторна робота №6: Компонентна верстка, стилізація та адаптивність
+ * Студент: Лемішка Андрій Анатолійович, група ПП-24
+ */
+
+:root {
+  /* Головні колірні токени з ЛР №4 (Figma Design System) */
+  --color-primary: #005EC9;
+  --color-primary-hover: #004BA0;
+  --color-primary-light: #EBF5FF;
+  --color-secondary: #0F172A;
+  --color-accent: #00B4D8;
+  --color-surface: #F8FAFC;
+  --color-border: #E2E8F0;
+
+  /* Семантичні статусні кольори */
+  --status-free: #10B981;
+  --status-busy: #EF4444;
+  --status-reserved: #F59E0B;
+
+  /* Шрифтова родина */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Тіні та радіуси */
+  --radius-card: 1rem;
+  --radius-btn: 0.75rem;
+}
+
+/* Допоміжні класи доступності */
+.sr-only-focusable:not(:focus):not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Плавний скролінг до секцій */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Анімація відкриття мобільного меню */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Кастомний скролбар для горизонтальних тач-фільтрів на смартфонах */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
