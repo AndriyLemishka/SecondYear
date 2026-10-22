@@ -356,12 +356,13 @@
       </div>
     </section>
 
-    <!-- КАТАЛОГ СТАНЦІЙ ТА ПОСЛУГ (CSS GRID) -->
+    <!-- 1-ША ЛІНІЙКА: КАТАЛОГ ЗАРЯДНИХ СТАНЦІЙ (CSS GRID) -->
     <section class="section" id="stations" aria-labelledby="stations-title">
       <div class="container">
-        <h2 class="section__title" id="stations-title"><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Каталог станцій та послуг</h2>
+        <h2 class="section__title" id="stations-title"><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Каталог зарядних станцій</h2>
         <div class="grid">
 
+          <!-- Станція 1: Київ -->
           <article class="card">
             <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>DC · швидка · 150 кВт</p>
             <h3 class="card__title">Київ, ТРЦ «Центральний»</h3>
@@ -373,26 +374,29 @@
               <li class="ports__item"><span>Порт 3 · CHAdeMO</span><span class="status">Вільний</span></li>
             </ul>
             <div class="card__action">
-              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('kyiv-central');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Київ, ТРЦ Центральний»</span></a>
+              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap &amp;&amp; window.ChargeUAMap.focusStation('kyiv-central');"><i class="fa-solid fa-route" aria-hidden="true"></i>Знайти на карті<span class="visually-hidden"> станцію «Київ, ТРЦ Центральний»</span></a>
             </div>
           </article>
 
+          <!-- Станція 2: Львів -->
           <article class="card">
             <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>DC · швидка · 100 кВт</p>
             <h3 class="card__title">Львів, АЗС на Стрийській</h3>
-            <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>CCS2</p>
+            <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>CCS2, Type 2</p>
             <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>Цілодобово 24/7</p>
             <ul class="ports" aria-label="Статуси портів">
-              <li class="ports__item"><span>Порт 1 · CCS2</span><span class="status status--reserved">Заброньований</span></li>
+              <li class="ports__item"><span>Порт 1 · CCS2</span><span class="status">Вільний</span></li>
               <li class="ports__item"><span>Порт 2 · CCS2</span><span class="status">Вільний</span></li>
+              <li class="ports__item"><span>Порт 3 · Type 2</span><span class="status status--busy">Зайнятий</span></li>
             </ul>
             <div class="card__action">
-              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('lviv-stryiska');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Львів, АЗС на Стрийській»</span></a>
+              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap &amp;&amp; window.ChargeUAMap.focusStation('lviv-stryiska');"><i class="fa-solid fa-route" aria-hidden="true"></i>Знайти на карті<span class="visually-hidden"> станцію «Львів, АЗС на Стрийській»</span></a>
             </div>
           </article>
 
+          <!-- Станція 3: Одеса -->
           <article class="card">
-            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>AC · повільна · 22 кВт</p>
+            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>AC · прискорена · 22 кВт</p>
             <h3 class="card__title">Одеса, паркінг «Приморський»</h3>
             <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>Type 2</p>
             <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>08:00–22:00</p>
@@ -402,51 +406,96 @@
               <li class="ports__item"><span>Порт 3 · Type 2</span><span class="status status--busy">Зайнятий</span></li>
             </ul>
             <div class="card__action">
-              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('odesa-prymorskyi');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Одеса, паркінг Приморський»</span></a>
+              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap &amp;&amp; window.ChargeUAMap.focusStation('odesa-prymorskyi');"><i class="fa-solid fa-route" aria-hidden="true"></i>Знайти на карті<span class="visually-hidden"> станцію «Одеса, паркінг Приморський»</span></a>
             </div>
           </article>
 
+          <!-- Станція 4: Дніпро -->
           <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-regular fa-calendar-check"></i></span>
-            <h3 class="card__title">Бронювання порту</h3>
-            <p class="card__text">Забронюйте зручний слот заздалегідь через додаток або вебсайт та заряджайтесь гарантовано без очікування.</p>
+            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>DC · Ultra-Fast · 160 кВт</p>
+            <h3 class="card__title">Дніпро, Набережна Перемоги</h3>
+            <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>CCS2, CHAdeMO</p>
+            <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>Цілодобово 24/7 · 🔋 З генератором</p>
+            <ul class="ports" aria-label="Статуси портів">
+              <li class="ports__item"><span>Порт 1 · CCS2</span><span class="status">Вільний</span></li>
+              <li class="ports__item"><span>Порт 2 · CCS2</span><span class="status">Вільний</span></li>
+              <li class="ports__item"><span>Порт 3 · CHAdeMO</span><span class="status status--busy">Зайнятий</span></li>
+            </ul>
+            <div class="card__action">
+              <a class="btn btn--outline" href="#map"><i class="fa-solid fa-route" aria-hidden="true"></i>Знайти на карті<span class="visually-hidden"> станцію «Дніпро, Набережна Перемоги»</span></a>
+            </div>
           </article>
 
+          <!-- Станція 5: Харків -->
           <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
-            <h3 class="card__title">Планувальник маршруту</h3>
-            <p class="card__text">Інтелектуальний розрахунок поїздки з оптимальними зупинками для заряджання по всій території України.</p>
+            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>DC · швидка · 120 кВт</p>
+            <h3 class="card__title">Харків, ТРЦ «Нікольський»</h3>
+            <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>CCS2, Type 2</p>
+            <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>Цілодобово 24/7</p>
+            <ul class="ports" aria-label="Статуси портів">
+              <li class="ports__item"><span>Порт 1 · CCS2</span><span class="status">Вільний</span></li>
+              <li class="ports__item"><span>Порт 2 · CCS2</span><span class="status status--busy">Зайнятий</span></li>
+              <li class="ports__item"><span>Порт 3 · Type 2</span><span class="status">Вільний</span></li>
+            </ul>
+            <div class="card__action">
+              <a class="btn btn--outline" href="#map"><i class="fa-solid fa-route" aria-hidden="true"></i>Знайти на карті<span class="visually-hidden"> станцію «Харків, ТРЦ Нікольський»</span></a>
+            </div>
           </article>
 
+          <!-- Станція 6: Вінниця -->
           <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-wallet"></i></span>
-            <h3 class="card__title">Єдиний білінг без комісій</h3>
-            <p class="card__text">Оплата одним кліком через Apple Pay, Google Pay або паливну картку компанії за фіксованим тарифом.</p>
+            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>DC · швидка · 150 кВт</p>
+            <h3 class="card__title">Вінниця, Траса М-12</h3>
+            <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>CCS2, CHAdeMO</p>
+            <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>Цілодобово 24/7 · 🔋 Автономне живлення</p>
+            <ul class="ports" aria-label="Статуси портів">
+              <li class="ports__item"><span>Порт 1 · CCS2</span><span class="status">Вільний</span></li>
+              <li class="ports__item"><span>Порт 2 · CCS2</span><span class="status">Вільний</span></li>
+              <li class="ports__item"><span>Порт 3 · CHAdeMO</span><span class="status status--busy">Зайнятий</span></li>
+            </ul>
+            <div class="card__action">
+              <a class="btn btn--outline" href="#map"><i class="fa-solid fa-route" aria-hidden="true"></i>Знайти на карті<span class="visually-hidden"> станцію «Вінниця, Траса М-12»</span></a>
+            </div>
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- СЕКЦІЯ ПЕРЕВАГ (CSS GRID) -->
-    <section class="section" id="benefits" aria-labelledby="benefits-title">
+    <!-- 2-ГА ЛІНІЙКА: МОЖЛИВОСТІ ПОШУКУ ТА ПЕРЕВАГИ (CSS GRID) -->
+    <section class="section section--surface" id="benefits" aria-labelledby="benefits-title">
       <div class="container">
-        <h2 class="section__title" id="benefits-title"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Чому водії обирають ChargeUA</h2>
+        <h2 class="section__title" id="benefits-title"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Можливості пошуку та переваги ChargeUA</h2>
         <div class="grid">
           <article class="card">
+            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-tower-broadcast"></i></span>
+            <h3 class="card__title">Живий моніторинг зайнятості</h3>
+            <p class="card__text">Миттєве відображення статусу портів онлайн. Дізнавайтеся заздалегідь, які конектори вільні, щоб не гаяти час у чергах.</p>
+          </article>
+          <article class="card">
+            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
+            <h3 class="card__title">Швидка навігація до хабу</h3>
+            <p class="card__text">Побудова прямого та найкоротшого маршруту через Google Maps або Waze в один клік із картки станції.</p>
+          </article>
+          <article class="card">
             <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
-            <h3 class="card__title">Безперебійність та надійність</h3>
-            <p class="card__text">Усі ключові хаби підключені до резервних генераторів та промислових накопичувачів EcoFlow/Tesla Powerwall.</p>
+            <h3 class="card__title">100% Енергонезалежність</h3>
+            <p class="card__text">Позначення локацій, підключених до промислових дизель-генераторів та систем накопичення енергії під час блекаутів.</p>
           </article>
           <article class="card">
             <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-plug-circle-bolt"></i></span>
-            <h3 class="card__title">Технологія Plug&amp;Charge</h3>
-            <p class="card__text">Автоматична автентифікація автомобіля через кабель: під'єднали штекер — заряджання розпочалось автоматично.</p>
+            <h3 class="card__title">Усі типи конекторів</h3>
+            <p class="card__text">Швидка фільтрація станцій за стандартами CCS2, Type 2, CHAdeMO та GB/T для електромобілів будь-якого ринку.</p>
           </article>
           <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-hand-holding-dollar"></i></span>
-            <h3 class="card__title">Чесні тарифи без комісій</h3>
-            <p class="card__text">Прозорий розрахунок за фактично спожиті кВт·год. Жодних прихованих стартових платежів чи штрафів за простій.</p>
+            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-calculator"></i></span>
+            <h3 class="card__title">Точний розрахунок часу</h3>
+            <p class="card__text">Калькулятор дозволяє спрогнозувати тривалість заряджання та необхідні кВт·год під ємність батареї понад 45 моделей авто.</p>
+          </article>
+          <article class="card">
+            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-map-location-dot"></i></span>
+            <h3 class="card__title">Єдина база 480+ станцій</h3>
+            <p class="card__text">Агрегація швидкісних та міських зарядних точок по всій території України на одній зручній інтерактивній карті.</p>
           </article>
         </div>
       </div>
@@ -459,7 +508,7 @@
         <div class="grid">
           <article class="card">
             <p class="review__rating" role="img" aria-label="Оцінка 5 з 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-            <blockquote class="review__text">Нарешті не стою в чергах на виїзді з Києва. Забронював порт у додатку, приїхав, за 20 хвилин забрав 80% батареї.</blockquote>
+            <blockquote class="review__text">Нарешті не стою в чергах на виїзді з Києва. Подивився статус на карті ChargeUA, побачив вільний порт CCS2, приїхав і за 20 хвилин зарядив 80% батареї.</blockquote>
             <p class="review__author">Олександр, Київ (Tesla Model Y)</p>
           </article>
           <article class="card">
