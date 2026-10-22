@@ -2225,3 +2225,51 @@ footer[id] {
     font-size: 11px !important;
   }
 }
+
+/* ==========================================================================
+   CHARGEUA: СТИЛІ ФІЛЬТРАЦІЇ КАТАЛОГУ СТАНЦІЙ
+   ========================================================================== */
+.city-chip {
+  background: #FFFFFF;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.city-chip:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+  border-color: #CBD5E1;
+}
+
+.city-chip.active {
+  background: #005EC9 !important;
+  color: #FFFFFF !important;
+  border-color: #005EC9 !important;
+  box-shadow: 0 2px 8px rgba(0, 94, 201, 0.25) !important;
+}
+
+#filter-free-only.active {
+  background: #ECFDF5 !important;
+  color: #047857 !important;
+  border-color: #10B981 !important;
+  font-weight: 600 !important;
+}
+
+#filter-free-only.active span {
+  background-color: #10B981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Приховування скролбару для чіпсів міст */
+#city-filter-chips {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+#city-filter-chips::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
