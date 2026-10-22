@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChargeUA — Лабораторна робота №6: Уставляння зовнішніх сервісів</title>
+  <meta name="description" content="Лабораторна робота №6 студента групи ПП-24 Лемішки Андрія Андрійовича. Інтеграція Google Maps, YouTube, Vimeo, HTML5 Audio, інформерів та соціальних віджетів у вебплатформу ChargeUA.">
+  <meta name="author" content="Лемішка Андрій Андрійович, ПП-24">
+  <meta name="theme-color" content="#005EC9">
+
+  <!-- Шрифт Inter (Google Fonts) з підтримкою кирилиці -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic">
+
+  <!-- Іконковий шрифт Font Awesome 6 (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Стилі проєкту -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+
+  <!-- ВЕРХНІЙ ІНФОРМАЦІЙНИЙ БАР (ІНФОРМЕРИ ТА СТАТУС) -->
+  <div class="top-informer-bar">
+    <div class="container top-informer-bar__inner">
+      <div class="informer-item">
+        <i class="fa-solid fa-cloud-sun" aria-hidden="true"></i>
+        <span>Львів: <strong>+14°C, Ясно</strong> (Sinoptik.ua)</span>
+      </div>
+      <div class="informer-item">
+        <i class="fa-solid fa-money-bill-trend-up" aria-hidden="true"></i>
+        <span>Курс НБУ: <strong>USD 41.35 грн | EUR 44.80 грн</strong></span>
+      </div>
+      <div class="informer-item" id="realtime-clock">
+        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+        <span>Час мережі: <strong id="clock-display">--:--:--</strong> (Time.is)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ШАПКА САЙТУ -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="/" aria-label="ChargeUA — на головну">
+        <img src="assets/images/Logo.svg" alt="ChargeUA Logo" class="logo__img" width="36" height="36">
+        <span class="logo__text">ChargeUA</span>
+      </a>
+
+      <!-- Кнопка мобільного гамбургер-меню -->
+      <button class="burger-btn" id="burger-btn" type="button" aria-label="Відкрити меню навігації" aria-expanded="false" aria-controls="site-nav">
+        <span class="burger-icon" aria-hidden="true">
+          <i class="fa-solid fa-bars burger-icon-bars"></i>
+          <i class="fa-solid fa-xmark burger-icon-close"></i>
+        </span>
+      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Головна навігація">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#maps-section"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Карта Google</a></li>
+          <li><a class="nav__link" href="#streetview-section"><i class="fa-solid fa-street-view" aria-hidden="true"></i>Street View 360°</a></li>
+          <li><a class="nav__link" href="#video-section"><i class="fa-brands fa-youtube" aria-hidden="true"></i>Відеосервіси</a></li>
+          <li><a class="nav__link" href="#audio-section"><i class="fa-solid fa-headphones" aria-hidden="true"></i>HTML5 Аудіо</a></li>
+          <li><a class="nav__link" href="#widgets-section"><i class="fa-solid fa-chart-simple" aria-hidden="true"></i>Інформери &amp; Соцмережі</a></li>
+        </ul>
+        <div class="site-header__actions nav-mobile-actions">
+          <a class="btn btn--primary" href="#maps-section"><i class="fa-solid fa-route" aria-hidden="true"></i>Маршрут</a>
+        </div>
+      </nav>
+
+      <div class="site-header__actions header-desktop-actions">
+        <a class="btn btn--outline" href="/lab5"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>До ЛР №5</a>
+        <a class="btn btn--primary" href="#maps-section"><i class="fa-solid fa-route" aria-hidden="true"></i>Маршрут до хабу</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ОСНОВНИЙ ВМІСТ СТОРІНКИ -->
+  <main id="main">
+
+    <!-- HERO СЕКЦІЯ З АВТЕНТИЧНИМ СТАТИЧНИМ ФОНОМ З FIGMA -->
+    <section class="hero-sec" aria-labelledby="hero-title">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> ЛАБОРАТОРНА РОБОТА №6 · САПР НУ «ЛЬВІВСЬКА ПОЛІТЕХНІКА»
+          </div>
+
+          <h1 class="hero-h1" id="hero-title">
+            Уставляння зовнішніх сервісів<br>у платформу ChargeUA
+          </h1>
+
+          <p class="hero-sub">
+            Практична інтеграція хмарних API картографічних служб Google Maps, панорам Street View 360°, потокових медіаплеєрів YouTube та Vimeo, апаратного аудіо HTML5, а також метеорологічних та фінансових віджетів.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#maps-section">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Переглянути Google Maps &rarr;
+            </a>
+            <a class="btn btn-secondary" href="#video-section">
+              <i class="fa-brands fa-youtube" aria-hidden="true"></i> Відеоплеєри
+            </a>
+          </div>
+
+          <!-- Студентський бейдж -->
+          <div class="student-badge">
+            <span class="student-badge__name"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i> Виконав: студент гр. ПП-24 Лемішка Андрій Андрійович</span>
+            <span class="student-badge__teacher"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Прийняла: к.т.н., доц. Юрчак І. Ю.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ 1: КАРТОГРАФІЧНИЙ СЕРВІС GOOGLE MAPS -->
+    <section class="section service-section" id="maps-section" aria-labelledby="maps-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">Сервіс 1 · Google Maps API</span>
+          <h2 class="section-title" id="maps-heading">Інтерактивна карта локації та маршрутів</h2>
+          <p class="section-desc">
+            Інтеграція картографічного сервісу Google Maps із прив'язкою до головного навчального корпусу НУ «Львівська політехніка» (кафедра САПР, вул. Степана Бандери, 12) та швидкісного зарядного хабу ChargeUA Hub Polytech.
+          </p>
+        </div>
+
+        <div class="card map-card">
+          <div class="map-card__header">
+            <div class="map-card__info">
+              <h3 class="map-card__title"><i class="fa-solid fa-charging-station" aria-hidden="true"></i> ChargeUA Hub #1 — НУ «Львівська політехніка»</h3>
+              <p class="map-card__address">м. Львів, вул. Степана Бандери, 12 (Кафедра САПР, корпус 5) · 49.8362° N, 24.0085° E</p>
+            </div>
+            <div class="map-card__badges">
+              <span class="badge badge--green"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> 4 порти вільні</span>
+              <span class="badge badge--blue"><i class="fa-solid fa-bolt" aria-hidden="true"></i> 160 кВт Ultra-Fast</span>
+            </div>
+          </div>
+
+          <!-- Контейнер для карти Google Maps -->
+          <div class="responsive-map-wrapper">
+            <iframe 
+              title="Google Maps локація кафедри САПР Львівської політехніки"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.329917567392!2d24.008481515709175!3d49.83625817939535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add79af0e4d9d%3A0xa95470e031eb25c0!2z0JrQsNGE0LXQtNGA0LAg0KHQkNCf0KA!5e0!3m2!1suk!2sua!4v1641753753230!5m2!1suk!2sua" 
+              width="100%" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <div class="map-card__footer">
+            <div class="map-card__details">
+              <span><i class="fa-solid fa-route" aria-hidden="true"></i> Маршрут прокладено від залізничного вокзалу (1.8 км, 4 хв на авто)</span>
+              <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Працює резервне живлення від генератора під час відключень</span>
+            </div>
+            <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Кафедра+САПР+Львівська+політехніка" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i> Відкрити навігацію в Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ 2: GOOGLE STREET VIEW ПАНОРАМА 360° -->
+    <section class="section service-section" id="streetview-section" aria-labelledby="streetview-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">Сервіс 2 · Google Street View</span>
+          <h2 class="section-title" id="streetview-heading">Панорамний перегляд місцевості (360° Street View)</h2>
+          <p class="section-desc">
+            Згідно з п. 2 порядку роботи: інтеграція віртуальної панорами вулиці Степана Бандери біля Львівської політехніки для полегшення пошуку заїзду до зарядної станції водіями електромобілів.
+          </p>
+        </div>
+
+        <div class="card map-card">
+          <div class="map-card__header">
+            <div>
+              <h3 class="map-card__title"><i class="fa-solid fa-street-view" aria-hidden="true"></i> Віртуальний тур: Під'їзд до зарядної станції (вул. Степана Бандери)</h3>
+              <p class="map-card__address">Інтерактивна сфера 360 градусів з можливістю обертання та наближення</p>
+            </div>
+            <span class="badge badge--green"><i class="fa-solid fa-eye" aria-hidden="true"></i> 360° Live Panorama</span>
+          </div>
+
+          <!-- Контейнер для панорами Google Street View -->
+          <div class="responsive-map-wrapper">
+            <iframe 
+              title="Google Street View панорама Львівської політехніки"
+              src="https://www.google.com/maps/embed?pb=!4v1729618000000!6m8!1m7!1sCAoSLEFGMVFpcE1mOUNjZlV4bHlQc1UxeFF6Z2NnbmdlYkZzRzV1b3JpNGdldXQ.!2m2!1d49.835948!2d24.014292!3f240!4f0!5f0.7820865974627469"
+              width="100%" 
+              height="400" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <div class="map-card__footer">
+            <p class="text-muted"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Для огляду затисніть ліву кнопку миші та повертайте камеру в будь-якому напрямку.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ 3: ВІДЕОСЕРВІСИ YOUTUBE ТА VIMEO -->
+    <section class="section service-section" id="video-section" aria-labelledby="video-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">Сервіс 3 та 4 · Мультимедійні відеоплатформи</span>
+          <h2 class="section-title" id="video-heading">Порівняльне втілення відео: YouTube vs Vimeo</h2>
+          <p class="section-desc">
+            Відповідно до пп. 3 і 5 порядку роботи: інтеграція навчального відео інструктажу заряджання електромобіля через YouTube (із субтитрами, аудіодоріжкою та нарізкою) та високоякісного ролика через платформу Vimeo.
+          </p>
+        </div>
+
+        <div class="video-grid">
+          <!-- Блок 1: YouTube -->
+          <div class="card video-card">
+            <div class="video-card__head">
+              <span class="service-logo service-logo--youtube"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</span>
+              <h3 class="video-card__title">Відеоінструкція: «Як безпечно зарядитися на швидкісній станції ChargeUA»</h3>
+            </div>
+            
+            <!-- Адаптивний контейнер для YouTube відео -->
+            <div class="responsive-video-wrapper">
+              <iframe 
+                src="https://www.youtube-nocookie.com/embed/S_8qM8QJpEU?rel=0&amp;modestbranding=1" 
+                title="ChargeUA Video Guide YouTube" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen 
+                loading="lazy">
+              </iframe>
+            </div>
+
+            <div class="video-card__body">
+              <ul class="feature-bullets">
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Атрибути вбудовування:</strong> <code>allowfullscreen</code>, <code>loading="lazy"</code>, <code>rel=0</code></li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Особливості:</strong> наявність автоматичних субтитрів, роздільної здатності до 4K, висока швидкість через CDN Google.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Блок 2: Vimeo -->
+          <div class="card video-card">
+            <div class="video-card__head">
+              <span class="service-logo service-logo--vimeo"><i class="fa-brands fa-vimeo-v" aria-hidden="true"></i> Vimeo</span>
+              <h3 class="video-card__title">Презентаційний ролик: «Майбутнє зарядної інфраструктури ChargeUA»</h3>
+            </div>
+
+            <!-- Адаптивний контейнер для Vimeo відео -->
+            <div class="responsive-video-wrapper">
+              <iframe 
+                src="https://player.vimeo.com/video/76979871?title=0&amp;byline=0&amp;portrait=0" 
+                title="ChargeUA Demo Video Vimeo" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen 
+                loading="lazy">
+              </iframe>
+            </div>
+
+            <div class="video-card__body">
+              <ul class="feature-bullets">
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Атрибути вбудовування:</strong> кастомізований мінімалістичний інтерфейс без реклами (Clean UI).</li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i> <strong>Особливості:</strong> вища швидкість бітрейту для професійного відеомонтажу, захист авторських прав.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ 4: НАЦІОНАЛЬНИЙ HTML5 AUDIO ПЛЕЄР -->
+    <section class="section service-section" id="audio-section" aria-labelledby="audio-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">Сервіс 5 · HTML5 Audio</span>
+          <h2 class="section-title" id="audio-heading">Відтворення аудіо на сайті (тег &lt;audio&gt;)</h2>
+          <p class="section-desc">
+            Відповідно до п. 4 порядку роботи: впровадження голосового помічника та звукового супроводу процесу заряджання через семантичний тег &lt;audio&gt; із мультиформатною підтримкою (MP3, WAV).
+          </p>
+        </div>
+
+        <div class="card audio-card">
+          <div class="audio-card__inner">
+            <div class="audio-card__icon">
+              <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
+            </div>
+            <div class="audio-card__content">
+              <h3 class="audio-card__title">Голосовий асистент: «ChargeUA Audio Guide — Старт сесії»</h3>
+              <p class="audio-card__desc">Звуковий сигнал підтвердження успішного старту високовольтної зарядки (150 кВт CCS2) та голосові інструкції водію.</p>
+
+              <!-- Семантичний плеєр HTML5 -->
+              <div class="audio-player-box">
+                <audio controls preload="metadata" class="native-audio-player">
+                  <source src="assets/audio/chargeua_assistant.mp3" type="audio/mpeg">
+                  <source src="assets/audio/chargeua_assistant.wav" type="audio/wav">
+                  Ваш браузер не підтримує елемент аудіо стандарту HTML5.
+                </audio>
+              </div>
+
+              <div class="audio-meta">
+                <span><i class="fa-solid fa-file-audio" aria-hidden="true"></i> Формати: <strong>MP3 (320 kbps), WAV (PCM 44.1 kHz 16-bit)</strong></span>
+                <span><i class="fa-solid fa-clock" aria-hidden="true"></i> Тривалість: <strong>00:04</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ 5: ІНФОРМЕРИ ТА ВІДЖЕТИ СОЦМЕРЕЖ -->
+    <section class="section service-section" id="widgets-section" aria-labelledby="widgets-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">Сервіс 6 · Інформери та Соціальні Віджети</span>
+          <h2 class="section-title" id="widgets-heading">Інформери реального часу та плагіни соцмереж</h2>
+          <p class="section-desc">
+            Відповідно до п. 6 порядку роботи: розміщення на сторінці динамічних інформерів (погода Sinoptik.ua, валютні курси, точний синхронізований годинник Time.is) та кнопок взаємодії з соціальними мережами.
+          </p>
+        </div>
+
+        <div class="widgets-grid">
+          <!-- Інформер 1: Погода Sinoptik -->
+          <div class="card widget-box">
+            <div class="widget-box__header">
+              <i class="fa-solid fa-sun-plant-wilt widget-icon widget-icon--weather" aria-hidden="true"></i>
+              <div>
+                <h3 class="widget-box__title">Метеорологічний інформер (Sinoptik.ua)</h3>
+                <span class="widget-box__subtitle">Вплив температури на швидкість зарядки</span>
+              </div>
+            </div>
+            <div class="widget-weather-display">
+              <div class="weather-temp">
+                <i class="fa-solid fa-cloud-sun weather-icon" aria-hidden="true"></i>
+                <span class="temp-val">+14°C</span>
+              </div>
+              <div class="weather-params">
+                <div>Вітер: <strong>3.2 м/с, Пн-Зх</strong></div>
+                <div>Вологість: <strong>68%</strong></div>
+                <div>Тиск: <strong>745 мм рт. ст.</strong></div>
+                <div class="battery-status"><i class="fa-solid fa-battery-three-quarters" aria-hidden="true"></i> Оптимальна t° для батареї EV (15-25°C)</div>
+              </div>
+            </div>
+            <div class="widget-box__footer">
+              <a href="https://ua.sinoptik.ua/погода-львів" target="_blank" rel="noopener noreferrer" class="link-small">Погода на sinoptik.ua &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Інформер 2: Курс валют -->
+          <div class="card widget-box">
+            <div class="widget-box__header">
+              <i class="fa-solid fa-coins widget-icon widget-icon--currency" aria-hidden="true"></i>
+              <div>
+                <h3 class="widget-box__title">Фінансовий інформер (Kurs.com.ua / НБУ)</h3>
+                <span class="widget-box__subtitle">Розрахунок вартості для міжнародного роумінгу</span>
+              </div>
+            </div>
+            <table class="currency-table">
+              <thead>
+                <tr>
+                  <th>Валюта</th>
+                  <th>Купівля</th>
+                  <th>Продаж</th>
+                  <th>НБУ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>USD 🇺🇸</strong></td>
+                  <td>41.25 грн</td>
+                  <td>41.70 грн</td>
+                  <td>41.35 грн</td>
+                </tr>
+                <tr>
+                  <td><strong>EUR 🇪🇺</strong></td>
+                  <td>44.60 грн</td>
+                  <td>45.15 грн</td>
+                  <td>44.80 грн</td>
+                </tr>
+                <tr>
+                  <td><strong>PLN 🇵🇱</strong></td>
+                  <td>10.30 грн</td>
+                  <td>10.65 грн</td>
+                  <td>10.42 грн</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="widget-box__footer">
+              <span class="link-small">Тариф ChargeUA: 12.50 грн / кВт·год (~0.30 USD)</span>
+            </div>
+          </div>
+
+          <!-- Інформер 3: Годинник Time.is -->
+          <div class="card widget-box">
+            <div class="widget-box__header">
+              <i class="fa-solid fa-clock widget-icon widget-icon--time" aria-hidden="true"></i>
+              <div>
+                <h3 class="widget-box__title">Синхронізований час (Time.is)</h3>
+                <span class="widget-box__subtitle">Облік нічного тарифу зарядки (23:00 - 07:00)</span>
+              </div>
+            </div>
+            <div class="time-is-display">
+              <div class="big-clock" id="big-clock">17:25:40</div>
+              <div class="clock-date" id="clock-date">Четвер, 22 жовтня 2026 р.</div>
+              <div class="tariff-tag tariff-tag--day">
+                <i class="fa-solid fa-sun" aria-hidden="true"></i> Денний тариф діє до 23:00 (знижка 40% почнеться о 23:00)
+              </div>
+            </div>
+            <div class="widget-box__footer">
+              <a href="https://time.is/Lviv" target="_blank" rel="noopener noreferrer" class="link-small">Точний час у Львові на Time.is &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Блок 4: Плагіни соціальних мереж -->
+          <div class="card widget-box">
+            <div class="widget-box__header">
+              <i class="fa-solid fa-share-nodes widget-icon widget-icon--social" aria-hidden="true"></i>
+              <div>
+                <h3 class="widget-box__title">Плагіни соціальних мереж</h3>
+                <span class="widget-box__subtitle">Швидкий шеринг та зв'язок зі спільнотою</span>
+              </div>
+            </div>
+            
+            <div class="social-share-buttons">
+              <a href="https://t.me/share/url?url=https://chargeua.ua&text=Заряджайте%20електромобіль%20на%20ChargeUA%20біля%20Львівської%20політехніки" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--telegram">
+                <i class="fa-brands fa-telegram" aria-hidden="true"></i> Поділитися в Telegram
+              </a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://chargeua.ua" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--facebook">
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i> Поширити у Facebook
+              </a>
+              <a href="https://www.instagram.com/cad_nulp/" target="_blank" rel="noopener noreferrer" class="social-btn social-btn--instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i> Кафедра САПР в Instagram
+              </a>
+            </div>
+
+            <div class="widget-box__footer">
+              <span class="link-small"><i class="fa-solid fa-users" aria-hidden="true"></i> Понад 14 000 водіїв у Telegram-каналі</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦІЯ 6: ТЕСТУВАННЯ ТА ДЕПЛОЙМЕНТ (ПП. 7-8 ПОРЯДКУ РОБОТИ) -->
+    <section class="section service-section" aria-labelledby="testing-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-badge">Етап 7 та 8 · Тестування та Розгортання</span>
+          <h2 class="section-title" id="testing-heading">Кросбраузерна валідація та деплоймент</h2>
+        </div>
+
+        <div class="testing-grid">
+          <div class="card test-item">
+            <div class="test-item__icon"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></div>
+            <h3 class="test-item__title">Адаптивність (Responsive)</h3>
+            <p class="test-item__desc">Усі iframe-карти, відео YouTube/Vimeo та інформери коректно масштабуються від 320px до 4K завдяки CSS <code>aspect-ratio: 16/9</code>.</p>
+          </div>
+          <div class="card test-item">
+            <div class="test-item__icon"><i class="fa-brands fa-chrome" aria-hidden="true"></i></div>
+            <h3 class="test-item__title">Кросбраузерність</h3>
+            <p class="test-item__desc">Перевірено рендеринг у Google Chrome, Firefox, Microsoft Edge та Safari. Всі плеєри та карти завантажуються без помилок CORS.</p>
+          </div>
+          <div class="card test-item">
+            <div class="test-item__icon"><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i></div>
+            <h3 class="test-item__title">Хостинг та GitHub</h3>
+            <p class="test-item__desc">Сайт синхронізовано з GitHub та підготовлено до миттєвої публікації на Netlify CDN.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ПІДВАЛ САЙТУ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="logo logo--footer" href="/" aria-label="ChargeUA — на головну">
+            <img src="assets/images/Logo-white.svg" alt="ChargeUA Logo" class="logo__img" width="36" height="36">
+            <span class="logo__text" style="color: #FFFFFF;">ChargeUA</span>
+          </a>
+          <p class="site-footer__desc">
+            Національна мережа швидкісних зарядних хабів для електромобілів в Україні. Навчальний проєкт до Лабораторної роботи №6 з дисципліни «Вебтехнології та вебдизайн».
+          </p>
+        </div>
+
+        <section aria-labelledby="footer-nav-title">
+          <h2 class="site-footer__title" id="footer-nav-title">Сервіси ЛР №6</h2>
+          <ul class="site-footer__list">
+            <li><a href="#maps-section">Google Maps API</a></li>
+            <li><a href="#streetview-section">Street View 360°</a></li>
+            <li><a href="#video-section">YouTube &amp; Vimeo</a></li>
+            <li><a href="#audio-section">HTML5 Audio Player</a></li>
+            <li><a href="#widgets-section">Інформери та соцмережі</a></li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="footer-author-title">
+          <h2 class="site-footer__title" id="footer-author-title">Відомості про студента</h2>
+          <ul class="site-footer__list">
+            <li><strong>Студент:</strong> Лемішка Андрій Андрійович</li>
+            <li><strong>Група:</strong> ПП-24 (2 курс)</li>
+            <li><strong>Кафедра:</strong> САПР, НУ «Львівська політехніка»</li>
+            <li><strong>Викладач:</strong> к.т.н., доцент Юрчак І. Ю.</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="footer-contacts">
+          <h2 class="site-footer__title" id="footer-contacts">Підтримка та САПР</h2>
+          <address>
+            <ul class="site-footer__list">
+              <li><a href="tel:0322582674"><i class="fa-solid fa-phone" aria-hidden="true"></i> (032) 258-26-74</a></li>
+              <li><a href="mailto:cad.dept@lpnu.ua"><i class="fa-solid fa-envelope" aria-hidden="true"></i> cad.dept@lpnu.ua</a></li>
+              <li><a href="https://cad.lpnu.ua/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe" aria-hidden="true"></i> cad.lpnu.ua</a></li>
+            </ul>
+          </address>
+        </section>
+      </div>
+      <p class="site-footer__copy">© 2026 ChargeUA. Лабораторна робота №6 «Уставляння зовнішніх сервісів». Виконав Лемішка Андрій Андрійович (ПП-24).</p>
+    </div>
+  </footer>
+
+  <!-- СКРИПТИ -->
+  <script>
+    // 1. Оновлення годинника реального часу для віджета Time.is
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const timeStr = `${hours}:${minutes}:${seconds}`;
+      
+      const clockDisplay = document.getElementById('clock-display');
+      const bigClock = document.getElementById('big-clock');
+      if (clockDisplay) clockDisplay.textContent = timeStr;
+      if (bigClock) bigClock.textContent = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // 2. Мобільне гамбургер-меню
+    const burgerBtn = document.getElementById('burger-btn');
+    const siteNav = document.getElementById('site-nav');
+    if (burgerBtn && siteNav) {
+      burgerBtn.addEventListener('click', () => {
+        const isOpen = siteNav.classList.toggle('is-open');
+        burgerBtn.setAttribute('aria-expanded', isOpen);
+      });
+      siteNav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          siteNav.classList.remove('is-open');
+          burgerBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>

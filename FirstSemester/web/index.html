@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Скрипт захисту за регламентом | NVIDIA DLSS 5 (Жовтень 2026)</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            nvgreen: {
+              DEFAULT: '#76B900',
+              hover: '#86cf00',
+              glow: 'rgba(118, 185, 0, 0.3)',
+              dark: '#3f6300'
+            },
+            dark: {
+              900: '#0B0F17',
+              800: '#111827',
+              700: '#1F2937',
+              600: '#374151'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .speech-text {
+      font-size: var(--speech-size, 1.125rem);
+      line-height: 1.75;
+    }
+    .cue-tag {
+      background: rgba(118, 185, 0, 0.15);
+      color: #76B900;
+      border: 1px solid rgba(118, 185, 0, 0.3);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.8em;
+      font-weight: 700;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .pause-tag {
+      background: rgba(239, 68, 68, 0.15);
+      color: #F87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.8em;
+      font-weight: 700;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .reglament-badge {
+      background: rgba(6, 182, 212, 0.15);
+      color: #22D3EE;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-family: monospace;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body class="bg-dark-900 text-slate-100 font-sans antialiased selection:bg-nvgreen selection:text-black">
+
+  <!-- ================= TOP CONTROLS & TIMER BAR ================= -->
+  <header class="sticky top-0 z-50 bg-dark-800/95 backdrop-blur border-b border-white/10 px-4 py-3 shadow-xl">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- Title & Speaker -->
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-nvgreen animate-pulse"></span>
+          <h1 class="text-base font-bold text-white tracking-tight">NVIDIA DLSS 5: Захист за регламентом (6 пунктів)</h1>
+          <span class="text-xs bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded font-mono border border-cyan-500/30">16 жовтня 2026</span>
+        </div>
+        <p class="text-xs text-slate-400">Доповідач: <strong>Лемішка Андрій</strong> (група ПП-24 · Кафедра САПР)</p>
+      </div>
+
+      <!-- Controls: Timer + Font Resize -->
+      <div class="flex items-center gap-3">
+        
+        <!-- Live Speech Timer -->
+        <div class="flex items-center gap-2 bg-dark-900 px-3 py-1.5 rounded-lg border border-white/10 font-mono text-sm">
+          <span class="text-slate-400 text-xs">⏱️</span>
+          <span id="timerDisplay" class="font-bold text-nvgreen">00:00</span>
+          <button onclick="toggleTimer()" id="timerBtn" class="text-xs bg-dark-700 hover:bg-dark-600 px-2 py-0.5 rounded text-slate-200 transition">Старт</button>
+          <button onclick="resetTimer()" class="text-xs text-slate-400 hover:text-white transition">↺</button>
+        </div>
+
+        <!-- Font size scaler -->
+        <div class="flex items-center bg-dark-900 rounded-lg border border-white/10 p-0.5 text-xs">
+          <button onclick="changeFontSize(-1)" class="px-2.5 py-1 text-slate-300 hover:text-white hover:bg-dark-700 rounded transition font-bold">A-</button>
+          <span id="fontSizeDisplay" class="px-2 text-slate-400 font-mono">18px</span>
+          <button onclick="changeFontSize(1)" class="px-2.5 py-1 text-slate-300 hover:text-white hover:bg-dark-700 rounded transition font-bold">A+</button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Quick Slide Navigator Pills -->
+    <div class="max-w-5xl mx-auto mt-2.5 pt-2 border-t border-white/5 flex gap-1.5 overflow-x-auto pb-1 text-xs font-mono scrollbar-none">
+      <span class="text-slate-500 self-center text-[11px] mr-1 uppercase">Слайди:</span>
+      <a href="#slide-1" class="px-2.5 py-1 rounded bg-dark-700 hover:bg-nvgreen hover:text-black transition">01 Титул</a>
+      <a href="#slide-2" class="px-2.5 py-1 rounded bg-dark-700 hover:bg-nvgreen hover:text-black transition">02 Контекст</a>
+      <a href="#slide-3" class="px-2.5 py-1 rounded bg-cyan-900/60 text-cyan-300 border border-cyan-500/30 transition">03 Мета</a>
+      <a href="#slide-4" class="px-2.5 py-1 rounded bg-cyan-900/60 text-cyan-300 border border-cyan-500/30 transition">04 Актуальність</a>
+      <a href="#slide-5" class="px-2.5 py-1 rounded bg-dark-700 hover:bg-nvgreen hover:text-black transition">05 Архітектура</a>
+      <a href="#slide-6" class="px-2.5 py-1 rounded bg-amber-900/50 text-amber-300 border border-amber-500/30 transition">06 Прорив 16.10</a>
+      <a href="#slide-7" class="px-2.5 py-1 rounded bg-cyan-900/60 text-cyan-300 border border-cyan-500/30 transition">07 Сфера</a>
+      <a href="#slide-8" class="px-2.5 py-1 rounded bg-cyan-900/60 text-cyan-300 border border-cyan-500/30 transition">08 Доступність</a>
+      <a href="#slide-9" class="px-2.5 py-1 rounded bg-cyan-900/60 text-cyan-300 border border-cyan-500/30 transition">09 Ефект</a>
+      <a href="#slide-10" class="px-2.5 py-1 rounded bg-cyan-900/60 text-cyan-300 border border-cyan-500/30 transition">10 Перспективи</a>
+      <a href="#slide-11" class="px-2.5 py-1 rounded bg-dark-700 hover:bg-nvgreen hover:text-black transition">11 Резюме</a>
+      <a href="#slide-12" class="px-2.5 py-1 rounded bg-dark-700 hover:bg-nvgreen hover:text-black transition">12 Q&A</a>
+    </div>
+  </header>
+
+  <!-- ================= MAIN SCRIPT CONTAINER ================= -->
+  <main class="max-w-4xl mx-auto px-4 py-8 space-y-10">
+
+    <!-- Overview Banner: Teacher Criteria Match -->
+    <div class="bg-gradient-to-r from-dark-800 to-dark-700 p-5 rounded-2xl border border-cyan-500/30 text-sm">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="font-bold text-white text-base flex items-center gap-2">
+          <span class="text-cyan-400">✓</span> 100% відповідність вимогам кафедри САПР:
+        </h2>
+        <span class="font-mono text-xs text-nvgreen bg-dark-900 px-2.5 py-1 rounded border border-nvgreen/30">Хронометраж: 5–7 хв</span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs text-slate-300 font-mono">
+        <div class="bg-dark-900/60 p-2 rounded border border-white/5">1. Мета новинки (Слайд 3)</div>
+        <div class="bg-dark-900/60 p-2 rounded border border-white/5">2. Актуальність (Слайд 4)</div>
+        <div class="bg-dark-900/60 p-2 rounded border border-white/5">3. Сфера застосування (Слайд 7)</div>
+        <div class="bg-dark-900/60 p-2 rounded border border-white/5">4. Доступність (Слайд 8)</div>
+        <div class="bg-dark-900/60 p-2 rounded border border-white/5">5. Ефект від викор. (Слайд 9)</div>
+        <div class="bg-dark-900/60 p-2 rounded border border-white/5">6. Перспективи (Слайд 10)</div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 1 ================= -->
+    <article id="slide-1" class="bg-dark-800 rounded-2xl border border-white/10 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono bg-nvgreen text-black font-extrabold px-2.5 py-1 rounded">СЛАЙД 01 / 12</span>
+          <h3 class="text-lg font-bold text-white">Титульний: Тема та автор</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~30 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> «NVIDIA DLSS 5: 3D-Guided Neural Rendering. Прорив нейронного світла та жовтневе оновлення 2026 року. Доповідач: Лемішка Андрій, ПП-24, НУ "Львівська політехніка"».
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-nvgreen font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «Доброго дня, шановні викладачі та присутні! Мене звати Андрій Лемішка, студент групи ПП-24.  
+          Тема моєї доповіді — <strong>«NVIDIA DLSS 5: 3D-Guided Neural Rendering та жовтневий прорив продуктивності 2026 року»</strong>. <span class="pause-tag">пауза</span>»
+        </p>
+        <p>
+          «Сьогодні ми розберемо одну з найгарячіших новинок осені 2026 року: як штучний інтелект перейшов від банального домальовування пікселів до повноцінного нейронного прорахунку фізики світла й матеріалів у реальному часі. Мій виступ складений суворо за 6 обов'язковими пунктами регламенту. Розпочнімо!»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 2 ================= -->
+    <article id="slide-2" class="bg-dark-800 rounded-2xl border border-white/10 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono bg-nvgreen text-black font-extrabold px-2.5 py-1 rounded">СЛАЙД 02 / 12</span>
+          <h3 class="text-lg font-bold text-white">Вступний контекст: Еволюція (2018–2026)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~45 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> 4 етапи розвитку: DLSS 1 (окремі мережі), DLSS 2 (Super Resolution), DLSS 3/4 (Frame Generation), DLSS 5 (Neural Rendering).
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-nvgreen font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «Щоб зрозуміти масштаб новинки, погляньмо на коротку хронологію:  
+          • У <strong>2018</strong> році DLSS 1 намагався тренувати окрему нейромережу під кожну гру;  
+          • У <strong>2020</strong> році DLSS 2 ввів просторово-часовий апскейл (Super Resolution), домальовуючи 4K з 1080p;  
+          • У <strong>2022–2025</strong> роках DLSS 3 і 4 навчилися генерувати повністю штучні кадри (Frame Generation);  
+          • І нарешті, у <strong>вересні-жовтні 2026 року</strong> відбувся стрибок до DLSS 5 — технології повного нейронного рендерингу.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 3 ================= -->
+    <article id="slide-3" class="bg-dark-800 rounded-2xl border border-cyan-500/30 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="reglament-badge">РЕГЛАМЕНТ · ПУНКТ 1</span>
+          <h3 class="text-lg font-bold text-white">1. Мета новинки</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~45 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> Заміна ресурсомісткого математичного трасування променів (Path Tracing) генеративним ШІ світла в реальному часі.
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «<span class="cue-tag">Пункт перший: Мета новинки</span>. Головна мета створення DLSS 5 — це **заміна важкого математичного розрахунку фізики світла (Path Tracing) на пряму нейронну генерацію**.»
+        </p>
+        <p>
+          «Чесне трасування світлових променів вимагає прорахунку мільярдів математичних перетинів щомиті. Жодна сучасна відеокарта не може робити це в нативному 4K без затримок. Мета DLSS 5 — навчити нейромережу брати базову геометрію і самостійно «домальовувати» фізично коректне світло, контактні тіні та м'які відблиски за частки мілісекунди.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 4 ================= -->
+    <article id="slide-4" class="bg-dark-800 rounded-2xl border border-cyan-500/30 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="reglament-badge">РЕГЛАМЕНТ · ПУНКТ 2</span>
+          <h3 class="text-lg font-bold text-white">2. Актуальність розробки</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~50 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> Криза 16,7 мс, глухий кут кремнію (сповільнення закону Мура) та проблема "воскової шкіри" персонажів.
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «<span class="cue-tag">Пункт другий: Актуальність</span>. Чому ця технологія з'явилася саме зараз? На це є три ключові причини:  
+          1. <strong>Криза 16,7 мілісекунди:</strong> для стандарту 60 кадрів/сек на створення кадру є мізерний час. У 4K потрібно обробити понад 8 мільйонів пікселів — залізо уперлося в термодинамічну межу.  
+          2. <strong>Глухий кут «грубої сили»:</strong> нарощувати транзистори далі неможливо, бо відеокарти вже споживають по 500-600 Вт.  
+          3. <strong>Пластикова графіка:</strong> класичні шейдери не здатні показати проходження світла крізь шкіру людини чи складні тканини, персонажі виглядали восковими манекенами.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 5 ================= -->
+    <article id="slide-5" class="bg-dark-800 rounded-2xl border border-white/10 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono bg-nvgreen text-black font-extrabold px-2.5 py-1 rounded">СЛАЙД 05 / 12</span>
+          <h3 class="text-lg font-bold text-white">Технологічна суть: 3D-Guided Neural Rendering</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~45 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> Семантичне розуміння матеріалів, Subsurface Scattering (підповерхневе розсіювання), збереження 3D-геометрії та контроль художників.
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-nvgreen font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «Як працює <strong>3D-Guided Neural Rendering</strong>?  
+          Нейромережа не малює картинку навмання. Вона спирається на глибину сцени й розпізнає матеріали: біологічну тканину (людську шкіру), шовк, метал, пасма волосся.  
+          Головна фішка — <strong>Subsurface Scattering</strong>: світло частково проникає під шкіру персонажа і м'яко розсіюється, створюючи живий рум'янець та мікротіні. При цьому тривимірна геометрія моделі залишається рідною, а художники керують інтенсивністю через маски.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 6 ================= -->
+    <article id="slide-6" class="bg-dark-800 rounded-2xl border border-amber-500/30 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono bg-amber-500 text-black font-extrabold px-2.5 py-1 rounded">ГАРЯЧА НОВИНКА</span>
+          <h3 class="text-lg font-bold text-white">Оновлення від 16 жовтня 2026: Прорив оптимізації</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~50 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> Виправлення падіння FPS: модель у 2 рази швидша, -24% розмір мережі, -20% VRAM у 4K, запуск Preset C для RTX 5060 (+35% швидкості).
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-amber-400 font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «А тепер ключова подія, яка відбулася <strong>буквально кілька днів тому — 16 жовтня 2026 року</strong>! <span class="pause-tag">акцент</span>»
+        </p>
+        <p>
+          «Коли DLSS 5 запустили у вересні, він мав колосальну проблему: модель була настільки важкою, що знижувала чистий FPS на 50–60%.  
+          Але в жовтневому драйвері інженери NVIDIA здійснили справжній прорив:  
+          • Зробили модель **вдвічі швидшою**;  
+          • Зменшили її вагу на **24%**;  
+          • Скоротили споживання відеопам'яті на **20%** у роздільності 4K;  
+          • І представили режим **Preset C** для доступних відеокарт класу RTX 5060, що дало приріст до 35% швидкості!»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 7 ================= -->
+    <article id="slide-7" class="bg-dark-800 rounded-2xl border border-cyan-500/30 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="reglament-badge">РЕГЛАМЕНТ · ПУНКТ 3</span>
+          <h3 class="text-lg font-bold text-white">3. Сфера застосування</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~45 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> 4 галузі: AAA-відеоігри, рушії Unreal Engine 5.5/6, віртуальне кіновиробництво та хмарний геймінг (GeForce NOW у браузері).
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «<span class="cue-tag">Пункт третій: Сфера застосування</span>. Де використовується DLSS 5?  
+          1. <strong>AAA-ігри нового покоління:</strong> проекти на кшталт NBA 2K27 або нових частин Cyberpunk.  
+          2. <strong>Графічні веб-рушії та Unreal Engine:</strong> плагін інтегровано прямо в рушій, тому розробникам не треба писати код з нуля.  
+          3. <strong>Віртуальне кіновиробництво:</strong> голлівудські студії рендерять фотореалістичні сцени на світлодіодних екранах у реальному часі.  
+          4. <strong>Хмарний веб-геймінг:</strong> у сервісі GeForce NOW, де гра рендериться у хмарі й транслюється через браузер прямо на слабкий ноутбук.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 8 ================= -->
+    <article id="slide-8" class="bg-dark-800 rounded-2xl border border-cyan-500/30 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="reglament-badge">РЕГЛАМЕНТ · ПУНКТ 4</span>
+          <h3 class="text-lg font-bold text-white">4. Доступність для споживачів</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~45 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> Відеокарти RTX 50/40, безкоштовність для геймерів через драйвер, відкритий SDK для девелоперів, Preset C для мас-маркету.
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «<span class="cue-tag">Пункт четвертий: Доступність для споживачів</span>.  
+          • <strong>Для звичайних користувачів:</strong> технологія повністю безкоштовна. Достатньо мати відеокарту GeForce RTX (серії 40 або новітньої 50) та оновити драйвер Game Ready.  
+          • <strong>Для розробників сайтів та ігор:</strong> NVIDIA надає безкоштовний DLSS 5 SDK без жодних ліцензійних відрахувань (роялті).  
+          • А завдяки жовтневому пресету Preset C технологія стала доступною навіть на відеокартах початкового рівня класу RTX 5060.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 9 ================= -->
+    <article id="slide-9" class="bg-dark-800 rounded-2xl border border-cyan-500/30 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="reglament-badge">РЕГЛАМЕНТ · ПУНКТ 5</span>
+          <h3 class="text-lg font-bold text-white">5. Ефект від використання (Тести)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~50 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> Таблиця тестів у NBA 2K27 на RTX 5090: різниця якості та показники FPS (4K та 1080p).
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «<span class="cue-tag">Пункт п'ятий: Ефект від використання</span>.  
+          Візуальний ефект колосальний: людські обличчя позбулися воскового блиску, тканини мають шовковисту фактуру, а контактні тіні стали чіткими й живими.  
+          Що ж до продуктивності: на карті RTX 5090 у 4K Ultra після жовтневої оптимізації гра видає **понад 105 кадрів на секунду** з повним нейрорендерингом світла замість початкових 63 FPS. Графіка виглядає як дорогий голлівудський CGI-фільм, але працює в реальному часі.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 10 ================= -->
+    <article id="slide-10" class="bg-dark-800 rounded-2xl border border-cyan-500/30 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="reglament-badge">РЕГЛАМЕНТ · ПУНКТ 6</span>
+          <h3 class="text-lg font-bold text-white">6. Перспективи розвитку</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~45 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> Neural World Models (генерація світів без растеризації), єдина мультимодальна модель та перехід на NPU.
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «<span class="cue-tag">Пункт шостий: Перспективи розвитку</span>. Куди технологія рухається далі?  
+          1. <strong>Neural World Models:</strong> повний відхід від полігонів і трикутників. Нейромережа генеруватиме весь тривимірний світ цілком.  
+          2. <strong>Уніфікація:</strong> об'єднання апскейлу, генерації кадрів, світла і звуку в одну надшвидку нейромережу.  
+          3. <strong>Портування на NPU:</strong> запуск таких моделей на мобільних процесорах та портативних консолях майбутнього.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 11 ================= -->
+    <article id="slide-11" class="bg-dark-800 rounded-2xl border border-white/10 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono bg-nvgreen text-black font-extrabold px-2.5 py-1 rounded">СЛАЙД 11 / 12</span>
+          <h3 class="text-lg font-bold text-white">Підсумки: Зведене резюме за 6 пунктами</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~35 секунд</span>
+      </div>
+
+      <div class="mb-4 p-3 bg-dark-900/60 rounded-xl border border-white/5 text-xs text-slate-400">
+        <strong class="text-slate-300">Що на екрані:</strong> Зведена таблиця відповідей на всі 6 пунктів регламенту.
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-nvgreen font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «Підіб'ємо підсумок:  
+          Ми розібрали мету (заміна важкого Path Tracing), актуальність (вихід із глухого кута кремнію), сферу застосування від геймінгу до кіно, доступність безкоштовного SDK, ефект від жовтневого стрибка продуктивності та майбутній перехід до Neural World Models.»
+        </p>
+      </div>
+    </article>
+
+    <!-- ================= SLIDE 12 ================= -->
+    <article id="slide-12" class="bg-dark-800 rounded-2xl border border-white/10 p-6 md:p-8 shadow-lg scroll-mt-28">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono bg-nvgreen text-black font-extrabold px-2.5 py-1 rounded">СЛАЙД 12 / 12</span>
+          <h3 class="text-lg font-bold text-white">Завершення & Q&A</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">⏱️ ~25 секунд</span>
+      </div>
+
+      <div class="space-y-3 text-slate-200 speech-text">
+        <div class="font-mono text-xs uppercase tracking-wider text-nvgreen font-bold">🗣️ Що говорити вголос:</div>
+        <p>
+          «NVIDIA DLSS 5 довела, що в 2026 році графіка остаточно стала нейронною.  
+          Дякую за увагу! Буду радий відповісти на ваші запитання!»
+        </p>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ================= JAVASCRIPT TIMER & FONT CONTROLLER ================= -->
+  <script>
+    let seconds = 0;
+    let timerInterval = null;
+    let isRunning = false;
+
+    function toggleTimer() {
+      const btn = document.getElementById('timerBtn');
+      if (!isRunning) {
+        isRunning = true;
+        btn.innerText = 'Пауза';
+        btn.classList.add('bg-amber-600', 'text-white');
+        timerInterval = setInterval(() => {
+          seconds++;
+          const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+          const s = String(seconds % 60).padStart(2, '0');
+          document.getElementById('timerDisplay').innerText = `${m}:${s}`;
+        }, 1000);
+      } else {
+        isRunning = false;
+        btn.innerText = 'Продовжити';
+        btn.classList.remove('bg-amber-600');
+        clearInterval(timerInterval);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isRunning = false;
+      seconds = 0;
+      document.getElementById('timerDisplay').innerText = '00:00';
+      const btn = document.getElementById('timerBtn');
+      btn.innerText = 'Старт';
+      btn.classList.remove('bg-amber-600');
+    }
+
+    let currentSizePx = 18;
+    function changeFontSize(delta) {
+      currentSizePx = Math.max(14, Math.min(26, currentSizePx + delta * 2));
+      document.documentElement.style.setProperty('--speech-size', `${currentSizePx}px`);
+      document.getElementById('fontSizeDisplay').innerText = `${currentSizePx}px`;
+    }
+  </script>
+
+</body>
+</html>
