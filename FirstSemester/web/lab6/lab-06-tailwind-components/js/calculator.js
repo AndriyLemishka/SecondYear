@@ -294,10 +294,18 @@
     if (savingsEl) savingsEl.textContent = `~${savings.toLocaleString('uk-UA')} ₴`;
   }
 
+  function scheduleInit() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initCalculator);
+    } else {
+      setTimeout(initCalculator, 50);
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCalculator);
+    document.addEventListener('DOMContentLoaded', scheduleInit);
   } else {
-    initCalculator();
+    scheduleInit();
   }
 
   window.ChargeUACalculator = {

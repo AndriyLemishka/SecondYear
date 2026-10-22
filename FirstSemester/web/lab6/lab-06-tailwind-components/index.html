@@ -7,37 +7,48 @@
   <meta name="description" content="ChargeUA — єдина мережа швидкісних зарядних станцій для електромобілів по всій Україні: DC 150 кВт, Ultra-fast, інтерактивний калькулятор витрат, Live-карта 480+ станцій та робота від генераторів у блекаути.">
   <meta name="theme-color" content="#005EC9">
 
-  <!-- Підключення Tailwind CSS (CDN згідно з Етапом 3) -->
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  <!-- Підключення зовнішніх стилів CSS (критичні стилі макета) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Прелоад критичного фонового зображення для максимального LCP -->
+  <link rel="preload" as="image" href="assets/images/hero_bg.webp" fetchpriority="high" type="image/webp">
+
+  <!-- Конфігурація та неблокуюче підключення Tailwind CSS (CDN згідно з Етапом 3) -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              blue: '#005EC9',
-              dark: '#0F172A',
-              accent: '#00B4D8',
+    window.tailwind = {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                blue: '#005EC9',
+                dark: '#0F172A',
+                accent: '#00B4D8',
+              }
             }
           }
         }
       }
-    }
+    };
   </script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
 
-  <!-- Шрифт Inter (Google Fonts) -->
+  <!-- Шрифт Inter (Google Fonts) з оптимізованим display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic"></noscript>
 
-  <!-- Іконковий шрифт Font Awesome 6 (CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Іконковий шрифт Font Awesome 6 (неблокуюче завантаження) -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
 
-  <!-- Leaflet CSS (Інтерактивна карта) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-
-  <!-- Підключення зовнішніх стилів CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Leaflet CSS (неблокуюче завантаження) -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></noscript>
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти до основного вмісту</a>
@@ -638,14 +649,14 @@
           </address>
         </section>
       </div>
-      <p class="site-footer__copy">© 2026 ChargeUA. Усі права захищено. Студентський навчальний проєкт (ЛР №5, НУ «Львівська політехніка»).</p>
+      <p class="site-footer__copy">© 2026 ChargeUA. Усі права захищено. Студентський навчальний проєкт (ЛР №6, НУ «Львівська політехніка»).</p>
     </div>
   </footer>
 
   <!-- Модуль мобільної навігації (Hamburger Menu) -->
   <script src="js/nav.js" defer></script>
   <!-- Leaflet JS (Бібліотека інтерактивної карти) -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
   <!-- Модуль інтерактивної карти ChargeUA із завантаженням станцій -->
   <script src="js/map.js" defer></script>
   <!-- Модуль інтерактивного калькулятора ChargeUA -->
