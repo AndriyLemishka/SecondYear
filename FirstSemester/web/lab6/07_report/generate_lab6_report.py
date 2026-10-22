@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Майстер-генератор повного офіційного звіту до Лабораторної роботи №6
+Майстер-генератор академічного звіту до Лабораторної роботи №6
 з навчальної дисципліни «Технології веброзробки та дизайну»
-Тема: «Верстка UI-компонентів та адаптивність за допомогою Tailwind CSS та ШІ-асистентів»
-Варіант / Тема вебпроєкту: «Вебплатформа ChargeUA — мережа швидкісних зарядних комплексів для електромобілів в Україні»
+Тема: «Верстка UI-компонентів та адаптивність за допомогою Tailwind CSS»
+Тема вебпроєкту: «Лендинг мережі зарядних станцій для електромобілів «ChargeUA» (веб-помічник та агрегатор станцій)»
 
 Студент: Лемішка Андрій Андрійович, група ПП-24
 Викладач: к.т.н., доцент Юрчак Ірина Юріївна
@@ -12,90 +12,203 @@
 
 import os
 import sys
-import shutil
 import docx
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.oxml import parse_xml
-from docx.oxml.ns import nsdecls
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
+from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
+from docx.oxml import parse_xml, OxmlElement
+from docx.oxml.ns import nsdecls, qn
 
 BASE_DIR = r"D:\Studing\SecondYear\FirstSemester\web\lab6"
 REPORT_DIR = os.path.join(BASE_DIR, "07_report")
 SCREENSHOTS_DIR = os.path.join(REPORT_DIR, "screenshots")
-
-COLOR_PRIMARY = RGBColor(0x00, 0x5E, 0xC9)     # ChargeUA синій #005EC9
-COLOR_DARK = RGBColor(0x0F, 0x17, 0x2A)        # Slate 900
-COLOR_TEXT = RGBColor(0x1E, 0x29, 0x3B)        # Slate 800
-COLOR_MUTED = RGBColor(0x64, 0x74, 0x8B)       # Slate 500
+DOCX_OUT = os.path.join(REPORT_DIR, "Лемішка_ПП-24_Л6_ChargeUA.docx")
+PDF_OUT = os.path.join(REPORT_DIR, "Лемішка_ПП-24_Л6_ChargeUA.pdf")
+ROOT_DOCX = os.path.join(BASE_DIR, "Лемішка_ПП-24_Л6_ChargeUA.docx")
+ROOT_PDF = os.path.join(BASE_DIR, "Лемішка_ПП-24_Л6_ChargeUA.pdf")
 
 def set_cell_background(cell, hex_color):
     tcPr = cell._tc.get_or_add_tcPr()
     shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{hex_color}"/>')
     tcPr.append(shd)
 
-def set_cell_margins(cell, top=100, bottom=100, left=120, right=120):
+def set_cell_margins(cell, top=100, bottom=100, left=150, right=150):
     tcPr = cell._tc.get_or_add_tcPr()
-    tcMar = parse_xml(f'<w:tcMar {nsdecls("w")}><w:top w:w="{top}" w:type="dxa"/><w:bottom w:w="{bottom}" w:type="dxa"/><w:left w:w="{left}" w:type="dxa"/><w:right w:w="{right}" w:type="dxa"/></w:tcMar>')
+    tcMar = parse_xml(
+        f'<w:tcMar {nsdecls("w")}>'
+        f'<w:top w:w="{top}" w:type="dxa"/>'
+        f'<w:bottom w:w="{bottom}" w:type="dxa"/>'
+        f'<w:left w:w="{left}" w:type="dxa"/>'
+        f'<w:right w:w="{right}" w:type="dxa"/>'
+        f'</w:tcMar>'
+    )
     tcPr.append(tcMar)
 
-def set_table_borders(table, color="CBD5E1"):
+def set_table_borders(table, color="D3D3D3", sz="4", val="single"):
     tblPr = table._tbl.tblPr
-    borders = parse_xml(f'''
-        <w:tblBorders {nsdecls("w")}>
-            <w:top w:val="single" w:sz="6" w:space="0" w:color="{color}"/>
-            <w:bottom w:val="single" w:sz="6" w:space="0" w:color="{color}"/>
-            <w:left w:val="none"/>
-            <w:right w:val="none"/>
-            <w:insideH w:val="single" w:sz="4" w:space="0" w:color="{color}"/>
-            <w:insideV w:val="none"/>
-        </w:tblBorders>
-    ''')
+    borders = parse_xml(
+        f'<w:tblBorders {nsdecls("w")}>'
+        f'<w:top w:val="{val}" w:sz="{sz}" w:space="0" w:color="{color}"/>'
+        f'<w:bottom w:val="{val}" w:sz="{sz}" w:space="0" w:color="{color}"/>'
+        f'<w:left w:val="{val}" w:sz="{sz}" w:space="0" w:color="{color}"/>'
+        f'<w:right w:val="{val}" w:sz="{sz}" w:space="0" w:color="{color}"/>'
+        f'<w:insideH w:val="{val}" w:sz="{sz}" w:space="0" w:color="{color}"/>'
+        f'<w:insideV w:val="{val}" w:sz="{sz}" w:space="0" w:color="{color}"/>'
+        f'</w:tblBorders>'
+    )
     tblPr.append(borders)
 
-def setup_document_styles(doc):
-    sec = doc.sections[0]
-    sec.left_margin = Inches(0.984)    # 2.5 cm
-    sec.right_margin = Inches(0.591)   # 1.5 cm
-    sec.top_margin = Inches(0.591)     # 1.5 cm
-    sec.bottom_margin = Inches(0.591)  # 1.5 cm
-    sec.page_width = Inches(8.27)      # A4
-    sec.page_height = Inches(11.69)
+def set_font(run, name="Times New Roman", size_pt=12, bold=False, italic=False, color_rgb=None):
+    run.font.name = name
+    run.font.size = Pt(size_pt)
+    run.font.bold = bold
+    run.font.italic = italic
+    if color_rgb:
+        run.font.color.rgb = color_rgb
+    rPr = run._r.get_or_add_rPr()
+    rFonts = rPr.xpath('./w:rFonts')
+    if not rFonts:
+        rFonts_elem = parse_xml(f'<w:rFonts {nsdecls("w")} w:ascii="{name}" w:hAnsi="{name}" w:cs="{name}"/>')
+        rPr.append(rFonts_elem)
+    else:
+        rFonts[0].set(qn('w:ascii'), name)
+        rFonts[0].set(qn('w:hAnsi'), name)
+        rFonts[0].set(qn('w:cs'), name)
+
+def create_report():
+    print("Ініціалізація документа...")
+    doc = Document()
     
-    style_normal = doc.styles['Normal']
-    style_normal.font.name = 'Times New Roman'
-    style_normal.font.size = Pt(11)
-    style_normal.font.color.rgb = COLOR_TEXT
-    style_normal.paragraph_format.line_spacing = 1.15
-    style_normal.paragraph_format.space_after = Pt(3)
+    # Page setup A4 with standard 2.5cm / 1.5cm margins
+    sec = doc.sections[0]
+    sec.left_margin = Inches(0.984)   # 2.5 cm
+    sec.right_margin = Inches(0.591)  # 1.5 cm
+    sec.top_margin = Inches(0.591)    # 1.5 cm
+    sec.bottom_margin = Inches(0.591) # 1.5 cm
+    sec.page_width = Inches(8.27)
+    sec.page_height = Inches(11.69)
 
-def add_title_page(doc):
-    p0 = doc.add_paragraph()
-    p0.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p0.paragraph_format.space_before = Pt(0)
-    p0.paragraph_format.space_after = Pt(2)
-    r = p0.add_run("МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ")
-    r.bold = True
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(13)
+    def add_p(text="", align=WD_ALIGN_PARAGRAPH.JUSTIFY, space_before=0, space_after=2, line_spacing=1.15):
+        p = doc.add_paragraph()
+        p.alignment = align
+        pf = p.paragraph_format
+        pf.space_before = Pt(space_before)
+        pf.space_after = Pt(space_after)
+        pf.line_spacing = line_spacing
+        if text:
+            r = p.add_run(text)
+            set_font(r, name="Times New Roman", size_pt=12)
+        return p
 
-    p1 = doc.add_paragraph()
-    p1.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p1.paragraph_format.space_before = Pt(0)
-    p1.paragraph_format.space_after = Pt(2)
-    r = p1.add_run("НАЦІОНАЛЬНИЙ УНІВЕРСИТЕТ «ЛЬВІВСЬКА ПОЛІТЕХНІКА»")
-    r.bold = True
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(13)
+    def add_heading1(text):
+        p = doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        pf = p.paragraph_format
+        pf.space_before = Pt(14)
+        pf.space_after = Pt(6)
+        pf.keep_with_next = True
+        r = p.add_run(text)
+        set_font(r, name="Times New Roman", size_pt=16, bold=True)
+        return p
 
-    p2 = doc.add_paragraph()
-    p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p2.paragraph_format.space_before = Pt(0)
-    p2.paragraph_format.space_after = Pt(2)
-    r = p2.add_run("Інститут комп'ютерних наук та інформаційних технологій\nКафедра систем автоматизованого проектування")
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(12)
+    def add_heading3(text):
+        p = doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        pf = p.paragraph_format
+        pf.space_before = Pt(10)
+        pf.space_after = Pt(4)
+        pf.keep_with_next = True
+        r = p.add_run(text)
+        set_font(r, name="Times New Roman", size_pt=13, bold=True)
+        return p
+
+    def add_heading4(text):
+        p = doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        pf = p.paragraph_format
+        pf.space_before = Pt(8)
+        pf.space_after = Pt(2)
+        pf.keep_with_next = True
+        r = p.add_run(text)
+        set_font(r, name="Times New Roman", size_pt=12, bold=True)
+        return p
+
+    def add_callout(label_text, prompt_text):
+        tbl = doc.add_table(rows=1, cols=1)
+        tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
+        tblPr = tbl._tbl.tblPr
+        tblW = tblPr.xpath('./w:tblW')
+        if tblW:
+            tblW[0].set(qn('w:type'), 'dxa')
+            tblW[0].set(qn('w:w'), '9639')
+        
+        # Exact Lab 1 callout style: subtle light border with prominent dark bottom bar
+        borders = parse_xml(
+            f'<w:tblBorders {nsdecls("w")}>'
+            f'<w:top w:val="single" w:sz="4" w:space="0" w:color="E0E0E0"/>'
+            f'<w:bottom w:val="single" w:sz="24" w:space="0" w:color="1D2D24"/>'
+            f'<w:left w:val="single" w:sz="4" w:space="0" w:color="E0E0E0"/>'
+            f'<w:right w:val="single" w:sz="4" w:space="0" w:color="E0E0E0"/>'
+            f'</w:tblBorders>'
+        )
+        tblPr.append(borders)
+        
+        cell = tbl.rows[0].cells[0]
+        set_cell_background(cell, "F8F8F8")
+        set_cell_margins(cell, top=140, bottom=140, left=220, right=220)
+        
+        p = cell.paragraphs[0]
+        p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        pf = p.paragraph_format
+        pf.space_before = Pt(2)
+        pf.space_after = Pt(2)
+        pf.line_spacing = 1.15
+        
+        r_lbl = p.add_run(label_text + " ")
+        set_font(r_lbl, name="Times New Roman", size_pt=11, bold=True)
+        r_txt = p.add_run(prompt_text)
+        set_font(r_txt, name="Times New Roman", size_pt=11, italic=True)
+        
+        p_sp = doc.add_paragraph()
+        p_sp.paragraph_format.space_before = Pt(0)
+        p_sp.paragraph_format.space_after = Pt(4)
+
+    def add_image_with_caption(img_filename, caption_text, width_in=6.2):
+        img_full_path = os.path.join(SCREENSHOTS_DIR, img_filename)
+        if not os.path.exists(img_full_path):
+            print(f"ПОПЕРЕДЖЕННЯ: Зображення не знайдено: {img_full_path}")
+            return
+        
+        p_img = doc.add_paragraph()
+        p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_img.paragraph_format.space_before = Pt(6)
+        p_img.paragraph_format.space_after = Pt(2)
+        p_img.paragraph_format.keep_with_next = True
+        run_img = p_img.add_run()
+        run_img.add_picture(img_full_path, width=Inches(width_in))
+        
+        p_cap = doc.add_paragraph()
+        p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_cap.paragraph_format.space_before = Pt(2)
+        p_cap.paragraph_format.space_after = Pt(8)
+        r_cap = p_cap.add_run(caption_text)
+        set_font(r_cap, name="Times New Roman", size_pt=11, bold=True)
+
+    add_screenshot_figure = add_image_with_caption
+
+    # =========================================================================
+    # ТИТУЛЬНИЙ ЛИСТ (ТОЧНА КОПІЯ ФОРМАТУ ЛАБ 1)
+    # =========================================================================
+    print("Формування титульної сторінки...")
+    p0 = add_p("МІНІСТЕРСТВО ОСВІТИ І НАУКИ УКРАЇНИ", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=1, line_spacing=1.0)
+    set_font(p0.runs[0], bold=True)
+
+    p1 = add_p("НАЦІОНАЛЬНИЙ УНІВЕРСИТЕТ \"ЛЬВІВСЬКА ПОЛІТЕХНІКА\"", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=1, line_spacing=1.0)
+    set_font(p1.runs[0], bold=True)
+
+    p2 = add_p("Кафедра «Систем автоматизованого проектування»", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=6, line_spacing=1.0)
+    set_font(p2.runs[0], bold=False)
 
     coat_path = os.path.join(SCREENSHOTS_DIR, "lp_coat_of_arms.jpg")
     if os.path.exists(coat_path):
@@ -104,611 +217,562 @@ def add_title_page(doc):
         p_logo.paragraph_format.space_before = Pt(4)
         p_logo.paragraph_format.space_after = Pt(6)
         r_logo = p_logo.add_run()
-        r_logo.add_picture(coat_path, width=Inches(1.8))
+        r_logo.add_picture(coat_path, width=Inches(2.2))
 
-    p4 = doc.add_paragraph()
-    p4.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p4.paragraph_format.space_before = Pt(6)
-    p4.paragraph_format.space_after = Pt(2)
-    r = p4.add_run("ЗВІТ")
-    r.bold = True
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(18)
-    r.font.color.rgb = COLOR_PRIMARY
+    p_doc = add_p("Звіт", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=4, space_after=1, line_spacing=1.0)
+    set_font(p_doc.runs[0], size_pt=15, bold=True)
 
-    p5 = doc.add_paragraph()
-    p5.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p5.paragraph_format.space_before = Pt(0)
-    p5.paragraph_format.space_after = Pt(4)
-    r = p5.add_run("до лабораторної роботи № 6\nз дисципліни «Технології веброзробки та дизайну»")
-    r.bold = True
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(13)
+    p_sub = add_p("до лабораторної роботи №6", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=1, line_spacing=1.0)
+    set_font(p_sub.runs[0], size_pt=12)
 
-    p6 = doc.add_paragraph()
-    p6.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p6.paragraph_format.space_before = Pt(2)
-    p6.paragraph_format.space_after = Pt(4)
-    r = p6.add_run("на тему: «Верстка UI-компонентів та адаптивність за допомогою Tailwind CSS та ШІ-асистентів»")
-    r.bold = True
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(12)
+    p_disc = add_p("з дисципліни “Технології веб-розробки та дизайну”", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=1, line_spacing=1.0)
+    set_font(p_disc.runs[0], size_pt=12)
 
-    p_theme = doc.add_paragraph()
-    p_theme.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_theme.paragraph_format.space_before = Pt(2)
-    p_theme.paragraph_format.space_after = Pt(16)
-    r_th1 = p_theme.add_run("Варіант / Тема вебпроєкту:\n")
-    r_th1.font.name = "Times New Roman"
-    r_th1.font.size = Pt(11)
-    r_th1.italic = True
-    r_th2 = p_theme.add_run("«Вебплатформа ChargeUA — мережа швидкісних зарядних комплексів для електромобілів в Україні»")
-    r_th2.bold = True
-    r_th2.font.name = "Times New Roman"
-    r_th2.font.size = Pt(12)
-    r_th2.font.color.rgb = COLOR_DARK
+    p_topic_lbl = add_p("на тему:", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=2, space_after=2, line_spacing=1.0)
+    set_font(p_topic_lbl.runs[0], size_pt=12)
 
-    tbl = doc.add_table(rows=1, cols=2)
-    tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
-    tbl.autofit = False
+    p_topic = add_p("Верстка UI-компонентів та адаптивність засобами Tailwind CSS", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=4, line_spacing=1.0)
+    set_font(p_topic.runs[0], size_pt=13, bold=True)
+
+    p_proj = add_p("Тема проєкту: «Лендинг мережі зарядних станцій для електромобілів «ChargeUA» (веб-помічник та агрегатор станцій)»", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=2, space_after=2, line_spacing=1.0)
+    set_font(p_proj.runs[0], size_pt=12, bold=True)
+
+    p_spec = add_p("Специфікація проєкту: вебагрегатор та інформаційний пошуковик зарядних станцій в Україні (каталог станцій з живими статусами у містах Київ, Львів, Одеса, Дніпро, Харків, Вінниця та пошукові переваги сервісу без транзакцій і бронювань)", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0, space_after=14, line_spacing=1.0)
+    set_font(p_spec.runs[0], size_pt=11, italic=True)
+
+    # Right block: Author & Reviewer
+    p_auth = add_p("Виконав:", align=WD_ALIGN_PARAGRAPH.RIGHT, space_before=6, space_after=1, line_spacing=1.0)
+    set_font(p_auth.runs[0], bold=True)
+    p_gr = add_p("студент групи ПП-24", align=WD_ALIGN_PARAGRAPH.RIGHT, space_before=0, space_after=1, line_spacing=1.0)
+    p_name = add_p("Лемішка Андрій Андрійович", align=WD_ALIGN_PARAGRAPH.RIGHT, space_before=0, space_after=2, line_spacing=1.0)
+    set_font(p_name.runs[0], bold=True)
+    p_rev_lbl = add_p("Перевірила:", align=WD_ALIGN_PARAGRAPH.RIGHT, space_before=2, space_after=1, line_spacing=1.0)
+    set_font(p_rev_lbl.runs[0], bold=True)
+    p_rev = add_p("к.т.н., доцент Юрчак І. Ю.", align=WD_ALIGN_PARAGRAPH.RIGHT, space_before=0, space_after=16, line_spacing=1.0)
+
+    # City & Year
+    p_city = add_p("Львів – 2026", align=WD_ALIGN_PARAGRAPH.CENTER, space_before=16, space_after=0, line_spacing=1.0)
+    set_font(p_city.runs[0], size_pt=12)
+
+    # Page break after title page
+    p_city.runs[0].add_break(WD_BREAK.PAGE)
+
+    # =========================================================================
+    # МЕТА РОБОТИ
+    # =========================================================================
+    print("Формування мети роботи...")
+    p_goal = add_p(align=WD_ALIGN_PARAGRAPH.JUSTIFY, space_before=6, space_after=8, line_spacing=1.15)
+    r_g1 = p_goal.add_run("Мета роботи: ")
+    set_font(r_g1, bold=True)
+    r_g2 = p_goal.add_run(
+        "Опанувати основи утилітарного підходу (utility-first CSS) за допомогою сучасного фреймворку Tailwind CSS; "
+        "дослідити відмінності утилітарної стилізації від традиційного семантичного CSS; "
+        "вивчити функціонал онлайн-пісочниці Tailwind Play для експериментів з адаптивністю, темною темою та станами елементів; "
+        "спроєктувати та реалізувати набір ізольованих компонентів інтерфейсу вебпроєкту «ChargeUA» (Header з навігацією та мобільним меню, "
+        "Primary Button, Card зарядної станції, Card пошукової переваги, адаптивну Grid-сітку та Footer); "
+        "реалізувати принцип Mobile-First та забезпечити коректне відображення двох чітко розмежованих функціональних лінійок сервісу "
+        "(Лінійка 1: Каталог локацій по містах України; Лінійка 2: Переваги та можливості пошуку без транзакцій і бронювань); "
+        "провести тестування адаптивності через Chrome DevTools Device Toolbar, здійснити підготовку до деплою на хмарні сервіси (Netlify) "
+        "та перевірити відповідність вихідного коду міжнародним стандартам валідності W3C."
+    )
+    set_font(r_g2, bold=False)
+
+    # =========================================================================
+    # РОЗДІЛ 1. ПІДГОТОВКА РОБОЧОГО СЕРЕДОВИЩА ТА ЗНАЙОМСТВО З TAILWIND CSS
+    # =========================================================================
+    print("Формування Розділу 1...")
+    add_heading1("Розділ 1. Підготовка робочого середовища та знайомство з Tailwind CSS")
+
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Лабораторна робота №6 є логічним продовженням розробки вебінтерфейсу ChargeUA, розпочатого в ЛР №5. "
+              "На початковому етапі було створено резервну копію кодової бази ЛР №5 та налаштовано робоче середовище редактора VS Code. "
+              "Для ефективної роботи з утилітарними класами Tailwind CSS було встановлено та активовано ключові розширення:")
     
-    cell_left = tbl.cell(0, 0)
-    cell_right = tbl.cell(0, 1)
-    cell_left.width = Inches(3.2)
-    cell_right.width = Inches(3.5)
-    set_cell_margins(cell_left, 40, 40, 40, 40)
-    set_cell_margins(cell_right, 40, 40, 40, 40)
-
-    p_right = cell_right.paragraphs[0]
-    p_right.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    p_right.paragraph_format.line_spacing = 1.15
-    
-    r_sub = p_right.add_run("Виконав:\n")
-    r_sub.font.size = Pt(11)
-    r_sub.font.name = "Times New Roman"
-    
-    r_sub = p_right.add_run("студент групи ПП-24\n")
-    r_sub.font.size = Pt(11.5)
-    r_sub.font.name = "Times New Roman"
-    
-    r_name = p_right.add_run("Лемішка Андрій Андрійович\n\n")
-    r_name.bold = True
-    r_name.font.size = Pt(12)
-    r_name.font.name = "Times New Roman"
-    
-    r_chk = p_right.add_run("Перевірила:\n")
-    r_chk.font.size = Pt(11)
-    r_chk.font.name = "Times New Roman"
-    
-    r_teach = p_right.add_run("к.т.н., доц. кафедри САПР\nЮрчак Ірина Юріївна\n\n")
-    r_teach.bold = True
-    r_teach.font.size = Pt(11.5)
-    r_teach.font.name = "Times New Roman"
-
-    r_eval = p_right.add_run("Оцінка: ______________\n")
-    r_eval.font.size = Pt(11.5)
-    r_eval.font.name = "Times New Roman"
-    
-    r_sign = p_right.add_run("Підпис викладача: ______")
-    r_sign.font.size = Pt(11.5)
-    r_sign.font.name = "Times New Roman"
-
-    p_foot = doc.add_paragraph()
-    p_foot.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_foot.paragraph_format.space_before = Pt(45)
-    p_foot.paragraph_format.space_after = Pt(0)
-    r_foot = p_foot.add_run("Львів — 2026")
-    r_foot.font.name = "Times New Roman"
-    r_foot.font.size = Pt(11.5)
-    r_foot.font.color.rgb = COLOR_MUTED
-
-    doc.add_page_break()
-
-def add_header_styled(doc, text, level=1):
-    p = doc.add_paragraph()
-    p.paragraph_format.keep_with_next = True
-    r = p.add_run(text)
-    r.bold = True
-    r.font.name = "Times New Roman"
-    if level == 1:
-        p.paragraph_format.space_before = Pt(12)
-        p.paragraph_format.space_after = Pt(4)
-        r.font.size = Pt(13)
-        r.font.color.rgb = COLOR_PRIMARY
-    elif level == 2:
-        p.paragraph_format.space_before = Pt(8)
-        p.paragraph_format.space_after = Pt(3)
-        r.font.size = Pt(12)
-        r.font.color.rgb = COLOR_DARK
-    else:
-        p.paragraph_format.space_before = Pt(6)
-        p.paragraph_format.space_after = Pt(2)
-        r.font.size = Pt(11)
-        r.font.color.rgb = COLOR_TEXT
-    return p
-
-def add_body_p(doc, text, bold_prefix=None, space_after=3):
-    p = doc.add_paragraph()
-    p.paragraph_format.space_before = Pt(0)
-    p.paragraph_format.space_after = Pt(space_after)
-    p.paragraph_format.line_spacing = 1.15
-    if bold_prefix:
-        r_pre = p.add_run(bold_prefix)
-        r_pre.bold = True
-        r_pre.font.name = "Times New Roman"
-        r_pre.font.size = Pt(11)
-        r_pre.font.color.rgb = COLOR_DARK
-    r = p.add_run(text)
-    r.font.name = "Times New Roman"
-    r.font.size = Pt(11)
-    r.font.color.rgb = COLOR_TEXT
-    return p
-
-def add_table_data(doc, headers, rows_data):
-    tbl = doc.add_table(rows=len(rows_data)+1, cols=len(headers))
-    tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
-    tbl.autofit = False
-    set_table_borders(tbl, "CBD5E1")
-
-    # Header row
-    for col_idx, h in enumerate(headers):
-        cell = tbl.cell(0, col_idx)
-        set_cell_background(cell, "F1F5F9")
-        set_cell_margins(cell, 60, 60, 80, 80)
-        p = cell.paragraphs[0]
-        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p.paragraph_format.space_before = Pt(0)
-        p.paragraph_format.space_after = Pt(0)
-        r = p.add_run(h)
-        r.bold = True
-        r.font.name = "Times New Roman"
-        r.font.size = Pt(10)
-        r.font.color.rgb = COLOR_DARK
-
-    # Body rows
-    for row_idx, rdata in enumerate(rows_data):
-        for col_idx, val in enumerate(rdata):
-            cell = tbl.cell(row_idx+1, col_idx)
-            set_cell_margins(cell, 50, 50, 80, 80)
-            if row_idx % 2 == 1:
-                set_cell_background(cell, "F8FAFC")
-            p = cell.paragraphs[0]
-            p.paragraph_format.space_before = Pt(0)
-            p.paragraph_format.space_after = Pt(0)
-            r = p.add_run(str(val))
-            r.font.name = "Times New Roman"
-            r.font.size = Pt(10)
-
-    doc.add_paragraph().paragraph_format.space_after = Pt(3)
-
-def add_screenshot_figure(doc, img_name, fig_caption):
-    img_path = os.path.join(SCREENSHOTS_DIR, img_name)
-    if os.path.exists(img_path):
-        p_img = doc.add_paragraph()
-        p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_img.paragraph_format.space_before = Pt(4)
-        p_img.paragraph_format.space_after = Pt(2)
-        r_img = p_img.add_run()
-        r_img.add_picture(img_path, width=Inches(6.2))
-
-        p_cap = doc.add_paragraph()
-        p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_cap.paragraph_format.space_before = Pt(0)
-        p_cap.paragraph_format.space_after = Pt(6)
-        r_cap = p_cap.add_run(fig_caption)
-        r_cap.italic = True
-        r_cap.font.name = "Times New Roman"
-        r_cap.font.size = Pt(10)
-        r_cap.font.color.rgb = COLOR_MUTED
-
-def add_side_by_side_figures(doc, img1_name, cap1, img2_name, cap2):
-    img1_path = os.path.join(SCREENSHOTS_DIR, img1_name)
-    img2_path = os.path.join(SCREENSHOTS_DIR, img2_name)
-    
-    tbl = doc.add_table(rows=1, cols=2)
-    tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
-    tbl.autofit = False
-    
-    cell1 = tbl.cell(0, 0)
-    cell2 = tbl.cell(0, 1)
-    cell1.width = Inches(3.3)
-    cell2.width = Inches(3.3)
-    set_cell_margins(cell1, 30, 30, 40, 40)
-    set_cell_margins(cell2, 30, 30, 40, 40)
-
-    # Left cell
-    if os.path.exists(img1_path):
-        p1 = cell1.paragraphs[0]
-        p1.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p1.paragraph_format.space_after = Pt(2)
-        r1 = p1.add_run()
-        r1.add_picture(img1_path, width=Inches(3.0))
-        p1_cap = cell1.add_paragraph()
-        p1_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p1_cap.paragraph_format.space_after = Pt(0)
-        r1_c = p1_cap.add_run(cap1)
-        r1_c.italic = True
-        r1_c.font.name = "Times New Roman"
-        r1_c.font.size = Pt(9.5)
-        r1_c.font.color.rgb = COLOR_MUTED
-
-    # Right cell
-    if os.path.exists(img2_path):
-        p2 = cell2.paragraphs[0]
-        p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p2.paragraph_format.space_after = Pt(2)
-        r2 = p2.add_run()
-        r2.add_picture(img2_path, width=Inches(3.0))
-        p2_cap = cell2.add_paragraph()
-        p2_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p2_cap.paragraph_format.space_after = Pt(0)
-        r2_c = p2_cap.add_run(cap2)
-        r2_c.italic = True
-        r2_c.font.name = "Times New Roman"
-        r2_c.font.size = Pt(9.5)
-        r2_c.font.color.rgb = COLOR_MUTED
-
-    doc.add_paragraph().paragraph_format.space_after = Pt(4)
-
-def build_complete_lab6_report():
-    doc = Document()
-    setup_document_styles(doc)
-
-    # 1. ТИТУЛЬНА СТОРІНКА
-    add_title_page(doc)
-
-    # 1. МЕТА ТА ЗАВДАННЯ ЛАБОРАТОРНОЇ РОБОТИ
-    add_header_styled(doc, "1. Мета та завдання лабораторної роботи", 1)
-    add_body_p(doc, 
-        "Мета роботи: Опанувати методологію компонентної верстки вебінтерфейсу, побудови адаптивного дизайну за принципом Mobile-First "
-        "та використання утилітарного підходу (Utility-First) на базі сучасного фреймворку Tailwind CSS за підтримки генеративних ШІ-асистентів. "
-        "Розробити систему ізольованих UI-компонентів для платформи «ChargeUA» (Header з навігацією та мобільним меню, Hero-блок, "
-        "інтерактивна карта станцій, каталог карток зарядних хабів, адаптивний Grid та Footer), забезпечивши високу швидкість рендерингу, "
-        "відповідність стандартам доступності WCAG 2.2 AA та сумісність з дизайн-системою ЛР №4.")
-
-    add_body_p(doc, "Основні завдання роботи:", space_after=2)
-    tasks = [
-        "1. Налаштувати робоче середовище Visual Studio Code та встановити обов'язкові розширення (Tailwind CSS IntelliSense, Prettier Plugin for Tailwind CSS, Inline Fold).",
-        "2. Опанувати концепцію Utility-First CSS та порівняти класичний підхід CSS із Tailwind на прикладі UI-компонентів.",
-        "3. Підключити Tailwind CSS до проєкту за допомогою офіційного CDN-скрипту та узгодити його з таблицею стилів style.css.",
-        "4. Ознайомитися з інтерактивною онлайн-пісочницею Tailwind Play та провести тестування атомарних стилів і станів hover.",
-        "5. Спроєктувати та згенерувати за допомогою ШІ перший UI-компонент кнопки (Primary CTA Button) з розміром мішені min 44px.",
-        "6. Згенерувати адаптивний Header із логотипом ліворуч, горизонтальною навігацією на десктопах (md:flex) та мобільним меню-гамбургером (md:hidden).",
-        "7. Засвоїти та реалізувати на практиці принцип Mobile-First (базові класи для смартфонів, прогресивне розширення через sm:, md:, lg:).",
-        "8. Створити компонент картки зарядної станції (Card) з фотографією, технічними параметрами портів, статусами та кнопкою дій.",
-        "9. Побудувати адаптивну сітку карток за допомогою Tailwind CSS Grid (1 колонка mobile -> sm:grid-cols-2 -> lg:grid-cols-3, gap-6).",
-        "10. Зверстати семантичний 4-колонковий підвал сайту (Footer) з описом бренду, навігацією, послугами та контактами підтримки.",
-        "11. Провести тестування адаптивності та інтерактивності компонентів у Tailwind Play.",
-        "12. Здійснити інженерний аналіз згенерованого ШІ-коду (виявити правильні рішення, сумнівні конструкції, усунути зайві arbitrary values).",
-        "13. Інтегрувати створені компоненти у вебпроєкт ChargeUA зі збереженням семантичної структури стандарту HTML5.",
-        "14. Перенести дизайн-систему ChargeUA (кольори, шрифти, радіуси, тіні) у Tailwind та розподілити правила між класами й custom CSS.",
-        "15. Налаштувати брейкпоїнти адаптивності для сітки, розміру шрифтів, відступів та кнопок.",
-        "16. Провести тестування сумісності в браузері через Chrome DevTools Device Toolbar (320px, 768px, 1280px).",
-        "17. Виконати рафінування коду: перевірити семантику, доступність (WCAG 2.2 AA), alt-підписи та плавні переходи (transition).",
-        "18. Підготувати проєкт до хмарного розгортання на сервісі Netlify.",
-        "19. Провести валідацію за стандартами W3C Markup Validation Service та W3C CSS Validator."
+    ext_items = [
+        ("Tailwind CSS IntelliSense — ", "забезпечує інтелектуальне автодоповнення назв класів, підсвічування синтаксису, швидкий перегляд еквівалентних CSS-властивостей при наведенні курсора та валідацію конфліктів."),
+        ("Prettier Plugin for Tailwind CSS — ", "виконує автоматичне сортування утилітарних класів відповідно до офіційної специфікації (layout -> flexbox/grid -> spacing -> sizing -> typography -> background -> borders -> effects -> transitions)."),
+        ("Inline Fold — ", "візуально згортає довгі рядки утилітарних класів всередині HTML-атрибутів class=\"...\", забезпечуючи чистоту та зручність читання семантичного скелета сторінки.")
     ]
-    for t in tasks:
-        add_body_p(doc, t, space_after=1)
+    for b_title, b_desc in ext_items:
+        p_item = add_p(space_before=1, space_after=2)
+        r_b = p_item.add_run("• " + b_title)
+        set_font(r_b, bold=True)
+        r_d = p_item.add_run(b_desc)
+        set_font(r_d)
 
-    # 2. ХІД ВИКОНАННЯ РОБОТИ (Етапи 1-19)
-    add_header_styled(doc, "2. Покроковий хід виконання роботи", 1)
+    add_heading3("Порівняння традиційного CSS та Utility-First підходу")
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Традиційний підхід вимагає вигадування семантичних назв класів (наприклад, .primary-button) та написання відповідних стилів в окремому файлі. "
+              "Підхід Tailwind CSS (Utility-First) полягає у застосуванні низькорівневих утилітарних класів прямо в розмітці HTML. "
+              "Це дозволяє будувати довільні інтерфейси безпосередньо в шаблоні без перемикання між файлами та без ризику неконтрольованого розростання CSS.")
 
-    # Етап 1
-    add_header_styled(doc, "Етап 1. Підготовка проєкту та робочого середовища", 2)
-    add_body_p(doc, 
-        "Роботу продовжено на базі вебпроєкту Лабораторної роботи №5. Перед внесенням змін створено повну резервну копію кодової бази ЛР №5. "
-        "Структура проєкту містить: index.html, папку css/ зі style.css, assets/ (images/, icons/, fonts/, data/) та js/. "
-        "У редакторі Visual Studio Code встановлено та активовано спеціалізовані розширення:\n"
-        "• Tailwind CSS IntelliSense — надає інтелектуальне автодоповнення утилітарних класів, підсвічування та відображення згенерованого CSS-коду;\n"
-        "• Prettier Plugin for Tailwind CSS — автоматично сортує та впорядковує класи Tailwind за рекомендованим офіційним порядком;\n"
-        "• Inline Fold — візуально згортає довгі переліки утилітарних класів всередині рядка для покращення читабельності HTML-розмітки.")
-    add_screenshot_figure(doc, "00_vscode_environment.png", "Рис. 1. Налаштоване робоче середовище VS Code з проєктом ChargeUA та активними розширеннями")
-
-    # Етап 2
-    add_header_styled(doc, "Етап 2. Знайомство з Tailwind CSS", 2)
-    add_body_p(doc, 
-        "Було проаналізовано фундаментальну відмінність між класичним семантичним CSS та утилітарним підходом (Utility-First). "
-        "Якщо в ЛР №5 для кнопки створювався кастомний клас .primary-button у файлі style.css із явним переліком властивостей (background, color, padding, border-radius), "
-        "то в Tailwind CSS аналогічний результат досягається комбінуванням атомарних класів безпосередньо в HTML: "
-        "<button class=\"bg-blue-600 text-white px-6 py-3 rounded-lg\">. "
-        "Кожен клас відображає конкретну CSS-властивість: bg-blue-600 (фоновий колір), text-white (колір тексту), px-6 (горизонтальні відступи 1.5rem), "
-        "py-3 (вертикальні відступи 0.75rem), rounded-lg (скруглення 0.5rem). Знання Box Model, Flexbox та Grid з ЛР №5 стало міцною базою для роботи.")
-
-    # Етап 3
-    add_header_styled(doc, "Етап 3. Підключення Tailwind CSS", 2)
-    add_body_p(doc, 
-        "У файлі index.html у секції <head> підключено офіційний CDN-скрипт фреймворку Tailwind CSS та файл із власними стилями (css/style.css):\n"
-        "<script src=\"https://cdn.tailwindcss.com\"></script>\n"
-        "<link rel=\"stylesheet\" href=\"css/style.css\">\n"
-        "Також налаштовано конфігурацію tailwind.config для розширення теми кольорами бренду ChargeUA (brand.blue: #005EC9, brand.dark: #0F172A).")
-
-    # Етап 4
-    add_header_styled(doc, "Етап 4. Знайомство з пісочницею Tailwind Play", 2)
-    add_body_p(doc, 
-        "Було відкрито офіційну хмарну пісочницю Tailwind Play (https://play.tailwindcss.com). Досліджено робочі зони інтерфейсу: "
-        "панель HTML, панель налаштувань конфігурації, інтерактивний Preview, інструменти тестування адаптивності, перемикання розміру viewport та dark mode. "
-        "Створено тестовий елемент кнопки, в якому змінювалися відтінки, відступи, радіуси та ефекти hover/active.")
-
-    # Етап 5
-    add_header_styled(doc, "Етап 5. Створення першого UI-компонента", 2)
-    add_body_p(doc, 
-        "Створено компонент Primary CTA Button «Дізнатися більше» / «Розрахувати зарядку» за допомогою промпту для ШІ:\n"
-        "«Створи Primary CTA Button за допомогою HTML5 + Tailwind CSS. Використай: синій фон #005EC9, білий текст, font-semibold, padding 12px 24px, "
-        "border-radius 8px, hover та active стани, disabled стан, transition, мінімальну висоту 44px. Кнопка має відповідати accessibility та бути зручною на мобільних пристроях». "
-        "Після генерації самостійно модифіковано класи hover:bg-blue-700 та active:scale-95 для забезпечення мікроінтеракцій.")
-
-    # Етап 6
-    add_header_styled(doc, "Етап 6. Створення Header з навігацією", 2)
-    add_body_p(doc, 
-        "На основі дизайну з ЛР №4 створено адаптивний семантичний компонент шапки сайту (<header class=\"site-header\">). "
-        "Компонент містить логотип бренду зліва, навігаційні посилання по центру, кнопки дій справа та кнопку мобільного меню-гамбургера. "
-        "За допомогою утиліт hidden md:flex десктопна навігація приховується на смартфонах і автоматично відкривається на екранах від 768px (md:), "
-        "а кнопка гамбургера має клас md:hidden і відображається лише на мобільних пристроях.")
-
-    # Етап 7
-    add_header_styled(doc, "Етап 7. Розуміння принципу Mobile First (спочатку мобільна версія)", 2)
-    add_body_p(doc, 
-        "Засвоєно та реалізовано ключовий принцип сучасної веброзробки: базові Tailwind-класи без префікса діють на мобільних пристроях, "
-        "а префікси sm:, md:, lg:, xl: прогресивно модифікують макет при зростанні ширини екрана (правило min-width). "
-        "Наприклад, конструкція grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 забезпечує 1 колонку на смартфонах, 2 колонки на планшетах та 3 на десктопах.")
-
-    # Етап 8
-    add_header_styled(doc, "Етап 8. Створення Картки та розділення на дві окремі лінійки", 2)
-    add_body_p(doc, 
-        "Створено компонент картки зарядної станції (Card) для каталогу локацій ChargeUA. Відповідно до концепції сайту-агрегатора "
-        "(який не здійснює фінансових транзакцій чи платних бронювань, а слугує інструментом пошуку та моніторингу зарядок), "
-        "макет структуровано на дві окремі логічні лінійки:\n"
-        "1. Лінійка каталогу зарядних станцій (реальні локації: Київ, Львів, Одеса, Дніпро, Харків, Вінниця з потужністю до 160 кВт, "
-        "статусами портів «Вільний» або «Зайнятий» та кнопкою переходу до точки на карті);\n"
-        "2. Лінійка можливостей пошуку та переваг (живий моніторинг зайнятості, навігація до хабу, 100% робота від генераторів під час блекаутів, "
-        "калькулятор часу заряджання та база 480+ станцій).")
-
-    # Етап 9
-    add_header_styled(doc, "Етап 9. Створення адаптивної сітки компонентів", 2)
-    add_body_p(doc, 
-        "Створено адаптивний Grid-контейнер для каталогу станцій на 6 карток. За допомогою Tailwind застосовано класи "
-        "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6. Картки рівномірно заповнюють сітку без фіксованої ширини, "
-        "забезпечуючи ідеальне масштабування макета.")
-
-    # Етап 10
-    add_header_styled(doc, "Етап 10. Створення Footer", 2)
-    add_body_p(doc, 
-        "Розроблено 4-колонковий семантичний підвал сайту (<footer>) на базі Tailwind CSS Grid: "
-        "Колонка 1 — логотип ChargeUA та опис місії національної мережі; "
-        "Колонка 2 — додаткова навігація розділами сайту; "
-        "Колонка 3 — відомості про автора (Лемішка Андрій Андрійович, гр. ПП-24); "
-        "Колонка 4 — контакти підтримки та кафедри САПР. "
-        "Адаптивність реалізовано класами grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8.")
-
-    # Етап 11
-    add_header_styled(doc, "Етап 11. Тестування компонентів в Tailwind Play", 2)
-    add_body_p(doc, 
-        "Згенерований код кнопок, карток та шапки протестовано в пісочниці Tailwind Play. Було перевірено поведінку елементів "
-        "при зміні ширини вікна перемиканням вкладок Mobile/Tablet/Desktop, відстежено реакцію брейкпоїнтів sm, md, lg та виконано ручне коригування кольорів і радіусів.")
-
-    # Етап 12
-    add_header_styled(doc, "Етап 12. Аналіз ШІ-коду", 2)
-    add_body_p(doc, 
-        "Здійснено критичний аналіз згенерованого коду. Було виявлено:\n"
-        "• Правильне рішення: застосування group та group-hover: для синхронної анімації бейджів при наведенні на картку;\n"
-        "• Сумнівне рішення: спроба використати свавільні значення (arbitrary values на зразок w-[385px]), які ламали сітку на мобільних;\n"
-        "• Самостійна оптимізація: заміна фіксованих ширин на гнучкі w-full та w-auto, інтеграція контрастних статусних бейджів та тегів доступності.")
-
-    # Етап 13
-    add_header_styled(doc, "Етап 13. Інтеграція компонентів в проєкт, що створений в ЛР №5", 2)
-    add_body_p(doc, 
-        "Створені та перевірені компоненти перенесено в локальний файл index.html проєкту ChargeUA. "
-        "Збережено сувору семантичну структуру HTML5 (<header>, <nav>, <main>, <section>, <article>, <aside>, <footer>) "
-        "без перетворення розмітки на div-мішанину.")
-
-    # Етап 14
-    add_header_styled(doc, "Етап 14. Перенесення дизайн системи в Tailwind", 2)
-    add_body_p(doc, 
-        "Здійснено синхронізацію дизайн-системи ЛР №4 із класами Tailwind. Визначено, що брендові кольори відповідають bg-blue-600 (#005EC9) "
-        "та text-slate-900 (#0F172A), радіуси — rounded-xl (12px), а тіні — shadow-md / shadow-lg. Складні специфічні правила (карта Leaflet, "
-        "градієнтний перехід hero_bg.jpg, ізоляція контексту isolation: isolate) збережено у файлі style.css.")
-    add_screenshot_figure(doc, "03_vscode_css_tokens.png", "Рис. 2. Оголошення користувацьких стилів CSS у псевдокласі :root у редакторі VS Code")
-
-    # Етап 15
-    add_header_styled(doc, "Етап 15. Налаштування адаптивності та брейкпоїнтів", 2)
-    add_body_p(doc, "Перевірено коректність налаштування брейкпоїнтів для всіх компонентів інтерфейсу:")
-    
-    t_bp_headers = ["Елемент інтерфейсу", "Мобільний (без префікса)", "Планшет (sm: / md:)", "Десктоп (lg: / xl:)"]
-    t_bp_rows = [
-        ["Сітка карток каталогу", "grid-cols-1", "sm:grid-cols-2", "lg:grid-cols-3"],
-        ["Розмір заголовка Hero", "text-2xl font-bold", "md:text-3xl", "lg:text-4xl"],
-        ["Внутрішні відступи секцій", "p-4 py-8", "md:p-6 md:py-12", "lg:p-8 lg:py-16"],
-        ["Кнопки дій (CTA)", "w-full (на всю ширину)", "md:w-auto", "inline-flex px-6"],
-        ["Шапка сайту (навігація)", "hidden (меню-бургер)", "md:flex (горизонтальна)", "md:flex gap-6 items-center"],
-        ["Підвал сайту (Footer)", "grid-cols-1", "md:grid-cols-2", "lg:grid-cols-4"]
-    ]
-    add_table_data(doc, t_bp_headers, t_bp_rows)
-
-    # Етап 16
-    add_header_styled(doc, "Етап 16. Тестування сумісності в браузері", 2)
-    add_body_p(doc, 
-        "Відкрито index.html у браузері Google Chrome, активовано режим Device Toolbar (Ctrl+Shift+M). "
-        "Протестовано відображення на мобільних пристроях (iPhone SE 375px, Pixel 7 390px), планшетах (iPad 768px) та десктопах (Laptop 1440px). "
-        "Підтверджено відсутність небажаного горизонтального скролу, правильність перемикання меню-гамбургера та комфортний розмір мішеней дотику (min 44px).")
-
-    # Етап 17
-    add_header_styled(doc, "Етап 17. Рафінування коду та фінальні виправлення", 2)
-    add_body_p(doc, 
-        "Проведено фінальне доопрацювання коду: перевірено наявність змістовних атрибутів alt для всіх зображень (Logo, банери), "
-        "додано aria-label для кнопок дій без тексту, оптимізовано контраст кольорів статусних бейджів, впроваджено loading=\"lazy\" для зображень "
-        "та додано плавні анімаційні переходи transition duration-200 для всіх кнопок і карток.")
-
-    # Етап 18
-    add_header_styled(doc, "Етап 18. Хмарний деплой (публікація) на Netlify", 2)
-    add_body_p(doc, 
-        "Структуру проєкту підготовлено до хмарного розгортання: файли index.html, style.css, assets/ та js/ перевірено на відсутність "
-        "битих посилань. Здійснено синхронізацію репозиторію з GitHub для автоматичного CI/CD деплою на сервісі Netlify.")
-
-    # Етап 19
-    add_header_styled(doc, "Етап 19. Перевірка відповідності стандартам веброзробки", 2)
-    add_body_p(doc, 
-        "Виконано валідацію за допомогою офіційних інструментів W3C: W3C Markup Validation Service підтвердив відсутність синтаксичних помилок у HTML5-розмітці, "
-        "а W3C CSS Validator підтвердив валідність стильових правил. В аудиті Chrome DevTools Lighthouse отримано 100/100 балів за категоріями Accessibility та Best Practices.")
-
-    # 3. БРАУЗЕРНЕ ВІДОБРАЖЕННЯ СТОРІНКИ
-    add_header_styled(doc, "3. Браузерне відображення сторінки", 1)
-    add_body_p(doc, 
-        "Відображення сторінки протестовано у браузері Chrome на різних роздільних здатностях екрана. "
-        "Нижче наведено підтверджуючі скріншоти роботи інтерфейсу платформи ChargeUA:")
-
-    add_screenshot_figure(doc, "04_browser_desktop_overview.png", "Рис. 3. Відображення головної сторінки ChargeUA у десктопному браузері (1440×900 px): шапка, фонове відео, кнопки дій")
-    add_screenshot_figure(doc, "04_browser_desktop_view.png", "Рис. 4. Загальний огляд макета: інтерактивний калькулятор зарядки, Live-карта та каталог станцій")
-
-    add_body_p(doc, "Адаптивне відображення для мобільних пристроїв (390×844 px):", bold_prefix=None, space_after=2)
-    add_side_by_side_figures(doc, 
-        "05_browser_mobile_hero.png", "Рис. 5. Мобільний Hero з компактним хедерам (58px)",
-        "05_browser_mobile_grid.png", "Рис. 6. Мобільний калькулятор та адаптивна сітка"
+    add_callout(
+        "Порівняння коду кнопки:",
+        "Класичний CSS:\n"
+        "<button class=\"primary-button\"> Знайти станцію </button>\n"
+        ".primary-button { background-color: #2563eb; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 600; }\n\n"
+        "Tailwind CSS (Utility-First):\n"
+        "<button class=\"bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-500 transition duration-200\">\n"
+        "  Знайти станцію\n"
+        "</button>"
     )
 
-    # 4. ПРОМПТ-ПАСПОРТ (PROMPT LOG)
-    add_header_styled(doc, "4. Промпт-паспорт (Prompt Log)", 1)
-    add_body_p(doc, 
-        "У процесі виконання роботи було реалізовано інтерактивний цикл взаємодії з ШІ: "
-        "«Промпт → Генерація ШІ → Аналіз коду → Тестування у браузері → Внесення коректив».")
-
-    t_prompt_headers = ["№", "Етап / Завдання", "Роль та модель ШІ", "Згенерований результат", "Внесені правки та оптимізації"]
-    t_prompt_rows = [
-        ["1", "Етап 4: Базовий каркас div-soup", "Senior Frontend Dev (Claude 3.5 Sonnet / Gemini Thinking)", "Створено файл index_div_soup.html суто на div-контейнерах без семантики HTML5. Gemini в освітньому профілі обмежив генерацію фільтрами.", "Збережено файл для наочного порівняльного аналізу деградації Accessibility Tree."],
-        ["2", "Етап 5: Семантичний рефакторинг", "Senior Frontend Dev & a11y Expert (Claude 3.5 Sonnet)", "Замінено несемантичні div на header, nav, main, section, article, aside, footer. Сформовано ієрархію h1–h3.", "Додано клавіатурний skip-link, приховані пояснення для екранних дикторів (<span class=\"visually-hidden\">) та список <dl> для статистики."],
-        ["3", "Етапи 8–12: CSS-архітектура, Flexbox, Grid", "Senior CSS Engineer (Claude 3.5 Sonnet)", "Створено style.css: :root токени ChargeUA за 7 групами, Flexbox для шапки, адаптивний Grid repeat(auto-fit, minmax(280px, 1fr)).", "Виправлено контраст зірок рейтингу (#B45309 замість жовтого), ізольовано контекст накладання карти (isolation: isolate), аудит Lighthouse 100/100."]
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Анатомія утилітарних класів кнопки ChargeUA:")
+    cls_desc = [
+        ("bg-blue-600 — ", "встановлює background-color: rgb(37 99 235), фірмовий насичений синій колір основного CTA-елемента;"),
+        ("text-white — ", "забезпечує color: rgb(255 255 255), найвищий контраст на темному фоні кнопки (коефіцієнт > 7:1);"),
+        ("px-6 (padding-inline: 1.5rem = 24px) та py-3 (padding-block: 0.75rem = 12px) — ", "формують збалансовані відступи для комфортного натискання (розмір перевищує мінімальний тач-таргет 44x44px);"),
+        ("rounded-lg (border-radius: 0.5rem = 8px) — ", "створює сучасне скруглення країв кнопки відповідно до дизайн-системи бренду;"),
+        ("hover:bg-blue-500 та transition duration-200 — ", "реалізують плавний мікроінтерактивний відгук при наведенні курсора без написання додаткового CSS.")
     ]
-    add_table_data(doc, t_prompt_headers, t_prompt_rows)
+    for c_title, c_desc in cls_desc:
+        p_c = add_p(space_before=1, space_after=2)
+        r_c1 = p_c.add_run("• " + c_title)
+        set_font(r_c1, bold=True)
+        r_c2 = p_c.add_run(c_desc)
+        set_font(r_c2)
 
-    add_header_styled(doc, "4.1. Ітерація 1 (Промпт 1): Базовий каркас index_div_soup.html", 2)
-    add_body_p(doc, 
-        "Було сформульовано рольовий промпт для генерації навмисно несемантичного каркасу сторінки ChargeUA суто на <div>-контейнерах "
-        "з метою демонстрації проблеми div-soup та аналізу дерева доступності.")
-    add_side_by_side_figures(doc,
-        "01_prompt1_div_layout_claude.png", "Рис. 7.1. Початковий каркас на div у Claude",
-        "01_prompt1_div_code_claude.png", "Рис. 7.2. Вихідний div-код у вікні артефакту"
+    add_heading3("Підключення Tailwind CSS через CDN")
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Для швидкого старту та проведення аудиту компонентів у файлі index.html було підключено офіційний скрипт Tailwind CDN у тегу <head>, "
+              "а також збережено зв'язок із власним кастомним файлом css/style.css для специфічних глобальних змінних та токенів:")
+
+    add_callout(
+        "Секція <head> проєкту ChargeUA:",
+        "<!DOCTYPE html>\n"
+        "<html lang=\"uk\" class=\"scroll-smooth dark\">\n"
+        "<head>\n"
+        "  <meta charset=\"UTF-8\">\n"
+        "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+        "  <title>ChargeUA — Пошуковик та агрегатор зарядних станцій електромобілів</title>\n"
+        "  <!-- Tailwind CSS Play CDN -->\n"
+        "  <script src=\"https://cdn.tailwindcss.com\"></script>\n"
+        "  <!-- Власні стилі та CSS-токени -->\n"
+        "  <link rel=\"stylesheet\" href=\"css/style.css\">\n"
+        "</head>"
     )
-    add_screenshot_figure(doc, "01_prompt1_gemini_comparison.png", "Рис. 7.3. Порівняльний аналіз запиту генерації каркасу в Google Gemini (освітній профіль LPNU)")
 
-    add_header_styled(doc, "4.2. Ітерація 2 (Промпт 2): ШІ-рефакторинг та семантичні стандарти HTML5", 2)
-    add_body_p(doc, 
-        "Виконано рефакторинг div-каркасу: заміну несемантичних тегів на семантичні орієнтири HTML5, впорядкування ієрархії заголовків h1–h3 "
-        "та інтеграцію вимог доступності WCAG 2.2 AA.")
-    add_screenshot_figure(doc, "02_prompt2_semantic_refactoring_claude.png", "Рис. 7.4. Звіт Claude про результати семантичного рефакторингу коду index.html")
+    add_screenshot_figure("00_vscode_environment.png", "Рис. 1.1. Робоче середовище VS Code: структура файлів проєкту ChargeUA та налаштування розширень")
 
-    add_header_styled(doc, "4.3. Ітерація 3 (Промпт 3): Побудова адаптивної CSS-архітектури", 2)
-    add_body_p(doc, 
-        "Реалізовано модульну дворівневу CSS-архітектуру на базі чистих Flexbox та Grid з інтеграцією токенів дизайн-системи ChargeUA.")
-    add_side_by_side_figures(doc,
-        "03_prompt3_css_architecture_tokens_claude.png", "Рис. 7.5. Токени бренду ChargeUA в чаті Claude",
-        "03_prompt3_css_code_claude.png", "Рис. 7.6. Оголошення змінних :root у Claude"
+    # =========================================================================
+    # РОЗДІЛ 2. ДОСЛІДЖЕННЯ ПІСОЧНИЦІ TAILWIND PLAY ТА СТВОРЕННЯ ПЕРШИХ UI-КОМПОНЕНТІВ
+    # =========================================================================
+    print("Формування Розділу 2...")
+    add_heading1("Розділ 2. Дослідження пісочниці Tailwind Play та створення перших UI-компонентів")
+
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Відповідно до Етапу 4 методичних вказівок, дослідження можливостей фреймворку було проведено в офіційній інтерактивній пісочниці Tailwind Play "
+              "(https://play.tailwindcss.com/). Цей сервіс дозволяє тестувати роботу JIT-компілятора Tailwind у браузері в реальному часі без локального складання проєкту.")
+
+    add_heading3("Промпт-лог створення інтерактивної кнопки (Button)")
+
+    p = add_p(space_before=3, space_after=2)
+    r = p.add_run("Крок 1. Початковий системний запит (Модель: Claude 3.5 Sonnet / Antigravity Agent)")
+    set_font(r, bold=True)
+
+    add_callout(
+        "Запит:",
+        "«Ти — Senior Frontend Developer та UI/UX Engineer. Створи Primary CTA Button «Знайти станцію» для вебплатформи ChargeUA "
+        "виключно за допомогою HTML5 та Tailwind CSS. Вимоги до кнопки: "
+        "- синій фірмовий фон #2563EB (bg-blue-600); "
+        "- білий текст, розмір 16px, font-semibold; "
+        "- симетричні відступи px-6 py-3; "
+        "- радіус скруглення 12px (rounded-xl); "
+        "- інтерактивні стани hover (bg-blue-500) та active (bg-blue-700); "
+        "- плавна анімація transition duration-200; "
+        "- мінімальна висота 44px для підтримки тач-інтерфейсів (WCAG Touch Target Size); "
+        "- контур фокусу focus-visible для клавіатурної навігації. "
+        "Кнопка має бути суто пошуковою (ніяких кнопок бронювання чи оплати). Поясни всі застосовані класи.»"
     )
-    add_screenshot_figure(doc, "03_prompt3_html_semantic_code_claude.png", "Рис. 7.7. Семантичний код index.html з підключенням Inter та Font Awesome")
 
-    # 5. ВІДПОВІДІ НА КОНТРОЛЬНІ ЗАПИТАННЯ
-    add_header_styled(doc, "5. Відповіді на контрольні запитання", 1)
+    p = add_p(space_before=2, space_after=2)
+    r1 = p.add_run("Результат генерації: ")
+    set_font(r1, bold=True)
+    r2 = p.add_run("ШІ-асистент згенерував чистий ізольований компонент кнопки з іконкою стрілки, повною підтримкою станів фокусу та доступності.")
+    set_font(r2)
 
-    qa_list = [
-        ("1. Що таке Tailwind CSS і в чому полягає концепція Utility-First?",
-         "Tailwind CSS — це сучасний утилітарний CSS-фреймворк, який замість традиційного написання громіздких монолітних CSS-класів (.card, .btn-custom) надає великий набір низькорівневих класів-утиліт прямої дії (flex, pt-4, text-center, bg-blue-600). Концепція Utility-First полягає в тому, що інтерфейси будуються шляхом комбінування атомарних утиліт безпосередньо в HTML-розмітці без необхідності писати власний CSS з нуля, що усуває проблему розростання стильових файлів та спрощує підтримку."),
+    p = add_p(space_before=2, space_after=2)
+    r1 = p.add_run("Аналіз недоліків та коригування: ")
+    set_font(r1, bold=True)
+    r2 = p.add_run("Початкова кнопка не мала неонової тіні, притаманної темній темі ChargeUA, та була протестована ізольовано. "
+                   "Необхідно було додати тінь shadow-lg shadow-blue-600/30 та протестувати її у зв'язці з міні-карткою станції безпосередньо у пісочниці Tailwind Play.")
+    set_font(r2)
 
-        ("2. Які переваги Tailwind CSS порівняно з традиційним підходом написання CSS?",
-         "1) Відсутність потреби вигадувати унікальні назви класів (за методологіями на зразок BEM); 2) Файли стилів припиняють неконтрольовано зростати завдяки Just-In-Time компіляції (фінальний CSS важить менше 10-20 КБ); 3) Безпечність змін: редагування класів у конкретному HTML-елементі не викликає каскадних регресій у сусідніх компонентах; 4) Вбудована дизайн-система із суворими шкалами відступів, кольорів та типографіки; 5) Миттєве налаштування адаптивності через префікси sm:, md:, lg:."),
+    p = add_p(space_before=3, space_after=2)
+    r = p.add_run("Крок 2. Коригувальний запит та тестування у Tailwind Play")
+    set_font(r, bold=True)
 
-        ("3. Яке призначення сервісу Tailwind Play?",
-         "Tailwind Play — це офіційна інтерактивна хмарна пісочниця (https://play.tailwindcss.com) для швидкого експериментування та прототипування інтерфейсів. Вона надає можливість миттєво тестувати розмітку та класи Tailwind без розгортання локального оточення Node.js/Vite, перевіряти адаптивність на різних в'юпортах, ділитися робочим кодом через посилання (Share) та бачити результат у реальному часі."),
+    add_callout(
+        "Запит:",
+        "«Додай до кнопки ефект світіння shadow-lg shadow-blue-600/30 і розмісти її всередині демонстраційної картки станції "
+        "з темним фоном bg-slate-800, зеленим пульсуючим бейджем вільного порту (120 кВт CCS2) та адресою в Києві для тестування в Tailwind Play.»"
+    )
 
-        ("4. Що таке адаптивний дизайн і як він реалізується в Tailwind CSS?",
-         "Адаптивний дизайн — це підхід до проєктування вебсайтів, який гарантує коректне відображення та зручність взаємодії на пристроях з будь-якою роздільною здатністю (від 320px смартфонів до 4K моніторів). У Tailwind CSS адаптивність реалізується на базі підходу Mobile-First за допомогою префіксів контрольних точок (брейкпоїнтів): немодифікований клас (наприклад, w-full) застосовується на мобільних пристроях, а класи з префіксами (наприклад, md:w-auto, lg:grid-cols-3) спрацьовують лише тоді, коли ширина екрана перевищує відповідний поріг min-width."),
+    p = add_p(space_before=2, space_after=4)
+    r1 = p.add_run("Результат тестування: ")
+    set_font(r1, bold=True)
+    r2 = p.add_run("Код було вставлено у Tailwind Play. Згенеровано візуальний попередній перегляд, перевірено автоматичне оновлення розмірів та згенерованого CSS (розмір всього 2.42 kB).")
+    set_font(r2)
 
-        ("5. Яке призначення брейкпоїнтів sm:, md:, lg: та xl:?",
-         "Брейкпоїнти в Tailwind визначають мінімальну ширину екрана (CSS-правило @media (min-width: ...)), починаючи з якої активується вказаний стиль: 1) sm: — 640px (великі смартфони та міні-планшети); 2) md: — 768px (стандартні планшети та невеликі ноутбуки); 3) lg: — 1024px (десктопні монітори та лептопи); 4) xl: — 1280px (широкоформатні десктопи); 5) 2xl: — 1536px (великі монітори високої роздільності)."),
+    add_screenshot_figure("04_tailwind_play_environment.png", "Рис. 2.1. Дослідження робочої зони онлайн-пісочниці Tailwind Play (v4.3, розмітка HTML, вивід CSS та панель прев'ю)")
+    add_screenshot_figure("04_tailwind_play_button_experiment.png", "Рис. 2.2. Тестування згенерованої кнопки та картки станції ChargeUA в Tailwind Play")
 
-        ("6. Для чого використовуються модифікатори станів hover:, focus: та active:?",
-         "Модифікатори станів дозволяють застосовувати утилітарні класи лише за настання певної інтерактивної події або псевдокласу: hover: змінює стиль при наведенні курсору миші (наприклад, hover:bg-blue-700); focus: активується при отриманні фокусу з клавіатури або кліку на поле введення (focus:ring-2 focus:ring-blue-500); active: змінює вигляд у момент безпосереднього затискання кнопки миші або пальця на сенсорному екрані (active:scale-95). Також використовуються disabled: для заблокованих елементів та focus-visible: для доступності."),
+    # =========================================================================
+    # РОЗДІЛ 3. ВЕРСТКА КОМПОНЕНТІВ ВЕБПРОЄКТУ CHARGEUA ЗА ПРИНЦИПОМ MOBILE-FIRST
+    # =========================================================================
+    print("Формування Розділу 3...")
+    add_heading1("Розділ 3. Верстка компонентів вебпроєкту ChargeUA за принципом Mobile-First")
 
-        ("7. Які можливості надає розширення Tailwind CSS IntelliSense?",
-         "Офіційне розширення для VS Code суттєво прискорює розробку: 1) Автодоповнення класів із фільтрацією на льоту; 2) Спливаючі підказки (Hover Preview), що показують точний CSS-код, який генерує клас (наприклад, hover над p-4 покаже padding: 1rem); 3) Візуальні кольорові маркери поруч із класами кольорів (bg-blue-600); 4) Лінтер синтаксису, що підсвічує конфлікти та помилки в назвах класів."),
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Відповідно до Етапів 6-11 методичних вказівок, на основі дизайну, спроєктованого у Figma (ЛР №4), "
+              "було створено повний набір модульних семантичних компонентів лендингу ChargeUA. "
+              "Особливу увагу приділено дотриманню бізнес-логіки проєкту: ChargeUA виступає суто пошуковим помічником та агрегатором, "
+              "який не проводить фінансових транзакцій і не виконує бронювання станцій.")
 
-        ("8. Чому згенерований штучним інтелектом код потребує рефакторингу?",
-         "ШІ-моделі навчаються на великих масивах публічного коду різної якості, тому часто генерують суб'єктивні або неоптимальні конструкції: надлишкові контейнери <div> (div soup), суперечливі класи (одночасно inline-block та flex), надмірне використання свавільних значень (arbitrary values на зразок w-[342px] замість системних шкал), застарілі атрибути або недостатній контраст для доступності. Розробник повинен виступати архітектором і контролером якості, проводячи рафінування та очищення коду."),
-
-        ("9. Які вимоги до доступності вебінтерфейсу перевірено під час виконання лабораторної роботи?",
-         "Під час виконання роботи було перевірено та забезпечено дотримання стандарту WCAG 2.2 рівня AA: 1) Наявність кнопки швидкого переходу до контенту (<a class=\"skip-link\" href=\"#main\">); 2) Контрастність тексту відносно фону не менше 4.5:1 для звичайного тексту та 3:1 для великих заголовків; 3) Розмір інтерактивних мішеней натискання (Touch Target) не менше 44×44 px на мобільних пристроях; 4) Наявність змістовних атрибутів alt для зображень; 5) Використання семантичних орієнтирів HTML5 (<header>, <nav>, <main>, <section>, <footer>); 6) Підтримка клавіатурного фокусу (:focus-visible) без блокування фокусу."),
-
-        ("10. Для чого використовується режим Device Toolbar в DevTools?",
-         "Режим Device Toolbar (Ctrl+Shift+M у Chrome/Edge) призначений для точної емуляції мобільних і планшетних пристроїв безпосередньо у браузері. Він дозволяє: перевіряти поведінку медіа-запитів та брейкпоїнтів на будь-якій довільній ширині; тестувати стандартні гаджети (iPhone SE, Pixel, iPad); емулювати сенсорні події дотику (Touch Events); перевіряти орієнтацію екрана (Portrait / Landscape) та обмежувати швидкість мережі й процесора для оцінки реальної продуктивності."),
-
-        ("11. Які компоненти вебінтерфейсу створено за допомогою ШІ в лабораторній роботі?",
-         "Для платформи ChargeUA було створено повноцінну компонентну систему: 1) Button — кнопка дій із підтримкою Primary, Outline та Disabled станів; 2) Header — навігаційна панель із десктопним меню, логотипом, кнопками входу та сенсорним гамбургер-меню; 3) Hero Section — вступний екран із заголовком, перевагами, підбором конекторів та автентичним фоном станції; 4) Station Card — картка зарядної станції із детальними характеристиками портів (CCS2, Type 2, CHAdeMO) та статусами доступності; 5) Grid Container — адаптивна сітка для розташування карток станцій (1 колонка mobile -> 2 sm -> 3 lg); 6) Stations Map Section — інтерактивна карта станцій із бічними фільтрами; 7) Footer — 4-колонковий адаптивний підвал сайту."),
-
-        ("12. Що таке Preflight в Tailwind CSS і яке його призначення?",
-         "Preflight — це вбудований у Tailwind CSS механізм базового нормалізуючого скидання стилів браузера, побудований на основі modern-normalize. Його призначення: обнулити стандартні зовнішні та внутрішні відступи (margin/padding: 0), встановити box-sizing: border-box для всіх елементів, прибрати стандартні маркери списків (list-style: none), зробити зображення та відео блоковими з max-width: 100%, та скинути стилі заголовків і кнопок, створюючи абсолютно передбачуваний чистий фундамент для атомарної верстки."),
-
-        ("13. Які переваги має використання переходів (transition) та ефектів (hover, focus) у вебінтерфейсі?",
-         "Використання transition та псевдокласів hover/focus надає інтерфейсу професійного вигляду та покращує UX: 1) Забезпечує негайний візуальний зворотний зв'язок (Micro-interactions), показуючи користувачу, що елемент є клікабельним; 2) Плавна анімація (наприклад, transition duration-200) пом'якшує зміну кольору чи масштабу без різких стрибків картинки; 3) Допомагає користувачам з клавіатурною навігацією чітко бачити поточний активний елемент, запобігаючи помилковим діям.")
-    ]
-
-    for q, a in qa_list:
-        p_q = doc.add_paragraph()
-        p_q.paragraph_format.space_before = Pt(4)
-        p_q.paragraph_format.space_after = Pt(1)
-        r_q = p_q.add_run(q)
-        r_q.bold = True
-        r_q.font.name = "Times New Roman"
-        r_q.font.size = Pt(11)
-        r_q.font.color.rgb = COLOR_DARK
-
-        p_a = doc.add_paragraph()
-        p_a.paragraph_format.space_before = Pt(0)
-        p_a.paragraph_format.space_after = Pt(4)
-        p_a.paragraph_format.line_spacing = 1.15
-        r_a = p_a.add_run(a)
-        r_a.font.name = "Times New Roman"
-        r_a.font.size = Pt(11)
-        r_a.font.color.rgb = COLOR_TEXT
-
-    # 6. ВИСНОВКИ
-    add_header_styled(doc, "6. Висновки", 1)
-    add_body_p(doc, "Під час виконання лабораторної роботи №6 було успішно вирішено всі поставлені інженерні завдання з верстки UI-компонентів та забезпечення адаптивності платформи «ChargeUA»:")
+    add_heading3("Створення семантичного Header з адаптивною навігацією")
+    p = add_p(space_before=2, space_after=2)
+    p.add_run("Компонент Header реалізовано з плаваючим закріпленням у верхній частині вікна (sticky top-0 z-50), напівпрозорим розмиттям (backdrop-blur-md) "
+              "та розмежуванням на мобільний і десктопний режим за принципом Mobile-First:")
     
+    hdr_feat = [
+        ("Мобільний стан (< 768px): ", "логотип розташовано ліворуч, десктопне горизонтальне меню приховано за допомогою класу hidden, праворуч виведено кнопку гамбургер-меню (блок md:hidden)."),
+        ("Десктопний стан (>= 768px, префікс md:): ", "гамбургер-меню автоматично приховується (md:hidden), навігаційні посилання вирівнюються по центру горизонтальним флексом (hidden md:flex items-center gap-8), а праворуч відображається акцентна CTA-кнопка «Знайти станцію».")
+    ]
+    for h_title, h_desc in hdr_feat:
+        p_h = add_p(space_before=1, space_after=2)
+        r_h1 = p_h.add_run("• " + h_title)
+        set_font(r_h1, bold=True)
+        r_h2 = p_h.add_run(h_desc)
+        set_font(r_h2)
+
+    add_screenshot_figure("06_header_desktop_view.png", "Рис. 3.1. Десктопний вигляд Header та Hero-секції ChargeUA (роздільна здатність 1440px)")
+    add_screenshot_figure("07_mobile_header_view_375px.png", "Рис. 3.2. Мобільний вигляд Header з адаптивною кнопкою виклику меню (роздільна здатність 375px)")
+
+    add_heading3("Дві окремі лінійки платформи ChargeUA")
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("За вимогами архітектури проєкту ChargeUA на головній сторінці було чітко розмежовано дві окремі функціональні лінійки, "
+              "що запобігає плутанині між фізичним каталогом локацій та аналітичними можливостями сервісу:")
+
+    p_l1 = add_p(space_before=2, space_after=2)
+    r = p_l1.add_run("Лінійка 1: Реальний каталог швидкісних зарядних станцій (#stations)\n")
+    set_font(r, bold=True)
+    p_l1.add_run(
+        "Представляє адаптивну сітку карток швидкісних зарядних комплексів по реальних містах України (Київ, Львів, Одеса, Дніпро, Харків, Вінниця). "
+        "Кожна картка містить: бейдж статусу з живим пульсуючим індикатором («Вільний» або «Зайнятий»), точну адресу, потужність (120–160 кВт), "
+        "підтримувані типи роз'ємів (CCS Combo 2, Type 2, GB/T, CHAdeMO) та пряму кнопку побудови маршруту у навігаторі."
+    )
+
+    add_screenshot_figure("08_stations_catalog_grid_desktop.png", "Рис. 3.3. Лінійка 1: Адаптивна 3-колонкова сітка каталогу станцій ChargeUA по містах України")
+
+    p_l2 = add_p(space_before=2, space_after=2)
+    r = p_l2.add_run("Лінійка 2: Можливості пошуку та переваги агрегатора (#benefits)\n")
+    set_font(r, bold=True)
+    p_l2.add_run(
+        "Складається з 6 карток, які пояснюють цінність сервісу-пошуковика для водія електрокара: "
+        "1) Моніторинг статусів у реальному часі (оновлення кожні 60 с); "
+        "2) Стійкість до блекаутів (позначки станцій з генераторами та промисловими акумуляторами); "
+        "3) Розумний фільтр за роз'ємами (відбір портів під європейські, американські та китайські авто); "
+        "4) Калькулятор часу та кіловат (попередній прозорий розрахунок без платежів на сайті); "
+        "5) Пряма навігація до вільного конектора через Google Maps та Waze; "
+        "6) Єдина агрегована база з понад 480 перевірених станцій по всій країні."
+    )
+
+    add_screenshot_figure("09_benefits_search_line_desktop.png", "Рис. 3.4. Лінійка 2: Переваги та пошукові можливості агрегатора ChargeUA")
+
+    add_heading3("Побудова адаптивної сітки (Grid) та Footer")
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Для розміщення карток використано CSS Grid за допомогою класів grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6. "
+              "У підвалі сторінки (Footer) створено семантичну структуру з брендовим блоком, швидкими посиланнями на розділи сайту, "
+              "офіційними контактами служби підтримки, кнопками соцмереж та копірайтом 2026 року:")
+
+    add_screenshot_figure("10_footer_desktop.png", "Рис. 3.5. Семантичний компонент Footer платформи ChargeUA")
+
+    # =========================================================================
+    # РОЗДІЛ 4. ТЕСТУВАННЯ АДАПТИВНОСТІ, ДЕПЛОЙ ТА W3C ВАЛІДАЦІЯ
+    # =========================================================================
+    print("Формування Розділу 4...")
+    add_heading1("Розділ 4. Тестування адаптивності, деплой та W3C валідація")
+
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Відповідно до Етапів 12-14 методичних вказівок, було виконано практичне тестування інтерфейсу ChargeUA на різних типах пристроїв "
+              "за допомогою інструментів Chrome DevTools, перевірено готовність до публікації на сервісі Netlify та протестовано код у валідаторі W3C.")
+
+    add_heading3("Крос-девайсне тестування адаптивності у Chrome DevTools")
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Тестування проводилося в режимі емуляції пристроїв (Device Toolbar) для трьох стандартних контрольних точок (breakpoints):")
+
+    bp_items = [
+        ("Планшетний режим (Tablet, 768px, breakpoint md): ", "сітка каталогу станцій та переваг перебудовується з 3-х колонок на 2 колонки (md:grid-cols-2), забезпечуючи чітке сприйняття інформації без перекриття тексту та кнопок."),
+        ("Мобільний режим (Mobile, 375px, базовий мобільний стиль): ", "усі картки автоматично розгортаються на повну ширину екрана в 1 колонку (grid-cols-1), розмір клікабельних елементів зберігається понад 44px, а горизонтальна навігація ховається в гамбургер-меню.")
+    ]
+    for b_title, b_desc in bp_items:
+        p_b = add_p(space_before=1, space_after=2)
+        r_b1 = p_b.add_run("• " + b_title)
+        set_font(r_b1, bold=True)
+        r_b2 = p_b.add_run(b_desc)
+        set_font(r_b2)
+
+    add_screenshot_figure("11_tablet_view_768px.png", "Рис. 4.1. Планшетний режим (768px): адаптивна перебудова каталогу станцій у 2 колонки")
+    add_screenshot_figure("12_mobile_stations_single_column_375px.png", "Рис. 4.2. Мобільний режим (375px): 1-колонкове відображення карток станцій для зручного керування однією рукою")
+
+    add_heading3("Процес підготовки до деплою на сервісі Netlify")
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Для перевірки процедури хмарної публікації проєкту було відкрито платформу Netlify Drop (https://app.netlify.com/drop). "
+              "Проєкт було структуровано так, щоб головний файл index.html знаходився безпосередньо в кореневому каталозі разом із папками css/ та assets/. "
+              "При переході на форму деплою сервіс Netlify зажадав авторизації користувача (Login / Sign Up). "
+              "Згідно з регламентом виконання роботи та суворою інструкцією щодо безпеки облікових даних, процес було зупинено на етапі запиту входу в акаунт, "
+              "а стан інтерфейсу авторизації зафіксовано на знімку екрана:")
+
+    add_screenshot_figure("13_netlify_login_prompt.png", "Рис. 4.3. Інтерфейс авторизації сервісу Netlify (зупинка процесу перед введенням персональних облікових даних)")
+
+    add_heading3("Валідація верстки у сервісі W3C Nu HTML Checker")
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("Вихідний HTML-код сторінки ChargeUA з підключеним фреймворком Tailwind CSS було перевірено за допомогою офіційного валідатора консорціуму W3C "
+              "(The W3C Nu HTML Checker, https://validator.w3.org/nu/). "
+              "Перевірка підтвердила 100% синтаксичну валідність документа: повну відповідність специфікації HTML5, коректне закриття всіх тегів, "
+              "наявність обов'язкових атрибутів alt у зображень та правильне використання aria-лейблів доступності:")
+
+    add_screenshot_figure("14_w3c_html_validator.png", "Рис. 4.4. Результати успішної перевірки синтаксичної валідності верстки у валідаторі W3C Nu HTML Checker")
+
+    # =========================================================================
+    # РОЗДІЛ 5. ВІДПОВІДІ НА КОНТРОЛЬНІ ЗАПИТАННЯ
+    # =========================================================================
+    print("Формування Розділу 5 (Контрольні запитання)...")
+    add_heading1("Розділ 5. Відповіді на контрольні запитання")
+
+    questions_data = [
+        (
+            "1. Що таке Tailwind CSS і чим він відрізняється від традиційних CSS-фреймворків (наприклад, Bootstrap)?",
+            "Tailwind CSS — це сучасний utility-first (утилітарно-орієнтований) CSS-фреймворк, який замість надання готових монолітних UI-компонентів "
+            "(як-от .btn, .card, .navbar у Bootstrap) пропонує набір низькорівневих атомарних класів-утиліт (наприклад, flex, pt-4, text-center, bg-blue-600). "
+            "Ключова відмінність полягає в архітектурній свободі: Bootstrap нав'язує стандартизований дизайн і призводить до однотипного вигляду сайтів, "
+            "тоді як Tailwind діє як «будівельні блоки», дозволяючи створювати абсолютно унікальний та кастомний дизайн безпосередньо в розмітці HTML. "
+            "Крім того, завдяки механізму JIT (Just-In-Time) Tailwind компілює в кінцевий бандл лише ті класи, які реально зустрічаються у проєкті, "
+            "що забезпечує розмір збірки у межах 10–25 Кб проти сотень кілобайт нерозібраного коду в Bootstrap."
+        ),
+        (
+            "2. Що таке utility-first підхід? Які його переваги та недоліки?",
+            "Utility-first (спочатку утиліти) — це методологія верстки, за якої інтерфейс створюється шляхом комбінування дрібних, спеціалізованих утилітарних "
+            "класів із єдиною відповідальністю (Single Responsibility Principle) прямо в HTML-шаблоні.\n"
+            "Переваги підходу:\n"
+            "• Відсутність потреби вигадувати абстрактні імена класів (наприклад, .station-card-wrapper-inner);\n"
+            "• CSS перестає розростатися зі збільшенням проєкту — нові сторінки перекористовують уже існуючі утиліти;\n"
+            "• Безпека модифікації: зміна класів одного елемента гарантовано не ламає стилі інших блоків сторінки;\n"
+            "• Висока швидкість прототипування та підтримка адаптивності через лаконічні префікси прямо в розмітці.\n"
+            "Недоліки підходу:\n"
+            "• Візуальне перевантаження HTML-розмітки великою кількістю класів у атрибутах class=\"...\";\n"
+            "• Необхідність запам'ятовувати або мати постійний доступ до довідника назв утиліт Tailwind;\n"
+            "• Складність прямого дублювання стилів однакових елементів без компонентного підходу (вирішується через компоненти React/Vue або директиву @apply)."
+        ),
+        (
+            "3. Як підключити Tailwind CSS до проєкту через CDN? Для чого цей спосіб підходить, а для чого — ні?",
+            "Для підключення через CDN у секцію <head> HTML-документа додається один рядок скрипта:\n"
+            "<script src=\"https://cdn.tailwindcss.com\"></script>\n"
+            "Цей скрипт містить повноцінний рушій Tailwind Play CDN, який аналізує DOM-дерево сторінки під час завантаження в браузері та динамічно генерує необхідні стилі.\n"
+            "Для чого підходить:\n"
+            "• Навчальні цілі, швидкі лабораторні роботи та демонстраційні стенди;\n"
+            "• Швидке інтерактивне прототипування інтерфейсів;\n"
+            "• Експерименти в середовищі Tailwind Play.\n"
+            "Для чого НЕ підходить (промисловий Production):\n"
+            "• Для реальних високонавантажених сайтів використання Play CDN суворо заборонено розробниками фреймворку, оскільки клієнт завантажує важкий рушій компілятора (близько 3 Мб нестисненого JS), що спричиняє затримку рендерингу (FOUC — Flash of Unstyled Content) і погіршує показники Core Web Vitals (LCP, CLS)."
+        ),
+        (
+            "4. Що таке Tailwind Play і як його можна використовувати в процесі розробки?",
+            "Tailwind Play (https://play.tailwindcss.com/) — це офіційна хмарна пісочниця (sandbox) для розробки та тестування коду на базі Tailwind CSS. "
+            "Вона містить повноцінне середовище редактора з трьома вкладками (HTML-розмітка, кастомний CSS, конфігурація tailwind.config.js / @theme), "
+            "інтегрований IntelliSense, панель миттєвого попереднього перегляду (Live Preview) та генератор кінцевого CSS.\n"
+            "Використання в розробці:\n"
+            "• Ізольоване верстання складних UI-компонентів (кнопок, дропдаунів, карток) без розгортання локального оточення;\n"
+            "• Тестування адаптивності через вбудований перемикач в'юпортів (Mobile, Tablet, Desktop);\n"
+            "• Перевірка сумісності колірних палітр, шрифтових пар та станів темної теми (Dark Mode);\n"
+            "• Спільне обговорення коду в команді за допомогою кнопки «Share», яка генерує унікальне посилання на стан проєкту."
+        ),
+        (
+            "5. Що таке mobile-first підхід? Як він реалізований у Tailwind CSS за допомогою брейкпоінтів (sm, md, lg)?",
+            "Mobile-first — це методологія веброзробки та проєктування інтерфейсів, за якої спочатку проєктується та стилізується версія для найменших екранів "
+            "(мобільних смартфонів), а потім поступово додаються ускладнення та перебудови для більших екранів (планшетів, ноутбуків, моніторів).\n"
+            "Реалізація в Tailwind CSS:\n"
+            "Всі базові класи без префіксів діють на всіх екранах починаючи від найменших (0px і вище). "
+            "Адаптивні префікси (breakpoints) генерують CSS-медіазапити на основі властивості min-width (а не max-width):\n"
+            "• sm: — @media (min-width: 640px) — смартфони в альбомній орієнтації та малі планшети;\n"
+            "• md: — @media (min-width: 768px) — стандартні планшети;\n"
+            "• lg: — @media (min-width: 1024px) — ноутбуки та десктопи;\n"
+            "• xl: — @media (min-width: 1280px) — монітори високої чіткості;\n"
+            "• 2xl: — @media (min-width: 1536px) — надширокі екрани.\n"
+            "Приклад у проєкті ChargeUA: клас class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3\" означає: на мобільних пристроях 1 колонка, від 768px — 2 колонки, від 1024px — 3 колонки."
+        ),
+        (
+            "6. Як створити адаптивний Header з гамбургер-меню для мобільних пристроїв та повною навігацією для десктопу?",
+            "Для реалізації адаптивного Header використовується комбінація Flexbox та класів видимості (display):\n"
+            "1. Головний контейнер отримує класи flex items-center justify-between для рознесення логотипу ліворуч, а навігації та дій праворуч;\n"
+            "2. Блок десктопної навігації <nav> отримує класи hidden md:flex items-center gap-8. "
+            "Клас hidden повністю приховує меню на мобільних екранах (display: none), а md:flex активує горизонтальний флекс-контейнер на екранах від 768px;\n"
+            "3. Кнопка виклику гамбургер-меню огортається в семантичний тег <button> з класами md:hidden p-2 rounded-lg text-slate-300 hover:text-white. "
+            "Це гарантує, що гамбургер відображається виключно на мобільних пристроях і зникає на десктопі;\n"
+            "4. Відкриття випадного мобільного списку реалізується через перемикання класу hidden за допомогою легкого JS або нативного CSS :focus-within / peer."
+        ),
+        (
+            "7. Як працює CSS Grid у Tailwind CSS? Як створити сітку карток, яка автоматично перебудовується на різну кількість колонок залежно від розміру екрана?",
+            "CSS Grid у Tailwind активується класом display: grid (клас grid). Кількість колонок визначається утилітами grid-cols-{n}, "
+            "а проміжки між елементами — класами gap-{size} (наприклад, gap-6 = 1.5rem = 24px).\n"
+            "Для створення адаптивної сітки, яка автоматично реконфігурується під розмір екрана, комбінують базовий мобільний клас із адаптивними префіксами:\n"
+            "<div class=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6\">\n"
+            "  <!-- Картки станцій ChargeUA -->\n"
+            "</div>\n"
+            "Логіка поведінки:\n"
+            "• Мобільні пристрої (< 640px) отримують grid-cols-1 (одна колонка на 100% ширини);\n"
+            "• Планшети (>= 768px) отримують md:grid-cols-2 (дві рівні колонки по 50%);\n"
+            "• Десктопи (>= 1024px) отримують lg:grid-cols-3 (три колонки по 33.33%).\n"
+            "Це повністю усуває необхідність ручного написання медіазапитів."
+        ),
+        (
+            "8. Що таке стани елементів (hover, focus, active, disabled) і як вони стилізуються за допомогою префіксів Tailwind?",
+            "Стани елементів (State Variants / Pseudo-classes) відображають реакцію інтерфейсу на дії користувача (наведення курсора, табуляція з клавіатури, "
+            "момент кліку або неактивний стан контролу).\n"
+            "У Tailwind стилізація станів здійснюється додаванням назви псевдокласу перед утилітою через двокрапку:\n"
+            "• hover: — стан наведення миші (hover:bg-blue-500, hover:shadow-xl);\n"
+            "• focus: та focus-visible: — отримання елементом фокусу, критично для клавіатурної доступності (focus:ring-2 focus:ring-blue-500/50 focus:outline-none);\n"
+            "• active: — момент фізичного натискання клавіші миші або пальця на тачскріні (active:bg-blue-700 active:scale-95);\n"
+            "• disabled: — стан блокування взаємодії з елементом (disabled:opacity-50 disabled:cursor-not-allowed);\n"
+            "• group-hover: — зміна стилів дочірнього елемента при наведенні курсора на батьківський контейнер із класом group."
+        ),
+        (
+            "9. Як забезпечити контрастність тексту та доступність (accessibility) при використанні Tailwind CSS?",
+            "Доступність (WCAG 2.1 AA/AAA) при використанні Tailwind забезпечується дотриманням системних правил:\n"
+            "1. Коефіцієнт контрастності кольорів (Color Contrast Ratio): нормальний текст повинен мати контраст не менше ніж 4.5:1 щодо фону. "
+            "У проєкті ChargeUA на темному фоні bg-slate-900 (#0f172a) використано білий text-white (#ffffff, контраст 16.5:1) та світло-сірий text-slate-300 (#cbd5e1, контраст 9.8:1);\n"
+            "2. Розмір клікабельних зон (Touch Target Size): кнопки та інтерактивні елементи отримують класи min-h-[44px] min-w-[44px] або відповідні падінги py-3 px-6;\n"
+            "3. Помітний фокус для скрінрідерів та клавіатури: обов'язкове використання класів focus-visible:ring-2 focus-visible:ring-offset-2;\n"
+            "4. Семантичний прихований текст: утиліта sr-only (screen-reader only) дозволяє додати текстовий опис для незрячих користувачів, "
+            "приховуючи його з екрана, але залишаючи доступним для асистивних технологій;\n"
+            "5. Семантичні HTML5-теги: використання <header>, <nav>, <main>, <section>, <article>, <button>, <footer> замість нескінченних <div>."
+        ),
+        (
+            "10. Які інструменти DevTools використовуються для тестування адаптивності та емуляції мобільних пристроїв?",
+            "В інструментах розробника Chrome DevTools для тестування адаптивності використовується комплекс засобів:\n"
+            "1. Device Mode (Device Toolbar, комбінація Ctrl+Shift+M) — вмикає віртуальний екран із можливістю вільного перетягування меж ширини/висоти "
+            "або вибору пресетів популярних гаджетів (iPhone 14/15, Samsung Galaxy, iPad Pro);\n"
+            "2. Емуляція сенсорного введення (Touch Simulation) — курсор миші трансформується у круговий імітатор дотику пальця для перевірки реакції hover/active;\n"
+            "3. Мережеве дротелювання (Network Throttling) — симуляція повільних мобільних мереж (Fast 3G, Slow 3G) для оцінки завантаження шрифтів та CDN;\n"
+            "4. Емуляція орієнтації пристрою (Landscape / Portrait) для тестування поведінки розмітки при повороті екрана;\n"
+            "5. Панель Elements & Computed Styles — дозволяє інспектувати діючі CSS-медіазапити (@media min-width) та перевіряти, який саме клас Tailwind спрацював на поточному брейкпоінті."
+        ),
+        (
+            "11. Як підготувати проєкт до деплою на Netlify через drag-and-drop? Які файли обов'язково мають бути в корені?",
+            "Для успішного деплою статичного вебпроєкту на Netlify через інтерфейс Netlify Drop (drag-and-drop) необхідно дотримуватися структури:\n"
+            "1. Головний файл index.html обов'язково повинен знаходитися безпосередньо у корені папки, яку перетягують у вікно браузера (не всередині додаткових підпапок);\n"
+            "2. Усі шляхи до підключених ресурсів (CSS-стилів, зображень, шрифтів, скриптів) повинні бути відносними (наприклад, href=\"css/style.css\" або src=\"assets/images/logo.svg\"), а не абсолютними локальними шляхами файлової системи (як-от D:/...);\n"
+            "3. У проєкті не повинно бути зайвих бінарних архівів, тимчасових системних файлів (.DS_Store, Thumbs.db) чи незакритих текстових нотаток;\n"
+            "4. Якщо сервіс вимагає авторизації (входу через GitHub/Google/Email), користувач проходить автентифікацію, після чого папка завантажується на сервери Netlify і сервіс генерує глобальну публічну URL-адресу з безкоштовним SSL-сертифікатом (HTTPS)."
+        ),
+        (
+            "12. Що перевіряє валідатор W3C і чому важливо валідувати HTML-код після використання утилітарних класів?",
+            "Валідатор W3C (World Wide Web Consortium Nu HTML Checker) перевіряє синтаксичну та структурну коректність HTML-коду відповідно до офіційних стандартів W3C і WHATWG. "
+            "Він виявляє:\n"
+            "• Пропущені або незакриті теги, порушення ієрархії вкладеності (наприклад, розміщення блочного <div> всередині строкового <span>);\n"
+            "• Відсутність обов'язкових атрибутів (alt у <img>, lang у <html>, charset у <head>);\n"
+            "• Дублювання унікальних ідентифікаторів id=\"...\";\n"
+            "• Використання застарілих або неіснуючих тегів та атрибутів.\n"
+            "Чому це критично після використання Tailwind CSS:\n"
+            "При активному додаванні великої кількості утилітарних класів (class=\"...\") розробник може випадково пошкодити лапки, сплутати закриття тегів або "
+            "втратити семантичний фокус, перетворивши розмітку на «div-soup». Валідація W3C підтверджує, що попри утилітарну стилізацію семантичний каркас сторінки "
+            "залишається ідеальним, доступним для пошукових роботів (SEO) та асистивних технологій."
+        ),
+        (
+            "13. Як оптимізувати розмір кінцевого CSS-файлу при використанні повної збірки Tailwind CSS (PostCSS / Tailwind CLI)?",
+            "Для промислового середовища розмір стилів Tailwind мінімізується за допомогою офіційного механізму очищення (Purging / Tree-shaking), інтегрованого в рушій Tailwind CLI / PostCSS:\n"
+            "1. Конфігурація сканування контенту: у файлі tailwind.config.js у масиві content задаються точні патерни всіх вихідних файлів проєкту:\n"
+            "   content: ['./*.html', './src/**/*.{js,ts,jsx,tsx}']\n"
+            "2. Механізм Purge / Tree-shaking: під час складання рушій сканує всі зазначені файли регулярними виразами, фіксує лише ті назви класів, "
+            "які реально зустрічаються у розмітці та скриптах, і видаляє абсолютно всі невикористані класи зі стандартної багатомегабайтної бази;\n"
+            "3. CSS-мініфікація: запуск Tailwind CLI з прапорцем --minify додатково видаляє всі пробіли, коментарі та скорочує кольорові коди;\n"
+            "4. Результат: розмір кінцевого production CSS-файлу зазвичай становить лише 8–20 Кб (у стисненому Gzip/Brotli форматі — 3–6 Кб), "
+            "що забезпечує практично миттєве завантаження сторінки навіть на слабких мобільних з'єднаннях."
+        )
+    ]
+
+    for q_text, a_text in questions_data:
+        p_q = add_p(space_before=4, space_after=2)
+        r_q = p_q.add_run(q_text)
+        set_font(r_q, bold=True)
+        
+        p_a = add_p(space_before=1, space_after=4)
+        r_a = p_a.add_run(a_text)
+        set_font(r_a)
+
+    # =========================================================================
+    # РОЗДІЛ 6. ВИСНОВКИ
+    # =========================================================================
+    print("Формування Розділу 6 (Висновки)...")
+    add_heading1("Розділ 6. Висновки")
+
+    p_conc = add_p(space_before=3, space_after=3)
+    p_conc.add_run(
+        "У ході виконання лабораторної роботи №6 було детально вивчено та практично застосовано сучасну методологію верстки інтерфейсів "
+        "Utility-First за допомогою фреймворку Tailwind CSS на базі вебпроєкту «ChargeUA» (веб-помічник та пошуковик зарядних станцій). "
+        "За результатами виконаної роботи сформульовано такі ключові висновки:"
+    )
+
     conclusions = [
-        "1. Було налаштовано робоче середовище Visual Studio Code та встановлено спеціалізовані розширення: Live Server, Prettier, Auto Rename Tag, Material Icon Theme, Inline Fold та Tailwind CSS IntelliSense для ефективної атомарної розробки.",
-        "2. Опановано парадигму Utility-First CSS та інтерактивну пісочницю Tailwind Play, що дозволило розробляти та тестувати ізольовані компоненти перед їхньою фінальною інтеграцією в кодову базу проєкту.",
-        "3. Реалізовано компонентну систему вебплатформи ChargeUA: створено адаптивну шапку (Header) з гамбургер-меню, вступний Hero-блок, інтерактивну Live-карту 480+ станцій з фільтрами, картки станцій з індикацією статусів конекторів, адаптивну сітку CSS Grid та 4-колонковий підвал сайту (Footer).",
-        "4. На практиці втілено принцип Mobile-First: базові класи-утиліти орієнтовані на смартфони (320px–390px), а структурні перетворення виконуються прогресивно через брейкпоїнти sm: (640px), md: (768px) та lg: (1024px) без використання фіксованих ширин.",
-        "5. Забезпечено повну відповідність дизайн-системі ЛР №4: збережено брендову палітру кольорів (#005EC9, #0F172A), типографіку Google Fonts 'Inter', трирівневу систему тіней та радіуси скруглень у файлі style.css.",
-        "6. Проведено комплексне кроспристроєве тестування в інспекторі Chrome DevTools Device Toolbar та аудит доступності WCAG 2.2 AA (показник 100/100 у Google Lighthouse). Сформовано Промпт-паспорт взаємодії з ШІ та надано вичерпні відповіді на всі 13 контрольних запитань."
+        ("1. Ефективність підходу Utility-First: ",
+         "використання атомарних утилітарних класів Tailwind CSS значно прискорює верстку UI-компонентів, усуває рутину вигадування абстрактних семантичних назв класів, "
+         "гарантує відсутність колізій каскаду CSS та запобігає неконтрольованому збільшенню розміру таблиць стилів при масштабуванні проєкту."),
+        ("2. Роль пісочниці Tailwind Play: ",
+         "дослідження інтерактивного середовища Tailwind Play підтвердило його високу ефективність для швидкого ізольованого прототипування, "
+         "тестування мікроінтеракцій (hover, active, focus-visible) та адаптивних режимів відображення безпосередньо у браузері без необхідності локального налаштування збірки."),
+        ("3. Реалізація принципу Mobile-First: ",
+         "застосування префіксів sm:, md:, lg: на основі CSS-правила min-width дозволило спроєктувати гнучкий, повністю адаптивний інтерфейс ChargeUA, "
+         "який оптимізовано під сценарій керування однією рукою на мобільних пристроях (375px) та органічно розгортається у багатоколонкові сітки на планшетах (768px) і десктопах (1440px)."),
+        ("4. Чітка архітектура сервісу без комерційних ускладнень: ",
+         "дотримано строгу бізнес-специфікацію проєкту як безкоштовного інформаційного помічника та агрегатора (NO transactions, NO billing, NO booking). "
+         "Успішно реалізовано 2 незалежні логічні лінійки: Лінійку 1 (реальний каталог швидкісних комплексів по містах України з індикацією живих статусів «Вільний»/«Зайнятий») "
+         "та Лінійку 2 (пошукові переваги, моніторинг стійкості до блекаутів, фільтри за роз'ємами та аналітика кіловат)."),
+        ("5. Комплексне тестування, готовність до деплою та стандартизація: ",
+         "проведено успішне тестування адаптивності через Chrome DevTools Device Toolbar, відпрацьовано процедуру підготовки проєкту до публікації на Netlify Drop "
+         "(із дотриманням протоколів безпеки та зупинкою перед введенням конфіденційних даних акаунту), а також підтверджено 100% синтаксичну валідність вихідного коду у валідаторі W3C Nu HTML Checker.")
     ]
-    for c in conclusions:
-        add_body_p(doc, c)
 
-    # Збереження файлів
-    out_docx = os.path.join(REPORT_DIR, "Лемішка_ПП-24_Л6_ChargeUA.docx")
-    out_root_docx = os.path.join(BASE_DIR, "Лемішка_ПП-24_Л6_ChargeUA.docx")
+    for c_title, c_desc in conclusions:
+        p_c = add_p(space_before=2, space_after=2)
+        r_t = p_c.add_run(c_title)
+        set_font(r_t, bold=True)
+        r_d = p_c.add_run(c_desc)
+        set_font(r_d)
+
+    # Save DOCX
+    print(f"Збереження звіту в: {DOCX_OUT}...")
+    doc.save(DOCX_OUT)
     
-    doc.save(out_docx)
-    shutil.copy(out_docx, out_root_docx)
-    print(f"Master DOCX successfully saved to:\n  - {out_docx}\n  - {out_root_docx}")
-    
-    # Конвертація в PDF через Microsoft Word COM
+    # Also save to root
+    print(f"Копіювання звіту в корінь: {ROOT_DOCX}...")
+    doc.save(ROOT_DOCX)
+    print("Генерація DOCX завершена успішно!")
+
+def convert_to_pdf():
+    print("Конвертація DOCX у векторний PDF через Word COM...")
     try:
         import win32com.client
-        print("Converting DOCX to PDF via Word COM...")
+        import pythoncom
+        pythoncom.CoInitialize()
         word = win32com.client.Dispatch("Word.Application")
         word.Visible = False
-        doc_in = word.Documents.Open(os.path.abspath(out_docx))
-        out_pdf = os.path.join(REPORT_DIR, "Лемішка_ПП-24_Л6_ChargeUA.pdf")
-        out_root_pdf = os.path.join(BASE_DIR, "Лемішка_ПП-24_Л6_ChargeUA.pdf")
-        doc_in.SaveAs(os.path.abspath(out_pdf), FileFormat=17) # 17 = wdFormatPDF
-        doc_in.Close()
+        
+        doc = word.Documents.Open(os.path.abspath(DOCX_OUT))
+        doc.SaveAs(os.path.abspath(PDF_OUT), FileFormat=17) # 17 = wdFormatPDF
+        doc.Close()
+        
+        # Also copy/export root PDF
+        doc2 = word.Documents.Open(os.path.abspath(ROOT_DOCX))
+        doc2.SaveAs(os.path.abspath(ROOT_PDF), FileFormat=17)
+        doc2.Close()
+        
         word.Quit()
-        shutil.copy(out_pdf, out_root_pdf)
-        print(f"Master PDF successfully generated:\n  - {out_pdf}\n  - {out_root_pdf}")
+        pythoncom.CoUninitialize()
+        print(f"PDF згенеровано успішно: {PDF_OUT} та {ROOT_PDF}")
     except Exception as e:
-        print(f"Word COM PDF conversion notice: {e}")
-
-    return out_docx
+        print(f"Помилка експорту в PDF через Word COM: {e}")
 
 if __name__ == "__main__":
-    build_complete_lab6_report()
+    create_report()
+    convert_to_pdf()
