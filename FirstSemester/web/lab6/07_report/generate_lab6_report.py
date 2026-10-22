@@ -23,8 +23,8 @@ from docx.oxml.ns import nsdecls, qn
 BASE_DIR = r"D:\Studing\SecondYear\FirstSemester\web\lab6"
 REPORT_DIR = os.path.join(BASE_DIR, "07_report")
 SCREENSHOTS_DIR = os.path.join(REPORT_DIR, "screenshots")
-DOCX_OUT = os.path.join(REPORT_DIR, "Лемішка_ПП-24_Л6_ChargeUA.docx")
-PDF_OUT = os.path.join(REPORT_DIR, "Лемішка_ПП-24_Л6_ChargeUA.pdf")
+DOCX_OUT = os.path.join(BASE_DIR, "Лемішка_ПП-24_Л6_ChargeUA.docx")
+PDF_OUT = os.path.join(BASE_DIR, "Лемішка_ПП-24_Л6_ChargeUA.pdf")
 ROOT_DOCX = os.path.join(BASE_DIR, "Лемішка_ПП-24_Л6_ChargeUA.docx")
 ROOT_PDF = os.path.join(BASE_DIR, "Лемішка_ПП-24_Л6_ChargeUA.pdf")
 
@@ -694,11 +694,6 @@ def convert_to_pdf():
         doc = word.Documents.Open(os.path.abspath(DOCX_OUT))
         doc.SaveAs(os.path.abspath(PDF_OUT), FileFormat=17) # 17 = wdFormatPDF
         doc.Close()
-        
-        # Also copy/export root PDF
-        doc2 = word.Documents.Open(os.path.abspath(ROOT_DOCX))
-        doc2.SaveAs(os.path.abspath(ROOT_PDF), FileFormat=17)
-        doc2.Close()
         
         word.Quit()
         pythoncom.CoUninitialize()
