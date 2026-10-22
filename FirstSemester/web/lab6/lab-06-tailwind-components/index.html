@@ -7,14 +7,14 @@
   <meta name="description" content="ChargeUA — єдина мережа швидкісних зарядних станцій для електромобілів по всій Україні: DC 150 кВт, Ultra-fast, інтерактивний калькулятор витрат, Live-карта 480+ станцій та робота від генераторів у блекаути.">
   <meta name="theme-color" content="#005EC9">
 
-  <!-- Підключення зовнішніх стилів CSS (критичні стилі макета) -->
+  <!-- Підключення зовнішніх стилів CSS (критичні стилі макета та скомпільований Tailwind) -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tailwind.min.css">
 
   <!-- Прелоад критичного фонового зображення для максимального LCP -->
   <link rel="preload" as="image" href="assets/images/hero_bg.webp" fetchpriority="high" type="image/webp">
 
-  <!-- Конфігурація та неблокуюче підключення Tailwind CSS (CDN згідно з Етапом 3) -->
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <!-- Конфігурація та підключення Tailwind CSS CDN (Етап 3) на idle, без блокування головного потоку -->
   <script>
     window.tailwind = {
       config: {
@@ -31,8 +31,18 @@
         }
       }
     };
+    function loadTailwindCDN() {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.tailwindcss.com';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadTailwindCDN);
+    } else {
+      setTimeout(loadTailwindCDN, 2000);
+    }
   </script>
-  <script src="https://cdn.tailwindcss.com" defer></script>
 
   <!-- Шрифт Inter (Google Fonts) з оптимізованим display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
