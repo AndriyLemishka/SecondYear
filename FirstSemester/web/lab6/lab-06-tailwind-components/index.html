@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <!-- Leaflet CSS (Інтерактивна карта) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
   <!-- Підключення зовнішніх стилів CSS -->
   <link rel="stylesheet" href="css/style.css">
@@ -110,7 +110,7 @@
           </div>
 
           <!-- ШВИДКІ ТЕГИ КОНЕКТОРІВ -->
-          <div class="hero-chips" aria-label="Популярні конектори">
+          <div class="hero-chips" role="group" aria-label="Типи роз'ємів">
             <span class="chip">Type 2 (22 кВт)</span>
             <span class="chip">CCS 2 (160 кВт)</span>
             <span class="chip">CHAdeMO</span>
@@ -123,6 +123,7 @@
     <!-- СМУГА ПЕРЕВАГ (BENEFITS STRIP) -->
     <section class="strip-sec" aria-label="Швидкі переваги платформи">
       <div class="container">
+        <h2 class="visually-hidden">Ключові можливості та переваги ChargeUA</h2>
         <div class="strip-grid">
           <article class="strip-card">
             <img src="assets/icons/Calculator.svg" class="strip-icon" alt="" width="44" height="44" aria-hidden="true">
@@ -328,17 +329,17 @@
             </div>
             <div class="map-top-actions">
               <!-- ПЕРЕМИКАЧ МІСТ -->
-              <div class="map-city-tabs" role="tablist" aria-label="Швидкий вибір міста">
-                <button class="city-tab city-tab--active" data-city="lviv" type="button" role="tab" aria-selected="true">Львів (14)</button>
-                <button class="city-tab" data-city="kyiv" type="button" role="tab" aria-selected="false">Київ (12)</button>
-                <button class="city-tab" data-city="odesa" type="button" role="tab" aria-selected="false">Одеса (5)</button>
-                <button class="city-tab" data-city="dnipro" type="button" role="tab" aria-selected="false">Дніпро (4)</button>
-                <button class="city-tab" data-city="highways" type="button" role="tab" aria-selected="false">Траси (5)</button>
-                <button class="city-tab" data-city="all" type="button" role="tab" aria-selected="false">Вся Україна (40)</button>
+              <div class="map-city-tabs" role="group" aria-label="Швидкий вибір міста">
+                <button class="city-tab city-tab--active" data-city="lviv" type="button" aria-pressed="true">Львів (14)</button>
+                <button class="city-tab" data-city="kyiv" type="button" aria-pressed="false">Київ (12)</button>
+                <button class="city-tab" data-city="odesa" type="button" aria-pressed="false">Одеса (5)</button>
+                <button class="city-tab" data-city="dnipro" type="button" aria-pressed="false">Дніпро (4)</button>
+                <button class="city-tab" data-city="highways" type="button" aria-pressed="false">Траси (5)</button>
+                <button class="city-tab" data-city="all" type="button" aria-pressed="false">Вся Україна (40)</button>
               </div>
 
               <!-- ФІЛЬТРИ КОНЕКТОРІВ ТА ГЕНЕРАТОРА -->
-              <div class="map-filters-row map-filters" aria-label="Фільтри конекторів">
+              <div class="map-filters-row map-filters" role="group" aria-label="Фільтри конекторів">
                 <button class="chip chip--active" data-filter="all" type="button" aria-pressed="true">Всі хаби (40)</button>
                 <button class="chip" data-filter="ccs2" type="button" aria-pressed="false">CCS 2</button>
                 <button class="chip" data-filter="chademo" type="button" aria-pressed="false">CHAdeMO</button>
@@ -495,15 +496,15 @@
 
         </div>
 
-        <!-- Стан, коли станцій не знайдено -->
-        <div         <!-- Кнопка розгортання додаткових станцій (запобігає довгому скролу) -->
+        <!-- Кнопка розгортання додаткових станцій (запобігає довгому скролу) -->
         <div class="text-center mt-6" id="stations-load-more-wrap">
           <button type="button" id="stations-load-more" class="btn btn--outline inline-flex items-center gap-2 !px-6 !py-2.5 !text-sm">
             <i class="fa-solid fa-angles-down" aria-hidden="true"></i> Показати ще станції (<span id="remaining-count">3</span>)
           </button>
         </div>
 
-id="stations-empty" class="hidden text-center py-12 px-4 bg-slate-50 rounded-2xl border border-dashed border-slate-200 mt-4">
+        <!-- Стан, коли станцій не знайдено -->
+        <div id="stations-empty" class="hidden text-center py-12 px-4 bg-slate-50 rounded-2xl border border-dashed border-slate-200 mt-4">
           <i class="fa-solid fa-charging-station text-4xl text-slate-300 mb-3" aria-hidden="true"></i>
           <p class="text-base font-semibold text-slate-700">За вашим запитом станцій не знайдено</p>
           <p class="text-sm text-slate-500 mb-4">Спробуйте обрати інше місто або скинути фільтри</p>
@@ -573,16 +574,19 @@ id="stations-empty" class="hidden text-center py-12 px-4 bg-slate-50 rounded-2xl
         <h2 class="section__title" id="reviews-title"><i class="fa-solid fa-comments" aria-hidden="true"></i>Відгуки спільноти електромобілістів</h2>
         <div class="grid">
           <article class="card">
+            <h3 class="visually-hidden">Відгук від власника електромобіля</h3>
             <p class="review__rating" role="img" aria-label="Оцінка 5 з 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
             <blockquote class="review__text">Нарешті не стою в чергах на виїзді з Києва. Подивився статус на карті ChargeUA, побачив вільний порт CCS2, приїхав і за 20 хвилин зарядив 80% батареї.</blockquote>
             <p class="review__author">Олександр, Київ (Tesla Model Y)</p>
           </article>
           <article class="card">
+            <h3 class="visually-hidden">Відгук від власника електромобіля</h3>
             <p class="review__rating" role="img" aria-label="Оцінка 5 з 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
             <blockquote class="review__text">Plug&amp;Charge на станціях у Львові працює безвідмовно. Не треба шукати додатки на холоді — вставила кабель і все пішло!</blockquote>
             <p class="review__author">Ірина, Львів (Hyundai Ioniq 5)</p>
           </article>
           <article class="card">
+            <h3 class="visually-hidden">Відгук від власника електромобіля</h3>
             <p class="review__rating" role="img" aria-label="Оцінка 5 з 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
             <blockquote class="review__text">Найкраща підтримка! Коли на трасі біля Житомира була гроза, оператор оперативно перенаправив на вільний резервний хаб.</blockquote>
             <p class="review__author">Максим, Одеса (Volkswagen ID.4)</p>
@@ -594,7 +598,7 @@ id="stations-empty" class="hidden text-center py-12 px-4 bg-slate-50 rounded-2xl
   </main>
 
   <!-- ПІДВАЛ САЙТУ (GRID + ADDRESS) -->
-  <footer class="site-footer" id="contacts" role="contentinfo">
+  <footer class="site-footer" id="contacts">
     <div class="container">
       <div class="site-footer__columns">
         <section aria-labelledby="footer-about">
