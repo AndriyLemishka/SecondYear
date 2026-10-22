@@ -329,10 +329,34 @@
     }, 20000);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMap);
-  } else {
+  let mapInitialized = false;
+  function ensureMapInit() {
+    if (mapInitialized) return;
+    mapInitialized = true;
     initMap();
+  }
+
+  function setupLazyMap() {
+    const mapSection = document.getElementById('map');
+    if ('IntersectionObserver' in window && mapSection) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            ensureMapInit();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '300px' });
+      observer.observe(mapSection);
+    } else {
+      setTimeout(ensureMapInit, 2500);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupLazyMap);
+  } else {
+    setupLazyMap();
   }
 
   // Експорт глобального API ChargeUA
@@ -341,6 +365,7 @@
     getMarkers: () => markerMap,
     getStations: () => allStations,
     focusStation: function (stationId) {
+      ensureMapInit();
       const st = allStations.find(s => s.id === stationId);
       if (st && mapInstance) {
         mapInstance.flyTo(st.coords, 14, { duration: 1.0 });

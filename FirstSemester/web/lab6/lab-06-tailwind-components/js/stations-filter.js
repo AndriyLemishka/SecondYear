@@ -32,7 +32,7 @@
       cards.forEach(function (card) {
         const cardCity = card.getAttribute('data-city') || '';
         const hasFree = card.getAttribute('data-has-free') === 'true';
-        const cardText = card.innerText.toLowerCase();
+        const cardText = card.textContent.toLowerCase();
 
         const matchesCity = (activeCity === 'all' || cardCity.toLowerCase() === activeCity.toLowerCase());
         const matchesFree = (!onlyFree || hasFree);
