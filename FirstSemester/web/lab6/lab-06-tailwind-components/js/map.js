@@ -361,10 +361,10 @@
             observer.disconnect();
           }
         });
-      }, { rootMargin: '300px' });
+      }, { rootMargin: '0px' });
       observer.observe(mapSection);
-    } else {
-      setTimeout(ensureMapInit, 2500);
+      mapSection.addEventListener('pointerdown', ensureMapInit, { once: true, passive: true });
+      mapSection.addEventListener('focusin', ensureMapInit, { once: true, passive: true });
     }
   }
 

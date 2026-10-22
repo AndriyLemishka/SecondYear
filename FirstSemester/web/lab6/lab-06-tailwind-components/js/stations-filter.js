@@ -168,7 +168,7 @@
             observer.disconnect();
           }
         });
-      }, { rootMargin: '250px' });
+      }, { rootMargin: '0px' });
       observer.observe(stationsSec);
       stationsSec.addEventListener('pointerdown', ensureFilterInit, { once: true, passive: true });
       stationsSec.addEventListener('focusin', ensureFilterInit, { once: true, passive: true });

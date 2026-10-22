@@ -311,7 +311,7 @@
             observer.disconnect();
           }
         });
-      }, { rootMargin: '250px' });
+      }, { rootMargin: '0px' });
       observer.observe(calcEl);
       calcEl.addEventListener('pointerdown', ensureCalculatorInit, { once: true, passive: true });
       calcEl.addEventListener('focusin', ensureCalculatorInit, { once: true, passive: true });
