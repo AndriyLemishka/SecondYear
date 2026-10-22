@@ -7,6 +7,24 @@
   <meta name="description" content="ChargeUA — єдина мережа швидкісних зарядних станцій для електромобілів по всій Україні: DC 150 кВт, Ultra-fast, інтерактивний калькулятор витрат, Live-карта 480+ станцій та робота від генераторів у блекаути.">
   <meta name="theme-color" content="#005EC9">
 
+  <!-- Підключення Tailwind CSS (CDN згідно з Етапом 3) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#005EC9',
+              dark: '#0F172A',
+              accent: '#00B4D8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
   <!-- Шрифт Inter (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
