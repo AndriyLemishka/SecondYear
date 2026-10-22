@@ -210,7 +210,7 @@
       });
     }
 
-    updateCalculation();
+    // updateCalculation() is omitted on init since HTML is pre-rendered statically
   }
 
   // Отримання даних поточного активного авто (або ручних параметрів)
@@ -294,18 +294,36 @@
     if (savingsEl) savingsEl.textContent = `~${savings.toLocaleString('uk-UA')} ₴`;
   }
 
-  function scheduleInit() {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(initCalculator);
+  let isCalculatorInitialized = false;
+  function ensureCalculatorInit() {
+    if (isCalculatorInitialized) return;
+    isCalculatorInitialized = true;
+    initCalculator();
+  }
+
+  function setupLazyCalculator() {
+    const calcEl = document.getElementById('calculator');
+    if ('IntersectionObserver' in window && calcEl) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            ensureCalculatorInit();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '250px' });
+      observer.observe(calcEl);
+      calcEl.addEventListener('pointerdown', ensureCalculatorInit, { once: true, passive: true });
+      calcEl.addEventListener('focusin', ensureCalculatorInit, { once: true, passive: true });
     } else {
-      setTimeout(initCalculator, 50);
+      setTimeout(ensureCalculatorInit, 2000);
     }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', scheduleInit);
+    document.addEventListener('DOMContentLoaded', setupLazyCalculator);
   } else {
-    scheduleInit();
+    setupLazyCalculator();
   }
 
   window.ChargeUACalculator = {

@@ -4,7 +4,7 @@
 (function () {
   'use strict';
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function initFilter() {
     const searchInput = document.getElementById('station-search-input');
     const freeOnlyBtn = document.getElementById('filter-free-only');
     const cityChips = document.querySelectorAll('.city-chip');
@@ -149,5 +149,37 @@
 
     // Початковий виклик
     filterStations();
-  });
+  }
+
+  let isFilterInitialized = false;
+  function ensureFilterInit() {
+    if (isFilterInitialized) return;
+    isFilterInitialized = true;
+    initFilter();
+  }
+
+  function setupLazyFilter() {
+    const stationsSec = document.getElementById('stations');
+    if ('IntersectionObserver' in window && stationsSec) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            ensureFilterInit();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '250px' });
+      observer.observe(stationsSec);
+      stationsSec.addEventListener('pointerdown', ensureFilterInit, { once: true, passive: true });
+      stationsSec.addEventListener('focusin', ensureFilterInit, { once: true, passive: true });
+    } else {
+      setTimeout(ensureFilterInit, 2500);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupLazyFilter);
+  } else {
+    setupLazyFilter();
+  }
 })();

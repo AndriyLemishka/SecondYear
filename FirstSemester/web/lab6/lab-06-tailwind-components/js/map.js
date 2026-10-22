@@ -329,11 +329,26 @@
     }, 20000);
   }
 
+  function loadLeaflet(callback) {
+    if (window.L) {
+      callback();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+    script.crossOrigin = '';
+    script.onload = callback;
+    document.body.appendChild(script);
+  }
+
   let mapInitialized = false;
   function ensureMapInit() {
     if (mapInitialized) return;
     mapInitialized = true;
-    initMap();
+    loadLeaflet(function () {
+      initMap();
+    });
   }
 
   function setupLazyMap() {

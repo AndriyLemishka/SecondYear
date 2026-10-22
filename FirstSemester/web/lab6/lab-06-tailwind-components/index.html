@@ -40,13 +40,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic"></noscript>
 
-  <!-- Іконковий шрифт Font Awesome 6 (неблокуюче завантаження) -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- Іконковий шрифт Font Awesome 6 (неблокуюче завантаження з font-display: swap) -->
+  <style>
+    @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; }
+    @font-face { font-family: 'Font Awesome 6 Brands'; font-display: swap; }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
 
   <!-- Leaflet CSS (неблокуюче завантаження) -->
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></noscript>
 </head>
@@ -655,8 +657,7 @@
 
   <!-- Модуль мобільної навігації (Hamburger Menu) -->
   <script src="js/nav.js" defer></script>
-  <!-- Leaflet JS (Бібліотека інтерактивної карти) -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+  <!-- Leaflet JS завантажується ліниво в js/map.js лише при появі карти в зоні видимості -->
   <!-- Модуль інтерактивної карти ChargeUA із завантаженням станцій -->
   <script src="js/map.js" defer></script>
   <!-- Модуль інтерактивного калькулятора ChargeUA -->
