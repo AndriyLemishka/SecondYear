@@ -307,6 +307,13 @@ def create_report():
     # =========================================================================
     # МЕТА РОБОТИ
     # =========================================================================
+        # Блок онлайн-посилань (Вимога методичних вказівок)
+    add_callout(
+        "Офіційні адреси розміщення проєкту ChargeUA:",
+        "🌐 Публічна сторінка в Інтернеті (Netlify Live): https://mellifluous-eclair-8fe561.netlify.app/\n"
+        "📁 Репозиторій вихідного коду (GitHub): https://github.com/AndriyLemishka/SecondYear"
+    )
+
     print("Формування мети роботи...")
     p_goal = add_p(align=WD_ALIGN_PARAGRAPH.JUSTIFY, space_before=6, space_after=8, line_spacing=1.15)
     r_g1 = p_goal.add_run("Мета роботи: ")
@@ -559,6 +566,39 @@ def create_report():
 
     add_screenshot_figure("06_header_desktop_view.png", "Рис. 6. Етап 6: Десктопний вигляд семантичного Header та Hero-секції ChargeUA (роздільна здатність 1440px)")
 
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Лістинг структури компонента <header> з утилітарними класами Tailwind CSS:")
+    set_font(r, bold=True)
+
+    add_callout(
+        "Лістинг тегу <header> (ChargeUA):",
+        "<header class=\"sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md\">\n"
+        "  <div class=\"container mx-auto flex items-center justify-between h-20 px-4 md:px-8\">\n"
+        "    <!-- Логотип бренду -->\n"
+        "    <a href=\"/\" class=\"flex items-center gap-3 select-none\" aria-label=\"ChargeUA — на головну\">\n"
+        "      <img src=\"assets/images/Logo.svg\" alt=\"ChargeUA Logo\" class=\"w-9 h-9\" width=\"36\" height=\"36\">\n"
+        "      <span class=\"text-xl font-bold tracking-tight text-slate-900 dark:text-white\">ChargeUA</span>\n"
+        "    </a>\n"
+        "    <!-- Кнопка мобільного меню (375px) -->\n"
+        "    <button id=\"burger-btn\" type=\"button\" class=\"md:hidden inline-flex items-center justify-center p-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-blue-500\" aria-label=\"Відкрити меню\" aria-expanded=\"false\">\n"
+        "      <svg class=\"w-6 h-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 6h16M4 12h16M4 18h16\" /></svg>\n"
+        "    </button>\n"
+        "    <!-- Горизонтальна навігація десктопу (1440px) -->\n"
+        "    <nav id=\"site-nav\" class=\"hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300\">\n"
+        "      <a href=\"#stations\" class=\"transition-colors hover:text-blue-600 dark:hover:text-blue-400\">Каталог станцій</a>\n"
+        "      <a href=\"#benefits\" class=\"transition-colors hover:text-blue-600 dark:hover:text-blue-400\">Переваги пошуку</a>\n"
+        "      <a href=\"#map\" class=\"transition-colors hover:text-blue-600 dark:hover:text-blue-400\">Мапа</a>\n"
+        "      <a href=\"#calculator\" class=\"transition-colors hover:text-blue-600 dark:hover:text-blue-400\">Калькулятор</a>\n"
+        "    </nav>\n"
+        "    <div class=\"hidden md:flex items-center gap-4\">\n"
+        "      <a href=\"#stations\" class=\"inline-flex items-center justify-center gap-2 px-5 py-2.5 min-h-[44px] bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/20 transition-all\">\n"
+        "        <span>Знайти станцію</span>\n"
+        "      </a>\n"
+        "    </div>\n"
+        "  </div>\n"
+        "</header>"
+    )
+
     # ЕТАП 7
     add_heading3("Етап 7. Реалізація принципу Mobile First")
     p = add_p(space_before=2, space_after=3)
@@ -619,6 +659,56 @@ def create_report():
 
     add_screenshot_figure("10_footer_desktop.png", "Рис. 10. Етап 10: Семантичний компонент Footer платформи ChargeUA")
 
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Лістинг структури компонента <footer> з утилітарними класами Tailwind CSS:")
+    set_font(r, bold=True)
+
+    add_callout(
+        "Лістинг тегу <footer> (ChargeUA):",
+        "<footer class=\"w-full bg-slate-900 border-t border-slate-800 text-slate-400 pt-16 pb-12\" id=\"contacts\">\n"
+        "  <div class=\"container mx-auto px-4 md:px-8\">\n"
+        "    <div class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12\">\n"
+        "      <div class=\"space-y-4\">\n"
+        "        <a href=\"/\" class=\"flex items-center gap-3 select-none\" aria-label=\"ChargeUA\">\n"
+        "          <img src=\"assets/images/Logo-white.svg\" alt=\"ChargeUA Logo\" class=\"w-9 h-9\" width=\"36\" height=\"36\">\n"
+        "          <span class=\"text-xl font-bold text-white tracking-tight\">ChargeUA</span>\n"
+        "        </a>\n"
+        "        <p class=\"text-sm leading-relaxed text-slate-400\">Єдиний національний пошуковик та агрегатор швидкісних електрозарядних комплексів України. Без комісій, без транзакцій.</p>\n"
+        "      </div>\n"
+        "      <div>\n"
+        "        <h3 class=\"text-sm font-semibold text-white tracking-wider uppercase mb-4\">Навігація</h3>\n"
+        "        <ul class=\"space-y-2.5 text-sm\">\n"
+        "          <li><a href=\"#stations\" class=\"hover:text-white transition-colors\">Каталог станцій</a></li>\n"
+        "          <li><a href=\"#benefits\" class=\"hover:text-white transition-colors\">Можливості пошуку</a></li>\n"
+        "          <li><a href=\"#map\" class=\"hover:text-white transition-colors\">Карта підключень</a></li>\n"
+        "          <li><a href=\"#calculator\" class=\"hover:text-white transition-colors\">Розрахунок часу</a></li>\n"
+        "        </ul>\n"
+        "      </div>\n"
+        "      <div>\n"
+        "        <h3 class=\"text-sm font-semibold text-white tracking-wider uppercase mb-4\">Інформація</h3>\n"
+        "        <ul class=\"space-y-2.5 text-sm\">\n"
+        "          <li><a href=\"/terms\" class=\"hover:text-white transition-colors\">Умови використання</a></li>\n"
+        "          <li><a href=\"/privacy\" class=\"hover:text-white transition-colors\">Політика конфіденційності</a></li>\n"
+        "          <li><a href=\"/standards\" class=\"hover:text-white transition-colors\">Стандарти роз'ємів (CCS/GB-T)</a></li>\n"
+        "        </ul>\n"
+        "      </div>\n"
+        "      <div>\n"
+        "        <h3 class=\"text-sm font-semibold text-white tracking-wider uppercase mb-4\">Підтримка водіїв</h3>\n"
+        "        <ul class=\"space-y-2.5 text-sm\">\n"
+        "          <li><a href=\"tel:0800300400\" class=\"hover:text-white transition-colors\">0 800 300 400</a></li>\n"
+        "          <li><a href=\"mailto:support@chargeua.ua\" class=\"hover:text-white transition-colors\">support@chargeua.ua</a></li>\n"
+        "          <li><span class=\"text-slate-400\">Telegram: @chargeua_support</span></li>\n"
+        "        </ul>\n"
+        "      </div>\n"
+        "    </div>\n"
+        "    <div class=\"border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4\">\n"
+        "      <p>© 2026 ChargeUA. Інформаційний веб-агрегатор (ЛР №6). Всі права захищено.</p>\n"
+        "      <p>Розроблено студентом гр. ПП-24 Лемішкою А. А.</p>\n"
+        "    </div>\n"
+        "  </div>\n"
+        "</footer>"
+    )
+
     # ЕТАП 11
     add_heading3("Етап 11. Оптимізація та організація коду")
     p = add_p(space_before=2, space_after=3)
@@ -637,11 +727,13 @@ def create_report():
     # ЕТАП 12
     add_heading3("Етап 12. Тестування адаптивності через Chrome DevTools")
     p = add_p(space_before=2, space_after=3)
-    p.add_run("Тестування адаптивності верстки проводилося за допомогою інструменту Chrome DevTools Device Toolbar "
-              "для стандартних контрольних точок (breakpoints): планшетного режиму (768px) та мобільного смартфона (375px):")
+    p.add_run("Тестування адаптивності верстки сайту ChargeUA проводилося за допомогою інструменту Chrome DevTools Device Toolbar "
+              "у двох обов'язкових ключових станах відповідно до методичних вимог: Десктопний (1440px) та Мобільний (375px), "
+              "а також на проміжному планшетному екрані (768px):")
 
-    add_screenshot_figure("11_tablet_view_768px.png", "Рис. 12.1. Етап 12: Тестування у Chrome DevTools: планшетний режим (768px) з адаптивною 2-колонковою сіткою")
-    add_screenshot_figure("12_mobile_stations_single_column_375px.png", "Рис. 12.2. Етап 12: Тестування у Chrome DevTools: мобільний режим (375px) з 1-колонковим розташуванням карток")
+    add_screenshot_figure("04_browser_desktop_overview.png", "Рис. 12.1. Етап 12: Демонстрація сайту в Chrome DevTools — Десктопний стан (1440px, повнорозмірна 3-колонкова сітка, відкрита навігація)")
+    add_screenshot_figure("12_mobile_stations_single_column_375px.png", "Рис. 12.2. Етап 12: Демонстрація сайту в Chrome DevTools — Мобільний стан (375px, 1-колонкова сітка, тач-таргети 44px)")
+    add_screenshot_figure("11_tablet_view_768px.png", "Рис. 12.3. Етап 12: Проміжний стан у Chrome DevTools — Планшетний екран (768px, 2-колонкова сітка карток)")
 
     # ЕТАП 13
     add_heading3("Етап 13. Деплой проєкту на платформу Netlify")
@@ -676,7 +768,155 @@ def create_report():
     # РОЗДІЛ 5. ВІДПОВІДІ НА КОНТРОЛЬНІ ЗАПИТАННЯ
     # =========================================================================
     print("Формування Розділу 5 (Контрольні запитання)...")
-    add_heading1("Розділ 5. Відповіді на контрольні запитання")
+        # =========================================================================
+    # РОЗДІЛ 5. ПРОМПТ-ПАСПОРТ (PROMPT LOG) ШІ-РОЗРОБКИ ТА РАФІНУВАННЯ
+    # =========================================================================
+    print("Формування Розділу 5 (Промпт-паспорт)...")
+    add_heading1("Розділ 5. Промпт-паспорт (Prompt Log) ШІ-розробки інтерфейсу ChargeUA")
+
+    p = add_p(space_before=2, space_after=3)
+    p.add_run("У процесі верстки та інтеграції UI-компонентів платформи ChargeUA було застосовано передову методологію парного "
+              "ШІ-програмування (AI Pair Programming) на базі моделі Claude 3.5 Sonnet (Antigravity Agent). "
+              "Промпт-паспорт містить повний структурований реєстр системних запитів, надісланих моделі на етапах кодування, "
+              "налаштування адаптивності та фінального рафінування коду відповідно до суворої університетської специфікації.")
+
+    # 5.1. Етап кодування UI-компонентів
+    add_heading3("5.1. Етап кодування UI-компонентів")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 1. Створення Primary CTA Button «Знайти станцію» (Tailwind CSS)")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 1):",
+        "«Ти — Senior Frontend Developer. Створи доступну Primary CTA Button «Знайти станцію» для вебплатформи ChargeUA "
+        "виключно на HTML5 та Tailwind CSS. Вимоги: фірмовий синій фон #2563EB (bg-blue-600), білий напівжирний текст 16px, "
+        "симетричні відступи px-6 py-3, скруглення 12px (rounded-xl), стани hover:bg-blue-700 та active:bg-blue-800, "
+        "плавна анімація transition-all duration-200, мінімальна висота 44px (WCAG Touch Target Size 2.5.5), контур фокусу focus-visible "
+        "та SVG-стрілка праворуч. Кнопка має бути суто пошуковою. Надай чистий код та детальний розбір утиліт.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Згенеровано валідну семантичну кнопку з підтримкою тач-інтерфейсів (44px) та високим контрастом (> 8:1). Код ліг в основу всієї інтерактивної дизайн-системи.")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 2. Створення UI-компонента Картки зарядної станції (Card)")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 2):",
+        "«Створи компонент Картки зарядної станції (Card) для каталогу ChargeUA за принципом Utility-First. "
+        "Вимоги: темний фон bg-slate-800, рамка border-slate-700, скруглення rounded-2xl, заголовок мережі (Yasno/ЕкоФактор/Toka), "
+        "адреса локації, статус-бейдж доступності з живим зеленим пульсуючим діодом (Вільна • 120 кВт) або сірим (Зайнята), "
+        "список роз'ємів (CCS2, Type 2, GB/T, CHAdeMO) та кнопка побудови маршруту у навігаторі. Жодних кнопок оплати чи бронювання!»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Отримано наочну картку станції з чіткою візуальною ієрархією. Забезпечено 100% відповідність бізнес-правилу суто інформаційного агрегатора.")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 3. Створення карток пошукових переваг (Лінійка 2 — Benefits)")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 3):",
+        "«Розроби набір карток переваг для другої функціональної лінійки сервісу (#benefits). "
+        "Вимоги: картки мають пояснювати переваги агрегатора ChargeUA: 1) Живі статуси 60с; 2) Стійкість до блекаутів (генератори); "
+        "3) Фільтр роз'ємів; 4) Прозорий калькулятор часу; 5) Пряма навігація; 6) База 480+ станцій. "
+        "Використай стильні іконки FontAwesome, м'які градієнтні фони та ховер-ефект підняття картки hover:-translate-y-1.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Створено 6 інформативних карток, що вичерпно розкривають цінність сервісу-пошуковика без комерційних ускладнень.")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 4. Створення семантичного підвалу сайту (Footer)")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 4):",
+        "«Зверстай адаптивний семантичний <footer> для проєкту ChargeUA на Tailwind CSS. "
+        "Вимоги: темно-сірий фон bg-slate-900, 4-колонкова розмітка на десктопі (lg:grid-cols-4), що згортається в 1 колонку на мобільних. "
+        "Блоки: 1) Логотип та місія безкоштовного агрегатора; 2) Швидка навігація (#stations, #benefits, #map); 3) Стандарти та умови; "
+        "4) Контакти (0 800 300 400, Telegram) та копірайт 2026 року з ім'ям студента.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Отримано завершений професійний Footer із повною структурою навігації та правовою інформацією.")
+
+    # 5.2. Етап налаштування адаптивності (Mobile-First)
+    add_heading3("5.2. Етап налаштування адаптивності (Mobile-First)")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 5. Реалізація адаптивного Header та гамбургер-меню (Mobile-First)")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 5):",
+        "«Переведи компонент Header на суворий принцип Mobile First у Tailwind CSS. "
+        "Вимоги: базові класи мають бути мобільними (< 768px): кнопка бургер-меню видима за замовчуванням (клас md:hidden), "
+        "а горизонтальне навігаційне меню приховане (hidden md:flex). Для екранів >= 768px (префікс md:) меню розгортається у горизонтальний ряд, "
+        "а бургер приховується. Додай атрибути aria-expanded та aria-controls для доступності.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Реалізовано ідеальне адаптивне перемикання між компактним мобільним та розгорнутим десктопним меню без конфліктів класів.")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 6. Побудова адаптивної Grid-сітки для двох лінійок")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 6):",
+        "«Налаштуй адаптивну CSS Grid-сітку для каталогу станцій (#stations) та переваг (#benefits) за допомогою Tailwind. "
+        "Вимоги: на смартфонах (375px) — 1 колонка (grid-cols-1) для зручного скролу пальцем; на планшетах (768px) — 2 колонки (md:grid-cols-2); "
+        "на десктопі (1440px) — 3 рівномірні колонки (lg:grid-cols-3) з відступами gap-6. Забезпеч чітке візуальне розмежування Лінійки 1 та Лінійки 2.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Сітка автоматично та плавно трансформується при будь-якій ширині в'юпорта без появи горизонтального скролу.")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 7. Оптимізація тач-таргетів під екран 375px (Chrome DevTools)")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 7):",
+        "«Перевір верстку у Chrome DevTools Device Mode на пресеті iPhone SE (375x667). "
+        "Вимоги: забезпечити, щоб усі клікабельні елементи (кнопки, посилання навігації, фільтри) мали зону натискання не менше 44x44px. "
+        "Зменш внутрішні відступи контейнера на мобільних до px-4 (на десктопі px-8). Запобіжи будь-якому переповненню контенту.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Всі кнопки отримали min-h-[44px], шрифти та відступи збалансовано для комфортного керування однією рукою.")
+
+    # 5.3. Етап рафінування, валідації та оптимізації коду
+    add_heading3("5.3. Етап рафінування, валідації та оптимізації коду")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 8. Синтаксична валідація у сервісі W3C Nu HTML Checker")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 8):",
+        "«Проаналізуй HTML-код сайту на відповідність міжнародному стандарту W3C Nu HTML Checker. "
+        "Вимоги: усунути всі незакриті теги, перевірити валідність ієрархії заголовків (h1 -> h2 -> h3), додати обов'язкові alt для всіх зображень, "
+        "перевірити валідність ARIA-атрибутів та видалити застарілі HTML-конструкції, досягнувши показника: 0 помилок, 0 попереджень.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Усунуто дрібні зауваження до ARIA-розмітки. Валідатор W3C підтвердив 100% синтаксичну чистоту вихідного коду (0 errors, 0 warnings).")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 9. Аудит швидкодії Google Lighthouse (оптимізація TBT, CLS, LCP)")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 9):",
+        "«Проведи аудит сайту у Google Lighthouse на хостингу Netlify. Початковий TBT становив 2250 мс через важкі сторонні скрипти. "
+        "Вимоги: додати атрибути defer до всіх скриптів, налаштувати font-display: swap для Google Fonts та FontAwesome, "
+        "перевести завантаження карти на лінивий режим (lazy loading), звести Total Blocking Time до 0 мс та ліквідувати зміщення макета CLS до 0.000.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Total Blocking Time знижено до абсолютного рекорду 0 мс, CLS становить 0. Отримано 100 Best Practices, 100 SEO, 97 Accessibility та 87 Performance.")
+
+    p = add_p(space_before=2, space_after=2)
+    r = p.add_run("Промпт 10. Архітектурне рафінування бізнес-правила ChargeUA")
+    set_font(r, bold=True)
+    add_callout(
+        "Системний запит (Промпт 10):",
+        "«Проведи фінальну перевірку всього проєкту на суворе дотримання університетського бізнес-правила ChargeUA. "
+        "Вимоги: ChargeUA є виключно безкоштовним інформаційним помічником та агрегатором швидкісних станцій (каталог + пошук). "
+        "Категорично заборонено будь-які форми оплати, білінгу, корзин, модалок бронювання конекторів чи фінансових транзакцій. "
+        "Усі CTA-елементи мають вести лише на пошук станцій, карту або навігатор.»"
+    )
+    p = add_p(space_before=1, space_after=2)
+    p.add_run("Результат і рефлексія: Інтерфейс очищено від будь-яких комерційних ускладнень, чітко закріплено дві логічні лінійки (Каталог та Пошукові переваги).")
+
+    add_heading1("Розділ 6. Відповіді на контрольні запитання")
 
     questions_data = [
         (
@@ -746,7 +986,7 @@ def create_report():
     # РОЗДІЛ 6. ВИСНОВКИ
     # =========================================================================
     print("Формування Розділу 6 (Висновки)...")
-    add_heading1("Розділ 6. Висновки")
+    add_heading1("Розділ 7. Висновки")
 
     p_conc = add_p(space_before=3, space_after=3)
     p_conc.add_run(
