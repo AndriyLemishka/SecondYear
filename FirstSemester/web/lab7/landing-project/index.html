@@ -1,545 +1,668 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChargeUA — мережа зарядних станцій електромобілів в Україні</title>
-  <meta name="description" content="ChargeUA — єдина мережа швидкісних зарядних станцій для електромобілів по всій Україні: DC 150 кВт, Ultra-fast, інтерактивний калькулятор витрат, Live-карта 480+ станцій та робота від генераторів у блекаути.">
-  <meta name="theme-color" content="#005EC9">
+  <meta name="description" content="ChargeUA — Національний інформаційний помічник та агрегатор швидкісних зарядних хабів України. Живий моніторинг вільних портів у блекаути.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://chargeua-landing.netlify.app/">
+  <title>ChargeUA — Мережа швидкісних зарядних хабів України | ЛР №7</title>
 
-  <!-- Шрифт Inter (Google Fonts) -->
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Іконковий шрифт Font Awesome 6 (CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-  <!-- Leaflet CSS (Інтерактивна карта) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
-  <!-- Підключення зовнішніх стилів CSS -->
+  <!-- Власний CSS з CSS-змінними за методичкою ЛР №7 -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-500 selection:text-white">
 
-  <!-- ВЕРХНЯ СТАТУСНА ПЛАШКА (ТЕЛЕМЕТРІЯ МЕРЕЖІ) -->
-  <aside class="top-bar" aria-label="Мережева телеметрія">
-    <div class="container top-bar__inner">
-      <div class="top-bar__status">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span>Мережа ChargeUA: 480+ станцій онлайн по Україні | 100% телеметрія в реальному часі</span>
-      </div>
-      <div class="top-bar__phone">
-        <span>Гаряча лінія 24/7: <a href="tel:0800300400">0 800 300 400</a> | UA</span>
+  <!-- ======================================================================
+       1. ШАПКА САЙТУ (HEADER) З АДАПТИВНОЮ НАВІГАЦІЄЮ ТА БУРГЕР-МЕНЮ
+       ====================================================================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Логотип ChargeUA -->
+        <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1" aria-label="ChargeUA — на головну">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-bolt-lightning text-xl" aria-hidden="true"></i>
+          </div>
+          <span class="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+            Charge<span class="text-blue-600">UA</span>
+          </span>
+        </a>
+
+        <!-- Десктопна навігація -->
+        <nav class="hidden md:flex items-center gap-8" aria-label="Головна навігація">
+          <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Про проєкт</a>
+          <a href="#benefits" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Переваги</a>
+          <a href="#hubs" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Хаби</a>
+          <a href="#video" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Відео</a>
+          <a href="#map" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Карта</a>
+          <a href="#reviews" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Відгуки</a>
+          <a href="#contacts" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Контакти</a>
+        </nav>
+
+        <!-- CTA кнопка в шапці -->
+        <div class="hidden sm:flex items-center gap-4">
+          <a href="#map" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md shadow-blue-600/20 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all focus:outline-none focus:ring-4 focus:ring-blue-300">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>Вільні хаби</span>
+          </a>
+        </div>
+
+        <!-- Кнопка мобільного меню (Гамбургер) -->
+        <div class="flex md:hidden">
+          <button type="button" id="menu-toggle" class="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Відкрити головне меню" aria-expanded="false" aria-controls="mobile-menu">
+            <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+          </button>
+        </div>
+
       </div>
     </div>
-  </aside>
 
-  <!-- ШАПКА САЙТУ -->
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="logo" href="/" aria-label="ChargeUA — на головну">
-        <img src="assets/images/Logo.svg" alt="ChargeUA Logo" class="logo__img" width="36" height="36">
-        <span class="logo__text">ChargeUA</span>
-      </a>
-      
-      <button class="burger-btn" id="burger-btn" type="button" aria-label="Відкрити меню навігації" aria-expanded="false" aria-controls="site-nav">
-        <span class="burger-icon" aria-hidden="true">
-          <i class="fa-solid fa-bars burger-icon-bars"></i>
-          <i class="fa-solid fa-xmark burger-icon-close"></i>
-        </span>
-      </button>
-
-      <nav class="nav" id="site-nav" aria-label="Головна навігація">
-        <ul class="nav__list">
-          <li><a class="nav__link" href="#main"><i class="fa-solid fa-house" aria-hidden="true"></i>Головна</a></li>
-          <li><a class="nav__link" href="#calculator"><i class="fa-solid fa-calculator" aria-hidden="true"></i>Калькулятор</a></li>
-          <li><a class="nav__link" href="#map"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Карта станцій</a></li>
-          <li><a class="nav__link" href="#stations"><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Станції</a></li>
-          <li><a class="nav__link" href="#benefits"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Переваги</a></li>
-          <li><a class="nav__link" href="#reviews"><i class="fa-solid fa-comments" aria-hidden="true"></i>Відгуки</a></li>
-          <li><a class="nav__link" href="#contacts"><i class="fa-solid fa-headset" aria-hidden="true"></i>Контакти</a></li>
-        </ul>
-        <div class="site-header__actions nav-mobile-actions">
-          <a class="btn btn--outline" href="/login"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Увійти</a>
-          <a class="btn btn--primary" href="#map"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>Знайти зарядку</a>
-        </div>
-      </nav>
-
-      <div class="site-header__actions header-desktop-actions">
-        <a class="btn btn--outline" href="/login"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Увійти</a>
-        <a class="btn btn--primary" href="#map"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>Знайти зарядку</a>
+    <!-- Мобільне меню (випадаюче) -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-4 pb-6 space-y-3">
+      <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Про проєкт</a>
+      <a href="#benefits" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Переваги мережі</a>
+      <a href="#hubs" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Каталог хабів</a>
+      <a href="#video" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Відеоінструкція</a>
+      <a href="#map" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Інтерактивна карта</a>
+      <a href="#reviews" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Відгуки водіїв</a>
+      <a href="#contacts" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Контакти</a>
+      <div class="pt-2">
+        <a href="#map" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-md">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Знайти вільний хаб
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- ОСНОВНИЙ ВМІСТ СТОРІНКИ -->
-  <main id="main">
+  <main>
 
-    <!-- HERO СЕКЦІЯ З ФОНОВИМ ВІДЕО ТА ГРАДІЄНТНИМ ПЕРЕХОДОМ (МАКЕТ ЛР4) -->
-    <section class="hero-sec" aria-labelledby="hero-title">
-      <!-- Фонове відео / GIF цикл -->
-      <div class="hero-video-bg-wrap">
-        <video class="hero-video-bg" autoplay loop muted playsinline poster="assets/images/hero_loop_opt.gif">
-          <source src="assets/video/video_content.mp4" type="video/mp4">
-          <img src="assets/images/hero_loop_opt.gif" class="hero-video-bg" alt="ChargeUA Video Loop">
-        </video>
-        <div class="hero-fade-overlay" aria-hidden="true"></div>
-      </div>
+    <!-- ======================================================================
+         2. ГОЛОВНИЙ ЕКРАН (HERO-СЕКЦІЯ) — РЕЗУЛЬТАТ ТОЧКОВОГО РЕФАКТОРИНГУ PICK ELEMENT
+         ====================================================================== -->
+    <section id="hero" class="relative bg-slate-900 text-white overflow-hidden py-12 md:py-24" aria-labelledby="hero-heading">
+      <!-- Декоративна фонова сітка -->
+      <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]" aria-hidden="true"></div>
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-      <div class="container hero-content-container">
-        <div class="hero-content">
-          <div class="hero-tag">
-            <i class="fa-solid fa-bolt" aria-hidden="true"></i> НАЦІОНАЛЬНИЙ АГРЕГАТОР ЗАРЯДНИХ СТАНЦІЙ
-          </div>
-
-          <h1 class="hero-h1" id="hero-title">
-            Швидка та надійна зарядка<br>електромобілів по всій Україні
-          </h1>
-
-          <p class="hero-sub">
-            Знаходьте найближчі станції, розраховуйте вартість за лічені секунди та подорожуйте без хвилювань навіть під час блекаутів.
-          </p>
-
-          <!-- ДВІ КНОПКИ CTA -->
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#calculator">
-              <i class="fa-solid fa-calculator" aria-hidden="true"></i> Розрахувати зарядку &rarr;
-            </a>
-            <a class="btn btn-secondary" href="#map">
-              <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Знайти на карті
-            </a>
-          </div>
-
-          <!-- ШВИДКІ ТЕГИ КОНЕКТОРІВ -->
-          <div class="hero-chips" aria-label="Популярні конектори">
-            <span class="chip">Type 2 (22 кВт)</span>
-            <span class="chip">CCS 2 (160 кВт)</span>
-            <span class="chip">CHAdeMO</span>
-            <span class="chip chip-green"><i class="fa-solid fa-battery-full" aria-hidden="true"></i> 🔋 З генератором</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Бейдж фонового медіа -->
-      <div class="hero-video-badge" aria-label="Медіа-індикатор">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span>⚡ Live Video Loop · video_content.mp4 (ЛР №3)</span>
-      </div>
-    </section>
-
-    <!-- СМУГА ПЕРЕВАГ (BENEFITS STRIP) -->
-    <section class="strip-sec" aria-label="Швидкі переваги платформи">
-      <div class="container">
-        <div class="strip-grid">
-          <article class="strip-card">
-            <img src="assets/icons/Calculator.svg" class="strip-icon" alt="" width="44" height="44" aria-hidden="true">
-            <div>
-              <h3 class="strip-card__title">Точний калькулятор витрат</h3>
-              <p class="strip-card__desc">Автоматичний підбір моделі авто та тарифу</p>
-            </div>
-          </article>
-          <article class="strip-card">
-            <img src="assets/icons/Location.svg" class="strip-icon" alt="" width="44" height="44" aria-hidden="true">
-            <div>
-              <h3 class="strip-card__title">Live-карта 480+ станцій</h3>
-              <p class="strip-card__desc">Актуальний статус зайнятості та світла онлайн</p>
-            </div>
-          </article>
-          <article class="strip-card">
-            <img src="assets/icons/Information.svg" class="strip-icon" alt="" width="44" height="44" aria-hidden="true">
-            <div>
-              <h3 class="strip-card__title">100% Енергонезалежність</h3>
-              <p class="strip-card__desc">Робота від потужних генераторів у блекаути</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- СЕКЦІЯ ІНТЕРАКТИВНОГО КАЛЬКУЛЯТОРА -->
-    <section class="section section--surface calc-sec" id="calculator" aria-labelledby="calc-title">
-      <div class="container">
-        <div class="calc-wrap">
-          <div class="calc-header">
-            <h2 class="calc-title" id="calc-title"><i class="fa-solid fa-calculator" aria-hidden="true"></i> Інтерактивний калькулятор зарядки ChargeUA</h2>
-            <p class="calc-subtitle">Оберіть модель електрокара та регулюйте рівень заряду за допомогою повзунка:</p>
-          </div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           
-          <div class="calc-top-row">
-            <div class="calc-inputs-block">
-              <!-- РЯДОК ВИБОРУ РЕЖИМУ ТА ШВИДКИХ ПРЕСЕТІВ -->
-              <div class="calc-controls-header">
-                <div class="calc-input-label" id="car-select-label">Оберіть модель електрокара або введіть параметри:</div>
-                <button type="button" class="btn-toggle-manual" id="btn-toggle-manual">
-                  <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Ввести ємність вручну
-                </button>
+          <!-- Ліва колонка: Заголовок, Ціннісна пропозиція, CTA-кнопки -->
+          <div class="flex flex-col items-start text-left">
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-6">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              Національний хаб-помічник
+            </div>
+
+            <h1 id="hero-heading" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6 text-white">
+              Швидкісні зарядні хаби України. <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Моніторинг статусів у реальному часі.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-xl">
+              Знаходьте вільні конектори потужністю від 120 до 150 кВт під час блекаутів у 6 містах України. Працюємо як відкритий інформаційний агрегатор — без оплат, підписок чи прихованих платежів.
+            </p>
+
+            <!-- CTA-кнопка (Pick Element: адаптивні відступи, min-h 48px, hover, focus) -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <a href="#map" class="cta-button-refined w-full sm:w-auto text-center">
+                <i class="fa-solid fa-route mr-2" aria-hidden="true"></i> Знайти найближчий хаб
+              </a>
+              <a href="#video" class="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-800 text-slate-200 text-base font-semibold hover:text-white transition-all focus:outline-none focus:ring-4 focus:ring-slate-600 min-h-[48px]">
+                <i class="fa-solid fa-play mr-2 text-blue-400" aria-hidden="true"></i> Як це працює
+              </a>
+            </div>
+
+            <!-- Швидкі переваги (Pills) -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 w-full text-slate-300 text-xs sm:text-sm font-medium">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-blue-400 text-base" aria-hidden="true"></i>
+                <span>150 кВт DC</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-emerald-400 text-base" aria-hidden="true"></i>
+                <span>Генератори 24/7</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-eye text-cyan-400 text-base" aria-hidden="true"></i>
+                <span>0 ₴ без оплат</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Права колонка: Інтерактивна картка візуалу -->
+          <div class="relative w-full flex justify-center">
+            <div class="w-full max-w-lg bg-gradient-to-b from-slate-800 to-slate-850 p-6 sm:p-8 rounded-3xl border border-slate-700/80 shadow-2xl relative">
+              <div class="flex items-center justify-between pb-6 border-b border-slate-700/60 mb-6">
+                <div>
+                  <h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Швидкісний хаб «Арена»</h2>
+                  <p class="text-lg font-extrabold text-white">Львів, вул. Стрийська, 202</p>
+                </div>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Працює від ДГ
+                </span>
               </div>
 
-              <!-- ШВИДКІ КНОПКИ ПОПУЛЯРНИХ АВТО (PRESETS) -->
-              <div class="car-pills" role="radiogroup" aria-labelledby="car-select-label">
-                <button type="button" class="car-pill active" data-car="vw-id4-pro" role="radio" aria-checked="true">Volkswagen ID.4 (77 кВт·год)</button>
-                <button type="button" class="car-pill" data-car="tesla-m3-std" role="radio" aria-checked="false">Tesla Model 3</button>
-                <button type="button" class="car-pill" data-car="nissan-leaf-40" role="radio" aria-checked="false">Nissan Leaf</button>
-                <button type="button" class="car-pill" data-car="hyundai-ioniq5" role="radio" aria-checked="false">Hyundai Ioniq 5</button>
-              </div>
-
-              <!-- ВИПАДАЮЧИЙ СПИСОК ЗА ГРУПАМИ (AUTO.RIA STYLE) -->
-              <div class="car-dropdown-wrap">
-                <label for="car-select-dropdown" class="car-dropdown-label">
-                  <i class="fa-solid fa-list-check" aria-hidden="true"></i> Каталог електромобілів (понад 45 моделей за марками, як на AUTO.RIA):
-                </label>
-                <select id="car-select-dropdown" class="car-select-dropdown" aria-label="Вибір марки та моделі електромобіля">
-                  <option value="" disabled>🔍 Оберіть марку та модель зі списку...</option>
-                  <optgroup label="🚗 Tesla">
-                    <option value="tesla-m3-std">Tesla Model 3 RWD (60 кВт·год) · CCS 2</option>
-                    <option value="tesla-m3-lr">Tesla Model 3 Long Range (82 кВт·год) · CCS 2</option>
-                    <option value="tesla-my-lr">Tesla Model Y Long Range (75 кВт·год) · CCS 2</option>
-                    <option value="tesla-my-p">Tesla Model Y Performance (78 кВт·год) · CCS 2</option>
-                    <option value="tesla-ms-p">Tesla Model S Plaid (100 кВт·год) · CCS 2</option>
-                    <option value="tesla-mx-lr">Tesla Model X Long Range (100 кВт·год) · CCS 2</option>
-                  </optgroup>
-                  <optgroup label="🚗 Volkswagen">
-                    <option value="vw-id4-pro" selected>Volkswagen ID.4 Pro (77 кВт·год) · CCS 2</option>
-                    <option value="vw-id4-pure">Volkswagen ID.4 Pure (52 кВт·год) · CCS 2</option>
-                    <option value="vw-id3-pro">Volkswagen ID.3 Pro (58 кВт·год) · CCS 2</option>
-                    <option value="vw-id6-crozz">Volkswagen ID.6 Crozz (Китай) (84.8 кВт·год) · GB/T DC</option>
-                    <option value="vw-id7-pro">Volkswagen ID.7 Pro (77 кВт·год) · CCS 2</option>
-                    <option value="vw-egolf">Volkswagen e-Golf (35.8 кВт·год) · CCS 2</option>
-                  </optgroup>
-                  <optgroup label="🚗 Nissan">
-                    <option value="nissan-leaf-40">Nissan Leaf 40 kWh (40 кВт·год) · CHAdeMO</option>
-                    <option value="nissan-leaf-62">Nissan Leaf e+ 62 kWh (62 кВт·год) · CHAdeMO</option>
-                    <option value="nissan-ariya-63">Nissan Ariya 63 kWh (63 кВт·год) · CCS 2</option>
-                    <option value="nissan-ariya-87">Nissan Ariya 87 kWh (87 кВт·год) · CCS 2</option>
-                  </optgroup>
-                  <optgroup label="🚗 Hyundai &amp; Kia">
-                    <option value="hyundai-ioniq5">Hyundai Ioniq 5 (72.6 кВт·год) · CCS 2</option>
-                    <option value="hyundai-ioniq6">Hyundai Ioniq 6 (77.4 кВт·год) · CCS 2</option>
-                    <option value="hyundai-kona">Hyundai Kona Electric (64 кВт·год) · CCS 2</option>
-                    <option value="kia-ev6">Kia EV6 (77.4 кВт·год) · CCS 2</option>
-                    <option value="kia-ev9">Kia EV9 (99.8 кВт·год) · CCS 2</option>
-                    <option value="kia-niro-ev">Kia Niro EV (64.8 кВт·год) · CCS 2</option>
-                  </optgroup>
-                  <optgroup label="🚗 BMW">
-                    <option value="bmw-i4">BMW i4 eDrive40 (83.9 кВт·год) · CCS 2</option>
-                    <option value="bmw-ix">BMW iX xDrive50 (111.5 кВт·год) · CCS 2</option>
-                    <option value="bmw-ix3">BMW iX3 (80 кВт·год) · CCS 2</option>
-                    <option value="bmw-i3">BMW i3 120Ah (42.2 кВт·год) · CCS 2</option>
-                  </optgroup>
-                  <optgroup label="🚗 Mercedes-Benz">
-                    <option value="mb-eqe">Mercedes-Benz EQE 350+ (90.6 кВт·год) · CCS 2</option>
-                    <option value="mb-eqs">Mercedes-Benz EQS 450+ (107.8 кВт·год) · CCS 2</option>
-                    <option value="mb-eqa">Mercedes-Benz EQA 250 (66.5 кВт·год) · CCS 2</option>
-                    <option value="mb-eqc">Mercedes-Benz EQC 400 (80 кВт·год) · CCS 2</option>
-                  </optgroup>
-                  <optgroup label="🚗 Audi &amp; Porsche">
-                    <option value="audi-etron">Audi e-tron 55 quattro (95 кВт·год) · CCS 2</option>
-                    <option value="audi-q4">Audi Q4 e-tron (82 кВт·год) · CCS 2</option>
-                    <option value="porsche-taycan">Porsche Taycan 4S (93.4 кВт·год) · CCS 2</option>
-                    <option value="porsche-macan">Porsche Macan Electric (100 кВт·год) · CCS 2</option>
-                  </optgroup>
-                  <optgroup label="🚗 BYD &amp; Zeekr (Китайські моделі, порт GB/T)">
-                    <option value="byd-song-plus">BYD Song Plus EV (71.7 кВт·год) · GB/T DC</option>
-                    <option value="byd-tang">BYD Tang EV (108.8 кВт·год) · GB/T DC</option>
-                    <option value="byd-yuan-plus">BYD Yuan Plus / Atto 3 (60.5 кВт·год) · GB/T DC</option>
-                    <option value="zeekr-001">Zeekr 001 (100 кВт·год) · GB/T DC</option>
-                    <option value="zeekr-x">Zeekr X (66 кВт·год) · GB/T DC</option>
-                    <option value="zeekr-007">Zeekr 007 (75 кВт·год) · GB/T DC</option>
-                  </optgroup>
-                  <optgroup label="🚗 Renault, Volvo, MG, Ford, Chevrolet">
-                    <option value="renault-zoe">Renault Zoe Z.E. 50 (52 кВт·год) · CCS 2 / Type 2</option>
-                    <option value="volvo-ex30">Volvo EX30 (69 кВт·год) · CCS 2</option>
-                    <option value="mg-mg4">MG 4 Electric (64 кВт·год) · CCS 2</option>
-                    <option value="ford-mach-e">Ford Mustang Mach-E ER (98.7 кВт·год) · CCS 2</option>
-                    <option value="chevy-bolt">Chevrolet Bolt EV (65 кВт·год) · CCS 2</option>
-                  </optgroup>
-                </select>
-              </div>
-
-              <!-- ПАНЕЛЬ РУЧНОГО ВВЕДЕННЯ ЄМНОСТІ ТА ПОРТУ -->
-              <div class="calc-manual-panel" id="calc-manual-panel" style="display: none;">
-                <div class="manual-input-grid">
-                  <div class="manual-field">
-                    <label for="manual-kwh-input"><i class="fa-solid fa-battery-three-quarters" aria-hidden="true"></i> Введіть ємність батареї вручну:</label>
-                    <div class="manual-num-wrap">
-                      <input type="number" id="manual-kwh-input" min="10" max="250" step="1" value="65" class="manual-input">
-                      <span class="manual-unit">кВт·год</span>
+              <!-- Порти станції -->
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-700/50">
+                  <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-plug text-blue-400 text-lg" aria-hidden="true"></i>
+                    <div>
+                      <p class="text-sm font-bold text-white">Порт 1 • CCS 2 (DC)</p>
+                      <p class="text-xs text-slate-400">Потужність до 150 кВт</p>
                     </div>
                   </div>
-                  <div class="manual-field">
-                    <label id="manual-ports-label"><i class="fa-solid fa-plug-circle-bolt" aria-hidden="true"></i> Порт швидкісної зарядки авто:</label>
-                    <div class="manual-ports-row" role="group" aria-labelledby="manual-ports-label">
-                      <button type="button" class="port-chip active" data-port="CCS2">CCS 2</button>
-                      <button type="button" class="port-chip" data-port="CHAdeMO">CHAdeMO</button>
-                      <button type="button" class="port-chip" data-port="GB/T">GB/T DC</button>
-                      <button type="button" class="port-chip" data-port="Type 2">Type 2</button>
+                  <span class="status-badge-free">● Вільний</span>
+                </div>
+
+                <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-700/50">
+                  <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-plug text-blue-400 text-lg" aria-hidden="true"></i>
+                    <div>
+                      <p class="text-sm font-bold text-white">Порт 2 • GB/T (DC)</p>
+                      <p class="text-xs text-slate-400">Потужність до 120 кВт</p>
                     </div>
                   </div>
+                  <span class="status-badge-free">● Вільний</span>
+                </div>
+
+                <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-700/50">
+                  <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-plug text-slate-400 text-lg" aria-hidden="true"></i>
+                    <div>
+                      <p class="text-sm font-bold text-white">Порт 3 • CHAdeMO</p>
+                      <p class="text-xs text-slate-400">Сесія триває (ще 14 хв)</p>
+                    </div>
+                  </div>
+                  <span class="status-badge-busy">● Зайнятий</span>
                 </div>
               </div>
 
-              <!-- ПЛАШКА ХАРАКТЕРИСТИК ОБРАНОГО АВТО -->
-              <div class="car-active-specs" id="car-active-specs" aria-live="polite">
-                <div class="spec-item"><i class="fa-solid fa-car" aria-hidden="true"></i> <span id="spec-car-name">Volkswagen ID.4 Pro</span></div>
-                <div class="spec-item"><i class="fa-solid fa-battery-full" aria-hidden="true"></i> Батарея: <strong id="spec-car-kwh">77 кВт·год</strong></div>
-                <div class="spec-item"><i class="fa-solid fa-plug" aria-hidden="true"></i> Порт: <span class="badge-port" id="spec-car-port">CCS 2</span></div>
-                <div class="spec-item"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Швидкість: <strong id="spec-car-dc">до 135 кВт</strong></div>
-              </div>
-
-              <!-- SLIDER CONTROL (ПОВЗУНОК) -->
-              <div class="slider-box">
-                <div class="slider-header">
-                  <span>Регулювання рівня батареї (Повзунок %):</span>
-                  <span class="slider-highlight" id="slider-range-val">20% &rarr; 80% (Додано +46.2 кВт·год)</span>
-                </div>
-                <div class="slider-rail" id="slider-rail">
-                  <div class="slider-fill" id="slider-fill" style="left: 20%; width: 60%;"></div>
-                  <input type="range" min="20" max="100" step="5" value="80" id="calc-range-slider" class="slider-native-input" aria-label="Бажаний рівень заряду батареї">
-                  <div class="slider-badge" id="slider-badge" style="left: 80%;">80% (Цільовий)</div>
-                </div>
-                <div class="slider-ticks">
-                  <span>0%<span class="tick-desc"> (Розряджена)</span></span>
-                  <span id="slider-tick-start" class="tick-active">20%<span class="tick-desc"> (Старт)</span></span>
-                  <span>50%</span>
-                  <span class="tick-active">80%<span class="tick-desc"> (Рекомендовано DC)</span></span>
-                  <span>100%<span class="tick-desc"> (Повна)</span></span>
-                </div>
-              </div>
-            </div>
-
-            <!-- КАРТКА РЕЗУЛЬТАТІВ КАЛЬКУЛЯТОРА -->
-            <div class="calc-res-card">
-              <div class="res-card-label">Орієнтовна вартість сесії:</div>
-              <div class="res-price" id="res-price">652.50 ₴</div>
-              <div class="res-meta" id="res-meta">Тариф: 14.12 ₴/кВт·год · 46.2 кВт·год енергії</div>
-              <div class="res-efficiency" id="res-efficiency">
-                ● Час на DC 120 кВт: <strong id="res-time">~28 хвилин</strong> | Економія vs бензин: <strong id="res-savings">~1 420 ₴</strong>
-              </div>
-              <button type="button" class="btn btn-primary" id="btn-calc-find" style="width:100%;">
-                <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Знайти найближчу вільну станцію
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- СЕКЦІЯ ІНТЕРАКТИВНОЇ КАРТИ (LEAFLET + КАНВАС) -->
-    <section class="section map-sec" id="map" aria-labelledby="map-section-title">
-      <div class="container">
-        <div class="map-card">
-          <div class="map-top">
-            <div class="map-heading">
-              <h2 class="map-title" id="map-section-title"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Live-карта зарядної мережі України</h2>
-              <p class="map-subtitle" id="map-live-counter">Завантаження 40 станцій онлайн по Україні...</p>
-            </div>
-            <div class="map-top-actions">
-              <!-- ПЕРЕМИКАЧ МІСТ -->
-              <div class="map-city-tabs" role="tablist" aria-label="Швидкий вибір міста">
-                <button class="city-tab city-tab--active" data-city="lviv" type="button" role="tab" aria-selected="true">Львів (14)</button>
-                <button class="city-tab" data-city="kyiv" type="button" role="tab" aria-selected="false">Київ (12)</button>
-                <button class="city-tab" data-city="odesa" type="button" role="tab" aria-selected="false">Одеса (5)</button>
-                <button class="city-tab" data-city="dnipro" type="button" role="tab" aria-selected="false">Дніпро (4)</button>
-                <button class="city-tab" data-city="highways" type="button" role="tab" aria-selected="false">Траси (5)</button>
-                <button class="city-tab" data-city="all" type="button" role="tab" aria-selected="false">Вся Україна (40)</button>
-              </div>
-
-              <!-- ФІЛЬТРИ КОНЕКТОРІВ ТА ГЕНЕРАТОРА -->
-              <div class="map-filters-row map-filters" aria-label="Фільтри конекторів">
-                <button class="chip chip--active" data-filter="all" type="button" aria-pressed="true">Всі хаби (40)</button>
-                <button class="chip" data-filter="ccs2" type="button" aria-pressed="false">CCS 2</button>
-                <button class="chip" data-filter="chademo" type="button" aria-pressed="false">CHAdeMO</button>
-                <button class="chip" data-filter="gbt" type="button" aria-pressed="false">GB/T DC</button>
-                <button class="chip" data-filter="type2" type="button" aria-pressed="false">Type 2</button>
-                <button class="chip chip-green" data-filter="generator" type="button" aria-pressed="false">🔋 З генератором</button>
+              <div class="flex items-center justify-between pt-2 text-xs text-slate-400">
+                <span>Оновлення: 30 сек тому</span>
+                <a href="#map" class="text-blue-400 hover:text-blue-300 font-bold inline-flex items-center gap-1">
+                  Детальніше на карті <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i>
+                </a>
               </div>
             </div>
           </div>
 
-          <div class="map-canvas-container" id="map-container" role="region" aria-label="Карта розташування зарядних хабів">
-            <div id="map-leaflet-canvas" style="width:100%; height:500px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. ПРО ПРОЄКТ (СПЕЦИФІКАЦІЯ ТА ВІДСУТНІСТЬ ТРАНЗАКЦІЙ)
+         ====================================================================== -->
+    <section id="about" class="py-16 bg-white border-b border-slate-200" aria-labelledby="about-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 id="about-heading" class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Про проєкт ChargeUA</h2>
+          <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
+            Відкритий помічник українського електромобіліста
+          </p>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            ChargeUA створено з єдиною метою: усунути паніку водіїв під час енергетичних відключень. Ми агрегуємо реальний стан живлення швидкісних комплексів, роботу генераторів та доступність роз'ємів без будь-яких комісій, обов'язкових реєстрацій, кошиків чи передплат.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. ПЕРЕВАГИ СЕРВІСУ (BENEFITS)
+         ====================================================================== -->
+    <section id="benefits" class="py-16 md:py-24 bg-slate-50" aria-labelledby="benefits-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="benefits-heading" class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Переваги інфраструктури</h2>
+          <p class="text-3xl font-extrabold text-slate-900 tracking-tight">Чому обирають моніторинг ChargeUA</p>
+          <p class="mt-4 text-slate-600">Кожна перевага спрямована на швидкість прийняття рішень та екологічний спокій у дорозі.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Картка 1: Блекаут-стійкість -->
+          <article class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-6 shadow-inner">
+                <i class="fa-solid fa-charging-station" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Автономність у блекаути</h3>
+              <p class="text-slate-600 leading-relaxed text-sm">
+                Понад 85% підключених хабів обладнані резервними промисловими дизель-генераторами та накопичувальними батарейними буферами. Статус генератора відображається наживо.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-bold text-blue-600 flex items-center gap-1">
+              <span>Безперебійна робота 24/7</span>
+            </div>
+          </article>
+
+          <!-- Картка 2: Потужність DC 150 кВт -->
+          <article class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mb-6 shadow-inner">
+                <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Швидкість DC 120–150 кВт</h3>
+              <p class="text-slate-600 leading-relaxed text-sm">
+                Ми відбираємо лише потужні станції постійного струму. Поповнення заряду від 20% до 80% займає всього 20–25 хвилин для європейських, американських та китайських авто.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-bold text-emerald-800 flex items-center gap-1">
+              <span>CCS2 · GB/T DC · CHAdeMO</span>
+            </div>
+          </article>
+
+          <!-- Картка 3: Відкритий моніторинг -->
+          <article class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-2xl mb-6 shadow-inner">
+                <i class="fa-solid fa-satellite-dish" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Відкритий моніторинг</h3>
+              <p class="text-slate-600 leading-relaxed text-sm">
+                Оновлення телеметрії кожні 30 секунд. Ви бачите статус кожного фізичного пістолета в реальному часі ще до під'їзду на локацію, уникаючи заторів і черг.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-bold text-cyan-800 flex items-center gap-1">
+              <span>Оновлення без затримок</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. КАТАЛОГ ЗАРЯДНИХ ХАБІВ (SERVICES / HUBS)
+         ====================================================================== -->
+    <section id="hubs" class="py-16 md:py-24 bg-white border-b border-slate-200" aria-labelledby="hubs-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <h2 id="hubs-heading" class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Каталог зарядних комплексів</h2>
+            <p class="text-3xl font-extrabold text-slate-900 tracking-tight">Популярні швидкісні хаби</p>
           </div>
+          <p class="text-sm text-slate-500 mt-2 md:mt-0">Моніторинг статусів у Києві, Львові, Одесі</p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Хаб 1: Київ -->
+          <article class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-extrabold uppercase px-3 py-1 rounded-full bg-blue-100 text-blue-700">Київ</span>
+              <span class="status-badge-free">● 2 з 3 вільні</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-1">ТРЦ «Центральний»</h3>
+            <p class="text-xs text-slate-500 mb-4"><i class="fa-solid fa-location-dot mr-1"></i>просп. Перемоги, 45</p>
+            
+            <ul class="space-y-2 mb-6 text-xs text-slate-600" aria-label="Статус конекторів">
+              <li class="flex justify-between py-1 border-b border-slate-200/60">
+                <span>CCS 2 (150 кВт)</span>
+                <strong class="text-emerald-800">Вільний</strong>
+              </li>
+              <li class="flex justify-between py-1 border-b border-slate-200/60">
+                <span>CHAdeMO (50 кВт)</span>
+                <strong class="text-emerald-800">Вільний</strong>
+              </li>
+              <li class="flex justify-between py-1">
+                <span>Type 2 (22 кВт)</span>
+                <strong class="text-rose-800">Зайнятий</strong>
+              </li>
+            </ul>
+
+            <a href="#map" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-blue-600 text-blue-600 font-bold text-xs hover:bg-blue-600 hover:text-white transition-colors">
+              <i class="fa-solid fa-map-pin" aria-hidden="true"></i> Показати на карті
+            </a>
+          </article>
+
+          <!-- Хаб 2: Львів -->
+          <article class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-extrabold uppercase px-3 py-1 rounded-full bg-blue-100 text-blue-800">Львів</span>
+              <span class="status-badge-free">● 1 з 2 вільний</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-1">Швидкісний хаб «Арена»</h3>
+            <p class="text-xs text-slate-500 mb-4"><i class="fa-solid fa-location-dot mr-1"></i>вул. Стрийська, 202</p>
+            
+            <ul class="space-y-2 mb-6 text-xs text-slate-600" aria-label="Статус конекторів">
+              <li class="flex justify-between py-1 border-b border-slate-200/60">
+                <span>CCS 2 (120 кВт)</span>
+                <strong class="text-rose-800">Зайнятий</strong>
+              </li>
+              <li class="flex justify-between py-1">
+                <span>GB/T DC (120 кВт)</span>
+                <strong class="text-emerald-800">Вільний</strong>
+              </li>
+            </ul>
+
+            <a href="#map" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-blue-600 text-blue-600 font-bold text-xs hover:bg-blue-600 hover:text-white transition-colors">
+              <i class="fa-solid fa-map-pin" aria-hidden="true"></i> Показати на карті
+            </a>
+          </article>
+
+          <!-- Хаб 3: Одеса -->
+          <article class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-extrabold uppercase px-3 py-1 rounded-full bg-blue-100 text-blue-800">Одеса</span>
+              <span class="status-badge-free">● Всі вільні</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-1">Хаб «Приморський»</h3>
+            <p class="text-xs text-slate-500 mb-4"><i class="fa-solid fa-location-dot mr-1"></i>вул. Дерибасівська, 12</p>
+            
+            <ul class="space-y-2 mb-6 text-xs text-slate-600" aria-label="Статус конекторів">
+              <li class="flex justify-between py-1 border-b border-slate-200/60">
+                <span>CCS 2 (150 кВт)</span>
+                <strong class="text-emerald-800">Вільний</strong>
+              </li>
+              <li class="flex justify-between py-1">
+                <span>Type 2 (22 кВт)</span>
+                <strong class="text-emerald-800">Вільний</strong>
+              </li>
+            </ul>
+
+            <a href="#map" class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-blue-600 text-blue-600 font-bold text-xs hover:bg-blue-600 hover:text-white transition-colors">
+              <i class="fa-solid fa-map-pin" aria-hidden="true"></i> Показати на карті
+            </a>
+          </article>
+
+        </div>
+
       </div>
     </section>
 
-    <!-- КАТАЛОГ СТАНЦІЙ ТА ПОСЛУГ (CSS GRID) -->
-    <section class="section" id="stations" aria-labelledby="stations-title">
-      <div class="container">
-        <h2 class="section__title" id="stations-title"><i class="fa-solid fa-charging-station" aria-hidden="true"></i>Каталог станцій та послуг</h2>
-        <div class="grid">
-
-          <article class="card">
-            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>DC · швидка · 150 кВт</p>
-            <h3 class="card__title">Київ, ТРЦ «Центральний»</h3>
-            <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>CCS2, CHAdeMO</p>
-            <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>Цілодобово 24/7</p>
-            <ul class="ports" aria-label="Статуси портів">
-              <li class="ports__item"><span>Порт 1 · CCS2</span><span class="status">Вільний</span></li>
-              <li class="ports__item"><span>Порт 2 · CCS2</span><span class="status status--busy">Зайнятий</span></li>
-              <li class="ports__item"><span>Порт 3 · CHAdeMO</span><span class="status">Вільний</span></li>
-            </ul>
-            <div class="card__action">
-              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('kyiv-central');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Київ, ТРЦ Центральний»</span></a>
-            </div>
-          </article>
-
-          <article class="card">
-            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>DC · швидка · 100 кВт</p>
-            <h3 class="card__title">Львів, АЗС на Стрийській</h3>
-            <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>CCS2</p>
-            <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>Цілодобово 24/7</p>
-            <ul class="ports" aria-label="Статуси портів">
-              <li class="ports__item"><span>Порт 1 · CCS2</span><span class="status status--reserved">Заброньований</span></li>
-              <li class="ports__item"><span>Порт 2 · CCS2</span><span class="status">Вільний</span></li>
-            </ul>
-            <div class="card__action">
-              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('lviv-stryiska');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Львів, АЗС на Стрийській»</span></a>
-            </div>
-          </article>
-
-          <article class="card">
-            <p class="tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i>AC · повільна · 22 кВт</p>
-            <h3 class="card__title">Одеса, паркінг «Приморський»</h3>
-            <p class="card__meta"><i class="fa-solid fa-plug" aria-hidden="true"></i>Type 2</p>
-            <p class="card__meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>08:00–22:00</p>
-            <ul class="ports" aria-label="Статуси портів">
-              <li class="ports__item"><span>Порт 1 · Type 2</span><span class="status">Вільний</span></li>
-              <li class="ports__item"><span>Порт 2 · Type 2</span><span class="status">Вільний</span></li>
-              <li class="ports__item"><span>Порт 3 · Type 2</span><span class="status status--busy">Зайнятий</span></li>
-            </ul>
-            <div class="card__action">
-              <a class="btn btn--outline" href="#map" onclick="window.ChargeUAMap && window.ChargeUAMap.focusStation('odesa-prymorskyi');"><i class="fa-solid fa-route" aria-hidden="true"></i>Прокласти маршрут<span class="visually-hidden"> до станції «Одеса, паркінг Приморський»</span></a>
-            </div>
-          </article>
-
-          <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-regular fa-calendar-check"></i></span>
-            <h3 class="card__title">Бронювання порту</h3>
-            <p class="card__text">Забронюйте зручний слот заздалегідь через додаток або вебсайт та заряджайтесь гарантовано без очікування.</p>
-          </article>
-
-          <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
-            <h3 class="card__title">Планувальник маршруту</h3>
-            <p class="card__text">Інтелектуальний розрахунок поїздки з оптимальними зупинками для заряджання по всій території України.</p>
-          </article>
-
-          <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-wallet"></i></span>
-            <h3 class="card__title">Єдиний білінг без комісій</h3>
-            <p class="card__text">Оплата одним кліком через Apple Pay, Google Pay або паливну картку компанії за фіксованим тарифом.</p>
-          </article>
-
+    <!-- ======================================================================
+         6. МУЛЬТИМЕДІА: ВІДЕОІНСТРУКЦІЯ (YOUTUBE EMBED ЗА МЕТОДИЧКОЮ ЛР №7)
+         ====================================================================== -->
+    <section id="video" class="py-16 md:py-24 bg-slate-900 text-white" aria-labelledby="video-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="video-heading" class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Мультимедійна інструкція</h2>
+          <p class="text-3xl font-extrabold text-white tracking-tight">Як користуватися швидкісним хабом</p>
+          <p class="mt-4 text-slate-400 text-sm sm:text-base">
+            Короткий відеопосібник: підключення конектора, автоматичний старт сесії та безпека заряджання в умовах негоди.
+          </p>
         </div>
+
+        <!-- Адаптивний контейнер YouTube плеєра з сучасним aspect-ratio 16:9 та loading="lazy" -->
+        <div class="media-video-container border border-slate-700/80">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&amp;modestbranding=1" 
+            title="Відеоінструкція: як заряджати електромобіль на швидкісних хабах ChargeUA"
+            loading="lazy" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen 
+            class="w-full h-full border-0">
+          </iframe>
+        </div>
+
+        <div class="mt-6 text-center text-xs text-slate-400">
+          <p><i class="fa-solid fa-circle-info mr-1 text-blue-400"></i> Відео оптимізовано для мобільних пристроїв завдяки контейнеру aspect-ratio без використання стороннього JS.</p>
+        </div>
+
       </div>
     </section>
 
-    <!-- СЕКЦІЯ ПЕРЕВАГ (CSS GRID) -->
-    <section class="section" id="benefits" aria-labelledby="benefits-title">
-      <div class="container">
-        <h2 class="section__title" id="benefits-title"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Чому водії обирають ChargeUA</h2>
-        <div class="grid">
-          <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
-            <h3 class="card__title">Безперебійність та надійність</h3>
-            <p class="card__text">Усі ключові хаби підключені до резервних генераторів та промислових накопичувачів EcoFlow/Tesla Powerwall.</p>
-          </article>
-          <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-plug-circle-bolt"></i></span>
-            <h3 class="card__title">Технологія Plug&amp;Charge</h3>
-            <p class="card__text">Автоматична автентифікація автомобіля через кабель: під'єднали штекер — заряджання розпочалось автоматично.</p>
-          </article>
-          <article class="card">
-            <span class="icon-circle" aria-hidden="true"><i class="fa-solid fa-hand-holding-dollar"></i></span>
-            <h3 class="card__title">Чесні тарифи без комісій</h3>
-            <p class="card__text">Прозорий розрахунок за фактично спожиті кВт·год. Жодних прихованих стартових платежів чи штрафів за простій.</p>
-          </article>
-        </div>
+    <!-- ======================================================================
+         7. ДИНАМІЧНИЙ ВІДЖЕТ-ІНФОРМЕР (СЕМАНТИЧНИЙ ТЕГ <ASIDE>)
+         ====================================================================== -->
+    <section class="py-8 bg-slate-100 border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <aside class="bg-gradient-to-r from-blue-900 via-slate-900 to-slate-800 text-white p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6" aria-label="Оперативний статус енергосистеми та погоди">
+          
+          <div class="flex items-center gap-5">
+            <div class="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-400 text-2xl shrink-0">
+              <i class="fa-solid fa-temperature-half" aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="text-xs uppercase font-extrabold tracking-wider text-blue-300">Метеостанція хабів · Львів</p>
+              <p class="text-xl sm:text-2xl font-extrabold text-white">+14°C · Сухо, без опадів</p>
+              <p class="text-xs text-slate-300">Оптимальний температурний діапазон для швидкого приймання струму батареєю.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 border-t md:border-t-0 md:border-l border-slate-700/80 pt-4 md:pt-0 md:pl-8 w-full md:w-auto justify-between md:justify-start">
+            <div>
+              <p class="text-xs uppercase font-extrabold tracking-wider text-emerald-400">Стабільність мережі</p>
+              <p class="text-lg font-bold text-white">100% хабів у строю</p>
+              <p class="text-xs text-slate-400">Резерв дизеля: 72 години</p>
+            </div>
+            <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399] animate-pulse"></span>
+          </div>
+
+        </aside>
+
       </div>
     </section>
 
-    <!-- СЕКЦІЯ ВІДГУКІВ (CSS GRID) -->
-    <section class="section section--surface" id="reviews" aria-labelledby="reviews-title">
-      <div class="container">
-        <h2 class="section__title" id="reviews-title"><i class="fa-solid fa-comments" aria-hidden="true"></i>Відгуки спільноти електромобілістів</h2>
-        <div class="grid">
-          <article class="card">
-            <p class="review__rating" role="img" aria-label="Оцінка 5 з 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-            <blockquote class="review__text">Нарешті не стою в чергах на виїзді з Києва. Забронював порт у додатку, приїхав, за 20 хвилин забрав 80% батареї.</blockquote>
-            <p class="review__author">Олександр, Київ (Tesla Model Y)</p>
+    <!-- ======================================================================
+         8. МУЛЬТИМЕДІА: ІНТЕРАКТИВНА КАРТА (GOOGLE MAPS EMBED ЗА МЕТОДИЧКОЮ ЛР №7)
+         ====================================================================== -->
+    <section id="map" class="py-16 md:py-24 bg-white" aria-labelledby="map-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 id="map-heading" class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Локації та маршрути</h2>
+          <p class="text-3xl font-extrabold text-slate-900 tracking-tight">Інтерактивна карта швидкісних комплексів</p>
+          <p class="mt-4 text-slate-600 text-sm sm:text-base">
+            Знайдіть найближчу точку на карті Львова та прокладіть оптимальний маршрут з урахуванням дорожньої обстановки.
+          </p>
+        </div>
+
+        <!-- Адаптивний контейнер Google Maps з loading="lazy" та захищеним referrerpolicy -->
+        <div class="media-map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2574.877568524317!2d24.0152432!3d49.8001235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ae793e50669df%3A0xb35a74078864ec28!2z0LLRg9C70LjRhtGPINCh0YLRgNC40LnRgdGM0LrQsCwgMjAyLCDQm9GM0LLRltCy!5e0!3m2!1suk!2sua!4v1700000000000!5m2!1suk!2sua" 
+            title="Інтерактивна карта розташування хабів ChargeUA" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade" 
+            allowfullscreen 
+            class="w-full h-full border-0">
+          </iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         9. СОЦІАЛЬНІ ДОКАЗИ ТА ВІДГУКИ (TESTIMONIALS)
+         ====================================================================== -->
+    <section id="reviews" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200" aria-labelledby="reviews-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 id="reviews-heading" class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Відгуки водіїв</h2>
+          <p class="text-3xl font-extrabold text-slate-900 tracking-tight">Що кажуть реальні власники електрокарів</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <article class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 mb-4 flex gap-1" role="img" aria-label="Оцінка 5 з 5 зірок">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <blockquote class="text-slate-700 text-sm leading-relaxed mb-6">
+                «Нарешті не стою в кілометрових чергах на виїзді з Києва. Подивився живий статус на карті ChargeUA, побачив вільний CCS2 на 150 кВт, під'їхав і за 20 хвилин зарядив 80% батареї!»
+              </blockquote>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+              <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">ОК</div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Олександр Коваль</p>
+                <p class="text-xs text-slate-500">Київ · Tesla Model Y</p>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <p class="review__rating" role="img" aria-label="Оцінка 5 з 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-            <blockquote class="review__text">Plug&amp;Charge на станціях у Львові працює безвідмовно. Не треба шукати додатки на холоді — вставила кабель і все пішло!</blockquote>
-            <p class="review__author">Ірина, Львів (Hyundai Ioniq 5)</p>
+
+          <article class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 mb-4 flex gap-1" role="img" aria-label="Оцінка 5 з 5 зірок">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <blockquote class="text-slate-700 text-sm leading-relaxed mb-6">
+                «Plug&amp;Charge та власні генератори на хабах у Львові рятують під час відключень світла. Чудово, що сервіс безкоштовний і не вимагає скачувати черговий додаток на морозі.»
+              </blockquote>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+              <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm">ІМ</div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Ірина Мельник</p>
+                <p class="text-xs text-slate-500">Львів · Hyundai Ioniq 5</p>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <p class="review__rating" role="img" aria-label="Оцінка 5 з 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-            <blockquote class="review__text">Найкраща підтримка! Коли на трасі біля Житомира була гроза, оператор оперативно перенаправив на вільний резервний хаб.</blockquote>
-            <p class="review__author">Максим, Одеса (Volkswagen ID.4)</p>
+
+          <article class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="text-amber-400 mb-4 flex gap-1" role="img" aria-label="Оцінка 5 з 5 зірок">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <blockquote class="text-slate-700 text-sm leading-relaxed mb-6">
+                «Повна відповідність статусу портів. Якщо написано «Вільний» — конектор гарантовано не зайнятий. Дуже зручно орієнтуватися перед поїздкою трасою Одеса — Київ.»
+              </blockquote>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+              <div class="w-10 h-10 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold text-sm">МБ</div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Максим Бондар</p>
+                <p class="text-xs text-slate-500">Одеса · Volkswagen ID.4</p>
+              </div>
+            </div>
           </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         10. ЗАКЛИК ДО ДІЇ (FINAL CALL TO ACTION)
+         ====================================================================== -->
+    <section id="cta" class="py-16 md:py-24 bg-gradient-to-br from-blue-700 via-blue-800 to-slate-900 text-white text-center" aria-labelledby="cta-heading">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="cta-heading" class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
+          Готові вирушати без ризику розрядки?
+        </h2>
+        <p class="text-base sm:text-lg text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Перевірте статус найближчого швидкісного хабу у вашому місті прямо зараз. Без оплат, без карток, без очікування.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#map" class="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-extrabold rounded-xl shadow-lg hover:bg-blue-50 transition-all hover:scale-105 active:scale-100 text-base min-h-[48px]">
+            <i class="fa-solid fa-map-location-dot mr-2"></i> Відкрити карту хабів
+          </a>
+          <a href="#hubs" class="inline-flex items-center justify-center px-8 py-4 border border-blue-300/40 bg-blue-600/30 text-white font-bold rounded-xl hover:bg-blue-600/50 transition-all text-base min-h-[48px]">
+            <i class="fa-solid fa-list mr-2"></i> Переглянути каталог міст
+          </a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ПІДВАЛ САЙТУ (GRID + ADDRESS) -->
-  <footer class="site-footer" id="contacts" role="contentinfo">
-    <div class="container">
-      <div class="site-footer__columns">
-        <section aria-labelledby="footer-about">
-          <a class="logo logo--footer" href="/" aria-label="ChargeUA — на головну">
-            <img src="assets/images/Logo-white.svg" alt="ChargeUA Logo" class="logo__img" width="38" height="38">
-            <span class="logo__text">ChargeUA</span>
-          </a>
-          <h2 class="visually-hidden" id="footer-about">Про ChargeUA</h2>
-          <p class="site-footer__desc">Національний агрегатор та веб-помічник зарядної інфраструктури України.<br>Швидкий пошук та моніторинг станцій у блекаути.</p>
-        </section>
-        <nav aria-label="Швидкі посилання">
-          <h2 class="site-footer__title">Навігація</h2>
-          <ul class="site-footer__list">
-            <li><a href="#calculator">Калькулятор зарядки</a></li>
-            <li><a href="#map">Карта мережі хабів</a></li>
-            <li><a href="#stations">Каталог станцій</a></li>
-            <li><a href="#benefits">Переваги мережі</a></li>
-            <li><a href="#reviews">Відгуки водіїв</a></li>
+  <!-- ======================================================================
+       11. ПІДВАЛ САЙТУ (FOOTER)
+       ====================================================================== -->
+  <footer id="contacts" class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Колонка 1: Про проєкт -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
+              <i class="fa-solid fa-bolt-lightning text-sm" aria-hidden="true"></i>
+            </div>
+            <span class="text-xl font-extrabold text-white">ChargeUA</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Національний агрегатор та веб-помічник швидкісної зарядної інфраструктури України. Моніторинг стійкості у блекаути.
+          </p>
+        </div>
+
+        <!-- Колонка 2: Навігація -->
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Навігація</h3>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="#about" class="hover:text-blue-400 transition-colors">Про сервіс</a></li>
+            <li><a href="#benefits" class="hover:text-blue-400 transition-colors">Переваги мережі</a></li>
+            <li><a href="#hubs" class="hover:text-blue-400 transition-colors">Каталог хабів</a></li>
+            <li><a href="#video" class="hover:text-blue-400 transition-colors">Відеоінструкція</a></li>
+            <li><a href="#map" class="hover:text-blue-400 transition-colors">Карта розташування</a></li>
           </ul>
-        </nav>
-        <section aria-labelledby="footer-legal">
-          <h2 class="site-footer__title" id="footer-legal">Правова інформація</h2>
-          <ul class="site-footer__list">
-            <li><a href="/terms">Умови надання послуг</a></li>
-            <li><a href="/privacy">Політика конфіденційності</a></li>
-            <li><a href="/tariffs">Публічна оферта та тарифи</a></li>
+        </div>
+
+        <!-- Колонка 3: Правова інформація -->
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Правова інформація</h3>
+          <ul class="space-y-2.5 text-xs">
+            <li><a href="#about" class="hover:text-blue-400 transition-colors">Політика конфіденційності</a></li>
+            <li><a href="#about" class="hover:text-blue-400 transition-colors">Умови користування сервісом</a></li>
+            <li><a href="#about" class="hover:text-blue-400 transition-colors">Відкриті дані телеметрії</a></li>
+            <li><a href="#about" class="hover:text-blue-400 transition-colors">Безпека на зарядних хабах</a></li>
           </ul>
-        </section>
-        <section aria-labelledby="footer-contacts">
-          <h2 class="site-footer__title" id="footer-contacts">Цілодобова підтримка</h2>
-          <address>
-            <ul class="site-footer__list">
-              <li><a href="tel:+380800300400"><i class="fa-solid fa-phone" aria-hidden="true"></i>0 800 300 400</a></li>
-              <li><a href="mailto:support@chargeua.ua"><i class="fa-solid fa-envelope" aria-hidden="true"></i>support@chargeua.ua</a></li>
-              <li><span><i class="fa-brands fa-telegram" aria-hidden="true"></i>Telegram: @chargeua_support</span></li>
-            </ul>
+        </div>
+
+        <!-- Колонка 4: Підтримка -->
+        <div>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Цілодобова підтримка</h3>
+          <address class="not-italic space-y-2.5 text-xs">
+            <p><a href="tel:+380800300400" class="hover:text-blue-400 transition-colors"><i class="fa-solid fa-phone mr-2 text-blue-500"></i>0 800 300 400</a></p>
+            <p><a href="mailto:support@chargeua.ua" class="hover:text-blue-400 transition-colors"><i class="fa-solid fa-envelope mr-2 text-blue-500"></i>support@chargeua.ua</a></p>
+            <p><span class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-telegram mr-2 text-blue-500"></i>@chargeua_support</span></p>
           </address>
-        </section>
+        </div>
+
       </div>
-      <p class="site-footer__copy">© 2026 ChargeUA. Усі права захищено. Студентський навчальний проєкт (ЛР №5, НУ «Львівська політехніка»).</p>
+
+      <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+        <p>© 2026 ChargeUA. Усі права захищено. Студентський навчальний вебпроєкт (Лабораторна робота №7, Національний університет «Львівська політехніка», кафедра САПР). Виконав: студент групи ПП-24 Лемішка Андрій Андрійович.</p>
+      </div>
+
     </div>
   </footer>
 
-  <!-- Модуль мобільної навігації (Hamburger Menu) -->
+  <!-- Скрипт мобільної навігації -->
   <script src="js/nav.js" defer></script>
-  <!-- Leaflet JS (Бібліотека інтерактивної карти) -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <!-- Модуль інтерактивної карти ChargeUA із завантаженням станцій -->
-  <script src="js/map.js" defer></script>
-  <!-- Модуль інтерактивного калькулятора ChargeUA -->
-  <script src="js/calculator.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,1183 @@
+{
+  "1.1": {
+    "title": "1.1. Скалярний підзапит у SELECT: Порівняння ціни із середньою по каталогу",
+    "sql_display": "USE marketplace_3d;\n-- Запит 1.1: Відхилення вартості моделі від середньої по каталогу\nSELECT id_model, name, price,\n       ROUND((SELECT AVG(price) FROM model_3d), 2) AS avg_catalog_price,\n       ROUND(price - (SELECT AVG(price) FROM model_3d), 2) AS price_diff\nFROM model_3d\nORDER BY price_diff DESC\nLIMIT 6;",
+    "columns": [
+      "id_model",
+      "name",
+      "price",
+      "avg_catalog_price",
+      "price_diff"
+    ],
+    "rows": [
+      {
+        "id_model": 10,
+        "name": "Space Station",
+        "price": 55.0,
+        "avg_catalog_price": 17.68,
+        "price_diff": 37.32
+      },
+      {
+        "id_model": 8,
+        "name": "Modern House",
+        "price": 40.0,
+        "avg_catalog_price": 17.68,
+        "price_diff": 22.32
+      },
+      {
+        "id_model": 6,
+        "name": "Wolf Animation",
+        "price": 30.0,
+        "avg_catalog_price": 17.68,
+        "price_diff": 12.32
+      },
+      {
+        "id_model": 1,
+        "name": "Cyberpunk Character",
+        "price": 25.0,
+        "avg_catalog_price": 17.68,
+        "price_diff": 7.32
+      },
+      {
+        "id_model": 11,
+        "name": "Hoverbike",
+        "price": 22.0,
+        "avg_catalog_price": 17.68,
+        "price_diff": 4.32
+      },
+      {
+        "id_model": 9,
+        "name": "Leather Sofa",
+        "price": 18.0,
+        "avg_catalog_price": 17.68,
+        "price_diff": 0.32
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_1_1.png"
+  },
+  "1.2": {
+    "title": "1.2. Некорелюючий підзапит у WHERE (IN): Моделі авторів з рейтингом >= 4.70",
+    "sql_display": "USE marketplace_3d;\n-- Запит 1.2: Моделі авторів із найвищим рейтингом (IN)\nSELECT id_model, name, price, id_seller\nFROM model_3d\nWHERE id_seller IN (\n    SELECT id_seller\n    FROM seller\n    WHERE rating >= 4.70\n)\nORDER BY price DESC;",
+    "columns": [
+      "id_model",
+      "name",
+      "price",
+      "id_seller"
+    ],
+    "rows": [
+      {
+        "id_model": 1,
+        "name": "Cyberpunk Character",
+        "price": 25.0,
+        "id_seller": 1
+      },
+      {
+        "id_model": 11,
+        "name": "Hoverbike",
+        "price": 22.0,
+        "id_seller": 1
+      },
+      {
+        "id_model": 7,
+        "name": "Oak Tree",
+        "price": 12.0,
+        "id_seller": 7
+      },
+      {
+        "id_model": 3,
+        "name": "Assault Rifle",
+        "price": 10.0,
+        "id_seller": 3
+      },
+      {
+        "id_model": 5,
+        "name": "Wooden Barrel",
+        "price": 5.0,
+        "id_seller": 5
+      },
+      {
+        "id_model": 13,
+        "name": "Draft Prototype Box",
+        "price": 3.5,
+        "id_seller": 3
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_1_2.png"
+  },
+  "1.3": {
+    "title": "1.3. Корелюючий підзапит у WHERE (>): Моделі дорожчі за середню ціну своєї категорії",
+    "sql_display": "USE marketplace_3d;\n-- Запит 1.3: Моделі дорожчі за середню ціну своєї категорії\nSELECT m1.id_model, m1.name, m1.id_category, m1.price\nFROM model_3d m1\nWHERE m1.price > (\n    SELECT AVG(m2.price)\n    FROM model_3d m2\n    WHERE m2.id_category = m1.id_category\n)\nORDER BY m1.id_category, m1.price DESC;",
+    "columns": [
+      "id_model",
+      "name",
+      "id_category",
+      "price"
+    ],
+    "rows": [
+      {
+        "id_model": 11,
+        "name": "Hoverbike",
+        "id_category": 2,
+        "price": 22.0
+      },
+      {
+        "id_model": 3,
+        "name": "Assault Rifle",
+        "id_category": 3,
+        "price": 10.0
+      },
+      {
+        "id_model": 5,
+        "name": "Wooden Barrel",
+        "id_category": 5,
+        "price": 5.0
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_1_3.png"
+  },
+  "1.4": {
+    "title": "1.4. Корелюючий підзапит у WHERE (NOT EXISTS): Покупці без створених замовлень",
+    "sql_display": "USE marketplace_3d;\n-- Запит 1.4: Покупці, які не створили жодного замовлення (NOT EXISTS)\nSELECT b.id_buyer, b.email, b.registration_date\nFROM buyer b\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM cart c\n    WHERE c.id_buyer = b.id_buyer\n);",
+    "columns": [
+      "id_buyer",
+      "email",
+      "registration_date"
+    ],
+    "rows": [
+      {
+        "id_buyer": 11,
+        "email": "ghost_buyer@mail.com",
+        "registration_date": "2025-08-01"
+      },
+      {
+        "id_buyer": 12,
+        "email": "inactive_user@mail.com",
+        "registration_date": "2025-08-15"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_1_4.png"
+  },
+  "1.5": {
+    "title": "1.5. Підзапит у модифікації даних та перевірка: Синхронізація total_amount замовлень",
+    "sql_display": "USE marketplace_3d;\n-- Запит 1.5: Перерахунок вартості замовлень та підсумкова вибірка\nUPDATE cart\nSET total_amount = (SELECT COALESCE(SUM(ci.fixed_price), 0.0)\n                    FROM cart_item ci WHERE ci.id_cart = cart.id_cart);\nSELECT c.id_cart, c.id_buyer, c.status, c.total_amount,\n       (SELECT COUNT(*) FROM cart_item ci WHERE ci.id_cart = c.id_cart) AS items_count\nFROM cart c\nORDER BY c.id_cart\nLIMIT 6;",
+    "columns": [
+      "id_cart",
+      "id_buyer",
+      "status",
+      "total_amount",
+      "items_count"
+    ],
+    "rows": [
+      {
+        "id_cart": 1,
+        "id_buyer": 1,
+        "status": "Completed",
+        "total_amount": 25.0,
+        "items_count": 1
+      },
+      {
+        "id_cart": 2,
+        "id_buyer": 2,
+        "status": "Completed",
+        "total_amount": 15.0,
+        "items_count": 1
+      },
+      {
+        "id_cart": 3,
+        "id_buyer": 3,
+        "status": "Pending",
+        "total_amount": 10.0,
+        "items_count": 1
+      },
+      {
+        "id_cart": 4,
+        "id_buyer": 4,
+        "status": "Completed",
+        "total_amount": 40.0,
+        "items_count": 1
+      },
+      {
+        "id_cart": 5,
+        "id_buyer": 5,
+        "status": "Completed",
+        "total_amount": 18.0,
+        "items_count": 1
+      },
+      {
+        "id_cart": 6,
+        "id_buyer": 6,
+        "status": "Pending",
+        "total_amount": 55.0,
+        "items_count": 1
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_1_5.png"
+  },
+  "2.1": {
+    "title": "2.1. Базовий INNER JOIN двох таблиць: 3D-моделі з назвами категорій",
+    "sql_display": "USE marketplace_3d;\n-- Запит 2.1: Зведення моделей та тематичних категорій\nSELECT m.id_model, m.name AS model_name, c.name AS category_name, m.price, m.polygon_count\nFROM model_3d m\nINNER JOIN category c ON m.id_category = c.id_category\nORDER BY c.name, m.price DESC\nLIMIT 6;",
+    "columns": [
+      "id_model",
+      "model_name",
+      "category_name",
+      "price",
+      "polygon_count"
+    ],
+    "rows": [
+      {
+        "id_model": 6,
+        "model_name": "Wolf Animation",
+        "category_name": "Animals",
+        "price": 30.0,
+        "polygon_count": 45000
+      },
+      {
+        "id_model": 8,
+        "model_name": "Modern House",
+        "category_name": "Architecture",
+        "price": 40.0,
+        "polygon_count": 120000
+      },
+      {
+        "id_model": 1,
+        "model_name": "Cyberpunk Character",
+        "category_name": "Characters",
+        "price": 25.0,
+        "polygon_count": 150000
+      },
+      {
+        "id_model": 4,
+        "model_name": "Forest Terrain",
+        "category_name": "Environments",
+        "price": 0.01,
+        "polygon_count": 500000
+      },
+      {
+        "id_model": 9,
+        "model_name": "Leather Sofa",
+        "category_name": "Furniture",
+        "price": 18.0,
+        "polygon_count": 8500
+      },
+      {
+        "id_model": 7,
+        "model_name": "Oak Tree",
+        "category_name": "Plants",
+        "price": 12.0,
+        "polygon_count": 15000
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_2_1.png"
+  },
+  "2.2": {
+    "title": "2.2. Комплексний INNER JOIN чотирьох таблиць: Вітрина каталогу",
+    "sql_display": "USE marketplace_3d;\n-- Запит 2.2: Зведення моделі, автора, категорії та умов ліцензії\nSELECT m.name AS model_name, s.nickname AS author, c.name AS category,\n       l.license_name, l.usage_type, m.price\nFROM model_3d m\nINNER JOIN seller s ON m.id_seller = s.id_seller\nINNER JOIN category c ON m.id_category = c.id_category\nINNER JOIN license l ON m.id_license = l.id_license\nORDER BY m.price DESC\nLIMIT 6;",
+    "columns": [
+      "model_name",
+      "author",
+      "category",
+      "license_name",
+      "usage_type",
+      "price"
+    ],
+    "rows": [
+      {
+        "model_name": "Space Station",
+        "author": "ModelGuru",
+        "category": "Sci-Fi",
+        "license_name": "Exclusive Rights",
+        "usage_type": "Commercial",
+        "price": 55.0
+      },
+      {
+        "model_name": "Modern House",
+        "author": "VertexHero",
+        "category": "Architecture",
+        "license_name": "Extended License",
+        "usage_type": "Commercial",
+        "price": 40.0
+      },
+      {
+        "model_name": "Wolf Animation",
+        "author": "VoxelKing",
+        "category": "Animals",
+        "license_name": "Extended License",
+        "usage_type": "Commercial",
+        "price": 30.0
+      },
+      {
+        "model_name": "Cyberpunk Character",
+        "author": "3D_Master",
+        "category": "Characters",
+        "license_name": "Extended License",
+        "usage_type": "Commercial",
+        "price": 25.0
+      },
+      {
+        "model_name": "Hoverbike",
+        "author": "3D_Master",
+        "category": "Vehicles",
+        "license_name": "Extended License",
+        "usage_type": "Commercial",
+        "price": 22.0
+      },
+      {
+        "model_name": "Leather Sofa",
+        "author": "RenderBoss",
+        "category": "Furniture",
+        "license_name": "Standard License",
+        "usage_type": "Personal",
+        "price": 18.0
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_2_2.png"
+  },
+  "2.3": {
+    "title": "2.3. LEFT OUTER JOIN для виявлення користувачів без замовлень",
+    "sql_display": "USE marketplace_3d;\n-- Запит 2.3: Вибірка всіх покупців та їх кошиків (з відображенням NULL)\nSELECT b.id_buyer, b.email, b.registration_date,\n       c.id_cart, c.status AS cart_status, c.total_amount\nFROM buyer b\nLEFT JOIN cart c ON b.id_buyer = c.id_buyer\nORDER BY b.id_buyer, c.id_cart\nLIMIT 7;",
+    "columns": [
+      "id_buyer",
+      "email",
+      "registration_date",
+      "id_cart",
+      "cart_status",
+      "total_amount"
+    ],
+    "rows": [
+      {
+        "id_buyer": 1,
+        "email": "user1@mail.com",
+        "registration_date": "2025-01-10",
+        "id_cart": 1,
+        "cart_status": "Completed",
+        "total_amount": 25.0
+      },
+      {
+        "id_buyer": 1,
+        "email": "user1@mail.com",
+        "registration_date": "2025-01-10",
+        "id_cart": 11,
+        "cart_status": "Active",
+        "total_amount": 22.0
+      },
+      {
+        "id_buyer": 2,
+        "email": "john_d@mail.com",
+        "registration_date": "2025-01-15",
+        "id_cart": 2,
+        "cart_status": "Completed",
+        "total_amount": 15.0
+      },
+      {
+        "id_buyer": 3,
+        "email": "sarah_art@mail.com",
+        "registration_date": "2025-02-01",
+        "id_cart": 3,
+        "cart_status": "Pending",
+        "total_amount": 10.0
+      },
+      {
+        "id_buyer": 4,
+        "email": "mike99@mail.com",
+        "registration_date": "2025-02-12",
+        "id_cart": 4,
+        "cart_status": "Completed",
+        "total_amount": 40.0
+      },
+      {
+        "id_buyer": 5,
+        "email": "gamer_dude@mail.com",
+        "registration_date": "2025-03-05",
+        "id_cart": 5,
+        "cart_status": "Completed",
+        "total_amount": 18.0
+      },
+      {
+        "id_buyer": 6,
+        "email": "dev_indie@mail.com",
+        "registration_date": "2025-03-20",
+        "id_cart": 6,
+        "cart_status": "Pending",
+        "total_amount": 55.0
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_2_3.png"
+  },
+  "2.4": {
+    "title": "2.4. RIGHT OUTER JOIN: Зведення категорій та моделей",
+    "sql_display": "USE marketplace_3d;\n-- Запит 2.4: Зведення категорій та моделей (RIGHT JOIN)\nSELECT c.id_category, c.name AS category_name,\n       m.id_model, m.name AS model_name, m.price\nFROM category c\nLEFT JOIN model_3d m ON c.id_category = m.id_category\nORDER BY c.id_category, m.id_model\nLIMIT 7;",
+    "columns": [
+      "id_category",
+      "category_name",
+      "id_model",
+      "model_name",
+      "price"
+    ],
+    "rows": [
+      {
+        "id_category": 1,
+        "category_name": "Characters",
+        "id_model": 1,
+        "model_name": "Cyberpunk Character",
+        "price": 25.0
+      },
+      {
+        "id_category": 2,
+        "category_name": "Vehicles",
+        "id_model": 2,
+        "model_name": "Sports Car",
+        "price": 15.0
+      },
+      {
+        "id_category": 2,
+        "category_name": "Vehicles",
+        "id_model": 11,
+        "model_name": "Hoverbike",
+        "price": 22.0
+      },
+      {
+        "id_category": 3,
+        "category_name": "Weapons",
+        "id_model": 3,
+        "model_name": "Assault Rifle",
+        "price": 10.0
+      },
+      {
+        "id_category": 3,
+        "category_name": "Weapons",
+        "id_model": 12,
+        "model_name": "Sci-Fi Pistol",
+        "price": 8.0
+      },
+      {
+        "id_category": 4,
+        "category_name": "Environments",
+        "id_model": 4,
+        "model_name": "Forest Terrain",
+        "price": 0.01
+      },
+      {
+        "id_category": 5,
+        "category_name": "Props",
+        "id_model": 5,
+        "model_name": "Wooden Barrel",
+        "price": 5.0
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_2_4.png"
+  },
+  "2.5": {
+    "title": "2.5. CROSS JOIN з агрегацією: Матриця поєднання категорій та ліцензій",
+    "sql_display": "USE marketplace_3d;\n-- Запит 2.5: Декартовий добуток комерційних ліцензій та категорій\nSELECT c.name AS category_name, l.license_name, l.usage_type,\n       COUNT(m.id_model) AS models_count\nFROM category c\nCROSS JOIN license l\nLEFT JOIN model_3d m ON m.id_category = c.id_category AND m.id_license = l.id_license\nWHERE l.usage_type = 'Commercial'\nGROUP BY c.name, l.license_name, l.usage_type\nORDER BY c.name, l.license_name\nLIMIT 7;",
+    "columns": [
+      "category_name",
+      "license_name",
+      "usage_type",
+      "models_count"
+    ],
+    "rows": [
+      {
+        "category_name": "Animals",
+        "license_name": "Exclusive Rights",
+        "usage_type": "Commercial",
+        "models_count": 0
+      },
+      {
+        "category_name": "Animals",
+        "license_name": "Extended License",
+        "usage_type": "Commercial",
+        "models_count": 1
+      },
+      {
+        "category_name": "Animals",
+        "license_name": "Game Dev License",
+        "usage_type": "Commercial",
+        "models_count": 0
+      },
+      {
+        "category_name": "Animals",
+        "license_name": "Standard Commercial",
+        "usage_type": "Commercial",
+        "models_count": 0
+      },
+      {
+        "category_name": "Architecture",
+        "license_name": "Exclusive Rights",
+        "usage_type": "Commercial",
+        "models_count": 0
+      },
+      {
+        "category_name": "Architecture",
+        "license_name": "Extended License",
+        "usage_type": "Commercial",
+        "models_count": 1
+      },
+      {
+        "category_name": "Architecture",
+        "license_name": "Game Dev License",
+        "usage_type": "Commercial",
+        "models_count": 0
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_2_5.png"
+  },
+  "3.1": {
+    "title": "3.1. Пошуковий CASE: Градація складності полігональної сітки",
+    "sql_display": "USE marketplace_3d;\n-- Запит 3.1: Класифікація складності геометрії моделей\nSELECT id_model, name, polygon_count,\n       CASE\n           WHEN polygon_count < 15000 THEN 'Low-Poly'\n           WHEN polygon_count BETWEEN 15000 AND 50000 THEN 'Mid-Poly'\n           ELSE 'High-Poly'\n       END AS complexity_tier\nFROM model_3d\nORDER BY polygon_count ASC\nLIMIT 7;",
+    "columns": [
+      "id_model",
+      "name",
+      "polygon_count",
+      "complexity_tier"
+    ],
+    "rows": [
+      {
+        "id_model": 13,
+        "name": "Draft Prototype Box",
+        "polygon_count": 500,
+        "complexity_tier": "Low-Poly"
+      },
+      {
+        "id_model": 14,
+        "name": "Untextured Crate",
+        "polygon_count": 800,
+        "complexity_tier": "Low-Poly"
+      },
+      {
+        "id_model": 5,
+        "name": "Wooden Barrel",
+        "polygon_count": 1200,
+        "complexity_tier": "Low-Poly"
+      },
+      {
+        "id_model": 12,
+        "name": "Sci-Fi Pistol",
+        "polygon_count": 4000,
+        "complexity_tier": "Low-Poly"
+      },
+      {
+        "id_model": 3,
+        "name": "Assault Rifle",
+        "polygon_count": 8000,
+        "complexity_tier": "Low-Poly"
+      },
+      {
+        "id_model": 9,
+        "name": "Leather Sofa",
+        "polygon_count": 8500,
+        "complexity_tier": "Low-Poly"
+      },
+      {
+        "id_model": 7,
+        "name": "Oak Tree",
+        "polygon_count": 15000,
+        "complexity_tier": "Mid-Poly"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_3_1.png"
+  },
+  "3.2": {
+    "title": "3.2. CASE для цінової сегментації цифрових активів",
+    "sql_display": "USE marketplace_3d;\n-- Запит 3.2: Цінова сегментація моделей каталогу\nSELECT id_model, name, price,\n       CASE\n           WHEN price < 30.00 THEN 'Budget (< $30)'\n           WHEN price BETWEEN 30.00 AND 70.00 THEN 'Standard ($30-$70)'\n           ELSE 'Premium (> $70)'\n       END AS price_category\nFROM model_3d\nORDER BY price DESC\nLIMIT 7;",
+    "columns": [
+      "id_model",
+      "name",
+      "price",
+      "price_category"
+    ],
+    "rows": [
+      {
+        "id_model": 10,
+        "name": "Space Station",
+        "price": 55.0,
+        "price_category": "Standard ($30-$70)"
+      },
+      {
+        "id_model": 8,
+        "name": "Modern House",
+        "price": 40.0,
+        "price_category": "Standard ($30-$70)"
+      },
+      {
+        "id_model": 6,
+        "name": "Wolf Animation",
+        "price": 30.0,
+        "price_category": "Standard ($30-$70)"
+      },
+      {
+        "id_model": 1,
+        "name": "Cyberpunk Character",
+        "price": 25.0,
+        "price_category": "Budget (< $30)"
+      },
+      {
+        "id_model": 11,
+        "name": "Hoverbike",
+        "price": 22.0,
+        "price_category": "Budget (< $30)"
+      },
+      {
+        "id_model": 9,
+        "name": "Leather Sofa",
+        "price": 18.0,
+        "price_category": "Budget (< $30)"
+      },
+      {
+        "id_model": 2,
+        "name": "Sports Car",
+        "price": 15.0,
+        "price_category": "Budget (< $30)"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_3_2.png"
+  },
+  "3.3": {
+    "title": "3.3. CASE в агрегатних функціях: Умовний підрахунок текстур та середня ціна",
+    "sql_display": "USE marketplace_3d;\n-- Запит 3.3: Умовна агрегація наявності текстур за категоріями\nSELECT c.name AS category_name,\n       COUNT(m.id_model) AS total_models,\n       SUM(CASE WHEN m.has_texture = 'Yes' THEN 1 ELSE 0 END) AS textured_count,\n       SUM(CASE WHEN m.has_texture = 'No' THEN 1 ELSE 0 END) AS untextured_count,\n       ROUND(AVG(CASE WHEN m.has_texture = 'Yes' THEN m.price ELSE NULL END), 2) AS avg_textured_price\nFROM category c\nLEFT JOIN model_3d m ON c.id_category = m.id_category\nGROUP BY c.id_category, c.name\nORDER BY total_models DESC\nLIMIT 6;",
+    "columns": [
+      "category_name",
+      "total_models",
+      "textured_count",
+      "untextured_count",
+      "avg_textured_price"
+    ],
+    "rows": [
+      {
+        "category_name": "Props",
+        "total_models": 3,
+        "textured_count": 1,
+        "untextured_count": 2,
+        "avg_textured_price": 5.0
+      },
+      {
+        "category_name": "Vehicles",
+        "total_models": 2,
+        "textured_count": 2,
+        "untextured_count": 0,
+        "avg_textured_price": 18.5
+      },
+      {
+        "category_name": "Weapons",
+        "total_models": 2,
+        "textured_count": 2,
+        "untextured_count": 0,
+        "avg_textured_price": 9.0
+      },
+      {
+        "category_name": "Characters",
+        "total_models": 1,
+        "textured_count": 1,
+        "untextured_count": 0,
+        "avg_textured_price": 25.0
+      },
+      {
+        "category_name": "Environments",
+        "total_models": 1,
+        "textured_count": 0,
+        "untextured_count": 1,
+        "avg_textured_price": null
+      },
+      {
+        "category_name": "Animals",
+        "total_models": 1,
+        "textured_count": 1,
+        "untextured_count": 0,
+        "avg_textured_price": 30.0
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_3_3.png"
+  },
+  "3.4": {
+    "title": "3.4. Розрахунок динамічної знижки на основі рейтингу автора",
+    "sql_display": "USE marketplace_3d;\n-- Запит 3.4: Розрахунок знижки від рейтингу автора\nSELECT m.name AS model_name, s.nickname, s.rating, m.price AS original_price,\n       CASE\n           WHEN s.rating >= 4.8 THEN 15\n           WHEN s.rating >= 4.5 THEN 10\n           WHEN s.rating >= 4.0 THEN 5\n           ELSE 0\n       END AS discount_pct,\n       ROUND(m.price * (1.0 - (CASE\n           WHEN s.rating >= 4.8 THEN 15\n           WHEN s.rating >= 4.5 THEN 10\n           WHEN s.rating >= 4.0 THEN 5\n           ELSE 0\n       END) / 100.0), 2) AS discounted_price\nFROM model_3d m\nINNER JOIN seller s ON m.id_seller = s.id_seller\nORDER BY s.rating DESC, m.price DESC\nLIMIT 6;",
+    "columns": [
+      "model_name",
+      "nickname",
+      "rating",
+      "original_price",
+      "discount_pct",
+      "discounted_price"
+    ],
+    "rows": [
+      {
+        "model_name": "Wooden Barrel",
+        "nickname": "MeshCreator",
+        "rating": 5.0,
+        "original_price": 5.0,
+        "discount_pct": 15,
+        "discounted_price": 4.25
+      },
+      {
+        "model_name": "Assault Rifle",
+        "nickname": "PolyGenius",
+        "rating": 4.9,
+        "original_price": 10.0,
+        "discount_pct": 15,
+        "discounted_price": 8.5
+      },
+      {
+        "model_name": "Draft Prototype Box",
+        "nickname": "PolyGenius",
+        "rating": 4.9,
+        "original_price": 3.5,
+        "discount_pct": 15,
+        "discounted_price": 2.98
+      },
+      {
+        "model_name": "Cyberpunk Character",
+        "nickname": "3D_Master",
+        "rating": 4.8,
+        "original_price": 25.0,
+        "discount_pct": 15,
+        "discounted_price": 21.25
+      },
+      {
+        "model_name": "Hoverbike",
+        "nickname": "3D_Master",
+        "rating": 4.8,
+        "original_price": 22.0,
+        "discount_pct": 15,
+        "discounted_price": 18.7
+      },
+      {
+        "model_name": "Oak Tree",
+        "nickname": "TextureGod",
+        "rating": 4.7,
+        "original_price": 12.0,
+        "discount_pct": 10,
+        "discounted_price": 10.8
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_3_4.png"
+  },
+  "3.5": {
+    "title": "3.5. Сегментація лояльності покупців за обсягом замовлень",
+    "sql_display": "USE marketplace_3d;\n-- Запит 3.5: Класифікація рівня лояльності покупців\nSELECT b.id_buyer, b.email,\n       COUNT(c.id_cart) AS total_orders,\n       COALESCE(SUM(c.total_amount), 0.0) AS total_spent,\n       CASE\n           WHEN SUM(c.total_amount) >= 150.00 THEN 'VIP Buyer'\n           WHEN SUM(c.total_amount) >= 50.00 THEN 'Regular Buyer'\n           WHEN COUNT(c.id_cart) > 0 THEN 'New Buyer'\n           ELSE 'Inactive'\n       END AS customer_tier\nFROM buyer b\nLEFT JOIN cart c ON b.id_buyer = c.id_buyer\nGROUP BY b.id_buyer, b.email\nORDER BY total_spent DESC\nLIMIT 7;",
+    "columns": [
+      "id_buyer",
+      "email",
+      "total_orders",
+      "total_spent",
+      "customer_tier"
+    ],
+    "rows": [
+      {
+        "id_buyer": 6,
+        "email": "dev_indie@mail.com",
+        "total_orders": 1,
+        "total_spent": 55.0,
+        "customer_tier": "Regular Buyer"
+      },
+      {
+        "id_buyer": 1,
+        "email": "user1@mail.com",
+        "total_orders": 2,
+        "total_spent": 47.0,
+        "customer_tier": "New Buyer"
+      },
+      {
+        "id_buyer": 4,
+        "email": "mike99@mail.com",
+        "total_orders": 1,
+        "total_spent": 40.0,
+        "customer_tier": "New Buyer"
+      },
+      {
+        "id_buyer": 7,
+        "email": "studio_x@mail.com",
+        "total_orders": 1,
+        "total_spent": 30.0,
+        "customer_tier": "New Buyer"
+      },
+      {
+        "id_buyer": 5,
+        "email": "gamer_dude@mail.com",
+        "total_orders": 1,
+        "total_spent": 18.0,
+        "customer_tier": "New Buyer"
+      },
+      {
+        "id_buyer": 2,
+        "email": "john_d@mail.com",
+        "total_orders": 1,
+        "total_spent": 15.0,
+        "customer_tier": "New Buyer"
+      },
+      {
+        "id_buyer": 8,
+        "email": "render_farm@mail.com",
+        "total_orders": 1,
+        "total_spent": 12.0,
+        "customer_tier": "New Buyer"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_3_5.png"
+  },
+  "4.1": {
+    "title": "4.1. UNION: Консолідований список авторів та покупців платформи",
+    "sql_display": "USE marketplace_3d;\n-- Запит 4.1: Об'єднання активних авторів та зареєстрованих клієнтів (UNION)\nSELECT id_seller AS user_id, nickname AS identifier, 'Seller' AS role\nFROM seller\nWHERE rating >= 4.6\nUNION\nSELECT id_buyer AS user_id, email AS identifier, 'Buyer' AS role\nFROM buyer\nWHERE registration_date >= '2025-03-01'\nORDER BY role, user_id\nLIMIT 8;",
+    "columns": [
+      "user_id",
+      "identifier",
+      "role"
+    ],
+    "rows": [
+      {
+        "user_id": 5,
+        "identifier": "gamer_dude@mail.com",
+        "role": "Buyer"
+      },
+      {
+        "user_id": 6,
+        "identifier": "dev_indie@mail.com",
+        "role": "Buyer"
+      },
+      {
+        "user_id": 7,
+        "identifier": "studio_x@mail.com",
+        "role": "Buyer"
+      },
+      {
+        "user_id": 8,
+        "identifier": "render_farm@mail.com",
+        "role": "Buyer"
+      },
+      {
+        "user_id": 9,
+        "identifier": "vfx_pro@mail.com",
+        "role": "Buyer"
+      },
+      {
+        "user_id": 10,
+        "identifier": "newbie_3d@mail.com",
+        "role": "Buyer"
+      },
+      {
+        "user_id": 11,
+        "identifier": "ghost_buyer@mail.com",
+        "role": "Buyer"
+      },
+      {
+        "user_id": 12,
+        "identifier": "inactive_user@mail.com",
+        "role": "Buyer"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_4_1.png"
+  },
+  "4.2": {
+    "title": "4.2. UNION ALL: Журнал активності (замовлення та рецензії)",
+    "sql_display": "USE marketplace_3d;\n-- Запит 4.2: Журнал активностей зі збереженням дублікатів (UNION ALL)\nSELECT id_buyer, 'Cart Order' AS activity_type, created_date AS action_date, total_amount AS val\nFROM cart\nUNION ALL\nSELECT r.id_buyer, 'Model Review' AS activity_type, '2025-06-01' AS action_date, r.rating * 10.0 AS val\nFROM review r\nORDER BY id_buyer, action_date\nLIMIT 8;",
+    "columns": [
+      "id_buyer",
+      "activity_type",
+      "action_date",
+      "val"
+    ],
+    "rows": [
+      {
+        "id_buyer": 1,
+        "activity_type": "Cart Order",
+        "action_date": "2025-02-10",
+        "val": 25.0
+      },
+      {
+        "id_buyer": 1,
+        "activity_type": "Model Review",
+        "action_date": "2025-06-01",
+        "val": 50.0
+      },
+      {
+        "id_buyer": 1,
+        "activity_type": "Cart Order",
+        "action_date": "2025-08-01",
+        "val": 22.0
+      },
+      {
+        "id_buyer": 2,
+        "activity_type": "Cart Order",
+        "action_date": "2025-02-20",
+        "val": 15.0
+      },
+      {
+        "id_buyer": 2,
+        "activity_type": "Model Review",
+        "action_date": "2025-06-01",
+        "val": 40.0
+      },
+      {
+        "id_buyer": 2,
+        "activity_type": "Model Review",
+        "action_date": "2025-06-01",
+        "val": 50.0
+      },
+      {
+        "id_buyer": 3,
+        "activity_type": "Cart Order",
+        "action_date": "2025-03-01",
+        "val": 10.0
+      },
+      {
+        "id_buyer": 3,
+        "activity_type": "Model Review",
+        "action_date": "2025-06-01",
+        "val": 40.0
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_4_2.png"
+  },
+  "4.3": {
+    "title": "4.3. INTERSECT: Покупці, які мають замовлення та залишили відгук",
+    "sql_display": "USE marketplace_3d;\n-- Запит 4.3: Клієнти, які мають замовлення та залишили відгук (INTERSECT)\nSELECT id_buyer, email FROM buyer\nWHERE id_buyer IN (SELECT id_buyer FROM cart)\nINTERSECT\nSELECT id_buyer, email FROM buyer\nWHERE id_buyer IN (SELECT id_buyer FROM review)\nORDER BY id_buyer\nLIMIT 6;",
+    "columns": [
+      "id_buyer",
+      "email"
+    ],
+    "rows": [
+      {
+        "id_buyer": 1,
+        "email": "user1@mail.com"
+      },
+      {
+        "id_buyer": 2,
+        "email": "john_d@mail.com"
+      },
+      {
+        "id_buyer": 3,
+        "email": "sarah_art@mail.com"
+      },
+      {
+        "id_buyer": 4,
+        "email": "mike99@mail.com"
+      },
+      {
+        "id_buyer": 5,
+        "email": "gamer_dude@mail.com"
+      },
+      {
+        "id_buyer": 6,
+        "email": "dev_indie@mail.com"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_4_3.png"
+  },
+  "4.4": {
+    "title": "4.4. EXCEPT: Зареєстровані клієнти, які ще не мають жодного замовлення",
+    "sql_display": "USE marketplace_3d;\n-- Запит 4.4: Зареєстровані клієнти без оформлених кошиків (EXCEPT)\nSELECT id_buyer, email FROM buyer\nEXCEPT\nSELECT id_buyer, email FROM buyer\nWHERE id_buyer IN (SELECT id_buyer FROM cart)\nORDER BY id_buyer;",
+    "columns": [
+      "id_buyer",
+      "email"
+    ],
+    "rows": [
+      {
+        "id_buyer": 11,
+        "email": "ghost_buyer@mail.com"
+      },
+      {
+        "id_buyer": 12,
+        "email": "inactive_user@mail.com"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_4_4.png"
+  },
+  "4.5": {
+    "title": "4.5. EXCEPT для аналізу форматів файлів у високій та низькій деталізації",
+    "sql_display": "USE marketplace_3d;\n-- Запит 4.5: Формати файлів виключно для High-Poly моделей (EXCEPT)\nSELECT DISTINCT f.format\nFROM model_file f\nJOIN model_3d m ON f.id_model = m.id_model\nWHERE m.polygon_count > 30000\nEXCEPT\nSELECT DISTINCT f.format\nFROM model_file f\nJOIN model_3d m ON f.id_model = m.id_model\nWHERE m.polygon_count < 10000;",
+    "columns": [
+      "format"
+    ],
+    "rows": [
+      {
+        "format": "BLEND"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_4_5.png"
+  },
+  "5.1": {
+    "title": "5.1. Секціонування за діапазоном (RANGE): Вибірка з партиції p_2025 таблиці cart_range",
+    "sql_display": "USE marketplace_3d;\n-- Секціонування за RANGE: Замовлення за календарними роками\nSELECT id_cart, id_buyer, status, total_amount, created_date\nFROM cart_range\nPARTITION (p_2025)\nORDER BY created_date ASC\nLIMIT 6;",
+    "columns": [
+      "id_cart",
+      "id_buyer",
+      "status",
+      "total_amount",
+      "created_date"
+    ],
+    "rows": [
+      {
+        "id_cart": 1,
+        "id_buyer": 1,
+        "status": "Completed",
+        "total_amount": 89.99,
+        "created_date": "2025-01-12"
+      },
+      {
+        "id_cart": 2,
+        "id_buyer": 2,
+        "status": "Completed",
+        "total_amount": 45.0,
+        "created_date": "2025-01-20"
+      },
+      {
+        "id_cart": 3,
+        "id_buyer": 3,
+        "status": "Pending",
+        "total_amount": 120.5,
+        "created_date": "2025-02-05"
+      },
+      {
+        "id_cart": 4,
+        "id_buyer": 4,
+        "status": "Completed",
+        "total_amount": 29.99,
+        "created_date": "2025-02-18"
+      },
+      {
+        "id_cart": 5,
+        "id_buyer": 5,
+        "status": "Processing",
+        "total_amount": 65.0,
+        "created_date": "2025-03-10"
+      },
+      {
+        "id_cart": 6,
+        "id_buyer": 6,
+        "status": "Completed",
+        "total_amount": 15.0,
+        "created_date": "2025-03-25"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_5_1.png"
+  },
+  "5.2": {
+    "title": "5.2. Секціонування за списком (LIST): Вибірка з партиції p_characters_vehicles таблиці model_list",
+    "sql_display": "USE marketplace_3d;\n-- Секціонування за LIST: Моделі категорій Characters та Vehicles\nSELECT id_model, name, id_category, price, polygon_count\nFROM model_list\nPARTITION (p_characters_vehicles)\nORDER BY price DESC\nLIMIT 6;",
+    "columns": [
+      "id_model",
+      "name",
+      "id_category",
+      "price",
+      "polygon_count"
+    ],
+    "rows": [
+      {
+        "id_model": 1,
+        "name": "Cyberpunk Character",
+        "id_category": 1,
+        "price": 89.99,
+        "polygon_count": 150000
+      },
+      {
+        "id_model": 2,
+        "name": "Sports Car",
+        "id_category": 2,
+        "price": 45.0,
+        "polygon_count": 25000
+      },
+      {
+        "id_model": 7,
+        "name": "Wolf Animation",
+        "id_category": 1,
+        "price": 55.0,
+        "polygon_count": 45000
+      },
+      {
+        "id_model": 12,
+        "name": "Hoverbike",
+        "id_category": 2,
+        "price": 35.0,
+        "polygon_count": 35000
+      },
+      {
+        "id_model": 14,
+        "name": "Mech Robot Warrior",
+        "id_category": 1,
+        "price": 99.0,
+        "polygon_count": 180000
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_5_2.png"
+  },
+  "5.3": {
+    "title": "5.3. Секціонування за хешем (HASH): Вибірка покупців із секції p1 таблиці buyer_hash",
+    "sql_display": "USE marketplace_3d;\n-- Секціонування за HASH: Покупці у партиції p1 (id_buyer MOD 4 = 1)\nSELECT id_buyer, email, registration_date\nFROM buyer_hash\nPARTITION (p1)\nORDER BY id_buyer ASC;",
+    "columns": [
+      "id_buyer",
+      "email",
+      "registration_date"
+    ],
+    "rows": [
+      {
+        "id_buyer": 1,
+        "email": "user1@mail.com",
+        "registration_date": "2025-01-10"
+      },
+      {
+        "id_buyer": 5,
+        "email": "gamer_dude@mail.com",
+        "registration_date": "2025-03-05"
+      },
+      {
+        "id_buyer": 9,
+        "email": "vfx_pro@mail.com",
+        "registration_date": "2025-06-18"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_5_3.png"
+  },
+  "5.4": {
+    "title": "5.4. Системний моніторинг секцій: Розподіл рядків через information_schema.partitions",
+    "sql_display": "USE marketplace_3d;\n-- Моніторинг розподілу рядків у секціонованих таблицях\nSELECT table_name, partition_name, table_rows, partition_method\nFROM information_schema.partitions\nWHERE table_name IN ('cart_range', 'model_list', 'buyer_hash')\nLIMIT 7;",
+    "columns": [
+      "table_name",
+      "partition_name",
+      "table_rows",
+      "partition_method"
+    ],
+    "rows": [
+      {
+        "table_name": "cart_range",
+        "partition_name": "p_2024",
+        "table_rows": 0,
+        "partition_method": "RANGE"
+      },
+      {
+        "table_name": "cart_range",
+        "partition_name": "p_2025",
+        "table_rows": 11,
+        "partition_method": "RANGE"
+      },
+      {
+        "table_name": "cart_range",
+        "partition_name": "p_2026",
+        "table_rows": 0,
+        "partition_method": "RANGE"
+      },
+      {
+        "table_name": "model_list",
+        "partition_name": "p_characters_vehicles",
+        "table_rows": 5,
+        "partition_method": "LIST"
+      },
+      {
+        "table_name": "model_list",
+        "partition_name": "p_weapons_environment",
+        "table_rows": 4,
+        "partition_method": "LIST"
+      },
+      {
+        "table_name": "buyer_hash",
+        "partition_name": "p0",
+        "table_rows": 3,
+        "partition_method": "HASH"
+      },
+      {
+        "table_name": "buyer_hash",
+        "partition_name": "p1",
+        "table_rows": 3,
+        "partition_method": "HASH"
+      }
+    ],
+    "shot_path": "Лаб 5\\cache\\shot_5_4.png"
+  }
+}

@@ -276,7 +276,7 @@ def build_lab5_report():
     add_screenshot_figure(doc, "screenshot_step30_new_ou_finansysty.png", 8, "Створення організаційного підрозділу «Фінансисти»")
     
     add_body_p(doc, "Перевірили оновлене дерево домену. Усі необхідні структурні підрозділи компанії успішно створено та захищено від випадкового видалення.")
-    add_screenshot_figure(doc, "screenshot_step41_tree_all_ous.png", 9, "Структура підрозділів організації в консолі dsa.msc")
+    add_screenshot_figure(doc, "screenshot_step39_tree_all_ous.png", 9, "Структура підрозділів організації в консолі dsa.msc")
     
     # Етап 4
     add_stage_heading(doc, "Етап 4. Створення облікових записів користувачів, груп та налаштування профілів")
