@@ -1,0 +1,1441 @@
+﻿
+
+
+w14:paraId="57EFBC51" w14:textId="7FA81D7F" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Тема 6. Основи CSS
+
+w14:paraId="752CEDF8" w14:textId="513E810E" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">CSS (Cascading Style Sheets) або каскадні таблиці стилів, описують правила відображення та розміщення  окремого елемента веб-сторінки. Правила створення стилю складається з двох основних частин: селектора  і блоку оголошення. Селектор повідомляє браузеру, який саме елемент форматувати, в блоці оголошення перелічено властивості форматування та їх значення (рис.1).
+
+w14:paraId="57B22ED7" w14:textId="3A7E642C" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00A85F34" w:rsidP="00FE47B7">
+
+w14:paraId="69BBCFBC" w14:textId="387A91F7" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Рис.1. Структура оголошення стилю елемента в CSS
+
+w14:paraId="651D5322" w14:textId="2A25F044" w:rsidR="00FE47B7" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Додавання CSS до веб-сторінки
+
+w14:paraId="0C7F347A" w14:textId="4EBC6AC0" w:rsidR="00A85F34" w:rsidRPr="00A85F34" w:rsidRDefault="00A85F34" w:rsidP="00A85F34">Щоб додати стилі до HTML-елементів можна використати 3 способи (рис.2).
+
+w14:paraId="0FA870D5" w14:textId="31B26FA1" w:rsidR="00A85F34" w:rsidRDefault="00A85F34" w:rsidP="00A85F34">
+
+w14:paraId="25713E58" w14:textId="00C1E975" w:rsidR="00A85F34" w:rsidRPr="00A85F34" w:rsidRDefault="00A85F34" w:rsidP="00A85F34">Рис.2. Способи підключення стилів до сторінки
+
+w14:paraId="310B3883" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Вбудовані таблиці стилів
+
+w14:paraId="1683C86B" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Вбудовані стилі знаходяться між тегами &lt;style&gt; ... &lt;/ style&gt;, що вставляються всередину елемента &lt;head&gt;. Вбудовані стилі діють тільки на сторінці, на якій вони містяться. На одній сторінці можна розміщувати довільну кількість вбудованих стилів:
+
+w14:paraId="58AC67A4" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">&lt;head&gt;
+
+w14:paraId="6910F650" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7"> 	 &lt;style type = "text/css"&gt;
+
+w14:paraId="4AC63EF1" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7"> 	  	 h1, h2 {color: red; font-family: "Times New Roman", Georgia, Serif; line-height: 1.3em;}
+
+w14:paraId="32698243" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7"> 	 &lt;/style&gt;
+
+w14:paraId="14B70E99" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">&lt;/head&gt;
+
+w14:paraId="4DB7B748" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Внутрішні стилі елементів
+
+w14:paraId="1BFF2BBC" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Внутрішні стилі елементів не використовують селектори, опис стилю відбувається безпосередньо через атрибут style в початковому тезі елементу:
+
+w14:paraId="273D9853" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">&lt;p style="font-family:"Times New Roman", Georgia, Serif; color:#70d7700;"&gt;Зверніть увагу на цей текст.&lt;/p&gt;
+
+w14:paraId="01097781" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Зовнішні таблиці стилів
+
+w14:paraId="633A510D" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Зовнішня таблиця стилів представляє текстовий файл з розширенням .css, в якому знаходиться весь набір стилів CSS. Задані в файлі стилі будуть працювати для всіх сторінок веб-сайту. Під’єднати зовнішній файл зі стилями можна в два способи:
+
+w14:paraId="4F443A9C" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Прикріплення до веб-сторінки за допомогою тега &lt;link&gt;, вкладеного в тег &lt;head&gt;:
+
+w14:paraId="078964A4" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">&lt;head&gt;
+
+w14:paraId="3CE6A59F" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7"> 	 &lt;link rel="stylesheet" type="text/css" href="style1.css"&gt;
+
+w14:paraId="776C8785" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7"> 	 &lt;link rel="stylesheet" type="text/css" href="style2.css"&gt;
+
+w14:paraId="1997F374" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">&lt;/head&gt;
+
+w14:paraId="75635F9C" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">де rel="stylesheet" вказує тип посилання (посилання на таблицю стилів), а type = "text/css" повідомляє браузеру тип даних, в даному випадку це текстовий файл, що містить css-код.
+
+w14:paraId="0057E5E7" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Прикріплення до веб-сторінки за допомогою правила @import
+
+w14:paraId="471B76B4" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Правило @import дозволяє завантажити зовнішню таблицю стилів. Щоб директива @import працювала, вона повинна розташовуватися всередині тегу &lt;style&gt; перед іншими правилами:
+
+w14:paraId="03A5C28B" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">&lt;style type="text/css"&gt;
+
+w14:paraId="0925069F" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7"> 	 @import url(mobile.css);
+
+w14:paraId="6C7BB71C" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7"> 	 p {font-size: 0.9em; color: grey;}
+
+w14:paraId="612C9399" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">&lt;/style&gt;
+
+w14:paraId="06273A1D" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Селектори
+
+w14:paraId="29ED22BC" w14:textId="3DF4AF4D" w:rsidR="00FE47B7" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">За допомогою селекторів створюються CSS-правила для форматування елементів сторінки. Як селектори можна використовувати елементи, класи, ідентифікатори, а також псевдокласи і псевдоелементи (рис.3).
+
+w14:paraId="5DF9B36E" w14:textId="3635AFE8" w:rsidR="008512BD" w:rsidRDefault="008512BD" w:rsidP="008512BD">
+
+w14:paraId="6EC2E1CA" w14:textId="506743E1" w:rsidR="008512BD" w:rsidRDefault="008512BD" w:rsidP="008512BD">Рис.3. Селектори для CSS-правила
+
+w14:paraId="095A429E" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Універсальний селектор. Універсальний селектор позначає правила, що стосуються всіх елементів, наприклад, наступний запис обнулить відступи для всіх елементів веб-сайту:
+
+w14:paraId="66BA6357" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">* {Margin: 0;}
+
+w14:paraId="1781E670" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Селектор Елементу. Селектори елементів використовуються для визначення стилів для всіх даних елементів сайту, наприклад, стиль заголовків h1 або загальний стиль абзаців:
+
+w14:paraId="6D720464" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">h1 {font-family: Lobster, cursive;}
+
+w14:paraId="4A1F68E3" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">p {letter-spacing: 0.1em;}
+
+w14:paraId="3207B058" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Селектор Класу. Селектори класу використовуються для визначення стилів, які можна застосувати для різних елементів, розміщених в різних частинах або на різних сторінках сайту. 
+
+w14:paraId="6C04FEAD" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="009B7B4D">Код HTML
+
+w14:paraId="16AB2378" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="009B7B4D">Код CSS
+
+w14:paraId="457011B2" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRDefault="00FE47B7" w:rsidP="009B7B4D">&lt;h1 class="headline"&gt;Інструкція користування персональним комп'ютером&lt;/h1&gt;
+
+w14:paraId="7763A291" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="007E2860" w:rsidRDefault="00FE47B7" w:rsidP="009B7B4D">&lt;p class="headline"&gt;Примітка. Це важливо для роботи&lt;/p&gt;
+
+w14:paraId="44608AC3" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="009B7B4D">headline { 
+text-transform: uppercase; 
+color: lightblue;
+}
+
+w14:paraId="2550B74C" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Селектор Ідентифікатора. Селектори ідентифікатора використовуються для привласнення стилю одному конкретному елементу. Ідентифікатор id належить унікальному елементу, тому його можна використовувати в документі лише один раз.
+
+w14:paraId="2494A0A0" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">#sidebar {text-transform: uppercase; color: lightblue;}
+
+w14:paraId="40A45B5B" w14:textId="77EE179E" w:rsidR="007538B9" w:rsidRDefault="007538B9" w:rsidP="007538B9">
+
+w14:paraId="040CEDDB" w14:textId="17D86883" w:rsidR="007538B9" w:rsidRPr="007538B9" w:rsidRDefault="007538B9" w:rsidP="007538B9">Рис.4. Селектори нащадків, атрибутів та комбінаторність
+
+w14:paraId="74E2CE92" w14:textId="496EF470" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Селектор Нащадку. До нащадків елемента відносяться його дочірні елементи. Селектори нащадків дозволяють стилізувати всі вкладені елементи, наприклад,  можна відформатувати зовнішній вигляд всіх елементів маркованого списку:
+
+w14:paraId="3C1BBCF0" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">ul li {text-transform: uppercase;}
+
+w14:paraId="0F2C0D72" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Якщо потрібно відформатувати нащадки певного елемента, то можна поставити йому стильовий клас:
+
+w14:paraId="280C821E" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00001601">p.first a {color: green;} - означає, що потрібно застосувати даний стиль до всіх посилань, нащадків абзацу, що відноситься до класу з назвою first;
+
+w14:paraId="02E8791E" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00001601">p .first a {color: green;} - якщо додати пробіл, то будуть обрані посилання, розташовані всередині будь-якого тегу класу .first, який є нащадком елемента &lt;p&gt;;
+
+w14:paraId="2B7B1A90" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00001601">.first a {color: green;} - даний стиль застосовується до любого посилання, що розташоване всередині інших тегів, позначених класом .first.
+
+w14:paraId="2CB6D5AA" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Дочірній селектор. Дочірній тег є прямим нащадком тегу, що його містить. Тобто, відносини "батьки-діти" існують між елементами і тими елементами, які містяться безпосередньо всередині них. В одного елемента може бути кілька дочірніх елементів, а батьківський елемент може бути в кожного елемента тільки один.
+
+w14:paraId="7D2FB2F2" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00001601">p&gt; strong - вибирає всі елементи strong, які є дочірніми по відношенню до елементу p.
+
+w14:paraId="29F0E61A" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Сестринський селектор. Сестринські відносини виникають між елементами, що мають загального батька. Селектори сестринських елементів дозволяють вибрати теги з групи елементів одного рівня.
+
+w14:paraId="19B83469" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00001601">h1 + p - вибере всі перші абзаци, що йдуть безпосередньо за будь-яким тегом &lt;h1&gt;, не зачіпаючи решта абзаців.
+
+w14:paraId="4ABF6621" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00001601">h1 ~ p - вибере всі абзаци, які є сестринськими по відношенню до будь-якого заголовку h1 і йдуть після нього.
+
+w14:paraId="2BBDCC7E" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Селектор Атрибуту. Селектори атрибутів дозволяють форматувати елементи на основі вибірки будь-яких атрибутів, що містяться в них або значень атрибутів, наприклад:
+
+w14:paraId="2B5AC2B6" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00001601">[атрибут] - вибирає всі елементи, для яких задано вказаний атрибут.
+
+w14:paraId="53EC77CA" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00001601">img [alt] - вибирає всі картинки, що містять атрибут alt.
+
+w14:paraId="31BC58A6" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00001601">img [title = "flower"] - вибирає всі картинки, назва яких містить слово flower.
+
+w14:paraId="21A1B119" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Псевдокласи 
+
+w14:paraId="08D10C08" w14:textId="72FDB597" w:rsidR="00696D7D" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Псевдокласи надають можливість додавати особливі класи до елементів, вибираючи об'єкти, яких немає в структурі веб-сторінки, або які не можна вибрати за допомогою звичайних селекторів, наприклад, перша літера або перший рядок одного абзацу (рис.5). 
+
+w14:paraId="339E2E8B" w14:textId="430C037D" w:rsidR="00696D7D" w:rsidRDefault="00696D7D" w:rsidP="00696D7D">
+
+w14:paraId="3EEEA32F" w14:textId="79AA031F" w:rsidR="00696D7D" w:rsidRDefault="00696D7D" w:rsidP="00696D7D">Рис.5. Псевдокласи елементів
+
+w14:paraId="5313C8EC" w14:textId="56C73737" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Псевдокласи добре проілюстровані різними станами посилання, наприклад:
+
+w14:paraId="390FF275" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="008D45D8">a: link – описує стиль невідвідуваного посилання.
+
+w14:paraId="33D53B7C" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="008D45D8">a: visited - описує стиль вже відвіданого посилання.
+
+w14:paraId="1657DABE" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="008D45D8">a: hover - описує вигляд елементу, над яким проходить вказівник мишки.
+
+w14:paraId="436F6492" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="008D45D8">a: focus - описує вигляд елементу, над яким знаходиться (сфокусований) вказівник.
+
+w14:paraId="2371FBB3" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="008D45D8">a: active - описує вигляд елементу, який активовано користувачем.
+
+w14:paraId="66D1C084" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Структурні псевдокласи. Структурні псевдокласи форматують дочірні елементи відповідно до зазначеного параметра в дужках, наприклад:
+
+w14:paraId="17D37487" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:nth-child (odd) - вибирає непарні дочірні елементи.
+
+w14:paraId="262A1A17" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:nth-child (even) - вибирає парні дочірні елементи.
+
+w14:paraId="38379CED" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:nth-child (3n) - вибирає кожен третій елемент серед дочірніх.
+
+w14:paraId="488C0F42" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Структурні псевдокласи типу. Вказують на конкретний тип дочірнього тегу:
+
+w14:paraId="403224AD" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:nth-of-type () - вибирає елементи за аналогією з: nth-child (), при цьому бере до уваги тільки тип елемента.
+
+w14:paraId="5EB5E88C" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:first-of-type - дозволяє вибрати перший дочірній елемент.
+
+w14:paraId="03A72BB0" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:last-of-type - вибирає останній дочірній елемент конкретного типу.
+
+w14:paraId="3F43B6D6" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:nth-last-of-type () - вибирає елемент заданого типу в списку елементів відповідно до зазначеного місцеположенням, починаючи з кінця.
+
+w14:paraId="23C9F68D" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:only-of-type - вибирає єдиний елемент зазначеного типу серед дочірніх елементів батьківського елементу.
+
+w14:paraId="4D281A1E" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Псевдоелементи
+
+w14:paraId="16044BA7" w14:textId="0A43267C" w:rsidR="00FE47B7" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Псевдоелементи не є елементами сторінки, їх використовують для додавання вмісту, який генерується за допомогою властивості content, і для зміни зовнішнього вигляду частини елементу (рис.6).
+
+w14:paraId="36B2DD8C" w14:textId="31789DD7" w:rsidR="005609DD" w:rsidRDefault="005609DD" w:rsidP="005609DD">
+
+w14:paraId="7B4C109A" w14:textId="636B2E77" w:rsidR="005609DD" w:rsidRPr="00A379DB" w:rsidRDefault="005609DD" w:rsidP="005609DD">Рис.6. Псевдоелементи
+
+w14:paraId="3DD703A2" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:before – додає певний вміст перед елементом.
+
+w14:paraId="7CB34001" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">:after - додає певний вміст після елемента.
+
+w14:paraId="03AB649F" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Комбінації селекторів
+
+w14:paraId="613FDDC9" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Щоб домогтися більш чіткого вибору елементів для форматування, можна не обмежуватися завданням одного типу селектора, а використовувати комбінації селекторів, наприклад:
+
+w14:paraId="6A2C406F" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">a [href] [title] - вибере всі посилання, для яких задані атрибути href і title;
+
+w14:paraId="3EB0C90D" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="008D45D8" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">img [alt * = css]: nth-of-type (even) - вибере всі парні картинки, альтернативний текст яких містить слово css.
+
+w14:paraId="1F1DD2B0" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Угруповання селекторів
+
+w14:paraId="5628710B" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Можна застосувати один стиль до кількох елементів, причому обмежень за кількістю елементів немає. Для цього необхідно в лівій частині оголошення помістити через кому потрібні селектори, наприклад:
+
+w14:paraId="68859B4B" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">h1, h2, h3, h4 {color: tomato; background: white;}
+
+w14:paraId="68A38674" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Принцип каскадування і специфічність правила
+
+w14:paraId="6469F3CB" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Каскадування представляє процес застосування різних правил до одного і того ж елементу. Більш конкретні правила мають пріоритет над більш загальними. Якщо у відношення одного і того ж елемента визначено кілька стилів, то в результаті до нього буде застосований останній з них.
+
+w14:paraId="4FBAA2EA" w14:textId="151CF3E3" w:rsidR="00FE47B7" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Для кожного правила браузер обчислює специфічність селектора, і якщо у елемента є конфліктуючі оголошення властивостей, до уваги береться правило, що має найбільшу специфічність (рис.7).
+
+w14:paraId="31742811" w14:textId="7962E505" w:rsidR="00BC5EFA" w:rsidRDefault="00BC5EFA" w:rsidP="00BC5EFA">
+
+w14:paraId="61F8D84A" w14:textId="2A5B5663" w:rsidR="00BC5EFA" w:rsidRPr="00A379DB" w:rsidRDefault="00BC5EFA" w:rsidP="00BC5EFA">Рис.7. Математика специфічності стилів
+
+w14:paraId="4608C1A0" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Значення специфічності складається з чотирьох частин: 0, 0, 0, 0. Специфічність селектора визначається наступним чином:
+
+w14:paraId="58F8F010" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00001601">для id додається 0, 1, 0, 0;
+
+w14:paraId="611E86F4" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00001601">для class додається 0, 0, 1, 0;
+
+w14:paraId="6B2C231E" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00001601">для кожного елементу і псевдоелемента додається 0, 0, 0, 1;
+
+w14:paraId="174C25FE" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00001601">для стилю, який доданого безпосередньо до елементу - 1, 0, 0, 0;
+
+w14:paraId="5F5A50EC" w14:textId="77777777" w:rsidR="00FE47B7" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00001601">універсальний селектор не має специфічності.
+
+w14:paraId="32F84A6B" w14:textId="505EF5B2" w:rsidR="00833059" w:rsidRPr="00A379DB" w:rsidRDefault="00FE47B7" w:rsidP="00FE47B7">Вагу правила також можна задати за допомогою ключового слова !important;, яке додається після значення властивості, наприклад, font-weight: bold!Important;.  Таке оголошення буде мати пріоритет над всіма іншими правилами.
+
+w14:paraId="25238843" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">Властивість display 
+
+w14:paraId="73CBCAC2" w14:textId="0387DDCC" w:rsidR="004B5E05" w:rsidRDefault="009547ED" w:rsidP="004B5E05">Властивість display визначає, як HTML-елемент бере участь в побудові сторінки, тобто як він поводиться відносно інших елементів. Наприклад, один елемент може займати весь доступний рядок, інший лише ширину свого вмісту, а ще інший може стати Flex-контейнером або Grid-контейнером (рис.8).
+
+w14:paraId="00F01481" w14:textId="0D0DEC15" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">
+
+w14:paraId="6A26AC7B" w14:textId="79D1CE1F" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">Рис.8. Властивість display
+
+w14:paraId="335CA19C" w14:textId="0026F1FC" w:rsidR="004B5E05" w:rsidRPr="00A615A8" w:rsidRDefault="004B5E05" w:rsidP="00A615A8">display: block
+
+w14:paraId="3A7AED7F" w14:textId="56F1225D" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">.element {display: block;}
+
+w14:paraId="18F604B8" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00A615A8">Елемент поводиться як блоковий елемент:
+
+w14:paraId="311FC9AE" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00001601">починається з нового рядка; 
+
+w14:paraId="2B88F2F3" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00001601">зазвичай займає всю доступну ширину; 
+
+w14:paraId="3FDD2CD8" w14:textId="70944DD3" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00001601">можна задавати властивості width, height, margin, padding. 
+
+w14:paraId="13367853" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">&lt;div&gt;Блок 1&lt;/div&gt;
+
+w14:paraId="2BB2C718" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">&lt;div&gt;Блок 2&lt;/div&gt;
+
+w14:paraId="367F6671" w14:textId="23E4048F" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">&lt;div&gt;Блок 3&lt;/div&gt;
+
+w14:paraId="76CD016B" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">┌──────────────────────────────┐
+
+w14:paraId="31BC6D91" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">│          Блок 1              │
+
+w14:paraId="24C42BB8" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">└──────────────────────────────┘
+
+w14:paraId="14CDF5BB" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">┌──────────────────────────────┐
+
+w14:paraId="3C58D024" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">│          Блок 2              │
+
+w14:paraId="3635BA50" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">└──────────────────────────────┘
+
+w14:paraId="4639629C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">┌──────────────────────────────┐
+
+w14:paraId="2288C275" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">│          Блок 3              │
+
+w14:paraId="5089C8BA" w14:textId="73A14BBC" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="009313CB">└──────────────────────────────┘
+
+w14:paraId="72F62D44" w14:textId="70D6CB9B" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="009547ED">Типові блокові елементи HTML: &lt;div&gt;, &lt;section&gt;, &lt;header&gt;, &lt;footer&gt;, &lt;h1&gt;, &lt;p&gt;
+
+w14:paraId="77B48CD1" w14:textId="7B4DDC96" w:rsidR="004B5E05" w:rsidRPr="00A615A8" w:rsidRDefault="004B5E05" w:rsidP="00A615A8">display: inline
+
+w14:paraId="2B6F5BB3" w14:textId="534384E5" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">.element {display: inline;}
+
+w14:paraId="5FE7F485" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="004B5E05" w:rsidP="00A615A8"> Елемент поводиться як рядковий:
+
+w14:paraId="609C821C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">не починається з нового рядка; 
+
+w14:paraId="6F38464F" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">займає лише ширину свого вмісту; 
+
+w14:paraId="3AAD24B0" w14:textId="5CEE323E" w:rsidR="004B5E05" w:rsidRDefault="00A615A8" w:rsidP="00001601">кілька таких елементів можуть розташовуватися в одному рядку.
+
+w14:paraId="0182DA17" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">&lt;span&gt;Слово 1&lt;/span&gt;
+
+w14:paraId="13F54387" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">&lt;span&gt;Слово 2&lt;/span&gt;
+
+w14:paraId="5D4B7969" w14:textId="2052C557" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">&lt;span&gt;Слово 3&lt;/span&gt;
+
+w14:paraId="36CAE227" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Слово 1   Слово 2   Слово 3
+
+w14:paraId="337D867D" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="004B5E05">
+
+w14:paraId="5EA8F236" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="004B5E05">
+
+w14:paraId="78138A86" w14:textId="7A88B84F" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="009547ED">Типові рядкові елементи: &lt;a&gt;, &lt;span&gt;, &lt;strong&gt;, &lt;em&gt;.
+
+w14:paraId="20B64066" w14:textId="23786777" w:rsidR="004B5E05" w:rsidRDefault="009547ED" w:rsidP="00A615A8">Для inline-елементів властивості width і height працюють не так, як для блокових елементів, тому для створення повноцінного прямокутного компонента часто використовують поведінку inline-block.
+
+w14:paraId="1CFCC62D" w14:textId="5D260ADC" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00A615A8">display: inline-block
+
+w14:paraId="284B7B8C" w14:textId="3CB1BC8E" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00A615A8">Це своєрідне поєднання властивості рядкового та блокового елементу.
+
+w14:paraId="25B7DDD2" w14:textId="4DCD5829" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">.element {display: inline-block;}
+
+w14:paraId="19C5955C" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="009547ED">Елемент:
+
+w14:paraId="4BFFBC9E" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00001601">може стояти поруч з іншими елементами; 
+
+w14:paraId="2CF3DD34" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00001601">займає лише необхідну ширину; 
+
+w14:paraId="2279EBA2" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00001601">але йому можна задавати width і height. 
+
+w14:paraId="3A51743A" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00A615A8">Наприклад:
+
+w14:paraId="61E4AEC2" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">.button {
+
+w14:paraId="1D113294" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">    display: inline-block;
+
+w14:paraId="37CE1309" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">    width: 150px;
+
+w14:paraId="77BD0DBE" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">    padding: 10px;
+
+w14:paraId="2AC52B2F" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="004B5E05">}
+
+w14:paraId="691678F9" w14:textId="77777777" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="00A615A8">Це часто використовувалося для створення кнопок, горизонтальних меню та невеликих блоків.
+
+w14:paraId="1A21BC0C" w14:textId="5F650D19" w:rsidR="00F45098" w:rsidRPr="00A615A8" w:rsidRDefault="00F45098" w:rsidP="00F45098">display: none
+
+w14:paraId="1B37CC23" w14:textId="5CAB66E7" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="009547ED">Це дуже важливе значення, в цьому випадку елемент не відображається на сторінці і не займає місця в макеті.
+
+w14:paraId="0C16A798" w14:textId="37C2AA55" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">.element {display: none;}
+
+w14:paraId="71851E11" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">Елемент фактично прибирається з поточного layout. Це часто використовується в адаптивному дизайні:
+
+w14:paraId="5D579DBE" w14:textId="5A6E58BA" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">.mobile-menu {display: none;}
+
+w14:paraId="054B7724" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">
+
+w14:paraId="3B264FE2" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">@media (max-width: 768px) {
+
+w14:paraId="53A27370" w14:textId="11453045" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">    .mobile-menu {display: block;}
+
+w14:paraId="1A336E8D" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00F45098">}
+
+w14:paraId="4224C90D" w14:textId="6802D0AA" w:rsidR="00F45098" w:rsidRDefault="009547ED" w:rsidP="00F45098">За таких стилів на великому екрані меню буде прихованим, а на мобільному екрані буте показане.
+
+w14:paraId="2EDDC0D3" w14:textId="445CB048" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C009C1">Важливо не плутати властивості display: none; та  visibility: hidden;
+
+w14:paraId="272475A3" w14:textId="77777777" w:rsidR="00C009C1" w:rsidRDefault="00C009C1" w:rsidP="00001601">При display: none елемент не займає місця.
+
+w14:paraId="53F94DB7" w14:textId="3CC1C355" w:rsidR="00F45098" w:rsidRDefault="00C009C1" w:rsidP="00001601">При visibility: hidden елемент невидимий, але його місце в макеті зберігається.
+
+w14:paraId="1E2750C8" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">display: none
+
+w14:paraId="6552C053" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">
+
+w14:paraId="32A92EC8" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">┌───────┐ ┌───────┐
+
+w14:paraId="1F748773" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">│   1   │ │   3   │
+
+w14:paraId="547D039E" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">└───────┘ └───────┘
+
+w14:paraId="5B00B11E" w14:textId="0237142A" w:rsidR="00F45098" w:rsidRDefault="008D45D8" w:rsidP="00C13E63">     visibility: hidden
+
+w14:paraId="4497BB3E" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">
+
+w14:paraId="0BF71038" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">┌───────┐ ┌───────┐ ┌───────┐
+
+w14:paraId="2035EDE4" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">│   1   │ │       │ │   3   │
+
+w14:paraId="4FF40A7C" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">└───────┘ └───────┘ └───────┘
+
+w14:paraId="60431BE6" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">             ↑
+
+w14:paraId="09923321" w14:textId="77777777" w:rsidR="00F45098" w:rsidRDefault="00F45098" w:rsidP="00C13E63">          місце є
+
+w14:paraId="4B04E191" w14:textId="2F4FB253" w:rsidR="004B5E05" w:rsidRPr="00C009C1" w:rsidRDefault="00C009C1" w:rsidP="00C009C1">Структурування блоків Flexbox 
+
+w14:paraId="2089BAC3" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">До появи Flexbox вирівнювання елементів на вебсторінці в один рядок або колонку було справжнім випробуванням для розробників. Доводилося використовувати складні «хаки» з властивостями float, inline-block або position.
+
+w14:paraId="5ECE9385" w14:textId="50C1B53D" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Flexbox повністю розв'язує цю проблему. Це сучасна система верстки, створена спеціально для того, щоб легко розміщувати елементи в один рядок або колонку, вирівнювати їх та автоматично розподіляти вільний простір між ними.
+
+w14:paraId="3252B389" w14:textId="1148A050" w:rsidR="008662EC" w:rsidRDefault="008662EC" w:rsidP="008662EC">
+
+w14:paraId="2A3AD8B5" w14:textId="08298496" w:rsidR="008662EC" w:rsidRDefault="008662EC" w:rsidP="008662EC">Рис.9. Застосування Flexbox для вирівнювання елементів в один рядок
+
+w14:paraId="35FE3680" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Щоб застосовувати Flexbox, потрібно зрозуміти взаємодію двох рівнів елементів:
+
+w14:paraId="747D9687" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">Flex-контейнер (Батько) — елемент, до якого застосовують властивість display: flex;.
+
+w14:paraId="1104A491" w14:textId="5F88A514" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">Flex-елементи (Діти) — всі дочірні елементи, які розміщені безпосередньо всередині контейнера.
+
+w14:paraId="7A2A1B53" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007538B9">HTML
+
+w14:paraId="3C673863" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007538B9">&lt;div class="flex-container"&gt;
+
+w14:paraId="5EEB03E8" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007538B9">  &lt;div class="item"&gt;1&lt;/div&gt;
+
+w14:paraId="7901C23B" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007538B9">  &lt;div class="item"&gt;2&lt;/div&gt;
+
+w14:paraId="5385414D" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007538B9">  &lt;div class="item"&gt;3&lt;/div&gt;
+
+w14:paraId="0670B090" w14:textId="6104D8D7" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007B66AE">&lt;/div&gt;
+
+w14:paraId="2C324979" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007538B9">CSS
+
+w14:paraId="20397389" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007538B9">.flex-container {
+
+w14:paraId="57121AAC" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007538B9">  display: flex; /* Перетворює елемент на Flex-контейнер */
+
+w14:paraId="544CABB2" w14:textId="64566245" w:rsidR="00A615A8" w:rsidRPr="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="007B66AE">}
+
+w14:paraId="35249F4C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Після додавання властивості display: flex; до блоку, всі його дочірні елементи (.item) миттєво вишукуються в один горизонтальний рядок.
+
+w14:paraId="6CDC72F4" w14:textId="52537C5D" w:rsidR="00A615A8" w:rsidRDefault="00C009C1" w:rsidP="00A615A8">Найважливішим концептом в Flexbox є  вирівнювання дочірніх елементів відносно двох осей (рис.9) .
+
+w14:paraId="2BD9F6A1" w14:textId="77777777" w:rsidR="008662EC" w:rsidRDefault="008662EC" w:rsidP="00001601">Головна вісь (Main Axis) — вісь, вздовж якої вибудовуються елементи (за замовчуванням напрямок зліва направо).
+
+w14:paraId="63D73D5A" w14:textId="77777777" w:rsidR="008662EC" w:rsidRDefault="008662EC" w:rsidP="00001601">Поперечна вісь (Cross Axis) — вісь, перпендикулярна до головної (за замовчуванням напрямок згори вниз).
+
+w14:paraId="0B57253B" w14:textId="77777777" w:rsidR="007B66AE" w:rsidRDefault="007B66AE" w:rsidP="007B66AE">
+
+w14:paraId="293BFDDC" w14:textId="14CC0EA6" w:rsidR="007B66AE" w:rsidRDefault="007B66AE" w:rsidP="007B66AE">Рис.9. Осі вирівнювання елементів в одновимірній системі Flexbox
+
+w14:paraId="5731D872" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Властивості для Flex-контейнера (Батька)
+
+w14:paraId="2E49727E" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Ці властивості керують тим, як поводяться всі дочірні елементи разом.
+
+w14:paraId="52BA26E3" w14:textId="5404F1E7" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Зміна напрямку осей flex-direction. Керує тим, в якому напрямку вибудовуються елементи (змінює напрямок головної осі):
+
+w14:paraId="4A72A782" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">row (за замовчуванням) — елементи розміщуються в рядок зліва направо.
+
+w14:paraId="2B910649" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">row-reverse — елементи в рядок, але справа наліво (зворотний порядок).
+
+w14:paraId="75AAF31C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">column — елементи розміщуються у колонку згори вниз (головна вісь стає вертикальною!).
+
+w14:paraId="3A3D7C26" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">column-reverse — елементи у колонку знизу вгору.
+
+w14:paraId="51820734" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">.flex-container {
+
+w14:paraId="045B31FB" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  display: flex;
+
+w14:paraId="399926BA" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  flex-direction: column; /* Елементи вишикуються в стовпчик */
+
+w14:paraId="436F7E6B" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">}
+
+w14:paraId="3885E128" w14:textId="4C7E27A5" w:rsidR="00C009C1" w:rsidRDefault="00A615A8" w:rsidP="00C009C1">Вирівнювання за Головною віссю justify-content. Ця властивість відповідає за розподіл елементів вздовж головної осі. Основними значеннями є:
+
+w14:paraId="44EA5052" w14:textId="7CB7356A" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">flex-start (за замовченням) — елементи притиснуті до початку осі (зліва).
+
+w14:paraId="6C182624" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">flex-end — елементи притиснуті до кінця осі (справа).
+
+w14:paraId="757C2770" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">center — елементи вирівняні по центру.
+
+w14:paraId="3701F756" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">space-between — крайні елементи притиснуті до країв, а між рештою рівномірно розподілений простір.
+
+w14:paraId="617A7DA0" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">space-around — рівномірні відступи навколо кожного елемента (на краях відступи у два рази менші, ніж між елементами).
+
+w14:paraId="333245BB" w14:textId="775CAC96" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">space-evenly — абсолютно однакові відступи між всіма елементами та краями контейнера.
+
+w14:paraId="54C02B04" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="00C009C1">.flex-container {
+
+w14:paraId="6B3F0C25" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="00C009C1">  display: flex;
+
+w14:paraId="6CC1E385" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="00C009C1">  justify-content: space-between; /* Використовують для навігаційних меню */
+
+w14:paraId="65425DB9" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00C009C1">}
+
+w14:paraId="668C4E8A" w14:textId="57440746" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Вирівнювання за Поперечною віссю align-items. Ця властивість відповідає за вирівнювання елементів вздовж поперечної осі. Основними значеннями є:
+
+w14:paraId="2FADF401" w14:textId="250D560E" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">stretch (за замовченням) — елементи розтягуються на всю висоту контейнера (якщо їм не задано чіткої висоти).
+
+w14:paraId="3F76851C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">center — елементи вирівнюються по центру за висотою.
+
+w14:paraId="40DD463C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">flex-start — елементи притиснуті до верхнього краю.
+
+w14:paraId="03DC3515" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">flex-end — елементи притиснуті до нижнього краю.
+
+w14:paraId="31ED0C78" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">baseline — елементи вирівнюються по базовій лінії їхнього тексту.
+
+w14:paraId="7C33D14C" w14:textId="1607B0B3" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="008662EC">Щоб вирівняти елемент ідеально по центру (і горизонтально, і вертикально), потрібно лише дві строчки:
+
+w14:paraId="6AF13E74" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">.flex-container {
+
+w14:paraId="43F5CD12" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  display: flex;
+
+w14:paraId="47C8F8CA" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  justify-content: center; /* Центрування по горизонталі */
+
+w14:paraId="03FD41A4" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  align-items: center;    /* Центрування по вертикалі */
+
+w14:paraId="25CBE568" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">}
+
+w14:paraId="1A2C7C6F" w14:textId="611E389C" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Перенос елементів flex-wrap. За замовченням Flexbox намагається вмістити всі елементи в один рядок, навіть якщо вони будуть стискатися. Щоб дозволити елементам переноситися на новий рядок використовують властивості:
+
+w14:paraId="37AE63E6" w14:textId="35278184" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">nowrap (за замовченням) — всі елементи в один рядок.
+
+w14:paraId="383B4386" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">wrap — елементи переносяться на новий рядок, якщо не поміщаються.
+
+w14:paraId="3D4D1248" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">.flex-container {
+
+w14:paraId="50C33064" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  display: flex;
+
+w14:paraId="6B245D2B" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  flex-wrap: wrap; /* Створює адаптивну сітку карток */
+
+w14:paraId="6D172996" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">}
+
+w14:paraId="2CA36025" w14:textId="143635B2" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Відступи між елементами gap. Замість того, щоб задавати зовнішні відступи кожному дочірньому елементу, в контейнері використовують властивість gap.
+
+w14:paraId="753874D8" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">.flex-container {
+
+w14:paraId="11E77530" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  display: flex;
+
+w14:paraId="77876982" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">  gap: 20px; /* Відстань 20px між всіма дочірніми елементами */
+
+w14:paraId="20E78D79" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00833059" w:rsidRDefault="00A615A8" w:rsidP="009313CB">}
+
+w14:paraId="09A3D2A6" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Іноді потрібно змінити поведінку окремого елемента у контейнері.
+
+w14:paraId="6CD4DE61" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">align-self — перевизначає значення align-items для конкретного елемента.
+
+w14:paraId="0DEC65B7" w14:textId="3E4C42E1" w:rsidR="00A615A8" w:rsidRPr="00555997" w:rsidRDefault="00A615A8" w:rsidP="00C009C1">.special-item {align-self: flex-end; /* Цей елемент буде внизу, навіть якщо інші вгорі */}
+
+w14:paraId="4106DED1" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">flex-grow — визначає, наскільки елемент може збільшуватись відносно інших, якщо в контейнері є вільний простір (значення за замовчуванням 0).
+
+w14:paraId="50531CFB" w14:textId="49B49E06" w:rsidR="00A615A8" w:rsidRPr="00555997" w:rsidRDefault="00A615A8" w:rsidP="00C009C1">.item-main {flex-grow: 1; /* Забере весь вільний простір в контейнері */}
+
+w14:paraId="1F8BAD84" w14:textId="6441E707" w:rsidR="00A615A8" w:rsidRDefault="00EB62CB" w:rsidP="00A615A8">Властивість order надає можливість змінювати візуальний порядок відображення елементів без зміни HTML-коду (за замовченням значення 0).
+
+w14:paraId="21BF174A" w14:textId="643C105B" w:rsidR="00A615A8" w:rsidRDefault="00EB62CB" w:rsidP="00EB62CB">Структурування блоків Grid
+
+w14:paraId="3AED41E8" w14:textId="580E00D5" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Якщо Flexbox призначений переважно для розміщення елементів в одному напрямку (в один рядок або в одну колонку), то CSS Grid Layout є потужною двовимірною системою верстки. Вона надає можливість одночасно керувати і колонками (стовпчиками) і рядками (рис.10).
+
+w14:paraId="3B063AD2" w14:textId="1CCA18A9" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Grid ідеально підходить для створення загальної структури сторінки (layout), складних фотогалерей, адаптивних сіток карток або панелей керування.
+
+w14:paraId="0C76A098" w14:textId="49155D36" w:rsidR="002609EF" w:rsidRDefault="002609EF" w:rsidP="002609EF">
+
+w14:paraId="53A5B1D7" w14:textId="3180C304" w:rsidR="002609EF" w:rsidRDefault="002609EF" w:rsidP="002609EF">Рис.10. Двовимірна система Grid
+
+w14:paraId="456633A7" w14:textId="581B4B13" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Як і у Flexbox, в Grid все починається з взаємодії двох рівнів:
+
+w14:paraId="7CD85A77" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">Grid-контейнер (Батько) — елемент з властивістю display: grid;.
+
+w14:paraId="704AD2F7" w14:textId="3A962FA0" w:rsidR="00A615A8" w:rsidRPr="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">Grid-елементи (Діти) — безпосередні дочірні блоки всередині контейнера.
+
+w14:paraId="54A3D98B" w14:textId="0BEAE526" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Щоб перетворити контейнер на сітку, недостатньо лише задати display: grid;, потрібно описати, скільки стовпчиків і рядків потрібно отримати.
+
+w14:paraId="2CDD9518" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Наприклад, потрібні три однакові стовпці:
+
+w14:paraId="4BAD8D43" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">.grid {
+
+w14:paraId="5C11317C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    display: grid;
+
+w14:paraId="1AA43C57" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    grid-template-columns: 1fr 1fr 1fr;
+
+w14:paraId="3401A473" w14:textId="2B424EB3" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="009313CB">}
+
+w14:paraId="3E0EA040" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌──────────┬──────────┬──────────┐
+
+w14:paraId="5226943C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│    1     │    2     │    3     │
+
+w14:paraId="2D11AB99" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">├──────────┼──────────┼──────────┤
+
+w14:paraId="19F0D258" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│    4     │    5     │    6     │
+
+w14:paraId="46C23191" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">└──────────┴──────────┴──────────┘
+
+w14:paraId="6DD469FA" w14:textId="507DB831" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Тут: grid-template-columns: 1fr 1fr 1fr; означає «Створити три стовпці, кожен з яких отримує одну частину доступного простору». fr — це fraction, тобто частина доступного простору.
+
+w14:paraId="08F28C11" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">grid-template-columns: 1fr 1fr 1fr;
+
+w14:paraId="5BF41F8C" w14:textId="7D60FAA4" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">   1/3        1/3         1/3
+
+w14:paraId="3F6B209D" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌──────────┬──────────┬──────────┐
+
+w14:paraId="0BCF1050" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│          │          │          │
+
+w14:paraId="21B18868" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">└──────────┴──────────┴──────────┘
+
+w14:paraId="29EFC9BF" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Стовпці можуть мати різну ширину, наприклад:
+
+w14:paraId="6F1B7395" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">grid-template-columns: 1fr 2fr 1fr;
+
+w14:paraId="0B2E1B1C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9"/>
+
+w14:paraId="02D2BDF1" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌────────┬────────────────┬────────┐
+
+w14:paraId="69CD85F0" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│        │                │        │
+
+w14:paraId="0C983BA8" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│  1fr   │      2fr       │  1fr   │
+
+w14:paraId="473562FD" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│        │                │        │
+
+w14:paraId="75E47F83" w14:textId="0210048C" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00EB62CB">└────────┴────────────────┴────────┘
+
+w14:paraId="527241C5" w14:textId="3DBBDE0F" w:rsidR="00A615A8" w:rsidRDefault="00EB62CB" w:rsidP="00A615A8">Grid є зручним способом створення загальної структури.
+
+w14:paraId="0451FC09" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">.layout {
+
+w14:paraId="583E9419" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    display: grid;
+
+w14:paraId="73C47113" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    grid-template-columns: 1fr 2fr 1fr;
+
+w14:paraId="03AD02D7" w14:textId="18543E45" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="009313CB">}
+
+w14:paraId="1F5292A0" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌──────────┬────────────────────────┬──────────┐
+
+w14:paraId="3DCFD785" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│          │                        │          │
+
+w14:paraId="698BE986" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│  Ліве    │       Контент          │  Праве   │
+
+w14:paraId="378A9C36" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│  меню    │                        │  меню    │
+
+w14:paraId="5B9797FC" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│          │                        │          │
+
+w14:paraId="00555CB9" w14:textId="0C7C51A1" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="009313CB">└──────────┴────────────────────────┴──────────┘
+
+w14:paraId="64B88448" w14:textId="5FC7D48D" w:rsidR="00A615A8" w:rsidRDefault="00723DA4" w:rsidP="00A615A8">В Grid можна задавати розміри дочірніх елементів не лише в fr, а й в звичайних одиницях, наприклад:
+
+w14:paraId="15B7A08A" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="00723DA4" w:rsidRDefault="00A615A8" w:rsidP="007538B9">grid-template-columns: 200px 1fr 300px;
+
+w14:paraId="40969491" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌────────────┬────────────────────┬───────────────┐
+
+w14:paraId="6BCE4E9F" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│            │                    │               │
+
+w14:paraId="64AB22B2" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│   200px    │        1fr         │     300px     │
+
+w14:paraId="145EE71A" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│            │                    │               │
+
+w14:paraId="17D47B28" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">└────────────┴────────────────────┴───────────────┘
+
+w14:paraId="13FAF7F7" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Це означає:
+
+w14:paraId="19FD0090" w14:textId="6B202E35" w:rsidR="00723DA4" w:rsidRPr="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00001601">перший стовпець — 200px; 
+
+w14:paraId="1A0B4AB7" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRPr="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00001601">третій — 300px; 
+
+w14:paraId="7DA6D26F" w14:textId="3E3DFD03" w:rsidR="00A615A8" w:rsidRPr="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00001601">середній 1fr займає весь простір, що залишився.
+
+w14:paraId="03E3D83A" w14:textId="36D6035D" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Цей принцип часто використовується у вебдизайні.
+
+w14:paraId="56EACBC3" w14:textId="33C7CCF9" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Для вирівнювання рядків використовується властивість grid-template-rows
+
+w14:paraId="0897D581" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">.grid {
+
+w14:paraId="43E66B4A" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    display: grid;
+
+w14:paraId="79AEBCE9" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    grid-template-columns: 1fr 1fr 1fr;
+
+w14:paraId="3F923E57" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    grid-template-rows: 100px 200px;
+
+w14:paraId="686E67A5" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">}
+
+w14:paraId="6E8B0F30" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">                 3 стовпці
+
+w14:paraId="67D29401" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">        ↓          ↓          ↓
+
+w14:paraId="1484D60A" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌──────────┬──────────┬──────────┐
+
+w14:paraId="4713F1C8" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│          │          │          │  100px
+
+w14:paraId="632F6FAE" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">├──────────┼──────────┼──────────┤
+
+w14:paraId="2DDC40E0" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│          │          │          │  200px
+
+w14:paraId="75B1A2F8" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">└──────────┴──────────┴──────────┘
+
+w14:paraId="58831615" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Створено 3 стовпці та 2 рядки. 
+
+w14:paraId="37F3155F" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Отже, grid-template-columns визначає стовпці, а grid-template-rows визначає рядки.
+
+w14:paraId="0387AD04" w14:textId="4BF4C5B0" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00723DA4">Відстань між елементами gap
+
+w14:paraId="07051B38" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">.grid {
+
+w14:paraId="69F1DFA0" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    display: grid;
+
+w14:paraId="7F1CE45F" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    grid-template-columns: 1fr 1fr 1fr;
+
+w14:paraId="12721C42" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    gap: 20px;
+
+w14:paraId="3EB2BA50" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">}
+
+w14:paraId="69A25A97" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9"/>
+
+w14:paraId="147A304B" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌──────────┐ 20px ┌──────────┐ 20px ┌──────────┐
+
+w14:paraId="2E9B7421" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│          │      │          │      │          │
+
+w14:paraId="1CC2E963" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│    1     │      │    2     │      │    3     │
+
+w14:paraId="7C8034CE" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│          │      │          │      │          │
+
+w14:paraId="5D76CBBA" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">└──────────┘      └──────────┘      └──────────┘
+
+w14:paraId="31729961" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">
+
+w14:paraId="1472ECEA" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌──────────┐      ┌──────────┐      ┌──────────┐
+
+w14:paraId="17F79C36" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│    4     │      │    5     │      │    6     │
+
+w14:paraId="113076DF" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">└──────────┘      └──────────┘      └──────────┘
+
+w14:paraId="423C55E2" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00A615A8" w:rsidP="00723DA4"> Можна також задати окремо: gap: 20px 30px; тоді:
+
+w14:paraId="1FB7945F" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00001601">20px — відстань між рядками; 
+
+w14:paraId="43EDAB2F" w14:textId="60C3CF1C" w:rsidR="00A615A8" w:rsidRDefault="00723DA4" w:rsidP="00001601">30px — відстань між стовпцями.
+
+w14:paraId="0FCD0D82" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Розміщення елементів в Grid
+
+w14:paraId="488BE920" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">.grid {
+
+w14:paraId="3A7B539B" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">    display: grid;
+
+w14:paraId="28433920" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">    grid-template-columns: 1fr 1fr 1fr;
+
+w14:paraId="35F355F8" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">}
+
+w14:paraId="5335E0A9" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">
+
+w14:paraId="54F89DDE" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">&lt;div class="grid"&gt;
+
+w14:paraId="60CD2BC2" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">    &lt;div&gt;1&lt;/div&gt;
+
+w14:paraId="3A1490B6" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">    &lt;div&gt;2&lt;/div&gt;
+
+w14:paraId="42006AC9" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">    &lt;div&gt;3&lt;/div&gt;
+
+w14:paraId="250D849A" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">    &lt;div&gt;4&lt;/div&gt;
+
+w14:paraId="12A4CAC9" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">    &lt;div&gt;5&lt;/div&gt;
+
+w14:paraId="57043565" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">    &lt;div&gt;6&lt;/div&gt;
+
+w14:paraId="57813C41" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">&lt;/div&gt;
+
+w14:paraId="4A4E57A7" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00723DA4">┌─────┬─────┬─────┐
+
+w14:paraId="3A858805" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00723DA4">│  1  │  2  │  3  │
+
+w14:paraId="2FC0064D" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00723DA4">├─────┼─────┼─────┤
+
+w14:paraId="74BE93AF" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00723DA4">│  4  │  5  │  6  │
+
+w14:paraId="4E348700" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="00723DA4">└─────┴─────┴─────┘
+
+w14:paraId="32E6573C" w14:textId="77777777" w:rsidR="00723DA4" w:rsidRDefault="00723DA4" w:rsidP="007538B9">
+
+w14:paraId="4059F465" w14:textId="4B6D3133" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Grid автоматично розставляє елементи. За замовченням елементи заповнюють сітку послідовно зліва направо, зверху вниз і не потрібно вручну задавати координати кожного елемента.
+
+w14:paraId="56018C26" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Розміщення елемента в конкретних стовпцях
+
+w14:paraId="146A7642" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRPr="006A114E" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Наприклад, якщо потрібно, щоб перший елемент займав два стовпці:
+
+w14:paraId="53477D65" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">.item1 {
+
+w14:paraId="78A2671A" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    grid-column: span 2;
+
+w14:paraId="095A415E" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">}
+
+w14:paraId="668A5C6F" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">
+
+w14:paraId="6508EB62" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌────────────────────┬──────────┐
+
+w14:paraId="223AFF5F" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│                    │          │
+
+w14:paraId="4C63A126" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│         1          │    2     │
+
+w14:paraId="252A0D24" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│                    │          │
+
+w14:paraId="5946EBDA" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">├──────────┬─────────┼──────────┤
+
+w14:paraId="10D2F8DE" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│    3     │    4    │    5     │
+
+w14:paraId="08A21AFE" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">└──────────┴─────────┴──────────┘
+
+w14:paraId="4689F9A0" w14:textId="23EE0905" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Тобто, grid-column: span 2; означає, що цей елемент повинен займати простір двох стовпців. Аналогічно, grid-row: span 2; означає, що елемент займає два рядки.
+
+w14:paraId="363A5554" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Адаптивний Grid
+
+w14:paraId="76E8480F" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Grid особливо корисний для адаптивного вебдизайну. Наприклад, потрібно створити каталог з картками:
+
+w14:paraId="482171C4" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">.cards {
+
+w14:paraId="46165208" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    display: grid;
+
+w14:paraId="6155D0F9" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    grid-template-columns: repeat(3, 1fr);
+
+w14:paraId="343ED905" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">    gap: 20px;
+
+w14:paraId="421885B8" w14:textId="61DB5ECD" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="009313CB">}
+
+w14:paraId="41CEB238" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌─────────┐ ┌─────────┐ ┌─────────┐
+
+w14:paraId="3197E809" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│  Card   │ │  Card   │ │  Card   │
+
+w14:paraId="2BAD6502" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">└─────────┘ └─────────┘ └─────────┘
+
+w14:paraId="3608B8FF" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">
+
+w14:paraId="07ADDC1E" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">┌─────────┐ ┌─────────┐ ┌─────────┐
+
+w14:paraId="33E21755" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="007538B9">│  Card   │ │  Card   │ │  Card   │
+
+w14:paraId="0E906488" w14:textId="37055003" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="009313CB">└─────────┘ └─────────┘ └─────────┘
+
+w14:paraId="0318A664" w14:textId="1E1F3E32" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Тут repeat(3,1fr) означає «повторити 1fr три рази», те саме, що grid-template-columns: 1fr 1fr 1fr;
+
+w14:paraId="63B402AC" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Адаптивна кількість колонок
+
+w14:paraId="0BD7711C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">.cards {
+
+w14:paraId="631AE383" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">    display: grid;
+
+w14:paraId="1996F61A" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+w14:paraId="4F6C114C" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">    gap: 20px;
+
+w14:paraId="7FE05FE1" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">}
+
+w14:paraId="5DCB41AF" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Це типовий сучасний прийом адаптивного CSS. 
+
+w14:paraId="59A3B5A8" w14:textId="71526DE6" w:rsidR="00A615A8" w:rsidRPr="002B2D1B" w:rsidRDefault="00A615A8" w:rsidP="00001601">minmax(250px, 1fr) означає, що ширина картки не повинна бути меншою за 250px, але за можливості вона може збільшуватися.
+
+w14:paraId="787CDB20" w14:textId="2EEF2C77" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00001601">auto-fit означає, що браузер сам визначає, скільки таких колонок поміститься в доступному просторі.
+
+w14:paraId="68EF4672" w14:textId="71A27398" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">Тому, на широкому моніторі блоки розмістяться так
+
+w14:paraId="3E6E6BF0" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
+
+w14:paraId="2D2FBEF0" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">│ Card 1 │ │ Card 2 │ │ Card 3 │ │ Card 4 │
+
+w14:paraId="1BBCD47B" w14:textId="77777777" w:rsidR="00A615A8" w:rsidRDefault="00A615A8" w:rsidP="00A615A8">└────────┘ └────────┘ └────────┘ └────────┘
+
+w14:paraId="43D9C1B7" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">На планшеті:
+
+w14:paraId="13E9651F" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">┌────────────┐ ┌────────────┐
+
+w14:paraId="7BD90F5B" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">│   Card 1   │ │   Card 2   │
+
+w14:paraId="512EFFA2" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">└────────────┘ └────────────┘
+
+w14:paraId="1311C125" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">┌────────────┐ ┌────────────┐
+
+w14:paraId="2B2B735F" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">│   Card 3   │ │   Card 4   │
+
+w14:paraId="3CF5CF90" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">└────────────┘ └────────────┘
+
+w14:paraId="4CE0FE36" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="00A615A8"/>
+
+w14:paraId="0BAC2C75" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">На телефоні:
+
+w14:paraId="67323907" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">┌──────────────────┐
+
+w14:paraId="0CC2A80C" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">│      Card 1      │
+
+w14:paraId="22B59A6B" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">└──────────────────┘
+
+w14:paraId="2BF1CE58" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">┌──────────────────┐
+
+w14:paraId="7685C6C7" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">│      Card 2      │
+
+w14:paraId="0527C512" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">└──────────────────┘
+
+w14:paraId="61BFF1EB" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">┌──────────────────┐
+
+w14:paraId="1BB0AEEC" w14:textId="77777777" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">│      Card 3      │
+
+w14:paraId="6E853641" w14:textId="03D65D23" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="002B2D1B">└──────────────────┘
+
+w14:paraId="2DB4518B" w14:textId="19C3CDC1" w:rsidR="004B5E05" w:rsidRDefault="004B5E05" w:rsidP="002278FB">Найважливіші значення display
+
+w14:paraId="07B91FC9" w14:textId="779DD2B8" w:rsidR="002B2D1B" w:rsidRPr="002B2D1B" w:rsidRDefault="009313CB" w:rsidP="002B2D1B">Властивість display відповідає на запитання: «Як цей елемент повинен поводитися в макеті?»
+
+w14:paraId="768BBC51" w14:textId="02264F62" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="00001601">block. Елемент поводиться як блок, «я окремий блок».
+
+w14:paraId="69C45746" w14:textId="32FB3F9D" w:rsidR="002B2D1B" w:rsidRDefault="009313CB" w:rsidP="00001601">Inline. Елемент розташовується в рядку, «я частина рядка».
+
+w14:paraId="3E918DF2" w14:textId="5A4CE22C" w:rsidR="002B2D1B" w:rsidRDefault="002B2D1B" w:rsidP="00001601">inline-block. Рядкове розташування з можливістю задавати розміри блоку, «я стою в рядку, але маю власні розміри».
+
+w14:paraId="2C550F58" w14:textId="6F345E6C" w:rsidR="002B2D1B" w:rsidRDefault="009313CB" w:rsidP="00001601">none. Повністю прибирає елемент з layout, «мене немає в макеті»
+
+w14:paraId="563A608F" w14:textId="67FAEF63" w:rsidR="002B2D1B" w:rsidRDefault="009313CB" w:rsidP="00001601">flex. Створює Flex-контейнер, «я організовую свої дочірні елементи за Flexbox»
+
+w14:paraId="3C115DBF" w14:textId="1B94FE83" w:rsidR="002B2D1B" w:rsidRDefault="009313CB" w:rsidP="00001601">grid. Створює Grid-контейнер«я організовую свої дочірні елементи за Grid»
+
+w14:paraId="4389664C" w14:textId="7F96157B" w:rsidR="002278FB" w:rsidRDefault="00E864E5" w:rsidP="002278FB">Адаптивність вебсторінки за допомоги Media Queries 
+
+w14:paraId="16E56B0B" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="002278FB" w:rsidP="002278FB">Сучасний вебсайт повинен коректно відображатися на різних пристроях: комп'ютері, ноутбуці, планшеті та смартфоні. 
+
+w14:paraId="0BD954F5" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="008D45D8" w:rsidP="008D45D8">Комп'ютер       Планшет        Смартфон
+
+w14:paraId="2B9D0423" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="008D45D8" w:rsidP="008D45D8">
+
+w14:paraId="41B470FB" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="008D45D8" w:rsidP="008D45D8">┌────────────┐  ┌──────────┐   ┌──────┐
+
+w14:paraId="425F24DA" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="008D45D8" w:rsidP="008D45D8">│            │  │          │   │      │
+
+w14:paraId="5715869A" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="008D45D8" w:rsidP="008D45D8">│  1920 px   │  │ 768 px   │   │ 390  │
+
+w14:paraId="6FD99FC1" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="008D45D8" w:rsidP="008D45D8">│            │  │          │   │  px  │
+
+w14:paraId="0AD298D7" w14:textId="77777777" w:rsidR="008D45D8" w:rsidRDefault="008D45D8" w:rsidP="008D45D8">└────────────┘  └──────────┘   └──────┘
+
+w14:paraId="55B787FF" w14:textId="7A48328D" w:rsidR="002278FB" w:rsidRDefault="009313CB" w:rsidP="002278FB">Якщо створити сайт тільки під один розмір екрана, на іншому пристрої його елементи можуть:
+
+w14:paraId="7CE93267" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00001601">не поміщатися в ширину; 
+
+w14:paraId="193F816C" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00001601">ставати занадто дрібними; 
+
+w14:paraId="3454C435" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00001601">накладатися один на одного; 
+
+w14:paraId="32F7F308" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00001601">створювати горизонтальну прокрутку; 
+
+w14:paraId="6D334236" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00001601">мати незручну навігацію. 
+
+w14:paraId="0846C6E3" w14:textId="3A540AC2" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Для вирішення цієї проблеми CSS має спеціальний механізм Media Queries. Media Query — це CSS-правило, яке дозволяє застосовувати певні стилі лише тоді, коли виконуються задані умови. Найчастіше такою умовою є ширина екрана.
+
+w14:paraId="64B998B8" w14:textId="134D8EBB" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Найпростіший Media Query
+
+w14:paraId="3F24C1C1" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Основний синтаксис:
+
+w14:paraId="2273B9B2" w14:textId="2069E5B2" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (умова) {/* CSS-правила */}
+
+w14:paraId="4CA7A420" w14:textId="43CE568E" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Наприклад, правило «Якщо ширина viewport становить 768 px або менше, застосувати цей CSS». На широкому екрані правило не працюватиме.
+
+w14:paraId="56503DE2" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (max-width: 768px) {
+
+w14:paraId="5F62F445" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    body {
+
+w14:paraId="7241EDDB" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">        background: lightgray;
+
+w14:paraId="664ECEE3" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    }
+
+w14:paraId="7863BCB1" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="186D0F25" w14:textId="1CF8BD0C" w:rsidR="002278FB" w:rsidRPr="002278FB" w:rsidRDefault="00F21BBF" w:rsidP="002278FB">Видима область вебсторінки viewport
+
+w14:paraId="47FE7DDB" w14:textId="73113A13" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Viewport — це видима область вебсторінки у вікні браузера. Це не обов'язково фізичний розмір екрана пристрою. Наприклад, смартфон може мати фізичний дисплей з великою кількістю пікселів, але браузер працює з CSS-шириною viewport (рис.11).
+
+w14:paraId="223EA27F" w14:textId="57EC9F94" w:rsidR="000779D4" w:rsidRDefault="000779D4" w:rsidP="000779D4">
+
+w14:paraId="2BB2C882" w14:textId="3FDA08EA" w:rsidR="000779D4" w:rsidRDefault="000779D4" w:rsidP="000779D4">Рис.11. Видима область вебсторінки у вікні браузера viewport
+
+w14:paraId="21C016E7" w14:textId="1A49F4BC" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Тому, Media Queries зазвичай орієнтуються саме на CSS-розміри viewport.
+
+w14:paraId="2646B674" w14:textId="77777777" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00F95950">Точка зміни дизайну Брейкпоїнт 
+
+w14:paraId="01D24B00" w14:textId="77777777" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00F95950">В Media Queries часто використовують поняття брейкпоїнт (breakpoint), що вказує контрольну ширину, при якій змінюється структура або стиль сторінки. Наприклад:
+
+w14:paraId="0FD783F5" w14:textId="7CA077E0" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00F95950">@media (max-width: 991px) {...}
+
+w14:paraId="59EDF830" w14:textId="77777777" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00F95950">
+
+w14:paraId="6C6581DB" w14:textId="61EBA8BE" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00F95950">@media (max-width: 600px) {...}
+
+w14:paraId="0D33AF5D" w14:textId="77777777" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00F95950">Тут:
+
+w14:paraId="21F8B00F" w14:textId="3744403D" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00001601">991px — брейкпоїнт для планшетного/середнього екрана; 
+
+w14:paraId="0021E9FB" w14:textId="228C36F8" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00001601">676px — брейкпоїнт для вузького екрана.  
+
+w14:paraId="6D097C0D" w14:textId="647C9ED5" w:rsidR="00F95950" w:rsidRDefault="00F95950" w:rsidP="00F95950">Брейпоїнт не обов'язково позначає конкретний стандартний розмір пристрою. Неправильно мислити, що 767px — це планшет. Краще: 767px — це ширина, на якій макет потребує зміни. Тому брейкпоїнт визначають, виходячи з контенту та поведінки макета, а не лише з назв пристроїв.
+
+w14:paraId="3DB78C77" w14:textId="76EDE735" w:rsidR="002278FB" w:rsidRPr="002278FB" w:rsidRDefault="00E864E5" w:rsidP="002278FB">Стиль для вузьких екранів max-width 
+
+w14:paraId="45947D6F" w14:textId="113AB9CA" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Один з найпоширеніших варіантів:
+
+w14:paraId="6C9CDABF" w14:textId="2B322142" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (max-width: 767px) {
+
+w14:paraId="5880BFE8" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    ...
+
+w14:paraId="5E4EFE1F" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="6BD0C596" w14:textId="4CB327FF" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">max-width означає «застосувати правила, якщо ширина viewport не більша за 767 px».
+
+w14:paraId="4338F118" w14:textId="6915A16D" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Наприклад, до меню на десктоп версії застосовано стиль:
+
+w14:paraId="7A860B3E" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">.menu {
+
+w14:paraId="036A4E73" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    display: flex;
+
+w14:paraId="20504E3F" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    gap: 30px;
+
+w14:paraId="43D690C4" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="197C8CCB" w14:textId="0FD31781" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">На мобільному пристрої потрібно розташувати меню вертикально:
+
+w14:paraId="5A31F633" w14:textId="415C6446" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (max-width: 767px) {
+
+w14:paraId="49BEF40B" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    .menu {
+
+w14:paraId="3DA52AF4" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">        flex-direction: column;
+
+w14:paraId="046DAE22" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">        gap: 10px;
+
+w14:paraId="7EBDF982" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    }
+
+w14:paraId="5919E20B" w14:textId="30395D32" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="23B91CE2" w14:textId="1C3B0335" w:rsidR="00F95950" w:rsidRPr="00F95950" w:rsidRDefault="00F95950" w:rsidP="00F95950">В результаті буде наступне відображення
+
+w14:paraId="7135DD44" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Великий екран
+
+w14:paraId="3A765F3B" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Головна    Про нас    Послуги    Контакти
+
+w14:paraId="630F84D8" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">
+
+w14:paraId="15E8C4C6" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Малий екран
+
+w14:paraId="1DD1919C" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Головна
+
+w14:paraId="0BCBD18F" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Про нас
+
+w14:paraId="25332428" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Послуги
+
+w14:paraId="656844F5" w14:textId="52D3B517" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Контакти
+
+w14:paraId="60DD2EDE" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Тобто HTML залишається тим самим, змінюється лише CSS.
+
+w14:paraId="01E1A3D2" w14:textId="3A159CB9" w:rsidR="002278FB" w:rsidRPr="002278FB" w:rsidRDefault="00F95950" w:rsidP="002278FB">Стиль для широких екранів min-width
+
+w14:paraId="485671C0" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Можна використовувати й протилежний підхід:
+
+w14:paraId="3756B103" w14:textId="715FC56D" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (min-width: 768px) {
+
+w14:paraId="13D19DE7" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    ...
+
+w14:paraId="6BA36A47" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="2F7DC825" w14:textId="40DD9EC1" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Це означає «застосувати правила, якщо ширина viewport не менша за 768 px».
+
+w14:paraId="07741261" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00F95950">Наприклад:
+
+w14:paraId="586F0BCB" w14:textId="6725D95C" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">.menu {display: none;}
+
+w14:paraId="37245392" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">
+
+w14:paraId="07A6E64D" w14:textId="3D07CEEB" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (min-width: 768px) {
+
+w14:paraId="28DDDEC8" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    .menu {
+
+w14:paraId="62B86B15" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">        display: flex;
+
+w14:paraId="57F0E8F5" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    }
+
+w14:paraId="5025E129" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="583BB9C9" w14:textId="14065F16" w:rsidR="002278FB" w:rsidRDefault="00F95950" w:rsidP="002278FB">В даному випадку меню буде відображатися тільки на широких екранах.
+
+w14:paraId="1F8F0034" w14:textId="1BE62BAC" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="008A4B83">Mobile First
+
+w14:paraId="55B163E0" w14:textId="1DFDE4BB" w:rsidR="00507DED" w:rsidRDefault="002278FB" w:rsidP="00507DED">Сучасним підходом до адаптивної верстки є «Спочатку мобільна версія» (Mobile First). Спочатку створюється дизайн для маленького екрана, а потім поступово додаються можливості для більших екранів (рис.12). 
+
+w14:paraId="7C81CF02" w14:textId="54467802" w:rsidR="00507DED" w:rsidRDefault="00507DED" w:rsidP="00507DED">
+
+w14:paraId="2E76C04A" w14:textId="5002EE39" w:rsidR="00507DED" w:rsidRDefault="00507DED" w:rsidP="00507DED">Рис.12. Сучасний підхід до адаптивної верстки Mobile First
+
+w14:paraId="1B79D12F" w14:textId="75E635DC" w:rsidR="00C23395" w:rsidRPr="00507DED" w:rsidRDefault="00C23395" w:rsidP="00C23395">Наприклад, при верстанні картки, для контейнера вказується (за замовченням) відображення карток в одну колонку.
+
+w14:paraId="2AEB3ECD" w14:textId="77777777" w:rsidR="00C23395" w:rsidRPr="009313CB" w:rsidRDefault="002278FB" w:rsidP="008A4B83">.cards {
+
+w14:paraId="2EFE5CF7" w14:textId="1A64DFD2" w:rsidR="002278FB" w:rsidRPr="009313CB" w:rsidRDefault="002278FB" w:rsidP="008A4B83">    display: grid;
+
+w14:paraId="6F413DE1" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="009313CB" w:rsidRDefault="002278FB" w:rsidP="008A4B83">    grid-template-columns: 1fr;
+
+w14:paraId="34EFCBE3" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="009313CB" w:rsidRDefault="002278FB" w:rsidP="008A4B83">    gap: 15px;
+
+w14:paraId="6E6D93B6" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="009313CB" w:rsidRDefault="002278FB" w:rsidP="008A4B83">}
+
+w14:paraId="3704B343" w14:textId="71E4BBA0" w:rsidR="002278FB" w:rsidRDefault="00C23395" w:rsidP="00D41DE8">Для ширшого екрана мають відображатися дві колонки.
+
+w14:paraId="4A5DE3FC" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">@media (min-width: 600px) {
+
+w14:paraId="0F0021CD" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">    .cards {
+
+w14:paraId="131D747E" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">        grid-template-columns: repeat(2, 1fr);
+
+w14:paraId="6C0AB008" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">    }
+
+w14:paraId="71100DD4" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">}
+
+w14:paraId="6D3530DA" w14:textId="2E42526E" w:rsidR="002278FB" w:rsidRDefault="00C23395" w:rsidP="00C23395">Для великого екрана — чотири колонки.
+
+w14:paraId="2CA01B53" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">@media (min-width: 1000px) {
+
+w14:paraId="15450A02" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">    .cards {
+
+w14:paraId="149DB3D0" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">        grid-template-columns: repeat(4, 1fr);
+
+w14:paraId="0107F82D" w14:textId="77777777" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">    }
+
+w14:paraId="0BE3A645" w14:textId="11D0340E" w:rsidR="002278FB" w:rsidRPr="008A4B83" w:rsidRDefault="002278FB" w:rsidP="008A4B83">}
+
+w14:paraId="6C437D66" w14:textId="61850FC4" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00D41DE8">Цей підхід добре узгоджується з сучасним принципом прогресивного покращення, спочатку забезпечити базову функціональність, а потім розширювати її для пристроїв з більшими можливостями та простором.
+
+w14:paraId="3B3D84F8" w14:textId="48BACAD6" w:rsidR="002278FB" w:rsidRDefault="00C23395" w:rsidP="00D41DE8">Застосування Media Queries для зміни CSS-властивостей
+
+w14:paraId="532F5641" w14:textId="427F92FA" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00C23395">За допомогою Media Queries можна змінювати практично будь-які CSS-властивості. Наприклад, розмір заголовка:
+
+w14:paraId="0130FE7D" w14:textId="0D01C9B5" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">h1 {font-size: 48px;}
+
+w14:paraId="4F9FA407" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">
+
+w14:paraId="3A64773D" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (max-width: 600px) {
+
+w14:paraId="4E165045" w14:textId="26A4B1E0" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    h1 {font-size: 32px;}
+
+w14:paraId="4912403B" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="2EED38B7" w14:textId="278517D2" w:rsidR="002278FB" w:rsidRDefault="00D41DE8" w:rsidP="00D41DE8">На великому екрані Заголовок — 48px, на смартфоні Заголовок — 32px
+
+w14:paraId="34DD0B4A" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00D41DE8">Можна змінювати відступи:
+
+w14:paraId="62BD9D99" w14:textId="5AF2919C" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">.container {padding: 50px;}
+
+w14:paraId="1F53E208" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">
+
+w14:paraId="70131283" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (max-width: 600px) {
+
+w14:paraId="65C29E95" w14:textId="2B8D5ED1" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    .container {padding: 20px;}
+
+w14:paraId="764AA400" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="28828717" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00D41DE8">Можна змінювати напрям Flexbox:
+
+w14:paraId="32855732" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">.header {
+
+w14:paraId="406EEAD6" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    display: flex;
+
+w14:paraId="7A33ED21" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    flex-direction: row;
+
+w14:paraId="351CFF94" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="34859C85" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">
+
+w14:paraId="04D2664C" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (max-width: 700px) {
+
+w14:paraId="16AB2C22" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    .header {
+
+w14:paraId="3FC8C282" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">        flex-direction: column;
+
+w14:paraId="13DACADF" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    }
+
+w14:paraId="4BA59817" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="2AC88459" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="00D41DE8">Можна приховувати другорядні елементи:
+
+w14:paraId="272D80FC" w14:textId="37050053" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">.sidebar {display: block;}
+
+w14:paraId="17BA0869" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">
+
+w14:paraId="56E154D9" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (max-width: 700px) {
+
+w14:paraId="470D9234" w14:textId="67C471D6" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    .sidebar {display: none;}
+
+w14:paraId="6EAEAFED" w14:textId="7B082D35" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="40193F39" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="008A4B83">Media Queries особливо добре поєднуються з CSS Grid. Наприклад, великому екрані потрібно відобразити картки в три колонки:
+
+w14:paraId="239B4B5F" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">.cards {
+
+w14:paraId="17A730F0" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">    display: grid;
+
+w14:paraId="040D2E39" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">    grid-template-columns: repeat(3, 1fr);
+
+w14:paraId="08B2FBAE" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">    gap: 20px;
+
+w14:paraId="556DF3D0" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">}
+
+w14:paraId="762F55D7" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">┌────────┐ ┌────────┐ ┌────────┐
+
+w14:paraId="10FD0CCC" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">│ Card 1 │ │ Card 2 │ │ Card 3 │
+
+w14:paraId="56E0B2F8" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">└────────┘ └────────┘ └────────┘
+
+w14:paraId="053EAB2A" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63"/>
+
+w14:paraId="3A984293" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="008A4B83">На планшеті в дві колонки:
+
+w14:paraId="7E3EC1C3" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">@media (max-width: 900px) {
+
+w14:paraId="489C572A" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">    .cards {
+
+w14:paraId="30C8D3E1" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">        grid-template-columns: repeat(2, 1fr);
+
+w14:paraId="23752E9D" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">    }
+
+w14:paraId="618A08A3" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">}
+
+w14:paraId="077A399F" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">┌────────┐ ┌────────┐
+
+w14:paraId="77014B85" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">│ Card 1 │ │ Card 2 │
+
+w14:paraId="07BB2774" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">└────────┘ └────────┘
+
+w14:paraId="31E5439D" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">┌────────┐ ┌────────┐
+
+w14:paraId="435FB9E6" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">│ Card 3 │ │ Card 4 │
+
+w14:paraId="4A6B7A8E" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">└────────┘ └────────┘
+
+w14:paraId="555F4873" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="008A4B83">А на смартфоні, картки вибудовуються в  одну колонку.
+
+w14:paraId="436B4389" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">@media (max-width: 600px) {
+
+w14:paraId="050ABDDC" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">    .cards {
+
+w14:paraId="0822414B" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">        grid-template-columns: 1fr;
+
+w14:paraId="252F9FB5" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">    }
+
+w14:paraId="2F0EA4D8" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">}
+
+w14:paraId="5FD6ADE3" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">
+
+w14:paraId="49D9B8E1" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">┌──────────────┐
+
+w14:paraId="40965A4B" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">│    Card 1    │
+
+w14:paraId="6312BED1" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">└──────────────┘
+
+w14:paraId="612F5461" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">┌──────────────┐
+
+w14:paraId="6FC50220" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">│    Card 2    │
+
+w14:paraId="73EF6D3F" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">└──────────────┘
+
+w14:paraId="433F122E" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">┌──────────────┐
+
+w14:paraId="65A95822" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">│    Card 3    │
+
+w14:paraId="2CA6FFFF" w14:textId="77777777" w:rsidR="008A4B83" w:rsidRDefault="008A4B83" w:rsidP="00C13E63">└──────────────┘
+
+w14:paraId="3F400F70" w14:textId="40220ACF" w:rsidR="002278FB" w:rsidRDefault="00D41DE8" w:rsidP="00D41DE8">Цей приклад для лекції показує, що Grid відповідає за структуру, а Media Query визначає, коли структура повинна змінитися.
+
+w14:paraId="334CB011" w14:textId="3B5009F3" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="007D5937">Не потрібно створювати Media Query для кожної маленької зміни ширини екрана. CSS має сучасні інструменти, які допомагають створювати гнучкий/адаптивний макет без великої кількості брейкпоїнтів (рис.13).
+
+w14:paraId="06583A37" w14:textId="0A245246" w:rsidR="005B11F5" w:rsidRDefault="005B11F5" w:rsidP="005B11F5">
+
+w14:paraId="2E750CF7" w14:textId="1DA0A061" w:rsidR="005B11F5" w:rsidRDefault="005B11F5" w:rsidP="005B11F5">Рис.13. Сучасна адаптивна архітектура вирівнювання блоків
+
+w14:paraId="63CA2B98" w14:textId="03B65A7A" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="007D5937">Тут браузер сам визначає, скільки карток поміститься в рядку без написання чотирьох Media Queries. Тобто:
+
+w14:paraId="17A06BB2" w14:textId="2DCD8508" w:rsidR="007D5937" w:rsidRDefault="007D5937" w:rsidP="00001601">широкий екран → 4 картки
+
+w14:paraId="23A401F5" w14:textId="422C5EF5" w:rsidR="007D5937" w:rsidRDefault="007D5937" w:rsidP="00001601">середній екран → 3 картки
+
+w14:paraId="65EBD005" w14:textId="3D5CC089" w:rsidR="007D5937" w:rsidRDefault="008A4B83" w:rsidP="00001601">малий екран → 1 картка
+
+w14:paraId="6D6394E5" w14:textId="2A530A9B" w:rsidR="002278FB" w:rsidRDefault="00326050" w:rsidP="007D5937">Застосування Media Queries для інших опцій
+
+w14:paraId="546C795F" w14:textId="60B60339" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="007D5937">Media Queries можуть перевіряти й інші характеристики. Наприклад, орієнтацію:
+
+w14:paraId="633B54B7" w14:textId="0569A111" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (orientation: landscape) {...}
+
+w14:paraId="762DD568" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="007D5937">або:
+
+w14:paraId="6CDC5CF3" w14:textId="67B868A6" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (orientation: portrait) {...}
+
+w14:paraId="5CE6D009" w14:textId="6C40FB6A" w:rsidR="002278FB" w:rsidRDefault="00326050" w:rsidP="007D5937">Такий медіа-запит реагує на те, чи пристрій повернутий горизонтально або вертикально.
+
+w14:paraId="1DC7C98E" w14:textId="13F9F7DD" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="007D5937">Media Queries можуть враховувати налаштування користувача, наприклад перевагу темної теми:
+
+w14:paraId="148C0FBA" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">@media (prefers-color-scheme: dark) {
+
+w14:paraId="5C43FC74" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    body {
+
+w14:paraId="3738DC96" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">        background: #111;
+
+w14:paraId="1B73364B" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">        color: white;
+
+w14:paraId="2DF69FE2" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">    }
+
+w14:paraId="69606343" w14:textId="77777777" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">}
+
+w14:paraId="288A2BAF" w14:textId="45520410" w:rsidR="002278FB" w:rsidRDefault="002278FB" w:rsidP="002278FB">Головні складові адаптивного дизайну
+
+w14:paraId="076EB059" w14:textId="7D8542B1" w:rsidR="007D5937" w:rsidRDefault="007D5937" w:rsidP="007D5937">Вебсторінка не повинна мати однакову структуру та розміри на всіх пристроях. Адаптивний дизайн надає сторінці можливість змінюватися відповідно до доступного простору.
+
+w14:paraId="7C5C7E07" w14:textId="05AD75E8" w:rsidR="00677837" w:rsidRDefault="00677837" w:rsidP="00677837">
+
+w14:paraId="6A90F2C3" w14:textId="7DF58F92" w:rsidR="00677837" w:rsidRDefault="00677837" w:rsidP="00677837">Рис.14. Властивості CSS для адаптивності сторінки
+
+w14:paraId="68D9C53F" w14:textId="0B10397C" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00577A74">Висновки
+
+w14:paraId="0570E2D9" w14:textId="7CE28C4B" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00577A74">Лекція присвячена основам CSS (Cascading Style Sheets), каскадним таблицям стилів, які описують правила відображення та розміщення елементів вебсторінки. CSS забезпечує принципове розділення структури документа (HTML) та його візуального оформлення, що допомагає легко застосовувати єдиний стиль до багатьох сторінок і швидко змінювати дизайн.
+
+w14:paraId="6DB896B1" w14:textId="6DEA9510" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00577A74">Розглянуто структуру CSS-правила, яке складається з селектора та блоку оголошення (властивість + значення). Описано три способи додавання стилів до вебсторінки: вбудовані (всередині &lt;style&gt;), внутрішні (атрибут style) та зовнішні (окремий файл .css, підключений через &lt;link&gt; або @import). Зовнішні таблиці стилів є академічним стандартом, оскільки забезпечують глобальне застосування стилів для всього сайту.
+
+w14:paraId="2D0B9A9D" w14:textId="3B5EFBAF" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00577A74">Описано типи селекторів, тобто інструменти для вибору елементів, які потрібно форматувати. Розглядаються універсальний селектор, селектори елементів, класів, ідентифікаторів, нащадків, дочірніх елементів, сестринських елементів та атрибутів. Окремо висвітлено псевдокласи (стани взаємодії, структурні) та псевдоелементи (:before, :after). Пояснюється принцип каскадування та специфічність правил — математика специфічності (0, 0, 0, 0) визначає, яке правило має пріоритет при конфлікті стилів.
+
+w14:paraId="7A7F8826" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00577A74">Детально описано властивість display (block, inline, inline-block, none, flex, grid) та дві сучасні системи верстки: Flexbox (одновимірна, для розміщення елементів в один рядок або колонку) та CSS Grid (двовимірна, для створення складних сіток). Розглядаються основні властивості Flexbox (flex-direction, justify-content, align-items, flex-wrap, gap) та Grid (grid-template-columns, grid-template-rows, gap, grid-column: span). 
+
+w14:paraId="74AE3337" w14:textId="5FBE05B8" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00577A74">Описано способи щодо адаптивності вебсторінки за допомогою Media Queries, брейкпойнтів, підходом Mobile First та сучасними прийомами адаптивного Grid.
+
+w14:paraId="59EFB3CC" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00577A74">Контрольні запитання для усного опитування
+
+w14:paraId="5BD18BD3" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке CSS? З яких частин складається CSS-правило?
+
+w14:paraId="14C3885F" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Які існують способи додавання CSS до веб-сторінки? Який з них є академічним стандартом?
+
+w14:paraId="140A3A98" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке селектор? Які типи селекторів ви знаєте?
+
+w14:paraId="4BD4E541" w14:textId="2E4A8000" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">В чому різниця між селектором класу та селектором ідентифікатора?
+
+w14:paraId="61B61C20" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке селектор нащадку? Чим він відрізняється від дочірнього селектора?
+
+w14:paraId="2187878C" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке сестринський селектор? Наведіть приклад.
+
+w14:paraId="120FC07A" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке селектор атрибуту? Наведіть приклад використання.
+
+w14:paraId="1EA3E916" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке псевдокласи? Які псевдокласи станів взаємодії ви знаєте?
+
+w14:paraId="381AD14B" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке структурні псевдокласи? Наведіть приклади.
+
+w14:paraId="4F54B907" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке псевдоелементи? Для чого використовуються :before та :after?
+
+w14:paraId="5B01E04F" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке каскадування? Як визначається специфічність правила?
+
+w14:paraId="15D889C3" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Як обчислюється специфічність селектора? Наведіть приклад.
+
+w14:paraId="6CE34956" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке властивість display? Які її основні значення?
+
+w14:paraId="0D966EE8" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">У чому різниця між display: none та visibility: hidden?
+
+w14:paraId="5322601F" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке Flexbox? Які основні властивості Flex-контейнера ви знаєте?
+
+w14:paraId="52C6BBBA" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке головна та поперечна вісь у Flexbox?
+
+w14:paraId="3DFD06C2" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке CSS Grid? Чим він відрізняється від Flexbox?
+
+w14:paraId="25CC8317" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Як створити адаптивну сітку карток за допомогою Grid?
+
+w14:paraId="409ABD78" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке Media Queries? Як вони використовуються для адаптивності?
+
+w14:paraId="01BCE819" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Що таке Mobile First? Які переваги цього підходу?
+
+w14:paraId="4BE445AB" w14:textId="77777777" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00577A74">Глосарій термінів
+
+w14:paraId="47AB8143" w14:textId="1E917C29" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Каскадні таблиці стилів, CSS (Cascading Style Sheets). Технологія опису зовнішнього вигляду HTML-документа.
+
+w14:paraId="198ABCB0" w14:textId="24447CF6" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Селектор. Частина CSS-правила, яка вказує браузеру, який саме елемент форматувати.
+
+w14:paraId="7A755B24" w14:textId="7895725C" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Блок оголошення. Набір правил в фігурних дужках, що містить властивості та їх значення.
+
+w14:paraId="03365E8E" w14:textId="53178238" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Вбудовані стилі (Internal). Стилі, що розміщені між тегами &lt;style&gt; всередині &lt;head&gt;, діють лише на поточній сторінці.
+
+w14:paraId="57D62568" w14:textId="3BA31155" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Внутрішні стилі (Inline). Стилі, що задані через атрибут style безпосередньо в HTML-тезі, діють лише на конкретний елемент.
+
+w14:paraId="4D65ECFC" w14:textId="6D6924AF" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Зовнішні стилі (External). Окремий файл .css, підключений через &lt;link&gt; або @import, діє глобально для всіх сторінок сайту.
+
+w14:paraId="5A416719" w14:textId="328EA387" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Універсальний селектор (*). Застосовується до всіх елементів без винятку.
+
+w14:paraId="1A1D04F9" w14:textId="3D94533D" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Селектор елементу. Визначає стилі для всіх вказаних тегів на сторінці (h1, p).
+
+w14:paraId="66548498" w14:textId="10166A64" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Селектор класу (.class). Багаторазовий стиль для різних елементів.
+
+w14:paraId="536FA7A4" w14:textId="438F40A4" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Селектор ідентифікатора (#id). Унікальний стиль для одного конкретного елемента.
+
+w14:paraId="7D7F120B" w14:textId="63E2FB89" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Селектор нащадку. Вибирає всі вкладені елементи (будь-який рівень вкладеності).
+
+w14:paraId="0EE43D8A" w14:textId="2316BDD7" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Дочірній селектор (&gt;). Вибирає тільки прямі дочірні елементи (перший рівень).
+
+w14:paraId="65198F41" w14:textId="46229E0D" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Сестринський селектор (+, ~). Вибирає елементи спільного рівня (один батько).
+
+w14:paraId="20998C54" w14:textId="3B19089E" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Селектор атрибуту ([attr]). Вибірка за наявністю або значенням HTML-атрибута.
+
+w14:paraId="3DA93294" w14:textId="43DD6C93" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Псевдоклас. Додає особливі класи до елементів, вибираючи об'єкти, яких немає в структурі сторінки (:hover, :focus).
+
+w14:paraId="1F063D39" w14:textId="0127D2FA" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Псевдоелемент. Використовується для додавання вмісту, який генерується (:before, :after).
+
+w14:paraId="4D6764EF" w14:textId="786C58E4" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Каскадування. Процес застосування різних правил до одного і того ж елементу.
+
+w14:paraId="12980BA1" w14:textId="30DAA9F0" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Специфічність. Вага селектора, що визначає, яке правило має пріоритет при конфлікті (0, 0, 0, 0).
+
+w14:paraId="6E02DB0E" w14:textId="5E18AE45" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">!important. Ключове слово, яке надає правилу найвищий пріоритет.
+
+w14:paraId="7E9A916E" w14:textId="44E9909A" w:rsidR="00577A74" w:rsidRDefault="003E301C" w:rsidP="00001601">Display. Властивість, що визначає, як HTML-елемент бере участь в побудові сторінки.
+
+w14:paraId="0ACA3827" w14:textId="4E8C4972" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">display: block. Елемент починається з нового рядка, займає всю ширину, можна задавати width/height.
+
+w14:paraId="0AD8E825" w14:textId="27BB3B8F" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">display: inline. Елемент не починається з нового рядка, займає лише ширину вмісту.
+
+w14:paraId="3E4E7ADB" w14:textId="245666EF" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">display: inline-block. Поєднання рядкового та блокового елементу (стоїть у рядку, але має власні розміри).
+
+w14:paraId="63CBEBDD" w14:textId="21B7A063" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">display: none. Елемент повністю прибирається з layout і не займає місця.
+
+w14:paraId="212461FE" w14:textId="1C90CD55" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">visibility: hidden. Елемент невидимий, але його місце в макеті зберігається.
+
+w14:paraId="0BD0058C" w14:textId="0C2E14B4" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Flexbox. Одновимірна система верстки для розміщення елементів в один рядок або колонку.
+
+w14:paraId="46718F25" w14:textId="2117A5A7" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Flex-контейнер. Елемент, до якого застосовано display: flex;.
+
+w14:paraId="0D8D5CA1" w14:textId="56C81550" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Flex-елементи. Дочірні елементи, розміщені безпосередньо всередині контейнера.
+
+w14:paraId="03274C55" w14:textId="121E1963" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Головна вісь (Main Axis) Flex-контейнера. Вісь, вздовж якої вибудовуються елементи (за замовчуванням зліва направо).
+
+w14:paraId="15A80311" w14:textId="10E25E9C" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Поперечна вісь (Cross Axis) Flex-контейнера. Вісь, перпендикулярна до головної (за замовчуванням згори вниз).
+
+w14:paraId="698A60C4" w14:textId="28CA23DF" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">justify-content. Вирівнювання Flex-елементів за головною віссю.
+
+w14:paraId="7CAF3BE1" w14:textId="6DCEF5EE" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">align-items. Вирівнювання Flex-елементів за поперечною віссю.
+
+w14:paraId="69993087" w14:textId="37BD9616" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">flex-wrap. Дозволяє Flex-елементам переноситися на новий рядок.
+
+w14:paraId="34E7ACBF" w14:textId="09B5FF5B" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">gap. Відступ між Flex-елементами.
+
+w14:paraId="36DADEF9" w14:textId="7D1CB6C6" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">CSS Grid. Двовимірна система верстки для керування колонками та рядками одночасно.
+
+w14:paraId="05A8CA28" w14:textId="7D556D45" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">grid-template-columns. Визначає кількість та ширину стовпців в Grid-контейнері.
+
+w14:paraId="37600FE3" w14:textId="2639FE47" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">grid-template-rows. Визначає кількість та висоту рядків в Grid-контейнері.
+
+w14:paraId="7B4E4982" w14:textId="6EC84A51" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">fr (fraction). Одиниця виміру в Grid, що означає частину доступного простору.
+
+w14:paraId="0566FC76" w14:textId="5F2153E6" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">repeat(). Функція в Grid-контейнері для повторення значень (наприклад, repeat(3, 1fr)).
+
+w14:paraId="5AEFF4A3" w14:textId="642B149D" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">minmax(). Функція, що задає мінімальне та максимальне значення розміру.
+
+w14:paraId="4288ECC7" w14:textId="2E67EE3B" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">auto-fit. Дозволяє браузеру самому визначати кількість колонок.
+
+w14:paraId="19F066C9" w14:textId="5BDCA8ED" w:rsidR="00577A74" w:rsidRDefault="003E301C" w:rsidP="00001601">Медіа-запити (Media Queries). CSS-правило, яке застосовує стилі лише за певних умов (наприклад, ширина екрана).
+
+w14:paraId="36A3F45A" w14:textId="2280AA35" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Viewport. Видима область вебсторінки у вікні браузера.
+
+w14:paraId="4AE1F789" w14:textId="7FC701CD" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Брейкпойнт (breakpoint). Контрольна ширина, при якій змінюється структура або стиль сторінки.
+
+w14:paraId="59E2309D" w14:textId="00B5BC47" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">max-width. Застосувати правила, якщо ширина viewport не більша за вказане значення.
+
+w14:paraId="556FDBD0" w14:textId="5704AFDB" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">min-width. Застосувати правила, якщо ширина viewport не менша за вказане значення.
+
+w14:paraId="3F50A02A" w14:textId="4E2B9F30" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Mobile First. Підхід, за якого спочатку створюється дизайн для маленького екрана, а потім додаються можливості для більших екранів.
+
+w14:paraId="131D50CA" w14:textId="25A96E58" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Прогресивне покращення (Progressive Enhancement). Спочатку забезпечити базову функціональність, а потім розширювати її для пристроїв з більшими можливостями.
+
+w14:paraId="001D2396" w14:textId="1B4A3A6C" w:rsidR="00577A74" w:rsidRDefault="00577A74" w:rsidP="00001601">Адаптивний дизайн (Responsive Layout). Здатність сторінки змінюватися відповідно до доступного простору.
