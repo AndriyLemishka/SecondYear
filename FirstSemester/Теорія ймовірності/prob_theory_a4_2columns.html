@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Теорія ймовірностей та математична статистика — Шпаргалка A4 у 2 стовпці (для рукописного переписування)</title>
+<title>Теорія ймовірностей та математична статистика — Формуляр A4 (2 стовпці, без пустот, великий шрифт)</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
@@ -10,7 +10,7 @@
 <style>
   @page {
     size: A4 portrait;
-    margin: 6mm;
+    margin: 4mm;
   }
   * {
     box-sizing: border-box;
@@ -21,25 +21,25 @@
     width: 1754px;
     height: 2480px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #0f172a;
+    color: #050811;
     background: #ffffff;
-    padding: 16px 20px 14px 20px;
+    padding: 14px 18px 12px 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
   }
 
-  /* Compact Header */
+  /* Header */
   .top-header {
     background: #0f4c81;
     color: #ffffff;
-    border-radius: 6px;
-    padding: 10px 18px;
+    border-radius: 5px;
+    padding: 8px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     flex-shrink: 0;
   }
   .top-header h1 {
@@ -49,15 +49,14 @@
     text-transform: uppercase;
   }
   .top-header p {
-    font-size: 12px;
-    color: #cbd5e1;
-    margin-top: 1px;
+    font-size: 12.5px;
+    color: #e2e8f0;
   }
   .top-header .tag-badge {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: 4px;
-    padding: 4px 12px;
+    padding: 3px 12px;
     font-size: 12px;
     font-weight: 700;
   }
@@ -66,7 +65,7 @@
   .grid-2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 12px;
     flex: 1;
     min-height: 0;
   }
@@ -75,40 +74,40 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 6px;
+    gap: 4px;
     height: 100%;
   }
 
-  /* Section Card */
+  /* Continuous Topic Block */
   .sec {
     background: #ffffff;
-    border: 1.2px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 7px 11px;
+    border: 1.2px solid #64748b;
+    border-radius: 4px;
+    padding: 5px 8px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    font-size: 12.2px;
-    line-height: 1.32;
-    color: #1e293b;
+    gap: 2px;
+    font-size: 13.6px;
+    line-height: 1.33;
+    color: #0f172a;
   }
   .sec-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1.3px solid #0f4c81;
-    padding-bottom: 2px;
-    margin-bottom: 1.5px;
+    padding-bottom: 1.5px;
+    margin-bottom: 1px;
   }
   .sec-title {
-    font-size: 13.4px;
-    font-weight: 800;
+    font-size: 14.8px;
+    font-weight: 900;
     color: #0f4c81;
   }
   .sec-tag {
-    font-size: 10px;
-    font-weight: 700;
-    color: #0284c7;
+    font-size: 10.5px;
+    font-weight: 800;
+    color: #0369a1;
     background: #e0f2fe;
     padding: 1px 6px;
     border-radius: 3px;
@@ -116,44 +115,44 @@
 
   .b {
     font-weight: 700;
-    color: #0f172a;
+    color: #000000;
   }
   .fbox {
     background: #f8fafc;
-    border-left: 3px solid #0284c7;
-    padding: 2.5px 7px;
-    border-radius: 0 4px 4px 0;
-    margin: 1.5px 0;
+    border-left: 3.5px solid #0284c7;
+    padding: 2px 7px;
+    border-radius: 0 3px 3px 0;
+    margin: 1px 0;
   }
   .sub {
-    font-size: 10.8px;
-    color: #475569;
+    font-size: 11.8px;
+    color: #334155;
   }
   .katex-display {
     margin: 1.5px 0 !important;
   }
   .katex {
-    font-size: 1.01em !important;
+    font-size: 1.05em !important;
   }
 
   /* Table */
   .tbl-dense {
     width: 100%;
     border-collapse: collapse;
-    font-size: 11px;
-    margin: 2px 0;
+    font-size: 12px;
+    margin: 1.5px 0;
   }
   .tbl-dense th {
     background: #f1f5f9;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #64748b;
     padding: 2.5px 4px;
     font-weight: 800;
     text-align: left;
     color: #0f172a;
   }
   .tbl-dense td {
-    border: 1px solid #cbd5e1;
-    padding: 2.5px 4px;
+    border: 1px solid #64748b;
+    padding: 2px 4px;
     vertical-align: middle;
   }
 
@@ -163,12 +162,12 @@
     justify-content: space-between;
     align-items: center;
     border-top: 1.2px solid #cbd5e1;
-    padding-top: 4px;
-    font-size: 10.8px;
-    color: #64748b;
+    padding-top: 3px;
+    font-size: 11px;
+    color: #475569;
     font-weight: 600;
     flex-shrink: 0;
-    margin-top: 4px;
+    margin-top: 3px;
   }
 </style>
 </head>
@@ -178,7 +177,7 @@
   <div class="top-header">
     <div>
       <h1>Теорія ймовірностей та математична статистика — Формуляр A4 (2 стовпці)</h1>
-      <p>НУ «Львівська політехніка» • Усі 17 тем курсу • Оптимізовано для зручного рукописного переписування</p>
+      <p>НУ «Львівська політехніка» • Усі 17 тем курсу • Максимально щільне рукописне компонування без пустот</p>
     </div>
     <div class="tag-badge">Група ПП-24 • 2026</div>
   </div>
@@ -196,13 +195,13 @@
           <span class="sec-tag">Тема 1</span>
         </div>
         <div><span class="b">Правило суми:</span> $N = m + k$ • <span class="b">Правило добутку:</span> $N = m \cdot k$</div>
-        <div><span class="b">Без повторень:</span> Перестановки $P_n = n!$, Розміщення $A_n^m = \frac{n!}{(n-m)!}$, Комбінації $C_n^m = \frac{n!}{m!(n-m)!}$</div>
+        <div><span class="b">Без повторень:</span> $P_n = n!, \quad A_n^m = \frac{n!}{(n-m)!}, \quad C_n^m = \frac{n!}{m!(n-m)!}$</div>
         <div class="fbox">
-          <span class="b">З повтореннями:</span> $\bar{P}_n(k_1,\dots,k_r) = \frac{n!}{k_1!\dots k_r!}, \quad \bar{A}_n^m = n^m, \quad \bar{C}_n^m = C_{n+m-1}^m$
+          <span class="b">З повтореннями:</span> $\bar{P}_n(k_1,\dots,k_r) = \frac{n!}{k_1!\dots k_r!}, \quad \bar{A}_n^m = n^m, \quad \bar{C}_n^m = C_{n+m-1}^m = \frac{(n+m-1)!}{m!(n-1)!}$
         </div>
         <div><span class="b">Біном Ньютона:</span> $(a+b)^n = \sum_{k=0}^n C_n^k a^{n-k}b^k, \quad T_{k+1} = C_n^k a^{n-k}b^k, \quad \sum C_n^k = 2^n$</div>
-        <div><span class="b">Властивості $C_n^k$:</span> $C_n^k = C_n^{n-k}, \; C_{n+1}^k = C_n^k + C_n^{k-1}$ • <span class="b">Стірлінг:</span> $n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$</div>
-        <div><span class="b">Розбиття:</span> $n=km$ на $k$ однакових груп: $N = \frac{n!}{(m!)^k k!}$ • <span class="b">Коло:</span> $P = (n-1)!$</div>
+        <div><span class="b">Тотожності:</span> $C_n^k = C_n^{n-k}, \; C_{n+1}^k = C_n^k + C_n^{k-1}, \; \sum (-1)^k C_n^k = 0$ • <span class="b">Стірлінг:</span> $n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$</div>
+        <div><span class="b">Розбиття:</span> $n=km$ на $k$ однакових груп: $N = \frac{n!}{(m!)^k k!}$ • <span class="b">По колу:</span> $P = (n-1)!$</div>
       </div>
 
       <!-- Тема 2 -->
@@ -216,9 +215,9 @@
         <div class="fbox">
           <span class="b">Закони де Моргана:</span> $\overline{A \cup B} = \bar{A} \cap \bar{B}, \qquad \overline{A \cap B} = \bar{A} \cup \bar{B}$
         </div>
-        <div><span class="b">Аксіоми:</span> 1) $P(A) \ge 0$; 2) $P(\Omega)=1$; 3) $P(\bigcup A_i) = \sum P(A_i)$ для несумісних ($A_i A_j = \varnothing$).</div>
+        <div><span class="b">Аксіоми:</span> 1) $P(A) \ge 0$; 2) $P(\Omega)=1$; 3) $P(\bigcup_{i=1}^\infty A_i) = \sum P(A_i)$ для несумісних ($A_i A_j = \varnothing$).</div>
         <div><span class="b">Повна група:</span> $\bigcup_{i=1}^n A_i = \Omega, \; A_i A_j = \varnothing \implies \sum_{i=1}^n P(A_i) = 1$</div>
-        <div><span class="b">Монотонність:</span> $A \subset B \implies P(A) \le P(B), \quad P(B \setminus A) = P(B) - P(AB)$</div>
+        <div><span class="b">Властивості:</span> $A \subset B \implies P(A) \le P(B), \quad P(B \setminus A) = P(B) - P(AB)$</div>
       </div>
 
       <!-- Тема 3 -->
@@ -232,9 +231,8 @@
           <span class="b">Гіпергеометрична схема</span> ($N$ предметів, $K$ мічених, вибірка $n$ без повернення):
           $$P(X = k) = \frac{C_K^k \cdot C_{N-K}^{n-k}}{C_N^n}, \quad M[X] = n\frac{K}{N}, \quad D[X] = n\frac{K}{N}\left(1-\frac{K}{N}\right)\frac{N-n}{N-1}$$
         </div>
-        <div><span class="b">Геометричне:</span> $P(A) = \frac{\operatorname{mes}(d)}{\operatorname{mes}(D)}$ (1D: довжини $l/L$, 2D: площі $S/S_0$, 3D: об'єми $V/V_0$)</div>
-        <div><span class="b">Задача про зустріч ($|x-y| \le \tau \le T$):</span> $P = \frac{T^2 - (T-\tau)^2}{T^2} = \frac{2\tau}{T} - \left(\frac{\tau}{T}\right)^2$</div>
-        <div><span class="b">Голка Бюффона ($2l \le 2a$):</span> $P = \frac{2l}{\pi a}$</div>
+        <div><span class="b">Геометричне:</span> $P(A) = \frac{\operatorname{mes}(d)}{\operatorname{mes}(D)}$ (1D: $L/L_0$, 2D: $S/S_0$, 3D: $V/V_0$)</div>
+        <div><span class="b">Задача про зустріч ($|x-y| \le \tau \le T$):</span> $P = \frac{T^2 - (T-\tau)^2}{T^2} = \frac{2\tau}{T} - \left(\frac{\tau}{T}\right)^2$ • <span class="b">Бюффон:</span> $P = \frac{2l}{\pi a}$</div>
       </div>
 
       <!-- Тема 4 -->
@@ -243,15 +241,14 @@
           <span class="sec-title">4. Теореми додавання та множення ймовірностей</span>
           <span class="sec-tag">Тема 4</span>
         </div>
-        <div><span class="b">Додавання:</span> $P(A \cup B) = P(A) + P(B) - P(AB)$ (для несумісних $AB=\varnothing \implies P(A+B)=P(A)+P(B)$)</div>
+        <div><span class="b">Додавання:</span> $P(A \cup B) = P(A) + P(B) - P(AB)$ (несумісні $AB=\varnothing \implies P(A+B)=P(A)+P(B)$)</div>
         <div><span class="b">Включення-виключення:</span> $P(A\cup B\cup C) = \sum P(A) - \sum P(AB) + P(ABC)$</div>
         <div class="fbox">
           <span class="b">Умовна ймовірність:</span> $P(A \mid B) = \frac{P(AB)}{P(B)} \iff P(AB) = P(B)P(A \mid B) = P(A)P(B \mid A)$
         </div>
         <div><span class="b">Ланцюжок для $n$ подій:</span> $P(A_1 \dots A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1 A_2)\dots P(A_n|A_1\dots A_{n-1})$</div>
         <div><span class="b">Незалежні:</span> $P(AB) = P(A)P(B) \iff P(A|B) = P(A)$</div>
-        <div><span class="b">Хоча б 1 успіх з $n$ незалежних:</span> $P(\ge 1) = 1 - q_1 q_2 \dots q_n$</div>
-        <div><span class="b">Рівно 1 успіх з 3-х:</span> $P = p_1 q_2 q_3 + q_1 p_2 q_3 + q_1 q_2 p_3$</div>
+        <div><span class="b">Хоча б 1 успіх з $n$ незалежних:</span> $P(\ge 1) = 1 - q_1 q_2 \dots q_n$ • <span class="b">Рівно 1:</span> $p_1 q_2 q_3 + q_1 p_2 q_3 + q_1 q_2 p_3$</div>
       </div>
 
       <!-- Тема 5 -->
@@ -284,7 +281,7 @@
         </div>
         <div><span class="b">Найімовірніше число успіхів $k_0$:</span> $np - q \le k_0 \le np + p$ (інтервал довжини 1)</div>
         <div class="sub">Якщо $np-q$ дробове $\implies k_0 = [np+p]$; ціле $\implies k_0 = np-q$ та $np+p$.</div>
-        <div><span class="b">Поліноміальна схема:</span> $P_n(k_1,\dots,k_r) = \frac{n!}{k_1!\dots k_r!} p_1^{k_1} \dots p_r^{k_r}, \; \sum k_i = n, \; \sum p_i = 1$</div>
+        <div><span class="b">Поліноміальна:</span> $P_n(k_1,\dots,k_r) = \frac{n!}{k_1!\dots k_r!} p_1^{k_1} \dots p_r^{k_r}, \; \sum k_i = n, \; \sum p_i = 1$</div>
         <div><span class="b">До 1-го успіху (геометричний):</span> $P(X = k) = q^{k-1}p, \; M[X]=1/p, \; D[X]=q/p^2$</div>
       </div>
 
@@ -321,8 +318,7 @@
         <div><span class="b">Властивості:</span> $M[C]=C, \; M[CX]=CM[X], \; M[X+Y]=M[X]+M[Y]$</div>
         <div>$D[C]=0, \; D[CX]=C^2 D[X], \; D[X+C]=D[X]$</div>
         <div><span class="b">Для незалежних:</span> $M[XY]=M[X]M[Y], \quad D[X \pm Y] = D[X] + D[Y]$</div>
-        <div><span class="b">Для залежних:</span> $D[X \pm Y] = D[X] + D[Y] \pm 2\operatorname{cov}(X,Y)$</div>
-        <div><span class="b">Моменти:</span> $\mu_2 = D[X], \quad \mu_3 = \alpha_3 - 3\alpha_1\alpha_2 + 2\alpha_1^3$</div>
+        <div><span class="b">Для залежних:</span> $D[X \pm Y] = D[X] + D[Y] \pm 2\operatorname{cov}(X,Y)$ • <span class="b">Моменти:</span> $\mu_2 = D[X], \; \mu_3 = \alpha_3 - 3\alpha_1\alpha_2 + 2\alpha_1^3$</div>
       </div>
 
       <!-- Тема 9 -->
@@ -362,8 +358,9 @@
           <tr><td><b>Нормальний</b></td><td>$\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-a)^2}{2\sigma^2}}$</td><td>$a$</td><td>$\sigma^2$</td></tr>
         </table>
         <div><span class="b">Правило $3\sigma$:</span> $P(|X-a|<\sigma) \approx 68.27\%, \; P(|X-a|<2\sigma) \approx 95.45\%, \; P(|X-a|<3\sigma) \approx 99.73\%$</div>
-        <div><span class="b">Показниковий:</span> $F(x) = 1 - e^{-\lambda x}$ • <span class="b">Без післядії:</span> $P(X > t+s | X > t) = P(X > s)$</div>
+        <div><span class="b">Показниковий CDF:</span> $F(x) = 1 - e^{-\lambda x}$ • <span class="b">Без післядії:</span> $P(X > t+s \mid X > t) = P(X > s)$</div>
         <div><span class="b">Спеціальні:</span> Стьюдента $t(k)$, Фішера $F(k_1, k_2)$, Хі-квадрат $\chi^2(k)$ ($M=k, D=2k$)</div>
+        <div><span class="b">Логнормальний:</span> $\ln X \sim N(a, \sigma) \implies f(x) = \frac{1}{x\sigma\sqrt{2\pi}} e^{-\frac{(\ln x - a)^2}{2\sigma^2}}$</div>
       </div>
 
       <!-- Тема 11 -->
@@ -374,6 +371,7 @@
         </div>
         <div><span class="b">Функція $Y = g(X)$ (монотонна):</span> $f_Y(y) = f_X(\psi(y)) |\psi'(y)|$, де $\psi = g^{-1}$</div>
         <div><span class="b">Згортка суми $Z = X + Y$:</span> $f_Z(z) = \int_{-\infty}^{+\infty} f_X(x) f_Y(z-x) dx$</div>
+        <div><span class="b">Згортка різниці $Z = X - Y$:</span> $f_Z(z) = \int_{-\infty}^{+\infty} f_X(x) f_Y(x-z) dx$</div>
         <div class="fbox">
           <span class="b">Характеристична функція:</span> $\varphi_X(t) = M[e^{itX}] = \sum e^{it x_k} p_k$ (ДВВ) або $\int_{-\infty}^\infty e^{itx} f(x) dx$ (НВВ)
         </div>
@@ -381,7 +379,7 @@
         <div class="fbox">
           <span class="b">Моменти через похідні:</span> $\alpha_k = \frac{1}{i^k} \varphi^{(k)}(0) \implies M[X] = -i\varphi'(0), \quad D[X] = -\varphi''(0) + (\varphi'(0))^2$
         </div>
-        <div><span class="b">ХФ базові:</span> Норм: $e^{iat - \frac{\sigma^2 t^2}{2}}$; Пуассон: $e^{\lambda(e^{it}-1)}$; Біном: $(q+pe^{it})^n$</div>
+        <div><span class="b">ХФ базові:</span> Норм: $e^{iat - \frac{\sigma^2 t^2}{2}}$; Пуассон: $e^{\lambda(e^{it}-1)}$; Біном: $(q+pe^{it})^n$ • <span class="b">Обернене:</span> $f(x) = \frac{1}{2\pi}\int e^{-itx}\varphi(t)dt$</div>
       </div>
 
       <!-- Тема 12 -->
@@ -397,6 +395,7 @@
         <div><span class="b">Умовні:</span> $f(x|y) = \frac{f(x,y)}{f_Y(y)}, \quad f(y|x) = \frac{f(x,y)}{f_X(x)}$ • <span class="b">Незалежні:</span> $f(x,y) = f_X(x) f_Y(y)$</div>
         <div><span class="b">Прямокутник:</span> $P = F(x_2,y_2) - F(x_1,y_2) - F(x_2,y_1) + F(x_1,y_1)$</div>
         <div><span class="b">Регресія (умовне сподівання):</span> $m_{Y|X}(x) = M[Y|X=x] = \int_{-\infty}^\infty y f(y|x) dy$</div>
+        <div><span class="b">Умовна дисперсія:</span> $D[Y|X=x] = \int_{-\infty}^\infty (y - m_{Y|X}(x))^2 f(y|x) dy$</div>
       </div>
 
       <!-- Тема 13 -->
@@ -413,6 +412,7 @@
           <span class="b">Прямі регресії:</span> $y - M[Y] = r_{XY} \frac{\sigma_Y}{\sigma_X} (x - M[X]) \; (Y \text{ на } X), \quad x - M[X] = r_{XY} \frac{\sigma_X}{\sigma_Y} (y - M[Y]) \; (X \text{ на } Y)$
         </div>
         <div><span class="b">Залишкова дисперсія:</span> $\sigma_{\text{зал}}^2 = \sigma_Y^2(1 - r_{XY}^2)$ • <span class="b">Детермінація:</span> $R^2 = r_{XY}^2$ • <span class="b">Корел. відношення:</span> $\eta^2 \ge r^2$</div>
+        <div><span class="b">Рангова кореляція Спірмена:</span> $\rho = 1 - \frac{6\sum d_i^2}{n(n^2 - 1)}$ • <span class="b">Похибка $r$:</span> $s_r = \frac{1-r^2}{\sqrt{n}}$</div>
       </div>
 
       <!-- Тема 14 -->
@@ -429,6 +429,7 @@
         <div class="fbox">
           <span class="b">ЦГТ (Ліндеберга-Леві):</span> $Z_n = \frac{\sum_{i=1}^n X_i - n a}{\sigma\sqrt{n}} \xrightarrow{d} N(0, 1)$
         </div>
+        <div><span class="b">Умова Ляпунова:</span> $\lim_{n\to\infty} \frac{1}{B_n^{2+\delta}} \sum_{i=1}^n M[|X_i - a_i|^{2+\delta}] = 0 \implies \text{виконується ЦГТ}$</div>
       </div>
 
       <!-- Тема 15 -->
@@ -443,6 +444,7 @@
           <span class="b">Чепмен-Колмогоров:</span> $P(n) = P^n$ • <span class="b">Стаціонарний розподіл $\pi$:</span> $\pi P = \pi, \quad \sum_{i=1}^n \pi_i = 1$
         </div>
         <div><span class="b">Пуассонівський потік ($\lambda$):</span> $P_k(t) = \frac{(\lambda t)^k}{k!} e^{-\lambda t}$ • <span class="b">Час між подіями:</span> $\tau \sim Exp(\lambda) \implies M[\tau] = 1/\lambda, \; D[\tau] = 1/\lambda^2$</div>
+        <div><span class="b">Диференціальні рівняння Колмогорова:</span> $\frac{dp_j(t)}{dt} = -\sum_{k\ne j} q_{jk} p_j(t) + \sum_{k\ne j} q_{kj} p_k(t)$</div>
       </div>
 
       <!-- Тема 16 -->
@@ -456,8 +458,8 @@
         <div class="fbox">
           <span class="b">Виправлена дисперсія (незсунена):</span> $s^2 = \frac{n}{n-1} D_{\text{в}} = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2, \quad s = \sqrt{s^2}$
         </div>
-        <div><span class="b">Емпірична CDF:</span> $F_n^*(x) = \frac{n_x}{n} = \frac{1}{n}\sum I(x_i < x)$</div>
-        <div><span class="b">Метод моментів (ММ):</span> $\alpha_k^* = \frac{1}{n}\sum x_i^k = M[X^k; \theta]$ • <span class="b">ММП:</span> $L(\theta) = \prod f(x_i;\theta) \implies \frac{\partial \ln L}{\partial \theta} = 0$</div>
+        <div><span class="b">Емпірична CDF:</span> $F_n^*(x) = \frac{n_x}{n} = \frac{1}{n}\sum I(x_i < x)$ • <span class="b">Асиметрія/Ексцес вибірки:</span> $A_s^* = \frac{m_3}{s^3}, \; E_k^* = \frac{m_4}{s^4} - 3$</div>
+        <div><span class="b">Метод моментів (ММ):</span> $\alpha_k^* = \frac{1}{n}\sum x_i^k = M[X^k; \theta]$ • <span class="b">ММП:</span> $L(\theta) = \prod f(x_i;\theta) \implies \frac{\partial \ln L(\theta)}{\partial \theta} = 0$</div>
       </div>
 
       <!-- Тема 17 -->
@@ -474,7 +476,7 @@
           <span class="sub">Якщо $\chi_{\text{спост}}^2 < \chi_{\text{крит}}^2(\alpha, r) \implies H_0$ прийнято.</span>
         </div>
         <div><span class="b">Критерій Фішера ($H_0: \sigma_1^2 = \sigma_2^2$):</span> $F_{\text{спост}} = \frac{s_1^2}{s_2^2} \ge 1 \quad (s_1^2 > s_2^2), \; k_1 = n_1-1, k_2 = n_2-1$</div>
-        <div><span class="b">Порівняння двох середніх ($t$-критерій):</span> $t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{1/n_1 + 1/n_2}}$</div>
+        <div><span class="b">Порівняння двох середніх ($t$-критерій):</span> $t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{1/n_1 + 1/n_2}}, \quad s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}$</div>
       </div>
 
     </div>
