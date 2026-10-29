@@ -58,4 +58,6 @@ Desktop.ini
 *.lnk
 
 # Agent cache & internal directories
-.agents/
+.agents/*
+!.agents/skills/
+!.agents/rules/

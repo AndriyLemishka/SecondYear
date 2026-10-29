@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конспект 10 лекцій | Підготовка до КР №1 САПР</title>
+  <meta name="description" content="Повний структурований конспект 10 лекцій з курсу 'Технології веб-розробки та дизайну' без води. Розбір білетів, інтерактивні інструменти, шпаргалки.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <a href="#" class="brand">
+      <span class="brand-badge">КР №1</span>
+      <span>Web Dev & Design <span style="font-weight:400; color:var(--text-dim)">| САПР</span></span>
+    </a>
+
+    <div class="topbar-actions">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" class="search-input" placeholder="Швидкий пошук терміну..." autocomplete="off">
+      </div>
+      <button id="theme-toggle" class="btn-icon" type="button">☀️ Світла</button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-title">Лекції курсу</div>
+      <a href="#lec1" class="nav-item active"><span>1. Сучасний Веб</span><span class="tag">Тема 1</span></a>
+      <a href="#lec2" class="nav-item"><span>2. Типи вебресурсів</span><span class="tag">Тема 2</span></a>
+      <a href="#lec3" class="nav-item"><span>3. Екосистема інтернету</span><span class="tag">Тема 3</span></a>
+      <a href="#lec4" class="nav-item"><span>4. Фронтенд і Бекенд</span><span class="tag">Тема 4</span></a>
+      <a href="#lec5" class="nav-item"><span>5. HTML & DOM</span><span class="tag">Тема 5</span></a>
+      <a href="#lec6" class="nav-item"><span>6. CSS, Flex & Grid</span><span class="tag">Тема 6</span></a>
+      <a href="#lec7" class="nav-item"><span>7. JavaScript & Рендеринг</span><span class="tag">Тема 7</span></a>
+      <a href="#lec8" class="nav-item"><span>8. Графіка & Кольори</span><span class="tag">Тема 8</span></a>
+      <a href="#lec9" class="nav-item"><span>9. Веб-шрифти</span><span class="tag">Тема 9</span></a>
+      <a href="#lec10" class="nav-item"><span>10. Вебконтент & SEO</span><span class="tag">Тема 10</span></a>
+
+      <div class="sidebar-title" style="margin-top: 1rem;">Екзаменаційні тренажери</div>
+      <a href="#tools-color" class="nav-item"><span>🎨 Завдання 13: Кольори</span><span class="tag" style="background:var(--warning); color:#000;">3 бали</span></a>
+      <a href="#tools-flex" class="nav-item"><span>📐 Завдання 14: Flexbox</span><span class="tag" style="background:var(--success); color:#fff;">5 балів</span></a>
+      <a href="#quiz" class="nav-item"><span>📝 Тестовий тренажер</span><span class="tag">12 тестів</span></a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Hero Header -->
+      <section class="hero">
+        <h1>Веб-розробка та дизайн: Конспект 10 лекцій</h1>
+        <p>Стислий, структурований конспект без зайвого тексту для максимального балу на контрольній роботі кафедри САПР.</p>
+        <div class="quick-stats">
+          <div class="stat-card">
+            <div class="num">10</div>
+            <div class="desc">Повних тем лекцій</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">20 б.</div>
+            <div class="desc">Максимум за білет (12+3+5)</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">100%</div>
+            <div class="desc">Охоплення питань з фото білетів</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LECTURE 1 -->
+      <section id="lec1" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 1</span>
+          <h2>Сучасний Веб: основні поняття та еволюція</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">🌐</span> Інтернет vs Служба Веб (WWW)</div>
+            <p><strong>Інтернет</strong> — глобальна фізична та логічна інфраструктура комп'ютерних мереж і ліній зв'язку.</p>
+            <p><strong>Служба Веб (World Wide Web)</strong> — інформаційна система взаємопов'язаних вебдокументів (вебресурсів), доступних через мережу Інтернет за протоколом HTTP/HTTPS.</p>
+            <ul>
+              <li><strong>Маршрутизатори (Routers):</strong> спеціалізовані мережні пристрої, які за алгоритмами маршрутизації направляють пакети даних оптимальним шляхом між клієнтом і сервером.</li>
+              <li><strong>Клієнт:</strong> пристрій користувача (ПК, ноутбук, смартфон, IoT), що формує і відправляє запит.</li>
+              <li><strong>Сервер:</strong> обчислювальна машина, що цілодобово обробляє запити і повертає ресурси (вебсервер, поштовий, ігровий, медіа).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">📡</span> Стримінг та Категорії послуг</div>
+            <p><strong>Технологія стримінгу (Streaming):</strong> безперервна передача аудіо чи відеопотоку в режимі реального часу від сервера до клієнта без потреби повного попереднього завантаження файлу на диск.</p>
+            <ul>
+              <li><strong>Комунікаційні послуги:</strong> месенджери, соцмережі, чати, спільна взаємодія користувачів у реальному часі.</li>
+              <li><strong>Інформаційні послуги:</strong> пошукові машини, бази знань, онлайн-медіа.</li>
+              <li><strong>Хмарні послуги:</strong> віддалене збереження файлів та обчислення (Google Drive, AWS, Azure).</li>
+              <li><strong>Розважальні послуги:</strong> онлайн-ігри, стримінгові кінотеатри, музичні платформи.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🚀</span> Еволюція Веб (Web 1.0 → 2.0 → 3.0)</div>
+            <ul>
+              <li><strong>Web 1.0 («Read-Only»):</strong> статичні HTML-сторінки, контент створюють лише вебмайстри, відсутність взаємодії з користувачем.</li>
+              <li><strong>Web 2.0 («Read-Write»):</strong> динамічний контент, платформи для користувацького контенту (UGC), соцмережі, блоги, інтернет-банкінг, AJAX.</li>
+              <li><strong>Web 3.0 («Read-Write-Execute / Semantic»):</strong> децентралізовані мережі, семантичний веб, машинне розуміння даних, штучний інтелект та смартконтракти.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exam-box">
+          <div class="exam-box-title">⚡ Питання з білетів КР:</div>
+          <p>• <em>Через які пристрої прокладається шлях для інформаційних потоків у мережі?</em> → <strong>Маршрутизатори</strong>.</p>
+          <p>• <em>Яка категорія послуг забезпечує взаємодію користувачів у реальному часі?</em> → <strong>Комунікаційні послуги</strong>.</p>
+          <p>• <em>Що характеризує технологію стримінгу?</em> → <strong>Безперервна передача медіаданих без повного попереднього завантаження</strong>.</p>
+        </div>
+      </section>
+
+      <!-- LECTURE 2 -->
+      <section id="lec2" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 2</span>
+          <h2>Основні типи вебресурсів</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">📂</span> Чотири типи вебресурсів</div>
+            <ul>
+              <li><strong>Вебсайт:</strong> сукупність пов'язаних сторінок під одним доменом для презентації інформації (візитки, блоги, медіа).</li>
+              <li><strong>Вебдодаток (Web App):</strong> інтерактивна програма в браузері зі складною логікою та роботою зі станом (Gmail, Trello, онлайн-редактори).</li>
+              <li><strong>Вебсервіс:</strong> програмна одиниця (API/ендпоінт), призначена для машинної взаємодії між додатками через мережу без обов'язкового UI.</li>
+              <li><strong>Вебплатформа:</strong> екосистема, що поєднує додатки, сервіси та інфраструктуру (Shopify, WordPress, соціальні платформи).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">⚡</span> Статичний vs Динамічний контент</div>
+            <p><strong>Статичний контент:</strong> файли (HTML, CSS, JS, картинки), готові на сервері завчасно. Для всіх користувачів повертаються однаковими. Легко кешуються CDN та браузером.</p>
+            <p><strong>Динамічний контент:</strong> сторінки, які формуються бекендом або JavaScript <em>у момент запиту</em> на основі бази даних, параметрів авторизації та вподобань користувача.</p>
+            <div class="exam-box" style="margin: 0.5rem 0 0 0;">
+              <strong>Чому важко кешувати динамічний контент?</strong> Він залежить від індивідуального користувача та часто змінюється, тому кеш миттєво втрачає актуальність.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🏗️</span> Архітектурні моделі (MPA, SPA, PWA)</div>
+            <ul>
+              <li><strong>MPA (Multi-Page App):</strong> традиційний підхід, де кожен клік на посилання спричиняє повне перезавантаження всієї HTML-сторінки із сервера.</li>
+              <li><strong>SPA (Single-Page App):</strong> один кореневий HTML-файл; контент перемальовується JavaScript на льоту без повного перезавантаження вікна.</li>
+              <li><strong>PWA (Progressive Web App):</strong> вебдодаток з можливістю встановлення на робочий стіл смартфона/ПК, підтримкою офлайн-роботи через Service Workers та Push-повідомленнями.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- LECTURE 3 -->
+      <section id="lec3" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 3</span>
+          <h2>Технологічна екосистема інтернету</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">🔄</span> Життєвий цикл HTTP-запиту</div>
+            <ol style="padding-left: 1.2rem; display:flex; flex-direction:column; gap:0.4rem; font-size:0.88rem; color:var(--text-muted);">
+              <li>Користувач вводить домен (наприклад, <code>site.ua</code>) у браузер.</li>
+              <li><strong>DNS-сервер</strong> перетворює символьний домен на IP-адресу сервера.</li>
+              <li>Браузер відправляє HTTP/HTTPS запит через маршрутизатори на вебсервер.</li>
+              <li>Вебсервер (Nginx/Apache) передає запит серверному додатку.</li>
+              <li>Додаток звертається до <strong>Бази Даних</strong> і формує відповідь (HTML/JSON).</li>
+              <li>Браузер отримує відповідь і запускає процес візуалізації (рендеринг).</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🔒</span> Хостинг, DNS та SSL/TLS</div>
+            <ul>
+              <li><strong>Хостинг:</strong> послуга надання фізичного або віртуального дискового простору та обчислювальних потужностей сервера для розміщення вебресурсів.</li>
+              <li><strong>DNS (Domain Name System):</strong> розподілена база даних, що транслює людинозрозумілі імена в числові IP-адреси.</li>
+              <li><strong>SSL/TLS-сертифікат:</strong> цифровий сертифікат, виданий центром сертифікації (CA), що підтверджує <em>справжність сайту</em> та забезпечує <em>шифрування каналу зв'язку</em> за протоколом HTTPS.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🔌</span> Що таке API?</div>
+            <p><strong>API (Application Programming Interface):</strong> стандартний програмний інтерфейс, за допомогою якого різні програмні продукти обмінюються даними та командами без знання внутрішньої реалізації один одного.</p>
+            <p>Типовий формат обміну даними сучасних веб-API: <strong>JSON</strong> (JavaScript Object Notation).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LECTURE 4 -->
+      <section id="lec4" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 4</span>
+          <h2>Базові технології фронтенду та бекенду</h2>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Параметр</th>
+                <th>Фронтенд (Frontend / Client-side)</th>
+                <th>Бекенд (Backend / Server-side)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Де виконується код?</strong></td>
+                <td><strong style="color:var(--accent);">У браузері клієнта</strong> на комп'ютері або смартфоні</td>
+                <td><strong style="color:var(--purple);">На вебсервері</strong> в дата-центрі або хмарі</td>
+              </tr>
+              <tr>
+                <td><strong>Базовий стек мов</strong></td>
+                <td>HTML (структура), CSS (оформлення), JavaScript (логіка)</td>
+                <td>PHP, Python, Java, C#, Go, Node.js, Ruby <em>(HTML тут НЕ використовується!)</em></td>
+              </tr>
+              <tr>
+                <td><strong>Головні задачі</strong></td>
+                <td>Інтерфейс, відображення даних, інтерактивність, анімація, UX</td>
+                <td>Бізнес-логіка, робота з СУБД, авторизація, платежі, захист даних</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">⚖️</span> Бібліотека vs Фреймворк</div>
+            <p><strong>Бібліотека:</strong> набір допоміжних готових функцій і класів для вирішення вузьких завдань. <em>Ваш код керує бібліотекою</em> і викликає її тоді, коли це потрібно.</p>
+            <p><strong>Фреймворк:</strong> каркас і архітектурний шаблон усього додатку. Працює принцип <em>Inversion of Control (IoC)</em>: фреймворк керує життєвим циклом програми та сам викликає написані вами модулі.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🐙</span> Контроль версій (Git & GitHub)</div>
+            <ul>
+              <li><strong>Git:</strong> розподілена система контролю версій для локального відстеження змін у коді, створення гілок і комітів.</li>
+              <li><strong>GitHub / GitLab:</strong> хмарний вебсервіс для розміщення віддалених репозиторіїв Git, командної роботи та CI/CD.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- LECTURE 5 -->
+      <section id="lec5" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 5</span>
+          <h2>HTML: структура та семантика вебдокумента</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">🧱</span> Базовий скелет сторінки</div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="uk"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Заголовок вкладки&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Видимий контент&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <ul>
+              <li><code>&lt;html&gt;</code>: кореневий елемент усього документа.</li>
+              <li><code>&lt;head&gt;</code>: технічні метадані, кодування, підключення стилів і скриптів. Безпосередньо у вікні не відображаються.</li>
+              <li><code>&lt;body&gt;</code>: видимий для користувача вміст.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🏷️</span> Одинарні vs Парні теги</div>
+            <ul>
+              <li><strong>Парні теги:</strong> мають відкриваючий та закриваючий теги, містять всередині контент або інші теги: <code>&lt;p&gt;текст&lt;/p&gt;</code>, <code>&lt;h1&gt;...&lt;/h1&gt;</code>, <code>&lt;strong&gt;...&lt;/strong&gt;</code>, <code>&lt;div&gt;...&lt;/div&gt;</code>.</li>
+              <li><strong>Одинарні (самозакривні):</strong> не містять вкладеного тексту, вся інформація передається атрибутами: <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;meta&gt;</code>.</li>
+              <li><strong>Обов'язкові атрибути:</strong> для <code>&lt;img&gt;</code> обов'язковим є <code>src</code> (шлях до картинки), атрибут <code>alt</code> служить для опису зображення; для <code>&lt;a&gt;</code> обов'язковим є <code>href</code>.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">📦</span> Блокові vs Рядкові (Inline) елементи</div>
+            <p><strong>Блокові (`display: block`):</strong> <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;..&lt;h6&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;section&gt;</code>. Завжди починаються з нового рядка і розтягуються на всю доступну ширину контейнера.</p>
+            <p><strong>Рядкові (`display: inline`):</strong> <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>. Розташовуються в один рядок один за одним. Не реагують на встановлення властивостей <code>width</code> та <code>height</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LECTURE 6 -->
+      <section id="lec6" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 6</span>
+          <h2>CSS: стилізація, адаптивність, Flexbox і Grid</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">🎯</span> Селектори та специфічність</div>
+            <ul>
+              <li><strong>Тег:</strong> <code>p { color: red; }</code> (вага: 0,0,1).</li>
+              <li><strong>Клас:</strong> <code>.btn { padding: 10px; }</code> (вага: 0,1,0).</li>
+              <li><strong>Ідентифікатор:</strong> <code>#header { background: blue; }</code> (вага: 1,0,0).</li>
+              <li><strong>Прямий дочірній елемент:</strong> <code>p > strong</code> (вибирає <code>strong</code> тільки першого рівня вкладеності в <code>p</code>).</li>
+              <li><strong>Будь-який нащадок:</strong> <code>p strong</code> (вибирає на будь-якій глибині).</li>
+              <li><code>!important</code>: ламає нормальний каскад і надає правилу найвищий пріоритет.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">👁️</span> display vs visibility</div>
+            <ul>
+              <li><code>display: inline-block;</code> — елемент стоїть у рядку поряд з іншими, але підтримує властивості <code>width</code>, <code>height</code>, <code>margin</code> та <code>padding</code>.</li>
+              <li><code>display: none;</code> — елемент повністю вилучається з потоку документа (місце не займається).</li>
+              <li><code>visibility: hidden;</code> — елемент стає невидимим, <strong>але його фізичне місце в макеті залишається зайнятим</strong>.</li>
+              <li>Псевдоелементи <code>::before</code> та <code>::after</code> вимагають обов'язкової властивості <code>content: ""</code>.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">📏</span> Одиниці виміру</div>
+            <ul>
+              <li><code>px</code>: абсолютна одиниця виміру (пікселі екрана).</li>
+              <li><code>rem</code>: відносно розміру шрифту кореневого елемента <code>&lt;html&gt;</code> (за замовчуванням 16px).</li>
+              <li><code>em</code>: відносно шрифту найближчого батьківського елемента.</li>
+              <li><code>vw</code> / <code>vh</code>: 1% від ширини / висоти вікна перегляду (viewport).</li>
+              <li><code>fr</code>: fraction (частка вільного місця в CSS Grid).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Критерій</th>
+                <th>Flexbox (Flexible Box)</th>
+                <th>CSS Grid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Вимірність</strong></td>
+                <td><strong style="color:var(--accent);">Одновимірна система</strong> (або рядок, або колонка)</td>
+                <td><strong style="color:var(--purple);">Двовимірна система</strong> (рядки і колонки одночасно)</td>
+              </tr>
+              <tr>
+                <td><strong>Основні властивості</strong></td>
+                <td><code>justify-content</code> (головна вісь), <code>align-items</code> (поперечна), <code>flex-wrap: wrap</code></td>
+                <td><code>grid-template-columns</code>, <code>grid-template-rows</code>, одиниця <code>fr</code>, <code>gap</code></td>
+              </tr>
+              <tr>
+                <td><strong>Оптимальне застосування</strong></td>
+                <td>Меню, панелі кнопок, ряди карток, центрування блоку</td>
+                <td>Загальна сітка сайту, складні табличні галереї, дашборди</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- LECTURE 7 -->
+      <section id="lec7" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 7</span>
+          <h2>JavaScript: інтерактивність і логіка вебсторінки</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">⚡</span> Критичний шлях рендерингу (CRP)</div>
+            <p>Як браузер перетворює код на пікселі:</p>
+            <ol style="padding-left: 1.2rem; display:flex; flex-direction:column; gap:0.4rem; font-size:0.88rem; color:var(--text-muted);">
+              <li>Парсинг HTML → створення дерева <strong>DOM</strong>.</li>
+              <li>Парсинг CSS → створення дерева <strong>CSSOM</strong>.</li>
+              <li>Об'єднання DOM + CSSOM → створення <strong>Render Tree</strong> (дерева рендерингу).</li>
+              <li><strong>Layout (Компонування / Reflow):</strong> розрахунок геометрії та координат елементів.</li>
+              <li><strong>Paint (Відмальовка):</strong> заповнення пікселів на екрані.</li>
+            </ol>
+            <div class="exam-box" style="margin-top:0.75rem;">
+              <strong>Що не потрапляє в Render Tree?</strong> Теги <code>&lt;head&gt;</code>, <code>&lt;script&gt;</code>, <code>&lt;meta&gt;</code> та будь-які елементи зі стилем <code>display: none</code>.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🔄</span> Тріада інтерактивності JS</div>
+            <p style="font-size:1.1rem; font-weight:700; color:var(--accent); text-align:center; padding:1rem 0;">
+              Подія (Event) → Зміна стану (State) → Оновлення DOM
+            </p>
+            <p>Користувач натискає кнопку (подія `click`), скрипт змінює внутрішні дані програми (стан) і вносить зміни в потрібний вузол DOM (наприклад, <code>element.textContent = 'Збережено'</code>).</p>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">☕</span> Ванільний JS vs Фреймворки</div>
+            <p><strong>Ванільний (чистий) JavaScript:</strong></p>
+            <ul>
+              <li><em>Коли брати:</em> прості скрипти, ізольовані інтерактивні елементи (модальне вікно, меню-бургер, слайдер), де непотрібно тягнути зайві мегабайти бібліотек.</li>
+              <li><em>Обмеження у великих проектах:</em> важко контролювати синхронізацію стану, ризик заплутаного спагеті-коду, рутинне низькорівневе оновлення DOM.</li>
+            </ul>
+            <p style="margin-top:0.5rem;"><strong>Фреймворки (React, Vue, Angular):</strong> вирішують проблеми стану за допомогою компонентної архітектури та Virtual DOM.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LECTURE 8 -->
+      <section id="lec8" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 8</span>
+          <h2>Комп’ютерна графіка</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">🖼️</span> Растрова vs Векторна графіка</div>
+            <p><strong>Растрова:</strong> сітка кольорових пікселів. При збільшенні масштабу пікселізується та втрачає чіткість. Ідеальна для фотографій та реалістичних картин (JPEG, PNG, WebP).</p>
+            <p><strong>Векторна:</strong> математичні координати, вектори, лінії та формули Безьє. Масштабується нескінченно без втрати чіткості на будь-яких екранах. Ідеальна для логотипів, іконок, графіків (SVG).</p>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🎨</span> Колірні моделі (RGB, CMYK, HSB)</div>
+            <ul>
+              <li><strong>RGB (Red, Green, Blue):</strong> адитивна модель (випромінювання світла). Застосовується в моніторах, телевізорах, смартфонах. При максимальному змішуванні (255,255,255) дає <strong>білий колір (White)</strong>.</li>
+              <li><strong>CMYK (Cyan, Magenta, Yellow, Key/Black):</strong> субтрактивна модель (поглинання світла фарбою). Застосовується в <strong>поліграфії та друці</strong>.</li>
+              <li><strong>HSB (Hue, Saturation, Brightness):</strong> психологічна модель: колірний тон, насиченість та яскравість.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">📊</span> Формати веб-зображень</div>
+            <ul>
+              <li><strong>JPEG:</strong> стиснення з втратами, ідеальний для фотографій, не підтримує прозорість.</li>
+              <li><strong>PNG:</strong> стиснення без втрат, підтримує альфа-прозорість, важчий за JPEG.</li>
+              <li><strong>WebP:</strong> сучасний високоефективний формат Google. Підтримує стиснення як з втратами, так і без втрат, прозорість та анімацію.</li>
+              <li><strong>SVG:</strong> векторний формат на основі мови XML, безпосередньо стилізується через CSS.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- LECTURE 9 -->
+      <section id="lec9" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 9</span>
+          <h2>Комп’ютерні шрифти</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">✍️</span> Класифікація гарнітур</div>
+            <ul>
+              <li><strong>Serif (із засічками):</strong> мають невеликі штрихи-засічки на кінцях літер (Times New Roman, Georgia). Традиційні для друку та художніх видань.</li>
+              <li><strong>Sans-serif (рублені / без засічок):</strong> прямі рівні лінії без засічок (Arial, Inter, Roboto). Найкраще читаються з екранів моніторів.</li>
+              <li><strong>Monospace (моноширинні):</strong> усі літери мають однакову ширину (Courier, JetBrains Mono). Використовуються для коду і таблиць.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">💻</span> Веб-безпечні vs Веб-шрифти</div>
+            <p><strong>Веб-безпечні (Web-safe):</strong> шрифти, гарантовано присутні на більшості ОС користувачів (Arial, Verdana, Times New Roman, Tahoma). Не потребують завантаження з мережі.</p>
+            <p><strong>Веб-шрифти (Web Fonts):</strong> кастомні шрифти, які браузер завантажує за правилом <code>@font-face</code>. Сучасні стиснені формати: <strong>WOFF2</strong> (найефективніший) та <strong>WOFF</strong>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LECTURE 10 -->
+      <section id="lec10" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тема 10</span>
+          <h2>Інформаційне наповнення вебресурсу</h2>
+        </div>
+
+        <div class="bento-grid">
+          <div class="card">
+            <div class="card-title"><span class="icon">👁️</span> Сприйняття вебконтенту</div>
+            <p>Користувачі в інтернеті <strong>сканують сторінки поглядом</strong> (F-патерн), шукаючи очима заголовки, списки та жирний шрифт, а не читають суцільний текст від початку до кінця.</p>
+            <p>Текст має бути структурований: інформативні підзаголовки `h2/h3`, короткі абзаци (3-4 рядки), марковані списки.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">🎯</span> Намір користувача (User Intent)</div>
+            <ul>
+              <li><strong>Інформаційний:</strong> отримати конкретну відповідь або знання («що таке flexbox»).</li>
+              <li><strong>Навігаційний:</strong> перейти на відомий ресурс («вхід пошта львівська політехніка»).</li>
+              <li><strong>Транзакційний:</strong> здійснити швидку дію: купити, зареєструватися, оплатити квиток.</li>
+              <li><strong>Комерційний:</strong> порівняти характеристики або відгуки перед покупкою.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-title"><span class="icon">📝</span> Копірайтинг vs Рерайтинг</div>
+            <ul>
+              <li><strong>Копірайтинг:</strong> створення повністю унікального авторського тексту на основі знань, аналізу та особистого досвіду.</li>
+              <li><strong>Рерайтинг:</strong> переписування готових текстових матеріалів своїми словами зі збереженням вихідних фактів.</li>
+              <li><strong>Унікальність:</strong> важлива для захисту від фільтрів пошукових систем та зростання авторитетності ресурсу.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOL 1: COLOR CONVERTER (Task 13) -->
+      <section id="tools-color" class="tool-section">
+        <div class="tool-header">
+          <h3>🎨 Інтерактивний тренажер: Завдання №13 (Системи кольору)</h3>
+          <span class="tag" style="background:var(--warning); color:#000; font-weight:700;">Вартість: 3 бали</span>
+        </div>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.2rem;">
+          Оберіть колір з білета та встановіть повзунок непрозорості. Калькулятор автоматично згенерує всі 4 поля для запису у бланк і підсвітить колірні круги.
+        </p>
+
+        <div class="color-tool-layout">
+          <div>
+            <div class="interactive-controls">
+              <div class="control-group">
+                <label>Оберіть колір з білета:</label>
+                <select id="color-preset">
+                  <option value="white">White (Білий)</option>
+                  <option value="black">Black (Чорний)</option>
+                  <option value="red" selected>Red (Червоний)</option>
+                  <option value="green">Green (Зелений)</option>
+                  <option value="blue">Blue (Синій)</option>
+                  <option value="magenta">Magenta (Пурпуровий)</option>
+                  <option value="yellow">Yellow (Жовтий)</option>
+                  <option value="cyan">Cyan (Блакитний)</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label>Непрозорість: <strong id="alpha-val" style="color:var(--accent);">25%</strong></label>
+                <input type="range" id="alpha-slider" min="0" max="100" step="5" value="25">
+              </div>
+            </div>
+
+            <div id="color-swatch" class="color-swatch-box">Зразок відтінку</div>
+
+            <div class="output-row">
+              <span class="label">rgb()</span>
+              <span id="out-rgb" class="val">rgb(255, 0, 0)</span>
+            </div>
+            <div class="output-row">
+              <span class="label">rgba()</span>
+              <span id="out-rgba" class="val">rgba(255, 0, 0, 0.25)</span>
+            </div>
+            <div class="output-row">
+              <span class="label"># (6-символьний HEX)</span>
+              <span id="out-hex" class="val">#ff0000</span>
+            </div>
+            <div class="output-row">
+              <span class="label"># з альфа-каналом (8-символьний HEX)</span>
+              <span id="out-hexalpha" class="val">#ff000040</span>
+            </div>
+          </div>
+
+          <!-- Color Wheel SVG -->
+          <div style="text-align: center;">
+            <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.5rem;">Коло змішування кольорів (RGB / CMY):</div>
+            <svg viewBox="0 0 300 280" width="100%" max-width="280" style="max-height:220px;">
+              <!-- Red Circle -->
+              <circle id="circle-r" cx="150" cy="95" r="75" fill="rgba(255, 0, 0, 0.45)" stroke="#ef4444" stroke-width="2"/>
+              <!-- Green Circle -->
+              <circle id="circle-g" cx="105" cy="175" r="75" fill="rgba(0, 255, 0, 0.45)" stroke="#10b981" stroke-width="2"/>
+              <!-- Blue Circle -->
+              <circle id="circle-b" cx="195" cy="175" r="75" fill="rgba(0, 0, 255, 0.45)" stroke="#3b82f6" stroke-width="2"/>
+
+              <!-- Labels -->
+              <text x="150" y="55" fill="#fff" font-weight="900" font-size="20" text-anchor="middle">R</text>
+              <text x="65" y="205" fill="#fff" font-weight="900" font-size="20" text-anchor="middle">G</text>
+              <text x="235" y="205" fill="#fff" font-weight="900" font-size="20" text-anchor="middle">B</text>
+
+              <!-- Intersections -->
+              <text x="110" y="115" fill="#fff" font-weight="900" font-size="16" text-anchor="middle">Y</text>
+              <text x="190" y="115" fill="#fff" font-weight="900" font-size="16" text-anchor="middle">M</text>
+              <text x="150" y="210" fill="#fff" font-weight="900" font-size="16" text-anchor="middle">C</text>
+              <text x="150" y="152" fill="#000" font-weight="900" font-size="18" text-anchor="middle">W</text>
+            </svg>
+            <div style="font-size:0.8rem; color:var(--text-dim); margin-top:0.3rem;">
+              R+G=Yellow | R+B=Magenta | G+B=Cyan | R+G+B=White (центр)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOL 2: FLEXBOX SANDBOX (Task 14) -->
+      <section id="tools-flex" class="tool-section">
+        <div class="tool-header">
+          <h3>📐 Інтерактивний пісочник: Завдання №14 (Практичний Flexbox)</h3>
+          <span class="tag" style="background:var(--success); color:#fff; font-weight:700;">Вартість: 5 балів</span>
+        </div>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.2rem;">
+          Нижче згенеровано живий макет відповідно до стилів із білета. Спробуйте змінити параметри вирівнювання, щоб побачити поведінку блоків на власні очі.
+        </p>
+
+        <div class="interactive-controls">
+          <div class="control-group">
+            <label>justify-content (по горизонталі):</label>
+            <select id="flex-justify">
+              <option value="space-between" selected>space-between (з білета)</option>
+              <option value="center">center</option>
+              <option value="space-around">space-around</option>
+              <option value="flex-start">flex-start</option>
+              <option value="flex-end">flex-end</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>align-items (по вертикалі):</label>
+            <select id="flex-align">
+              <option value="center" selected>center (з білета)</option>
+              <option value="flex-start">flex-start (до верху)</option>
+              <option value="flex-end">flex-end (до низу)</option>
+              <option value="stretch">stretch</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>flex-direction (напрямок осі):</label>
+            <select id="flex-dir">
+              <option value="row" selected>row (горизонтально)</option>
+              <option value="column">column (вертикально)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="interactive-flex-preview">
+          <div id="demo-flex-container" style="
+            width: 100%;
+            max-width: 500px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(255, 0, 0);
+            margin: 0 auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+          ">
+            <div style="background: #00000080; color: rgb(255, 255, 0); padding: 10px; font-weight:600; font-size:0.9rem; border-radius:2px;">Елемент 1</div>
+            <div style="background: #00000080; color: rgb(255, 255, 0); padding: 10px; font-weight:600; font-size:0.9rem; border-radius:2px;">Елемент 2</div>
+            <div style="background: #00000080; color: rgb(255, 255, 0); padding: 10px; font-weight:600; font-size:0.9rem; border-radius:2px;">Елемент 3</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">
+          <strong>Пояснення для відповіді:</strong> Контейнер <code>.block</code> має розмір 500×100px та червоний фон <code>rgb(255,0,0)</code>. Властивість <code>justify-content: space-between</code> притискає перший елемент ліворуч, третій — праворуч, а другий розміщує рівно посередині. Властивість <code>align-items: center</code> відцентровує блоки за висотою. Дочірні блоки <code>.box</code> мають напівпрозорий чорний фон <code>#00000080</code> (альфа-канал 50%), жовтий текст <code>rgb(255,255,0)</code> та внутрішні відступи <code>padding: 10px</code>.
+        </div>
+      </section>
+
+      <!-- TEST QUIZ (Practice Exam Questions) -->
+      <section id="quiz" class="lecture-block">
+        <div class="lecture-header">
+          <span class="lecture-badge">Тренажер</span>
+          <h2>Тестовий контроль знань (Реальні тести з білетів)</h2>
+        </div>
+
+        <div class="quiz-item" data-correct="2">
+          <div class="quiz-q">1. Через які пристрої прокладається шлях для інформаційних потоків у мережі?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">Клієнти</div>
+            <div class="quiz-opt">Сервери</div>
+            <div class="quiz-opt">Маршрутизатори</div>
+            <div class="quiz-opt">Браузери</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="1">
+          <div class="quiz-q">2. Які чотири основні типи ресурсів виділяють у Веб?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">MPA, SPA, PWA, API</div>
+            <div class="quiz-opt">Сайт, вебдодаток, вебсервіс, вебплатформа</div>
+            <div class="quiz-opt">Сайт, блог, форум, чат</div>
+            <div class="quiz-opt">Статичний, динамічний, гібридний, адаптивний</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="0">
+          <div class="quiz-q">3. Де виконується код фронтенду?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">У браузері користувача</div>
+            <div class="quiz-opt">На вебсервері</div>
+            <div class="quiz-opt">У базі даних на сервері</div>
+            <div class="quiz-opt">На хмарному сервері додатку</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="3">
+          <div class="quiz-q">4. Яка з наведених мов НЕ використовується для написання серверного коду (бекенду)?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">PHP</div>
+            <div class="quiz-opt">Python</div>
+            <div class="quiz-opt">Java</div>
+            <div class="quiz-opt">HTML</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="1">
+          <div class="quiz-q">5. Який атрибут є обов'язковим для відображення зображення в тегу &lt;img&gt;?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">alt</div>
+            <div class="quiz-opt">src</div>
+            <div class="quiz-opt">width</div>
+            <div class="quiz-opt">height</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="2">
+          <div class="quiz-q">6. Який з наведених HTML-тегів є одинарним (самозакривним)?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">&lt;p&gt;</div>
+            <div class="quiz-opt">&lt;h1&gt;</div>
+            <div class="quiz-opt">&lt;img&gt;</div>
+            <div class="quiz-opt">&lt;strong&gt;</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="3">
+          <div class="quiz-q">7. Яка властивість робить елемент невидимим, але зберігає його фізичне місце в макеті?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">display: none;</div>
+            <div class="quiz-opt">opacity: 1;</div>
+            <div class="quiz-opt">display: inline-block;</div>
+            <div class="quiz-opt">visibility: hidden;</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="0">
+          <div class="quiz-q">8. В чому полягає принципова відмінність Flexbox від CSS Grid?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">Flexbox є одновимірною системою, а CSS Grid — двовимірною</div>
+            <div class="quiz-opt">Flexbox є двовимірною системою, а Grid — одновимірною</div>
+            <div class="quiz-opt">Flexbox потребує JavaScript, а Grid працює тільки на чистому HTML</div>
+            <div class="quiz-opt">Між ними немає різниці, це розробки різних брендів</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="1">
+          <div class="quiz-q">9. Які елементи ігноруються браузером під час побудови дерева рендерингу (Render Tree)?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">Блокові елементи &lt;div&gt;, що не містять тексту</div>
+            <div class="quiz-opt">Невізуальні елементи (&lt;head&gt;, &lt;script&gt;) та блоки з display: none</div>
+            <div class="quiz-opt">Всі зображення та відеофайли</div>
+            <div class="quiz-opt">Рядкові елементи з фіксованою шириною</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="2">
+          <div class="quiz-q">10. Для яких завдань призначена субтрактивна колірна модель CMYK?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">Для екранів сучасних смартфонів і планшетів</div>
+            <div class="quiz-opt">Для 3D-графіки та анімації у WebGL</div>
+            <div class="quiz-opt">Для друкованих зображень та поліграфії</div>
+            <div class="quiz-opt">Для кодування прозорості у веб-форматах</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="0">
+          <div class="quiz-q">11. Які шрифти мають невеликі декоративні засічки на кінцях штрихів літер?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">Serif</div>
+            <div class="quiz-opt">Sans-serif</div>
+            <div class="quiz-opt">Monospace</div>
+            <div class="quiz-opt">Cursive</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-item" data-correct="3">
+          <div class="quiz-q">12. Як називається глибока переробка чужих текстових матеріалів власною мовою зі збереженням фактів?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt">Копірайтинг</div>
+            <div class="quiz-opt">Плагіат</div>
+            <div class="quiz-opt">SEO-копірайтинг</div>
+            <div class="quiz-opt">Рерайтинг</div>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
