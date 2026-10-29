@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Теорія ймовірностей та математична статистика — Формуляр A4 (2 стовпці, без пустот, великий шрифт)</title>
+<title>Теорія ймовірностей та математична статистика — Формуляр A4 (Концентрат, великий шрифт, без пустот)</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
@@ -10,7 +10,7 @@
 <style>
   @page {
     size: A4 portrait;
-    margin: 4mm;
+    margin: 3mm;
   }
   * {
     box-sizing: border-box;
@@ -21,21 +21,21 @@
     width: 1754px;
     height: 2480px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #050811;
+    color: #000000;
     background: #ffffff;
-    padding: 14px 18px 12px 18px;
+    padding: 14px 16px 10px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
   }
 
-  /* Header */
+  /* Top Bar */
   .top-header {
     background: #0f4c81;
     color: #ffffff;
-    border-radius: 5px;
-    padding: 8px 18px;
+    border-radius: 6px;
+    padding: 7px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,17 +48,13 @@
     letter-spacing: -0.2px;
     text-transform: uppercase;
   }
-  .top-header p {
-    font-size: 12.5px;
-    color: #e2e8f0;
-  }
-  .top-header .tag-badge {
-    background: rgba(255, 255, 255, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.45);
+  .top-header .badge {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 4px;
     padding: 3px 12px;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 13.5px;
+    font-weight: 800;
   }
 
   /* 2 Columns Grid */
@@ -73,87 +69,62 @@
   .col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 4px;
+    justify-content: flex-start;
+    gap: 7px;
     height: 100%;
   }
 
-  /* Continuous Topic Block */
+  /* Topic Block */
   .sec {
     background: #ffffff;
-    border: 1.2px solid #64748b;
-    border-radius: 4px;
-    padding: 5px 8px;
+    border: 1.5px solid #475569;
+    border-radius: 5px;
+    padding: 7px 11px 8px 11px;
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    font-size: 13.6px;
-    line-height: 1.33;
-    color: #0f172a;
+    gap: 3px;
+    font-size: 17.5px;
+    line-height: 1.38;
+    color: #000000;
   }
   .sec-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1.3px solid #0f4c81;
-    padding-bottom: 1.5px;
-    margin-bottom: 1px;
+    border-bottom: 1.5px solid #0f4c81;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
   }
   .sec-title {
-    font-size: 14.8px;
+    font-size: 18.5px;
     font-weight: 900;
     color: #0f4c81;
   }
-  .sec-tag {
-    font-size: 10.5px;
+  .sec-num {
+    font-size: 13px;
     font-weight: 800;
-    color: #0369a1;
+    color: #0284c7;
     background: #e0f2fe;
-    padding: 1px 6px;
+    padding: 1px 7px;
     border-radius: 3px;
   }
 
   .b {
-    font-weight: 700;
+    font-weight: 800;
     color: #000000;
   }
-  .fbox {
+  .eq {
     background: #f8fafc;
-    border-left: 3.5px solid #0284c7;
-    padding: 2px 7px;
-    border-radius: 0 3px 3px 0;
-    margin: 1px 0;
-  }
-  .sub {
-    font-size: 11.8px;
-    color: #334155;
+    border-left: 4px solid #0284c7;
+    padding: 3px 9px;
+    border-radius: 0 4px 4px 0;
+    margin: 2px 0;
   }
   .katex-display {
-    margin: 1.5px 0 !important;
+    margin: 2px 0 !important;
   }
   .katex {
-    font-size: 1.05em !important;
-  }
-
-  /* Table */
-  .tbl-dense {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-    margin: 1.5px 0;
-  }
-  .tbl-dense th {
-    background: #f1f5f9;
-    border: 1px solid #64748b;
-    padding: 2.5px 4px;
-    font-weight: 800;
-    text-align: left;
-    color: #0f172a;
-  }
-  .tbl-dense td {
-    border: 1px solid #64748b;
-    padding: 2px 4px;
-    vertical-align: middle;
+    font-size: 1.08em !important;
   }
 
   /* Footer */
@@ -176,10 +147,9 @@
   <!-- Top Header -->
   <div class="top-header">
     <div>
-      <h1>Теорія ймовірностей та математична статистика — Формуляр A4 (2 стовпці)</h1>
-      <p>НУ «Львівська політехніка» • Усі 17 тем курсу • Максимально щільне рукописне компонування без пустот</p>
+      <h1>Теорія ймовірностей та математична статистика — Формуляр A4</h1>
     </div>
-    <div class="tag-badge">Група ПП-24 • 2026</div>
+    <div class="badge">17 тем • Великий рукописний шрифт • Без пустот</div>
   </div>
 
   <!-- 2 Columns Grid -->
@@ -188,152 +158,135 @@
     <!-- ==================== СТОВПЕЦЬ 1 (Теми 1 - 9) ==================== -->
     <div class="col">
 
-      <!-- Тема 1 -->
+      <!-- 1 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">1. Елементи комбінаторики</span>
-          <span class="sec-tag">Тема 1</span>
+          <span class="sec-title">1. Комбінаторика</span>
+          <span class="sec-num">Тема 1</span>
         </div>
-        <div><span class="b">Правило суми:</span> $N = m + k$ • <span class="b">Правило добутку:</span> $N = m \cdot k$</div>
-        <div><span class="b">Без повторень:</span> $P_n = n!, \quad A_n^m = \frac{n!}{(n-m)!}, \quad C_n^m = \frac{n!}{m!(n-m)!}$</div>
-        <div class="fbox">
-          <span class="b">З повтореннями:</span> $\bar{P}_n(k_1,\dots,k_r) = \frac{n!}{k_1!\dots k_r!}, \quad \bar{A}_n^m = n^m, \quad \bar{C}_n^m = C_{n+m-1}^m = \frac{(n+m-1)!}{m!(n-1)!}$
+        <div><span class="b">Сума:</span> $N = m + k$ • <span class="b">Добуток:</span> $N = m \cdot k$</div>
+        <div>$P_n = n!, \quad A_n^m = \frac{n!}{(n-m)!}, \quad C_n^m = \frac{n!}{m!(n-m)!}$</div>
+        <div class="eq">
+          $\bar{P}_n = \frac{n!}{k_1!\dots k_r!}, \quad \bar{A}_n^m = n^m, \quad \bar{C}_n^m = C_{n+m-1}^m = \frac{(n+m-1)!}{m!(n-1)!}$
         </div>
-        <div><span class="b">Біном Ньютона:</span> $(a+b)^n = \sum_{k=0}^n C_n^k a^{n-k}b^k, \quad T_{k+1} = C_n^k a^{n-k}b^k, \quad \sum C_n^k = 2^n$</div>
-        <div><span class="b">Тотожності:</span> $C_n^k = C_n^{n-k}, \; C_{n+1}^k = C_n^k + C_n^{k-1}, \; \sum (-1)^k C_n^k = 0$ • <span class="b">Стірлінг:</span> $n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$</div>
-        <div><span class="b">Розбиття:</span> $n=km$ на $k$ однакових груп: $N = \frac{n!}{(m!)^k k!}$ • <span class="b">По колу:</span> $P = (n-1)!$</div>
+        <div>$(a+b)^n = \sum_{k=0}^n C_n^k a^{n-k}b^k, \quad T_{k+1} = C_n^k a^{n-k}b^k, \quad \sum C_n^k = 2^n$</div>
+        <div>$C_n^k = C_n^{n-k}, \; C_{n+1}^k = C_n^k + C_n^{k-1}, \; N_{\text{груп}} = \frac{n!}{(m!)^k k!}, \; P_{\text{коло}} = (n-1)!$</div>
+        <div>$n! \approx \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$</div>
       </div>
 
-      <!-- Тема 2 -->
+      <!-- 2 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">2. Простір подій та аксіоматика Колмогорова</span>
-          <span class="sec-tag">Тема 2</span>
+          <span class="sec-title">2. Події та аксіоми</span>
+          <span class="sec-num">Тема 2</span>
         </div>
-        <div><span class="b">Події:</span> вірогідна $\Omega$ ($P=1$), неможлива $\varnothing$ ($P=0$), протилежна $\bar{A} = \Omega \setminus A \implies P(\bar{A}) = 1 - P(A)$</div>
-        <div><span class="b">Операції:</span> $A \cup B$ (сума), $AB$ (добуток), $A \setminus B = A\bar{B}$ (різниця), $A \Delta B = (A\setminus B)\cup(B\setminus A)$</div>
-        <div class="fbox">
-          <span class="b">Закони де Моргана:</span> $\overline{A \cup B} = \bar{A} \cap \bar{B}, \qquad \overline{A \cap B} = \bar{A} \cup \bar{B}$
+        <div>$P(\Omega)=1, \quad P(\varnothing)=0, \quad P(\bar{A}) = 1 - P(A), \quad \bar{A} = \Omega \setminus A$</div>
+        <div>$A \cup B \text{ (сума)}, \quad AB \text{ (добуток)}, \quad A \setminus B = A\bar{B}, \quad A \Delta B = (A\setminus B)\cup(B\setminus A)$</div>
+        <div class="eq">
+          $\overline{A \cup B} = \bar{A} \cap \bar{B}, \qquad \overline{A \cap B} = \bar{A} \cup \bar{B}$
         </div>
-        <div><span class="b">Аксіоми:</span> 1) $P(A) \ge 0$; 2) $P(\Omega)=1$; 3) $P(\bigcup_{i=1}^\infty A_i) = \sum P(A_i)$ для несумісних ($A_i A_j = \varnothing$).</div>
-        <div><span class="b">Повна група:</span> $\bigcup_{i=1}^n A_i = \Omega, \; A_i A_j = \varnothing \implies \sum_{i=1}^n P(A_i) = 1$</div>
-        <div><span class="b">Властивості:</span> $A \subset B \implies P(A) \le P(B), \quad P(B \setminus A) = P(B) - P(AB)$</div>
+        <div>$P(A) \ge 0, \quad P(\bigcup A_i) = \sum P(A_i) \; (A_i A_j = \varnothing), \quad \sum P(H_i) = 1$</div>
+        <div>$A \subset B \implies P(A) \le P(B), \quad P(B \setminus A) = P(B) - P(AB)$</div>
       </div>
 
-      <!-- Тема 3 -->
+      <!-- 3 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">3. Означення ймовірності (Класичне, Геометричне)</span>
-          <span class="sec-tag">Тема 3</span>
+          <span class="sec-title">3. Означення ймовірності</span>
+          <span class="sec-num">Тема 3</span>
         </div>
-        <div><span class="b">Класичне:</span> $P(A) = \frac{m}{n} = \frac{|A|}{|\Omega|}$ ($0 \le P(A) \le 1$) • <span class="b">Частота:</span> $W_n(A) = \frac{m}{n} \xrightarrow{P} P(A)$</div>
-        <div class="fbox">
-          <span class="b">Гіпергеометрична схема</span> ($N$ предметів, $K$ мічених, вибірка $n$ без повернення):
-          $$P(X = k) = \frac{C_K^k \cdot C_{N-K}^{n-k}}{C_N^n}, \quad M[X] = n\frac{K}{N}, \quad D[X] = n\frac{K}{N}\left(1-\frac{K}{N}\right)\frac{N-n}{N-1}$$
+        <div>$P(A) = \frac{m}{n}, \quad W_n(A) = \frac{m}{n} \xrightarrow{P} P(A), \quad P_{\text{геом}} = \frac{\operatorname{mes}(d)}{\operatorname{mes}(D)} \; (l/L, \; S/S_0, \; V/V_0)$</div>
+        <div class="eq">
+          Гіпергеом: $P(X = k) = \frac{C_K^k \cdot C_{N-K}^{n-k}}{C_N^n}, \quad M = n\frac{K}{N}, \quad D = n\frac{K}{N}\left(1-\frac{K}{N}\right)\frac{N-n}{N-1}$
         </div>
-        <div><span class="b">Геометричне:</span> $P(A) = \frac{\operatorname{mes}(d)}{\operatorname{mes}(D)}$ (1D: $L/L_0$, 2D: $S/S_0$, 3D: $V/V_0$)</div>
-        <div><span class="b">Задача про зустріч ($|x-y| \le \tau \le T$):</span> $P = \frac{T^2 - (T-\tau)^2}{T^2} = \frac{2\tau}{T} - \left(\frac{\tau}{T}\right)^2$ • <span class="b">Бюффон:</span> $P = \frac{2l}{\pi a}$</div>
+        <div>Зустріч ($|x-y| \le \tau \le T$): $P = \frac{T^2 - (T-\tau)^2}{T^2} = \frac{2\tau}{T} - \left(\frac{\tau}{T}\right)^2$ • Бюффон: $P = \frac{2l}{\pi a}$</div>
       </div>
 
-      <!-- Тема 4 -->
+      <!-- 4 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">4. Теореми додавання та множення ймовірностей</span>
-          <span class="sec-tag">Тема 4</span>
+          <span class="sec-title">4. Додавання та множення</span>
+          <span class="sec-num">Тема 4</span>
         </div>
-        <div><span class="b">Додавання:</span> $P(A \cup B) = P(A) + P(B) - P(AB)$ (несумісні $AB=\varnothing \implies P(A+B)=P(A)+P(B)$)</div>
-        <div><span class="b">Включення-виключення:</span> $P(A\cup B\cup C) = \sum P(A) - \sum P(AB) + P(ABC)$</div>
-        <div class="fbox">
-          <span class="b">Умовна ймовірність:</span> $P(A \mid B) = \frac{P(AB)}{P(B)} \iff P(AB) = P(B)P(A \mid B) = P(A)P(B \mid A)$
+        <div>$P(A \cup B) = P(A) + P(B) - P(AB) \quad (AB=\varnothing \implies P(A)+P(B))$</div>
+        <div>$P(A \cup B \cup C) = \sum P(A) - \sum P(AB) + P(ABC)$</div>
+        <div class="eq">
+          $P(A \mid B) = \frac{P(AB)}{P(B)} \iff P(AB) = P(B)P(A \mid B) = P(A)P(B \mid A)$
         </div>
-        <div><span class="b">Ланцюжок для $n$ подій:</span> $P(A_1 \dots A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1 A_2)\dots P(A_n|A_1\dots A_{n-1})$</div>
-        <div><span class="b">Незалежні:</span> $P(AB) = P(A)P(B) \iff P(A|B) = P(A)$</div>
-        <div><span class="b">Хоча б 1 успіх з $n$ незалежних:</span> $P(\ge 1) = 1 - q_1 q_2 \dots q_n$ • <span class="b">Рівно 1:</span> $p_1 q_2 q_3 + q_1 p_2 q_3 + q_1 q_2 p_3$</div>
+        <div>Незалежні: $P(AB) = P(A)P(B) \iff P(A \mid B) = P(A)$</div>
+        <div>$P(A_1 \dots A_n) = P(A_1)P(A_2|A_1)\dots P(A_n|A_1\dots A_{n-1})$</div>
+        <div>$P(\ge 1) = 1 - q_1 q_2 \dots q_n, \quad P(=1) = p_1 q_2 q_3 + q_1 p_2 q_3 + q_1 q_2 p_3$</div>
       </div>
 
-      <!-- Тема 5 -->
+      <!-- 5 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">5. Повна ймовірність та формули Байєса</span>
-          <span class="sec-tag">Тема 5</span>
+          <span class="sec-title">5. Повна ймовірність та Байєс</span>
+          <span class="sec-num">Тема 5</span>
         </div>
-        <div><span class="b">Повна група гіпотез:</span> $\bigcup_{i=1}^n H_i = \Omega, \; H_i H_j = \varnothing, \; \sum_{i=1}^n P(H_i) = 1$</div>
-        <div class="fbox">
-          <span class="b">Формула повної ймовірності (апріорний прогноз настання події $A$):</span>
-          $$P(A) = \sum_{i=1}^n P(H_i) \cdot P(A \mid H_i)$$
+        <div>$\bigcup H_i = \Omega, \quad H_i H_j = \varnothing, \quad \sum_{i=1}^n P(H_i) = 1$</div>
+        <div class="eq">
+          Повна ймовірність: $P(A) = \sum_{i=1}^n P(H_i) \cdot P(A \mid H_i)$
         </div>
-        <div class="fbox">
-          <span class="b">Формула Байєса (апостеріорна переоцінка гіпотез за фактом події $A$):</span>
-          $$P(H_k \mid A) = \frac{P(H_k) \cdot P(A \mid H_k)}{\sum_{j=1}^n P(H_j) \cdot P(A \mid H_j)} = \frac{P(H_k \cap A)}{P(A)}$$
+        <div class="eq">
+          Байєс: $P(H_k \mid A) = \frac{P(H_k) \cdot P(A \mid H_k)}{\sum_{j=1}^n P(H_j) \cdot P(A \mid H_j)} = \frac{P(H_k \cap A)}{P(A)}$
         </div>
-        <div class="sub">$P(H_k)$ — апріорна (початкова) ймовірність; $P(H_k|A)$ — уточнена після настання $A$.</div>
       </div>
 
-      <!-- Тема 6 -->
+      <!-- 6 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">6. Схема випробувань Бернуллі</span>
-          <span class="sec-tag">Тема 6</span>
+          <span class="sec-title">6. Схема Бернуллі</span>
+          <span class="sec-num">Тема 6</span>
         </div>
-        <div>$n$ незалежних однорідних дослідів, $P(\text{успіх}) = p$, $q = 1 - p$.</div>
-        <div class="fbox">
-          <span class="b">Формула Бернуллі (рівно $k$ успіхів):</span> $P_n(k) = C_n^k \, p^k \, q^{n-k} = \frac{n!}{k!(n-k)!} p^k q^{n-k}$
+        <div class="eq">
+          $P_n(k) = C_n^k \, p^k \, q^{n-k} = \frac{n!}{k!(n-k)!} p^k q^{n-k}, \qquad q = 1 - p$
         </div>
-        <div><span class="b">Найімовірніше число успіхів $k_0$:</span> $np - q \le k_0 \le np + p$ (інтервал довжини 1)</div>
-        <div class="sub">Якщо $np-q$ дробове $\implies k_0 = [np+p]$; ціле $\implies k_0 = np-q$ та $np+p$.</div>
-        <div><span class="b">Поліноміальна:</span> $P_n(k_1,\dots,k_r) = \frac{n!}{k_1!\dots k_r!} p_1^{k_1} \dots p_r^{k_r}, \; \sum k_i = n, \; \sum p_i = 1$</div>
-        <div><span class="b">До 1-го успіху (геометричний):</span> $P(X = k) = q^{k-1}p, \; M[X]=1/p, \; D[X]=q/p^2$</div>
+        <div>$np - q \le k_0 \le np + p \quad (np-q \notin \mathbb{Z} \implies k_0=[np+p]; \; \in \mathbb{Z} \implies np-q \text{ і } np+p)$</div>
+        <div>$P_n(k_1,\dots,k_r) = \frac{n!}{k_1!\dots k_r!} p_1^{k_1} \dots p_r^{k_r}, \quad \sum k_i = n, \quad \sum p_i = 1$</div>
+        <div>Геометричний (до 1-го успіху): $P(X = k) = q^{k-1}p, \quad M[X]=1/p, \quad D[X]=q/p^2$</div>
       </div>
 
-      <!-- Тема 7 -->
+      <!-- 7 -->
       <div class="sec">
         <div class="sec-head">
           <span class="sec-title">7. Граничні теореми Бернуллі</span>
-          <span class="sec-tag">Тема 7</span>
+          <span class="sec-num">Тема 7</span>
         </div>
-        <div><span class="b">Локальна Муавра-Лапласа ($npq \ge 10$):</span>
-          $$P_n(k) \approx \frac{1}{\sqrt{npq}} \, \varphi(x), \quad x = \frac{k - np}{\sqrt{npq}}, \quad \varphi(x) = \frac{e^{-x^2/2}}{\sqrt{2\pi}} \quad (\varphi(-x)=\varphi(x))$$
+        <div>Локальна М-Л ($npq \ge 10$): $P_n(k) \approx \frac{1}{\sqrt{npq}} \, \varphi(x), \quad x = \frac{k - np}{\sqrt{npq}}, \quad \varphi(x) = \frac{e^{-x^2/2}}{\sqrt{2\pi}} = \varphi(-x)$</div>
+        <div class="eq">
+          Інтегральна М-Л: $P_n(k_1 \le k \le k_2) \approx \Phi_0(x_2) - \Phi_0(x_1), \quad \Phi_0(x) = \frac{1}{\sqrt{2\pi}}\int_0^x e^{-t^2/2}dt = -\Phi_0(-x)$
         </div>
-        <div class="fbox">
-          <span class="b">Інтегральна Муавра-Лапласа ($k_1 \le k \le k_2$):</span>
-          $$P_n(k_1 \le k \le k_2) \approx \Phi_0(x_2) - \Phi_0(x_1), \quad \Phi_0(x) = \frac{1}{\sqrt{2\pi}} \int_0^x e^{-t^2/2} dt, \quad x = \frac{k - np}{\sqrt{npq}}$$
-          <span class="sub">$\Phi_0(-x) = -\Phi_0(x), \; \Phi_0(\infty) = 0.5$. Поправка: $x_1 = \frac{k_1 - 0.5 - np}{\sqrt{npq}}, \; x_2 = \frac{k_2 + 0.5 - np}{\sqrt{npq}}$.</span>
-        </div>
-        <div><span class="b">Відхилення частоти:</span> $P\left(\left|\frac{k}{n} - p\right| \le \varepsilon\right) \approx 2\Phi_0\left(\varepsilon \sqrt{\frac{n}{pq}}\right), \quad n \ge \frac{u_\gamma^2 pq}{\varepsilon^2}$</div>
-        <div class="fbox">
-          <span class="b">Теорема Пуассона ($n \to \infty, p \to 0, \lambda = np \le 10$):</span> $P_n(k) \approx \frac{\lambda^k}{k!} e^{-\lambda}, \quad \text{похибка } \le 2np^2$
-        </div>
+        <div>$x_1 = \frac{k_1 - 0.5 - np}{\sqrt{npq}}, \; x_2 = \frac{k_2 + 0.5 - np}{\sqrt{npq}}, \quad P(|\frac{k}{n}-p| \le \varepsilon) \approx 2\Phi_0(\varepsilon\sqrt{\frac{n}{pq}}), \quad n \ge \frac{u_\gamma^2 pq}{\varepsilon^2}$</div>
+        <div>Пуассон ($n \to \infty, p \to 0, \lambda = np \le 10$): $P_n(k) \approx \frac{\lambda^k}{k!} e^{-\lambda}, \quad \text{похибка } \le 2np^2$</div>
       </div>
 
-      <!-- Тема 8 -->
+      <!-- 8 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">8. Дискретні випадкові величини (ДВВ)</span>
-          <span class="sec-tag">Тема 8</span>
+          <span class="sec-title">8. Дискретні ВВ (ДВВ)</span>
+          <span class="sec-num">Тема 8</span>
         </div>
-        <div><span class="b">Ряд:</span> $\{(x_i, p_i)\}, \; \sum p_i = 1$ • <span class="b">Функція розподілу:</span> $F(x) = P(X < x) = \sum_{x_i < x} p_i$ (непер. зліва)</div>
-        <div class="fbox">
-          <span class="b">Матсподівання:</span> $M[X] = \sum_i x_i p_i \qquad \text{Дисперсія: } D[X] = \sum_i x_i^2 p_i - (M[X])^2 \qquad \sigma_X = \sqrt{D[X]}$
+        <div>$\sum p_i = 1, \quad F(x) = P(X < x) = \sum_{x_i < x} p_i$</div>
+        <div class="eq">
+          $M[X] = \sum x_i p_i, \qquad D[X] = \sum x_i^2 p_i - (M[X])^2, \qquad \sigma_X = \sqrt{D[X]}$
         </div>
-        <div><span class="b">Властивості:</span> $M[C]=C, \; M[CX]=CM[X], \; M[X+Y]=M[X]+M[Y]$</div>
-        <div>$D[C]=0, \; D[CX]=C^2 D[X], \; D[X+C]=D[X]$</div>
-        <div><span class="b">Для незалежних:</span> $M[XY]=M[X]M[Y], \quad D[X \pm Y] = D[X] + D[Y]$</div>
-        <div><span class="b">Для залежних:</span> $D[X \pm Y] = D[X] + D[Y] \pm 2\operatorname{cov}(X,Y)$ • <span class="b">Моменти:</span> $\mu_2 = D[X], \; \mu_3 = \alpha_3 - 3\alpha_1\alpha_2 + 2\alpha_1^3$</div>
+        <div>$M[C]=C, \; M[CX]=CM[X], \; M[X+Y]=M[X]+M[Y], \quad D[C]=0, \; D[CX]=C^2 D[X]$</div>
+        <div>$M[XY]=M[X]M[Y] \; (\text{незал.}), \quad D[X \pm Y] = D[X] + D[Y] \pm 2\operatorname{cov}(X,Y)$</div>
+        <div>$\mu_2 = D[X], \quad \mu_3 = \alpha_3 - 3\alpha_1\alpha_2 + 2\alpha_1^3, \quad \alpha_k = \sum x_i^k p_i$</div>
       </div>
 
-      <!-- Тема 9 -->
+      <!-- 9 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">9. Неперервні випадкові величини (НВВ)</span>
-          <span class="sec-tag">Тема 9</span>
+          <span class="sec-title">9. Неперервні ВВ (НВВ)</span>
+          <span class="sec-num">Тема 9</span>
         </div>
-        <div><span class="b">Зв'язок $f(x)$ і $F(x)$:</span> $f(x) = F'(x), \quad F(x) = \int_{-\infty}^x f(t) dt \quad (f(x) \ge 0, \; \int_{-\infty}^\infty f(x)dx = 1)$</div>
-        <div class="fbox">
-          <span class="b">Ймовірність на інтервалі:</span> $P(\alpha \le X \le \beta) = \int_\alpha^\beta f(x) dx = F(\beta) - F(\alpha), \quad P(X = x_0) = 0$
-          $$M[X] = \int_{-\infty}^{+\infty} x f(x) dx, \qquad D[X] = \int_{-\infty}^{+\infty} x^2 f(x) dx - (M[X])^2$$
+        <div>$f(x) = F'(x) \ge 0, \quad \int_{-\infty}^\infty f(x)dx = 1, \quad F(x) = \int_{-\infty}^x f(t)dt, \quad P(X = x_0) = 0$</div>
+        <div class="eq">
+          $P(\alpha \le X \le \beta) = \int_\alpha^\beta f(x)dx = F(\beta) - F(\alpha), \quad M[X] = \int_{-\infty}^\infty x f(x)dx, \quad D[X] = \int_{-\infty}^\infty x^2 f(x)dx - (M[X])^2$
         </div>
-        <div><span class="b">Мода $M_o$:</span> точка максимуму $f(x)$ • <span class="b">Медіана $M_e$:</span> $F(M_e) = 0.5 \iff \int_{-\infty}^{M_e} f(x)dx = 0.5$</div>
-        <div><span class="b">Асиметрія:</span> $A_s = \frac{\mu_3}{\sigma^3}$ • <span class="b">Ексцес:</span> $E_k = \frac{\mu_4}{\sigma^4} - 3$ (нормальний: $E_k = 0$) • <span class="b">Квантиль:</span> $F(x_p) = p$</div>
+        <div>Мода: $\max f(x)$ • Медіана: $F(M_e) = 0.5$ • $A_s = \frac{\mu_3}{\sigma^3}, \; E_k = \frac{\mu_4}{\sigma^4}-3, \; F(x_p)=p$</div>
       </div>
 
     </div>
@@ -341,142 +294,131 @@
     <!-- ==================== СТОВПЕЦЬ 2 (Теми 10 - 17) ==================== -->
     <div class="col">
 
-      <!-- Тема 10 -->
+      <!-- 10 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">10. Основні закони розподілу ймовірностей</span>
-          <span class="sec-tag">Тема 10</span>
+          <span class="sec-title">10. Основні закони розподілу</span>
+          <span class="sec-num">Тема 10</span>
         </div>
-        <table class="tbl-dense">
-          <tr><th>Закон</th><th>$P(X=k)$ або $f(x)$</th><th>$M[X]$</th><th>$D[X]$</th></tr>
-          <tr><td><b>Бернуллі</b></td><td>$P(1)=p, P(0)=q$</td><td>$p$</td><td>$pq$</td></tr>
-          <tr><td><b>Біноміальний</b></td><td>$C_n^k p^k q^{n-k}$</td><td>$np$</td><td>$npq$</td></tr>
-          <tr><td><b>Пуассона</b></td><td>$\frac{\lambda^k}{k!} e^{-\lambda}$</td><td>$\lambda$</td><td>$\lambda$</td></tr>
-          <tr><td><b>Геометричний</b></td><td>$q^{k-1} p$</td><td>$1/p$</td><td>$q/p^2$</td></tr>
-          <tr><td><b>Рівномірний</b></td><td>$\frac{1}{b-a}, x \in [a,b]$</td><td>$\frac{a+b}{2}$</td><td>$\frac{(b-a)^2}{12}$</td></tr>
-          <tr><td><b>Показниковий</b></td><td>$\lambda e^{-\lambda x}, x \ge 0$</td><td>$1/\lambda$</td><td>$1/\lambda^2$</td></tr>
-          <tr><td><b>Нормальний</b></td><td>$\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-a)^2}{2\sigma^2}}$</td><td>$a$</td><td>$\sigma^2$</td></tr>
-        </table>
-        <div><span class="b">Правило $3\sigma$:</span> $P(|X-a|<\sigma) \approx 68.27\%, \; P(|X-a|<2\sigma) \approx 95.45\%, \; P(|X-a|<3\sigma) \approx 99.73\%$</div>
-        <div><span class="b">Показниковий CDF:</span> $F(x) = 1 - e^{-\lambda x}$ • <span class="b">Без післядії:</span> $P(X > t+s \mid X > t) = P(X > s)$</div>
-        <div><span class="b">Спеціальні:</span> Стьюдента $t(k)$, Фішера $F(k_1, k_2)$, Хі-квадрат $\chi^2(k)$ ($M=k, D=2k$)</div>
-        <div><span class="b">Логнормальний:</span> $\ln X \sim N(a, \sigma) \implies f(x) = \frac{1}{x\sigma\sqrt{2\pi}} e^{-\frac{(\ln x - a)^2}{2\sigma^2}}$</div>
+        <div>• <span class="b">Бернуллі:</span> $P(1)=p, P(0)=q \implies M=p, \; D=pq$</div>
+        <div>• <span class="b">Біноміальний $B(n,p)$:</span> $P(k) = C_n^k p^k q^{n-k} \implies M=np, \; D=npq$</div>
+        <div>• <span class="b">Пуассона $\Pi(\lambda)$:</span> $P(k) = \frac{\lambda^k}{k!} e^{-\lambda} \implies M=\lambda, \; D=\lambda$</div>
+        <div>• <span class="b">Геометричний $G(p)$:</span> $P(k) = q^{k-1}p \implies M=1/p, \; D=q/p^2$</div>
+        <div>• <span class="b">Рівномірний $R[a,b]$:</span> $f(x) = \frac{1}{b-a} \implies M=\frac{a+b}{2}, \; D=\frac{(b-a)^2}{12}, \; F = \frac{x-a}{b-a}$</div>
+        <div>• <span class="b">Показниковий $Exp(\lambda)$:</span> $f(x) = \lambda e^{-\lambda x} \implies M=1/\lambda, \; D=1/\lambda^2, \; F = 1-e^{-\lambda x}$</div>
+        <div class="eq">
+          • <span class="b">Нормальний $N(a,\sigma)$:</span> $f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-a)^2}{2\sigma^2}} \implies M=a, \; D=\sigma^2$
+        </div>
+        <div>$P(|X-a|<\sigma) \approx 68.3\%, \quad P(|X-a|<2\sigma) \approx 95.5\%, \quad P(|X-a|<3\sigma) \approx 99.73\%$</div>
+        <div>Стьюдент $t(k)$, Фішер $F(k_1, k_2)$, Хі-квадрат $\chi^2(k) \; (M=k, D=2k)$</div>
       </div>
 
-      <!-- Тема 11 -->
+      <!-- 11 -->
       <div class="sec">
         <div class="sec-head">
           <span class="sec-title">11. Перетворення та Характеристичні функції</span>
-          <span class="sec-tag">Тема 11</span>
+          <span class="sec-num">Тема 11</span>
         </div>
-        <div><span class="b">Функція $Y = g(X)$ (монотонна):</span> $f_Y(y) = f_X(\psi(y)) |\psi'(y)|$, де $\psi = g^{-1}$</div>
-        <div><span class="b">Згортка суми $Z = X + Y$:</span> $f_Z(z) = \int_{-\infty}^{+\infty} f_X(x) f_Y(z-x) dx$</div>
-        <div><span class="b">Згортка різниці $Z = X - Y$:</span> $f_Z(z) = \int_{-\infty}^{+\infty} f_X(x) f_Y(x-z) dx$</div>
-        <div class="fbox">
-          <span class="b">Характеристична функція:</span> $\varphi_X(t) = M[e^{itX}] = \sum e^{it x_k} p_k$ (ДВВ) або $\int_{-\infty}^\infty e^{itx} f(x) dx$ (НВВ)
+        <div>$Y = g(X) \implies f_Y(y) = f_X(\psi(y)) |\psi'(y)|, \quad \psi = g^{-1}$</div>
+        <div>$Z = X + Y \implies f_Z(z) = \int_{-\infty}^\infty f_X(x) f_Y(z-x)dx$</div>
+        <div class="eq">
+          $\varphi_X(t) = M[e^{itX}] = \sum e^{it x_k} p_k \; (\text{ДВВ}) = \int_{-\infty}^\infty e^{itx} f(x)dx \; (\text{НВВ})$
         </div>
-        <div><span class="b">Властивості:</span> $\varphi(0)=1, \; |\varphi(t)|\le 1, \; \varphi_{aX+b}(t) = e^{itb}\varphi(at), \; \varphi_{X+Y}(t) = \varphi_X(t)\varphi_Y(t)$</div>
-        <div class="fbox">
-          <span class="b">Моменти через похідні:</span> $\alpha_k = \frac{1}{i^k} \varphi^{(k)}(0) \implies M[X] = -i\varphi'(0), \quad D[X] = -\varphi''(0) + (\varphi'(0))^2$
+        <div>$\varphi(0)=1, \; |\varphi(t)|\le 1, \; \varphi_{aX+b}(t) = e^{itb}\varphi(at), \; \varphi_{X+Y}(t) = \varphi_X(t)\varphi_Y(t)$</div>
+        <div class="eq">
+          $\alpha_k = \frac{1}{i^k} \varphi^{(k)}(0) \implies M[X] = -i\varphi'(0), \quad D[X] = -\varphi''(0) + (\varphi'(0))^2$
         </div>
-        <div><span class="b">ХФ базові:</span> Норм: $e^{iat - \frac{\sigma^2 t^2}{2}}$; Пуассон: $e^{\lambda(e^{it}-1)}$; Біном: $(q+pe^{it})^n$ • <span class="b">Обернене:</span> $f(x) = \frac{1}{2\pi}\int e^{-itx}\varphi(t)dt$</div>
+        <div>Норм: $e^{iat-\frac{\sigma^2 t^2}{2}}$, Пуассон: $e^{\lambda(e^{it}-1)}$, Біном: $(q+pe^{it})^n$ • $f(x) = \frac{1}{2\pi}\int e^{-itx}\varphi(t)dt$</div>
       </div>
 
-      <!-- Тема 12 -->
+      <!-- 12 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">12. Двовимірні випадкові величини (X, Y)</span>
-          <span class="sec-tag">Тема 12</span>
+          <span class="sec-title">12. Двовимірні ВВ (X, Y)</span>
+          <span class="sec-num">Тема 12</span>
         </div>
-        <div><span class="b">CDF:</span> $F(x,y) = P(X < x, Y < y)$ • <span class="b">Щільність:</span> $f(x,y) = \frac{\partial^2 F}{\partial x \partial y}$ • <span class="b">Нормування:</span> $\iint f(x,y)dxdy=1$</div>
-        <div class="fbox">
-          <span class="b">Маргінальні щільності:</span> $f_X(x) = \int_{-\infty}^\infty f(x,y) dy, \qquad f_Y(y) = \int_{-\infty}^\infty f(x,y) dx$
+        <div>$F(x,y) = P(X < x, Y < y), \quad f(x,y) = \frac{\partial^2 F}{\partial x \partial y}, \quad \iint f(x,y)dxdy = 1$</div>
+        <div class="eq">
+          $f_X(x) = \int_{-\infty}^\infty f(x,y)dy, \quad f_Y(y) = \int_{-\infty}^\infty f(x,y)dx, \quad f(x|y) = \frac{f(x,y)}{f_Y(y)}, \quad f(y|x) = \frac{f(x,y)}{f_X(x)}$
         </div>
-        <div><span class="b">Умовні:</span> $f(x|y) = \frac{f(x,y)}{f_Y(y)}, \quad f(y|x) = \frac{f(x,y)}{f_X(x)}$ • <span class="b">Незалежні:</span> $f(x,y) = f_X(x) f_Y(y)$</div>
-        <div><span class="b">Прямокутник:</span> $P = F(x_2,y_2) - F(x_1,y_2) - F(x_2,y_1) + F(x_1,y_1)$</div>
-        <div><span class="b">Регресія (умовне сподівання):</span> $m_{Y|X}(x) = M[Y|X=x] = \int_{-\infty}^\infty y f(y|x) dy$</div>
-        <div><span class="b">Умовна дисперсія:</span> $D[Y|X=x] = \int_{-\infty}^\infty (y - m_{Y|X}(x))^2 f(y|x) dy$</div>
+        <div>Незалежні $\iff f(x,y) = f_X(x)f_Y(y) \iff F(x,y) = F_X(x)F_Y(y)$</div>
+        <div>$P([x_1, x_2) \times [y_1, y_2)) = F(x_2,y_2) - F(x_1,y_2) - F(x_2,y_1) + F(x_1,y_1)$</div>
+        <div>Регресія: $m_{Y|X}(x) = M[Y \mid X=x] = \int_{-\infty}^\infty y f(y|x)dy$</div>
       </div>
 
-      <!-- Тема 13 -->
+      <!-- 13 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">13. Кореляція та Лінії Регресії</span>
-          <span class="sec-tag">Тема 13</span>
+          <span class="sec-title">13. Кореляція та регресія</span>
+          <span class="sec-num">Тема 13</span>
         </div>
-        <div><span class="b">Коваріація:</span> $\operatorname{cov}(X,Y) = M[(X-M[X])(Y-M[Y])] = M[XY] - M[X]M[Y]$</div>
-        <div class="fbox">
-          <span class="b">Коефіцієнт кореляції:</span> $r_{XY} = \frac{\operatorname{cov}(X,Y)}{\sigma_X \sigma_Y}, \quad -1 \le r_{XY} \le 1 \quad (\text{незалежні} \implies r=0; \; |r|=1 \implies Y=aX+b)$
+        <div>$\operatorname{cov}(X,Y) = M[XY] - M[X]M[Y] = M[(X-M[X])(Y-M[Y])]$</div>
+        <div class="eq">
+          $r_{XY} = \frac{\operatorname{cov}(X,Y)}{\sigma_X \sigma_Y} \in [-1; 1] \quad (\text{незал.} \implies r=0; \; |r|=1 \implies Y=aX+b)$
         </div>
-        <div class="fbox">
-          <span class="b">Прямі регресії:</span> $y - M[Y] = r_{XY} \frac{\sigma_Y}{\sigma_X} (x - M[X]) \; (Y \text{ на } X), \quad x - M[X] = r_{XY} \frac{\sigma_X}{\sigma_Y} (y - M[Y]) \; (X \text{ на } Y)$
+        <div class="eq">
+          $y - M[Y] = r_{XY}\frac{\sigma_Y}{\sigma_X}(x - M[X]) \; (Y \text{ на } X), \quad x - M[X] = r_{XY}\frac{\sigma_X}{\sigma_Y}(y - M[Y]) \; (X \text{ на } Y)$
         </div>
-        <div><span class="b">Залишкова дисперсія:</span> $\sigma_{\text{зал}}^2 = \sigma_Y^2(1 - r_{XY}^2)$ • <span class="b">Детермінація:</span> $R^2 = r_{XY}^2$ • <span class="b">Корел. відношення:</span> $\eta^2 \ge r^2$</div>
-        <div><span class="b">Рангова кореляція Спірмена:</span> $\rho = 1 - \frac{6\sum d_i^2}{n(n^2 - 1)}$ • <span class="b">Похибка $r$:</span> $s_r = \frac{1-r^2}{\sqrt{n}}$</div>
+        <div>$\sigma_{\text{зал}}^2 = \sigma_Y^2(1 - r^2), \quad R^2 = r^2, \quad \eta_{Y/X}^2 = \frac{D[M[Y|X]]}{D[Y]} \ge r^2, \quad \rho = 1 - \frac{6\sum d_i^2}{n(n^2-1)}$</div>
       </div>
 
-      <!-- Тема 14 -->
+      <!-- 14 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">14. Закон великих чисел (ЗВЧ) та ЦГТ</span>
-          <span class="sec-tag">Тема 14</span>
+          <span class="sec-title">14. ЗВЧ та ЦГТ</span>
+          <span class="sec-num">Тема 14</span>
         </div>
-        <div><span class="b">Марков ($X \ge 0$):</span> $P(X \ge \varepsilon) \le \frac{M[X]}{\varepsilon}$ • <span class="b">Чебишов:</span> $P(|X - M[X]| \ge \varepsilon) \le \frac{D[X]}{\varepsilon^2} \iff P(|X - M| < \varepsilon) \ge 1 - \frac{D}{\varepsilon^2}$</div>
-        <div class="fbox">
-          <span class="b">Теорема Чебишова (ЗВЧ):</span> якщо $D[X_i] \le C \implies \lim_{n\to\infty} P\left(\left|\frac{1}{n}\sum_{k=1}^n X_k - \frac{1}{n}\sum_{k=1}^n M[X_k]\right| < \varepsilon\right) = 1$
+        <div>Марков ($X\ge 0$): $P(X \ge \varepsilon) \le \frac{M[X]}{\varepsilon}$ • Чебишов: $P(|X - M| \ge \varepsilon) \le \frac{D[X]}{\varepsilon^2} \iff P(|X - M| < \varepsilon) \ge 1 - \frac{D}{\varepsilon^2}$</div>
+        <div class="eq">
+          Теорема Чебишова: $D[X_i] \le C \implies \lim_{n\to\infty} P\left(\left|\frac{1}{n}\sum X_i - \frac{1}{n}\sum M[X_i]\right| < \varepsilon\right) = 1$
         </div>
-        <div><span class="b">Теорема Бернуллі:</span> $\frac{k}{n} \xrightarrow{P} p$ • <span class="b">Теорема Хінчина (i.i.d.):</span> $\frac{1}{n}\sum X_i \xrightarrow{P} M[X]$</div>
-        <div class="fbox">
-          <span class="b">ЦГТ (Ліндеберга-Леві):</span> $Z_n = \frac{\sum_{i=1}^n X_i - n a}{\sigma\sqrt{n}} \xrightarrow{d} N(0, 1)$
+        <div>Хінчин: $\frac{1}{n}\sum X_i \xrightarrow{P} M[X]$ • Бернуллі: $\frac{k}{n} \xrightarrow{P} p$</div>
+        <div class="eq">
+          ЦГТ (Ліндеберг-Леві): $Z_n = \frac{\sum_{i=1}^n X_i - n a}{\sigma\sqrt{n}} \xrightarrow{d} N(0, 1)$
         </div>
-        <div><span class="b">Умова Ляпунова:</span> $\lim_{n\to\infty} \frac{1}{B_n^{2+\delta}} \sum_{i=1}^n M[|X_i - a_i|^{2+\delta}] = 0 \implies \text{виконується ЦГТ}$</div>
       </div>
 
-      <!-- Тема 15 -->
+      <!-- 15 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">15. Випадкові процеси та Ланцюги Маркова</span>
-          <span class="sec-tag">Тема 15</span>
+          <span class="sec-title">15. Випадкові процеси та Марковські ланцюги</span>
+          <span class="sec-num">Тема 15</span>
         </div>
-        <div><span class="b">Процес $X(t)$:</span> $m_x(t) = M[X(t)], \; K_x(t_1,t_2) = M[\mathring{X}(t_1)\mathring{X}(t_2)]$ • <span class="b">Стаціонарний:</span> $m_x = \text{const}, \; K_x = k_x(\tau)$</div>
-        <div><span class="b">Ланцюг Маркова:</span> матриця переходів $P = (p_{ij})_{n\times n}, \; \sum_j p_{ij} = 1$</div>
-        <div class="fbox">
-          <span class="b">Чепмен-Колмогоров:</span> $P(n) = P^n$ • <span class="b">Стаціонарний розподіл $\pi$:</span> $\pi P = \pi, \quad \sum_{i=1}^n \pi_i = 1$
+        <div>$m_x(t) = M[X(t)], \; K_x(t_1,t_2) = M[\mathring{X}(t_1)\mathring{X}(t_2)]$ • Стаціонарний: $m_x = \text{const}, \; K_x = k_x(\tau)$</div>
+        <div>Ланцюг Маркова: $P = (p_{ij})_{n\times n}, \; \sum_j p_{ij} = 1$ • Чепмен-Колмогоров: $P(n) = P^n$</div>
+        <div class="eq">
+          Стаціонарний розподіл $\pi$: $\pi P = \pi, \qquad \sum_{i=1}^n \pi_i = 1$
         </div>
-        <div><span class="b">Пуассонівський потік ($\lambda$):</span> $P_k(t) = \frac{(\lambda t)^k}{k!} e^{-\lambda t}$ • <span class="b">Час між подіями:</span> $\tau \sim Exp(\lambda) \implies M[\tau] = 1/\lambda, \; D[\tau] = 1/\lambda^2$</div>
-        <div><span class="b">Диференціальні рівняння Колмогорова:</span> $\frac{dp_j(t)}{dt} = -\sum_{k\ne j} q_{jk} p_j(t) + \sum_{k\ne j} q_{kj} p_k(t)$</div>
+        <div>Пуассон потік ($\lambda$): $P_k(t) = \frac{(\lambda t)^k}{k!}e^{-\lambda t}, \quad \tau \sim Exp(\lambda) \implies M[\tau]=1/\lambda, \; D[\tau]=1/\lambda^2$</div>
+        <div>Колмогоров: $\frac{dp_j(t)}{dt} = -\sum_{k\ne j} q_{jk} p_j(t) + \sum_{k\ne j} q_{kj} p_k(t)$</div>
       </div>
 
-      <!-- Тема 16 -->
+      <!-- 16 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">16. Математична статистика та Оцінки</span>
-          <span class="sec-tag">Тема 16</span>
+          <span class="sec-title">16. Математична статистика та оцінки</span>
+          <span class="sec-num">Тема 16</span>
         </div>
-        <div><span class="b">Вибіркове середнє:</span> $\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i$ ($M[\bar{x}] = a$, незсунена, спроможна)</div>
-        <div><span class="b">Вибіркова дисперсія (зсунена):</span> $D_{\text{в}} = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2 = \overline{x^2} - (\bar{x})^2, \quad M[D_{\text{в}}] = \frac{n-1}{n}\sigma^2$</div>
-        <div class="fbox">
-          <span class="b">Виправлена дисперсія (незсунена):</span> $s^2 = \frac{n}{n-1} D_{\text{в}} = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2, \quad s = \sqrt{s^2}$
+        <div>$\bar{x} = \frac{1}{n}\sum x_i \; (M[\bar{x}]=a), \quad D_{\text{в}} = \frac{1}{n}\sum (x_i - \bar{x})^2 = \overline{x^2} - (\bar{x})^2 \; (M[D_{\text{в}}]=\frac{n-1}{n}\sigma^2)$</div>
+        <div class="eq">
+          $s^2 = \frac{n}{n-1}D_{\text{в}} = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2, \qquad s = \sqrt{s^2} \quad (\text{незсунена})$
         </div>
-        <div><span class="b">Емпірична CDF:</span> $F_n^*(x) = \frac{n_x}{n} = \frac{1}{n}\sum I(x_i < x)$ • <span class="b">Асиметрія/Ексцес вибірки:</span> $A_s^* = \frac{m_3}{s^3}, \; E_k^* = \frac{m_4}{s^4} - 3$</div>
-        <div><span class="b">Метод моментів (ММ):</span> $\alpha_k^* = \frac{1}{n}\sum x_i^k = M[X^k; \theta]$ • <span class="b">ММП:</span> $L(\theta) = \prod f(x_i;\theta) \implies \frac{\partial \ln L(\theta)}{\partial \theta} = 0$</div>
+        <div>$F_n^*(x) = \frac{n_x}{n} = \frac{1}{n}\sum I(x_i < x)$ • ММ: $\frac{1}{n}\sum x_i^k = M[X^k; \theta]$ • ММП: $\frac{\partial \ln \prod f(x_i;\theta)}{\partial \theta} = 0$</div>
+        <div>$A_s^* = \frac{m_3}{s^3}, \quad E_k^* = \frac{m_4}{s^4} - 3$</div>
       </div>
 
-      <!-- Тема 17 -->
+      <!-- 17 -->
       <div class="sec">
         <div class="sec-head">
-          <span class="sec-title">17. Довірчі інтервали та Перевірка гіпотез</span>
-          <span class="sec-tag">Тема 17</span>
+          <span class="sec-title">17. Довірчі інтервали та критерії</span>
+          <span class="sec-num">Тема 17</span>
         </div>
-        <div><span class="b">Для $a$ при відомому $\sigma$:</span> $\left[\bar{x} - u_{\frac{1+\gamma}{2}} \frac{\sigma}{\sqrt{n}}; \; \bar{x} + u_{\frac{1+\gamma}{2}} \frac{\sigma}{\sqrt{n}}\right]$ (нормальний)</div>
-        <div><span class="b">Для $a$ при невідомому $\sigma$:</span> $\left[\bar{x} - t_{\gamma, n-1} \frac{s}{\sqrt{n}}; \; \bar{x} + t_{\gamma, n-1} \frac{s}{\sqrt{n}}\right]$ (Стьюдент)</div>
-        <div><span class="b">Для дисперсії $\sigma^2$:</span> $\left[\frac{(n-1)s^2}{\chi_2^2}; \; \frac{(n-1)s^2}{\chi_1^2}\right]$ ($\chi_1^2, \chi_2^2$ — квантилі $\chi^2$)</div>
-        <div class="fbox">
-          <span class="b">Критерій згоди Пірсона $\chi^2$:</span> $\chi_{\text{спост}}^2 = \sum_{i=1}^k \frac{(n_i - n p_i)^2}{n p_i} = \sum_{i=1}^k \frac{n_i^2}{n p_i} - n, \quad r = k - m - 1$
-          <span class="sub">Якщо $\chi_{\text{спост}}^2 < \chi_{\text{крит}}^2(\alpha, r) \implies H_0$ прийнято.</span>
+        <div>$a$ (відоме $\sigma$): $\bar{x} \pm u_{\frac{1+\gamma}{2}}\frac{\sigma}{\sqrt{n}}$ • $a$ (невідоме $\sigma$): $\bar{x} \pm t_{\gamma, n-1}\frac{s}{\sqrt{n}}$</div>
+        <div>$\sigma^2$: $\left[\frac{(n-1)s^2}{\chi_2^2}; \; \frac{(n-1)s^2}{\chi_1^2}\right], \quad \chi_{1,2}^2 = \chi^2_{\frac{1\pm\gamma}{2}, n-1}$</div>
+        <div class="eq">
+          Пірсон $\chi^2$: $\chi_{\text{спост}}^2 = \sum_{i=1}^k \frac{(n_i - n p_i)^2}{n p_i} = \sum_{i=1}^k \frac{n_i^2}{n p_i} - n, \quad r = k - m - 1$
         </div>
-        <div><span class="b">Критерій Фішера ($H_0: \sigma_1^2 = \sigma_2^2$):</span> $F_{\text{спост}} = \frac{s_1^2}{s_2^2} \ge 1 \quad (s_1^2 > s_2^2), \; k_1 = n_1-1, k_2 = n_2-1$</div>
-        <div><span class="b">Порівняння двох середніх ($t$-критерій):</span> $t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{1/n_1 + 1/n_2}}, \quad s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}$</div>
+        <div>Фішер: $F_{\text{спост}} = \frac{s_1^2}{s_2^2} \ge 1, \; k_1 = n_1-1, k_2 = n_2-1$ • $t = \frac{\bar{x}_1 - \bar{x}_2}{s_p\sqrt{1/n_1+1/n_2}}$</div>
       </div>
 
     </div>
@@ -485,8 +427,8 @@
 
   <!-- Footer -->
   <div class="bot-footer">
-    <span>Національний університет «Львівська політехніка» • Кафедра прикладної математики</span>
-    <span>Формуляр курсу: Теорія ймовірностей та математична статистика • 2 стовпці • 2026</span>
+    <span>НУ «Львівська політехніка» • Теорія ймовірностей та математична статистика</span>
+    <span>Стенографічний формуляр для рукописного переписування • 2 стовпці • 2026</span>
   </div>
 
 </body>
