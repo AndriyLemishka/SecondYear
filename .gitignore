@@ -61,3 +61,5 @@ Desktop.ini
 .agents/*
 !.agents/skills/
 !.agents/rules/
+
+FirstSemester/**/.agents/
