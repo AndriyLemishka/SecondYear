@@ -2,268 +2,378 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Теорія ймовірностей — Частина 2: Вектори, Процеси, Статистика</title>
+<title>Теорія ймовірностей — Шпаргалка A4 (Сторінка 2 з 2: Теми 9–17)</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
-  @page { size: A4; margin: 0; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @page {
+    size: A4 portrait;
+    margin: 4mm;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
   body {
     width: 1754px;
     height: 2480px;
-    background: #f8fafc;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #0f172a;
-    padding: 30px 34px;
+    color: #050811;
+    background: #ffffff;
+    padding: 16px 20px 14px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
   }
-  .header {
-    background: linear-gradient(135deg, #0f766e 0%, #0369a1 100%);
-    color: white;
-    padding: 16px 28px;
-    border-radius: 12px;
+
+  /* Header */
+  .top-header {
+    background: #0f4c81;
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 9px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    margin-bottom: 8px;
+    flex-shrink: 0;
   }
-  .header h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
-  .header .sub { font-size: 16px; font-weight: 500; opacity: 0.95; margin-top: 3px; }
-  .badge {
-    background: rgba(255,255,255,0.22);
-    border: 1.5px solid rgba(255,255,255,0.45);
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-size: 16px;
+  .top-header h1 {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+  }
+  .top-header p {
+    font-size: 13px;
+    color: #cbd5e1;
+    margin-top: 2px;
+  }
+  .top-header .tag-badge {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    padding: 4px 14px;
+    font-size: 14px;
     font-weight: 800;
   }
-  .grid-container {
+
+  /* 2 Columns Grid */
+  .grid-2col {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-top: 16px;
     flex: 1;
+    min-height: 0;
   }
+
   .col {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100%;
   }
-  .card {
-    background: white;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 10px;
-    padding: 14px 18px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-  }
-  .card-title {
-    font-size: 18px;
-    font-weight: 800;
-    color: #0f766e;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 6px;
-    margin-bottom: 10px;
+
+  /* Topic Section Card */
+  .sec {
+    background: #ffffff;
+    border: 1.8px solid #334155;
+    border-radius: 6px;
+    padding: 10px 15px 12px 15px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .tag {
-    font-size: 13px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 6px;
-    background: #ccfbf1;
-    color: #0f766e;
-  }
-  .item {
-    font-size: 14.5px;
-    line-height: 1.55;
-    margin-bottom: 6px;
-  }
-  .item strong { color: #1e293b; font-weight: 700; }
-  .formula-box {
-    background: #f0fdfa;
-    border: 1px solid #ccfbf1;
-    padding: 7px 12px;
-    border-radius: 6px;
-    margin: 8px 0;
-    text-align: center;
-    border-left: 4px solid #0d9488;
-  }
-  .table-mini {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13.5px;
-    margin: 8px 0;
-  }
-  .table-mini th, .table-mini td {
-    border: 1px solid #cbd5e1;
-    padding: 6px 8px;
-    text-align: left;
-  }
-  .table-mini th {
-    background: #f1f5f9;
-    font-weight: 700;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 19.5px;
+    line-height: 1.40;
     color: #0f172a;
   }
-  .footer {
+  .sec-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 14px;
-    border-top: 1.5px solid #cbd5e1;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: #475569;
+    border-bottom: 2px solid #0f4c81;
+    padding-bottom: 3.5px;
+    margin-bottom: 3px;
   }
-  .katex { font-size: 1.18em !important; }
+  .sec-title {
+    font-size: 21px;
+    font-weight: 900;
+    color: #0f4c81;
+  }
+  .sec-tag {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0284c7;
+    background: #e0f2fe;
+    padding: 2px 9px;
+    border-radius: 4px;
+  }
+
+  .b {
+    font-weight: 800;
+    color: #000000;
+  }
+  .fbox {
+    background: #f8fafc;
+    border-left: 4.5px solid #0284c7;
+    padding: 5px 12px;
+    border-radius: 0 5px 5px 0;
+    margin: 3px 0;
+  }
+  .sub {
+    font-size: 16px;
+    color: #334155;
+  }
+  .katex-display {
+    margin: 3px 0 !important;
+  }
+  .katex {
+    font-size: 1.15em !important;
+  }
+
+  /* Table */
+  .tbl-large {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 17px;
+    margin: 4px 0;
+  }
+  .tbl-large th {
+    background: #f1f5f9;
+    border: 1.5px solid #64748b;
+    padding: 5px 8px;
+    font-weight: 900;
+    text-align: left;
+    color: #0f172a;
+  }
+  .tbl-large td {
+    border: 1.5px solid #64748b;
+    padding: 5px 8px;
+    vertical-align: middle;
+  }
+
+  /* Footer */
+  .bot-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1.2px solid #cbd5e1;
+    padding-top: 4px;
+    font-size: 11.5px;
+    color: #475569;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div>
-    <h1>ТЕОРІЯ ЙМОВІРНОСТЕЙ • ЧАСТИНА 2: ВЕКТОРИ, ЗВЧ ТА МАТЕМАТИЧНА СТАТИСТИКА</h1>
-    <div class="sub">Повний академічний формуляр • НУ «Львівська політехніка» • Кафедра ОМП</div>
-  </div>
-  <div class="badge">СТОРІНКА 2 / 2</div>
-</div>
-
-<div class="grid-container">
-
-  <!-- КОЛОНКА 1 -->
-  <div class="col">
-    <!-- 10. Функції від ВВ та Характеристичні функції -->
-    <div class="card">
-      <div class="card-title">10. Функції та Характеристичні функції <span class="tag">Розділ 10</span></div>
-      <div class="item"><strong>Функція від випадкової величини \(\eta = g(\xi)\):</strong></div>
-      <div class="item">• Дискретна: \( p_\eta(y_j) = \sum_{g(x_i)=y_j} p_i \)</div>
-      <div class="item">• Неперервна (\(x = \psi(y)\) монотонна): \( f_\eta(y) = f_\xi(\psi(y)) |\psi'(y)| \)</div>
-      <div class="item">• Згортка суми \(\zeta = \xi + \eta\): \( f_\zeta(z) = \int_{-\infty}^\infty f_\xi(x) f_\eta(z-x) dx \)</div>
-      <div class="item"><strong>Характеристична функція:</strong> \( \varphi_\xi(t) = M[e^{it\xi}] \)</div>
-      <div class="item">• ДВВ: \( \varphi(t) = \sum e^{it x_k} p_k \) &nbsp;|&nbsp; НВВ: \( \varphi(t) = \int_{-\infty}^\infty e^{itx} f(x) dx \)</div>
-      <div class="item"><strong>Властивості:</strong> \( \varphi(0) = 1, \; |\varphi(t)| \le 1, \; \varphi_{a\xi+b}(t) = e^{itb}\varphi(at) \)</div>
-      <div class="item">Для незалежних: \( \varphi_{\xi+\eta}(t) = \varphi_\xi(t) \cdot \varphi_\eta(t) \)</div>
-      <div class="item"><strong>Моменти через похідні:</strong></div>
-      <div class="formula-box">\( M\xi = -i \cdot \varphi'(0), \quad M[\xi^2] = -\varphi''(0) \)</div>
-      <div class="formula-box">\( D\xi = -\varphi''(0) + (\varphi'(0))^2 \)</div>
-      <div class="item"><strong>Твірна функція (для цілих \(\ge 0\)):</strong> \( \psi(s) = M[s^\xi] = \sum p_k s^k \)</div>
+  <!-- Top Header -->
+  <div class="top-header">
+    <div>
+      <h1>Теорія ймовірностей та математична статистика (Сторінка 2: Теми 9–17)</h1>
+      <p>НУ «Львівська політехніка» • Повний рукописний масштаб із назвами та поясненнями формул</p>
     </div>
-
-    <!-- 11. Двовимірні вектори -->
-    <div class="card">
-      <div class="card-title">11. Двовимірні випадкові вектори <span class="tag">Розділ 11</span></div>
-      <div class="item"><strong>Сумісна функція:</strong> \( F(x, y) = P(\xi < x, \eta < y) \)</div>
-      <div class="item"><strong>Дискретний вектор:</strong> таблиця \( p_{ij} = P(\xi=x_i, \eta=y_j) \)</div>
-      <div class="item">• Нормування: \( \sum_i \sum_j p_{ij} = 1 \)</div>
-      <div class="item">• Маргінальні: \( p_{i\cdot} = \sum_j p_{ij}, \quad p_{\cdot j} = \sum_i p_{ij} \)</div>
-      <div class="item"><strong>Неперервний вектор:</strong> сумісна щільність \( f(x, y) \)</div>
-      <div class="item">• Нормування: \( \iint_{\mathbb{R}^2} f(x, y) \, dx \, dy = 1 \)</div>
-      <div class="item">• Маргінальні: \( f_\xi(x) = \int f(x,y)dy, \; f_\eta(y) = \int f(x,y)dx \)</div>
-      <div class="item">• Умовні щільності: \( f(x \mid y) = \frac{f(x,y)}{f_\eta(y)}, \; f(y \mid x) = \frac{f(x,y)}{f_\xi(x)} \)</div>
-      <div class="item"><strong>Критерій незалежності:</strong></div>
-      <div class="formula-box">\( p_{ij} = p_{i\cdot} \cdot p_{\cdot j} \quad \text{або} \quad f(x, y) = f_\xi(x) \cdot f_\eta(y) \)</div>
-    </div>
+    <div class="tag-badge">Аркуш 2 • Зворотний бік</div>
   </div>
 
-  <!-- КОЛОНКА 2 -->
-  <div class="col">
-    <!-- 12. Кореляція та регресія -->
-    <div class="card">
-      <div class="card-title">12. Кореляція та Лінійна регресія <span class="tag">Розділ 12</span></div>
-      <div class="item"><strong>Сумісний момент:</strong> \( M[\xi\eta] = \sum x_i y_j p_{ij} \) або \( \iint xy f(x,y)dxdy \)</div>
-      <div class="item"><strong>Коваріація:</strong></div>
-      <div class="formula-box">\( \text{cov}(\xi, \eta) = K_{\xi\eta} = M[\xi\eta] - M\xi \cdot M\eta \)</div>
-      <div class="item"><strong>Коефіцієнт кореляції:</strong></div>
-      <div class="formula-box">\( r_{\xi\eta} = \frac{\text{cov}(\xi, \eta)}{\sigma_\xi \cdot \sigma_\eta}, \qquad -1 \le r_{\xi\eta} \le 1 \)</div>
-      <div class="item">• Незалежні \(\implies \text{cov} = 0, \; r = 0\) (некорельовані).</div>
-      <div class="item">• \( |r| = 1 \iff \eta = a\xi + b \) (строгий лінійний зв'язок).</div>
-      <div class="item"><strong>Прямі регресії:</strong></div>
-      <div class="formula-box">\( y - M\eta = r_{\xi\eta} \frac{\sigma_\eta}{\sigma_\xi} (x - M\xi) \) (регресія \(Y\) на \(X\))</div>
-      <div class="formula-box">\( x - M\xi = r_{\xi\eta} \frac{\sigma_\xi}{\sigma_\eta} (y - M\eta) \) (регресія \(X\) на \(Y\))</div>
-      <div class="item"><strong>Залишкова дисперсія:</strong> \( S_{\text{зал}}^2 = \sigma_\eta^2 (1 - r^2) \)</div>
+  <!-- 2 Columns Grid -->
+  <div class="grid-2col">
+
+    <!-- ==================== СТОВПЕЦЬ 1 (Теми 9 - 12) ==================== -->
+    <div class="col">
+
+      <!-- Тема 9 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">9. Неперервні випадкові величини (НВВ)</span>
+          <span class="sec-tag">Тема 9</span>
+        </div>
+        <div><span class="b">Зв'язок щільності $f(x)$ і CDF $F(x)$:</span> $f(x) = F'(x), \quad F(x) = \int_{-\infty}^x f(t) dt$</div>
+        <div><span class="b">Властивості $f(x)$:</span> $f(x) \ge 0, \quad \int_{-\infty}^{+\infty} f(x) dx = 1, \quad P(X = x_0) = 0$</div>
+        <div class="fbox">
+          <span class="b">Ймовірність на інтервалі та числові характеристики:</span>
+          $$P(\alpha \le X \le \beta) = \int_\alpha^\beta f(x) dx = F(\beta) - F(\alpha)$$
+          $$M[X] = \int_{-\infty}^{+\infty} x f(x) dx, \qquad D[X] = \int_{-\infty}^{+\infty} x^2 f(x) dx - (M[X])^2$$
+        </div>
+        <div><span class="b">Мода $M_o$:</span> точка максимуму $f(x)$ • <span class="b">Медіана $M_e$:</span> $F(M_e) = 0.5 \iff \int_{-\infty}^{M_e} f(x)dx = 0.5$</div>
+        <div><span class="b">Коефіцієнт асиметрії:</span> $A_s = \frac{\mu_3}{\sigma^3}$ • <span class="b">Ексцес:</span> $E_k = \frac{\mu_4}{\sigma^4} - 3$ (нормальний: $E_k = 0$)</div>
+        <div><span class="b">Квантиль рівня $p$:</span> корінь рівняння $F(x_p) = p$ (зокрема медіана $x_{0.5}$)</div>
+      </div>
+
+      <!-- Тема 10 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">10. Основні закони розподілу ймовірностей</span>
+          <span class="sec-tag">Тема 10</span>
+        </div>
+        <table class="tbl-large">
+          <tr><th>Закон розподілу</th><th>$P(X=k)$ або $f(x)$</th><th>$M[X]$</th><th>$D[X]$</th></tr>
+          <tr><td><b>Бернуллі</b></td><td>$P(1)=p, \quad P(0)=q$</td><td>$p$</td><td>$pq$</td></tr>
+          <tr><td><b>Біноміальний $B(n,p)$</b></td><td>$C_n^k p^k q^{n-k}$</td><td>$np$</td><td>$npq$</td></tr>
+          <tr><td><b>Пуассона $\Pi(\lambda)$</b></td><td>$\frac{\lambda^k}{k!} e^{-\lambda}$</td><td>$\lambda$</td><td>$\lambda$</td></tr>
+          <tr><td><b>Геометричний $G(p)$</b></td><td>$q^{k-1} p$</td><td>$1/p$</td><td>$q/p^2$</td></tr>
+          <tr><td><b>Рівномірний $R[a,b]$</b></td><td>$\frac{1}{b-a}, \; x \in [a,b]$</td><td>$\frac{a+b}{2}$</td><td>$\frac{(b-a)^2}{12}$</td></tr>
+          <tr><td><b>Показниковий $Exp(\lambda)$</b></td><td>$\lambda e^{-\lambda x}, \; x \ge 0$</td><td>$1/\lambda$</td><td>$1/\lambda^2$</td></tr>
+          <tr><td><b>Нормальний $N(a,\sigma)$</b></td><td>$\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-a)^2}{2\sigma^2}}$</td><td>$a$</td><td>$\sigma^2$</td></tr>
+        </table>
+        <div class="fbox">
+          <span class="b">Правило трьох сигм ($3\sigma$):</span>
+          $$P(|X - a| < \sigma) \approx 68.27\%, \quad P(|X - a| < 2\sigma) \approx 95.45\%, \quad P(|X - a| < 3\sigma) \approx 99.73\%$$
+        </div>
+        <div><span class="b">Показниковий CDF:</span> $F(x) = 1 - e^{-\lambda x}$ • <span class="b">Без післядії:</span> $P(X > t+s \mid X > t) = P(X > s)$</div>
+        <div><span class="b">Спеціальні:</span> Стьюдента $t(k)$, Фішера $F(k_1, k_2)$, Хі-квадрат $\chi^2(k)$ ($M=k, D=2k$)</div>
+      </div>
+
+      <!-- Тема 11 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">11. Перетворення та Характеристичні функції</span>
+          <span class="sec-tag">Тема 11</span>
+        </div>
+        <div><span class="b">Функція від ВВ $Y = g(X)$ (монотонна):</span> $f_Y(y) = f_X(\psi(y)) |\psi'(y)|$, де $\psi = g^{-1}$</div>
+        <div><span class="b">Згортка суми $Z = X + Y$ (незалежні):</span> $f_Z(z) = \int_{-\infty}^{+\infty} f_X(x) f_Y(z-x) dx$</div>
+        <div class="fbox">
+          <span class="b">Характеристична функція $\varphi_X(t) = M[e^{itX}]$:</span>
+          $$\text{ДВВ: } \varphi(t) = \sum_k e^{it x_k} p_k, \qquad \text{НВВ: } \varphi(t) = \int_{-\infty}^\infty e^{itx} f(x) dx$$
+        </div>
+        <div><span class="b">Властивості:</span> $\varphi(0)=1, \; |\varphi(t)|\le 1, \; \varphi_{aX+b}(t) = e^{itb}\varphi(at), \; \varphi_{X+Y}(t) = \varphi_X(t)\varphi_Y(t)$</div>
+        <div class="fbox">
+          <span class="b">Моменти через похідні:</span> $\alpha_k = M[X^k] = \frac{1}{i^k} \varphi^{(k)}(0)$
+          $$M[X] = -i \, \varphi'(0), \qquad D[X] = -\varphi''(0) + (\varphi'(0))^2$$
+        </div>
+        <div><span class="b">ХФ базові:</span> Норм: $e^{iat - \frac{\sigma^2 t^2}{2}}$; Пуассон: $e^{\lambda(e^{it}-1)}$; Біном: $(q+pe^{it})^n$ • <span class="b">Обернене:</span> $f(x) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{-itx}\varphi(t)dt$</div>
+      </div>
+
+      <!-- Тема 12 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">12. Двовимірні випадкові величини (X, Y)</span>
+          <span class="sec-tag">Тема 12</span>
+        </div>
+        <div><span class="b">Сумісна CDF:</span> $F(x,y) = P(X < x, Y < y)$ • <span class="b">Сумісна щільність:</span> $f(x,y) = \frac{\partial^2 F}{\partial x \partial y}$</div>
+        <div><span class="b">Умова нормування:</span> $\sum\sum p_{ij} = 1$ або $\int_{-\infty}^\infty \int_{-\infty}^\infty f(x,y) dx dy = 1$</div>
+        <div class="fbox">
+          <span class="b">Маргінальні щільності:</span>
+          $$f_X(x) = \int_{-\infty}^\infty f(x,y) dy, \qquad f_Y(y) = \int_{-\infty}^\infty f(x,y) dx$$
+        </div>
+        <div><span class="b">Умовні закони:</span> $f(x|y) = \frac{f(x,y)}{f_Y(y)}, \quad f(y|x) = \frac{f(x,y)}{f_X(x)}$</div>
+        <div><span class="b">Критерій незалежності:</span> $f(x,y) = f_X(x) f_Y(y) \iff F(x,y) = F_X(x) F_Y(y)$</div>
+        <div><span class="b">Прямокутник:</span> $P([x_1, x_2) \times [y_1, y_2)) = F(x_2,y_2) - F(x_1,y_2) - F(x_2,y_1) + F(x_1,y_1)$</div>
+        <div><span class="b">Функція регресії (умовне сподівання):</span> $m_{Y|X}(x) = M[Y \mid X=x] = \int_{-\infty}^\infty y f(y|x) dy$</div>
+      </div>
+
     </div>
 
-    <!-- 13. ЗВЧ і ЦГТ -->
-    <div class="card">
-      <div class="card-title">13. Граничні теореми та ЗВЧ <span class="tag">Розділ 13</span></div>
-      <div class="item"><strong>Нерівність Маркова (\(\xi \ge 0, \varepsilon > 0\)):</strong> \( P(\xi \ge \varepsilon) \le \frac{M\xi}{\varepsilon} \)</div>
-      <div class="item"><strong>Нерівність Чебишова:</strong></div>
-      <div class="formula-box">\( P(|\xi - M\xi| < \varepsilon) \ge 1 - \frac{D\xi}{\varepsilon^2} \)</div>
-      <div class="item"><strong>Теорема Чебишова (ЗВЧ):</strong> Якщо \(\xi_n\) незалежні і \( D\xi_n \le C < \infty \):</div>
-      <div class="formula-box">\( \lim_{n \to \infty} P\left( \left|\frac{1}{n}\sum_{k=1}^n \xi_k - \frac{1}{n}\sum_{k=1}^n M\xi_k\right| < \varepsilon \right) = 1 \)</div>
-      <div class="item"><strong>Теорема Хінчина:</strong> однаково розподілені з \( M\xi = a \implies \frac{1}{n}\sum \xi_k \xrightarrow{P} a \)</div>
-      <div class="item"><strong>Теорема Бернуллі:</strong> відносна частота \( \frac{m}{n} \xrightarrow{P} p \)</div>
-      <div class="item"><strong>ЦГТ (Ліндеберга-Леві):</strong> для незалежних однаково розподілених:</div>
-      <div class="formula-box">\( \frac{\sum_{i=1}^n \xi_i - na}{\sigma\sqrt{n}} \xrightarrow{d} N(0, 1) \)</div>
+    <!-- ==================== СТОВПЕЦЬ 2 (Теми 13 - 17) ==================== -->
+    <div class="col">
+
+      <!-- Тема 13 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">13. Кореляція, коваріація та лінії регресії</span>
+          <span class="sec-tag">Тема 13</span>
+        </div>
+        <div><span class="b">Коваріація:</span> $\operatorname{cov}(X,Y) = M[(X-M[X])(Y-M[Y])] = M[XY] - M[X]M[Y]$</div>
+        <div class="fbox">
+          <span class="b">Коефіцієнт кореляції Пірсона:</span>
+          $$r_{XY} = \frac{\operatorname{cov}(X,Y)}{\sigma_X \sigma_Y}, \qquad -1 \le r_{XY} \le 1$$
+          <span class="sub">Незалежні $\implies r_{XY}=0$. Якщо $|r_{XY}|=1 \implies Y = aX+b$ (суворий лінійний зв'язок)</span>
+        </div>
+        <div class="fbox">
+          <span class="b">Прямі середньоквадратичної регресії:</span>
+          $$y - M[Y] = r_{XY} \frac{\sigma_Y}{\sigma_X} (x - M[X]) \quad (\text{регресія } Y \text{ на } X)$$
+          $$x - M[X] = r_{XY} \frac{\sigma_X}{\sigma_Y} (y - M[Y]) \quad (\text{регресія } X \text{ на } Y)$$
+        </div>
+        <div><span class="b">Залишкова дисперсія:</span> $\sigma_{\text{зал}}^2 = \sigma_Y^2(1 - r_{XY}^2)$ • <span class="b">Детермінація:</span> $R^2 = r_{XY}^2$</div>
+        <div><span class="b">Кореляційне відношення:</span> $\eta_{Y/X}^2 = \frac{D[M[Y|X]]}{D[Y]} \ge r^2$ • <span class="b">Рангова Спірмена:</span> $\rho = 1 - \frac{6\sum d_i^2}{n(n^2 - 1)}$</div>
+      </div>
+
+      <!-- Тема 14 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">14. Закон великих чисел (ЗВЧ) та ЦГТ</span>
+          <span class="sec-tag">Тема 14</span>
+        </div>
+        <div><span class="b">Нерівність Маркова ($X \ge 0$):</span> $P(X \ge \varepsilon) \le \frac{M[X]}{\varepsilon}$</div>
+        <div><span class="b">Нерівність Чебишова:</span> $P(|X - M[X]| \ge \varepsilon) \le \frac{D[X]}{\varepsilon^2} \iff P(|X - M| < \varepsilon) \ge 1 - \frac{D}{\varepsilon^2}$</div>
+        <div class="fbox">
+          <span class="b">Теорема Чебишова (ЗВЧ):</span> якщо $D[X_i] \le C$:
+          $$\lim_{n\to\infty} P\left(\left|\frac{1}{n}\sum_{k=1}^n X_k - \frac{1}{n}\sum_{k=1}^n M[X_k]\right| < \varepsilon\right) = 1$$
+        </div>
+        <div><span class="b">Теорема Бернуллі:</span> $\frac{k}{n} \xrightarrow{P} p$ • <span class="b">Теорема Хінчина (i.i.d.):</span> $\frac{1}{n}\sum X_i \xrightarrow{P} a = M[X]$</div>
+        <div class="fbox">
+          <span class="b">ЦГТ (Ліндеберга-Леві):</span>
+          $$Z_n = \frac{\sum_{i=1}^n X_i - n a}{\sigma\sqrt{n}} \xrightarrow{d} N(0, 1)$$
+        </div>
+        <div><span class="b">Умова Ляпунова:</span> $\lim_{n\to\infty} \frac{1}{B_n^3}\sum_{i=1}^n M[|X_i - a_i|^3] = 0 \implies \text{виконується ЦГТ}$</div>
+      </div>
+
+      <!-- Тема 15 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">15. Випадкові процеси та Ланцюги Маркова</span>
+          <span class="sec-tag">Тема 15</span>
+        </div>
+        <div><span class="b">Процес $X(t)$:</span> $m_x(t) = M[X(t)], \; K_x(t_1,t_2) = M[\mathring{X}(t_1)\mathring{X}(t_2)]$</div>
+        <div><span class="b">Стаціонарний (у широкому сенсі):</span> $m_x = \text{const}, \quad K_x(t_1,t_2) = k_x(\tau), \; \tau = t_2-t_1$</div>
+        <div><span class="b">Ланцюг Маркова:</span> матриця переходів $P = (p_{ij})_{n\times n}, \; \sum_j p_{ij} = 1$</div>
+        <div class="fbox">
+          <span class="b">Рівняння Чепмена-Колмогорова:</span> $P(n) = P^n$
+          $$\text{Стаціонарний розподіл } \pi: \quad \pi P = \pi, \qquad \sum_{i=1}^n \pi_i = 1$$
+        </div>
+        <div><span class="b">Пуассонівський потік ($\lambda$):</span> $P_k(t) = \frac{(\lambda t)^k}{k!} e^{-\lambda t}$ • <span class="b">Час між подіями:</span> $\tau \sim Exp(\lambda) \implies M[\tau]=1/\lambda$</div>
+      </div>
+
+      <!-- Тема 16 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">16. Математична статистика та Оцінки</span>
+          <span class="sec-tag">Тема 16</span>
+        </div>
+        <div><span class="b">Вибіркове середнє:</span> $\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i$ ($M[\bar{x}] = a$, незсунена, спроможна)</div>
+        <div><span class="b">Вибіркова дисперсія (зсунена):</span> $D_{\text{в}} = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2 = \overline{x^2} - (\bar{x})^2, \quad M[D_{\text{в}}] = \frac{n-1}{n}\sigma^2$</div>
+        <div class="fbox">
+          <span class="b">Виправлена дисперсія (незсунена):</span>
+          $$s^2 = \frac{n}{n-1} D_{\text{в}} = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2, \qquad s = \sqrt{s^2}$$
+        </div>
+        <div><span class="b">Емпірична CDF:</span> $F_n^*(x) = \frac{n_x}{n} = \frac{1}{n}\sum I(x_i < x)$ • <span class="b">Асиметрія:</span> $A_s^* = \frac{m_3}{s^3}, \; E_k^* = \frac{m_4}{s^4} - 3$</div>
+        <div><span class="b">Метод моментів (ММ):</span> прирівнювання $\alpha_k^* = \frac{1}{n}\sum x_i^k = M[X^k; \theta]$</div>
+        <div><span class="b">Метод макс. правдоподібності (ММП):</span> $L(\theta) = \prod f(x_i;\theta) \implies \frac{\partial \ln L(\theta)}{\partial \theta} = 0$</div>
+      </div>
+
+      <!-- Тема 17 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="sec-title">17. Довірчі інтервали та Перевірка гіпотез</span>
+          <span class="sec-tag">Тема 17</span>
+        </div>
+        <div><span class="b">Для $a$ при відомому $\sigma$:</span> $\left[\bar{x} - u_{\frac{1+\gamma}{2}} \frac{\sigma}{\sqrt{n}}; \; \bar{x} + u_{\frac{1+\gamma}{2}} \frac{\sigma}{\sqrt{n}}\right]$ (нормальний)</div>
+        <div><span class="b">Для $a$ при невідомому $\sigma$:</span> $\left[\bar{x} - t_{\gamma, n-1} \frac{s}{\sqrt{n}}; \; \bar{x} + t_{\gamma, n-1} \frac{s}{\sqrt{n}}\right]$ (Стьюдент)</div>
+        <div><span class="b">Для дисперсії $\sigma^2$:</span> $\left[\frac{(n-1)s^2}{\chi_2^2}; \; \frac{(n-1)s^2}{\chi_1^2}\right]$ ($\chi_1^2, \chi_2^2$ — квантилі $\chi^2$)</div>
+        <div class="fbox">
+          <span class="b">Критерій згоди Пірсона $\chi^2$:</span>
+          $$\chi_{\text{спост}}^2 = \sum_{i=1}^k \frac{(n_i - n p_i)^2}{n p_i} = \sum_{i=1}^k \frac{n_i^2}{n p_i} - n, \qquad r = k - m - 1$$
+          <span class="sub">Якщо $\chi_{\text{спост}}^2 < \chi_{\text{крит}}^2(\alpha, r) \implies H_0$ не відкидається.</span>
+        </div>
+        <div><span class="b">Критерій Фішера ($H_0: \sigma_1^2 = \sigma_2^2$):</span> $F_{\text{спост}} = \frac{s_1^2}{s_2^2} \ge 1 \quad (s_1^2 > s_2^2), \; k_1 = n_1-1, k_2 = n_2-1$</div>
+        <div><span class="b">Порівняння двох середніх ($t$-критерій):</span> $t = \frac{\bar{x}_1 - \bar{x}_2}{s_p \sqrt{1/n_1 + 1/n_2}}$</div>
+      </div>
+
     </div>
 
-    <!-- 14. Випадкові процеси -->
-    <div class="card">
-      <div class="card-title">14. Елементи випадкових процесів <span class="tag">Розділ 14</span></div>
-      <div class="item"><strong>Ланцюг Маркова:</strong> процес без післядії. Матриця переходів:</div>
-      <div class="formula-box">\( P = (p_{ij}), \quad \sum_j p_{ij} = 1 \)</div>
-      <div class="item"><strong>Рівняння Чепмена-Колмогорова:</strong> \( P(n) = P(0) \cdot P^n \)</div>
-      <div class="item"><strong>Стаціонарний розподіл:</strong> \( \pi P = \pi, \quad \sum \pi_i = 1 \)</div>
-      <div class="item"><strong>Пуассонівський потік подій (інтенсивність \(\lambda\)):</strong></div>
-      <div class="formula-box">\( P_k(t) = \frac{(\lambda t)^k}{k!} e^{-\lambda t} \) (час між подіями \( \sim E(\lambda) \))</div>
-    </div>
   </div>
 
-  <!-- КОЛОНКА 3 -->
-  <div class="col">
-    <!-- 15. Математична статистика: вибірка і оцінки -->
-    <div class="card">
-      <div class="card-title">15. Вибірка та точкові оцінки <span class="tag">Розділ 15</span></div>
-      <div class="item">Вибірка обсягу \( n \): варіаційний ряд \( x_{(1)} \le \dots \le x_{(n)} \)</div>
-      <div class="item"><strong>Вибіркове середнє:</strong> \( \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i \) (\(M[\bar{x}] = a\))</div>
-      <div class="item"><strong>Вибіркова дисперсія (зсунена):</strong> \( D_B = \frac{1}{n}\sum (x_i - \bar{x})^2 \)</div>
-      <div class="item"><strong>Виправлена дисперсія (незсунена):</strong></div>
-      <div class="formula-box">\( s^2 = \frac{n}{n-1} D_B = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2 \)</div>
-      <div class="item"><strong>Властивості оцінки \(\hat{\theta}\):</strong></div>
-      <div class="item">• Незсуненість: \( M[\hat{\theta}] = \theta \) | Спроможність: \( \hat{\theta}_n \xrightarrow{P} \theta \)</div>
-      <div class="item">• Ефективність: мінімальна дисперсія (нерівність Рао-Крамера)</div>
-      <div class="item"><strong>Метод моментів (ММ):</strong> прирівнюємо \( \alpha_k(\theta) = \frac{1}{n}\sum x_i^k \)</div>
-      <div class="item"><strong>Метод макс. правдоподібності (ММП):</strong> \( \frac{\partial \ln L(\theta)}{\partial \theta} = 0 \)</div>
-    </div>
-
-    <!-- 16. Довірчі інтервали -->
-    <div class="card">
-      <div class="card-title">16. Довірчі інтервали (надійність \(\gamma\)) <span class="tag">Розділ 16</span></div>
-      <div class="item"><strong>Для матсподівання \( a \) при відомому \( \sigma \):</strong></div>
-      <div class="formula-box">\( \left( \bar{x} - u_{\frac{1+\gamma}{2}} \frac{\sigma}{\sqrt{n}}; \quad \bar{x} + u_{\frac{1+\gamma}{2}} \frac{\sigma}{\sqrt{n}} \right) \)</div>
-      <div class="item"><strong>Для матсподівання \( a \) при невідомому \( \sigma \) (Стьюдент):</strong></div>
-      <div class="formula-box">\( \left( \bar{x} - t_{\gamma, n-1} \frac{s}{\sqrt{n}}; \quad \bar{x} + t_{\gamma, n-1} \frac{s}{\sqrt{n}} \right) \)</div>
-      <div class="item"><strong>Для дисперсії \( \sigma^2 \) (\(\chi^2\)-розподіл):</strong></div>
-      <div class="formula-box">\( \left( \frac{(n-1)s^2}{\chi^2_{\frac{1+\gamma}{2}, n-1}}; \quad \frac{(n-1)s^2}{\chi^2_{\frac{1-\gamma}{2}, n-1}} \right) \)</div>
-      <div class="item"><strong>Для частки \( p \) у великих вибірках (\( \hat{p} = \frac{m}{n} \)):</strong></div>
-      <div class="formula-box">\( \hat{p} \pm u_{\frac{1+\gamma}{2}} \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} \)</div>
-    </div>
-
-    <!-- 17. Статистичні гіпотези -->
-    <div class="card">
-      <div class="card-title">17. Перевірка гіпотез та критерії <span class="tag">Розділ 17</span></div>
-      <div class="item">Основна \( H_0 \) проти конкуруючої \( H_1 \). Рівень значущості \( \alpha \).</div>
-      <div class="item">• Помилка I роду: відхилити правильну \( H_0 \) (ймовірність \( \alpha \)).</div>
-      <div class="item">• Помилка II роду: прийняти хибну \( H_0 \) (ймовірність \( \beta \)).</div>
-      <div class="item"><strong>Критерій згоди Пірсона \(\chi^2\):</strong></div>
-      <div class="formula-box">\( \chi_{\text{спост}}^2 = \sum_{i=1}^k \frac{(n_i - np_i)^2}{np_i} \)</div>
-      <div class="item">Ступені вільності: \( r = k - 1 - m \) (\(m\) — кількість оцінених параметрів). Якщо \( \chi_{\text{спост}}^2 < \chi_{\text{крит}}^2(\alpha, r) \implies H_0 \) приймається.</div>
-      <div class="item"><strong>Критерій Стьюдента \( t \) (порівняння середніх):</strong></div>
-      <div class="formula-box">\( t = \frac{\bar{x} - \bar{y}}{\sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}} \sqrt{\frac{n_1 n_2}{n_1+n_2}} \)</div>
-      <div class="item"><strong>Критерій Фішера \( F \) (порівняння дисперсій):</strong> \( F = \frac{s_1^2}{s_2^2} \ge 1 \)</div>
-    </div>
+  <!-- Footer -->
+  <div class="bot-footer">
+    <span>НУ «Львівська політехніка» • Теорія ймовірностей та математична статистика</span>
+    <span>Формуляр для рукописного переписування • Аркуш 2 (Зворот: Теми 9–17) • 2026</span>
   </div>
-
-</div>
-
-<div class="footer">
-  <div>Національний університет «Львівська політехніка» • Кафедра обчислювальної математики і програмування</div>
-  <div>Розробка та структуризація формуляра: група ПП-24 • Сторінка 2 з 2</div>
-</div>
 
 </body>
 </html>
