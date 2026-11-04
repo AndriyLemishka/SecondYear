@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Теорія Ймовірностей — Тема 5: Повна ймовірність та формула Байєса</title>
+  <style>
+    @page {
+      size: 210mm 297mm;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      overflow: hidden;
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+      padding: 7mm 8mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* HEADER */
+    .header {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header-left h1 {
+      font-size: 14pt;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      color: #0f172a;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .header-left .sub {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #0284c7;
+      margin-top: 2px;
+    }
+    .header-right {
+      text-align: right;
+      font-size: 7.5pt;
+      color: #475569;
+      line-height: 1.25;
+    }
+    .badge-var {
+      display: inline-block;
+      background: #0284c7;
+      color: white;
+      font-weight: 800;
+      font-size: 7.5pt;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    /* GRID LAYOUT */
+    .grid-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+    }
+
+    /* CARDS */
+    .card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .card-hero {
+      border: 1.5px solid #0284c7;
+      background: #ffffff;
+      margin-bottom: 6px;
+      padding: 7px 9px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 3px;
+    }
+    .card-title {
+      font-size: 8.5pt;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .card-pill {
+      font-size: 6.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .pill-hero {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    .pill-purple {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+    .pill-amber {
+      background: #fef3c7;
+      color: #b45309;
+    }
+    .pill-emerald {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .card-body {
+      font-size: 7.2pt;
+      line-height: 1.35;
+      color: #334155;
+    }
+    .card-body p {
+      margin-bottom: 3px;
+    }
+    .card-body ul {
+      margin-left: 12px;
+      margin-bottom: 4px;
+    }
+
+    /* FORMULAS */
+    .formula-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #0284c7;
+      border-radius: 4px;
+      padding: 3px 6px;
+      margin: 3px 0;
+      font-family: "Cambria Math", "Times New Roman", serif;
+      font-size: 8pt;
+      color: #0f172a;
+    }
+    .formula-highlight {
+      background: #eff6ff;
+      border-left-color: #2563eb;
+      font-weight: 700;
+    }
+
+    /* HERO SPLIT */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+    .graph-container {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 4px;
+      text-align: center;
+    }
+
+    /* RESULT CALLOUT */
+    .ans-box {
+      margin-top: 4px;
+      padding: 3px 6px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+    }
+    .ans-box .label {
+      font-weight: 700;
+      color: #166534;
+    }
+    .ans-box .val {
+      font-weight: 900;
+      color: #15803d;
+      font-size: 8.5pt;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 3px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 6.8pt;
+      color: #64748b;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Теорія Ймовірностей • Тема 5</h1>
+      <div class="sub">Теореми додавання та множення. Формули повної ймовірності та Байєса</div>
+    </div>
+    <div class="header-right">
+      <span class="badge-var">ВАРІАНТ № 12</span><br>
+      Студент: <b>Лемішка Андрій (ПП-24)</b> • НУ «Львівська політехніка»
+    </div>
+  </div>
+
+  <!-- TOP ROW: THEORETICAL FOUNDATION -->
+  <div class="grid-top">
+    <!-- Top 1: Theorems of Addition and Multiplication -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">1. Теореми додавання та множення</span>
+        <span class="card-pill pill-purple">Фундамент</span>
+      </div>
+      <div class="card-body">
+        <p><b>Операція «АБО» (Додавання ймовірностей):</b></p>
+        <div class="formula-box">
+          • Несумісні (<i>A ∩ B = ∅</i>): &nbsp; <b>P(A ∪ B) = P(A) + P(B)</b><br>
+          • Сумісні (довільні): &nbsp; <b>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</b>
+        </div>
+        <p><b>Операція «І» (Множення та умовна ймовірність):</b></p>
+        <p>Ймовірність події <i>B</i> за умови, що <i>A</i> відбулася: <b>P(B | A) = P(A ∩ B) / P(A)</b>.</p>
+        <div class="formula-box">
+          • Залежні події: &nbsp; <b>P(A ∩ B) = P(A) · P(B | A)</b><br>
+          • Незалежні події: &nbsp; <b>P(A ∩ B) = P(A) · P(B)</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top 2: Full Probability and Bayes -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">2. Повна ймовірність та формула Байєса</span>
+        <span class="card-pill pill-amber">Гіпотези</span>
+      </div>
+      <div class="card-body">
+        <p>Нехай <i>H<sub>1</sub>, H<sub>2</sub>, …, H<sub>n</sub></i> — повна група несумісних гіпотез (<b>∑ P(H<sub>i</sub>) = 1</b>):</p>
+        <div class="formula-box formula-highlight">
+          <b>Формула повної ймовірності:</b><br>
+          P(A) = ∑<sub>i=1</sub><sup>n</sup> P(H<sub>i</sub>) · P(A | H<sub>i</sub>)
+        </div>
+        <p><b>Формула Байєса (переоцінка апріорної ймовірності):</b></p>
+        <p>Якщо подія <i>A</i> вже сталася, нова ймовірність гіпотези <i>H<sub>k</sub></i>:</p>
+        <div class="formula-box">
+          <b>P(H<sub>k</sub> | A) = [ P(H<sub>k</sub>) · P(A | H<sub>k</sub>) ] / P(A)</b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIDDLE ROW (HERO): VARIANT 12 TASK 5 -->
+  <div class="card card-hero">
+    <div class="card-header">
+      <span class="card-title" style="color: #0284c7; font-size: 9.5pt;">★ Завдання 5 (Твій Варіант 12): Мандрівник на роздоріжжі з графом шляхів</span>
+      <span class="card-pill pill-hero">Варіант 12 • РГР</span>
+    </div>
+    <div class="card-body">
+      <p><b>Умова:</b> Мандрівник виходить з пункту <b>A</b> і на кожному роздоріжжі вибирає навмання одне з можливих продовжень шляху (не повертаючись назад). Яка ймовірність того, що він потрапить у пункт <b>B</b>?</p>
+      
+      <div class="hero-split">
+        <!-- SVG Vector Diagram -->
+        <div class="graph-container">
+          <svg viewBox="0 0 280 145" width="100%" height="135" style="display:block; margin:auto;">
+            <!-- Background grid / subtle frame -->
+            <rect x="0" y="0" width="280" height="145" fill="#f8fafc" rx="4"/>
+            
+            <!-- Edges from A -->
+            <!-- A is at (140, 18) -->
+            <!-- V1 at (35, 55) -->
+            <line x1="140" y1="18" x2="35" y2="55" stroke="#0284c7" stroke-width="1.8"/>
+            <text x="75" y="32" font-size="7" fill="#0284c7" font-weight="700">1/4</text>
+
+            <!-- V2 at (105, 55) -->
+            <line x1="140" y1="18" x2="105" y2="55" stroke="#64748b" stroke-width="1.5"/>
+            <text x="113" y="36" font-size="7" fill="#64748b" font-weight="700">1/4</text>
+
+            <!-- V3 at (175, 55) -->
+            <line x1="140" y1="18" x2="175" y2="55" stroke="#16a34a" stroke-width="1.8"/>
+            <text x="162" y="36" font-size="7" fill="#16a34a" font-weight="700">1/4</text>
+
+            <!-- V4 at (245, 55) -->
+            <line x1="140" y1="18" x2="245" y2="55" stroke="#d97706" stroke-width="1.8"/>
+            <text x="200" y="32" font-size="7" fill="#d97706" font-weight="700">1/4</text>
+
+            <!-- Edges from V1 -->
+            <!-- 3 dead ends -->
+            <line x1="35" y1="55" x2="12" y2="92" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2"/>
+            <line x1="35" y1="55" x2="35" y2="92" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2"/>
+            <line x1="35" y1="55" x2="58" y2="92" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2"/>
+            <text x="10" y="102" font-size="6.5" fill="#ef4444" font-weight="700">✕</text>
+            <text x="33" y="102" font-size="6.5" fill="#ef4444" font-weight="700">✕</text>
+            <text x="56" y="102" font-size="6.5" fill="#ef4444" font-weight="700">✕</text>
+            <!-- 1 edge to B -->
+            <line x1="35" y1="55" x2="140" y2="125" stroke="#0284c7" stroke-width="1.6"/>
+            <text x="75" y="96" font-size="6.5" fill="#0284c7" font-weight="700">1/4 → B</text>
+
+            <!-- Edges from V2 (dead end) -->
+            <line x1="105" y1="55" x2="105" y2="85" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2"/>
+            <text x="103" y="95" font-size="6.5" fill="#ef4444" font-weight="700">✕</text>
+
+            <!-- Edges from V3 (straight to B) -->
+            <line x1="175" y1="55" x2="140" y2="125" stroke="#16a34a" stroke-width="2"/>
+            <text x="163" y="92" font-size="6.5" fill="#16a34a" font-weight="700">1.0 → B</text>
+
+            <!-- Edges from V4 -->
+            <!-- 1 straight to B -->
+            <line x1="245" y1="55" x2="140" y2="125" stroke="#d97706" stroke-width="1.6"/>
+            <text x="195" y="102" font-size="6.5" fill="#d97706" font-weight="700">1/3 → B</text>
+            <!-- 1 dead end -->
+            <line x1="245" y1="55" x2="272" y2="85" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2"/>
+            <text x="270" y="95" font-size="6.5" fill="#ef4444" font-weight="700">✕</text>
+            <!-- 1 to V5 -->
+            <line x1="245" y1="55" x2="230" y2="90" stroke="#d97706" stroke-width="1.5"/>
+            <text x="240" y="77" font-size="6.5" fill="#d97706" font-weight="700">1/3</text>
+
+            <!-- Edges from V5 -->
+            <!-- to B -->
+            <line x1="230" y1="90" x2="140" y2="125" stroke="#d97706" stroke-width="1.5"/>
+            <text x="175" y="118" font-size="6.5" fill="#d97706" font-weight="700">1/2 → B</text>
+            <!-- to dead end -->
+            <line x1="230" y1="90" x2="245" y2="115" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2"/>
+            <text x="243" y="125" font-size="6.5" fill="#ef4444" font-weight="700">✕</text>
+
+            <!-- Nodes -->
+            <!-- Node A -->
+            <circle cx="140" cy="18" r="7" fill="#0f172a"/>
+            <text x="140" y="21" font-size="8" fill="#ffffff" font-weight="900" text-anchor="middle">A</text>
+
+            <!-- Node V1 -->
+            <circle cx="35" cy="55" r="4.5" fill="#0284c7"/>
+            <text x="35" y="48" font-size="6" fill="#0284c7" font-weight="700" text-anchor="middle">V₁</text>
+
+            <!-- Node V2 -->
+            <circle cx="105" cy="55" r="4" fill="#64748b"/>
+            <text x="105" y="48" font-size="6" fill="#64748b" font-weight="700" text-anchor="middle">V₂</text>
+
+            <!-- Node V3 -->
+            <circle cx="175" cy="55" r="4.5" fill="#16a34a"/>
+            <text x="175" y="48" font-size="6" fill="#16a34a" font-weight="700" text-anchor="middle">V₃</text>
+
+            <!-- Node V4 -->
+            <circle cx="245" cy="55" r="4.5" fill="#d97706"/>
+            <text x="245" y="48" font-size="6" fill="#d97706" font-weight="700" text-anchor="middle">V₄</text>
+
+            <!-- Node V5 -->
+            <circle cx="230" cy="90" r="3.5" fill="#d97706"/>
+            <text x="238" y="93" font-size="5.5" fill="#d97706" font-weight="700">V₅</text>
+
+            <!-- Node B -->
+            <circle cx="140" cy="125" r="8" fill="#15803d"/>
+            <text x="140" y="129" font-size="9" fill="#ffffff" font-weight="900" text-anchor="middle">B</text>
+          </svg>
+        </div>
+
+        <!-- Derivation -->
+        <div>
+          <p><b>Аналіз розгалужень та ймовірностей шляхів:</b></p>
+          <div class="formula-box" style="font-size: 7.2pt; line-height: 1.3;">
+            • З пункту <b>A</b> виходять 4 рівноможливі дороги: <b>P(H<sub>1</sub>) = P(H<sub>2</sub>) = P(H<sub>3</sub>) = P(H<sub>4</sub>) = 1/4</b>.<br>
+            • З <b>V<sub>1</sub></b> виходить 4 стежки (3 тупики, 1 веде в B): &nbsp; <b>P(B | H<sub>1</sub>) = 1/4</b>.<br>
+            • З <b>V<sub>2</sub></b> виходить лише 1 тупикова стежка: &nbsp; <b>P(B | H<sub>2</sub>) = 0</b>.<br>
+            • З <b>V<sub>3</sub></b> виходить 1 пряма стежка до B: &nbsp; <b>P(B | H<sub>3</sub>) = 1</b>.<br>
+            • З <b>V<sub>4</sub></b> є 3 варіанти: прямо в B (1/3), тупик (1/3), у вузол V<sub>5</sub> (1/3 · 1/2 до B):<br>
+            &nbsp;&nbsp;<b>P(B | H<sub>4</sub>) = 1/3 · 1 + 1/3 · 0 + 1/3 · (1/2) = 1/3 + 1/6 = 1/2</b>.
+          </div>
+          <p><b>Застосування формули повної ймовірності:</b></p>
+          <div class="formula-box formula-highlight" style="font-size: 7.6pt;">
+            P(B) = (1/4 · 1/4) + (1/4 · 0) + (1/4 · 1) + (1/4 · 1/2) = 1/16 + 0 + 4/16 + 2/16 = <b>7/16</b>
+          </div>
+          <div class="ans-box">
+            <span class="label">Відповідь для Варіанта 12:</span>
+            <span class="val">P(B) = 7/16 = 0,4375 (43,75%)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM ROW: 3 DISTINCT METHODS FROM OTHER VARIANTS -->
+  <div class="grid-bottom">
+    
+    <!-- Bottom 1: Bayes with Urns (Var 1, 8) -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Варіант 1: Формула Байєса (Урни)</span>
+        <span class="card-pill pill-purple">Апостеріорна ймов.</span>
+      </div>
+      <div class="card-body">
+        <p><b>Умова:</b> Є 3 урни. Склад кульок (білі/чорні):<br>
+        У<sub>1</sub>: (2 б, 1 ч), У<sub>2</sub>: (3 б, 1 ч), У<sub>3</sub>: (2 б, 2 ч). Навмання витягнуто <b>білу</b> кульку (подія <i>A</i>). Знайти ймовірність, що її взято з У<sub>1</sub>.</p>
+        <div class="formula-box">
+          P(H<sub>1</sub>) = P(H<sub>2</sub>) = P(H<sub>3</sub>) = 1/3<br>
+          P(A|H<sub>1</sub>) = 2/3; &nbsp; P(A|H<sub>2</sub>) = 3/4; &nbsp; P(A|H<sub>3</sub>) = 2/4 = 1/2<br>
+          <b>Повна ймов. P(A):</b><br>
+          1/3 · (2/3 + 3/4 + 1/2) = 1/3 · 23/12 = <b>23/36</b>
+        </div>
+        <p><b>Переоцінка за Байєсом:</b></p>
+        <div class="formula-box formula-highlight">
+          P(H<sub>1</sub> | A) = [ (1/3 · 2/3) ] / (23/36) = <b>8/23 ≈ 0,3478</b>
+        </div>
+        <div class="ans-box">
+          <span class="label">Відповідь:</span>
+          <span class="val">P(H₁|A) = 8/23 (34,78%)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom 2: Opposite Event & Systems Reliability (Var 4, 13) -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Варіант 13: Метод протилежної події</span>
+        <span class="card-pill pill-amber">«Хоча б одне»</span>
+      </div>
+      <div class="card-body">
+        <p><b>Умова:</b> Проводяться 3 незалежні постріли. Ймовірності влучання: <i>p<sub>1</sub> = 0,6</i>; <i>p<sub>2</sub> = 0,7</i>; <i>p<sub>3</sub> = 0,8</i>. Знайти ймовірність <b>хоча б одного</b> влучання.</p>
+        <div class="formula-box">
+          Ймовірності промахів (протилежні події):<br>
+          q<sub>1</sub> = 1 − 0,6 = 0,4<br>
+          q<sub>2</sub> = 1 − 0,7 = 0,3<br>
+          q<sub>3</sub> = 1 − 0,8 = 0,2<br>
+          <b>Ймовірність жодного влучання (Ā):</b><br>
+          P(Ā) = q<sub>1</sub> · q<sub>2</sub> · q<sub>3</sub> = 0,4 · 0,3 · 0,2 = <b>0,024</b>
+        </div>
+        <p><b>Шукана ймовірність:</b></p>
+        <div class="formula-box formula-highlight">
+          P(A) = 1 − P(Ā) = 1 − 0,024 = <b>0,976</b>
+        </div>
+        <div class="ans-box">
+          <span class="label">Відповідь:</span>
+          <span class="val">P(A) = 0,976 (97,6%)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom 3: Factory Production & Quality (Var 2, 5) -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Варіант 5: Заводи та % браку</span>
+        <span class="card-pill pill-emerald">Виробництво</span>
+      </div>
+      <div class="card-body">
+        <p><b>Умова:</b> Завод 1 випускає 60% продукції (брак 2%), Завод 2 — 40% (брак 4%). Виріб виявився бракованим. Яка ймовірність, що він з Заводу 2?</p>
+        <div class="formula-box">
+          P(H<sub>1</sub>) = 0,60; &nbsp; P(Брак|H<sub>1</sub>) = 0,02<br>
+          P(H<sub>2</sub>) = 0,40; &nbsp; P(Брак|H<sub>2</sub>) = 0,04<br>
+          <b>Загальний брак P(Б):</b><br>
+          0,60 · 0,02 + 0,40 · 0,04 = 0,012 + 0,016 = <b>0,028</b>
+        </div>
+        <p><b>Ймовірність того, що брак з Заводу 2:</b></p>
+        <div class="formula-box formula-highlight">
+          P(H<sub>2</sub> | Б) = 0,016 / 0,028 = 16/28 = <b>4/7 ≈ 0,5714</b>
+        </div>
+        <div class="ans-box">
+          <span class="label">Відповідь:</span>
+          <span class="val">P(H₂|Б) = 4/7 (57,14%)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>НУ «Львівська політехніка» • Кафедра ОМП • Курс: Теорія ймовірностей та математична статистика</span>
+    <span>Опорний лист Теми 5 • Формат A4 (300 DPI) • Варіант 12</span>
+  </div>
+
+</body>
+</html>
