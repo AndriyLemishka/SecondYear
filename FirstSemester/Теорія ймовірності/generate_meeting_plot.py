@@ -1,0 +1,212 @@
+import subprocess
+import pymupdf
+
+html = """<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 900px;
+    height: 820px;
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 13.5px;
+    color: #64748b;
+    margin-bottom: 18px;
+  }
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="title">Геометрична модель «Задачі про зустріч»</div>
+  <div class="subtitle">Смуга зустрічі $|x - y| \le 1/4$ у одиничному часовому квадраті $[0; 1] \times [0; 1]$</div>
+
+  <svg width="600" height="600" viewBox="0 0 600 600">
+    <defs>
+      <!-- Gradient for meeting strip -->
+      <linearGradient id="stripGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#0284c7" stop-opacity="0.65"/>
+      </linearGradient>
+      <!-- Pattern for strip -->
+      <pattern id="stripHatch" width="12" height="12" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="12" stroke="#0284c7" stroke-width="2" opacity="0.3"/>
+      </pattern>
+    </defs>
+
+    <!-- Background Grid -->
+    <rect x="90" y="50" width="440" height="440" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+
+    <!-- Coordinate Grid Lines -->
+    <!-- x = 1/4 (200), x = 1/2 (310), x = 3/4 (420) -->
+    <!-- Origin (90, 490). Width 440 => 1 unit = 440px. 1/4 = 110px. -->
+    <line x1="200" y1="50" x2="200" y2="490" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4,4"/>
+    <line x1="310" y1="50" x2="310" y2="490" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4,4"/>
+    <line x1="420" y1="50" x2="420" y2="490" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+    <line x1="90" y1="380" x2="530" y2="380" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4,4"/>
+    <line x1="90" y1="270" x2="530" y2="270" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4,4"/>
+    <line x1="90" y1="160" x2="530" y2="160" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+    <!-- Unfavorable Region 1 (Upper Left Triangle: y - x > 1/4) -->
+    <!-- Vertices: (90, 50), (90, 380), (420, 50) -->
+    <polygon points="90,50 90,380 420,50" fill="#fecdd3" opacity="0.6"/>
+    <text x="180" y="160" font-size="14" font-weight="700" fill="#e11d48">Не зустрілися</text>
+    <text x="160" y="185" font-size="12" fill="#be123c">S₁ = 9/32 (28.1%)</text>
+    <text x="165" y="205" font-size="11.5" fill="#9f1239">(y прийшов пізніше на >15 хв)</text>
+
+    <!-- Unfavorable Region 2 (Lower Right Triangle: x - y > 1/4) -->
+    <!-- Vertices: (530, 490), (200, 490), (530, 160) -->
+    <polygon points="530,490 200,490 530,160" fill="#fecdd3" opacity="0.6"/>
+    <text x="360" y="380" font-size="14" font-weight="700" fill="#e11d48">Не зустрілися</text>
+    <text x="350" y="405" font-size="12" fill="#be123c">S₂ = 9/32 (28.1%)</text>
+    <text x="345" y="425" font-size="11.5" fill="#9f1239">(x прийшов пізніше на >15 хв)</text>
+
+    <!-- Favorable Meeting Strip (Polygon) -->
+    <!-- Vertices: (90, 490), (200, 490), (530, 160), (530, 50), (420, 50), (90, 380) -->
+    <polygon points="90,490 200,490 530,160 530,50 420,50 90,380" fill="url(#stripGrad)"/>
+    <polygon points="90,490 200,490 530,160 530,50 420,50 90,380" fill="url(#stripHatch)"/>
+
+    <!-- Central Diagonal Line y = x -->
+    <line x1="90" y1="490" x2="530" y2="50" stroke="#0f172a" stroke-width="2" stroke-dasharray="6,4"/>
+    <text x="285" y="250" font-size="13" font-weight="800" fill="#0f172a" transform="rotate(-45 285 250)">y = x (прийшли одночасно)</text>
+
+    <!-- Boundary Lines -->
+    <!-- Line 1: y = x + 1/4 (from (90, 380) to (420, 50)) -->
+    <line x1="90" y1="380" x2="420" y2="50" stroke="#0284c7" stroke-width="2.5"/>
+    <text x="210" y="200" font-size="12" font-weight="800" fill="#0284c7" transform="rotate(-45 210 200)">y = x + 1/4</text>
+
+    <!-- Line 2: y = x - 1/4 (from (200, 490) to (530, 160)) -->
+    <line x1="200" y1="490" x2="530" y2="160" stroke="#0284c7" stroke-width="2.5"/>
+    <text x="340" y="330" font-size="12" font-weight="800" fill="#0284c7" transform="rotate(-45 340 330)">y = x - 1/4</text>
+
+    <!-- Strip Info Label In Center -->
+    <rect x="235" y="280" width="150" height="52" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/>
+    <text x="248" y="302" font-size="13" font-weight="800" fill="#0369a1">ЗУСТРІЧ ВІДБУЛАСЯ</text>
+    <text x="252" y="322" font-size="12" font-weight="700" fill="#0284c7">S(d) = 7/16 = 43.75%</text>
+
+    <!-- Dimension Brackets / Markers on Axis -->
+    <!-- 1 - 1/4 = 3/4 marker -->
+    <line x1="90" y1="40" x2="420" y2="40" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="90" y1="35" x2="90" y2="45" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="420" y1="35" x2="420" y2="45" stroke="#64748b" stroke-width="1.5"/>
+    <text x="235" y="34" font-size="12" font-weight="700" fill="#475569">катет = 3/4 год (45 хв)</text>
+
+    <!-- Axes -->
+    <!-- Ox -->
+    <line x1="70" y1="490" x2="560" y2="490" stroke="#0f172a" stroke-width="2.5"/>
+    <polygon points="560,490 550,485 550,495" fill="#0f172a"/>
+    <text x="565" y="495" font-size="15" font-weight="800">x</text>
+    <text x="510" y="525" font-size="12" fill="#475569">Час 1-го друга (год)</text>
+
+    <!-- Oy -->
+    <line x1="90" y1="510" x2="90" y2="30" stroke="#0f172a" stroke-width="2.5"/>
+    <polygon points="90,30 85,40 95,40" fill="#0f172a"/>
+    <text x="85" y="20" font-size="15" font-weight="800">y</text>
+    <text x="15" y="45" font-size="12" fill="#475569" transform="rotate(-90 15 45)">Час 2-го друга (год)</text>
+
+    <!-- Ticks and Labels on Ox -->
+    <text x="75" y="508" font-size="13" font-weight="700">0</text>
+    
+    <line x1="200" y1="490" x2="200" y2="496" stroke="#0f172a" stroke-width="2"/>
+    <text x="188" y="512" font-size="12" font-weight="700" fill="#0284c7">1/4 (15 хв)</text>
+
+    <line x1="310" y1="490" x2="310" y2="496" stroke="#0f172a" stroke-width="2"/>
+    <text x="300" y="512" font-size="12">1/2</text>
+
+    <line x1="420" y1="490" x2="420" y2="496" stroke="#0f172a" stroke-width="2"/>
+    <text x="410" y="512" font-size="12">3/4</text>
+
+    <line x1="530" y1="490" x2="530" y2="496" stroke="#0f172a" stroke-width="2"/>
+    <text x="520" y="512" font-size="13" font-weight="800">1 (60 хв)</text>
+
+    <!-- Ticks and Labels on Oy -->
+    <line x1="84" y1="380" x2="90" y2="380" stroke="#0f172a" stroke-width="2"/>
+    <text x="32" y="384" font-size="12" font-weight="700" fill="#0284c7">1/4 (15 хв)</text>
+
+    <line x1="84" y1="270" x2="90" y2="270" stroke="#0f172a" stroke-width="2"/>
+    <text x="64" y="274" font-size="12">1/2</text>
+
+    <line x1="84" y1="160" x2="90" y2="160" stroke="#0f172a" stroke-width="2"/>
+    <text x="64" y="164" font-size="12">3/4</text>
+
+    <line x1="84" y1="50" x2="90" y2="50" stroke="#0f172a" stroke-width="2"/>
+    <text x="48" y="54" font-size="13" font-weight="800">1 (60 хв)</text>
+  </svg>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="dot" style="background: #0284c7;"></div>
+      <span>Смуга зустрічі $|x - y| \le 1/4$ ($S = 7/16 \approx 43.75\%$)</span>
+    </div>
+    <div class="legend-item">
+      <div class="dot" style="background: #f43f5e;"></div>
+      <span>Розминулися $|x - y| > 1/4$ ($2 \times 9/32 = 9/16 \approx 56.25\%$)</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+"""
+
+html_path = r'D:\Studings\SecondYear\FirstSemester\Теорія ймовірності\meeting_problem.html'
+png_path = r'D:\Studings\SecondYear\FirstSemester\Теорія ймовірності\meeting_problem.png'
+brain_png_path = r'C:\Users\andri\.gemini\antigravity\brain\dc20fa28-3959-4990-8c43-347402ae19ad\meeting_problem.png'
+
+with open(html_path, 'w', encoding='utf-8') as f:
+    f.write(html)
+print('HTML saved!')
+
+chrome = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
+cmd = [chrome, '--headless=new', '--disable-gpu', '--window-size=900,820', f'--screenshot={png_path}', html_path]
+subprocess.run(cmd, check=True)
+print('PNG generated!')
+
+# Copy to brain artifact dir for direct rendering
+with open(png_path, 'rb') as f_in, open(brain_png_path, 'wb') as f_out:
+    f_out.write(f_in.read())
+print('Copied to brain directory!')
