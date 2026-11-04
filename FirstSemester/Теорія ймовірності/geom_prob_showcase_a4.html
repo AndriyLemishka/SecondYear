@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Практикум з геометричної ймовірності — Формат A4</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+<style>
+  @page {
+    size: 210mm 297mm;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    overflow: hidden;
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #0f172a;
+  }
+  body {
+    padding: 6mm 7mm 5mm 7mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #0284c7 100%);
+    color: #ffffff;
+    padding: 3mm 5mm;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3mm;
+    flex-shrink: 0;
+  }
+  .header h1 {
+    font-size: 15pt;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+    text-transform: uppercase;
+  }
+  .header p {
+    font-size: 8pt;
+    color: #e0f2fe;
+    margin-top: 1px;
+  }
+  .badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1.2px solid rgba(255, 255, 255, 0.5);
+    padding: 2mm 4.5mm;
+    border-radius: 4px;
+    font-weight: 900;
+    font-size: 9pt;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* Grid 2 columns x 3 rows = 6 large illustrated cards */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 3mm;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1.2px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 2.5mm 3.5mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 7.6pt;
+    line-height: 1.28;
+    overflow: hidden;
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.8px solid #0284c7;
+    padding-bottom: 1.5px;
+    margin-bottom: 2px;
+  }
+  .card-title {
+    font-size: 9.5pt;
+    font-weight: 900;
+    color: #1e3a8a;
+  }
+  .card-topic {
+    font-size: 6.8pt;
+    font-weight: 800;
+    color: #0369a1;
+    background: #e0f2fe;
+    padding: 1.5px 5px;
+    border-radius: 3px;
+  }
+
+  .umova {
+    background: #f8fafc;
+    border-left: 2.5px solid #64748b;
+    padding: 1.5px 4px;
+    font-size: 7.2pt;
+    color: #334155;
+    margin-bottom: 2px;
+    font-style: italic;
+    line-height: 1.22;
+  }
+  .umova b {
+    font-style: normal;
+    color: #0f172a;
+  }
+
+  .body-content {
+    display: grid;
+    grid-template-columns: 115px 1fr;
+    gap: 3.5mm;
+    align-items: center;
+    margin: 1.5px 0;
+  }
+
+  .graph-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 2px;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.02);
+  }
+  .graph-box svg {
+    width: 110px;
+    height: 110px;
+  }
+
+  .calc-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+    font-size: 7.4pt;
+    color: #0f172a;
+  }
+  .calc-steps p { margin: 0; }
+
+  .ans {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-weight: 800;
+    color: #166534;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2px;
+    font-size: 7.6pt;
+  }
+  .ans-val {
+    color: #15803d;
+  }
+
+  .katex { font-size: 1em !important; }
+  .katex-display { margin: 0.5px 0 !important; }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 1.5mm;
+    font-size: 6.8pt;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 2mm;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>ПРАКТИКУМ З ГЕОМЕТРИЧНОЇ ЙМОВІРНОСТІ: КЛЮЧОВІ МОДЕЛІ</h1>
+    <p>НУ «Львівська політехніка» | Кафедра ОМП | Навчальний посібник до РГР (Тема 4) | Варіант 12 та типові задачі</p>
+  </div>
+  <div class="badge">ТЕМА 4: ГЕОМЕТРІЯ</div>
+</div>
+
+<div class="grid">
+
+  <!-- CARD 1: ВАРІАНТ 12 (КОЛО І ТРИКУТНИК) -->
+  <div class="card">
+    <div>
+      <div class="card-top">
+        <span class="card-title">1. Трикутник у колі (Варіант 12)</span>
+        <span class="card-topic">Планіметрія</span>
+      </div>
+      <div class="umova">
+        <b>Умова:</b> Точка круга радіуса $R$ попаде у вписаний трикутник $ABC$ ($AB = 2R, AC = CB = R\sqrt{2}$).
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="graph-box">
+        <svg viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="50" fill="#f8fafc" stroke="#0284c7" stroke-width="2"/>
+          <polygon points="10,60 110,60 60,10" fill="#bae6fd" stroke="#0369a1" stroke-width="2.2"/>
+          <line x1="10" y1="60" x2="110" y2="60" stroke="#0f172a" stroke-width="2"/>
+          <circle cx="60" cy="60" r="3" fill="#ef4444"/>
+          <!-- Labels -->
+          <text x="3" y="64" font-size="10" font-weight="bold">A</text>
+          <text x="112" y="64" font-size="10" font-weight="bold">B</text>
+          <text x="56" y="8" font-size="10" font-weight="bold">C</text>
+          <text x="56" y="74" font-size="9" fill="#ef4444" font-weight="bold">O</text>
+          <text x="24" y="32" font-size="9" fill="#0369a1" font-weight="bold">R√2</text>
+          <text x="50" y="52" font-size="8.5" fill="#0f172a">S = R²</text>
+        </svg>
+      </div>
+      <div class="calc-steps">
+        <p>• $AB = 2R$ — діаметр кола $\implies \angle C = 90^\circ$ (вписаний кут, що спирається на діаметр).</p>
+        <p>• За теоремою Піфагора: $AC^2 + CB^2 = 2R^2 + 2R^2 = 4R^2 = AB^2$.</p>
+        <p>• Повна площа: $S(D) = S_{\text{круг}} = \pi R^2$.</p>
+        <p>• Сприятлива площа: $S(d) = \frac{1}{2} AC \cdot CB = \frac{1}{2} (R\sqrt{2})^2 = R^2$.</p>
+        <p>• Геометрична ймовірність: $P = \frac{S(d)}{S(D)} = \frac{R^2}{\pi R^2} = \frac{1}{\pi}$.</p>
+      </div>
+    </div>
+    <div class="ans">
+      <span>Відповідь:</span>
+      <span class="ans-val">$P = \frac{1}{\pi} \approx 0{,}3183 \ (31{,}83\%)$</span>
+    </div>
+  </div>
+
+  <!-- CARD 2: ЗАДАЧА ПРО ЗУСТРІЧ -->
+  <div class="card">
+    <div>
+      <div class="card-top">
+        <span class="card-title">2. Класична «Задача про зустріч»</span>
+        <span class="card-topic">Різниця координат</span>
+      </div>
+      <div class="umova">
+        <b>Умова:</b> Двоє приходять між 12:00 та 13:00. Перший чекає 15 хв ($1/4$ год) і йде. Ймовірність зустрічі?
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="graph-box">
+        <svg viewBox="0 0 120 120">
+          <rect x="15" y="15" width="90" height="90" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+          <!-- Unfavorable triangles -->
+          <polygon points="15,15 15,75 75,15" fill="#fecdd3" opacity="0.75"/>
+          <polygon points="105,105 45,105 105,45" fill="#fecdd3" opacity="0.75"/>
+          <!-- Favorable Strip -->
+          <polygon points="15,105 45,105 105,45 105,15 75,15 15,75" fill="#38bdf8" opacity="0.65" stroke="#0284c7" stroke-width="1.5"/>
+          <!-- Diagonal y = x -->
+          <line x1="15" y1="105" x2="105" y2="15" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="3,3"/>
+          <!-- Axes ticks -->
+          <text x="8" y="112" font-size="8">0</text>
+          <text x="102" y="115" font-size="8" font-weight="bold">1</text>
+          <text x="5" y="20" font-size="8" font-weight="bold">1</text>
+          <text x="45" y="65" font-size="7.5" fill="#0369a1" font-weight="bold">S = 7/16</text>
+        </svg>
+      </div>
+      <div class="calc-steps">
+        <p>• Час приходу $x, y \in [0; 1]$. Квадрат $D = [0; 1]^2$, $S(D) = 1$.</p>
+        <p>• Умова зустрічі: $|x - y| \le \frac{1}{4} \iff x - \frac{1}{4} \le y \le x + \frac{1}{4}$.</p>
+        <p>• Два порожні кутові трикутники (розминулися):</p>
+        <p>$$S_{\text{не}} = 2 \cdot \left(\frac{1}{2} \cdot \frac{3}{4} \cdot \frac{3}{4}\right) = \left(\frac{3}{4}\right)^2 = \frac{9}{16}$$</p>
+        <p>• Сприятлива площа смуги: $S(d) = 1 - \frac{9}{16} = \frac{7}{16}$.</p>
+      </div>
+    </div>
+    <div class="ans">
+      <span>Відповідь:</span>
+      <span class="ans-val">$P = \frac{7}{16} = 0{,}4375 \ (43{,}75\%)$</span>
+    </div>
+  </div>
+
+  <!-- CARD 3: КВАДРАТНЕ РІВНЯННЯ ТА ПАРАБОЛА (ВАРІАНТ 8) -->
+  <div class="card">
+    <div>
+      <div class="card-top">
+        <span class="card-title">3. Дійсні корені рівняння (Варіант 8)</span>
+        <span class="card-topic">Парабола / Інтеграл</span>
+      </div>
+      <div class="umova">
+        <b>Умова:</b> $x^2 + px + q = 0$, де $p, q \in [-1; 1]$. Знайти ймовірність, що корені дійсні й різні.
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="graph-box">
+        <svg viewBox="0 0 120 120">
+          <rect x="15" y="15" width="90" height="90" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+          <!-- Axes -->
+          <line x1="15" y1="60" x2="105" y2="60" stroke="#94a3b8" stroke-width="1"/>
+          <line x1="60" y1="15" x2="60" y2="105" stroke="#94a3b8" stroke-width="1"/>
+          <!-- Parabola q = p^2 / 4 from p=-1 to p=1. Center (60, 60). Scale: 45px = 1 unit.
+               p=-1 => x=15, q=0.25 => y = 60 - 0.25*45 = 48.75.
+               p=0 => x=60, y=60.
+               p=1 => x=105, y=48.75. -->
+          <!-- Shaded region under parabola down to q = -1 (y=105) -->
+          <path d="M 15,48.75 Q 60,60 105,48.75 L 105,105 L 15,105 Z" fill="#bae6fd" opacity="0.8" stroke="#0284c7" stroke-width="1.8"/>
+          <!-- Parabola curve above -->
+          <path d="M 15,48.75 Q 60,60 105,48.75" fill="none" stroke="#0369a1" stroke-width="2"/>
+          <text x="62" y="55" font-size="7.5" fill="#0369a1" font-weight="bold">q = p²/4</text>
+          <text x="100" y="57" font-size="8">p</text>
+          <text x="63" y="23" font-size="8">q</text>
+          <text x="45" y="90" font-size="8" fill="#1e3a8a" font-weight="bold">D > 0</text>
+        </svg>
+      </div>
+      <div class="calc-steps">
+        <p>• $D = [-1; 1] \times [-1; 1] \implies S(D) = 2 \cdot 2 = 4$.</p>
+        <p>• Дійсні різні корені $\iff D_{\text{дискр}} = p^2 - 4q > 0 \iff q < \frac{p^2}{4}$.</p>
+        <p>• Інтегруємо висоту від нижньої межі $q = -1$ до параболи:</p>
+        <p>$$S(d) = \int_{-1}^1 \left(\frac{p^2}{4} - (-1)\right) dp = 2 \left[\frac{p^3}{12} + p\right]_0^1 = 2 \cdot \frac{13}{12} = \frac{13}{6}$$</p>
+        <p>• $P = \frac{S(d)}{S(D)} = \frac{13/6}{4} = \frac{13}{24} \approx 0{,}5417$.</p>
+      </div>
+    </div>
+    <div class="ans">
+      <span>Відповідь:</span>
+      <span class="ans-val">$P = \frac{13}{24} \approx 0{,}5417 \ (54{,}17\%)$</span>
+    </div>
+  </div>
+
+  <!-- CARD 4: ГІПЕРБОЛА xy < a (ВАРІАНТ 11) -->
+  <div class="card">
+    <div>
+      <div class="card-top">
+        <span class="card-title">4. Гіпербола в квадраті (Варіант 11)</span>
+        <span class="card-topic">Гіпербола / Інтеграл</span>
+      </div>
+      <div class="umova">
+        <b>Умова:</b> $M(x, y)$ у квадраті $[0; 1]^2$. Знайти ймовірність $xy < a$, де $0 < a < 1$.
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="graph-box">
+        <svg viewBox="0 0 120 120">
+          <rect x="15" y="15" width="90" height="90" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+          <!-- Shaded Area: x in [0, a] full rect, x in [a, 1] under y = a/x.
+               Let a = 0.36. 90px = 1. a = 32.4px. x=15+32.4=47.4.
+               Hyperbola from (47.4, 15) to (105, 15 + (1-0.36)*90 = 72.6). -->
+          <path d="M 15,15 L 47.4,15 Q 65,45 105,72.6 L 105,105 L 15,105 Z" fill="#bae6fd" opacity="0.8" stroke="#0284c7" stroke-width="1.6"/>
+          <!-- Dividing line at x = a -->
+          <line x1="47.4" y1="15" x2="47.4" y2="105" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <text x="24" y="65" font-size="8" fill="#0369a1" font-weight="bold">S₁ = a</text>
+          <text x="60" y="80" font-size="8" fill="#0369a1" font-weight="bold">S₂ = -a ln a</text>
+          <text x="44" y="113" font-size="8" font-weight="bold">a</text>
+          <text x="102" y="113" font-size="8" font-weight="bold">1</text>
+          <text x="6" y="20" font-size="8" font-weight="bold">1</text>
+        </svg>
+      </div>
+      <div class="calc-steps">
+        <p>• Повна область: $D = [0; 1]^2 \implies S(D) = 1$.</p>
+        <p>• Умова $xy < a \iff y < \frac{a}{x}$. Розбиваємо область на дві:</p>
+        <p>1. $x \in [0; a]$: $\frac{a}{x} \ge 1 \implies$ прямокутник $S_1 = a \cdot 1 = a$.</p>
+        <p>2. $x \in [a; 1]$: $S_2 = \int_a^1 \frac{a}{x} dx = a \ln x \big|_a^1 = -a \ln a$.</p>
+        <p>• $S(d) = S_1 + S_2 = a - a \ln a = a(1 - \ln a)$.</p>
+      </div>
+    </div>
+    <div class="ans">
+      <span>Відповідь:</span>
+      <span class="ans-val">$P = a(1 - \ln a)$</span>
+    </div>
+  </div>
+
+  <!-- CARD 5: ЗЛАМАНА ПАЛИЧКА (НЕРІВНІСТЬ ТРИКУТНИКА) -->
+  <div class="card">
+    <div>
+      <div class="card-top">
+        <span class="card-title">5. Зламана паличка (Трикутник)</span>
+        <span class="card-topic">Нерівність трикутника</span>
+      </div>
+      <div class="umova">
+        <b>Умова:</b> Паличку навмання ламають у 2 точках. Знайти ймовірність, що з 3 частин можна скласти трикутник.
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="graph-box">
+        <svg viewBox="0 0 120 120">
+          <!-- Full Triangle: (15, 105), (105, 105), (15, 15) -->
+          <polygon points="15,105 105,105 15,15" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+          <!-- Central Triangle (Favorable): Midpoints (60, 105), (15, 60), (60, 60) -->
+          <polygon points="15,60 60,60 60,105" fill="#bae6fd" stroke="#0369a1" stroke-width="1.8"/>
+          <!-- Unfavorable 3 triangles around -->
+          <polygon points="15,15 15,60 60,60" fill="#fecdd3" opacity="0.6"/>
+          <polygon points="60,60 105,105 60,105" fill="#fecdd3" opacity="0.6"/>
+          <polygon points="15,60 15,105 60,105" fill="#bae6fd" opacity="0.1"/>
+          <text x="28" y="80" font-size="8" fill="#0369a1" font-weight="bold">S = 1/4</text>
+          <text x="8" y="112" font-size="8">0</text>
+          <text x="56" y="115" font-size="7.5">L/2</text>
+          <text x="103" y="113" font-size="8" font-weight="bold">L</text>
+          <text x="5" y="20" font-size="8" font-weight="bold">L</text>
+        </svg>
+      </div>
+      <div class="calc-steps">
+        <p>• Нехай точки зламу $0 < x < y < L$. Довжини 3 частин: $x$, $y - x$, $L - y$.</p>
+        <p>• Умова трикутника: кожна частина менша за суму двох інших (тобто менша за $L/2$):</p>
+        <p>$$x < L/2, \quad y - x < L/2, \quad y > L/2$$</p>
+        <p>• Сприятлива область — це центральний трикутник площею $\frac{1}{4}$ від площі повного трикутника наслідків.</p>
+      </div>
+    </div>
+    <div class="ans">
+      <span>Відповідь:</span>
+      <span class="ans-val">$P = \frac{1}{4} = 0{,}25 \ (25\%)$</span>
+    </div>
+  </div>
+
+  <!-- CARD 6: МЕТОД РАМКИ (ВАРІАНТ 10) -->
+  <div class="card">
+    <div>
+      <div class="card-top">
+        <span class="card-title">6. Метод рамки / Гомотетія (Варіант 10)</span>
+        <span class="card-topic">Вкладені фігури</span>
+      </div>
+      <div class="umova">
+        <b>Умова:</b> У квадраті $10 \times 10$ см навмання взято точку. Відстань до найближчої сторони $\le 2$ см.
+      </div>
+    </div>
+    <div class="body-content">
+      <div class="graph-box">
+        <svg viewBox="0 0 120 120">
+          <!-- Outer Square 10x10 (90x90 px) -->
+          <rect x="15" y="15" width="90" height="90" fill="#bae6fd" stroke="#0369a1" stroke-width="2"/>
+          <!-- Inner Square 6x6 (54x54 px) centered -->
+          <rect x="33" y="33" width="54" height="54" fill="#ffffff" stroke="#64748b" stroke-width="1.4" stroke-dasharray="3,3"/>
+          <!-- Arrows showing distance 2 cm -->
+          <line x1="15" y1="60" x2="33" y2="60" stroke="#ef4444" stroke-width="1.5"/>
+          <text x="18" y="55" font-size="7.5" fill="#ef4444" font-weight="bold">d=2</text>
+          <text x="42" y="63" font-size="8" fill="#64748b">внутр: 6×6</text>
+          <text x="40" y="27" font-size="8" fill="#0369a1" font-weight="bold">Рамка (S=64)</text>
+        </svg>
+      </div>
+      <div class="calc-steps">
+        <p>• Повний квадрат: сторона $a = 10$ см, площа $S(D) = 10^2 = 100$ см².</p>
+        <p>• Точки на відстані $> 2$ см від усіх сторін утворюють внутрішній концентричний квадрат:</p>
+        <p>$$a_{\text{внутр}} = 10 - 2 \cdot 2 = 6\text{ см} \implies S_{\text{внутр}} = 6^2 = 36\text{ см}^2$$</p>
+        <p>• Площа сприятливої рамки: $S(d) = 100 - 36 = 64$ см².</p>
+        <p>• $P = \frac{S(d)}{S(D)} = \frac{64}{100} = 0{,}64$.</p>
+      </div>
+    </div>
+    <div class="ans">
+      <span>Відповідь:</span>
+      <span class="ans-val">$P = 0{,}64 \ (64\%)$</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>НУ «Львівська політехніка» • Інститут прикладної математики та фундаментальних наук • Кафедра ОМП</span>
+  <span>Навчальний шпаргалка-плакат: Геометрична ймовірність (Тема 4) • Формат A4</span>
+</div>
+
+</body>
+</html>
