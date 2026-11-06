@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Звіт до РГР №1 — Варіант 12 — Лемішка Андрій</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #e2e8f0;
+      font-family: "Times New Roman", Times, serif;
+      color: #000000;
+      line-height: 1.35;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      max-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 16mm 18mm 14mm 20mm;
+      position: relative;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* TITLE PAGE STYLES */
+    .title-top {
+      text-align: center;
+      line-height: 1.3;
+      font-size: 13pt;
+    }
+    .title-top p {
+      margin-bottom: 2px;
+    }
+    .title-mid {
+      text-align: center;
+      margin-top: 55mm;
+      line-height: 1.5;
+    }
+    .title-mid h2 {
+      font-size: 20pt;
+      font-weight: normal;
+      margin-bottom: 8mm;
+    }
+    .title-mid p {
+      font-size: 14pt;
+    }
+    .title-mid .var {
+      font-size: 16pt;
+      font-weight: bold;
+      margin-top: 6mm;
+    }
+    .title-sign {
+      margin-top: 50mm;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .title-sign-block {
+      text-align: left;
+      font-size: 13pt;
+      line-height: 1.6;
+      width: 65mm;
+    }
+    .title-bot {
+      text-align: center;
+      font-size: 13pt;
+      margin-bottom: 6mm;
+    }
+
+    /* CONTENT PAGES STYLES */
+    .page-header-student {
+      font-size: 11pt;
+      color: #000000;
+      margin-bottom: 3mm;
+      font-style: italic;
+    }
+    .task-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5mm;
+      flex: 1;
+    }
+    .task-block {
+      font-size: 11.2pt;
+    }
+    .task-title {
+      font-weight: bold;
+      margin-bottom: 1.2mm;
+    }
+    .task-body {
+      text-align: justify;
+      line-height: 1.32;
+    }
+    .math {
+      font-family: "Cambria Math", "Times New Roman", serif;
+    }
+    .ans {
+      margin-top: 1.2mm;
+      font-weight: bold;
+    }
+    .table-dist {
+      border-collapse: collapse;
+      margin: 2mm 0;
+      font-size: 10.5pt;
+      text-align: center;
+    }
+    .table-dist th, .table-dist td {
+      border: 1px solid #000000;
+      padding: 2px 8px;
+    }
+    .table-dist th {
+      font-weight: normal;
+      background: #fafafa;
+    }
+
+    .page-num {
+      text-align: center;
+      font-size: 12pt;
+      margin-top: 2mm;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== СТОРІНКА 1: ТИТУЛЬНА ==================== -->
+  <div class="page" style="justify-content: space-between;">
+    <div class="title-top">
+      <p>Міністерство освіти і науки України</p>
+      <p>Національний університет «Львівська політехніка»</p>
+      <p>Кафедра ОМП</p>
+    </div>
+
+    <div class="title-mid">
+      <h2>Звіт</h2>
+      <p>до розрахунково-графічної роботи № 1</p>
+      <p>з дисципліни «Теорія ймовірностей та математична статистика»</p>
+      <p class="var">Варіант № 12</p>
+    </div>
+
+    <div class="title-sign">
+      <div class="title-sign-block">
+        <p><b>Виконав:</b></p>
+        <p>ст. гр. ПП-24 Лемішка А. О.</p>
+        <br>
+        <p><b>Перевірила:</b></p>
+        <p>Білущак Г. І.</p>
+      </div>
+    </div>
+
+    <div class="title-bot">
+      Львів 2026
+    </div>
+  </div>
+
+
+  <!-- ==================== СТОРІНКА 2: ЗАВДАННЯ 1, 2, 3, 4 ==================== -->
+  <div class="page">
+    <div>
+      <div class="page-header-student">Лемішка Андрій ПП-24</div>
+      <div class="task-container">
+
+        <!-- Завдання 1 -->
+        <div class="task-block">
+          <div class="task-title">1. Скількома способами можна впорядкувати множину {1, 2, ..., n} так, щоб числа 1, 2, 3 стояли поруч і в порядку зростання?</div>
+          <div class="task-body">
+            Об'єднаємо числа 1, 2, 3 в один неподільний блок <span class="math">X = (1, 2, 3)</span>. Порядок чисел усередині блоку фіксований (1 спосіб).<br>
+            Кількість елементів для перестановки: <span class="math">(n − 3)</span> вільних чисел плюс <span class="math">1</span> блок <span class="math">X</span>, разом <span class="math">N = n − 2</span> елементи.<br>
+            Число способів впорядкування: <span class="math">P<sub>n−2</sub> = (n − 2)!</span><br>
+            <span class="ans">Відповідь:</span> <span class="math">N = (n − 2)!</span>
+          </div>
+        </div>
+
+        <!-- Завдання 2 -->
+        <div class="task-block">
+          <div class="task-title">2. Гральна кістка кидається один раз. Результат експерименту — число очок на верхній грані: Ω = {1, 2, 3, 4, 5, 6}.</div>
+          <div class="task-body">
+            Події: <span class="math">M</span> — випало ≥ 3; <span class="math">N</span> — випало &lt; 4; <span class="math">K</span> — випало парне число.<br>
+            Підмножини: <span class="math">M = {3, 4, 5, 6}</span>, &nbsp; <span class="math">N = {1, 2, 3}</span>, &nbsp; <span class="math">K = {2, 4, 6}</span>.<br>
+            <b>Перевірка на сумісність:</b><br>
+            <span class="math">M ∩ N = {3} ≠ ∅</span>; &nbsp; <span class="math">M ∩ K = {4, 6} ≠ ∅</span>; &nbsp; <span class="math">N ∩ K = {2} ≠ ∅</span> ⇒ всі пари сумісні.<br>
+            <b>Опис подій:</b><br>
+            <span class="math">M ∩ N = {3}</span><br>
+            <span class="math">M ∩ K = {4, 6}</span><br>
+            <span class="math">N ∩ K = {2}</span><br>
+            <span class="math">M ∪ N = {1, 2, 3, 4, 5, 6} = Ω</span> — достовірна подія.<br>
+            <span class="math">N̄ = {4, 5, 6}</span> — випало не менше 4 очок.<br>
+            <span class="math">M ∪ N ∪ K = Ω</span> — достовірна подія.<br>
+            <span class="math">M ∩ N ∩ K = {3} ∩ {2, 4, 6} = ∅</span> — неможлива подія.<br>
+            <span class="math">K̄ = {1, 3, 5}</span> — випало непарне число.<br>
+            <span class="ans">Відповідь:</span> усі три події попарно сумісні; <span class="math">M ∪ N = Ω</span>, <span class="math">M ∩ N ∩ K = ∅</span>.
+          </div>
+        </div>
+
+        <!-- Завдання 3 -->
+        <div class="task-block">
+          <div class="task-title">3. Студент знає 40 з 60 питань програми. У білеті 5 питань. Знайти ймовірність того, що студент складе іспит, якщо для цього треба відповісти принаймні на 4 питання з білета.</div>
+          <div class="task-body">
+            Загальна кількість питань <span class="math">N = 60</span>. Знає: <span class="math">K = 40</span>; не знає: <span class="math">60 − 40 = 20</span>. У білеті <span class="math">n = 5</span>.<br>
+            Загальне число варіантів: <span class="math">n<sub>заг</sub> = C<sub>60</sub><sup>5</sup> = 5 461 512</span>.<br>
+            Подія <span class="math">A</span> = «відповість принаймні на 4 питання» (рівно 4 або всі 5):<br>
+            а) Рівно 4 відомих і 1 невідоме: <span class="math">m<sub>1</sub> = C<sub>40</sub><sup>4</sup> · C<sub>20</sub><sup>1</sup> = 91 390 · 20 = 1 827 800</span>.<br>
+            б) Усі 5 відомих: <span class="math">m<sub>2</sub> = C<sub>40</sub><sup>5</sup> · C<sub>20</sub><sup>0</sup> = 658 008 · 1 = 658 008</span>.<br>
+            Сприятливі випадки: <span class="math">m = 1 827 800 + 658 008 = 2 485 808</span>.<br>
+            <span class="math">P(A) = <sup>2 485 808</sup>/<sub>5 461 512</sub> ≈ 0,4551</span>.<br>
+            <span class="ans">Відповідь:</span> <span class="math">P(A) ≈ 0,4551 &nbsp; (45,51%)</span>.
+          </div>
+        </div>
+
+        <!-- Завдання 4 -->
+        <div class="task-block">
+          <div class="task-title">4. Точка навмання кидається в круг радіуса R. Знайти ймовірність того, що вона потрапить у вписаний трикутник ABC, якщо AB = 2R, а AC = CB = R√2.</div>
+          <div class="task-body">
+            Оскільки сторона <span class="math">AB = 2R</span> є діаметром кола, вписаний <span class="math">ΔABC</span> спирається на діаметр ⇒ <span class="math">∠C = 90°</span> (прямокутний трикутник).<br>
+            Площа прямокутного рівнобедреного трикутника: <span class="math">S<sub>d</sub> = <sup>1</sup>/<sub>2</sub> · (R√2) · (R√2) = R<sup>2</sup></span>.<br>
+            Площа всього круга: <span class="math">S<sub>D</sub> = πR<sup>2</sup></span>.<br>
+            За формулою геометричної ймовірності:<br>
+            <span class="math">P = <sup>S<sub>d</sub></sup>/<sub>S<sub>D</sub></sub> = <sup>R<sup>2</sup></sup>/<sub>πR<sup>2</sup></sub> = <sup>1</sup>/<sub>π</sub> ≈ 0,3183</span>.<br>
+            <span class="ans">Відповідь:</span> <span class="math">P = <sup>1</sup>/<sub>π</sub> ≈ 0,3183</span>.
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="page-num">1</div>
+  </div>
+
+
+  <!-- ==================== СТОРІНКА 3: ЗАВДАННЯ 5, 6, 7 ==================== -->
+  <div class="page">
+    <div>
+      <div class="page-header-student">Лемішка Андрій ПП-24</div>
+      <div class="task-container">
+
+        <!-- Завдання 5 -->
+        <div class="task-block">
+          <div class="task-title">5. Мандрівник виходить з пункту A і на кожному роздоріжжі вибирає навмання один із можливих шляхів. Знайти ймовірність того, що він дістанеться пункту B.</div>
+          <div class="task-body">
+            З пункту A виходять 4 рівноймовірні гілки першого кроку: <span class="math">P(H<sub>i</sub>) = 1/4</span> (<span class="math">i = 1, 2, 3, 4</span>).<br>
+            Умовні ймовірності потрапити в B з кожної гілки:<br>
+            • Гілка 1: роздоріжжя на 4 шляхи (3 в тупик, 1 в B) ⇒ <span class="math">P(B | H<sub>1</sub>) = <sup>1</sup>/<sub>4</sub></span>.<br>
+            • Гілка 2: веде прямо в тупик ⇒ <span class="math">P(B | H<sub>2</sub>) = 0</span>.<br>
+            • Гілка 3: веде безпосередньо в пункт B ⇒ <span class="math">P(B | H<sub>3</sub>) = 1</span>.<br>
+            • Гілка 4: вузол з 3 шляхами (1 в B з ймов. 1/3, 1 в тупик 1/3, 1 у вузол V<sub>5</sub> де 2 виходи з ймов. 1/2 до B) ⇒ <span class="math">P(B | H<sub>4</sub>) = <sup>1</sup>/<sub>3</sub> + <sup>1</sup>/<sub>3</sub> · <sup>1</sup>/<sub>2</sub> = <sup>1</sup>/<sub>2</sub></span>.<br>
+            За формулою повної ймовірності:<br>
+            <span class="math">P(B) = ∑ P(H<sub>i</sub>) · P(B | H<sub>i</sub>) = <sup>1</sup>/<sub>4</sub> · <sup>1</sup>/<sub>4</sub> + <sup>1</sup>/<sub>4</sub> · 0 + <sup>1</sup>/<sub>4</sub> · 1 + <sup>1</sup>/<sub>4</sub> · <sup>1</sup>/<sub>2</sub> = <sup>1</sup>/<sub>16</sub> + 0 + <sup>4</sup>/<sub>16</sub> + <sup>2</sup>/<sub>16</sub> = <sup>7</sup>/<sub>16</sub> = 0,4375</span>.<br>
+            <span class="ans">Відповідь:</span> <span class="math">P(B) = <sup>7</sup>/<sub>16</sub> = 0,4375 &nbsp; (43,75%)</span>.
+          </div>
+        </div>
+
+        <!-- Завдання 6 -->
+        <div class="task-block">
+          <div class="task-title">6. Підкидається гральна кістка. Що ймовірніше: з 5 підкидань не більше 2 разів випаде парне число чи з 7 підкидань не менше 3 разів випаде парне число?</div>
+          <div class="task-body">
+            Схема Бернуллі. Парні очки {2, 4, 6} ⇒ <span class="math">p = 3/6 = 1/2</span>, &nbsp; <span class="math">q = 1 − 1/2 = 1/2</span>.<br>
+            <b>1) Сценарій 1 (n = 5, k ≤ 2 ⇒ k ∈ {0, 1, 2}):</b><br>
+            <span class="math">P<sub>5</sub>(0) = C<sub>5</sub><sup>0</sup>(1/2)<sup>5</sup> = <sup>1</sup>/<sub>32</sub></span>; &nbsp;
+            <span class="math">P<sub>5</sub>(1) = C<sub>5</sub><sup>1</sup>(1/2)<sup>5</sup> = <sup>5</sup>/<sub>32</sub></span>; &nbsp;
+            <span class="math">P<sub>5</sub>(2) = C<sub>5</sub><sup>2</sup>(1/2)<sup>5</sup> = <sup>10</sup>/<sub>32</sub></span>.<br>
+            <span class="math">P(A) = <sup>(1 + 5 + 10)</sup>/<sub>32</sub> = <sup>16</sup>/<sub>32</sub> = 0,50 &nbsp; (50%)</span>.<br>
+            <b>2) Сценарій 2 (n = 7, k ≥ 3):</b><br>
+            Через протилежну подію B̄ (k ≤ 2):<br>
+            <span class="math">P(B̄) = <sup>(C<sub>7</sub><sup>0</sup> + C<sub>7</sub><sup>1</sup> + C<sub>7</sub><sup>2</sup>)</sup>/<sub>2<sup>7</sup></sub> = <sup>(1 + 7 + 21)</sup>/<sub>128</sub> = <sup>29</sup>/<sub>128</sub></span>.<br>
+            <span class="math">P(B) = 1 − <sup>29</sup>/<sub>128</sub> = <sup>99</sup>/<sub>128</sub> ≈ 0,7734 &nbsp; (77,34%)</span>.<br>
+            <b>Порівняння:</b> <span class="math">P(B) = 0,7734 &gt; P(A) = 0,50</span>.<br>
+            <span class="ans">Відповідь:</span> ймовірніше з 7 підкидань не менше 3 разів випаде парне число.
+          </div>
+        </div>
+
+        <!-- Завдання 7 -->
+        <div class="task-block">
+          <div class="task-title">7. Знайти закон розподілу дискретної випадкової величини ξ, яка може набувати лише два значення: x<sub>1</sub> з ймовірністю p<sub>1</sub> = 0,3 і x<sub>2</sub>, якщо x<sub>1</sub> &lt; x<sub>2</sub>, Mξ = 3,2, а Dξ = 0,15.</div>
+          <div class="task-body">
+            1) <span class="math">p<sub>2</sub> = 1 − p<sub>1</sub> = 1 − 0,3 = 0,7</span>.<br>
+            2) <span class="math">Mξ = 0,3x<sub>1</sub> + 0,7x<sub>2</sub> = 3,2</span> ⇒ <span class="math">x<sub>2</sub> = <sup>(3,2 − 0,3x<sub>1</sub>)</sup>/<sub>0,7</sub></span>.<br>
+            3) За формулою дисперсії для двох значень:<br>
+            <span class="math">Dξ = p<sub>1</sub>p<sub>2</sub>(x<sub>2</sub> − x<sub>1</sub>)<sup>2</sup> = 0,3 · 0,7(x<sub>2</sub> − x<sub>1</sub>)<sup>2</sup> = 0,21(x<sub>2</sub> − x<sub>1</sub>)<sup>2</sup> = 0,15</span>.<br>
+            <span class="math">(x<sub>2</sub> − x<sub>1</sub>)<sup>2</sup> = <sup>0,15</sup>/<sub>0,21</sub> = <sup>5</sup>/<sub>7</sub></span> ⇒ <span class="math">x<sub>2</sub> − x<sub>1</sub> = √(5/7) ≈ 0,84515</span>.<br>
+            4) Знаходимо корені:<br>
+            <span class="math">x<sub>1</sub> = 3,2 − 0,7√(5/7) = 3,2 − 0,5916 ≈ 2,61</span>.<br>
+            <span class="math">x<sub>2</sub> = 3,2 + 0,3√(5/7) = 3,2 + 0,2536 ≈ 3,45</span>.<br>
+            <span class="ans">Закон розподілу:</span>
+            <table class="table-dist">
+              <tr><th>ξ</th><td>2,61</td><td>3,45</td></tr>
+              <tr><th>P</th><td>0,3</td><td>0,7</td></tr>
+            </table>
+            <i>Перевірка: Mξ = 2,6084·0,3 + 3,4536·0,7 = 0,7825 + 2,4175 = 3,200.</i><br>
+            <span class="ans">Відповідь:</span> <span class="math">x<sub>1</sub> ≈ 2,61; &nbsp; x<sub>2</sub> ≈ 3,45</span>.
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="page-num">2</div>
+  </div>
+
+
+  <!-- ==================== СТОРІНКА 4: ЗАВДАННЯ 8, 9 ==================== -->
+  <div class="page">
+    <div>
+      <div class="page-header-student">Лемішка Андрій ПП-24</div>
+      <div class="task-container">
+
+        <!-- Завдання 8 -->
+        <div class="task-block">
+          <div class="task-title">8. Ймовірність бракованої деталі p = 0,09. Знайти ймовірність того, що серед 180 відібраних деталей бракованих буде не менше 15 і не більше 30, якщо випробування незалежні.</div>
+          <div class="task-body">
+            Параметри: <span class="math">n = 180, &nbsp; p = 0,09, &nbsp; q = 1 − 0,09 = 0,91</span>.<br>
+            <span class="math">np = 180 · 0,09 = 16,2</span>;<br>
+            <span class="math">√npq = √(180 · 0,09 · 0,91) = √14,742 ≈ 3,84</span>.<br>
+            За інтегральною теоремою Муавра-Лапласа:<br>
+            <span class="math">P<sub>180</sub>(15 ≤ k ≤ 30) ≈ Φ<sub>0</sub>(x<sub>2</sub>) − Φ<sub>0</sub>(x<sub>1</sub>)</span>, де<br>
+            <span class="math">x<sub>1</sub> = <sup>(15 − 16,2)</sup>/<sub>3,84</sub> = <sup>−1,2</sup>/<sub>3,84</sub> = −0,31</span>;<br>
+            <span class="math">x<sub>2</sub> = <sup>(30 − 16,2)</sup>/<sub>3,84</sub> = <sup>13,8</sup>/<sub>3,84</sub> = 3,59</span>.<br>
+            Враховуючи непарність функції Лапласа <span class="math">Φ<sub>0</sub>(−x) = −Φ<sub>0</sub>(x)</span>:<br>
+            <span class="math">P ≈ Φ<sub>0</sub>(3,59) − Φ<sub>0</sub>(−0,31) = Φ<sub>0</sub>(3,59) + Φ<sub>0</sub>(0,31)</span>.<br>
+            За таблицею значень функції Лапласа:<br>
+            <span class="math">Φ<sub>0</sub>(3,59) ≈ 0,4998</span>, &nbsp; <span class="math">Φ<sub>0</sub>(0,31) ≈ 0,1217</span>.<br>
+            <span class="math">P ≈ 0,4998 + 0,1217 = 0,6215 &nbsp; (62,15%)</span>.<br>
+            <span class="ans">Відповідь:</span> <span class="math">P ≈ 0,6215</span>.
+          </div>
+        </div>
+
+        <!-- Завдання 9 -->
+        <div class="task-block">
+          <div class="task-title">9. В урні 7 білих і 3 чорні кульки. Навмання виймають 2 кульки. Знайти закон розподілу випадкової величини ξ — числа вийнятих чорних кульок. Знайти Mξ, Dξ, σ<sub>ξ</sub>.</div>
+          <div class="task-body">
+            Всього кульок 10. Виймають 2. Загальна кількість способів: <span class="math">C<sub>10</sub><sup>2</sup> = <sup>(10 · 9)</sup>/<sub>2</sub> = 45</span>.<br>
+            Можливі значення чорних кульок: <span class="math">ξ ∈ {0, 1, 2}</span>.<br>
+            Обчислюємо ймовірності за формулою класичної ймовірності:<br>
+            • <span class="math">P(ξ = 0) = <sup>(C<sub>7</sub><sup>2</sup> · C<sub>3</sub><sup>0</sup>)</sup>/<sub>45</sub> = <sup>21</sup>/<sub>45</sub> = <sup>7</sup>/<sub>15</sub></span>;<br>
+            • <span class="math">P(ξ = 1) = <sup>(C<sub>7</sub><sup>1</sup> · C<sub>3</sub><sup>1</sup>)</sup>/<sub>45</sub> = <sup>(7 · 3)</sup>/<sub>45</sub> = <sup>21</sup>/<sub>45</sub> = <sup>7</sup>/<sub>15</sub></span>;<br>
+            • <span class="math">P(ξ = 2) = <sup>(C<sub>7</sub><sup>0</sup> · C<sub>3</sub><sup>2</sup>)</sup>/<sub>45</sub> = <sup>(1 · 3)</sup>/<sub>45</sub> = <sup>3</sup>/<sub>45</sub> = <sup>1</sup>/<sub>15</sub></span>.<br>
+            <i>Перевірка: <sup>7</sup>/<sub>15</sub> + <sup>7</sup>/<sub>15</sub> + <sup>1</sup>/<sub>15</sub> = <sup>15</sup>/<sub>15</sub> = 1.</i><br>
+            <span class="ans">Ряд розподілу:</span>
+            <table class="table-dist">
+              <tr><th>ξ</th><td>0</td><td>1</td><td>2</td></tr>
+              <tr><th>P</th><td>7/15</td><td>7/15</td><td>1/15</td></tr>
+            </table>
+            Многокутник розподілу: ламана через точки (0; 7/15), (1; 7/15), (2; 1/15).<br>
+            <b>Обчислення характеристик:</b><br>
+            <span class="math">Mξ = 0 · <sup>7</sup>/<sub>15</sub> + 1 · <sup>7</sup>/<sub>15</sub> + 2 · <sup>1</sup>/<sub>15</sub> = <sup>9</sup>/<sub>15</sub> = 0,6</span>.<br>
+            <span class="math">M[ξ<sup>2</sup>] = 0<sup>2</sup> · <sup>7</sup>/<sub>15</sub> + 1<sup>2</sup> · <sup>7</sup>/<sub>15</sub> + 2<sup>2</sup> · <sup>1</sup>/<sub>15</sub> = <sup>(7 + 4)</sup>/<sub>15</sub> = <sup>11</sup>/<sub>15</sub> ≈ 0,7333</span>.<br>
+            <span class="math">Dξ = M[ξ<sup>2</sup>] − (Mξ)<sup>2</sup> = <sup>11</sup>/<sub>15</sub> − (0,6)<sup>2</sup> = 0,7333 − 0,36 = 0,3733 ≈ 0,37</span>.<br>
+            <span class="math">σ<sub>ξ</sub> = √Dξ = √0,3733 ≈ 0,611</span>.<br>
+            <span class="ans">Відповідь:</span> <span class="math">Mξ = 0,6; &nbsp; Dξ ≈ 0,37; &nbsp; σ<sub>ξ</sub> ≈ 0,61</span>.
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="page-num">3</div>
+  </div>
+
+
+  <!-- ==================== СТОРІНКА 5: ЗАВДАННЯ 10, 11, 12 ==================== -->
+  <div class="page">
+    <div>
+      <div class="page-header-student">Лемішка Андрій ПП-24</div>
+      <div class="task-container">
+
+        <!-- Завдання 10 -->
+        <div class="task-block">
+          <div class="task-title">10. Щільність випадкової величини ξ задається формулою f(x) = (4 − x)/8 при x ∈ (0; 4) і f(x) = 0 при x ∉ (0; 4). Знайти F(x), P(ξ ∈ [2; 3]), моду, медіану, Mξ, Dξ.</div>
+          <div class="task-body">
+            1) Функція розподілу <span class="math">F(x) = ∫<sub>0</sub><sup>x</sup> <sup>(4 − t)</sup>/<sub>8</sub> dt = <sup>x</sup>/<sub>2</sub> − <sup>x<sup>2</sup></sup>/<sub>16</sub></span> для <span class="math">x ∈ [0; 4]</span>.<br>
+            2) <span class="math">P(2 ≤ ξ ≤ 3) = F(3) − F(2) = (<sup>3</sup>/<sub>2</sub> − <sup>9</sup>/<sub>16</sub>) − (1 − <sup>4</sup>/<sub>16</sub>) = <sup>15</sup>/<sub>16</sub> − <sup>12</sup>/<sub>16</sub> = <sup>3</sup>/<sub>16</sub> = 0,1875</span>.<br>
+            3) <b>Мода:</b> <span class="math">f(x)</span> спадна на <span class="math">[0; 4]</span>, максимум у точці 0 ⇒ <span class="math">M<sub>o</sub> = 0</span>.<br>
+            4) <b>Медіана:</b> <span class="math">F(M<sub>e</sub>) = <sup>1</sup>/<sub>2</sub> ⇒ <sup>M<sub>e</sub></sup>/<sub>2</sub> − <sup>M<sub>e</sub><sup>2</sup></sup>/<sub>16</sub> = <sup>1</sup>/<sub>2</sub> ⇒ M<sub>e</sub><sup>2</sup> − 8M<sub>e</sub> + 8 = 0</span>.<br>
+            <span class="math">M<sub>e</sub> = 4 − 2√2 ≈ 1,172</span>.<br>
+            5) <span class="math">Mξ = ∫<sub>0</sub><sup>4</sup> x · <sup>(4 − x)</sup>/<sub>8</sub> dx = <sup>1</sup>/<sub>8</sub> [ 2x<sup>2</sup> − <sup>x<sup>3</sup></sup>/<sub>3</sub> ]<sub>0</sub><sup>4</sup> = <sup>1</sup>/<sub>8</sub> (32 − <sup>64</sup>/<sub>3</sub>) = <sup>4</sup>/<sub>3</sub> ≈ 1,333</span>.<br>
+            6) <span class="math">M[ξ<sup>2</sup>] = <sup>1</sup>/<sub>8</sub> ∫<sub>0</sub><sup>4</sup> (4x<sup>2</sup> − x<sup>3</sup>) dx = <sup>8</sup>/<sub>3</sub></span> ⇒ <span class="math">Dξ = <sup>8</sup>/<sub>3</sub> − (<sup>4</sup>/<sub>3</sub>)<sup>2</sup> = <sup>8</sup>/<sub>9</sub> ≈ 0,889</span>.<br>
+            <span class="ans">Відповідь:</span> <span class="math">P = <sup>3</sup>/<sub>16</sub>; &nbsp; M<sub>o</sub> = 0; &nbsp; M<sub>e</sub> ≈ 1,17; &nbsp; Mξ = <sup>4</sup>/<sub>3</sub>; &nbsp; Dξ = <sup>8</sup>/<sub>9</sub></span>.
+          </div>
+        </div>
+
+        <!-- Завдання 11 -->
+        <div class="task-block">
+          <div class="task-title">11. Задано щільність випадкової величини ξ: f(x) = A(x<sup>2</sup> + 2x) при x ∈ (0; 1). Знайти сталу A, а також Mη і Dη, якщо η = 2ξ.</div>
+          <div class="task-body">
+            1) З умови нормування: <span class="math">∫<sub>0</sub><sup>1</sup> A(x<sup>2</sup> + 2x) dx = A [ <sup>x<sup>3</sup></sup>/<sub>3</sub> + x<sup>2</sup> ]<sub>0</sub><sup>1</sup> = A · <sup>4</sup>/<sub>3</sub> = 1 ⇒ A = <sup>3</sup>/<sub>4</sub></span>.<br>
+            2) <span class="math">Mξ = <sup>3</sup>/<sub>4</sub> ∫<sub>0</sub><sup>1</sup> (x<sup>3</sup> + 2x<sup>2</sup>) dx = <sup>3</sup>/<sub>4</sub> [ <sup>1</sup>/<sub>4</sub> + <sup>2</sup>/<sub>3</sub> ] = <sup>3</sup>/<sub>4</sub> · <sup>11</sup>/<sub>12</sub> = <sup>11</sup>/<sub>16</sub> = 0,6875</span>.<br>
+            <span class="math">Mη = M[2ξ] = 2Mξ = 2 · <sup>11</sup>/<sub>16</sub> = <sup>11</sup>/<sub>8</sub> = 1,375</span>.<br>
+            3) <span class="math">M[ξ<sup>2</sup>] = <sup>3</sup>/<sub>4</sub> ∫<sub>0</sub><sup>1</sup> (x<sup>4</sup> + 2x<sup>3</sup>) dx = <sup>3</sup>/<sub>4</sub> [ <sup>1</sup>/<sub>5</sub> + <sup>1</sup>/<sub>2</sub> ] = <sup>3</sup>/<sub>4</sub> · <sup>7</sup>/<sub>10</sub> = <sup>21</sup>/<sub>40</sub> = 0,525</span>.<br>
+            <span class="math">Dξ = <sup>21</sup>/<sub>40</sub> − (<sup>11</sup>/<sub>16</sub>)<sup>2</sup> ≈ 0,05234</span> ⇒ <span class="math">Dη = D[2ξ] = 4Dξ ≈ 4 · 0,05234 ≈ 0,2094</span>.<br>
+            <span class="ans">Відповідь:</span> <span class="math">A = <sup>3</sup>/<sub>4</sub>; &nbsp; Mη = 1,375; &nbsp; Dη ≈ 0,209</span>.
+          </div>
+        </div>
+
+        <!-- Завдання 12 -->
+        <div class="task-block">
+          <div class="task-title">12. Знайти характеристичну функцію φ(t), Mξ та Dξ для випадкової величини зі щільністю f(x) = 3x<sup>2</sup> при x ∈ [0; 1].</div>
+          <div class="task-body">
+            1) <span class="math">φ(t) = ∫<sub>0</sub><sup>1</sup> e<sup>itx</sup> · 3x<sup>2</sup> dx = <sup>3</sup>/<sub>it</sub> e<sup>it</sup> + <sup>6</sup>/<sub>(it)<sup>2</sup></sub> e<sup>it</sup> − <sup>6</sup>/<sub>(it)<sup>3</sup></sub> (e<sup>it</sup> − 1)</span>.<br>
+            2) Моменти: <span class="math">Mξ = 3 ∫<sub>0</sub><sup>1</sup> x<sup>3</sup> dx = 3 · <sup>1</sup>/<sub>4</sub> = <sup>3</sup>/<sub>4</sub> = 0,75</span>.<br>
+            <span class="math">M[ξ<sup>2</sup>] = 3 ∫<sub>0</sub><sup>1</sup> x<sup>4</sup> dx = 3 · <sup>1</sup>/<sub>5</sub> = <sup>3</sup>/<sub>5</sub> = 0,60</span>.<br>
+            3) <span class="math">Dξ = M[ξ<sup>2</sup>] − (Mξ)<sup>2</sup> = <sup>3</sup>/<sub>5</sub> − (<sup>3</sup>/<sub>4</sub>)<sup>2</sup> = <sup>3</sup>/<sub>5</sub> − <sup>9</sup>/<sub>16</sub> = <sup>3</sup>/<sub>80</sub> = 0,0375</span>.<br>
+            <span class="ans">Відповідь:</span> <span class="math">Mξ = <sup>3</sup>/<sub>4</sub>; &nbsp; Dξ = <sup>3</sup>/<sub>80</sub> = 0,0375</span>.
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="page-num">4</div>
+  </div>
+
+</body>
+</html>
