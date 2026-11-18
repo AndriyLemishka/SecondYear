@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireshark &amp; HTTP Protocol Lab Hub | Лабораторна робота №8</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --bg-card-hover: #1c2128;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-bright: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-hover: #79c0ff;
+      --green: #3fb950;
+      --red: #f85149;
+      --yellow: #d29922;
+      --purple: #bc8cff;
+      --cyan: #39c5cf;
+      --sidebar-w: 280px;
+    }
+
+    body.light-theme {
+      --bg: #f6f8fa;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f3f4f6;
+      --border: #d0d7de;
+      --text: #24292f;
+      --text-bright: #111827;
+      --text-muted: #57606a;
+      --accent: #0969da;
+      --accent-hover: #218bff;
+      --green: #1a7f37;
+      --red: #cf222e;
+      --yellow: #9a6700;
+      --purple: #8250df;
+      --cyan: #0550ae;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    aside {
+      width: var(--sidebar-w);
+      background-color: var(--bg-card);
+      border-right: 1px solid var(--border);
+      padding: 20px 14px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      overflow-y: auto;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand {
+      padding: 0 8px 16px 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+    .brand h2 { font-size: 1.04rem; color: var(--text-bright); }
+    .brand p { font-size: 0.76rem; color: var(--text-muted); margin-top: 4px; }
+
+    nav { flex: 1; }
+    .nav-group-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: 10px 8px 4px 8px;
+      font-weight: 700;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.84rem;
+      margin-bottom: 2px;
+      transition: all 0.15s ease;
+    }
+    .nav-item:hover { background-color: var(--bg-card-hover); color: var(--accent); }
+    .nav-item.active { background-color: rgba(88, 166, 255, 0.15); color: var(--accent); font-weight: 600; }
+
+    main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 28px 36px;
+      max-width: 1180px;
+      width: 100%;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .search-box { position: relative; width: 380px; max-width: 100%; }
+    .search-box input {
+      width: 100%;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-bright);
+      padding: 8px 14px 8px 34px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .search-box input:focus { border-color: var(--accent); }
+    .search-icon { position: absolute; left: 12px; top: 8px; color: var(--text-muted); font-size: 0.85rem; }
+
+    .theme-toggle-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+    .theme-toggle-btn:hover { background: var(--bg-card-hover); }
+
+    .module-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 24px;
+      scroll-margin-top: 24px;
+    }
+    .module-card h2 {
+      color: var(--text-bright);
+      font-size: 1.24rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .module-card h3 { color: var(--accent); font-size: 1rem; margin: 14px 0 8px 0; }
+    .module-card p { margin-bottom: 10px; font-size: 0.92rem; }
+    .module-card ul, .module-card ol { margin: 8px 0 12px 20px; font-size: 0.91rem; }
+    .module-card li { margin-bottom: 6px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .sub-card {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 15px;
+    }
+    .sub-card h4 { font-size: 0.93rem; color: var(--accent); margin-bottom: 8px; }
+
+    pre, code { font-family: "Consolas", "Courier New", monospace; }
+    pre {
+      background-color: #05070a;
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      border-radius: 6px;
+      color: #79c0ff;
+      overflow-x: auto;
+      font-size: 0.83rem;
+      margin: 10px 0;
+      position: relative;
+    }
+    body.light-theme pre { background-color: #f0f3f6; color: #0550ae; }
+    code {
+      background-color: rgba(110, 118, 129, 0.2);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.85em;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .tag-blue { background: rgba(88, 166, 255, 0.15); color: var(--accent); border: 1px solid rgba(88, 166, 255, 0.3); }
+    .tag-green { background: rgba(63, 185, 80, 0.15); color: var(--green); border: 1px solid rgba(63, 185, 80, 0.3); }
+    .tag-yellow { background: rgba(210, 153, 34, 0.15); color: var(--yellow); border: 1px solid rgba(210, 153, 34, 0.3); }
+    .tag-red { background: rgba(248, 81, 73, 0.15); color: var(--red); border: 1px solid rgba(248, 81, 73, 0.3); }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: rgba(88, 166, 255, 0.08);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+      font-size: 0.91rem;
+    }
+    .callout-warn {
+      border-left-color: var(--red);
+      background: rgba(248, 81, 73, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.86rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 9px 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: rgba(88, 166, 255, 0.12); color: var(--text-bright); font-weight: 600; }
+
+    /* Encapsulation bar */
+    .encap-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 12px 0;
+    }
+    .encap-box {
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      flex: 1;
+      min-width: 150px;
+      background: var(--bg);
+    }
+    .encap-box strong { display: block; color: var(--text-bright); margin-bottom: 3px; }
+
+    /* Screenshots */
+    .shot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .shot-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .shot-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .shot-card img { width: 100%; display: block; }
+    .shot-card .cap { padding: 9px 11px; font-size: 0.8rem; color: var(--text-muted); }
+
+    /* Q&A */
+    .qa-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      background: var(--bg);
+    }
+    .qa-q { font-weight: 600; color: var(--text-bright); margin-bottom: 5px; font-size: 0.91rem; }
+    .qa-a { font-size: 0.89rem; color: var(--text); }
+
+    /* Simulator Controls */
+    .sim-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; margin: 10px 0; }
+    .sim-field { flex: 1; min-width: 180px; }
+    .sim-field label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px; }
+    .sim-input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-bright);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.86rem;
+    }
+    .sim-btn {
+      background: var(--accent);
+      color: #0d1117;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.84rem;
+      cursor: pointer;
+    }
+    .sim-btn:hover { background: var(--accent-hover); }
+    .result-box {
+      margin-top: 10px;
+      padding: 11px 14px;
+      border: 1px dashed var(--accent);
+      border-radius: 6px;
+      background: rgba(88, 166, 255, 0.08);
+      font-size: 0.87rem;
+    }
+
+    /* Quiz */
+    .quiz-q { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .quiz-opt { display: block; margin: 5px 0; cursor: pointer; font-size: 0.88rem; }
+    .quiz-opt input { margin-right: 8px; }
+    .quiz-fb { margin-top: 6px; font-size: 0.83rem; font-weight: 600; }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.86);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      flex-direction: column;
+    }
+    #lightbox img { max-width: 95vw; max-height: 85vh; border-radius: 6px; border: 1px solid #444; }
+    #lightbox p { color: #e6edf3; margin-top: 10px; font-size: 0.9rem; text-align: center; }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside { position: static; width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+      main { margin-left: 0; padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <aside>
+    <div class="brand">
+      <h2>Wireshark &amp; HTTP Lab</h2>
+      <p>Лабораторна робота №8 · Операційні системи · ПП-24</p>
+    </div>
+    <nav>
+      <div class="nav-group-title">Підготовка до здачі</div>
+      <a class="nav-item active" href="#pitch">⚡ Головне та спіч за 60 сек</a>
+      <a class="nav-item" href="#theory-sniffer">📡 Сніфер та інкапсуляція</a>
+      <a class="nav-item" href="#theory-tcp">🔌 TCP: Handshake і сегментація</a>
+      <a class="nav-item" href="#theory-http">🌐 Протокол HTTP/1.1 та коди</a>
+      <a class="nav-item" href="#theory-cache">♻️ Умовний GET та кешування</a>
+      <a class="nav-item" href="#theory-parallel">🖼️ Вбудовані об'єкти і паралелізм</a>
+      <a class="nav-item" href="#theory-auth">🔓 Basic Auth і Base64</a>
+
+      <div class="nav-group-title">Практика й питання</div>
+      <a class="nav-item" href="#screenshots">📸 Усі 12 реальних скріншотів</a>
+      <a class="nav-item" href="#qa-all">❓ Відповіді на всі 19 питань</a>
+      <a class="nav-item" href="#simulators">🧪 Інтерактивні симулятори</a>
+      <a class="nav-item" href="#quiz">📝 Міні-тест перед захистом</a>
+      <a class="nav-item" href="#cheatsheet">⌨️ Шпаргалка фільтрів і tshark</a>
+    </nav>
+  </aside>
+
+  <main>
+    <header>
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="globalSearch" placeholder="Пошук по теорії, питаннях (1..18), заголовках...">
+      </div>
+      <button class="theme-toggle-btn" id="themeBtn">☀️ Світла тема</button>
+    </header>
+
+    <!-- 1. PITCH -->
+    <section class="module-card" id="pitch">
+      <h2>⚡ Головне та 60-секундна промова для здачі <span class="tag tag-green">Готово до захисту</span></h2>
+      <div class="callout">
+        <strong>Що говорити викладачу на самому початку:</strong><br>
+        «У лабораторній роботі №8 я дослідив роботу пасивного аналізатора мережевого трафіку Wireshark і стек TCP/IP на реальних HTTP-запитах до <code>gaia.cs.umass.edu</code> та <code>kurose.cslash.net</code>. Захоплення виконано на інтерфейсі <code>eth0</code> (<code>172.22.24.161</code>). Перевірено звичайний <code>GET</code> (RTT = 121.020 мс), умовний <code>GET</code> із кешуванням (<code>If-Modified-Since</code> → <code>304 Not Modified</code>), TCP-сегментацію документа 4500 байт (4827 байт разом із заголовками → 4 сегменти на каналі), паралельне підвантаження вбудованих картинок із різницею всього 18.7 мс, а також вразливість <code>Authorization: Basic</code> (Base64 без шифрування розкодовується у <code>wireshark-students:network</code>).»
+      </div>
+      <table>
+        <thead>
+          <tr><th>Параметр стенду / Траси</th><th>Точне зафіксоване значення</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Клієнтський інтерфейс (<code>eth0</code>)</td><td><code>172.22.24.161</code> (MAC <code>00:15:5d:be:a2:2d</code>, MTU <code>1280</code>, MSS <code>1240</code>)</td></tr>
+          <tr><td>Сервер 1: <code>gaia.cs.umass.edu</code></td><td><code>128.119.245.12</code> (Apache/2.4.62 AlmaLinux, порт <code>80</code>)</td></tr>
+          <tr><td>Сервер 2: <code>kurose.cslash.net</code></td><td><code>2.56.99.24</code> (Caddy, віддає <code>8E_cover_small.jpg</code>, <code>497 730</code> B)</td></tr>
+          <tr><td>Виміряний RTT (запит → 200 OK)</td><td><code>121.020 мс</code> (пакет № 8 → № 10 у трасі <code>01_intro_wireshark.pcap</code>)</td></tr>
+          <tr><td>Мови браузера (<code>Accept-Language</code>)</td><td><code>uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7</code></td></tr>
+          <tr><td>Дата модифікації (<code>Last-Modified</code>)</td><td><code>Tue, 28 Oct 2025 05:59:01 GMT</code></td></tr>
+          <tr><td>Base64-рядок авторизації</td><td><code>d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=</code> → <code>wireshark-students:network</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 2. SNIFFER -->
+    <section class="module-card" id="theory-sniffer">
+      <h2>📡 Як працює сніфер та інкапсуляція стеку TCP/IP</h2>
+      <p>Сніфер — пасивна програма: він сам не генерує пакетів, а знімає копію кожного кадру Ethernet, що проходить крізь мережеву карту.</p>
+      <div class="grid-2">
+        <div class="sub-card">
+          <h4>Конвеєр захоплення</h4>
+          <ol>
+            <li><strong>NIC + Драйвер:</strong> збирає біти у кадри Ethernet II. У <em>promiscuous mode</em> приймає не тільки свої кадри, а весь трафік сегмента.</li>
+            <li><strong>libpcap / Npcap:</strong> копіює кадри з ядра (<code>AF_PACKET</code> / NDIS) у буфер.</li>
+            <li><strong>Capture Filter (BPF):</strong> відкидає зайве ще в ядрі (наприклад, <code>tcp port 80</code>). Те, що відкинуте, у файл <code>.pcap</code> не записується.</li>
+            <li><strong>Диссектор + Display Filter:</strong> розбирає протоколи знизу вгору; фільтр <code>http</code> лише ховає зайві рядки на екрані без видалення байтів.</li>
+          </ol>
+        </div>
+        <div class="sub-card">
+          <h4>Чому без фільтра видно інші протоколи?</h4>
+          <p>ОС постійно обмінюється службовими пакетами. У нашій трасі <code>01_intro_wireshark.pcap</code> без фільтра зафіксовані:</p>
+          <ul>
+            <li><strong>NTP (UDP 123):</strong> синхронізація годинника системи;</li>
+            <li><strong>ICMP:</strong> перевірка доступності хоста (<code>ping</code>);</li>
+            <li><strong>TCP (80):</strong> відкриття/закриття сокета;</li>
+            <li>У локальних мережах додатково постійно летять <strong>ARP</strong>, <strong>DNS</strong>, <strong>mDNS</strong> та <strong>SSDP</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Анатомія одного реального пакета (Frame 8, 439 байт)</h3>
+      <div class="encap-stack">
+        <div class="encap-box"><strong>L2 · Ethernet II (14 B)</strong>Src/Dst MAC-адреси<br><code>EtherType = 0x0800</code></div>
+        <div class="encap-box"><strong>L3 · IPv4 (20 B)</strong><code>172.22.24.161 → 128.119.245.12</code><br><code>TTL, Protocol = 6</code></div>
+        <div class="encap-box"><strong>L4 · TCP (32 B)</strong>Порти <code>44918 → 80</code><br>20 B база + 12 B Timestamps</div>
+        <div class="encap-box"><strong>L7 · HTTP (373 B)</strong>Текст ASCII:<br><code>GET /wireshark-labs/...</code></div>
+      </div>
+    </section>
+
+    <!-- 3. TCP -->
+    <section class="module-card" id="theory-tcp">
+      <h2>🔌 TCP під HTTP: 3-Way Handshake, MSS, LRO та сегментація</h2>
+      <p>HTTP/1.1 вимагає гарантованої доставки кожного байта, тому працює виключно поверх TCP. Перед першим запитом сторони проходять тристороннє рукостискання:</p>
+      <ul>
+        <li><strong>SYN:</strong> клієнт шле початковий номер послідовності <code>ISN</code>, оголошує <code>MSS=1240</code>, масштаб вікна <code>WS=1024</code> та <code>SACK_PERM</code>.</li>
+        <li><strong>SYN, ACK:</strong> сервер підтверджує <code>ISN+1</code>, передає свій <code>ISN</code> і <code>MSS=1440</code>.</li>
+        <li><strong>ACK:</strong> клієнт підтверджує прийом — канал відкрито.</li>
+      </ul>
+      <h3>Як TCP нарізає великий документ (4500 байт)</h3>
+      <p>HTTP не знає про <strong>MTU</strong> мережі (1500 B в Ethernet або 1280 B у WSL2-тунелі). Завантаження «Білля про права США» (<code>HTTP-wireshark-file3.html</code>) дало відповідь у <strong>4827 байт</strong> (<code>327</code> B заголовків + <code>4500</code> B HTML):</p>
+      <ul>
+        <li>При клієнтському <code>MSS=1240</code> та 12-байтній опції TCP Timestamps корисне навантаження одного сегмента становить <code>1228</code> байт.</li>
+        <li>На дроті це <strong>4 TCP-сегменти</strong>: <code>1228 + 1228 + 1228 + 1143 = 4827</code> B (на класичному Ethernet із <code>MSS=1460</code> теж 4 сегменти: <code>3×1460 + 447</code>).</li>
+        <li>У віртуальному комутаторі Hyper-V спрацювала коалесценція (LRO): перші 3 сегменти злилися у кадр № 6 (<code>3684 B</code>), останній прийшов кадром № 8 (<code>1143 B</code>).</li>
+        <li>Wireshark збирає їх у буфер <code>[2 Reassembled TCP Segments (4827 bytes): #6(3684), #8(1143)]</code> і показує статус <code>HTTP/1.1 200 OK</code> на завершальному пакеті № 8.</li>
+      </ul>
+    </section>
+
+    <!-- 4. HTTP -->
+    <section class="module-card" id="theory-http">
+      <h2>🌐 Протокол HTTP/1.1: структура, заголовки та коди стану</h2>
+      <p>HTTP — текстовий <strong>stateless</strong>-протокол: сервер не зберігає стану клієнта між запитами без <code>Cookie</code> або токенів.</p>
+      <div class="grid-2">
+        <div class="sub-card">
+          <h4>Важливі заголовки запиту</h4>
+          <ul>
+            <li><code>Host: gaia.cs.umass.edu</code> — обов'язковий у HTTP/1.1 для віртуального хостингу (кілька доменів на одній IP).</li>
+            <li><code>Accept-Language: uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7</code> — <em>Content Negotiation</em> із коефіцієнтами пріоритету <code>q</code>.</li>
+            <li><code>Connection: keep-alive / close</code> — перевикористання одного TCP-сокета або закриття після відповіді.</li>
+          </ul>
+        </div>
+        <div class="sub-card">
+          <h4>Коди стану в наших трасах</h4>
+          <ul>
+            <li><span class="tag tag-green">200 OK</span> — ресурс знайдено і передано в тілі.</li>
+            <li><span class="tag tag-blue">301 Moved Permanently</span> — постійний редірект (у <code>Location</code> для <code>pearson.png</code> вказано HTTPS).</li>
+            <li><span class="tag tag-yellow">304 Not Modified</span> — кеш клієнта актуальний, тіло не передається.</li>
+            <li><span class="tag tag-red">401 Unauthorized</span> — потрібна авторизація (див. <code>WWW-Authenticate</code>).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CACHE -->
+    <section class="module-card" id="theory-cache">
+      <h2>♻️ Умовні GET-запити та механізм кешування</h2>
+      <ol>
+        <li><strong>Перший запит (кеш порожній):</strong> клієнт шле звичайний <code>GET</code> (пакет № 4). Сервер повертає <code>200 OK</code>, <code>371</code> байт тіла, дату <code>Last-Modified: Tue, 28 Oct 2025 05:59:01 GMT</code> та відбиток <code>ETag: "173-64231b67176b7"</code>.</li>
+        <li><strong>Повторний запит (F5):</strong> браузер додає <code>If-Modified-Since: Tue, 28 Oct 2025 05:59:01 GMT</code> (пакет № 15).</li>
+        <li><strong>Перевірка на сервері:</strong> файл не змінювався → сервер відповідає <strong><code>304 Not Modified</code></strong> (пакет № 17) з <strong>порожнім тілом</strong>. Кадр зменшився з <code>762</code> до <code>340</code> байт.</li>
+      </ol>
+    </section>
+
+    <!-- 6. PARALLEL -->
+    <section class="module-card" id="theory-parallel">
+      <h2>🖼️ Вбудовані об'єкти та паралельні TCP-з'єднання</h2>
+      <p>HTML-документ (<code>HTTP-wireshark-file4.html</code>, <code>942</code> байти) містить лише текстову розмітку та теги <code>&lt;img&gt;</code> на два зображення: <code>http://gaia.cs.umass.edu/pearson.png</code> (<code>128.119.245.12</code>) та <code>http://kurose.cslash.net/8E_cover_small.jpg</code> (<code>2.56.99.24</code>).</p>
+      <p>Через проблему <strong>Head-of-Line Blocking</strong> у HTTP/1.1 браузер відкриває окремі TCP-сокети паралельно. У нашій трасі <code>05_embedded_objects.pcap</code>:</p>
+      <ul>
+        <li><code>t = 0.654841 с</code> — відправлено <code>GET /pearson.png</code> (пакет № 17).</li>
+        <li><code>t = 0.673583 с</code> — через <strong>18.7 мс</strong> відправлено <code>GET /8E_cover_small.jpg</code> (пакет № 20).</li>
+        <li><code>t = 0.774666 с</code> — лише через <strong>101 мс</strong> надійшла відповідь <code>301</code> на перший запит (пакет № 45).</li>
+      </ul>
+      <p>Тобто друге завантаження стартувало задовго до завершення першого — це прямий доказ паралельної роботи.</p>
+    </section>
+
+    <!-- 7. AUTH -->
+    <section class="module-card" id="theory-auth">
+      <h2>🔓 HTTP Basic Authentication та небезпека Base64</h2>
+      <div class="callout callout-warn">
+        <strong>Головне правило для захисту:</strong> Base64 — це <u>кодування, а не шифрування</u>! Воно перетворює байти в 64-символьний ASCII-алфавіт (<code>A–Z, a–z, 0–9, +, /</code>, ріжучи по 6 біт) без жодного секретного ключа.
+      </div>
+      <ol>
+        <li>Перший <code>GET</code> без пароля (пакет № 4) отримує відмову <code>401 Unauthorized</code> із заголовком <code>WWW-Authenticate: Basic realm="wireshark-students only"</code> (пакет № 6).</li>
+        <li>Клієнт склеює <code>wireshark-students:network</code>, кодує в Base64 і шле <code>Authorization: Basic d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=</code> (пакет № 14).</li>
+        <li>Сервер пускає клієнта: <code>200 OK</code>, <code>132</code> байти (пакет № 16). Але будь-хто з Wireshark або командою <code>base64 -d</code> миттєво бачить пароль у відкритому вигляді.</li>
+        <li><strong>Захист:</strong> використовувати <strong>HTTPS (TLS 1.2/1.3)</strong>, щоб шифрувати весь потік поверх TCP, а для API — короткоживучі токени/HttpOnly Cookies.</li>
+      </ol>
+    </section>
+
+    <!-- 8. SCREENSHOTS -->
+    <section class="module-card" id="screenshots">
+      <h2>📸 Усі 12 реальних скріншотів Wireshark і термінала <span class="tag tag-blue">Клік для збільшення</span></h2>
+      <div class="shot-grid">
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/01_intro_all_protocols.png" alt="Рис 1"><div class="cap">Рис. 1. Загальний трафік (NTP, ICMP, TCP, HTTP) — пакет № 8</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/02_intro_http_response.png" alt="Рис 2"><div class="cap">Рис. 2. Фільтр http та відповідь 200 OK — пакет № 10</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/03_basic_get_request.png" alt="Рис 3"><div class="cap">Рис. 3. Звичайний GET (file1) — Accept-Language</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/04_basic_get_response.png" alt="Рис 4"><div class="cap">Рис. 4. Відповідь 200 OK (file1) — Content-Length: 128</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/05_conditional_get_first.png" alt="Рис 5"><div class="cap">Рис. 5. Перший GET (file2) без If-Modified-Since</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/06_conditional_get_second_ims.png" alt="Рис 6"><div class="cap">Рис. 6. Повторний GET (file2) з If-Modified-Since</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/07_conditional_get_304_response.png" alt="Рис 7"><div class="cap">Рис. 7. Відповідь 304 Not Modified без тіла файлу</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/08_large_doc_tcp_segments.png" alt="Рис 8"><div class="cap">Рис. 8. TCP-реасемблювання 4827 B (Білль про права)</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/09_embedded_objects_parallel.png" alt="Рис 9"><div class="cap">Рис. 9. Паралельні GET на 128.119.245.12 і 2.56.99.24</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/10_http_auth_401_unauthorized.png" alt="Рис 10"><div class="cap">Рис. 10. Відмова 401 Unauthorized + WWW-Authenticate</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/11_http_auth_basic_credentials.png" alt="Рис 11"><div class="cap">Рис. 11. Authorization: Basic та Credentials у Wireshark</div></div>
+        <div class="shot-card" onclick="openZoom(this)"><img src="screenshots/12_base64_decode_terminal.png" alt="Рис 12"><div class="cap">Рис. 12. Перевірка декодування Base64 через tshark і Python</div></div>
+      </div>
+    </section>
+
+    <!-- 9. ALL 19 Q&A -->
+    <section class="module-card" id="qa-all">
+      <h2>❓ Готові відповіді на всі 19 питань методички (0–18 + вступ)</h2>
+      <div id="qaList">
+        <div class="qa-item"><div class="qa-q">Вступ, п. 6. 3 протоколи без фільтра та час між GET і 200 OK?</div><div class="qa-a">Зафіксовано <code>NTP</code>, <code>ICMP</code>, <code>TCP</code>, <code>HTTP</code> (у LAN також <code>ARP</code>, <code>DNS</code>, <code>mDNS</code>, <code>SSDP</code>). Між пакетом № 8 (<code>1.872427 с</code>) і № 10 (<code>1.993447 с</code>) минуло <strong><code>0.121020 с</code> (<code>121.020 мс</code>)</strong>.</div></div>
+        <div class="qa-item"><div class="qa-q">Вступ, п. 7. IP-адреса gaia.cs.umass.edu та вашого комп'ютера?</div><div class="qa-a">Сервер: <strong><code>128.119.245.12</code></strong>. Клієнт (<code>eth0</code>): <strong><code>172.22.24.161</code></strong>.</div></div>
+        <div class="qa-item"><div class="qa-q">Розд. 2 (вступне). Яку версію HTTP використовує браузер і сервер?</div><div class="qa-a">Обидва використовують <strong><code>HTTP/1.1</code></strong> (пакети № 4 та № 6).</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 1. Що вказує браузер щодо підтримуваних мов?</div><div class="qa-a">Заголовок <code>Accept-Language: uk-UA,uk;q=0.9,en-US;q=0.8,en;q=0.7</code>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 2. IP сервера gaia.cs.umass.edu та клієнта?</div><div class="qa-a"><code>128.119.245.12</code> та <code>172.22.24.161</code>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 3. Який код стану повертає сервер?</div><div class="qa-a"><strong><code>200 OK</code></strong>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 4. Дата останньої зміни HTML-файлу (Last-Modified)?</div><div class="qa-a"><strong><code>Tue, 28 Oct 2025 05:59:01 GMT</code></strong>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 5. Розмір вмісту (Content-Length)?</div><div class="qa-a"><strong><code>128</code> байт</strong>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 6. Які заголовки є в деталях, але не показані у списку пакетів?</div><div class="qa-a"><code>User-Agent</code>, <code>Accept</code>, <code>Accept-Language</code>, <code>Accept-Encoding</code>, <code>Connection</code>, <code>Host</code>, <code>Date</code>, <code>Server</code>, <code>Last-Modified</code>, <code>ETag</code>, <code>Accept-Ranges</code>, <code>Content-Length</code>, <code>Content-Type</code>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 7. Чи є IF-MODIFIED-SINCE у першому GET (file2)?</div><div class="qa-a"><strong>Ні</strong> (пакет № 4, кеш порожній).</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 8. Чи повертає сервер вміст файлу на перший запит?</div><div class="qa-a"><strong>Так</strong> (пакет № 7, <code>200 OK</code>, <code>371</code> байт HTML).</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 9. Чи є IF-MODIFIED-SINCE у другому GET і що йде після нього?</div><div class="qa-a"><strong>Так</strong> (пакет № 15): <code>If-Modified-Since: Tue, 28 Oct 2025 05:59:01 GMT</code>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 10. Що повертає сервер на другий запит і чи є тіло?</div><div class="qa-a"><strong><code>304 Not Modified</code></strong> (пакет № 17). Тіло відсутнє (кадр скоротився з 762 до 340 байт).</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 11. Скільки GET-запитів і в якому пакеті (file3)?</div><div class="qa-a"><strong>1</strong> запит, пакет <strong>№ 4</strong>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 12. Який пакет містить код стану і фразу (file3)?</div><div class="qa-a">Завершальний пакет збирання PDU — пакет <strong>№ 8</strong>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 13. Код стану і фраза?</div><div class="qa-a"><strong><code>200 OK</code></strong> (<code>Content-Length: 4500</code>).</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 14. Скільки необхідно сегментів TCP для Білля про права?</div><div class="qa-a"><code>4827</code> B (<code>327</code> B заголовків + <code>4500</code> B тіло). При <code>MSS=1240</code> (`1228` B корисних даних) — <strong>4 сегменти</strong> (<code>3×1228 + 1143</code>); через LRO на vSwitch у трасі показано <code>#6(3684) + #8(1143)</code>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 15. Скільки GET-запитів і на які IP (file4)?</div><div class="qa-a"><strong>3 запити:</strong> #4 (<code>file4.html</code> → <code>128.119.245.12</code>), #17 (<code>pearson.png</code> → <code>128.119.245.12</code>), #20 (<code>8E_cover_small.jpg</code> → <code>2.56.99.24</code>).</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 16. Зображення завантажувалися паралельно чи по черзі?</div><div class="qa-a"><strong>Паралельно:</strong> запит #20 пішов на <code>18.7 мс</code> пізніше #17, тобто за <code>101 мс</code> до приходу відповіді <code>301</code> (#45).</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 17. Первісна відповідь сервера на перший GET (file5)?</div><div class="qa-a"><strong><code>401 Unauthorized</code></strong> (пакет № 6) із заголовком <code>WWW-Authenticate: Basic realm="wireshark-students only"</code>.</div></div>
+        <div class="qa-item"><div class="qa-q">Питання 18. Які нові поля додаються в другий GET (file5)?</div><div class="qa-a"><strong><code>Authorization: Basic d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=</code></strong> (пакет № 14), що розкодовується у <code>wireshark-students:network</code>.</div></div>
+      </div>
+    </section>
+
+    <!-- 10. SIMULATORS -->
+    <section class="module-card" id="simulators">
+      <h2>🧪 Інтерактивні симулятори для демонстрації</h2>
+      <div class="grid-2">
+        <div class="sub-card">
+          <h4>1. Калькулятор TCP-сегментації</h4>
+          <div class="sim-row">
+            <div class="sim-field"><label>Розмір HTTP (байт)</label><input class="sim-input" id="tcpTotal" type="number" value="4827"></div>
+            <div class="sim-field"><label>Макс. payload сегмента (байт)</label><input class="sim-input" id="tcpMss" type="number" value="1228"></div>
+            <button class="sim-btn" onclick="calcTcp()">Порахувати</button>
+          </div>
+          <div class="result-box" id="tcpResult"></div>
+        </div>
+
+        <div class="sub-card">
+          <h4>2. Декодер / Енкодер Base64 (Basic Auth)</h4>
+          <div class="sim-row">
+            <div class="sim-field"><label>Base64 або логін:пароль</label><input class="sim-input" id="b64Input" value="d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms="></div>
+            <button class="sim-btn" onclick="runB64(true)">Decode</button>
+            <button class="sim-btn" onclick="runB64(false)">Encode</button>
+          </div>
+          <div class="result-box" id="b64Result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. QUIZ -->
+    <section class="module-card" id="quiz">
+      <h2>📝 Міні-тест перед захистом (8 запитань)</h2>
+      <div id="quizBox"></div>
+      <button class="sim-btn" onclick="checkQuiz()">Перевірити відповіді</button>
+      <div class="result-box" id="quizScore" style="display:none;"></div>
+    </section>
+
+    <!-- 12. CHEATSHEET -->
+    <section class="module-card" id="cheatsheet">
+      <h2>⌨️ Шпаргалка фільтрів Wireshark та команд tshark</h2>
+      <pre>http                                         # Лише HTTP-трафік
+http.request.method == "GET"                 # Лише GET-запити
+http.response.code == 304                    # Відповіді кешу (Not Modified)
+http.if_modified_since                       # Умовні запити з датою кешу
+http.authorization                           # Пакети з заголовком Authorization
+tcp.stream eq 0                              # Усі пакети (SYN..FIN) одного потоку
+
+tshark -r 06_http_authentication.pcap -Y http
+tshark -r 06_http_authentication.pcap -Y "frame.number==14" -T fields -e http.authorization
+echo -n "d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=" | base64 -d</pre>
+    </section>
+  </main>
+
+  <div id="lightbox" onclick="this.style.display='none'">
+    <img id="zoomImg" src="" alt="">
+    <p id="zoomCap"></p>
+  </div>
+
+  <script>
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      themeBtn.textContent = document.body.classList.contains('light-theme') ? '🌙 Темна тема' : '☀️ Світла тема';
+    });
+
+    document.getElementById('globalSearch').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('.qa-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+      });
+      if (q.length > 1) {
+        const qa = document.getElementById('qa-all');
+        if (!document.querySelector('.qa-item[style*="block"]')) return;
+      }
+    });
+
+    function openZoom(card) {
+      document.getElementById('zoomImg').src = card.querySelector('img').src;
+      document.getElementById('zoomCap').textContent = card.querySelector('.cap').textContent;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function calcTcp() {
+      const total = Math.max(1, parseInt(document.getElementById('tcpTotal').value || '4827', 10));
+      const mss = Math.max(1, parseInt(document.getElementById('tcpMss').value || '1228', 10));
+      const count = Math.ceil(total / mss);
+      const parts = [];
+      let rem = total;
+      for (let i = 0; i < count; i++) {
+        const chunk = Math.min(mss, rem);
+        parts.push(`#${i + 1}: ${chunk} B`);
+        rem -= chunk;
+      }
+      document.getElementById('tcpResult').innerHTML =
+        `Потрібно TCP-сегментів: <strong>${count}</strong><br>` +
+        `Розбиття: <code>${parts.join(' + ')} = ${total} B</code>`;
+    }
+    calcTcp();
+
+    function runB64(decode) {
+      const val = document.getElementById('b64Input').value.trim();
+      const out = document.getElementById('b64Result');
+      try {
+        if (decode) {
+          const res = atob(val);
+          out.innerHTML = `Декодовано в ASCII: <strong><code>${res}</code></strong>`;
+        } else {
+          const res = btoa(val);
+          out.innerHTML = `Заголовок: <strong><code>Authorization: Basic ${res}</code></strong>`;
+        }
+      } catch (err) {
+        out.innerHTML = `<span style="color:var(--red)">Некоректний рядок Base64</span>`;
+      }
+    }
+    runB64(true);
+
+    const quizData = [
+      { q: "1. Чи відправляє сніфер Wireshark власні пакети в мережу під час захоплення?", opts: ["Так, періодично пінгує шлюз", "Ні, він працює суто пасивно", "Тільки при HTTP 401"], ans: 1 },
+      { q: "2. Яка різниця між Capture Filter (BPF) та Display Filter?", opts: ["Ніякої різниці", "Capture Filter відсікає ще в ядрі під час запису, Display Filter лише ховає на екрані", "Display Filter працює тільки для UDP"], ans: 1 },
+      { q: "3. Який заголовок обов'язковий у запиті HTTP/1.1 для віртуального хостингу?", opts: ["User-Agent", "Host", "ETag"], ans: 1 },
+      { q: "4. Що повертає сервер, якщо файл із If-Modified-Since не змінився?", opts: ["200 OK із тілом", "304 Not Modified без тіла", "404 Not Found"], ans: 1 },
+      { q: "5. Чому великий HTML-файл (4500 B) приходить кількома TCP-сегментами?", opts: ["Обмеження браузера", "Транспортний рівень TCP ріже потік під MSS", "HTTP сам розбиває документ"], ans: 1 },
+      { q: "6. Як довести з траси, що картинки качалися паралельно?", opts: ["Вони мають однаковий порт джерела", "Другий GET пішов до отримання відповіді на перший GET", "Обидві мають статус 304"], ans: 1 },
+      { q: "7. Який перший статус віддає сервер на захищену сторінку без логіна?", opts: ["403 Forbidden", "401 Unauthorized + WWW-Authenticate", "500 Server Error"], ans: 1 },
+      { q: "8. Чи шифрує Basic Auth пароль?", opts: ["Так, AES-256", "Ні, Base64 — це оборотне кодування без ключа", "Так, якщо увімкнений MSS"], ans: 1 }
+    ];
+
+    const quizBox = document.getElementById('quizBox');
+    quizData.forEach((item, idx) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-q';
+      div.innerHTML = `<div class="quiz-q-title">${item.q}</div>` +
+        item.opts.map((o, oi) => `<label class="quiz-opt"><input type="radio" name="q${idx}" value="${oi}">${o}</label>`).join('') +
+        `<div class="quiz-fb" id="fb${idx}"></div>`;
+      quizBox.appendChild(div);
+    });
+
+    function checkQuiz() {
+      let score = 0;
+      quizData.forEach((item, idx) => {
+        const sel = document.querySelector(`input[name="q${idx}"]:checked`);
+        const fb = document.getElementById(`fb${idx}`);
+        if (sel && parseInt(sel.value, 10) === item.ans) {
+          score++;
+          fb.style.color = 'var(--green)';
+          fb.textContent = '✓ Правильно';
+        } else {
+          fb.style.color = 'var(--red)';
+          fb.textContent = `✗ Правильна відповідь: ${item.opts[item.ans]}`;
+        }
+      });
+      const box = document.getElementById('quizScore');
+      box.style.display = 'block';
+      box.innerHTML = `Результат: <strong>${score} з ${quizData.length}</strong>`;
+    }
+
+    document.querySelectorAll('aside nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.querySelectorAll('aside nav a').forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
