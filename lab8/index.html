@@ -351,7 +351,8 @@
     </div>
     <nav>
       <div class="nav-group-title">Підготовка до здачі</div>
-      <a class="nav-item active" href="#pitch">⚡ Головне та спіч за 60 сек</a>
+      <a class="nav-item active" href="#nestor-insider">🎯 Що реально питає Нестор!</a>
+      <a class="nav-item" href="#pitch">⚡ Головне та спіч за 60 сек</a>
       <a class="nav-item" href="#theory-sniffer">📡 Сніфер та інкапсуляція</a>
       <a class="nav-item" href="#theory-tcp">🔌 TCP: Handshake і сегментація</a>
       <a class="nav-item" href="#theory-http">🌐 Протокол HTTP/1.1 та коди</a>
@@ -376,6 +377,32 @@
       </div>
       <button class="theme-toggle-btn" id="themeBtn">☀️ Світла тема</button>
     </header>
+
+    <!-- 0. NESTOR INSIDER -->
+    <section class="module-card" id="nestor-insider">
+      <h2>🎯 Інсайд: що реально питає викладач (Нестор) на захисті <span class="tag tag-red">Обов'язково прочитати</span></h2>
+      <p>На захисті відкривається скріншот Wireshark зі звіту, і питання йдуть прямо по трьох вікнах інтерфейсу та структурі HTTP:</p>
+      <div class="grid-2">
+        <div class="sub-card">
+          <h4>1. Що таке Wireshark і чи можна ним змінити запит?</h4>
+          <p><strong>Wireshark</strong> — це <em>пасивний</em> сніфер: він знімає копію кадрів із мережевої карти (через <code>Npcap</code>/<code>libpcap</code>) і показує стек протоколів для аналізу та діагностики.</p>
+          <p><strong>Чи можна змінити пакет у Wireshark?</strong> — <strong>НІ.</strong> Він лише читає копії трафіку й не втручається в передачу. Для підміни/редагування запитів на льоту використовують активні проксі (<em>Burp Suite</em>, <em>mitmproxy</em>, <em>Fiddler</em>).</p>
+        </div>
+        <div class="sub-card">
+          <h4>2. Поясни 3 вікна Wireshark («це вікно, це вікно і циферки збоку»)</h4>
+          <ul>
+            <li><strong>Верхнє (Packet List):</strong> список кадрів (<code>No.</code>, <code>Time</code>, <code>Source</code>, <code>Destination</code>, <code>Protocol</code>, <code>Length</code>, <code>Info</code>).</li>
+            <li><strong>Середнє (Packet Details):</strong> дерево рівнів <code>Frame → Ethernet II → IPv4 → TCP → HTTP</code> і всі заголовки (<code>Accept-Encoding</code>, <code>Date</code>, <code>Host</code>, <code>Content-Type</code>).</li>
+            <li><strong>Нижнє (Packet Bytes — «циферки збоку»):</strong> сирі байти пакета! Зліва — зміщення в Hex (<code>0000</code>, <code>0010</code>…), посередині — <strong>сирі байти в Hex</strong> (<code>47 45 54…</code>), справа — <strong>ASCII-текст</strong> (недруковані байти замінені крапкою <code>.</code>).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:14px;">
+        <strong>3. Структура HTTP (Headers і Body, у т.ч. для <code>POST</code> / <code>GET</code>):</strong><br>
+        <code>Стартовий рядок</code> → <code>Headers</code> (<code>Accept-Encoding</code> — підтримуване стиснення як <code>gzip</code>/<code>identity</code>; <code>Date</code> — час відповіді; <code>Content-Type</code> / <code>Content-Length</code> — формат і розмір тіла) → <code>Порожній рядок \r\n (0d 0a 0d 0a)</code> → <code>Body</code>.<br>
+        У <code>GET</code>-запиті <code>Body</code> зазвичай порожнє, у <code>POST</code>-запиті саме в <code>Body</code> передаються дані форми або JSON, а у відповіді <code>200 OK</code> в <code>Body</code> лежить HTML/картинка.
+      </div>
+    </section>
 
     <!-- 1. PITCH -->
     <section class="module-card" id="pitch">
